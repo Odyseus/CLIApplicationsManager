@@ -1,0 +1,506 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PackageManagerApp.pkg_manager &mdash; CLI Applications Manager  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CLI Applications Manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>PackageManagerApp.pkg_manager</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for PackageManagerApp.pkg_manager</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Module with utility functions and classes.</span>
+
+<span class="sd">Attributes</span>
+<span class="sd">----------</span>
+<span class="sd">generic_summary : str</span>
+<span class="sd">    Summary template displayed when installing/removing packages.</span>
+<span class="sd">install_summary : str</span>
+<span class="sd">    Summary template displayed when installing packages.</span>
+<span class="sd">remove_summary : str</span>
+<span class="sd">    Summary template displayed when removing packages.</span>
+<span class="sd">root_folder : str</span>
+<span class="sd">    The main folder containing the application. All commands must be executed from this location</span>
+<span class="sd">    without exceptions.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="kn">from</span> <span class="nn">runpy</span> <span class="k">import</span> <span class="n">run_path</span>
+
+<span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
+
+
+<span class="n">generic_summary</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Summary:</span>
+<span class="si">{details}</span><span class="s2"></span>
+
+<span class="s2">More details can be found on the log file:</span>
+<span class="si">{log_path}</span><span class="s2"></span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">install_summary</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Of the </span><span class="si">{pkgs_list}</span><span class="s2"> packages that you are trying to install.</span>
+
+<span class="s2">- </span><span class="si">{non_existent}</span><span class="s2"> packages are NOT available on the software sources.</span>
+<span class="s2">- </span><span class="si">{installed}</span><span class="s2"> packages are already installed.</span>
+<span class="s2">- </span><span class="si">{errors}</span><span class="s2"> errors were raised trying to gather the displayed information.</span>
+
+<span class="si">{pkgs_to_handle}</span><span class="s2"> packages were chosen to be installed.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">remove_summary</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Of the </span><span class="si">{pkgs_list}</span><span class="s2"> packages that you are trying to remove.</span>
+
+<span class="s2">- </span><span class="si">{not_installed}</span><span class="s2"> packages are NOT installed.</span>
+<span class="s2">- </span><span class="si">{errors}</span><span class="s2"> errors were raised trying to gather the displayed information.</span>
+
+<span class="si">{pkgs_to_handle}</span><span class="s2"> packages were chosen to be removed.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="PackageManager"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager">[docs]</a><span class="k">class</span> <span class="nc">PackageManager</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Package manager class.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    errors : list</span>
+<span class="sd">        Errors storage.</span>
+<span class="sd">    existent_pkgs : list</span>
+<span class="sd">        Storage for packages that exist in the software sources.</span>
+<span class="sd">    installed_pkgs : list</span>
+<span class="sd">        Storage for packages that are installed in the system.</span>
+<span class="sd">    interface : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    non_existent_pkgs : list</span>
+<span class="sd">        Storage for packages that DOES NOT exist in the software sources.</span>
+<span class="sd">    not_installed_pkgs : list</span>
+<span class="sd">        Storage for packages that ARE NOT installed in the system.</span>
+<span class="sd">    packages : list</span>
+<span class="sd">        Description</span>
+<span class="sd">    pkgs_to_handle : list</span>
+<span class="sd">        List of packages that will be actually processed depending on &quot;action&quot;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interface</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">pkgs_list_relative</span><span class="o">=</span><span class="p">[],</span> <span class="n">pkgs_list_absolute</span><span class="o">=</span><span class="p">[],</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        interface : str, optional</span>
+<span class="sd">            Description</span>
+<span class="sd">        pkgs_list_relative : list, optional</span>
+<span class="sd">            Description</span>
+<span class="sd">        pkgs_list_absolute : list, optional</span>
+<span class="sd">            Description</span>
+<span class="sd">        logger : object</span>
+<span class="sd">            See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PackageManager</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">packages</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interface</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">non_existent_pkgs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">existent_pkgs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">not_installed_pkgs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">installed_pkgs</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">interface</span> <span class="o">=</span> <span class="n">run_path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span>
+                                               <span class="s2">&quot;UserData&quot;</span><span class="p">,</span>
+                                               <span class="s2">&quot;interfaces&quot;</span><span class="p">,</span>
+                                               <span class="n">interface</span> <span class="o">+</span> <span class="s2">&quot;.py&quot;</span><span class="p">))[</span><span class="s2">&quot;commands&quot;</span><span class="p">]</span>
+
+        <span class="c1"># pkgs_list_relative deduplication. docopt workaround.</span>
+        <span class="k">for</span> <span class="n">pkgs_list</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">pkgs_list_relative</span><span class="p">)):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">packages</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">run_path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span>
+                                                            <span class="s2">&quot;UserData&quot;</span><span class="p">,</span>
+                                                            <span class="s2">&quot;packages_lists&quot;</span><span class="p">,</span>
+                                                            <span class="n">pkgs_list</span> <span class="o">+</span> <span class="s2">&quot;.py&quot;</span><span class="p">))[</span><span class="s2">&quot;packages&quot;</span><span class="p">])</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+        <span class="c1"># pkgs_list_absolute deduplication. docopt workaround.</span>
+        <span class="k">for</span> <span class="n">pkgs_list</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">pkgs_list_absolute</span><span class="p">)):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">packages</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">run_path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">pkgs_list</span><span class="p">))[</span><span class="s2">&quot;packages&quot;</span><span class="p">])</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+        <span class="c1"># Deduplicate packages.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">packages</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">packages</span><span class="p">))</span>
+
+<div class="viewcode-block" id="PackageManager.install_packages"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.install_packages">[docs]</a>    <span class="k">def</span> <span class="nf">install_packages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_packages</span><span class="p">(</span><span class="s2">&quot;install&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display_initial_report</span><span class="p">(</span><span class="s2">&quot;install&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PackageManager.remove_packages"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.remove_packages">[docs]</a>    <span class="k">def</span> <span class="nf">remove_packages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_packages</span><span class="p">(</span><span class="s2">&quot;remove&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display_initial_report</span><span class="p">(</span><span class="s2">&quot;remove&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PackageManager.check_packages"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.check_packages">[docs]</a>    <span class="k">def</span> <span class="nf">check_packages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        action : TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;install&quot;</span><span class="p">:</span>
+            <span class="c1"># If non-existent, do not try to install.</span>
+            <span class="k">def</span> <span class="nf">b</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+                <span class="sd">&quot;&quot;&quot;Filter package by its existence on the software repositories.</span>
+
+<span class="sd">                Parameters</span>
+<span class="sd">                ----------</span>
+<span class="sd">                p : str</span>
+<span class="sd">                    Package name.</span>
+
+<span class="sd">                Returns</span>
+<span class="sd">                -------</span>
+<span class="sd">                bool</span>
+<span class="sd">                    Package exists in repositories.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_package</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;exists&quot;</span><span class="p">)</span>
+
+            <span class="n">pkgs_to_handle</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">packages</span><span class="p">))</span>
+
+            <span class="c1"># If installed, do not try to install.</span>
+            <span class="k">def</span> <span class="nf">a</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+                <span class="sd">&quot;&quot;&quot;Filter packages by its installed status.</span>
+
+<span class="sd">                Parameters</span>
+<span class="sd">                ----------</span>
+<span class="sd">                p : str</span>
+<span class="sd">                    Package name.</span>
+
+<span class="sd">                Returns</span>
+<span class="sd">                -------</span>
+<span class="sd">                bool</span>
+<span class="sd">                    Package is not installed.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+                <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_package</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;installed&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">pkgs_to_handle</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">pkgs_to_handle</span><span class="p">))</span>
+
+        <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;remove&quot;</span><span class="p">:</span>
+            <span class="c1"># If not installed, do not try to uninstall.</span>
+            <span class="k">def</span> <span class="nf">c</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+                <span class="sd">&quot;&quot;&quot;Filter packages by its installed status.</span>
+
+<span class="sd">                Parameters</span>
+<span class="sd">                ----------</span>
+<span class="sd">                p : str</span>
+<span class="sd">                    Package name.</span>
+
+<span class="sd">                Returns</span>
+<span class="sd">                -------</span>
+<span class="sd">                bool</span>
+<span class="sd">                    Package is installed.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_package</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;installed&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">pkgs_to_handle</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">packages</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="PackageManager.check_package"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.check_package">[docs]</a>    <span class="k">def</span> <span class="nf">check_package</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pkg</span><span class="p">,</span> <span class="n">check</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pkg : TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        check : TYPE</span>
+<span class="sd">            Description</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">check_passed</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">interface</span><span class="p">[</span><span class="n">check</span><span class="p">][</span><span class="s2">&quot;cmd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">package</span><span class="o">=</span><span class="n">pkg</span><span class="p">),</span>
+                                  <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span>
+                                  <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span>
+                                  <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span><span class="p">:</span>
+            <span class="n">check_passed</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">check_passed</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check</span> <span class="o">==</span> <span class="s2">&quot;installed&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">installed_pkgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">check</span> <span class="o">==</span> <span class="s2">&quot;exists&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">existent_pkgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check</span> <span class="o">==</span> <span class="s2">&quot;installed&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">not_installed_pkgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">check</span> <span class="o">==</span> <span class="s2">&quot;exists&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">non_existent_pkgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">check_passed</span></div>
+
+<div class="viewcode-block" id="PackageManager.display_initial_report"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.display_initial_report">[docs]</a>    <span class="k">def</span> <span class="nf">display_initial_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Display summary.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        action : TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">summary</span> <span class="o">=</span> <span class="n">generic_summary</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">details</span><span class="o">=</span><span class="n">install_summary</span> <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;install&quot;</span> <span class="k">else</span> <span class="n">remove_summary</span><span class="p">,</span>
+            <span class="n">log_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">get_log_path</span><span class="p">())</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_details</span><span class="p">(</span><span class="s2">&quot;Packages processed:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">packages</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_details</span><span class="p">(</span><span class="s2">&quot;Packages non existent on software sources:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">non_existent_pkgs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_details</span><span class="p">(</span><span class="s2">&quot;Packages available on software sources&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">existent_pkgs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_details</span><span class="p">(</span><span class="s2">&quot;Packages NOT installed:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">not_installed_pkgs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_details</span><span class="p">(</span><span class="s2">&quot;Packages installed:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">installed_pkgs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_details</span><span class="p">(</span><span class="s2">&quot;Errors raised while gathering package information:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">errors</span><span class="p">)</span>
+
+        <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s2">&quot;warning&quot;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">errors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;info&quot;</span><span class="p">)(</span><span class="n">summary</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">pkgs_list</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">packages</span><span class="p">),</span>
+            <span class="n">non_existent</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">non_existent_pkgs</span><span class="p">),</span>
+            <span class="n">existent</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">existent_pkgs</span><span class="p">),</span>
+            <span class="n">not_installed</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">not_installed_pkgs</span><span class="p">),</span>
+            <span class="n">installed</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">installed_pkgs</span><span class="p">),</span>
+            <span class="n">errors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">errors</span><span class="p">),</span>
+            <span class="n">pkgs_to_handle</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pkgs_to_handle</span><span class="p">)</span>
+        <span class="p">))</span></div>
+
+<div class="viewcode-block" id="PackageManager.log_details"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.log_details">[docs]</a>    <span class="k">def</span> <span class="nf">log_details</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">plist</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Log lists of packages.</span>
+
+<span class="sd">        Log complete the lists of packages sorted, one per line, and do not display them in terminal.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        msg : str</span>
+<span class="sd">            Message</span>
+<span class="sd">        plist : list</span>
+<span class="sd">            Package list.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">msg</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">plist</span><span class="p">)),</span> <span class="n">term</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,453 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FilesCleanerApp.app_utils module &mdash; CLI Applications Manager  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="FilesCleanerApp.cli module" href="FilesCleanerApp.cli.html" />
+    <link rel="prev" title="FilesCleanerApp package" href="FilesCleanerApp.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CLI Applications Manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">FilesCleanerApp</a> &raquo;</li>
+        
+          <li><a href="FilesCleanerApp.html">FilesCleanerApp package</a> &raquo;</li>
+        
+      <li>FilesCleanerApp.app_utils module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/modules/FilesCleaner/FilesCleanerApp.app_utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="FilesCleanerApp.cli.html" class="btn btn-neutral float-right" title="FilesCleanerApp.cli module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="FilesCleanerApp.html" class="btn btn-neutral" title="FilesCleanerApp package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-FilesCleanerApp.app_utils">
+<span id="filescleanerapp-app-utils-module"></span><h1>FilesCleanerApp.app_utils module<a class="headerlink" href="#module-FilesCleanerApp.app_utils" title="Permalink to this headline">¶</a></h1>
+<p>Application utilities.</p>
+<dl class="attribute">
+<dt id="FilesCleanerApp.app_utils.root_folder">
+<code class="descclassname">FilesCleanerApp.app_utils.</code><code class="descname">root_folder</code><a class="headerlink" href="#FilesCleanerApp.app_utils.root_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The main folder containing the Knowledge Base. All commands must be executed
+from this location without exceptions.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="FilesCleanerApp.app_utils.readchar">
+<code class="descclassname">FilesCleanerApp.app_utils.</code><code class="descname">readchar</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/app_utils.html#readchar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.app_utils.readchar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read character.</p>
+<p>Read single characters from standard input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>txt</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Message to display.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The read character.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner">
+<em class="property">class </em><code class="descclassname">FilesCleanerApp.app_utils.</code><code class="descname">FilesCleaner</code><span class="sig-paren">(</span><em>path</em>, <em>patterns</em>, <em>negate</em>, <em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/app_utils.html#FilesCleaner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Recursively cleans patterns of files/directories.</p>
+<p>Based on a recipe from <a class="reference external" href="http://code.activestate.com/recipes/576643/">ActiveState</a></p>
+<dl class="attribute">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner.actions">
+<code class="descname">actions</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.actions" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – Possible actions to perform.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner.cum_size">
+<code class="descname">cum_size</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.cum_size" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – Accumulated files size.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner.logger">
+<code class="descname">logger</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.logger" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner.matchers">
+<code class="descname">matchers</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.matchers" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – A dictionary of boolean function which takes a string and tries to match it against any
+one of the specified patterns, returning False otherwise.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner.messages">
+<code class="descname">messages</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.messages" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – Storage for messages used by the actions.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner.negate">
+<code class="descname">negate</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.negate" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em> – If True, treat the patterns passed as non inclusive.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner.path">
+<code class="descname">path</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.path" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The path to work on.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner.patterns">
+<code class="descname">patterns</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.patterns" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – The patterns to work with.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner.targets">
+<code class="descname">targets</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.targets" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – The list of files/folders on which to perform actions.</p>
+</dd></dl>
+
+<p>Initialize.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The path to work on.</p></li>
+<li><p><strong>patterns</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a>) – The patterns to work with.</p></li>
+<li><p><strong>negate</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, treat the patterns passed as non inclusive.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner.__repr__">
+<code class="descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/app_utils.html#FilesCleaner.__repr__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>__repr__ override.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Printable representation of self.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner._apply">
+<code class="descname">_apply</code><span class="sig-paren">(</span><em>func</em>, <em>confirm=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/app_utils.html#FilesCleaner._apply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner._apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a function to each target path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>func</strong> (<em>method</em>) – The method used to handle a target depending on the action.</p></li>
+<li><p><strong>confirm</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Ask for confirmation before performing an action.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner._onerror">
+<em class="property">static </em><code class="descname">_onerror</code><span class="sig-paren">(</span><em>func</em>, <em>path</em>, <em>exc_info</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/app_utils.html#FilesCleaner._onerror"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner._onerror" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error handler for <a class="reference external" href="https://docs.python.org/3.5/library/shutil.html#shutil.rmtree" title="(in Python v3.5)"><code class="xref any docutils literal notranslate"><span class="pre">shutil.rmtree</span></code></a>.</p>
+<p>If the error is due to an access error (read only file)
+it attempts to add write permission and then retries.</p>
+<p>If the error is for another reason it re-raises the error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>func</strong> (<em>method</em>) – The function that triggered the error.</p></li>
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Argument to be used by func.</p></li>
+<li><p><strong>exc_info</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#tuple" title="(in Python v3.5)"><em>tuple</em></a>) – A tuple returned by sys.exc_info().</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">onerror</span><span class="o">=</span><span class="n">onerror</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Original code by Michael Foord.
+Bug fix suggested by Kun Zhang.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>action</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/app_utils.html#FilesCleaner.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds pattern and approves action on results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>action</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The action to perform.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner._walk">
+<code class="descname">_walk</code><span class="sig-paren">(</span><em>path</em>, <em>func</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/app_utils.html#FilesCleaner._walk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner._walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk path recursively collecting results of function application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The path to <em>walk</em>.</p></li>
+<li><p><strong>func</strong> (<em>method</em>) – The function used to filter the <em>walked</em> path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The list of files/folders paths.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner._delete">
+<code class="descname">_delete</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/app_utils.html#FilesCleaner._delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner._delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The path to the file to delete.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="FilesCleanerApp.app_utils.FilesCleaner._clean_endings">
+<code class="descname">_clean_endings</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/app_utils.html#FilesCleaner._clean_endings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner._clean_endings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert Windows line endings to Unix line endings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The path to the file to “clean up”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="FilesCleanerApp.cli.html" class="btn btn-neutral float-right" title="FilesCleanerApp.cli module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="FilesCleanerApp.html" class="btn btn-neutral" title="FilesCleanerApp package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

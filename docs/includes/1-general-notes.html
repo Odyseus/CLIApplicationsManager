@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>General development notes &mdash; CLI Applications Manager  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Backup Tool’s documentation" href="BackupTool/index.html" />
+    <link rel="prev" title="Folder structure" href="0-structure.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CLI Applications Manager
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="0-structure.html">Folder structure</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">General development notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#docopt-module-usage-notes">docopt module usage notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docopt-warnings-workarounds-known-issues">docopt warnings/workarounds/known issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#new-application-generation">New application generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-generation">Documentation generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#documentation-basic-guidelines">Documentation basic guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restructuredtext-section-headers">ReStructuredText section headers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#system-executable-generation">System executable generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-dependencies">Installing dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#making-applications-standalone">Making applications standalone</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PackageManager/index.html">Package Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CLI Applications Manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>General development notes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/includes/1-general-notes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="BackupTool/index.html" class="btn btn-neutral float-right" title="Backup Tool’s documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="0-structure.html" class="btn btn-neutral" title="Folder structure" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="general-development-notes">
+<h1>General development notes<a class="headerlink" href="#general-development-notes" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="#docopt-usage-notes-reference"><span class="std std-ref">docopt module usage notes</span></a></p></li>
+<li><p><a class="reference internal" href="#application-generation-reference"><span class="std std-ref">New application generation</span></a></p></li>
+<li><p><a class="reference internal" href="#docs-generation-reference"><span class="std std-ref">Documentation generation</span></a></p></li>
+<li><p><a class="reference internal" href="#sys-exec-generation-reference"><span class="std std-ref">System executable generation</span></a></p></li>
+<li><p><a class="reference internal" href="#installing-dependencies-reference"><span class="std std-ref">Installing dependencies</span></a></p></li>
+<li><p><a class="reference internal" href="#making-apps-standalone-reference"><span class="std std-ref">Making applications standalone</span></a></p></li>
+</ul>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>All commands described in this page should be executed from the root folder of the main application (at the same level as the __app__ folder).</p>
+</div>
+<div class="section" id="docopt-module-usage-notes">
+<span id="docopt-usage-notes-reference"></span><h2>docopt module usage notes<a class="headerlink" href="#docopt-module-usage-notes" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">docopt_doc</span></code> variable defined in each <strong>cli.py</strong> file for each application is used to store/define the doc string that will be passed to <code class="docutils literal notranslate"><span class="pre">docopt</span></code> as the <strong>doc</strong> argument. This was done because, if I use a doc string that complies with Sphinx/RST, <code class="docutils literal notranslate"><span class="pre">docopt</span></code> will not parse it correctly. If I use a doc string that complies with <code class="docutils literal notranslate"><span class="pre">docopt</span></code>, Sphinx doesn’t SHUT UP about incorrect indentations and the likes. So, I store the <em>``docopt`` document</em> in a variable. This will SHUT UP Sphinx because it <em>cannot see</em> the doc string. The variable then is explicitly passed to <code class="docutils literal notranslate"><span class="pre">docopt</span></code> as the <strong>doc</strong> argument. Moving the on!!!</p>
+<div class="section" id="docopt-warnings-workarounds-known-issues">
+<h3>docopt warnings/workarounds/known issues<a class="headerlink" href="#docopt-warnings-workarounds-known-issues" title="Permalink to this headline">¶</a></h3>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Do not ever start a line with a hyphen (minus sign) inside <code class="docutils literal notranslate"><span class="pre">docopt_doc</span></code>, except when specifying options. <code class="docutils literal notranslate"><span class="pre">docopt</span></code> parses all lines starting with a hyphen as options without exceptions.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>When an option is specified more than once inside the <em>Usage</em> section of <code class="docutils literal notranslate"><span class="pre">docopt_doc</span></code>, it might generate duplicated items.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Workaround `docopt issue &lt;https://github.com/docopt/docopt/issues/134&gt;`__:</span>
+<span class="c1"># Not perfect, but good enough for some of my particular usage cases.</span>
+<span class="n">deduplicated_options</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;--option&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Fixed arguments order.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">order_reference</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;First&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Second&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Third&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Fourth&quot;</span>
+<span class="p">]</span>
+<span class="c1"># Sort the arguments so one doesn&#39;t have to worry about the order in which they are passed.</span>
+<span class="c1"># Source: https://stackoverflow.com/a/12814719.</span>
+<span class="n">unordered_arguments</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;&lt;arguments&gt;&quot;</span><span class="p">]</span>
+<span class="c1"># [&quot;Fourth&quot;, &quot;First&quot;, &quot;Third&quot;, &quot;Second&quot;]</span>
+<span class="n">unordered_arguments</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">order_reference</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="c1"># [&quot;First&quot;, &quot;Second&quot;, &quot;Third&quot;, &quot;Fourth&quot;]</span>
+
+<span class="c1"># Notes:</span>
+<span class="c1"># - unordered_arguments can have missing items.</span>
+<span class="c1"># - unordered_arguments cannot have items that aren&#39;t present in order_reference.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="new-application-generation">
+<span id="application-generation-reference"></span><h2>New application generation<a class="headerlink" href="#new-application-generation" title="Permalink to this headline">¶</a></h2>
+<p>A new <em>skeleton</em> application can be created to facilitate the addition of new applications.</p>
+<ul class="simple">
+<li><p>Command: <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">gen_base_app</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="documentation-generation">
+<span id="docs-generation-reference"></span><h2>Documentation generation<a class="headerlink" href="#documentation-generation" title="Permalink to this headline">¶</a></h2>
+<p>This documentation is a “unified” documentation for all Python applications. The build documentation process needs Sphinx 1.6.5+ to be installed on the system.</p>
+<ul class="simple">
+<li><p>Command: <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">gen_docs</span></code></p></li>
+</ul>
+<div class="section" id="documentation-basic-guidelines">
+<h3>Documentation basic guidelines<a class="headerlink" href="#documentation-basic-guidelines" title="Permalink to this headline">¶</a></h3>
+<p>To avoid headaches, follow these basic guidelines.</p>
+</div>
+<div class="section" id="restructuredtext-section-headers">
+<h3>ReStructuredText section headers<a class="headerlink" href="#restructuredtext-section-headers" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>#</strong>: With overline, for parts.</p></li>
+<li><p><strong>*</strong>: With overline, for chapters.</p></li>
+<li><p><strong>=</strong>: For sections.</p></li>
+<li><p><strong>-</strong>: For subsections.</p></li>
+<li><p><strong>^</strong>: For subsubsections.</p></li>
+<li><p><strong>“</strong>: For paragraphs.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="system-executable-generation">
+<span id="sys-exec-generation-reference"></span><h2>System executable generation<a class="headerlink" href="#system-executable-generation" title="Permalink to this headline">¶</a></h2>
+<p>To avoid being forced to execute all applications from their root folders, a system executable for each application can be generated and “installed”. These system executables will be “installed” into <code class="docutils literal notranslate"><span class="pre">~/.local/bin</span></code>. Additionally, bash completions for these system executables can be created. The function responsible for the creation of these files will also offer to add a mechanism to auto-load these bash completions in case the system isn’t configured to do so.</p>
+<ul class="simple">
+<li><p>Command (For main application only): <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">gen_sys_exec_self</span></code></p></li>
+<li><p>Command (For all applications): <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">gen_sys_exec_all</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I was forced to change from using Bash scripts as executables to Python scripts. Somehow, the arguments passed from a Bash script to a Python application were screwed up. Mainly, docopt parsed the arguments wrongly. Using the <code class="docutils literal notranslate"><span class="pre">os.execv()</span></code> function from a Python script works wonderfully and without any negative side effects (yet).</p>
+</div>
+</div>
+<div class="section" id="installing-dependencies">
+<span id="installing-dependencies-reference"></span><h2>Installing dependencies<a class="headerlink" href="#installing-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>All applications use one or more third party Python modules. Some of these third party modules are directly included with the main python application (__app__/common_modules folder), but some others need to be installed on the system.</p>
+<ul class="simple">
+<li><p>Command: <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">install_deps</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The third party modules that are directly included in the main application are modules that doesn’t have dependencies (they only use modules from the Python standard library). The third party modules that need to be installed in the system are modules with one or more dependencies.</p>
+</div>
+</div>
+<div class="section" id="making-applications-standalone">
+<span id="making-apps-standalone-reference"></span><h2>Making applications standalone<a class="headerlink" href="#making-applications-standalone" title="Permalink to this headline">¶</a></h2>
+<p>All applications depend on files and/or Python modules that, for convenience (basically, to avoid repeating hundreds of times the same code), are shared between them (__app__/common_modules folder and some template files). But each application can be made “standalone”. This basically means that the files that are shared will be copied directly into the application’s own folder so that it doesn’t depend anymore on the main application (__app__). Dependency modules still need to be installed on a system to make the application fully functional.</p>
+<ul class="simple">
+<li><p>Command (For all applications): <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">make_standalone</span> <span class="pre">--all</span></code></p></li>
+<li><p>Command (For an specific application): <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">make_standalone</span> <span class="pre">--app=&lt;name&gt;</span></code></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="BackupTool/index.html" class="btn btn-neutral float-right" title="Backup Tool’s documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="0-structure.html" class="btn btn-neutral" title="Folder structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

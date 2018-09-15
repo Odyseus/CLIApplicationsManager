@@ -1,0 +1,621 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>KnowledgeBaseApp.cli &mdash; CLI Applications Manager  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CLI Applications Manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>KnowledgeBaseApp.cli</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for KnowledgeBaseApp.cli</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Main command line application.</span>
+
+<span class="sd">Attributes</span>
+<span class="sd">----------</span>
+<span class="sd">docopt_doc : str</span>
+<span class="sd">    Used to store/define the docstring that will be passed to docopt as the &quot;doc&quot; argument.</span>
+<span class="sd">root_folder : str</span>
+<span class="sd">    The main folder containing the application. All commands must be executed from this location</span>
+<span class="sd">    without exceptions.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">Popen</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="k">import</span> <span class="n">Thread</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">app_utils</span>
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appname__</span><span class="p">,</span> <span class="n">__appdescription__</span><span class="p">,</span> <span class="n">__version__</span><span class="p">,</span> <span class="n">__status__</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span><span class="p">,</span> <span class="n">log_system</span><span class="p">,</span> <span class="n">shell_utils</span><span class="p">,</span> <span class="n">file_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils.docopt</span> <span class="k">import</span> <span class="n">docopt</span>
+
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">WrongPythonVersion</span><span class="p">()</span>
+
+<span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
+
+<span class="n">docopt_doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">{__appname__}</span><span class="s2"> </span><span class="si">{__version__}</span><span class="s2"> </span><span class="si">{__status__}</span><span class="s2"></span>
+
+<span class="si">{__appdescription__}</span><span class="s2"></span>
+
+<span class="s2">Usage:</span>
+<span class="s2">    app.py run &lt;func_name&gt;... [--debug] [--force-download]</span>
+<span class="s2">    app.py launch &lt;app_launcher_script_arguments&gt;...</span>
+<span class="s2">    app.py server (start | stop | restart)</span>
+<span class="s2">                  [--host=&lt;host&gt;]</span>
+<span class="s2">                  [--port=&lt;port&gt;]</span>
+<span class="s2">    app.py generate &lt;file_to_generate&gt;</span>
+<span class="s2">    app.py (-h | --help | --version)</span>
+
+
+<span class="s2">Options:</span>
+
+<span class="s2">-h, --help</span>
+<span class="s2">    Show this screen.</span>
+
+<span class="s2">--version</span>
+<span class="s2">    Show application version.</span>
+
+<span class="s2">--host=&lt;host&gt;]</span>
+<span class="s2">    Host name. [Default: 0.0.0.0]</span>
+
+<span class="s2">--port=&lt;port&gt;]</span>
+<span class="s2">    Port number. [Default: 8888]</span>
+
+<span class="s2">--debug</span>
+<span class="s2">    As of now, only used when generating JSON files. They will be saved</span>
+<span class="s2">    with indentation.</span>
+
+<span class="s2">--force-download</span>
+<span class="s2">    Force the download of all archives, ignoring the frequency in which they</span>
+<span class="s2">    should be downloaded. Only used by the &quot;archives_download&quot; sub-command.</span>
+
+<span class="s2">Sub-commands for the `run` command and the order they will be executed:</span>
+<span class="s2">    github_repos_update                 bitbucket_repos_update</span>
+<span class="s2">    github_repos_json_files_creation    bitbucket_repos_json_files_creation</span>
+<span class="s2">    archives_download                   main_json_file_creation</span>
+<span class="s2">    html_to_markdown_clip               bitbucket_sphinx_docs_build</span>
+<span class="s2">    github_sphinx_docs_build            categories_html_generation</span>
+<span class="s2">    index_html_generation               open_main_webpage</span>
+<span class="s2">    html_to_markdown_files</span>
+
+<span class="s2">Sub-commands for the `launch` command:</span>
+<span class="s2">    This argument will be passed to the UserData/bash_scripts/app_launcher.sh</span>
+<span class="s2">    script, if existent. See documentation.</span>
+
+<span class="s2">Sub-commands for the `server` command:</span>
+<span class="s2">    start                               Start server.</span>
+<span class="s2">    stop                                Stop server.</span>
+<span class="s2">    restart                             Restart server.</span>
+
+<span class="s2">Sub-commands for the `generate` command:</span>
+<span class="s2">    app_launcher_script                 argos_script</span>
+<span class="s2">    bitbucket_data_file                 github_data_file</span>
+<span class="s2">    system_executable</span>
+
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">__appname__</span><span class="o">=</span><span class="n">__appname__</span><span class="p">,</span>
+           <span class="n">__appdescription__</span><span class="o">=</span><span class="n">__appdescription__</span><span class="p">,</span>
+           <span class="n">__version__</span><span class="o">=</span><span class="n">__version__</span><span class="p">,</span>
+           <span class="n">__status__</span><span class="o">=</span><span class="n">__status__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="CommandLineTool"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool">[docs]</a><span class="k">class</span> <span class="nc">CommandLineTool</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Command line tool.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    action : method</span>
+<span class="sd">        Set the method that will be executed when calling CommandLineTool.run().</span>
+<span class="sd">    app_args : list</span>
+<span class="sd">        A list of arguments that will be passed to the app_launcher.sh script.</span>
+<span class="sd">    debug : bool</span>
+<span class="sd">        Attribute used by some function calls. As of now, it defines if the functions</span>
+<span class="sd">        should generate JSON files indented or not indented.</span>
+<span class="sd">    file_generation_action : str</span>
+<span class="sd">        An &quot;action&quot; that will be used to generate certain files from their</span>
+<span class="sd">        predefined templates.</span>
+<span class="sd">    force_download : bool</span>
+<span class="sd">        Force the download of all archives, ignoring the frequency in which they</span>
+<span class="sd">        should be downloaded.</span>
+<span class="sd">    func_names : list</span>
+<span class="sd">        A list of function names that will be used to execute those functions</span>
+<span class="sd">        in the order they were defined (passed as arguments).</span>
+<span class="sd">    host : str</span>
+<span class="sd">        Host name used by the web server.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    port : int</span>
+<span class="sd">        Port number used by the web server.</span>
+<span class="sd">    run_args_order : list</span>
+<span class="sd">        List used as a gude to execute functions in the order they need to.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">run_args_order</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;github_repos_update&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bitbucket_repos_update&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;github_repos_json_files_creation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bitbucket_repos_json_files_creation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;archives_download&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;main_json_file_creation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;html_to_markdown_files&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;html_to_markdown_clip&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bitbucket_sphinx_docs_build&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;github_sphinx_docs_build&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;categories_html_generation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;index_html_generation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;open_main_webpage&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        args : dict</span>
+<span class="sd">            The dictionary of arguments as returned by docopt parser.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CommandLineTool</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--debug&quot;</span><span class="p">]</span>
+        <span class="n">logs_storage_dir</span> <span class="o">=</span> <span class="s2">&quot;UserData/logs&quot;</span>
+        <span class="n">log_file</span> <span class="o">=</span> <span class="n">log_system</span><span class="o">.</span><span class="n">get_log_file</span><span class="p">(</span><span class="n">storage_dir</span><span class="o">=</span><span class="n">logs_storage_dir</span><span class="p">,</span>
+                                           <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;CLI&quot;</span><span class="p">)</span>
+        <span class="n">file_utils</span><span class="o">.</span><span class="n">remove_surplus_files</span><span class="p">(</span><span class="n">logs_storage_dir</span><span class="p">,</span> <span class="s2">&quot;CLI*&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">log_system</span><span class="o">.</span><span class="n">LogSystem</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">log_file</span><span class="p">,</span>
+                                           <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_header</span><span class="p">(</span><span class="n">__appname__</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--host&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--port&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">force_download</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--force-download&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">func_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app_args</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_generation_action</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;server&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Command: server&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Arguments:&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">http_server_start</span>
+            <span class="k">elif</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;stop&quot;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;stop&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">http_server_stop</span>
+            <span class="k">elif</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;restart&quot;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;restart&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">http_server_restart</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Command: run&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Arguments:&quot;</span><span class="p">)</span>
+            <span class="c1"># Sort the arguments so one doesn&#39;t have to worry about the order</span>
+            <span class="c1"># in which they are passed.</span>
+            <span class="c1"># Source: https://stackoverflow.com/a/12814719.</span>
+            <span class="n">args</span><span class="p">[</span><span class="s2">&quot;&lt;func_name&gt;&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_args_order</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+            <span class="k">for</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;&lt;func_name&gt;&quot;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">func_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Non existent function: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">func</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;launch&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Command: launch&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Arguments:&quot;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;&lt;app_launcher_script_arguments&gt;&quot;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">app_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;generate&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Command: generate&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Argument: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;&lt;file_to_generate&gt;&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_generation_action</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;&lt;file_to_generate&gt;&quot;</span><span class="p">]</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CommandLineTool.run"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Run tasks depending on the arguments passed.</span>
+
+<span class="sd">        Do not worry about the threads join()ing. Both conditions can&#39;t be true</span>
+<span class="sd">        at the same time because they are set by mutually exclusive arguments.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_names</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">func</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_names</span><span class="p">:</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+                <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+                <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">thread</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">app_args</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">app_args</span><span class="p">:</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">run_app</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">arg</span><span class="p">,))</span>
+                <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+                <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">thread</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_generation_action</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_generation_action</span> <span class="o">==</span> <span class="s2">&quot;system_executable&quot;</span><span class="p">:</span>
+                <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">template_utils</span>
+
+                <span class="n">template_utils</span><span class="o">.</span><span class="n">system_executable_generation</span><span class="p">(</span>
+                    <span class="n">exec_name</span><span class="o">=</span><span class="s2">&quot;knowledge-base-cli&quot;</span><span class="p">,</span>
+                    <span class="n">app_root_folder</span><span class="o">=</span><span class="n">root_folder</span><span class="p">,</span>
+                    <span class="n">sys_exec_template_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                        <span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;templates&quot;</span><span class="p">,</span> <span class="s2">&quot;system_executable&quot;</span><span class="p">),</span>
+                    <span class="n">bash_completions_template_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                        <span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;templates&quot;</span><span class="p">,</span> <span class="s2">&quot;bash_completions.bash&quot;</span><span class="p">),</span>
+                    <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">app_utils</span><span class="o">.</span><span class="n">create_file_from_template</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_generation_action</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.run_app"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.run_app">[docs]</a>    <span class="k">def</span> <span class="nf">run_app</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function to run applications through the app_launcher.sh script.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        arg : str</span>
+<span class="sd">            The argument that will be passed to the app_launcher.sh script.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">script_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;bash_scripts&quot;</span><span class="p">,</span> <span class="s2">&quot;app_launcher.sh&quot;</span><span class="p">)</span>
+        <span class="n">Popen</span><span class="p">([</span><span class="n">script_path</span><span class="p">,</span> <span class="n">arg</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.archives_download"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.archives_download">[docs]</a>    <span class="k">def</span> <span class="nf">archives_download</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`archives_handler.ArchivesHandler`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">archives_handler</span>
+
+        <span class="n">handler</span> <span class="o">=</span> <span class="n">archives_handler</span><span class="o">.</span><span class="n">ArchivesHandler</span><span class="p">(</span><span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+        <span class="n">handler</span><span class="o">.</span><span class="n">download_all_archives</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">force_download</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.github_repos_update"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.github_repos_update">[docs]</a>    <span class="k">def</span> <span class="nf">github_repos_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`repositories_handler.github_repos_update`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">repositories_handler</span>
+
+        <span class="n">repositories_handler</span><span class="o">.</span><span class="n">github_repos_update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.bitbucket_repos_update"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.bitbucket_repos_update">[docs]</a>    <span class="k">def</span> <span class="nf">bitbucket_repos_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`repositories_handler.bitbucket_repos_update`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">repositories_handler</span>
+
+        <span class="n">repositories_handler</span><span class="o">.</span><span class="n">bitbucket_repos_update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.github_repos_json_files_creation"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.github_repos_json_files_creation">[docs]</a>    <span class="k">def</span> <span class="nf">github_repos_json_files_creation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`repositories_handler.github_repos_json_files_creation`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">repositories_handler</span>
+
+        <span class="n">repositories_handler</span><span class="o">.</span><span class="n">github_repos_json_files_creation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">debug</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.bitbucket_repos_json_files_creation"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.bitbucket_repos_json_files_creation">[docs]</a>    <span class="k">def</span> <span class="nf">bitbucket_repos_json_files_creation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`repositories_handler.bitbucket_repos_json_files_creation`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">repositories_handler</span>
+
+        <span class="n">repositories_handler</span><span class="o">.</span><span class="n">bitbucket_repos_json_files_creation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">debug</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.main_json_file_creation"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.main_json_file_creation">[docs]</a>    <span class="k">def</span> <span class="nf">main_json_file_creation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`app_utils.main_json_file_creation`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">main_json_file_creation</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">debug</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.http_server"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.http_server">[docs]</a>    <span class="k">def</span> <span class="nf">http_server</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;start&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Start/Stop/Restart the HTTP server.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        action : str, optional</span>
+<span class="sd">            Any of the following: start/stop/restart.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">www_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;www&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">www_root</span><span class="p">)</span>
+        <span class="n">cmd_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;python_scripts&quot;</span><span class="p">,</span> <span class="s2">&quot;http_server&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Use of os.execv() so at the end only one process is left executing.</span>
+        <span class="c1"># The &quot;http_server&quot; executable also uses os.execv() to launch the real web application.</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">execv</span><span class="p">(</span><span class="n">cmd_path</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot; &quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">action</span><span class="p">,</span>
+                                    <span class="s2">&quot;KnowledgeBase&quot;</span><span class="p">,</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.http_server_start"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.http_server_start">[docs]</a>    <span class="k">def</span> <span class="nf">http_server_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Self explanatory.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">http_server</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;start&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.http_server_stop"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.http_server_stop">[docs]</a>    <span class="k">def</span> <span class="nf">http_server_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Self explanatory.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">http_server</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;stop&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.http_server_restart"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.http_server_restart">[docs]</a>    <span class="k">def</span> <span class="nf">http_server_restart</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Self explanatory.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">http_server</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;restart&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.html_to_markdown_files"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.html_to_markdown_files">[docs]</a>    <span class="k">def</span> <span class="nf">html_to_markdown_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`app_utils.convert_html_to_markdown`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">convert_html_to_markdown</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.html_to_markdown_clip"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.html_to_markdown_clip">[docs]</a>    <span class="k">def</span> <span class="nf">html_to_markdown_clip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`app_utils.convert_html_to_markdown`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">convert_html_to_markdown</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.open_main_webpage"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.open_main_webpage">[docs]</a>    <span class="k">def</span> <span class="nf">open_main_webpage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Self explanatory.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">webbrowser</span>
+        <span class="n">webbrowser</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;http://0.0.0.0:8888&quot;</span><span class="p">,</span> <span class="n">new</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">autoraise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.bitbucket_sphinx_docs_build"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.bitbucket_sphinx_docs_build">[docs]</a>    <span class="k">def</span> <span class="nf">bitbucket_sphinx_docs_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`repositories_handler.bitbucket_sphinx_docs_build`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">repositories_handler</span>
+
+        <span class="n">repositories_handler</span><span class="o">.</span><span class="n">bitbucket_sphinx_docs_build</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.github_sphinx_docs_build"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.github_sphinx_docs_build">[docs]</a>    <span class="k">def</span> <span class="nf">github_sphinx_docs_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`repositories_handler.github_sphinx_docs_build`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">repositories_handler</span>
+
+        <span class="n">repositories_handler</span><span class="o">.</span><span class="n">github_sphinx_docs_build</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.categories_html_generation"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.categories_html_generation">[docs]</a>    <span class="k">def</span> <span class="nf">categories_html_generation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`app_utils.categories_html_generation`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">categories_html_generation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.index_html_generation"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineTool.index_html_generation">[docs]</a>    <span class="k">def</span> <span class="nf">index_html_generation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`app_utils.index_html_generation`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">index_html_generation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Initialize main command line interface.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    exceptions.BadExecutionLocation</span>
+<span class="sd">        Do not allow to run any command if the &quot;flag&quot; file isn&#39;t</span>
+<span class="sd">        found where it should be. See :any:`exceptions.BadExecutionLocation`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;.knowledge-base.flag&quot;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">BadExecutionLocation</span><span class="p">()</span>
+
+    <span class="n">arguments</span> <span class="o">=</span> <span class="n">docopt</span><span class="p">(</span><span class="n">docopt_doc</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">__appname__</span><span class="p">,</span> <span class="n">__version__</span><span class="p">,</span> <span class="n">__status__</span><span class="p">))</span>
+    <span class="n">cli</span> <span class="o">=</span> <span class="n">CommandLineTool</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+    <span class="n">cli</span><span class="o">.</span><span class="n">run</span><span class="p">()</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

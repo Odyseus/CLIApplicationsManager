@@ -1,0 +1,1033 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>KnowledgeBaseApp.repositories_handler &mdash; CLI Applications Manager  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CLI Applications Manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>KnowledgeBaseApp.repositories_handler</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for KnowledgeBaseApp.repositories_handler</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Repositories handler functions.</span>
+
+<span class="sd">Attributes</span>
+<span class="sd">----------</span>
+<span class="sd">root_folder : str</span>
+<span class="sd">    The main folder containing the Knowledge Base. All commands must be executed</span>
+<span class="sd">    from this location without exceptions.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">runpy</span> <span class="k">import</span> <span class="n">run_path</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">Popen</span><span class="p">,</span> <span class="n">PIPE</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">app_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span><span class="p">,</span> <span class="n">shell_utils</span><span class="p">,</span> <span class="n">file_utils</span><span class="p">,</span> <span class="n">cmd_utils</span>
+
+<span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
+
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">bitbucket_data</span> <span class="o">=</span> <span class="n">run_path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;data_sources&quot;</span><span class="p">,</span>
+                                           <span class="s2">&quot;bitbucket.py&quot;</span><span class="p">))[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="n">bitbucket_data</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">github_data</span> <span class="o">=</span> <span class="n">run_path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;data_sources&quot;</span><span class="p">,</span> <span class="s2">&quot;github.py&quot;</span><span class="p">))[</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="n">github_data</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="RepoHandlers"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoHandlers">[docs]</a><span class="k">class</span> <span class="nc">RepoHandlers</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Main class to &quot;handle&quot; a repository data.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data_tables_obj : list</span>
+<span class="sd">        Where the JSON data is stored before finally save it into a JSON file.</span>
+<span class="sd">    debug : bool</span>
+<span class="sd">        Save JSON files with indentation.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    repo : dict</span>
+<span class="sd">        The repository data.</span>
+<span class="sd">    success : bool</span>
+<span class="sd">        If some of the taks are not successful, do not save the JSON file for the repository.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        repo : dict</span>
+<span class="sd">            The repository data.</span>
+<span class="sd">        debug : bool, optional</span>
+<span class="sd">            Save JSON files with indentation.</span>
+<span class="sd">        logger : object</span>
+<span class="sd">            See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RepoHandlers</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repo</span> <span class="o">=</span> <span class="n">repo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="n">debug</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_tables_obj</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="RepoHandlers.sphinx_generated_handler"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoHandlers.sphinx_generated_handler">[docs]</a>    <span class="k">def</span> <span class="nf">sphinx_generated_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Handle repositories set to build their Sphinx documentation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data_tables_obj</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+                <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">category</span><span class="p">,</span>
+                <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">path_handler</span><span class="p">,</span>
+                <span class="c1"># Path to files relative to the www folder</span>
+                <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">get_sphinx_generated_pages_storage</span><span class="p">(),</span>
+                                  <span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">filename</span><span class="p">),</span>
+                <span class="c1"># Icon name</span>
+                <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">repo_img</span>
+            <span class="p">})</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">repo_name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">generate_data_file</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="RepoHandlers.single_file_handler"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoHandlers.single_file_handler">[docs]</a>    <span class="k">def</span> <span class="nf">single_file_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Handle repositories set to manage just one file on them.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">www_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_repositories&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">web_service</span><span class="p">),</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">get_folder_name</span><span class="p">(),</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">rel_path</span><span class="p">,</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+            <span class="n">source_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">get_path</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">rel_path</span><span class="p">,</span>
+                                       <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+            <span class="n">destination_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="n">www_path</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">data_tables_obj</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+                <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">category</span><span class="p">,</span>
+                <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">path_handler</span><span class="p">,</span>
+                <span class="c1"># Path to files relative to the www folder</span>
+                <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">www_path</span><span class="p">,</span>
+                <span class="c1"># Icon name</span>
+                <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">repo_img</span>
+            <span class="p">})</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">copy_full_repo</span><span class="p">:</span>
+                    <span class="n">source_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">get_path</span><span class="p">()</span>
+                    <span class="n">destination_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span>
+                                                    <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_repositories&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                                                        <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">web_service</span><span class="p">),</span>
+                                                    <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">get_folder_name</span><span class="p">())</span>
+                    <span class="n">file_utils</span><span class="o">.</span><span class="n">custom_copytree</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span>
+                                               <span class="n">destination_path</span><span class="p">,</span>
+                                               <span class="n">ignored_patterns</span><span class="o">=</span><span class="n">app_utils</span><span class="o">.</span><span class="n">custom_copytree_global_ignored_patterns</span><span class="p">,</span>
+                                               <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+                                               <span class="n">log_copied_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                               <span class="n">relative_path</span><span class="o">=</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">file_utils</span><span class="o">.</span><span class="n">custom_copy2</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+                                            <span class="n">log_copied_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                            <span class="n">relative_path</span><span class="o">=</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err1</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err2</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">repo_name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err2</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">generate_data_file</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="RepoHandlers.multi_file_handler"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoHandlers.multi_file_handler">[docs]</a>    <span class="k">def</span> <span class="nf">multi_file_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Handle repositories set to manage more than one file on them.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">repo_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">get_path</span><span class="p">()</span>
+            <span class="n">rel_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">rel_path</span>
+            <span class="n">file_pattern</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">file_pattern</span>
+            <span class="n">filenames</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">repo_path</span><span class="p">,</span> <span class="n">rel_path</span><span class="p">))</span>
+            <span class="n">category</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">category</span>
+            <span class="n">web_service</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">web_service</span>
+            <span class="n">folder_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">get_folder_name</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">files_to_ignore</span> <span class="ow">and</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">file_pattern</span><span class="p">):</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">title</span> <span class="o">=</span> <span class="n">filename</span><span class="p">[:</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_pattern</span><span class="p">))]</span>
+                        <span class="n">www_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_repositories&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">web_service</span><span class="p">),</span>
+                                                <span class="n">folder_name</span><span class="p">,</span>
+                                                <span class="n">rel_path</span><span class="p">,</span>
+                                                <span class="n">filename</span><span class="p">)</span>
+                        <span class="n">source_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">repo_path</span><span class="p">,</span> <span class="n">rel_path</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+                        <span class="n">destination_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="n">www_path</span><span class="p">)</span>
+
+                        <span class="bp">self</span><span class="o">.</span><span class="n">data_tables_obj</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                            <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">title_prefix</span> <span class="o">+</span> <span class="n">title</span><span class="p">,</span>
+                            <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="n">category</span><span class="p">,</span>
+                            <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                            <span class="c1"># Path to files relative to the www folder</span>
+                            <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">www_path</span><span class="p">,</span>
+                            <span class="c1"># Icon name</span>
+                            <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="s2">&quot;md&quot;</span>
+                        <span class="p">})</span>
+
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="n">file_utils</span><span class="o">.</span><span class="n">custom_copy2</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+                                                    <span class="n">log_copied_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                    <span class="n">relative_path</span><span class="o">=</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">)</span>
+                        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err1</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err1</span><span class="p">)</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err2</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err2</span><span class="p">)</span>
+                        <span class="k">continue</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err3</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">repo_name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err3</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">generate_data_file</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="RepoHandlers.generate_data_file"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoHandlers.generate_data_file">[docs]</a>    <span class="k">def</span> <span class="nf">generate_data_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate the JSON file for the repository.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">            Do not try to save the JSON file in case something went wrong handling the repository.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">json_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">get_json_path</span><span class="p">()</span>
+            <span class="n">json_parent</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">json_path</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">json_parent</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">json_parent</span><span class="p">)</span>
+
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">debug</span><span class="p">):</span>
+                    <span class="n">json_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_tables_obj</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">json_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_tables_obj</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">repo_name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Repository"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository">[docs]</a><span class="k">class</span> <span class="nc">Repository</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Main class to initialize a repository.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    category : str</span>
+<span class="sd">        Category name.</span>
+<span class="sd">    copy_full_repo : boot</span>
+<span class="sd">        Whether to copy all the files on the repository or not.</span>
+<span class="sd">    file_append : list</span>
+<span class="sd">        A list of tuples containing the path to a file and the data to append to said file.</span>
+<span class="sd">    file_pattern : str</span>
+<span class="sd">        A pattern to determine the files to copy.</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        Name of the file to copy.</span>
+<span class="sd">    files_to_ignore : list</span>
+<span class="sd">        List of files to ignore (not copy).</span>
+<span class="sd">    json_data : list</span>
+<span class="sd">        Repository data storage.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    path_handler : int</span>
+<span class="sd">        A flag that determines how to handle the path or paths specified on the json_data object</span>
+<span class="sd">        of the repository.</span>
+<span class="sd">    rel_path : str</span>
+<span class="sd">        A path relative to the root of the repository folder were the file/files is/are located.</span>
+<span class="sd">    repo_img : str</span>
+<span class="sd">        String to be usaed to represent the image that will be shown on the index.html table.</span>
+<span class="sd">    repo_name : str</span>
+<span class="sd">        The name of the repository.</span>
+<span class="sd">    repo_owner : str</span>
+<span class="sd">        The owner of the repository.</span>
+<span class="sd">    repo_url : str</span>
+<span class="sd">        The repository URL.</span>
+<span class="sd">    title : str</span>
+<span class="sd">        The text that will be used as title for the entry/entries generated by this class.</span>
+<span class="sd">    title_prefix : str</span>
+<span class="sd">        A title prefix.</span>
+<span class="sd">    web_service : str</span>
+<span class="sd">        The name of the web service (github or bitbucket).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">web_service</span><span class="o">=</span><span class="s2">&quot;github&quot;</span><span class="p">,</span> <span class="n">load_json_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">is_sphinx_generated</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dict</span>
+<span class="sd">            Repository data.</span>
+<span class="sd">        web_service : str, optional</span>
+<span class="sd">            The name of the web service (github or bitbucket).</span>
+<span class="sd">        load_json_file : bool, optional</span>
+<span class="sd">            Load JSON data only when it is needed.</span>
+<span class="sd">        is_sphinx_generated : bool, optional</span>
+<span class="sd">            Boolean to determine which file name to use as default. If it is a repository to</span>
+<span class="sd">            generate a Sphinx documentation, the use &quot;index.html&quot; as default file name. Else,</span>
+<span class="sd">            use &quot;README.md&quot; as default.</span>
+<span class="sd">        logger : object</span>
+<span class="sd">            See &lt;class :any:`LogSystem`&gt;.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        exceptions.MissingMandatoryField</span>
+<span class="sd">            Missing mandatory field.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Repository</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">json_data</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">web_service</span> <span class="o">=</span> <span class="n">web_service</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repo_owner</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_owner&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repo_name</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_name&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo_owner</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;web_service  = </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">web_service</span><span class="p">)</span>
+            <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;repo_owner   = </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo_owner</span><span class="p">)</span>
+            <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;repo_name    = </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo_name</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingMandatoryField</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">repo_img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_img&quot;</span><span class="p">,</span> <span class="s2">&quot;md&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repo_url</span> <span class="o">=</span> <span class="s2">&quot;https://</span><span class="si">{}</span><span class="s2">.com/</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">.git&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">web_service</span><span class="p">,</span>
+                                                          <span class="bp">self</span><span class="o">.</span><span class="n">repo_owner</span><span class="p">,</span>
+                                                          <span class="bp">self</span><span class="o">.</span><span class="n">repo_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path_handler</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;path_handler&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">,</span> <span class="s2">&quot;Category&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">files_to_ignore</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;files_to_ignore&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_pattern</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;file_pattern&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title_prefix</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;title_prefix&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s2">&quot;filename&quot;</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span> <span class="k">if</span> <span class="n">is_sphinx_generated</span> <span class="k">else</span> <span class="s2">&quot;README.md&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rel_path</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;rel_path&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">copy_full_repo</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;copy_full_repo&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_append</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;file_append&quot;</span><span class="p">,</span> <span class="p">[])</span>
+
+        <span class="k">if</span> <span class="n">load_json_file</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_json_data</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Repository.set_json_data"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.set_json_data">[docs]</a>    <span class="k">def</span> <span class="nf">set_json_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the JSON data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_json_path</span><span class="p">(),</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">json_data</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo_name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Repository.build_sphinx_docs"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.build_sphinx_docs">[docs]</a>    <span class="k">def</span> <span class="nf">build_sphinx_docs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Build Sphinx documentation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Attempting to build </span><span class="si">%s</span><span class="s2">&#39;s docs.&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo_name</span><span class="p">)</span>
+
+        <span class="n">script_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;bash_scripts&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;generate_repo_docs.sh&quot;</span><span class="p">)</span>
+        <span class="n">doctrees_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;tmp&quot;</span><span class="p">,</span> <span class="s2">&quot;sphinx_doctrees&quot;</span><span class="p">,</span>
+                                     <span class="bp">self</span><span class="o">.</span><span class="n">get_folder_name</span><span class="p">(),</span> <span class="s2">&quot;doctrees&quot;</span><span class="p">)</span>
+        <span class="n">html_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span>
+                                 <span class="bp">self</span><span class="o">.</span><span class="n">get_sphinx_generated_pages_storage</span><span class="p">(),</span> <span class="s2">&quot;html&quot;</span><span class="p">)</span>
+
+        <span class="n">po</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span><span class="s1">&#39;&quot;</span><span class="si">{0}</span><span class="s1">&quot; &quot;</span><span class="si">{1}</span><span class="s1">&quot; &quot;</span><span class="si">{2}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">script_path</span><span class="p">,</span> <span class="n">doctrees_path</span><span class="p">,</span> <span class="n">html_path</span><span class="p">),</span>
+                   <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                   <span class="n">env</span><span class="o">=</span><span class="n">cmd_utils</span><span class="o">.</span><span class="n">get_environment</span><span class="p">(),</span>
+                   <span class="n">cwd</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">rel_path</span><span class="p">))</span>
+        <span class="n">po</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_append</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_append_data_to_files</span><span class="p">(</span><span class="n">html_path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Repository._append_data_to_files"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository._append_data_to_files">[docs]</a>    <span class="k">def</span> <span class="nf">_append_data_to_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">html_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Append data to files.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        html_path : str</span>
+<span class="sd">            Path to where HTML pages are stored.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Appending data to &lt;</span><span class="si">%s</span><span class="s2">&gt;&#39;s files.&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo_name</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">append_data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_append</span><span class="p">:</span>
+            <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html_path</span><span class="p">,</span> <span class="n">append_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">file_data</span> <span class="o">=</span> <span class="n">append_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Appending data to &lt;</span><span class="si">%s</span><span class="s2">&gt;.&quot;</span> <span class="o">%</span> <span class="n">append_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_to_append</span><span class="p">:</span>
+                    <span class="n">file_to_append</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Repository.get_sphinx_generated_pages_storage"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.get_sphinx_generated_pages_storage">[docs]</a>    <span class="k">def</span> <span class="nf">get_sphinx_generated_pages_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get Sphinx generated pages storage.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The path to the Sphinx generated pages storage.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;sphinx_generated_pages&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_folder_name</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="Repository.get_folder_name"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.get_folder_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_folder_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the repository folder name.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The repository folder name.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo_owner</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo_name</span></div>
+
+<div class="viewcode-block" id="Repository.get_storage_path"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.get_storage_path">[docs]</a>    <span class="k">def</span> <span class="nf">get_storage_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the storage path (were all the repositories are cloned into).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The storage path.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;tmp&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_repositories&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">web_service</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Repository.get_path"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.get_path">[docs]</a>    <span class="k">def</span> <span class="nf">get_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the repository path.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The repository path.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_storage_path</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_folder_name</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="Repository.get_json_path"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.get_json_path">[docs]</a>    <span class="k">def</span> <span class="nf">get_json_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the JSON file path for the repository.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The JSON file path.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span>
+                            <span class="s2">&quot;UserData&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;tmp&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_repositories_json_storage&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">web_service</span><span class="p">),</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">get_folder_name</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;.json&quot;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="BitBucketRepo"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.BitBucketRepo">[docs]</a><span class="k">class</span> <span class="nc">BitBucketRepo</span><span class="p">(</span><span class="n">Repository</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sub-class of :any:`Repository` to initialize a BitBucket repository.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">web_service</span><span class="o">=</span><span class="s2">&quot;bitbucket&quot;</span><span class="p">,</span> <span class="n">load_json_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">is_sphinx_generated</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dict</span>
+<span class="sd">            See :any:`Repository` &gt; data</span>
+<span class="sd">        logger : object</span>
+<span class="sd">            See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">        web_service : str, optional</span>
+<span class="sd">            See :any:`Repository` &gt; web_service</span>
+<span class="sd">        load_json_file : bool, optional</span>
+<span class="sd">            See :any:`Repository` &gt; load_json_file</span>
+<span class="sd">        is_sphinx_generated : bool, optional</span>
+<span class="sd">            See :any:`Repository` &gt; is_sphinx_generated</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">BitBucketRepo</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
+                                            <span class="n">web_service</span><span class="o">=</span><span class="n">web_service</span><span class="p">,</span>
+                                            <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
+                                            <span class="n">load_json_file</span><span class="o">=</span><span class="n">load_json_file</span><span class="p">,</span>
+                                            <span class="n">is_sphinx_generated</span><span class="o">=</span><span class="n">is_sphinx_generated</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BitBucketRepo.get_check_repo_cmd"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.BitBucketRepo.get_check_repo_cmd">[docs]</a>    <span class="k">def</span> <span class="nf">get_check_repo_cmd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the command to check the repository.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            The command to check the repository.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;hg&quot;</span><span class="p">,</span> <span class="s2">&quot;-R&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;root&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="BitBucketRepo.do_pull"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.BitBucketRepo.do_pull">[docs]</a>    <span class="k">def</span> <span class="nf">do_pull</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pull from the repository.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cmd_utils</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span>
+            <span class="s2">&quot;hg pull&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(),</span>
+            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="BitBucketRepo.do_clone"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.BitBucketRepo.do_clone">[docs]</a>    <span class="k">def</span> <span class="nf">do_clone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Clone the repository.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cmd_utils</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span>
+            <span class="s2">&quot;hg clone </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">repo_url</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_folder_name</span><span class="p">()</span>
+            <span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">get_storage_path</span><span class="p">(),</span>
+            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="GitHubRepo"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.GitHubRepo">[docs]</a><span class="k">class</span> <span class="nc">GitHubRepo</span><span class="p">(</span><span class="n">Repository</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sub-class of :any:`Repository` to initialize a GitHub repository.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">web_service</span><span class="o">=</span><span class="s2">&quot;github&quot;</span><span class="p">,</span> <span class="n">load_json_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">is_sphinx_generated</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dict</span>
+<span class="sd">            See :any:`Repository` &gt; data</span>
+<span class="sd">        logger : object</span>
+<span class="sd">            See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">        web_service : str, optional</span>
+<span class="sd">            See :any:`Repository` &gt; web_service</span>
+<span class="sd">        load_json_file : bool, optional</span>
+<span class="sd">            See :any:`Repository` &gt; load_json_file</span>
+<span class="sd">        is_sphinx_generated : bool, optional</span>
+<span class="sd">            See :any:`Repository` &gt; is_sphinx_generated</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GitHubRepo</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
+                                         <span class="n">web_service</span><span class="o">=</span><span class="n">web_service</span><span class="p">,</span>
+                                         <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
+                                         <span class="n">load_json_file</span><span class="o">=</span><span class="n">load_json_file</span><span class="p">,</span>
+                                         <span class="n">is_sphinx_generated</span><span class="o">=</span><span class="n">is_sphinx_generated</span><span class="p">)</span>
+
+<div class="viewcode-block" id="GitHubRepo.get_check_repo_cmd"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.GitHubRepo.get_check_repo_cmd">[docs]</a>    <span class="k">def</span> <span class="nf">get_check_repo_cmd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the command to check the repository.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            The command to check the repository.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;ls-remote&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="GitHubRepo.do_pull"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.GitHubRepo.do_pull">[docs]</a>    <span class="k">def</span> <span class="nf">do_pull</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pull from the repository.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cmd_utils</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span>
+            <span class="s2">&quot;git pull&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(),</span>
+            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="GitHubRepo.do_clone"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.GitHubRepo.do_clone">[docs]</a>    <span class="k">def</span> <span class="nf">do_clone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Clone the repository.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cmd_utils</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span>
+            <span class="s2">&quot;git clone </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">repo_url</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_folder_name</span><span class="p">()</span>
+            <span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">get_storage_path</span><span class="p">(),</span>
+            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="RepoBridge"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoBridge">[docs]</a><span class="k">class</span> <span class="nc">RepoBridge</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;&quot;Bridge&quot; class used to retrieve the actual classes from a string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="RepoBridge.github"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoBridge.github">[docs]</a>    <span class="k">def</span> <span class="nf">github</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get GitHub repository.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        *args</span>
+<span class="sd">            Positional arguments.</span>
+<span class="sd">        **kargs</span>
+<span class="sd">            Keyword arguments.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        object</span>
+<span class="sd">            Initialized :any:`GitHubRepo` class.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">GitHubRepo</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RepoBridge.bitbucket"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoBridge.bitbucket">[docs]</a>    <span class="k">def</span> <span class="nf">bitbucket</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get BitBucket repository.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        *args</span>
+<span class="sd">            Positional arguments.</span>
+<span class="sd">        **kargs</span>
+<span class="sd">            Keyword arguments.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        object</span>
+<span class="sd">            Initialized :any:`BitBucketRepo` class.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BitBucketRepo</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="github_repos_json_files_creation"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.github_repos_json_files_creation">[docs]</a><span class="k">def</span> <span class="nf">github_repos_json_files_creation</span><span class="p">(</span><span class="n">debug</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create the JSON files for GitHub repositories.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    debug : bool</span>
+<span class="sd">        Save JSON files with indentation.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">generate_repositories_json_files</span><span class="p">(</span><span class="n">github_data</span><span class="p">,</span> <span class="n">debug</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="bitbucket_repos_json_files_creation"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.bitbucket_repos_json_files_creation">[docs]</a><span class="k">def</span> <span class="nf">bitbucket_repos_json_files_creation</span><span class="p">(</span><span class="n">debug</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create the JSON files for BitBucket repositories.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    debug : bool</span>
+<span class="sd">        Save JSON files with indentation.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">generate_repositories_json_files</span><span class="p">(</span><span class="n">bitbucket_data</span><span class="p">,</span> <span class="n">debug</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="generate_repositories_json_files"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.generate_repositories_json_files">[docs]</a><span class="k">def</span> <span class="nf">generate_repositories_json_files</span><span class="p">(</span><span class="n">repository_data</span><span class="p">,</span> <span class="n">debug</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Main function to create the JSON files for the repositories.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    repository_data : dict</span>
+<span class="sd">        The repository data to process.</span>
+<span class="sd">    debug : bool</span>
+<span class="sd">        Save JSON files with indentation.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">repository_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">repository_handler</span> <span class="ow">in</span> <span class="n">repository_data</span><span class="p">[</span><span class="s2">&quot;repositories&quot;</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">repo_data</span> <span class="ow">in</span> <span class="n">repository_data</span><span class="p">[</span><span class="s2">&quot;repositories&quot;</span><span class="p">][</span><span class="n">repository_handler</span><span class="p">]:</span>
+                <span class="c1"># Do not generate JSON files for repositories that are used to generate</span>
+                <span class="c1"># Markdown files (or other types of files) from the repository data.</span>
+                <span class="c1"># Right now, there is only one repository of this type</span>
+                <span class="c1"># ActiveState/code which repo handler is called &quot;code_recipes_handler&quot;.</span>
+                <span class="k">if</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;no_json&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+                    <span class="k">continue</span>
+
+                <span class="n">repo</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">RepoBridge</span><span class="p">(),</span> <span class="n">repository_data</span><span class="p">[</span><span class="s2">&quot;web_service&quot;</span><span class="p">])(</span>
+                    <span class="n">repo_data</span><span class="p">,</span>
+                    <span class="n">load_json_file</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">is_sphinx_generated</span><span class="o">=</span><span class="n">repository_handler</span> <span class="o">==</span> <span class="s2">&quot;sphinx_generated_handler&quot;</span><span class="p">,</span>
+                    <span class="n">logger</span><span class="o">=</span><span class="n">logger</span>
+                <span class="p">)</span>
+
+                <span class="n">repo_handler</span> <span class="o">=</span> <span class="n">RepoHandlers</span><span class="p">(</span><span class="n">repo</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="nb">getattr</span><span class="p">(</span><span class="n">repo_handler</span><span class="p">,</span> <span class="n">repository_handler</span><span class="p">)()</span>
+                <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">repo_data</span><span class="p">)</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                    <span class="k">continue</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Finished creating JSON files for &lt;</span><span class="si">%s</span><span class="s2">&gt; repositories using the handler &lt;</span><span class="si">%s</span><span class="s2">&gt;&quot;</span>
+                        <span class="o">%</span> <span class="p">(</span><span class="n">repository_data</span><span class="p">[</span><span class="s2">&quot;web_service&quot;</span><span class="p">],</span> <span class="n">repository_handler</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="github_repos_update"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.github_repos_update">[docs]</a><span class="k">def</span> <span class="nf">github_repos_update</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Update all GitHub repositories.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">update_repositories</span><span class="p">(</span><span class="n">github_data</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="bitbucket_repos_update"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.bitbucket_repos_update">[docs]</a><span class="k">def</span> <span class="nf">bitbucket_repos_update</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Update all BitBucket repositories.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">update_repositories</span><span class="p">(</span><span class="n">bitbucket_data</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="update_repositories"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.update_repositories">[docs]</a><span class="k">def</span> <span class="nf">update_repositories</span><span class="p">(</span><span class="n">repository_data</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Main function to update repositories.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    repository_data : dict</span>
+<span class="sd">        The repository data to process.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">repository_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">repository_handler</span> <span class="ow">in</span> <span class="n">repository_data</span><span class="p">[</span><span class="s2">&quot;repositories&quot;</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">repo_data</span> <span class="ow">in</span> <span class="n">repository_data</span><span class="p">[</span><span class="s2">&quot;repositories&quot;</span><span class="p">][</span><span class="n">repository_handler</span><span class="p">]:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="n">repo</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">RepoBridge</span><span class="p">(),</span> <span class="n">repository_data</span><span class="p">[</span><span class="s2">&quot;web_service&quot;</span><span class="p">])(</span>
+                        <span class="n">repo_data</span><span class="p">,</span>
+                        <span class="n">load_json_file</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">is_sphinx_generated</span><span class="o">=</span><span class="n">repository_handler</span> <span class="o">==</span> <span class="s2">&quot;sphinx_generated_handler&quot;</span><span class="p">,</span>
+                        <span class="n">logger</span><span class="o">=</span><span class="n">logger</span>
+                    <span class="p">)</span>
+                    <span class="n">repo_path</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">get_path</span><span class="p">()</span>
+                    <span class="n">repo_parent</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">repo_path</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">repo_parent</span><span class="p">):</span>
+                        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">repo_parent</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_dir</span><span class="p">(</span><span class="n">repo_path</span><span class="p">):</span>
+                        <span class="c1"># If the repository path exists, check if it is a valid repository</span>
+                        <span class="c1"># and proceed to attempt to pull from it.</span>
+                        <span class="n">p</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span><span class="n">repo</span><span class="o">.</span><span class="n">get_check_repo_cmd</span><span class="p">(),</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">repo_path</span><span class="p">)</span>
+
+                        <span class="n">output</span><span class="p">,</span> <span class="n">error_output</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># If the repository path doesn&#39;t exists, attempt to clone the</span>
+                        <span class="c1"># repository and get out of the loop.</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> doesn&#39;t seem to exist.&quot;</span> <span class="o">%</span> <span class="n">repo</span><span class="o">.</span><span class="n">repo_name</span><span class="p">)</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Cloning </span><span class="si">%s</span><span class="s2"> repository.&quot;</span> <span class="o">%</span> <span class="n">repo</span><span class="o">.</span><span class="n">repo_name</span><span class="p">)</span>
+                        <span class="n">repo</span><span class="o">.</span><span class="n">do_clone</span><span class="p">()</span>
+                        <span class="k">continue</span>
+
+                    <span class="k">if</span> <span class="n">p</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">returncode</span><span class="p">:</span>  <span class="c1"># Return code should be zero.</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Pulling from </span><span class="si">%s</span><span class="s2"> repository.&quot;</span> <span class="o">%</span> <span class="n">repo</span><span class="o">.</span><span class="n">repo_name</span><span class="p">)</span>
+                        <span class="n">repo</span><span class="o">.</span><span class="n">do_pull</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                    <span class="k">continue</span></div>
+
+
+<div class="viewcode-block" id="bitbucket_sphinx_docs_build"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.bitbucket_sphinx_docs_build">[docs]</a><span class="k">def</span> <span class="nf">bitbucket_sphinx_docs_build</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Build Sphinx documentation of all BitBucket repositories.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">build_sphinx_docs</span><span class="p">(</span><span class="n">bitbucket_data</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="github_sphinx_docs_build"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.github_sphinx_docs_build">[docs]</a><span class="k">def</span> <span class="nf">github_sphinx_docs_build</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Build Sphinx documentation of all GitHub repositories.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">build_sphinx_docs</span><span class="p">(</span><span class="n">github_data</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="build_sphinx_docs"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.build_sphinx_docs">[docs]</a><span class="k">def</span> <span class="nf">build_sphinx_docs</span><span class="p">(</span><span class="n">repository_data</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Main function to build Sphinx documentation for all repositories.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    repository_data : dict</span>
+<span class="sd">        The repository data to process.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">repository_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">repository_handler</span> <span class="ow">in</span> <span class="n">repository_data</span><span class="p">[</span><span class="s2">&quot;repositories&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">repository_handler</span> <span class="o">==</span> <span class="s2">&quot;sphinx_generated_handler&quot;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">repo_data</span> <span class="ow">in</span> <span class="n">repository_data</span><span class="p">[</span><span class="s2">&quot;repositories&quot;</span><span class="p">][</span><span class="n">repository_handler</span><span class="p">]:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                        <span class="n">repo</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">RepoBridge</span><span class="p">(),</span> <span class="n">repository_data</span><span class="p">[</span><span class="s2">&quot;web_service&quot;</span><span class="p">])(</span>
+                            <span class="n">repo_data</span><span class="p">,</span>
+                            <span class="n">load_json_file</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                            <span class="n">is_sphinx_generated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">logger</span><span class="o">=</span><span class="n">logger</span>
+                        <span class="p">)</span>
+                        <span class="n">repo</span><span class="o">.</span><span class="n">build_sphinx_docs</span><span class="p">()</span>
+                    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                        <span class="k">continue</span></div>
+
+
+<div class="viewcode-block" id="get_json_data_from_repositories"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.get_json_data_from_repositories">[docs]</a><span class="k">def</span> <span class="nf">get_json_data_from_repositories</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Obtain the JSON data generated for each repository.</span>
+
+<span class="sd">    Each repository, after it&#39;s &quot;handled&quot;, will generate a JSON file containing data related</span>
+<span class="sd">    to the repository itself.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        DataTables object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data_tables_obj</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">repository_data</span> <span class="ow">in</span> <span class="p">[</span><span class="n">bitbucket_data</span><span class="p">,</span> <span class="n">github_data</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">repository_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">repository_handler</span> <span class="ow">in</span> <span class="n">repository_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repositories&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">repo_data</span> <span class="ow">in</span> <span class="n">repository_data</span><span class="p">[</span><span class="s2">&quot;repositories&quot;</span><span class="p">][</span><span class="n">repository_handler</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;no_json&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+                        <span class="k">continue</span>
+
+                    <span class="n">repo</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">RepoBridge</span><span class="p">(),</span>
+                                   <span class="n">repository_data</span><span class="p">[</span><span class="s2">&quot;web_service&quot;</span><span class="p">])(</span>
+                        <span class="n">repo_data</span><span class="p">,</span>
+                        <span class="n">is_sphinx_generated</span><span class="o">=</span><span class="n">repository_handler</span> <span class="o">==</span> <span class="s2">&quot;sphinx_generated_handler&quot;</span><span class="p">,</span>
+                        <span class="n">logger</span><span class="o">=</span><span class="n">logger</span>
+                    <span class="p">)</span>
+                    <span class="n">repo_json_data</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">json_data</span>
+
+                    <span class="k">if</span> <span class="n">repo_json_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">data_tables_obj</span> <span class="o">+=</span> <span class="n">repo_json_data</span>
+
+    <span class="k">return</span> <span class="n">data_tables_obj</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

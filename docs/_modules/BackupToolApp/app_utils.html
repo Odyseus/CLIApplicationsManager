@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BackupToolApp.app_utils &mdash; CLI Applications Manager  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CLI Applications Manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>BackupToolApp.app_utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for BackupToolApp.app_utils</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Module with utility functions and classes.</span>
+
+<span class="sd">Attributes</span>
+<span class="sd">----------</span>
+<span class="sd">REPORT_TEMPLATE : str</span>
+<span class="sd">    Template used by a finalized task report.</span>
+<span class="sd">root_folder : str</span>
+<span class="sd">    The main folder containing the application. All commands must be executed from this location</span>
+<span class="sd">    without exceptions.</span>
+<span class="sd">TEST_NOTIFICATION_BODY : str</span>
+<span class="sd">    String to be used when testing the desktop notifications to be used as its body.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">ignore_patterns</span>
+
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">prompts</span><span class="p">,</span> <span class="n">exceptions</span><span class="p">,</span> <span class="n">cmd_utils</span>
+
+<span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
+
+
+<span class="n">REPORT_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Backup job finished</span>
+<span class="s2">    Backup Name:        </span><span class="si">{backup_name}</span><span class="s2"></span>
+<span class="s2">    Backup Type:        </span><span class="si">{backup_type}</span><span class="s2"></span>
+<span class="s2">    Number of Errors:   </span><span class="si">{n_errors}</span><span class="s2"></span>
+<span class="s2">    Started at:         </span><span class="si">{started}</span><span class="s2"></span>
+<span class="s2">    Finished at:        </span><span class="si">{finished}</span><span class="s2"></span>
+<span class="s2">    Elapsed Time:       </span><span class="si">{elapsed}</span><span class="s2"></span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+<span class="n">TEST_NOTIFICATION_BODY</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Test notification body</span>
+<span class="s2">&lt;b&gt;Icon:&lt;/b&gt; </span><span class="si">{icon}</span><span class="s2"></span>
+<span class="s2">&lt;b&gt;Urgency:&lt;/b&gt; </span><span class="si">{urgency}</span><span class="s2"></span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="FilesListForTar"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.FilesListForTar">[docs]</a><span class="k">class</span> <span class="nc">FilesListForTar</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Create a files list.</span>
+
+<span class="sd">    Create a comprehensive list of files and folders based on passed &quot;base list&quot; and filter the</span>
+<span class="sd">    list using shutil.ignore_patterns.</span>
+
+<span class="sd">    This list of files is used to be passed to `tar` as an argument for its `--files-from` option. I</span>
+<span class="sd">    deemed this infinitely more simple and less prone to errors than using `tar` inside a loop and</span>
+<span class="sd">    using `tar`&#39;s arguments to filter the files.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    backup_list : list</span>
+<span class="sd">        The list of files/folders already validated by :any:`backup.Backup.validate_list`</span>
+<span class="sd">    full_list_of_files : list</span>
+<span class="sd">        The already processed backup_list.</span>
+<span class="sd">    ignored_patterns : list</span>
+<span class="sd">        A list of file patters to not include into full_list_of_files.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backup_list</span><span class="p">,</span> <span class="n">ignored_patterns</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        backup_list : list</span>
+<span class="sd">            The list of files/folders already validated by :any:`backup.Backup.validate_list`</span>
+<span class="sd">        ignored_patterns : list</span>
+<span class="sd">            A list of file patters to not include into full_list_of_files.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FilesListForTar</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backup_list</span> <span class="o">=</span> <span class="n">backup_list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ignored_patterns</span> <span class="o">=</span> <span class="n">ignored_patterns</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">full_list_of_files</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">populate_list</span><span class="p">()</span>
+
+<div class="viewcode-block" id="FilesListForTar.populate_list"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.FilesListForTar.populate_list">[docs]</a>    <span class="k">def</span> <span class="nf">populate_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Populate the full_list_of_files.</span>
+
+<span class="sd">        If an item in &quot;backup_list&quot; is the path to a file or a symlink, append it to</span>
+<span class="sd">        &quot;full_list_of_files&quot;. If it&#39;s a folder, recursively process the folder.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">backup_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">process_directory</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">full_list_of_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilesListForTar.process_directory"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.FilesListForTar.process_directory">[docs]</a>    <span class="k">def</span> <span class="nf">process_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process directory.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        directory : str</span>
+<span class="sd">            The directory to process.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ignored_patterns</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ignored_names</span> <span class="o">=</span> <span class="n">ignore_patterns</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">ignored_patterns</span><span class="p">)(</span><span class="n">directory</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ignored_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">ignored_names</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">srcname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">srcname</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">srcname</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">process_directory</span><span class="p">(</span><span class="n">srcname</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">full_list_of_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">srcname</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">why</span><span class="p">:</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">srcname</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">why</span><span class="p">)))</span></div>
+
+<div class="viewcode-block" id="FilesListForTar.get_full_list_of_files"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.FilesListForTar.get_full_list_of_files">[docs]</a>    <span class="k">def</span> <span class="nf">get_full_list_of_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            The full list of files.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">full_list_of_files</span></div></div>
+
+
+<div class="viewcode-block" id="play_sound"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.play_sound">[docs]</a><span class="k">def</span> <span class="nf">play_sound</span><span class="p">(</span><span class="n">soundfile</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Play a sound file using `aplay` command.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    soundfile : str</span>
+<span class="sd">        The path to a sound file.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">cmd_utils</span><span class="o">.</span><span class="n">popen</span><span class="p">([</span><span class="s2">&quot;play&quot;</span><span class="p">,</span> <span class="s2">&quot;-V0&quot;</span><span class="p">,</span> <span class="s2">&quot;--no-show-progress&quot;</span><span class="p">,</span> <span class="s2">&quot;--type=.wav&quot;</span><span class="p">,</span> <span class="n">soundfile</span><span class="p">],</span>
+                        <span class="n">cwd</span><span class="o">=</span><span class="n">root_folder</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cmd_utils</span><span class="o">.</span><span class="n">popen</span><span class="p">([</span><span class="s2">&quot;aplay&quot;</span><span class="p">,</span> <span class="s2">&quot;--quiet&quot;</span><span class="p">,</span> <span class="s2">&quot;--file-type=wav&quot;</span><span class="p">,</span> <span class="n">soundfile</span><span class="p">],</span>
+                            <span class="n">cwd</span><span class="o">=</span><span class="n">root_folder</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">logger</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="notify_send"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.notify_send">[docs]</a><span class="k">def</span> <span class="nf">notify_send</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">urgency</span><span class="o">=</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="s2">&quot;dialog-info&quot;</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Send a desktop notification using `notify-send` command.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    title : str</span>
+<span class="sd">        Notification title.</span>
+<span class="sd">    body : str</span>
+<span class="sd">        notification body.</span>
+<span class="sd">    urgency : str, optional</span>
+<span class="sd">        Notification priority.</span>
+<span class="sd">    icon : str, optional</span>
+<span class="sd">        Notification ison.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">cmd_utils</span><span class="o">.</span><span class="n">popen</span><span class="p">([</span><span class="s2">&quot;notify-send&quot;</span><span class="p">,</span> <span class="s2">&quot;--urgency=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">urgency</span><span class="p">,</span> <span class="s2">&quot;--category=transfer&quot;</span><span class="p">,</span>
+                         <span class="s2">&quot;--icon=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">icon</span><span class="p">,</span> <span class="s2">&quot;--hint=int:resident:1&quot;</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">body</span><span class="p">],</span>
+                        <span class="n">cwd</span><span class="o">=</span><span class="n">root_folder</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">logger</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="check_notification"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.check_notification">[docs]</a><span class="k">def</span> <span class="nf">check_notification</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="nb">globals</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Notifications checker.</span>
+
+<span class="sd">    Check if the three types of notifications used by this application will work correctly.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    type : str</span>
+<span class="sd">        Which type of notification to test (&quot;sound&quot;, &quot;desktop&quot; or &quot;mail&quot;).</span>
+<span class="sd">    globals : None, optional</span>
+<span class="sd">        Not implemented yet.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NotImplemented</span>
+<span class="sd">        &quot;mail&quot; notification checker not implemented yet.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s2">&quot;sound&quot;</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Checking sound notification...&quot;</span><span class="p">)</span>
+        <span class="n">play_sound</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;sounds&quot;</span><span class="p">,</span> <span class="s2">&quot;ding.wav&quot;</span><span class="p">),</span> <span class="n">logger</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s2">&quot;desktop&quot;</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Checking desktop notification...&quot;</span><span class="p">)</span>
+        <span class="n">notify_send</span><span class="p">(</span><span class="s2">&quot;Test notification title&quot;</span><span class="p">,</span> <span class="n">TEST_NOTIFICATION_BODY</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">icon</span><span class="o">=</span><span class="s2">&quot;dialog-info&quot;</span><span class="p">,</span>
+            <span class="n">urgency</span><span class="o">=</span><span class="s2">&quot;low&quot;</span><span class="p">,</span>
+        <span class="p">),</span> <span class="n">icon</span><span class="o">=</span><span class="s2">&quot;dialog-info&quot;</span><span class="p">,</span> <span class="n">urgency</span><span class="o">=</span><span class="s2">&quot;low&quot;</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+
+        <span class="n">notify_send</span><span class="p">(</span><span class="s2">&quot;Test notification title&quot;</span><span class="p">,</span> <span class="n">TEST_NOTIFICATION_BODY</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">icon</span><span class="o">=</span><span class="s2">&quot;dialog-warning&quot;</span><span class="p">,</span>
+            <span class="n">urgency</span><span class="o">=</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+        <span class="p">),</span> <span class="n">icon</span><span class="o">=</span><span class="s2">&quot;dialog-warning&quot;</span><span class="p">,</span> <span class="n">urgency</span><span class="o">=</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s2">&quot;mail&quot;</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Checking desktop notification...&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="bp">NotImplemented</span><span class="p">(</span><span class="s2">&quot;Not implemented yet...&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="generate_from_app_template"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.generate_from_app_template">[docs]</a><span class="k">def</span> <span class="nf">generate_from_app_template</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">extension</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generate file from template.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        File name of the file to generate.</span>
+<span class="sd">    extension : str</span>
+<span class="sd">        Extension name of the template file.</span>
+<span class="sd">    destination : str</span>
+<span class="sd">        Path to where the generated file will be saved.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">template_utils</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">}</span>
+    <span class="n">prompts</span><span class="o">.</span><span class="n">do_prompt</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;Enter a file name&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+    <span class="n">src</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;templates&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_template.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">extension</span><span class="p">))</span>
+    <span class="n">dst</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span>
+                       <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">extension</span><span class="p">))</span>
+
+    <span class="n">template_utils</span><span class="o">.</span><span class="n">generate_from_template</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

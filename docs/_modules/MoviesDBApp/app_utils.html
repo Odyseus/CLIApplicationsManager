@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MoviesDBApp.app_utils &mdash; CLI Applications Manager  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CLI Applications Manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>MoviesDBApp.app_utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for MoviesDBApp.app_utils</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">Attributes</span>
+<span class="sd">----------</span>
+<span class="sd">EXT : tuple</span>
+<span class="sd">    A list of video files extensions.</span>
+<span class="sd">movie_not_found : list</span>
+<span class="sd">    Description</span>
+<span class="sd">movies : list</span>
+<span class="sd">    Description</span>
+<span class="sd">not_a_movie : list</span>
+<span class="sd">    Description</span>
+<span class="sd">OMDB_URL : str</span>
+<span class="sd">    Description</span>
+<span class="sd">root_folder : str</span>
+<span class="sd">    The main folder containing the Knowledge Base. All commands must be executed</span>
+<span class="sd">    from this location without exceptions.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span><span class="p">,</span> <span class="n">titlecase</span><span class="p">,</span> <span class="n">tqdm</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">requests</span>
+<span class="k">except</span> <span class="p">(</span><span class="ne">SystemError</span><span class="p">,</span> <span class="ne">ImportError</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingDependencyModule</span><span class="p">(</span><span class="s2">&quot;Module not installed: &lt;requests&gt;&quot;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">guessit</span> <span class="k">import</span> <span class="n">guessit</span>
+<span class="k">except</span> <span class="p">(</span><span class="ne">SystemError</span><span class="p">,</span> <span class="ne">ImportError</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingDependencyModule</span><span class="p">(</span><span class="s2">&quot;Module not installed: &lt;guessit&gt;2&gt;&quot;</span><span class="p">)</span>
+
+
+<span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
+
+
+<span class="n">OMDB_URL</span> <span class="o">=</span> <span class="s1">&#39;http://www.omdbapi.com/?&#39;</span>
+
+<span class="n">EXT</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;.3g2&quot;</span><span class="p">,</span> <span class="s2">&quot;.3gp&quot;</span><span class="p">,</span> <span class="s2">&quot;.3gp2&quot;</span><span class="p">,</span> <span class="s2">&quot;.3gpp&quot;</span><span class="p">,</span> <span class="s2">&quot;.60d&quot;</span><span class="p">,</span> <span class="s2">&quot;.ajp&quot;</span><span class="p">,</span> <span class="s2">&quot;.asf&quot;</span><span class="p">,</span> <span class="s2">&quot;.asx&quot;</span><span class="p">,</span> <span class="s2">&quot;.avchd&quot;</span><span class="p">,</span> <span class="s2">&quot;.avi&quot;</span><span class="p">,</span> <span class="s2">&quot;.bik&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;.bix&quot;</span><span class="p">,</span> <span class="s2">&quot;.box&quot;</span><span class="p">,</span> <span class="s2">&quot;.cam&quot;</span><span class="p">,</span> <span class="s2">&quot;.dat&quot;</span><span class="p">,</span> <span class="s2">&quot;.divx&quot;</span><span class="p">,</span> <span class="s2">&quot;.dmf&quot;</span><span class="p">,</span> <span class="s2">&quot;.dv&quot;</span><span class="p">,</span> <span class="s2">&quot;.dvr-ms&quot;</span><span class="p">,</span> <span class="s2">&quot;.evo&quot;</span><span class="p">,</span> <span class="s2">&quot;.flc&quot;</span><span class="p">,</span> <span class="s2">&quot;.fli&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;.flic&quot;</span><span class="p">,</span> <span class="s2">&quot;.flv&quot;</span><span class="p">,</span> <span class="s2">&quot;.flx&quot;</span><span class="p">,</span> <span class="s2">&quot;.gvi&quot;</span><span class="p">,</span> <span class="s2">&quot;.gvp&quot;</span><span class="p">,</span> <span class="s2">&quot;.h264&quot;</span><span class="p">,</span> <span class="s2">&quot;.m1v&quot;</span><span class="p">,</span> <span class="s2">&quot;.m2p&quot;</span><span class="p">,</span> <span class="s2">&quot;.m2ts&quot;</span><span class="p">,</span> <span class="s2">&quot;.m2v&quot;</span><span class="p">,</span> <span class="s2">&quot;.m4e&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;.m4v&quot;</span><span class="p">,</span> <span class="s2">&quot;.mjp&quot;</span><span class="p">,</span> <span class="s2">&quot;.mjpeg&quot;</span><span class="p">,</span> <span class="s2">&quot;.mjpg&quot;</span><span class="p">,</span> <span class="s2">&quot;.mkv&quot;</span><span class="p">,</span> <span class="s2">&quot;.moov&quot;</span><span class="p">,</span> <span class="s2">&quot;.mov&quot;</span><span class="p">,</span> <span class="s2">&quot;.movhd&quot;</span><span class="p">,</span> <span class="s2">&quot;.movie&quot;</span><span class="p">,</span> <span class="s2">&quot;.movx&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;.mp4&quot;</span><span class="p">,</span> <span class="s2">&quot;.mpe&quot;</span><span class="p">,</span> <span class="s2">&quot;.mpeg&quot;</span><span class="p">,</span> <span class="s2">&quot;.mpg&quot;</span><span class="p">,</span> <span class="s2">&quot;.mpv&quot;</span><span class="p">,</span> <span class="s2">&quot;.mpv2&quot;</span><span class="p">,</span> <span class="s2">&quot;.mxf&quot;</span><span class="p">,</span> <span class="s2">&quot;.nsv&quot;</span><span class="p">,</span> <span class="s2">&quot;.nut&quot;</span><span class="p">,</span> <span class="s2">&quot;.ogg&quot;</span><span class="p">,</span> <span class="s2">&quot;.ogm&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;.omf&quot;</span><span class="p">,</span> <span class="s2">&quot;.ps&quot;</span><span class="p">,</span> <span class="s2">&quot;.qt&quot;</span><span class="p">,</span> <span class="s2">&quot;.ram&quot;</span><span class="p">,</span> <span class="s2">&quot;.rm&quot;</span><span class="p">,</span> <span class="s2">&quot;.rmvb&quot;</span><span class="p">,</span> <span class="s2">&quot;.swf&quot;</span><span class="p">,</span> <span class="s2">&quot;.ts&quot;</span><span class="p">,</span> <span class="s2">&quot;.vfw&quot;</span><span class="p">,</span> <span class="s2">&quot;.vid&quot;</span><span class="p">,</span> <span class="s2">&quot;.video&quot;</span><span class="p">,</span> <span class="s2">&quot;.viv&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;.vivo&quot;</span><span class="p">,</span> <span class="s2">&quot;.vob&quot;</span><span class="p">,</span> <span class="s2">&quot;.vro&quot;</span><span class="p">,</span> <span class="s2">&quot;.wm&quot;</span><span class="p">,</span> <span class="s2">&quot;.wmv&quot;</span><span class="p">,</span> <span class="s2">&quot;.wmx&quot;</span><span class="p">,</span> <span class="s2">&quot;.wrap&quot;</span><span class="p">,</span> <span class="s2">&quot;.wvx&quot;</span><span class="p">,</span> <span class="s2">&quot;.wx&quot;</span><span class="p">,</span> <span class="s2">&quot;.x264&quot;</span><span class="p">,</span> <span class="s2">&quot;.xvid&quot;</span><span class="p">)</span>
+
+
+<span class="n">movies</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">not_a_movie</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">movie_not_found</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<div class="viewcode-block" id="scan_directories"><a class="viewcode-back" href="../../modules/MoviesDB/MoviesDBApp.app_utils.html#MoviesDBApp.app_utils.scan_directories">[docs]</a><span class="k">def</span> <span class="nf">scan_directories</span><span class="p">(</span><span class="n">movies_paths</span><span class="p">,</span> <span class="n">debug</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Scan directories.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    movies_paths : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    debug : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    logger : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data_from_files</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># The following progress bars are kind of pointless.</span>
+    <span class="c1"># All the directories are scanned in a fraction of a second.</span>
+    <span class="k">for</span> <span class="n">mp</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">movies_paths</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">mp</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
+
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span><span class="mi">25</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">):</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">f_name</span><span class="p">,</span> <span class="n">f_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+                        <span class="k">if</span> <span class="n">f_ext</span> <span class="ow">in</span> <span class="n">EXT</span><span class="p">:</span>
+                            <span class="n">data_from_files</span><span class="p">[</span><span class="n">f_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+                    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                        <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                        <span class="k">continue</span>  <span class="c1"># This is kind of pointless.</span>
+
+    <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Errors found while scaning directories.&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">errors</span><span class="p">),</span> <span class="n">term</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">json_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;1_data_from_files.json&quot;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data_from_files</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data_from_files</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="generate_movies_base_data_from_file_names"><a class="viewcode-back" href="../../modules/MoviesDB/MoviesDBApp.app_utils.html#MoviesDBApp.app_utils.generate_movies_base_data_from_file_names">[docs]</a><span class="k">def</span> <span class="nf">generate_movies_base_data_from_file_names</span><span class="p">(</span><span class="n">debug</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    debug : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    logger : TYPE</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    RuntimeError</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data_from_files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;1_data_from_files.json&quot;</span><span class="p">)</span>
+    <span class="n">movies_base_info</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">movies_without_info</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">json_data_from_file</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_from_files</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">json_data_from_file</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+    <span class="k">if</span> <span class="n">json_data_from_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;json_data_from_file is None&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">movie_file_name</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">json_data_from_file</span><span class="p">):</span>
+        <span class="n">movie_info_raw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">guessit</span><span class="p">(</span><span class="n">movie_file_name</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;movie&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;json&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;name_only&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="p">}))</span>
+
+        <span class="n">movie_title</span> <span class="o">=</span> <span class="n">movie_info_raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># The dictionary returned by guessit contains keys impossible to directly encode to JSON.</span>
+        <span class="c1"># Create a custom dict with only the data that I want/need and move on.</span>
+        <span class="n">movie_base_info</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;path_to_movie&quot;</span><span class="p">:</span> <span class="n">json_data_from_file</span><span class="p">[</span><span class="n">movie_file_name</span><span class="p">],</span>
+            <span class="s2">&quot;file_name&quot;</span><span class="p">:</span> <span class="n">movie_file_name</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">titlecase</span><span class="p">(</span><span class="n">movie_title</span><span class="p">)</span> <span class="k">if</span> <span class="n">movie_title</span> <span class="k">else</span> <span class="n">movie_title</span><span class="p">,</span>
+            <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="n">movie_info_raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;cd&quot;</span><span class="p">:</span> <span class="n">movie_info_raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cd&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="n">movie_info_raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;format&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;screen_size&quot;</span><span class="p">:</span> <span class="n">movie_info_raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;screen_size&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;video_codec&quot;</span><span class="p">:</span> <span class="n">movie_info_raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;video_codec&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;release_group&quot;</span><span class="p">:</span> <span class="n">movie_info_raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;release_group&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">movie_info_raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="p">}</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">movie_base_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">):</span>
+                <span class="n">movies_base_info</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">movie_base_info</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">movies_without_info</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">movie_base_info</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Errors found while generating data from file names.&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">errors</span><span class="p">),</span> <span class="n">term</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">movie_names</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;2_movies_names.json&quot;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">movie_names</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">movies_base_info</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">movies_base_info</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_movie_info"><a class="viewcode-back" href="../../modules/MoviesDB/MoviesDBApp.app_utils.html#MoviesDBApp.app_utils.get_movie_info">[docs]</a><span class="k">def</span> <span class="nf">get_movie_info</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Find movie information</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name : TYPE</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">movie_info</span> <span class="o">=</span> <span class="n">guessit</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">movie_info</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;movie&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;year&#39;</span> <span class="ow">in</span> <span class="n">movie_info</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">omdb</span><span class="p">(</span><span class="n">movie_info</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span> <span class="n">movie_info</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">omdb</span><span class="p">(</span><span class="n">movie_info</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">not_a_movie</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="omdb"><a class="viewcode-back" href="../../modules/MoviesDB/MoviesDBApp.app_utils.html#MoviesDBApp.app_utils.omdb">[docs]</a><span class="k">def</span> <span class="nf">omdb</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fetch data from OMDB API.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    title : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    year : TYPE</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="n">title</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="s1">&#39;ignore&#39;</span><span class="p">),</span>
+              <span class="s1">&#39;plot&#39;</span><span class="p">:</span> <span class="s1">&#39;full&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;movie&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;tomatoes&#39;</span><span class="p">:</span> <span class="s1">&#39;true&#39;</span><span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">year</span><span class="p">:</span>
+        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">year</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="n">OMDB_URL</span> <span class="o">+</span> <span class="n">urlencode</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

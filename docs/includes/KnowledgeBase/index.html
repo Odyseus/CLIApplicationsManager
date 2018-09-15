@@ -1,0 +1,694 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Knowledge Base’s documentation &mdash; CLI Applications Manager  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Make Cinnamon Xlet POT’s documentation" href="../MakeCinnamonXletPOT/index.html" />
+    <link rel="prev" title="Hosts Manager’s documentation" href="../HostsManager/index.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../0-structure.html">Folder structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Knowledge Base’s documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mentions">Mentions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cli-help-page"><abbr title="Command Line Interface">CLI</abbr> help page</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#file-templates">File templates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#argos-helper-script-py-script"><strong>argos_helper_script.py</strong> script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app-launcher-sh-script"><strong>app_launcher.sh</strong> script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bitbucket-py-and-github-py-scripts"><strong>bitbucket.py</strong> and <strong>github.py</strong> scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#general-notes">General notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#html-to-markdown-conversion">HTML to Markdown conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bootstrap-javascript-css-framework">Bootstrap JavaScript/CSS framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#datatables-javascript-library">DataTables JavaScript library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jquery-javascript-library">jQuery JavaScript library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nerd-fonts-glyphs-icons">Nerd Fonts glyphs icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#markdown-it-javascript-library">Markdown-it JavaScript library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#todo">TODO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#done">DONE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PackageManager/index.html">Package Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CLI Applications Manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Knowledge Base’s documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/includes/KnowledgeBase/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="../MakeCinnamonXletPOT/index.html" class="btn btn-neutral float-right" title="Make Cinnamon Xlet POT’s documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../HostsManager/index.html" class="btn btn-neutral" title="Hosts Manager’s documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="knowledge-base-s-documentation">
+<h1>Knowledge Base’s documentation<a class="headerlink" href="#knowledge-base-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>A <abbr title="Command Line Interface">CLI</abbr> utility written in Python 3 to generate and manage a personal and self-hosted <em>Knowledge Base</em> on GNU/Linux.</p>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>No mayor requirements are needed to run this application other than Python 3 (Python 3.5+ to be precise).</p>
+</div>
+</div>
+<div class="section" id="mentions">
+<h2>Mentions<a class="headerlink" href="#mentions" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cli-help-page">
+<h3><abbr title="Command Line Interface">CLI</abbr> help page<a class="headerlink" href="#cli-help-page" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight">
+<pre><span class="text-bold">Knowledge Base 2018-09-15 01:19:13.334 (Unstable)</span>
+
+<span class="text-bold">A CLI utility to generate and manage a personal and self-hosted *Knowledge Base* on GNU/Linux.</span>
+
+<span class="text-bold">Usage:</span>
+    app.py run &lt;func_name&gt;... [--debug] [--force-download]
+    app.py launch &lt;app_launcher_script_arguments&gt;...
+    app.py server (start | stop | restart)
+                  [--host=&lt;host&gt;]
+                  [--port=&lt;port&gt;]
+    app.py generate &lt;file_to_generate&gt;
+    app.py (-h | --help | --version)
+
+
+<span class="text-bold">Options:</span>
+
+<span class="text-bold">-h, --help</span>
+    Show this screen.
+
+<span class="text-bold">--version</span>
+    Show application version.
+
+<span class="text-bold">--host=&lt;host&gt;]</span>
+    Host name. [Default: 0.0.0.0]
+
+<span class="text-bold">--port=&lt;port&gt;]</span>
+    Port number. [Default: 8888]
+
+<span class="text-bold">--debug</span>
+    As of now, only used when generating JSON files. They will be saved
+    with indentation.
+
+<span class="text-bold">--force-download</span>
+    Force the download of all archives, ignoring the frequency in which they
+    should be downloaded. Only used by the &quot;archives_download&quot; sub-command.
+
+<span class="text-bold">Sub-commands for the `run` command and the order they will be executed:</span>
+    github_repos_update                 bitbucket_repos_update
+    github_repos_json_files_creation    bitbucket_repos_json_files_creation
+    archives_download                   main_json_file_creation
+    html_to_markdown_clip               bitbucket_sphinx_docs_build
+    github_sphinx_docs_build            categories_html_generation
+    index_html_generation               open_main_webpage
+    html_to_markdown_files
+
+<span class="text-bold">Sub-commands for the `launch` command:</span>
+    This argument will be passed to the UserData/bash_scripts/app_launcher.sh
+    script, if existent. See documentation.
+
+<span class="text-bold">Sub-commands for the `server` command:</span>
+    start                               Start server.
+    stop                                Stop server.
+    restart                             Restart server.
+
+<span class="text-bold">Sub-commands for the `generate` command:</span>
+    app_launcher_script                 argos_script
+    bitbucket_data_file                 github_data_file
+    system_executable</pre>
+</div></div>
+</div>
+</div>
+<div class="section" id="file-templates">
+<h2>File templates<a class="headerlink" href="#file-templates" title="Permalink to this headline">¶</a></h2>
+<p>These templates are files used to perform several tasks within the Knowledge Base application.</p>
+<div class="section" id="argos-helper-script-py-script">
+<h3><strong>argos_helper_script.py</strong> script<a class="headerlink" href="#argos-helper-script-py-script" title="Permalink to this headline">¶</a></h3>
+<p>Script to be used with Argos for Cinnamon extension.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># The root_folder is two (2) levels up from were the argos script is located.</span>
+<span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="o">*</span><span class="p">([</span><span class="s2">&quot;..&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))))))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;---</span>
+<span class="s2">&lt;b&gt;Shortcuts&lt;/b&gt;</span>
+<span class="s2">Launch DevDocs App | iconName=devhelp bash=&quot;(knowledge-base-app launch run_devdocs_app)&quot;</span>
+<span class="s2">Launch Zeal App | iconName=zeal bash=&quot;(knowledge-base-app launch run_zeal_app)&quot;</span>
+<span class="s2">Open Webpage | iconName=html bash=&quot;(knowledge-base-app run open_main_webpage)&quot;</span>
+<span class="s2">Start Server &amp;amp; Open Webpage | iconName=html bash=&quot;(knowledge-base-app run http_server_start open_main_webpage)&quot; alternate=true</span>
+<span class="s2">HTML to Markdown - Clipboard | iconName=html bash=&quot;(knowledge-base-app run html_to_markdown_clip)&quot;</span>
+<span class="s2">HTML to Markdown - HTML files | iconName=html bash=&quot;(knowledge-base-app run html_to_markdown_files)&quot; alternate=true</span>
+<span class="s2">---</span>
+<span class="s2">&lt;b&gt;Knowledge Base HTTP Server&lt;/b&gt;</span>
+<span class="s2">--Start HTTP Server | iconName=media-playback-start bash=&quot;(knowledge-base-app server start)&quot;</span>
+<span class="s2">--Stop HTTP Server | iconName=process-stop bash=&quot;(knowledge-base-app server stop)&quot;</span>
+<span class="s2">--Restart HTTP Server | iconName=stock-refresh bash=&quot;(knowledge-base-app server restart)&quot;</span>
+<span class="s2">---</span>
+<span class="s2">&lt;b&gt;Direct Access to Files&lt;/b&gt;</span>
+<span class="s2">--Open html_pages.json file | bash=&quot;xdg-open &#39;{root_folder}&#39;/UserData/www/html_pages/html_pages.json&quot;</span>
+<span class="s2">--Open categories_data.json file | bash=&quot;xdg-open &#39;{root_folder}&#39;/UserData/www/assets/data/categories_data.json&quot;</span>
+<span class="s2">--Open from_clipboard.html file | bash=&quot;xdg-open &#39;{root_folder}&#39;/tmp/html_to_markdown/from_clipboard.html&quot;</span>
+<span class="s2">--Open from_clipboard.md file | bash=&quot;xdg-open &#39;{root_folder}&#39;/tmp/html_to_markdown/from_clipboard.md&quot;</span>
+<span class="s2">--Open archives.py data file | bash=&quot;xdg-open &#39;{root_folder}&#39;/UserData/data_sources/archives.py&quot;</span>
+<span class="s2">--Open bitbucket.py data file | bash=&quot;xdg-open &#39;{root_folder}&#39;/UserData/data_sources/bitbucket.py&quot;</span>
+<span class="s2">--Open github.py data file | bash=&quot;xdg-open &#39;{root_folder}&#39;/UserData/data_sources/github.py&quot;</span>
+<span class="s2">---</span>
+<span class="s2">&lt;b&gt;DataTables JSON creation&lt;/b&gt;</span>
+<span class="s2">--Generate GitHub repositories JSON files (Terminal) | bash=&quot;(knowledge-base-app run github_repos_json_files_creation)&quot; terminal=true</span>
+<span class="s2">--Generate BitBucket repositories JSON files (Terminal) | bash=&quot;(knowledge-base-app run bitbucket_repos_json_files_creation)&quot; terminal=true</span>
+<span class="s2">--Generate main JSON file (Terminal) | bash=&quot;(knowledge-base-app run main_json_file_creation)&quot; terminal=true</span>
+<span class="s2">--Generate all JSON files (Terminal) | bash=&quot;(knowledge-base-app run github_repos_json_files_creation bitbucket_repos_json_files_creation main_json_file_creation)&quot; terminal=true</span>
+<span class="s2">--Generate categories.html file | bash=&quot;(knowledge-base-app run categories_html_generation)&quot; terminal=true</span>
+<span class="s2">---</span>
+<span class="s2">&lt;b&gt;Repositories handling&lt;/b&gt;</span>
+<span class="s2">--&lt;b&gt;GitHub repositories handling&lt;/b&gt;</span>
+<span class="s2">--Update repositories | bash=&quot;(knowledge-base-app run github_repos_update)&quot; terminal=true</span>
+<span class="s2">--Update repositories &amp;amp; generate all JSON files | bash=&quot;(knowledge-base-app run github_repos_update github_repos_json_files_creation main_json_file_creation)&quot; terminal=true</span>
+<span class="s2">--Generate Sphinx docs | bash=&quot;(knowledge-base-app run github_sphinx_docs_build)&quot; terminal=true</span>
+<span class="s2">-----</span>
+<span class="s2">--&lt;b&gt;BitBucket repositories handling&lt;/b&gt;</span>
+<span class="s2">--Update repositories | bash=&quot;(knowledge-base-app run bitbucket_repos_update)&quot; terminal=true</span>
+<span class="s2">--Update repositories &amp;amp; generate all JSON files | bash=&quot;(knowledge-base-app run bitbucket_repos_update bitbucket_repos_json_files_creation main_json_file_creation)&quot; terminal=true</span>
+<span class="s2">--Generate Sphinx docs | bash=&quot;(knowledge-base-app run bitbucket_sphinx_docs_build)&quot; terminal=true</span>
+<span class="s2">-----</span>
+<span class="s2">--&lt;b&gt;All repositories handling&lt;/b&gt;</span>
+<span class="s2">----Update all repositories | bash=&quot;(knowledge-base-app run github_repos_update bitbucket_repos_update)&quot; terminal=true</span>
+<span class="s2">----Update all repositories &amp;amp; generate all JSON files | bash=&quot;(knowledge-base-app run github_repos_update bitbucket_repos_update github_repos_json_files_creation bitbucket_repos_json_files_creation main_json_file_creation)&quot; terminal=true</span>
+<span class="s2">&lt;b&gt;Various&lt;/b&gt;</span>
+<span class="s2">--Create system executable | bash=&quot;(knowledge-base-app generate system_executable)&quot; terminal=true</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">root_folder</span><span class="o">=</span><span class="n">root_folder</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="app-launcher-sh-script">
+<h3><strong>app_launcher.sh</strong> script<a class="headerlink" href="#app-launcher-sh-script" title="Permalink to this headline">¶</a></h3>
+<p>This script is used to launch applications <em>in bulk</em> through the <code class="docutils literal notranslate"><span class="pre">kbapp.py</span></code> <abbr title="Command Line Interface">CLI</abbr>. It’s mostly useful if used to launch <em>self contained</em> applications that are stored inside <strong>Data/apps</strong> and if at the same time the Argos for Cinnamon extension is used.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nv">workdir</span><span class="o">=</span><span class="s2">&quot;`pwd`&quot;</span>
+
+run_zeal_app<span class="o">()</span> <span class="o">{</span>
+    <span class="o">(</span>
+        zeal <span class="p">&amp;</span>
+    <span class="o">)</span>
+<span class="o">}</span>
+
+run_devdocs_app<span class="o">()</span> <span class="o">{</span>
+    <span class="o">(</span>
+        <span class="nb">cd</span> <span class="nv">$workdir</span>/Data/apps/DevDocs
+        ./DevDocs.AppImage <span class="p">&amp;</span>
+    <span class="o">)</span>
+<span class="o">}</span>
+
+
+<span class="k">case</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> in
+    run_zeal_app<span class="o">)</span>
+        run_zeal_app
+    <span class="p">;;</span>
+    run_devdocs_app<span class="o">)</span>
+        run_devdocs_app
+    <span class="p">;;</span>
+    *<span class="o">)</span>
+        <span class="nb">echo</span> <span class="s2">&quot;Usage: /app_launcher.sh (run_zeal_app | run_devdocs_app)&quot;</span>
+        <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">esac</span>
+
+<span class="nb">exit</span> <span class="m">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bitbucket-py-and-github-py-scripts">
+<h3><strong>bitbucket.py</strong> and <strong>github.py</strong> scripts<a class="headerlink" href="#bitbucket-py-and-github-py-scripts" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># web_service : (str) (Mandatory)</span>
+    <span class="c1"># Possible values: &quot;github&quot; or &quot;bitbucket&quot;</span>
+    <span class="s2">&quot;web_service&quot;</span><span class="p">:</span> <span class="s2">&quot;{repository}&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;repositories&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;sphinx_generated_handler&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="c1"># repo_owner : (str) (mandatory)</span>
+                <span class="c1"># The owner of the GitHub repository.</span>
+                <span class="s2">&quot;repo_owner&quot;</span><span class="p">:</span> <span class="s2">&quot;sphinx-doc&quot;</span><span class="p">,</span>
+
+                <span class="c1"># repo_name : (str) (mandatory)</span>
+                <span class="c1"># The name of the GitHub repository.</span>
+                <span class="s2">&quot;repo_name&quot;</span><span class="p">:</span> <span class="s2">&quot;sphinx&quot;</span><span class="p">,</span>
+
+                <span class="c1"># path_handler : (int) (optional) (default: 0)</span>
+                <span class="c1"># An integer that will be used to determine the JavaScript</span>
+                <span class="c1"># function that will be used to handle the path to the</span>
+                <span class="c1"># Markdown/HHTML/PDF files.</span>
+                <span class="c1">#   0 = A function that is used to handle Markdown files.</span>
+                <span class="c1">#       They will be rendered inline inside the index page.</span>
+                <span class="c1">#   1 = A function that is used to handle HTML/PDF files.</span>
+                <span class="c1">#       They will be loaded into a new browser tab.</span>
+                <span class="s2">&quot;path_handler&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+
+                <span class="c1"># repo_img : (str) (optional) (default: md)</span>
+                <span class="c1"># The name of the image used by the entries on the table.</span>
+                <span class="s2">&quot;repo_img&quot;</span><span class="p">:</span> <span class="s2">&quot;html5&quot;</span><span class="p">,</span>
+
+                <span class="c1"># category : (str) (optional)</span>
+                <span class="c1"># Category name. The category must exist in the</span>
+                <span class="c1"># assets/data/categories_data.json file.</span>
+                <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;Documentation&quot;</span><span class="p">,</span>
+
+                <span class="c1"># title : (str) (optional)</span>
+                <span class="c1"># Title.</span>
+                <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Sphinx Documentation&quot;</span><span class="p">,</span>
+
+                <span class="c1"># filename : (str) (optional)</span>
+                <span class="c1"># &quot;single_file_handler&quot; and &quot;sphinx_generated_handler&quot; only.</span>
+                <span class="c1"># The file that will be used. If not specified, README.md will</span>
+                <span class="c1"># be used for single_file_handler repositories and index.html</span>
+                <span class="c1"># for sphinx_generated_handler.</span>
+                <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="s2">&quot;index.html&quot;</span><span class="p">,</span>
+
+                <span class="c1"># rel_path : (str) (optional)</span>
+                <span class="c1"># Path relative to the repository. In case that the</span>
+                <span class="c1"># needed/wanted file is inside a sub-folder.</span>
+                <span class="s2">&quot;rel_path&quot;</span><span class="p">:</span> <span class="s2">&quot;doc&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;multi_file_handler&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;single_file_handler&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="general-notes">
+<h2>General notes<a class="headerlink" href="#general-notes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>In the future, if the <strong>data_tables.json</strong> file gets to large and the main index page gets to slow when loading, it could be possible to separate the categories into their own index pages and the data.json files into separated files for each category.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>With <code class="docutils literal notranslate"><span class="pre">deferRender</span></code> set to <strong>false</strong> and more than 70.000 (seventy thousands) entries, the table rendering (filtering, loading, etc.) is super slow. May need to think about creating separated tables/indexes. With <code class="docutils literal notranslate"><span class="pre">deferRender</span></code> set to <strong>true</strong>, the table is also slow, but not so much.</p></li>
+<li><p>A way to reduce the amount of entries could be to assign <em>files ignores</em> to some of the GitHub repositories with multiple files, listing only the files with content that really interest me or could interest me. It seems too much of a bother to do that as of now.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Avoid Read the docs HTML downloads at all cost. The downloaded HTML is useless because the search doesn’t work and it comes with that abhorrent shit of Google Analytics. Building the documentations from source is too much of a bother. Stick with the PDF downloads and screw the rest.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Still avoiding at all cost RTD documentations, but I implemented a mechanism to automatically build Sphinx based docs directly from the repositories of the software/module/library (or whatever). This is viable only for small repositories like Python modules, small libraries/software, documentation only repositories, etc. It isn’t worth the trouble to clone a repository of hundreds of MBs just to get its documentation.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">iframe</span></code> from my thoughts!!! Too much of a bother to load external HTML files on current page (a million lines of code just to barely make it fit inside the page). When dealing with pages like the Python documentation, load them in a new tab and move on.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>I actually implemented a method to load HTML pages in-line (just like I load the Markdown files with the markdown-it library) using jQuery’s <code class="docutils literal notranslate"><span class="pre">.load()</span></code> function. I use it with pages whose style is too basic or too horrendous and/or pages that are too complex or too big to convert them to Markdown. <strong>Moving on…</strong></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">reStructuredText</span></code> inline rendering from my thoughts!!! I was planning to add the capability of rendering <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files inline as I do with Markdown files. But it turned out to be almost impossible due to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>There seems to exist only a handful of javaScript libraries (I found only two) and they either have limited rendering capabilities (<a class="reference external" href="https://github.com/seikichi/restructured/">restructured</a>) or they are an absolute nightmare to build and use (<a class="reference external" href="https://github.com/frantic1048/Est/">Est</a>). And the only thing that both have in common is that they are immensely bloated.</p></li>
+<li><p>In light of this, either ignore <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files, convert them to Markdown if they are simple and not too extensive or convert them to HTML if they are complex and too large. <strong>Moving on…</strong></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>To keep it simple, and to avoid to check if I’m dealing with files or folders, the folders <strong>md</strong> and <strong>pdf</strong> should always containg their files in two (2) levels sub-directories (Category Name/Sub-Category Name/File Name.ext). This is to simplify the function <a class="reference internal" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject.generate_data_by_file_extension" title="KnowledgeBaseApp.app_utils.DataTablesObject.generate_data_by_file_extension"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">KnowledgeBaseApp.app_utils.DataTablesObject.generate_data_by_file_extension</span></code></a>. The first level directories are always a category name and the second level directories are always sub-categories.</p></li>
+</ul>
+<div class="section" id="html-to-markdown-conversion">
+<h3>HTML to Markdown conversion<a class="headerlink" href="#html-to-markdown-conversion" title="Permalink to this headline">¶</a></h3>
+<p>I use Pandoc to convert HTML articles that I find on the net into Markdown.</p>
+<ul>
+<li><p>Markdown files are easier to create/maintain/read than HTML files.</p></li>
+<li><p>Some of the articles that I find are in HTML 4.1 or older. Converting them into Markdown is infinitely easier that to convert them into HTML5.</p></li>
+<li><p>I have found some HTML documents without closing HTML tags (for example, they use &lt;p&gt; tags without closing them with the &lt;/p&gt; tag) (the people responsible for allowing this atrocity should be castrated!!!).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>These documents cannot be prettified with any HTML prettifier in existence!!!</p></li>
+<li><p>Pandoc cannot convert them into anything!!! At least not the HTML documents with vast amount of content.</p></li>
+<li><p><span class="text-line-through">The only way to deal with this shit (that I could find) is to load the HTML document in the browser, and from the browser’s developer tools, copy the outer HTML of the document. This way one will obtain an HTML markup with tags properly closed.</span> I found an <em>easier</em> way to deal with this nonsense. I created a Sublime Text plugin to <em>mass-serialize</em> HTML files with the <code class="docutils literal notranslate"><span class="pre">html5lib</span></code> Python module. <strong>Moving on…</strong></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><span class="text-line-through">Eradicate **mailto** addresses from the HTML files. Pandoc (at least the version I’m using) seems to ignore the ``–email-obfuscation=none`` option and always enforces ``javascript``, which result breaks the rendering of the Markdown file by markdown-it.</span></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed by using a newer version of Pandoc. I simply downloaded the official .deb package, extracted it, and use Pandoc binaries from inside a folder located inside UserData folder. If these binaries are found, they will have precedence over the installed ones.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="bootstrap-javascript-css-framework">
+<h3>Bootstrap JavaScript/CSS framework<a class="headerlink" href="#bootstrap-javascript-css-framework" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><span class="text-line-through">Using Bootstrap 4 (beta 2 as of now) built from source to enable the options ``$enable-shadows`` and ``$enable-gradients`` (*scss/_variables.scss*) to hopefully get rid of the repugnant flat look of the default theme. Keep looking for a decent theme replacement.</span></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>I had to get rid of Bootstrap 3 because I couldn’t implement the layout that I wanted. The time that I spent moving my HTML from Bootstrap 3 to 4 was infinitely less than the time I wasted trying to make the desired layout to work on Bootstrap 3.</p></li>
+<li><p>Forgotten the idea of building Bootstrap from source. Having to download hundreds of megabytes to build this thing is just retarded.</p></li>
+<li><p>I had to succumb to using a third-party Bootstrap 4 theme because I can’t tolerate the disgusting pastel colors used by Bootstrap 4 default theme.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Download Boostrap 4 <a class="reference external" href="https://getbootstrap.com/docs/4.1/getting-started/download/">from its website</a>.</p></li>
+<li><p>Files used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">js</span><span class="o">/</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">bundle</span><span class="o">.</span><span class="n">js</span>
+<span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">js</span><span class="o">/</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">bundle</span><span class="o">.</span><span class="n">js</span><span class="o">.</span><span class="n">map</span>
+<span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">js</span><span class="o">/</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">bundle</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">js</span>
+<span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">js</span><span class="o">/</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">bundle</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">js</span><span class="o">.</span><span class="n">map</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Note 1:</strong> *.bundle.js files contain the Popper plugin.</p>
+<p><strong>Note 2:</strong> *.css.map files are included to STFU console warnings. ¬¬</p>
+<p><strong>Note 3:</strong> Non-minified files are included in case I want to see the source.</p>
+<ul>
+<li><p>Download Boostrap 4 <a class="reference external" href="https://bootswatch.com/flatly/">Flaty theme</a>.</p></li>
+<li><p>Files used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrap</span><span class="o">.</span><span class="n">css</span>
+</pre></div>
+</div>
+</li>
+<li><p>Files changes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Removed</span> <span class="p">:</span><span class="n">root</span> <span class="n">declarations</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">Removed</span> <span class="n">Lato</span> <span class="n">font</span> <span class="n">import</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">Fonts</span> <span class="n">overriden</span> <span class="ow">in</span> <span class="n">bootstrap</span><span class="o">.</span><span class="n">tweaks</span><span class="o">.</span><span class="n">css</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">Gigantic</span> <span class="n">heading</span> <span class="n">tags</span> <span class="n">overriden</span> <span class="ow">in</span> <span class="n">bootstrap</span><span class="o">.</span><span class="n">tweaks</span><span class="o">.</span><span class="n">css</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="datatables-javascript-library">
+<h3>DataTables JavaScript library<a class="headerlink" href="#datatables-javascript-library" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Download DataTables from its <a class="reference external" href="https://www.datatables.net/download/">web site</a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Styling framework:</strong> Bootstrap</p></li>
+<li><p><strong>Select package:</strong> DataTables</p></li>
+<li><p><strong>Extensions:</strong> FixedHeader</p></li>
+<li><p><strong>Download method:</strong> Download &gt; Minify &gt; Concatenate</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Files used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">DataTables</span><span class="o">/</span><span class="n">datatables</span><span class="o">.</span><span class="n">css</span>
+<span class="o">/</span><span class="n">DataTables</span><span class="o">/</span><span class="n">datatables</span><span class="o">.</span><span class="n">js</span>
+<span class="o">/</span><span class="n">DataTables</span><span class="o">/</span><span class="n">datatables</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">css</span>
+<span class="o">/</span><span class="n">DataTables</span><span class="o">/</span><span class="n">datatables</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Note:</strong> Non-minified files are included in case I want to see the source.</p>
+</div>
+<div class="section" id="jquery-javascript-library">
+<h3>jQuery JavaScript library<a class="headerlink" href="#jquery-javascript-library" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Download jQuery from its <a class="reference external" href="https://jquery.com/download/">web site</a>.</p></li>
+<li><p>Files used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">DataTables</span><span class="o">/</span><span class="n">datatables</span><span class="o">.</span><span class="n">css</span>
+<span class="o">/</span><span class="n">DataTables</span><span class="o">/</span><span class="n">datatables</span><span class="o">.</span><span class="n">js</span>
+<span class="o">/</span><span class="n">DataTables</span><span class="o">/</span><span class="n">datatables</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">css</span>
+<span class="o">/</span><span class="n">DataTables</span><span class="o">/</span><span class="n">datatables</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Note 1:</strong> Non-minified files are included in case I want to see the source.</p>
+<p><strong>Note 2:</strong> The files with the version on them are kept so I can know what version I’m using. The jquery.min.js is a copy of the jquery.version.min.js and is the actually used by the web pages.</p>
+</div>
+<div class="section" id="nerd-fonts-glyphs-icons">
+<h3>Nerd Fonts glyphs icons<a class="headerlink" href="#nerd-fonts-glyphs-icons" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>This is really frustrating!!! Since Bootstrap removed the font icons from the framework, I had to find a substitute. I found <a class="reference external" href="http://nerdfonts.com/">Nerd Fonts</a> (it’s kind of an all-in-one glyphs font with almost 4000 icons). NOWERE ON THE INTERNET IS A DIRECT DOWNLOAD OF THIS FREAKING THING!!! So:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>I went to <a class="reference external" href="http://nerdfonts.com/">Nerd Fonts’s site</a></p></li>
+<li><p>Looked at the site’s source for <a class="reference external" href="http://nerdfonts.com/combo.css">its style sheet</a>.</p></li>
+<li><p>Extracted the link to the font <a class="reference external" href="http://nerdfonts.com/fonts/Symbols-2048-emNerdFontComplete.ttf">and downloaded it</a>.</p></li>
+<li><p>Stripped the style sheet of all the declarations that weren’t font declarations and renamed it nerdicons.css.</p></li>
+<li><p>Lastly, I created the nerdicons.min.css (crystal clear).</p></li>
+<li><p><strong>Moving on…</strong></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="markdown-it-javascript-library">
+<h3>Markdown-it JavaScript library<a class="headerlink" href="#markdown-it-javascript-library" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>This is the library that I use to render in-line markdown files. Go to <a class="reference external" href="https://github.com/markdown-it/markdown-it">its repository</a> and download the files found inside the dist folder.</p></li>
+<li><p>Files used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">markdown</span><span class="o">-</span><span class="n">it</span><span class="o">.</span><span class="n">js</span>
+<span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">markdown</span><span class="o">-</span><span class="n">it</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Note:</strong> Non-minified files are included in case I want to see the source.</p>
+</div>
+<div class="section" id="todo">
+<h3>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="done">
+<h3>DONE<a class="headerlink" href="#done" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Try to create a method to load in-line HTML pages that are too complex and/or too big to convert them to Markdown.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>One way would be using jQuery’s <code class="docutils literal notranslate"><span class="pre">.load()</span></code> function. Preliminary tests were positive.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../MakeCinnamonXletPOT/index.html" class="btn btn-neutral float-right" title="Make Cinnamon Xlet POT’s documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../HostsManager/index.html" class="btn btn-neutral" title="Hosts Manager’s documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

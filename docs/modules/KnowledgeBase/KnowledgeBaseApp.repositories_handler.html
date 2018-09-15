@@ -1,0 +1,820 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>KnowledgeBaseApp.repositories_handler module &mdash; CLI Applications Manager  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="MakeCinnamonXletPOTApp" href="../MakeCinnamonXletPOT/modules.html" />
+    <link rel="prev" title="KnowledgeBaseApp.cli module" href="KnowledgeBaseApp.cli.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CLI Applications Manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">KnowledgeBaseApp</a> &raquo;</li>
+        
+          <li><a href="KnowledgeBaseApp.html">KnowledgeBaseApp package</a> &raquo;</li>
+        
+      <li>KnowledgeBaseApp.repositories_handler module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="../MakeCinnamonXletPOT/modules.html" class="btn btn-neutral float-right" title="MakeCinnamonXletPOTApp" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="KnowledgeBaseApp.cli.html" class="btn btn-neutral" title="KnowledgeBaseApp.cli module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-KnowledgeBaseApp.repositories_handler">
+<span id="knowledgebaseapp-repositories-handler-module"></span><h1>KnowledgeBaseApp.repositories_handler module<a class="headerlink" href="#module-KnowledgeBaseApp.repositories_handler" title="Permalink to this headline">¶</a></h1>
+<p>Repositories handler functions.</p>
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.root_folder">
+<code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">root_folder</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.root_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The main folder containing the Knowledge Base. All commands must be executed
+from this location without exceptions.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="KnowledgeBaseApp.repositories_handler.RepoHandlers">
+<em class="property">class </em><code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">RepoHandlers</code><span class="sig-paren">(</span><em>repo</em>, <em>debug=False</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepoHandlers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepoHandlers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Main class to “handle” a repository data.</p>
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.RepoHandlers.data_tables_obj">
+<code class="descname">data_tables_obj</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepoHandlers.data_tables_obj" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – Where the JSON data is stored before finally save it into a JSON file.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.RepoHandlers.debug">
+<code class="descname">debug</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepoHandlers.debug" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em> – Save JSON files with indentation.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.RepoHandlers.logger">
+<code class="descname">logger</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepoHandlers.logger" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.RepoHandlers.repo">
+<code class="descname">repo</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepoHandlers.repo" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – The repository data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.RepoHandlers.success">
+<code class="descname">success</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepoHandlers.success" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em> – If some of the taks are not successful, do not save the JSON file for the repository.</p>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – The repository data.</p></li>
+<li><p><strong>debug</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Save JSON files with indentation.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.RepoHandlers.sphinx_generated_handler">
+<code class="descname">sphinx_generated_handler</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepoHandlers.sphinx_generated_handler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepoHandlers.sphinx_generated_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle repositories set to build their Sphinx documentation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.RepoHandlers.single_file_handler">
+<code class="descname">single_file_handler</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepoHandlers.single_file_handler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepoHandlers.single_file_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle repositories set to manage just one file on them.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.RepoHandlers.multi_file_handler">
+<code class="descname">multi_file_handler</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepoHandlers.multi_file_handler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepoHandlers.multi_file_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle repositories set to manage more than one file on them.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.RepoHandlers.generate_data_file">
+<code class="descname">generate_data_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepoHandlers.generate_data_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepoHandlers.generate_data_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the JSON file for the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Do not try to save the JSON file in case something went wrong handling the repository.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/constants.html#None" title="(in Python v3.5)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository">
+<em class="property">class </em><code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">Repository</code><span class="sig-paren">(</span><em>data</em>, <em>web_service='github'</em>, <em>load_json_file=True</em>, <em>is_sphinx_generated=False</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#Repository"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Main class to initialize a repository.</p>
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.category">
+<code class="descname">category</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.category" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Category name.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.copy_full_repo">
+<code class="descname">copy_full_repo</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.copy_full_repo" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>boot</em> – Whether to copy all the files on the repository or not.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.file_append">
+<code class="descname">file_append</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.file_append" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – A list of tuples containing the path to a file and the data to append to said file.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.file_pattern">
+<code class="descname">file_pattern</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.file_pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – A pattern to determine the files to copy.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.filename">
+<code class="descname">filename</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.filename" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Name of the file to copy.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.files_to_ignore">
+<code class="descname">files_to_ignore</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.files_to_ignore" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – List of files to ignore (not copy).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.json_data">
+<code class="descname">json_data</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.json_data" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – Repository data storage.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.logger">
+<code class="descname">logger</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.logger" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.path_handler">
+<code class="descname">path_handler</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.path_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – A flag that determines how to handle the path or paths specified on the json_data object
+of the repository.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.rel_path">
+<code class="descname">rel_path</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.rel_path" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – A path relative to the root of the repository folder were the file/files is/are located.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.repo_img">
+<code class="descname">repo_img</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.repo_img" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – String to be usaed to represent the image that will be shown on the index.html table.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.repo_name">
+<code class="descname">repo_name</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.repo_name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The name of the repository.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.repo_owner">
+<code class="descname">repo_owner</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.repo_owner" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The owner of the repository.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.repo_url">
+<code class="descname">repo_url</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.repo_url" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The repository URL.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.title">
+<code class="descname">title</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.title" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The text that will be used as title for the entry/entries generated by this class.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.title_prefix">
+<code class="descname">title_prefix</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.title_prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – A title prefix.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.web_service">
+<code class="descname">web_service</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.web_service" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The name of the web service (github or bitbucket).</p>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – Repository data.</p></li>
+<li><p><strong>web_service</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em>, </em><em>optional</em>) – The name of the web service (github or bitbucket).</p></li>
+<li><p><strong>load_json_file</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Load JSON data only when it is needed.</p></li>
+<li><p><strong>is_sphinx_generated</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Boolean to determine which file name to use as default. If it is a repository to
+generate a Sphinx documentation, the use “index.html” as default file name. Else,
+use “README.md” as default.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingMandatoryField</span></code> – Missing mandatory field.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.set_json_data">
+<code class="descname">set_json_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#Repository.set_json_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.set_json_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the JSON data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.build_sphinx_docs">
+<code class="descname">build_sphinx_docs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#Repository.build_sphinx_docs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.build_sphinx_docs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build Sphinx documentation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository._append_data_to_files">
+<code class="descname">_append_data_to_files</code><span class="sig-paren">(</span><em>html_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#Repository._append_data_to_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository._append_data_to_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append data to files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>html_path</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Path to where HTML pages are stored.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.get_sphinx_generated_pages_storage">
+<code class="descname">get_sphinx_generated_pages_storage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#Repository.get_sphinx_generated_pages_storage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.get_sphinx_generated_pages_storage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Sphinx generated pages storage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The path to the Sphinx generated pages storage.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.get_folder_name">
+<code class="descname">get_folder_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#Repository.get_folder_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.get_folder_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the repository folder name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The repository folder name.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.get_storage_path">
+<code class="descname">get_storage_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#Repository.get_storage_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.get_storage_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the storage path (were all the repositories are cloned into).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The storage path.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.get_path">
+<code class="descname">get_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#Repository.get_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.get_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the repository path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The repository path.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.Repository.get_json_path">
+<code class="descname">get_json_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#Repository.get_json_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.Repository.get_json_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the JSON file path for the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The JSON file path.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="KnowledgeBaseApp.repositories_handler.BitBucketRepo">
+<em class="property">class </em><code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">BitBucketRepo</code><span class="sig-paren">(</span><em>data</em>, <em>logger</em>, <em>web_service='bitbucket'</em>, <em>load_json_file=True</em>, <em>is_sphinx_generated=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#BitBucketRepo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.BitBucketRepo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#KnowledgeBaseApp.repositories_handler.Repository" title="KnowledgeBaseApp.repositories_handler.Repository"><code class="xref py py-class docutils literal notranslate"><span class="pre">KnowledgeBaseApp.repositories_handler.Repository</span></code></a></p>
+<p>Sub-class of <a class="reference internal" href="#KnowledgeBaseApp.repositories_handler.Repository" title="KnowledgeBaseApp.repositories_handler.Repository"><code class="xref any py py-class docutils literal notranslate"><span class="pre">Repository</span></code></a> to initialize a BitBucket repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – See <a class="reference internal" href="#KnowledgeBaseApp.repositories_handler.Repository" title="KnowledgeBaseApp.repositories_handler.Repository"><code class="xref any py py-class docutils literal notranslate"><span class="pre">Repository</span></code></a> &gt; data</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+<li><p><strong>web_service</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#KnowledgeBaseApp.repositories_handler.Repository" title="KnowledgeBaseApp.repositories_handler.Repository"><code class="xref any py py-class docutils literal notranslate"><span class="pre">Repository</span></code></a> &gt; web_service</p></li>
+<li><p><strong>load_json_file</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#KnowledgeBaseApp.repositories_handler.Repository" title="KnowledgeBaseApp.repositories_handler.Repository"><code class="xref any py py-class docutils literal notranslate"><span class="pre">Repository</span></code></a> &gt; load_json_file</p></li>
+<li><p><strong>is_sphinx_generated</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#KnowledgeBaseApp.repositories_handler.Repository" title="KnowledgeBaseApp.repositories_handler.Repository"><code class="xref any py py-class docutils literal notranslate"><span class="pre">Repository</span></code></a> &gt; is_sphinx_generated</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.BitBucketRepo.get_check_repo_cmd">
+<code class="descname">get_check_repo_cmd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#BitBucketRepo.get_check_repo_cmd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.BitBucketRepo.get_check_repo_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the command to check the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The command to check the repository.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.BitBucketRepo.do_pull">
+<code class="descname">do_pull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#BitBucketRepo.do_pull"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.BitBucketRepo.do_pull" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pull from the repository.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.BitBucketRepo.do_clone">
+<code class="descname">do_clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#BitBucketRepo.do_clone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.BitBucketRepo.do_clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clone the repository.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="KnowledgeBaseApp.repositories_handler.GitHubRepo">
+<em class="property">class </em><code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">GitHubRepo</code><span class="sig-paren">(</span><em>data</em>, <em>logger</em>, <em>web_service='github'</em>, <em>load_json_file=True</em>, <em>is_sphinx_generated=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#GitHubRepo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.GitHubRepo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#KnowledgeBaseApp.repositories_handler.Repository" title="KnowledgeBaseApp.repositories_handler.Repository"><code class="xref py py-class docutils literal notranslate"><span class="pre">KnowledgeBaseApp.repositories_handler.Repository</span></code></a></p>
+<p>Sub-class of <a class="reference internal" href="#KnowledgeBaseApp.repositories_handler.Repository" title="KnowledgeBaseApp.repositories_handler.Repository"><code class="xref any py py-class docutils literal notranslate"><span class="pre">Repository</span></code></a> to initialize a GitHub repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – See <a class="reference internal" href="#KnowledgeBaseApp.repositories_handler.Repository" title="KnowledgeBaseApp.repositories_handler.Repository"><code class="xref any py py-class docutils literal notranslate"><span class="pre">Repository</span></code></a> &gt; data</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+<li><p><strong>web_service</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#KnowledgeBaseApp.repositories_handler.Repository" title="KnowledgeBaseApp.repositories_handler.Repository"><code class="xref any py py-class docutils literal notranslate"><span class="pre">Repository</span></code></a> &gt; web_service</p></li>
+<li><p><strong>load_json_file</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#KnowledgeBaseApp.repositories_handler.Repository" title="KnowledgeBaseApp.repositories_handler.Repository"><code class="xref any py py-class docutils literal notranslate"><span class="pre">Repository</span></code></a> &gt; load_json_file</p></li>
+<li><p><strong>is_sphinx_generated</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#KnowledgeBaseApp.repositories_handler.Repository" title="KnowledgeBaseApp.repositories_handler.Repository"><code class="xref any py py-class docutils literal notranslate"><span class="pre">Repository</span></code></a> &gt; is_sphinx_generated</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.GitHubRepo.get_check_repo_cmd">
+<code class="descname">get_check_repo_cmd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#GitHubRepo.get_check_repo_cmd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.GitHubRepo.get_check_repo_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the command to check the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The command to check the repository.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.GitHubRepo.do_pull">
+<code class="descname">do_pull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#GitHubRepo.do_pull"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.GitHubRepo.do_pull" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pull from the repository.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.GitHubRepo.do_clone">
+<code class="descname">do_clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#GitHubRepo.do_clone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.GitHubRepo.do_clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clone the repository.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="KnowledgeBaseApp.repositories_handler.RepoBridge">
+<em class="property">class </em><code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">RepoBridge</code><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepoBridge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepoBridge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>“Bridge” class used to retrieve the actual classes from a string.</p>
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.RepoBridge.github">
+<code class="descname">github</code><span class="sig-paren">(</span><em>*args</em>, <em>**kargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepoBridge.github"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepoBridge.github" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get GitHub repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – Positional arguments.</p></li>
+<li><p><strong>**kargs</strong> – Keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Initialized <a class="reference internal" href="#KnowledgeBaseApp.repositories_handler.GitHubRepo" title="KnowledgeBaseApp.repositories_handler.GitHubRepo"><code class="xref any py py-class docutils literal notranslate"><span class="pre">GitHubRepo</span></code></a> class.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.RepoBridge.bitbucket">
+<code class="descname">bitbucket</code><span class="sig-paren">(</span><em>*args</em>, <em>**kargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepoBridge.bitbucket"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepoBridge.bitbucket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get BitBucket repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – Positional arguments.</p></li>
+<li><p><strong>**kargs</strong> – Keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Initialized <a class="reference internal" href="#KnowledgeBaseApp.repositories_handler.BitBucketRepo" title="KnowledgeBaseApp.repositories_handler.BitBucketRepo"><code class="xref any py py-class docutils literal notranslate"><span class="pre">BitBucketRepo</span></code></a> class.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="KnowledgeBaseApp.repositories_handler.github_repos_json_files_creation">
+<code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">github_repos_json_files_creation</code><span class="sig-paren">(</span><em>debug</em>, <em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#github_repos_json_files_creation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.github_repos_json_files_creation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the JSON files for GitHub repositories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>debug</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a>) – Save JSON files with indentation.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KnowledgeBaseApp.repositories_handler.bitbucket_repos_json_files_creation">
+<code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">bitbucket_repos_json_files_creation</code><span class="sig-paren">(</span><em>debug</em>, <em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#bitbucket_repos_json_files_creation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.bitbucket_repos_json_files_creation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the JSON files for BitBucket repositories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>debug</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a>) – Save JSON files with indentation.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KnowledgeBaseApp.repositories_handler.generate_repositories_json_files">
+<code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">generate_repositories_json_files</code><span class="sig-paren">(</span><em>repository_data</em>, <em>debug</em>, <em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#generate_repositories_json_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.generate_repositories_json_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function to create the JSON files for the repositories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repository_data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – The repository data to process.</p></li>
+<li><p><strong>debug</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a>) – Save JSON files with indentation.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KnowledgeBaseApp.repositories_handler.github_repos_update">
+<code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">github_repos_update</code><span class="sig-paren">(</span><em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#github_repos_update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.github_repos_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update all GitHub repositories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KnowledgeBaseApp.repositories_handler.bitbucket_repos_update">
+<code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">bitbucket_repos_update</code><span class="sig-paren">(</span><em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#bitbucket_repos_update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.bitbucket_repos_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update all BitBucket repositories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KnowledgeBaseApp.repositories_handler.update_repositories">
+<code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">update_repositories</code><span class="sig-paren">(</span><em>repository_data</em>, <em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#update_repositories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.update_repositories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function to update repositories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repository_data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – The repository data to process.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KnowledgeBaseApp.repositories_handler.bitbucket_sphinx_docs_build">
+<code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">bitbucket_sphinx_docs_build</code><span class="sig-paren">(</span><em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#bitbucket_sphinx_docs_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.bitbucket_sphinx_docs_build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build Sphinx documentation of all BitBucket repositories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KnowledgeBaseApp.repositories_handler.github_sphinx_docs_build">
+<code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">github_sphinx_docs_build</code><span class="sig-paren">(</span><em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#github_sphinx_docs_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.github_sphinx_docs_build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build Sphinx documentation of all GitHub repositories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KnowledgeBaseApp.repositories_handler.build_sphinx_docs">
+<code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">build_sphinx_docs</code><span class="sig-paren">(</span><em>repository_data</em>, <em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#build_sphinx_docs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.build_sphinx_docs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function to build Sphinx documentation for all repositories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repository_data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – The repository data to process.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KnowledgeBaseApp.repositories_handler.get_json_data_from_repositories">
+<code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">get_json_data_from_repositories</code><span class="sig-paren">(</span><em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#get_json_data_from_repositories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.get_json_data_from_repositories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain the JSON data generated for each repository.</p>
+<p>Each repository, after it’s “handled”, will generate a JSON file containing data related
+to the repository itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>DataTables object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../MakeCinnamonXletPOT/modules.html" class="btn btn-neutral float-right" title="MakeCinnamonXletPOTApp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="KnowledgeBaseApp.cli.html" class="btn btn-neutral" title="KnowledgeBaseApp.cli module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

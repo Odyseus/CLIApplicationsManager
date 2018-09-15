@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Backup Tool’s documentation &mdash; CLI Applications Manager  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chroot Helpers’s documentation" href="../ChrootHelper/index.html" />
+    <link rel="prev" title="General development notes" href="../1-general-notes.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../0-structure.html">Folder structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Backup Tool’s documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#keyring-module"><code class="docutils literal notranslate"><span class="pre">keyring</span></code> module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mentions">Mentions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cli-help-page"><abbr title="Command Line Interface">CLI</abbr> help page</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PackageManager/index.html">Package Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CLI Applications Manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Backup Tool’s documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/includes/BackupTool/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="../ChrootHelper/index.html" class="btn btn-neutral float-right" title="Chroot Helpers’s documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../1-general-notes.html" class="btn btn-neutral" title="General development notes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="backup-tool-s-documentation">
+<h1>Backup Tool’s documentation<a class="headerlink" href="#backup-tool-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>A <abbr title="Command Line Interface">CLI</abbr> utility written in Python 3 to backup files on GNU/Linux.</p>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<ul class="simple">
+<li><p>Python 3.5+.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">keyring</span></code> module.</p></li>
+</ul>
+</div>
+<div class="section" id="keyring-module">
+<h3><code class="docutils literal notranslate"><span class="pre">keyring</span></code> module<a class="headerlink" href="#keyring-module" title="Permalink to this headline">¶</a></h3>
+<p>This module is only used by the email system and it is used to retrieve a password stored in the
+system’s default keyring. This application will not store nor use passwords saved in plain text.</p>
+<p>The following command executed from a terminal will store a password:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span>$ keyring set backup_secret_context backup_secret_name
+</pre></div>
+</div>
+<p>Then the password is retrieved by the application email system using the <code class="docutils literal notranslate"><span class="pre">sender_secret</span></code> tuple
+specified in <code class="docutils literal notranslate"><span class="pre">global_settings</span></code> like so:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">keyring</span><span class="o">.</span><span class="n">get_password</span><span class="p">(</span><span class="s2">&quot;backup_secret_context&quot;</span><span class="p">,</span> <span class="s2">&quot;backup_secret_name&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">backup_secret_context</span></code> and <code class="docutils literal notranslate"><span class="pre">backup_secret_name</span></code> can have any other names that one deems
+to give them. As to what these names actually mean, I have no idea. What I know is that in Gnome
+keyring, the details tab for the generated “storage” will display the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">username</span><span class="p">:</span> <span class="n">backup_secret_name</span>
+<span class="n">application</span><span class="p">:</span> <span class="n">python</span><span class="o">-</span><span class="n">keyring</span>
+<span class="n">service</span><span class="p">:</span> <span class="n">backup_secret_context</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mentions">
+<h3>Mentions<a class="headerlink" href="#mentions" title="Permalink to this headline">¶</a></h3>
+<p>Application inspired by the <a class="reference external" href="https://github.com/FRReinert/PyBackup">PyBackup</a> Python module.</p>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cli-help-page">
+<h3><abbr title="Command Line Interface">CLI</abbr> help page<a class="headerlink" href="#cli-help-page" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight">
+<pre><span class="text-bold">Backup Tool 2018-09-15 01:19:13.334 (Stable)</span>
+
+<span class="text-bold">A CLI utility to backup files on GNU/Linux.</span>
+
+<span class="text-bold">Usage:</span>
+    app.py backup (-j &lt;name&gt; | --jobs-rel=&lt;name&gt;
+                  | -J &lt;path&gt; | --jobs-full=&lt;path&gt;)
+                  [-j &lt;name&gt;... | --jobs-rel=&lt;name&gt;...]
+                  [-J &lt;path&gt;... | --jobs-full=&lt;path&gt;...]
+                  [-g &lt;name&gt; | --globals-rel=&lt;name&gt;
+                  | -G &lt;path&gt; | --globals-full=&lt;path&gt;]
+    app.py generate (jobs | globals | system_executable)
+    app.py check_notification (sound | desktop |
+                              mail (-g &lt;name&gt; | --globals-rel=&lt;name&gt;
+                                   | -G &lt;path&gt; | --globals-full=&lt;path&gt;))
+    app.py (-h | --help | --version)
+
+<span class="text-bold">Options:</span>
+
+<span class="text-bold">-h, --help</span>
+    Show this screen.
+
+<span class="text-bold">--version</span>
+    Show application version.
+
+<span class="text-bold">-j, --jobs-rel=&lt;name&gt;</span>
+    File name of the file containing the backup jobs. Should be the name of a
+    file stored in UserData/backup_jobs/&lt;name&gt;.py. Extension omitted.
+
+<span class="text-bold">-J, --jobs-full=&lt;path&gt;</span>
+    Similar to `--jobs-rel`, but it should specify the full path to a file
+    containing the backup jobs.
+
+<span class="text-bold">-g, --globals-rel=&lt;name&gt;</span>
+    File name of the file containing the global settings that all the backup
+    jobs will use. Should be the name of a file stored in
+    UserData/backup_jobs/&lt;name&gt;.py. Extension omitted.
+
+<span class="text-bold">-G, --globals-full=&lt;path&gt;</span>
+    Similar to `--globals-rel`, but it should specify the full path to a file
+    containing the global settings that all the backup jobs will use.
+
+<span class="text-bold">Sub-commands for the `generate` command:</span>
+    jobs                 Generate an empty backup jobs file from a template.
+    globals              Generate an empty general settings from a template.
+    system_executable    Create an executable for this application on the system
+                         PATH to be able to run it from anywhere.
+
+<span class="text-bold">Sub-commands for the `check_notification` command:</span>
+    sound                Check sound notification.
+    desktop              Check desktop notification.
+    mail                 Check mail notification. Requires to have a global
+                         settings file with email data configured.
+
+<span class="text-bold">Examples:</span>
+    app.py --jobs-rel=file_name --jobs-full=file_path --globals-rel=file_name
+    app.py --jobs-rel=file_name1 --jobs-rel=file_name2 --globals-full=file_path</pre>
+</div></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ChrootHelper/index.html" class="btn btn-neutral float-right" title="Chroot Helpers’s documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../1-general-notes.html" class="btn btn-neutral" title="General development notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

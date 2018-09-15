@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PackageManagerApp.cli &mdash; CLI Applications Manager  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CLI Applications Manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>PackageManagerApp.cli</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for PackageManagerApp.cli</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Main command line application.</span>
+
+<span class="sd">Attributes</span>
+<span class="sd">----------</span>
+<span class="sd">docopt_doc : str</span>
+<span class="sd">    Used to store/define the docstring that will be passed to docopt as the &quot;doc&quot; argument.</span>
+<span class="sd">root_folder : str</span>
+<span class="sd">    The main folder containing the application. All commands must be executed from this location</span>
+<span class="sd">    without exceptions.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appname__</span><span class="p">,</span> <span class="n">__appdescription__</span><span class="p">,</span> <span class="n">__version__</span><span class="p">,</span> <span class="n">__status__</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span><span class="p">,</span> <span class="n">log_system</span><span class="p">,</span> <span class="n">shell_utils</span><span class="p">,</span> <span class="n">file_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils.docopt</span> <span class="k">import</span> <span class="n">docopt</span>
+
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">WrongPythonVersion</span><span class="p">()</span>
+
+<span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
+
+<span class="c1"># Store the &quot;docopt&quot; document in a variable to SHUT THE HELL UP Sphinx.</span>
+<span class="n">docopt_doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">{__appname__}</span><span class="s2"> </span><span class="si">{__version__}</span><span class="s2"> </span><span class="si">{__status__}</span><span class="s2"></span>
+
+<span class="si">{__appdescription__}</span><span class="s2"></span>
+
+<span class="s2">Usage:</span>
+<span class="s2">    app.py (install | remove) (-i &lt;file&gt; | --interface=&lt;file&gt;)</span>
+<span class="s2">           (-l &lt;file&gt;... | --list-relative=&lt;file&gt;...</span>
+<span class="s2">           | -L &lt;path&gt;... | --list-absolute=&lt;path&gt;...)</span>
+<span class="s2">           [-l &lt;file&gt;... | --list-relative=&lt;file&gt;...</span>
+<span class="s2">           | -L &lt;path&gt;... | --list-absolute=&lt;path&gt;...]</span>
+<span class="s2">           [--ignore-exists-filter]</span>
+<span class="s2">           [--ignore-installed-filter]</span>
+<span class="s2">           [-r | --report]</span>
+<span class="s2">    app.py generate system_executable</span>
+<span class="s2">    app.py (-h | --help | --version)</span>
+
+<span class="s2">Options:</span>
+
+<span class="s2">-h, --help</span>
+<span class="s2">    Show this screen.</span>
+
+<span class="s2">--version</span>
+<span class="s2">    Show application version.</span>
+
+<span class="s2">-i &lt;file&gt;, --interface=&lt;file&gt;</span>
+<span class="s2">    File name (no extension) of an existent file in</span>
+<span class="s2">    UserData/interfaces/&lt;file&gt;.py that contains the commads that will actually</span>
+<span class="s2">    be used to handle packages.</span>
+
+<span class="s2">-l &lt;file&gt;, --list-relative=&lt;file&gt;</span>
+<span class="s2">    File name (no extension) of an existent file in</span>
+<span class="s2">    UserData/packages_lists/&lt;file&gt;.py that contains a list of packages and that</span>
+<span class="s2">    will be used with the install/remove commands.</span>
+
+<span class="s2">-L &lt;path&gt;, --list-absolute=&lt;path&gt;</span>
+<span class="s2">    Full path to a file containing the list of packages that will be used</span>
+<span class="s2">    with the install/remove commands.</span>
+
+<span class="s2">--ignore-exists-filter</span>
+<span class="s2">    Ignore the check for package existence.</span>
+
+<span class="s2">--ignore-installed-filter</span>
+<span class="s2">    Ignore the check for package installed.</span>
+
+<span class="s2">-r, --report</span>
+<span class="s2">    Just show an initial report, do not start the install/remove process.</span>
+
+<span class="s2">Sub-commands for the `generate` command:</span>
+<span class="s2">    system_executable    Create an executable for this application on the system</span>
+<span class="s2">                         PATH to be able to run it from anywhere.</span>
+
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">__appname__</span><span class="o">=</span><span class="n">__appname__</span><span class="p">,</span>
+           <span class="n">__appdescription__</span><span class="o">=</span><span class="n">__appdescription__</span><span class="p">,</span>
+           <span class="n">__version__</span><span class="o">=</span><span class="n">__version__</span><span class="p">,</span>
+           <span class="n">__status__</span><span class="o">=</span><span class="n">__status__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="CommandLineTool"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.cli.html#PackageManagerApp.cli.CommandLineTool">[docs]</a><span class="k">class</span> <span class="nc">CommandLineTool</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Command line tool.</span>
+
+<span class="sd">    It handles the arguments parsed by the docopt module.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    action : method</span>
+<span class="sd">        Set the method that will be executed when calling CommandLineTool.run().</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    package_manager : TYPE</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Deleted Attributes</span>
+<span class="sd">    ------------------</span>
+<span class="sd">    interface : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    pkgs_list : list</span>
+<span class="sd">        The list of packages to remove/install.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        args : dict</span>
+<span class="sd">            The dictionary of arguments as returned by docopt parser.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CommandLineTool</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">package_manager</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">logs_storage_dir</span> <span class="o">=</span> <span class="s2">&quot;UserData/logs&quot;</span>
+        <span class="n">log_file</span> <span class="o">=</span> <span class="n">log_system</span><span class="o">.</span><span class="n">get_log_file</span><span class="p">(</span><span class="n">storage_dir</span><span class="o">=</span><span class="n">logs_storage_dir</span><span class="p">,</span>
+                                           <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;CLI&quot;</span><span class="p">)</span>
+        <span class="n">file_utils</span><span class="o">.</span><span class="n">remove_surplus_files</span><span class="p">(</span><span class="n">logs_storage_dir</span><span class="p">,</span> <span class="s2">&quot;CLI*&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">log_system</span><span class="o">.</span><span class="n">LogSystem</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">log_file</span><span class="p">,</span>
+                                           <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_header</span><span class="p">(</span><span class="n">__appname__</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;generate&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;system_executable&quot;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;System executable generation...&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_executable_generation</span>
+
+        <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;install&quot;</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;remove&quot;</span><span class="p">]]):</span>
+            <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">pkg_manager</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">package_manager</span> <span class="o">=</span> <span class="n">pkg_manager</span><span class="o">.</span><span class="n">PackageManager</span><span class="p">(</span>
+                <span class="n">interface</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;--interface&quot;</span><span class="p">],</span>
+                <span class="n">pkgs_list_relative</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;--list-relative&quot;</span><span class="p">],</span>
+                <span class="n">pkgs_list_absolute</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;--list-absolute&quot;</span><span class="p">],</span>
+                <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;install&quot;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">install_packages</span>
+            <span class="k">elif</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;remove&quot;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">remove_packages</span>
+
+<div class="viewcode-block" id="CommandLineTool.run"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.cli.html#PackageManagerApp.cli.CommandLineTool.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">()</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.install_packages"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.cli.html#PackageManagerApp.cli.CommandLineTool.install_packages">[docs]</a>    <span class="k">def</span> <span class="nf">install_packages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">package_manager</span><span class="o">.</span><span class="n">install_packages</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CommandLineTool.remove_packages"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.cli.html#PackageManagerApp.cli.CommandLineTool.remove_packages">[docs]</a>    <span class="k">def</span> <span class="nf">remove_packages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">package_manager</span><span class="o">.</span><span class="n">remove_packages</span><span class="p">()</span></div>
+
+    <span class="c1"># def manage_pkgs(self):</span>
+    <span class="c1">#     &quot;&quot;&quot;Perform package removal/installation.</span>
+
+    <span class="c1">#     Raises</span>
+    <span class="c1">#     ------</span>
+    <span class="c1">#     SystemExit</span>
+    <span class="c1">#         Description</span>
+
+    <span class="c1">#     Deleted Parameters</span>
+    <span class="c1">#     ------------------</span>
+    <span class="c1">#     action : str</span>
+    <span class="c1">#         &quot;install&quot; or &quot;remove&quot;.</span>
+
+    <span class="c1">#     No Longer Raises</span>
+    <span class="c1">#     ----------------</span>
+    <span class="c1">#     common_utils.CustomRuntimeError</span>
+    <span class="c1">#         Raise if list of packages doesn&#39;t exists.</span>
+    <span class="c1">#     &quot;&quot;&quot;</span>
+    <span class="c1">#     # Deduplicate packages list.</span>
+    <span class="c1">#     self.pkgs_list = list(set(self.pkgs_list))</span>
+
+    <span class="c1">#     if not self.pkgs_list:</span>
+    <span class="c1">#         self.logger.warning(&quot;Package list non existent!&quot;)</span>
+    <span class="c1">#         raise SystemExit()</span>
+
+    <span class="c1">#     print(self.pkgs_list)</span>
+
+    <span class="c1">#     from . import pkg_manager</span>
+
+    <span class="c1">#     pkg_mngr = pkg_manager.PackageManager(**self.data,</span>
+    <span class="c1">#                                           logger=self.logger)</span>
+    <span class="c1">#     # pkg_mngr = pkg_manager.PackageManager(self.pkgs_list,</span>
+    <span class="c1">#     #                                       self.interface,</span>
+    <span class="c1">#     #                                       action,</span>
+    <span class="c1">#     #                                       logger=self.logger)</span>
+    <span class="c1">#     # pkg_mngr.display_initial_report()</span>
+
+<div class="viewcode-block" id="CommandLineTool.system_executable_generation"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.cli.html#PackageManagerApp.cli.CommandLineTool.system_executable_generation">[docs]</a>    <span class="k">def</span> <span class="nf">system_executable_generation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`template_utils.system_executable_generation`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">template_utils</span>
+
+        <span class="n">template_utils</span><span class="o">.</span><span class="n">system_executable_generation</span><span class="p">(</span>
+            <span class="n">exec_name</span><span class="o">=</span><span class="s2">&quot;package-manager-cli&quot;</span><span class="p">,</span>
+            <span class="n">app_root_folder</span><span class="o">=</span><span class="n">root_folder</span><span class="p">,</span>
+            <span class="n">sys_exec_template_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;templates&quot;</span><span class="p">,</span> <span class="s2">&quot;system_executable&quot;</span><span class="p">),</span>
+            <span class="n">bash_completions_template_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;templates&quot;</span><span class="p">,</span> <span class="s2">&quot;bash_completions.bash&quot;</span><span class="p">),</span>
+            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.cli.html#PackageManagerApp.cli.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Initialize main command line interface.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    exceptions.BadExecutionLocation</span>
+<span class="sd">        Do not allow to run any command if the &quot;flag&quot; file isn&#39;t</span>
+<span class="sd">        found where it should be. See :any:`exceptions.BadExecutionLocation`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;.package-manager.flag&quot;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">BadExecutionLocation</span><span class="p">()</span>
+
+    <span class="n">arguments</span> <span class="o">=</span> <span class="n">docopt</span><span class="p">(</span><span class="n">docopt_doc</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">__appname__</span><span class="p">,</span> <span class="n">__version__</span><span class="p">,</span> <span class="n">__status__</span><span class="p">))</span>
+    <span class="c1"># print(arguments)</span>
+    <span class="n">cli</span> <span class="o">=</span> <span class="n">CommandLineTool</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+    <span class="n">cli</span><span class="o">.</span><span class="n">run</span><span class="p">()</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

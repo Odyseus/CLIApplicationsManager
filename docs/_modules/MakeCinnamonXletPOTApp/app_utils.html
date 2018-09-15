@@ -1,0 +1,844 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MakeCinnamonXletPOTApp.app_utils &mdash; CLI Applications Manager  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CLI Applications Manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>MakeCinnamonXletPOTApp.app_utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for MakeCinnamonXletPOTApp.app_utils</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">Attributes</span>
+<span class="sd">----------</span>
+<span class="sd">LOCALE_DIR : str</span>
+<span class="sd">    System&#39;s localizations storage for the current user.</span>
+<span class="sd">POT_HEADER : str</span>
+<span class="sd">    POT file header template.</span>
+<span class="sd">root_folder : str</span>
+<span class="sd">    The main folder containing the Knowledge Base. All commands must be executed</span>
+<span class="sd">    from this location without exceptions.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">ignore_patterns</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">call</span><span class="p">,</span> <span class="n">run</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
+
+
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__version__</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span><span class="p">,</span> <span class="n">polib</span><span class="p">,</span> <span class="n">cmd_utils</span>
+
+
+<span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
+
+<span class="n">LOCALE_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">),</span> <span class="s2">&quot;.local/share/locale&quot;</span><span class="p">)</span>
+
+<span class="n">POT_HEADER</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;# This is a template file for translating the </span><span class="si">{PACKAGE}</span><span class="s2"> package.</span>
+<span class="s2"># Copyright (C) </span><span class="si">{COPY_INITIAL_YEAR}{COPY_CURRENT_YEAR}</span><span class="s2"></span>
+<span class="s2"># This file is distributed under the same license as the </span><span class="si">{PACKAGE}</span><span class="s2"> package.</span>
+<span class="s2"># </span><span class="si">{FIRST_AUTHOR}</span><span class="s2"> </span><span class="si">{FIRST_AUTHOR_EMAIL}</span><span class="s2">, </span><span class="si">{COPY_INITIAL_YEAR}{COPY_CURRENT_YEAR}</span><span class="s2">.</span>
+<span class="s2">#</span>
+<span class="s2">msgid &quot;&quot;</span>
+<span class="s2">msgstr &quot;&quot;</span>
+<span class="s2">&quot;Project-Id-Version: </span><span class="si">{PACKAGE}</span><span class="s2"> </span><span class="si">{VERSION}</span><span class="se">\\</span><span class="s2">n&quot;</span>
+<span class="s2">&quot;POT-Creation-Date: </span><span class="si">{TIMESTAMP}</span><span class="se">\\</span><span class="s2">n&quot;</span>
+<span class="s2">&quot;PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE</span><span class="se">\\</span><span class="s2">n&quot;</span>
+<span class="s2">&quot;Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt;</span><span class="se">\\</span><span class="s2">n&quot;</span>
+<span class="s2">&quot;Language-Team: LANGUAGE &lt;LL@li.org&gt;</span><span class="se">\\</span><span class="s2">n&quot;</span>
+<span class="s2">&quot;MIME-Version: 1.0</span><span class="se">\\</span><span class="s2">n&quot;</span>
+<span class="s2">&quot;Content-Type: text/plain; charset=UTF-8</span><span class="se">\\</span><span class="s2">n&quot;</span>
+<span class="s2">&quot;Content-Transfer-Encoding: 8bit</span><span class="se">\\</span><span class="s2">n&quot;</span>
+<span class="s2">&quot;Generated-By: Make Cinnamon Xlet POT </span><span class="si">{SCRIPT_VERSION}</span><span class="se">\\</span><span class="s2">n&quot;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="_get_time_zone"><a class="viewcode-back" href="../../modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._get_time_zone">[docs]</a><span class="k">def</span> <span class="nf">_get_time_zone</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Get time zone.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        Time zone.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span><span class="o">.</span><span class="n">tm_isdst</span> <span class="ow">and</span> <span class="n">time</span><span class="o">.</span><span class="n">daylight</span><span class="p">:</span>
+        <span class="n">tzone</span> <span class="o">=</span> <span class="o">-</span><span class="n">time</span><span class="o">.</span><span class="n">altzone</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">tzone</span> <span class="o">=</span> <span class="o">-</span><span class="n">time</span><span class="o">.</span><span class="n">timezone</span>
+
+    <span class="c1"># Up to here, tzone is an integer.</span>
+    <span class="n">tzone</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">tzone</span> <span class="o">/</span> <span class="mi">60</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span>
+
+    <span class="c1"># And the ugliness begins!!!</span>
+    <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">]</span> <span class="o">=</span> <span class="n">tzone</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+
+    <span class="n">isNegative</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
+    <span class="n">hours</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0:03d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="p">))</span> <span class="k">if</span> <span class="n">isNegative</span> <span class="k">else</span> <span class="s2">&quot;</span><span class="si">{0:02d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
+    <span class="n">minutes</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0:02d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">hours</span> <span class="k">if</span> <span class="n">isNegative</span> <span class="k">else</span> <span class="s2">&quot;+&quot;</span> <span class="o">+</span> <span class="n">hours</span><span class="p">)</span> <span class="o">+</span> <span class="n">minutes</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;+0000&quot;</span></div>
+
+
+<div class="viewcode-block" id="_get_timestamp"><a class="viewcode-back" href="../../modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._get_timestamp">[docs]</a><span class="k">def</span> <span class="nf">_get_timestamp</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Returns a time stamp in the same format used by xgettex.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        Time stamp.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="c1"># Since the &quot;padding&quot; with zeroes of the rest of the values converts</span>
+    <span class="c1"># them into strings, lets convert to string the year too.</span>
+    <span class="n">YEAR</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+    <span class="c1"># &quot;Pad&quot; all the following values with zeroes.</span>
+    <span class="n">MO</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0:02d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">month</span><span class="p">)</span>
+    <span class="n">DA</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0:02d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+    <span class="n">HO</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0:02d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span>
+    <span class="n">MI</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0:02d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">minute</span><span class="p">)</span>
+    <span class="n">ZONE</span> <span class="o">=</span> <span class="n">_get_time_zone</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">:</span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">YEAR</span><span class="p">,</span> <span class="n">MO</span><span class="p">,</span> <span class="n">DA</span><span class="p">,</span> <span class="n">HO</span><span class="p">,</span> <span class="n">MI</span><span class="p">,</span> <span class="n">ZONE</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="_scan_json"><a class="viewcode-back" href="../../modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._scan_json">[docs]</a><span class="k">def</span> <span class="nf">_scan_json</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">,</span> <span class="n">pot_path</span><span class="p">,</span> <span class="n">ignored_keys</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Scan the settings-schema.json and metadata.json files.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    xlet_dir : str</span>
+<span class="sd">        The xlet root directory.</span>
+<span class="sd">    pot_path : str</span>
+<span class="sd">        The path to the POT file.</span>
+<span class="sd">    ignored_keys : list</span>
+<span class="sd">        List of keys to ignore from the string extraction.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">append</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pot_path</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">append</span><span class="p">:</span>
+        <span class="n">pot_file</span> <span class="o">=</span> <span class="n">polib</span><span class="o">.</span><span class="n">pofile</span><span class="p">(</span><span class="n">pot_path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">,</span>
+                                <span class="n">check_for_duplicates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">wrapwidth</span><span class="o">=</span><span class="mi">99999999</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pot_file</span> <span class="o">=</span> <span class="n">polib</span><span class="o">.</span><span class="n">POFile</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">):</span>
+        <span class="n">dirs</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">files</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">rel_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">)):</span>
+                <span class="k">continue</span>
+
+            <span class="n">data</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="k">if</span> <span class="n">rel_root</span> <span class="ow">is</span> <span class="s2">&quot;.&quot;</span><span class="p">:</span>
+                <span class="n">rel_path</span> <span class="o">=</span> <span class="n">file</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">rel_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rel_root</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">file</span> <span class="o">==</span> <span class="s2">&quot;settings-schema.json&quot;</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">settings_schema_file</span><span class="p">:</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">settings_schema_file</span><span class="p">,</span>
+                                     <span class="n">object_pairs_hook</span><span class="o">=</span><span class="n">OrderedDict</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+                    <span class="n">_extract_settings_strings</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">rel_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                        <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">),</span> <span class="n">pot_file</span><span class="p">,</span> <span class="n">ignored_keys</span><span class="o">=</span><span class="n">ignored_keys</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">file</span> <span class="o">==</span> <span class="s2">&quot;metadata.json&quot;</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">metadata_file</span><span class="p">:</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">metadata_file</span><span class="p">,</span> <span class="n">object_pairs_hook</span><span class="o">=</span><span class="n">OrderedDict</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+                    <span class="n">_extract_metadata_strings</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">rel_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">),</span> <span class="n">pot_file</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">append</span><span class="p">:</span>
+        <span class="n">pot_file</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pot_file</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">fpath</span><span class="o">=</span><span class="n">pot_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="_extract_settings_strings"><a class="viewcode-back" href="../../modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._extract_settings_strings">[docs]</a><span class="k">def</span> <span class="nf">_extract_settings_strings</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">rel_path</span><span class="p">,</span> <span class="n">pot_file</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ignored_keys</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Extract data from the settings-schema.json file.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : dict</span>
+<span class="sd">        Dictionary from which to extract strings.</span>
+<span class="sd">    rel_path : str</span>
+<span class="sd">        Relative path used to generate a comment for a POT entry.</span>
+<span class="sd">    pot_file : &lt;class &quot;polib.POFile&quot;&gt;</span>
+<span class="sd">        The &quot;polib.POFile&quot; object to work with.</span>
+<span class="sd">    parent : str, optional</span>
+<span class="sd">        A key name of the &quot;data&quot; dictionary to insert into the comment for a POT entry.</span>
+<span class="sd">    ignored_keys : list, optional</span>
+<span class="sd">        List of keys to ignore from the string extraction.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">ignored_keys</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Key &lt;</span><span class="si">%s</span><span class="s2">&gt; ignored.&quot;</span> <span class="o">%</span> <span class="n">key</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="s2">&quot;tooltip&quot;</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">):</span>
+            <span class="n">comment</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">-&gt;</span><span class="si">%s</span><span class="s2">-&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">rel_path</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+            <span class="n">_save_entry</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">comment</span><span class="p">,</span> <span class="n">pot_file</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;options&quot;</span><span class="p">:</span>
+            <span class="n">opt_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+            <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="n">opt_data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">opt_data</span><span class="p">[</span><span class="n">option</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;custom&quot;</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="n">comment</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">-&gt;</span><span class="si">%s</span><span class="s2">-&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">rel_path</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+                <span class="n">_save_entry</span><span class="p">(</span><span class="n">option</span><span class="p">,</span> <span class="n">comment</span><span class="p">,</span> <span class="n">pot_file</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;columns&quot;</span><span class="p">:</span>
+            <span class="n">columns</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">columns</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">col_key</span> <span class="ow">in</span> <span class="n">col</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">col_key</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">):</span>
+                        <span class="n">comment</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">-&gt;</span><span class="si">%s</span><span class="s2">-&gt;columns-&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">rel_path</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">col_key</span><span class="p">)</span>
+                        <span class="n">_save_entry</span><span class="p">(</span><span class="n">col</span><span class="p">[</span><span class="n">col_key</span><span class="p">],</span> <span class="n">comment</span><span class="p">,</span> <span class="n">pot_file</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">_extract_settings_strings</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">rel_path</span><span class="p">,</span> <span class="n">pot_file</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">ignored_keys</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="_extract_metadata_strings"><a class="viewcode-back" href="../../modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._extract_metadata_strings">[docs]</a><span class="k">def</span> <span class="nf">_extract_metadata_strings</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">rel_path</span><span class="p">,</span> <span class="n">pot_file</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Extract data from the metadata.json file.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : dict</span>
+<span class="sd">        Dictionary from which to extract strings.</span>
+<span class="sd">    rel_path : str</span>
+<span class="sd">        Relative path used to generate a comment for a POT entry.</span>
+<span class="sd">    pot_file : &lt;class &quot;polib.POFile&quot;&gt;</span>
+<span class="sd">        The &quot;polib.POFile&quot; object to work with.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="s2">&quot;comments&quot;</span><span class="p">):</span>
+            <span class="n">comment</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">-&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">rel_path</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+            <span class="n">_save_entry</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">comment</span><span class="p">,</span> <span class="n">pot_file</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;contributors&quot;</span><span class="p">:</span>
+            <span class="n">comment</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">-&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">rel_path</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+                <span class="n">_save_entry</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">comment</span><span class="p">,</span> <span class="n">pot_file</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="_save_entry"><a class="viewcode-back" href="../../modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._save_entry">[docs]</a><span class="k">def</span> <span class="nf">_save_entry</span><span class="p">(</span><span class="n">msgid</span><span class="p">,</span> <span class="n">comment</span><span class="p">,</span> <span class="n">pot_file</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Save entry.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    msgid : str</span>
+<span class="sd">        The string that will be saved into the POT file.</span>
+<span class="sd">    comment : str</span>
+<span class="sd">        The comment for the msgid.</span>
+<span class="sd">    pot_file : str</span>
+<span class="sd">        The &quot;polib.POFile&quot; object to work with.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    None</span>
+<span class="sd">        Halt function execution.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">msgid</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+        <span class="k">return</span>
+
+    <span class="n">entry</span> <span class="o">=</span> <span class="n">pot_file</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">msgid</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">entry</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">comment</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">entry</span><span class="o">.</span><span class="n">comment</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">comment</span><span class="p">:</span>
+                <span class="n">entry</span><span class="o">.</span><span class="n">comment</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="n">entry</span><span class="o">.</span><span class="n">comment</span> <span class="o">+=</span> <span class="n">comment</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="n">polib</span><span class="o">.</span><span class="n">POEntry</span><span class="p">(</span><span class="n">msgid</span><span class="o">=</span><span class="n">msgid</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">comment</span><span class="p">)</span>
+        <span class="n">pot_file</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="_remove_empty_folders"><a class="viewcode-back" href="../../modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._remove_empty_folders">[docs]</a><span class="k">def</span> <span class="nf">_remove_empty_folders</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Remove empty folders when removing an xlet localizations.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        Path to the installed xlet localizations.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    None</span>
+<span class="sd">        Halt function execution.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">return</span>
+
+    <span class="c1"># Remove empty sub-folders.</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">fullpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">fullpath</span><span class="p">):</span>
+                <span class="n">_remove_empty_folders</span><span class="p">(</span><span class="n">fullpath</span><span class="p">)</span>
+
+    <span class="c1"># If folder empty, delete it.</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Removing empty folder: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">path</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="_do_install"><a class="viewcode-back" href="../../modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._do_install">[docs]</a><span class="k">def</span> <span class="nf">_do_install</span><span class="p">(</span><span class="n">uuid</span><span class="p">,</span> <span class="n">xlet_dir</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Install xlet&#39;s localizations.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    uuid : str</span>
+<span class="sd">        The UUID of the xlet to install.</span>
+<span class="sd">    xlet_dir : str</span>
+<span class="sd">        The xlet root directory.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    exceptions.WrongExecutionLocation</span>
+<span class="sd">        Wrong execution location.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">podir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">,</span> <span class="s2">&quot;po&quot;</span><span class="p">)</span>
+    <span class="n">files_installed</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">podir</span><span class="p">):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;The &#39;po&#39; directory seems not to be present.</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;This xlet might not have localizations that need to be installed.</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;Or this tool has not been executed from inside the xlet folder.&quot;</span>
+        <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">WrongExecutionLocation</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">podir</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">locale_name</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s2">&quot;.po&quot;</span><span class="p">:</span>
+                <span class="n">lang_locale_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">LOCALE_DIR</span><span class="p">,</span> <span class="n">locale_name</span><span class="p">,</span> <span class="s2">&quot;LC_MESSAGES&quot;</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">lang_locale_dir</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mo">0o755</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">call</span><span class="p">([</span><span class="s2">&quot;msgfmt&quot;</span><span class="p">,</span> <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">),</span> <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+                      <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lang_locale_dir</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.mo&quot;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">)])</span>
+                <span class="n">files_installed</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">files_installed</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Nothing to install.&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Installed </span><span class="si">%i</span><span class="s2"> files.&quot;</span> <span class="o">%</span> <span class="n">files_installed</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="_do_remove"><a class="viewcode-back" href="../../modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._do_remove">[docs]</a><span class="k">def</span> <span class="nf">_do_remove</span><span class="p">(</span><span class="n">uuid</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Remove xlet&#39;s localizations.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    uuid : str</span>
+<span class="sd">        The UUID of the xlet to remove.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">files_removed</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">LOCALE_DIR</span><span class="p">)):</span>
+        <span class="n">locale_names</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">LOCALE_DIR</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">locale_name</span> <span class="ow">in</span> <span class="n">locale_names</span><span class="p">:</span>
+            <span class="n">lang_locale_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">LOCALE_DIR</span><span class="p">,</span> <span class="n">locale_name</span><span class="p">)</span>
+            <span class="n">mo_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lang_locale_dir</span><span class="p">,</span> <span class="s2">&quot;LC_MESSAGES&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.mo&quot;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">mo_file</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">mo_file</span><span class="p">)</span>
+                <span class="n">files_removed</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">_remove_empty_folders</span><span class="p">(</span><span class="n">lang_locale_dir</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">files_removed</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Nothing to remove.&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Removed </span><span class="si">%i</span><span class="s2"> files&quot;</span> <span class="o">%</span> <span class="n">files_removed</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="_insert_custom_header"><a class="viewcode-back" href="../../modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._insert_custom_header">[docs]</a><span class="k">def</span> <span class="nf">_insert_custom_header</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">,</span> <span class="n">pot_path</span><span class="p">,</span> <span class="n">pot_settings_data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Insert custom header.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    xlet_dir : str</span>
+<span class="sd">        The xlet root directory.</span>
+<span class="sd">    pot_path : str</span>
+<span class="sd">        The path to the POT file.</span>
+<span class="sd">    pot_settings_data : dict</span>
+<span class="sd">        Extra settings found inside the JSON file next to the generated POT file.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    SystemExit</span>
+<span class="sd">        Quit program.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">,</span> <span class="s2">&quot;metadata.json&quot;</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">md_file</span><span class="p">:</span>
+            <span class="n">raw_meta</span> <span class="o">=</span> <span class="n">md_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="n">md</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">raw_meta</span><span class="p">)</span>
+
+        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;FIRST_AUTHOR&quot;</span><span class="p">:</span> <span class="s2">&quot;FIRST_AUTHOR&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;FIRST_AUTHOR_EMAIL&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;EMAIL@ADDRESS&gt;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;COPY_INITIAL_YEAR&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;COPY_CURRENT_YEAR&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">year</span><span class="p">),</span>
+            <span class="s2">&quot;PACKAGE&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">),</span>
+            <span class="s2">&quot;VERSION&quot;</span><span class="p">:</span> <span class="n">md</span><span class="p">[</span><span class="s2">&quot;version&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;version&quot;</span> <span class="ow">in</span> <span class="n">md</span> <span class="k">else</span> <span class="s2">&quot;VERSION&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;SCRIPT_VERSION&quot;</span><span class="p">:</span> <span class="n">__version__</span><span class="p">,</span>
+            <span class="s2">&quot;TIMESTAMP&quot;</span><span class="p">:</span> <span class="n">_get_timestamp</span><span class="p">(),</span>
+        <span class="p">}</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">detail</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">detail</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span>
+            <span class="s2">&quot;Failed to get metadata - missing, corrupt, or incomplete metadata.json file.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">metadata</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">pot_settings_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">current_year</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;COPY_CURRENT_YEAR&quot;</span><span class="p">]</span>
+            <span class="n">copy_initial_year</span> <span class="o">=</span> <span class="n">pot_settings_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;COPY_INITIAL_YEAR&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">copy_initial_year</span> <span class="ow">and</span> <span class="n">copy_initial_year</span> <span class="o">!=</span> <span class="n">current_year</span><span class="p">:</span>
+                <span class="n">copy_initial_year</span> <span class="o">=</span> <span class="n">copy_initial_year</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span>
+
+            <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;COPY_INITIAL_YEAR&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">copy_initial_year</span>
+            <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;FIRST_AUTHOR&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pot_settings_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;FIRST_AUTHOR&quot;</span><span class="p">,</span> <span class="s2">&quot;FIRST_AUTHOR&quot;</span><span class="p">)</span>
+            <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;FIRST_AUTHOR_EMAIL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pot_settings_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="s2">&quot;FIRST_AUTHOR_EMAIL&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;EMAIL@ADDRESS&gt;&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pot_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pot_file</span><span class="p">:</span>
+            <span class="n">raw_data</span> <span class="o">=</span> <span class="n">pot_file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+        <span class="n">new_header</span> <span class="o">=</span> <span class="n">POT_HEADER</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">FIRST_AUTHOR</span><span class="o">=</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;FIRST_AUTHOR&quot;</span><span class="p">],</span>
+            <span class="n">FIRST_AUTHOR_EMAIL</span><span class="o">=</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;FIRST_AUTHOR_EMAIL&quot;</span><span class="p">],</span>
+            <span class="n">COPY_CURRENT_YEAR</span><span class="o">=</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;COPY_CURRENT_YEAR&quot;</span><span class="p">],</span>
+            <span class="n">COPY_INITIAL_YEAR</span><span class="o">=</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;COPY_INITIAL_YEAR&quot;</span><span class="p">],</span>
+            <span class="n">PACKAGE</span><span class="o">=</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;PACKAGE&quot;</span><span class="p">],</span>
+            <span class="n">VERSION</span><span class="o">=</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;VERSION&quot;</span><span class="p">],</span>
+            <span class="n">SCRIPT_VERSION</span><span class="o">=</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;SCRIPT_VERSION&quot;</span><span class="p">],</span>
+            <span class="n">TIMESTAMP</span><span class="o">=</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;TIMESTAMP&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pot_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pot_file</span><span class="p">:</span>
+            <span class="n">raw_data_no_header</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">raw_data</span><span class="p">[</span><span class="n">raw_data</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):])</span>
+            <span class="n">pot_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">new_header</span> <span class="o">+</span> <span class="n">raw_data_no_header</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">detail</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">detail</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="s2">&quot;Failed to set custom header.&quot;</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;POT header customization complete.&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scan_xlet"><a class="viewcode-back" href="../../modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils.scan_xlet">[docs]</a><span class="k">def</span> <span class="nf">scan_xlet</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">app_logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Scan xlet.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    exceptions.MissingCommand</span>
+<span class="sd">        See &lt;class :any:`exceptions.MissingCommand`&gt;.</span>
+<span class="sd">    SystemExit</span>
+<span class="sd">        Quit program.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    args : list</span>
+<span class="sd">        The list of arguments passed by the CLI application.</span>
+<span class="sd">    app_logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">logger</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">app_logger</span>
+    <span class="n">keywords</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--keyword&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--keyword&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="p">[</span><span class="s2">&quot;_&quot;</span><span class="p">]</span>
+    <span class="n">ignored_patterns</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--ignored-pattern&quot;</span><span class="p">]</span>
+    <span class="n">additional_files</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--scan-additional-file&quot;</span><span class="p">]</span>
+    <span class="n">skip_keys</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--skip-key&quot;</span><span class="p">]</span>
+    <span class="n">xlet_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;--xlet-dir&quot;</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> does not exist.&quot;</span> <span class="o">%</span> <span class="n">xlet_dir</span><span class="p">)</span>
+
+    <span class="n">uuid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Xlet: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--install&quot;</span><span class="p">]:</span>
+        <span class="n">_do_install</span><span class="p">(</span><span class="n">uuid</span><span class="p">,</span> <span class="n">xlet_dir</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--remove&quot;</span><span class="p">]:</span>
+        <span class="n">_do_remove</span><span class="p">(</span><span class="n">uuid</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--output&quot;</span><span class="p">]:</span>
+        <span class="n">pot_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;--output&quot;</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pot_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">,</span> <span class="s2">&quot;po&quot;</span><span class="p">,</span> <span class="n">uuid</span> <span class="o">+</span> <span class="s2">&quot;.pot&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Remove an existent POT file. This is to force `xgettext` to always create a new POT file.</span>
+    <span class="c1"># `xgettext` doesn&#39;t remove obsolete strings from existent POT files and it doesn&#39;t update</span>
+    <span class="c1"># the line reference from a msgid whose source code has been moved.</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pot_path</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">pot_path</span><span class="p">)</span>
+
+    <span class="n">pwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--skip-js&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--skip-python&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;xgettext&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingCommand</span><span class="p">(</span>
+                <span class="s2">&quot;xgettext command not found, you may need to install the gettext package.&quot;</span><span class="p">)</span>
+
+        <span class="n">xgettext_command</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;xgettext&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;--keyword=&quot;</span> <span class="o">+</span> <span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">keywords</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
+            <span class="s2">&quot;--no-wrap&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--sort-by-file&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--add-comments&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--from-code=UTF-8&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--output=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">pot_path</span>
+        <span class="p">]</span>
+
+    <span class="c1"># Create the po directory. Otherwise, the polib module will fail if there isn&#39;t an</span>
+    <span class="c1"># existent POT file when calling its `potfile.save()` method.</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">pot_path</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="mo">0o755</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--skip-js&quot;</span><span class="p">]:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Scanning JavaScript files...&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">js_files</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="n">additional_files</span><span class="p">:</span>
+            <span class="n">js_files</span> <span class="o">+=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">additional_files</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.js&quot;</span><span class="p">)]</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">js_files</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Including the following additional JavaScript file/s...&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">js_files</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">):</span>
+            <span class="n">dirs</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+            <span class="n">rel_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+            <span class="n">js_files</span> <span class="o">+=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rel_root</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.js&quot;</span><span class="p">)]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">js_files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No JavaScript files found.&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ignored_patterns</span><span class="p">:</span>
+                <span class="n">ignored_js_files</span> <span class="o">=</span> <span class="n">ignore_patterns</span><span class="p">(</span><span class="o">*</span><span class="n">ignored_patterns</span><span class="p">)(</span><span class="kc">None</span><span class="p">,</span> <span class="n">js_files</span><span class="p">)</span>
+                <span class="n">js_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">js_files</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignored_js_files</span><span class="p">]</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Found </span><span class="si">%i</span><span class="s2"> JavaScript file(s)&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">js_files</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">run</span><span class="p">(</span><span class="n">xgettext_command</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;--language=JavaScript&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">js_files</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--skip-python&quot;</span><span class="p">]:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Scanning Python files...&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">py_files</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="n">additional_files</span><span class="p">:</span>
+            <span class="n">py_files</span> <span class="o">+=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">additional_files</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.py&quot;</span><span class="p">)]</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">py_files</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Including the following additional Python file/s...&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">py_files</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">):</span>
+            <span class="n">dirs</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+            <span class="n">rel_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+            <span class="n">py_files</span> <span class="o">+=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rel_root</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.py&quot;</span><span class="p">)]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">py_files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No Python files found.&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ignored_patterns</span><span class="p">:</span>
+                <span class="n">ignored_py_files</span> <span class="o">=</span> <span class="n">ignore_patterns</span><span class="p">(</span><span class="o">*</span><span class="n">ignored_patterns</span><span class="p">)(</span><span class="kc">None</span><span class="p">,</span> <span class="n">py_files</span><span class="p">)</span>
+                <span class="n">py_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">py_files</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignored_py_files</span><span class="p">]</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Found </span><span class="si">%i</span><span class="s2"> Python file(s)&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">py_files</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+            <span class="c1"># Adding the --join-existing argument when there isn&#39;t a generated .pot file will</span>
+            <span class="c1"># not save the strings extracted from Python files.</span>
+            <span class="c1"># A .pot file might not be created if there isn&#39;t any translatable</span>
+            <span class="c1"># string found inside the JavaScript files or if the --skip-js argument is used.</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pot_path</span><span class="p">):</span>
+                <span class="n">xgettext_command</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--join-existing&quot;</span><span class="p">)</span>
+
+            <span class="n">run</span><span class="p">(</span><span class="n">xgettext_command</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;--language=Python&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">py_files</span><span class="p">))</span>
+
+    <span class="n">pot_settings_data</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">pot_options_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">,</span> <span class="s2">&quot;po&quot;</span><span class="p">,</span> <span class="n">uuid</span> <span class="o">+</span> <span class="s2">&quot;.json&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pot_options_path</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pot_options_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pot_settings_file</span><span class="p">:</span>
+                <span class="n">raw_data</span> <span class="o">=</span> <span class="n">pot_settings_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                <span class="n">pot_settings_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="n">ignored_keys</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">if</span> <span class="n">skip_keys</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ignored_keys</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">skip_keys</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">ignored_keys</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">if</span> <span class="n">pot_settings_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="s2">&quot;SKIP_KEYS&quot;</span> <span class="ow">in</span> <span class="n">pot_settings_data</span><span class="p">:</span>
+        <span class="n">ignored_keys</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">pot_settings_data</span><span class="p">[</span><span class="s2">&quot;SKIP_KEYS&quot;</span><span class="p">])</span>
+
+    <span class="n">ignored_keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ignored_keys</span><span class="p">))</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Scanning metadata.json and settings-schema.json files...&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">_scan_json</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">,</span> <span class="n">pot_path</span><span class="p">,</span> <span class="n">ignored_keys</span><span class="p">)</span>
+
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">pwd</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Extraction complete.&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--custom-header&quot;</span><span class="p">]:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Customizing POT header...&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">_insert_custom_header</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">,</span> <span class="n">pot_path</span><span class="p">,</span> <span class="n">pot_settings_data</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">()</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

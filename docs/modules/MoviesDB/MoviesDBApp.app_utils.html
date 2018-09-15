@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MoviesDBApp.app_utils module &mdash; CLI Applications Manager  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="MoviesDBApp.cli module" href="MoviesDBApp.cli.html" />
+    <link rel="prev" title="MoviesDBApp.MoviesDB_webapp module" href="MoviesDBApp.MoviesDB_webapp.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CLI Applications Manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">MoviesDBApp</a> &raquo;</li>
+        
+          <li><a href="MoviesDBApp.html">MoviesDBApp package</a> &raquo;</li>
+        
+      <li>MoviesDBApp.app_utils module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/modules/MoviesDB/MoviesDBApp.app_utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="MoviesDBApp.cli.html" class="btn btn-neutral float-right" title="MoviesDBApp.cli module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="MoviesDBApp.MoviesDB_webapp.html" class="btn btn-neutral" title="MoviesDBApp.MoviesDB_webapp module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-MoviesDBApp.app_utils">
+<span id="moviesdbapp-app-utils-module"></span><h1>MoviesDBApp.app_utils module<a class="headerlink" href="#module-MoviesDBApp.app_utils" title="Permalink to this headline">¶</a></h1>
+<p>Summary</p>
+<dl class="attribute">
+<dt id="MoviesDBApp.app_utils.EXT">
+<code class="descclassname">MoviesDBApp.app_utils.</code><code class="descname">EXT</code><a class="headerlink" href="#MoviesDBApp.app_utils.EXT" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>tuple</em> – A list of video files extensions.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="MoviesDBApp.app_utils.movie_not_found">
+<code class="descclassname">MoviesDBApp.app_utils.</code><code class="descname">movie_not_found</code><a class="headerlink" href="#MoviesDBApp.app_utils.movie_not_found" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – Description</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="MoviesDBApp.app_utils.movies">
+<code class="descclassname">MoviesDBApp.app_utils.</code><code class="descname">movies</code><a class="headerlink" href="#MoviesDBApp.app_utils.movies" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – Description</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="MoviesDBApp.app_utils.not_a_movie">
+<code class="descclassname">MoviesDBApp.app_utils.</code><code class="descname">not_a_movie</code><a class="headerlink" href="#MoviesDBApp.app_utils.not_a_movie" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – Description</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="MoviesDBApp.app_utils.OMDB_URL">
+<code class="descclassname">MoviesDBApp.app_utils.</code><code class="descname">OMDB_URL</code><a class="headerlink" href="#MoviesDBApp.app_utils.OMDB_URL" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Description</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="MoviesDBApp.app_utils.root_folder">
+<code class="descclassname">MoviesDBApp.app_utils.</code><code class="descname">root_folder</code><a class="headerlink" href="#MoviesDBApp.app_utils.root_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The main folder containing the Knowledge Base. All commands must be executed
+from this location without exceptions.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="MoviesDBApp.app_utils.scan_directories">
+<code class="descclassname">MoviesDBApp.app_utils.</code><code class="descname">scan_directories</code><span class="sig-paren">(</span><em>movies_paths</em>, <em>debug</em>, <em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/MoviesDBApp/app_utils.html#scan_directories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#MoviesDBApp.app_utils.scan_directories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scan directories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>movies_paths</strong> (<em>TYPE</em>) – Description</p></li>
+<li><p><strong>debug</strong> (<em>TYPE</em>) – Description</p></li>
+<li><p><strong>logger</strong> (<em>TYPE</em>) – Description</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="MoviesDBApp.app_utils.generate_movies_base_data_from_file_names">
+<code class="descclassname">MoviesDBApp.app_utils.</code><code class="descname">generate_movies_base_data_from_file_names</code><span class="sig-paren">(</span><em>debug</em>, <em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/MoviesDBApp/app_utils.html#generate_movies_base_data_from_file_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#MoviesDBApp.app_utils.generate_movies_base_data_from_file_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Summary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>debug</strong> (<em>TYPE</em>) – Description</p></li>
+<li><p><strong>logger</strong> (<em>TYPE</em>) – Description</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/exceptions.html#RuntimeError" title="(in Python v3.5)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">RuntimeError</span></code></a> – Description</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="MoviesDBApp.app_utils.get_movie_info">
+<code class="descclassname">MoviesDBApp.app_utils.</code><code class="descname">get_movie_info</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/MoviesDBApp/app_utils.html#get_movie_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#MoviesDBApp.app_utils.get_movie_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find movie information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>TYPE</em>) – Description</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Description</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="MoviesDBApp.app_utils.omdb">
+<code class="descclassname">MoviesDBApp.app_utils.</code><code class="descname">omdb</code><span class="sig-paren">(</span><em>title</em>, <em>year</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/MoviesDBApp/app_utils.html#omdb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#MoviesDBApp.app_utils.omdb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch data from OMDB API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>TYPE</em>) – Description</p></li>
+<li><p><strong>year</strong> (<em>TYPE</em>) – Description</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Description</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="MoviesDBApp.cli.html" class="btn btn-neutral float-right" title="MoviesDBApp.cli module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="MoviesDBApp.MoviesDB_webapp.html" class="btn btn-neutral" title="MoviesDBApp.MoviesDB_webapp module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

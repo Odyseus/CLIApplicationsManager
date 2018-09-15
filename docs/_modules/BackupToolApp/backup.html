@@ -1,0 +1,656 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BackupToolApp.backup &mdash; CLI Applications Manager  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CLI Applications Manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>BackupToolApp.backup</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for BackupToolApp.backup</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Main backup job classes.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">Popen</span><span class="p">,</span> <span class="n">PIPE</span><span class="p">,</span> <span class="n">STDOUT</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="k">import</span> <span class="n">Thread</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">app_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">file_utils</span><span class="p">,</span> <span class="n">misc_utils</span><span class="p">,</span> <span class="n">shell_utils</span>
+
+
+<div class="viewcode-block" id="BackupJobs"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.BackupJobs">[docs]</a><span class="k">class</span> <span class="nc">BackupJobs</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Backup jobs &quot;processor&quot; class.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    jobs : list</span>
+<span class="sd">        Initialized backup jobs storage.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backup_jobs</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        backup_jobs : list</span>
+<span class="sd">            The list of &quot;backup jobs&quot; to perform.</span>
+<span class="sd">        logger : object</span>
+<span class="sd">            See &lt;class :any:`LogSystem`&gt;.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        err</span>
+<span class="sd">            Could raise if the passed backup jobs are malformed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">BackupJobs</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">global_settings</span> <span class="o">=</span> <span class="n">backup_jobs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;global_settings&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">job_settings</span> <span class="ow">in</span> <span class="n">backup_jobs</span><span class="p">[</span><span class="s2">&quot;jobs&quot;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Backup</span><span class="p">(</span>
+                    <span class="n">job_settings</span><span class="o">=</span><span class="n">job_settings</span><span class="p">,</span>
+                    <span class="n">global_settings</span><span class="o">=</span><span class="n">global_settings</span><span class="p">,</span>
+                    <span class="n">logger</span><span class="o">=</span><span class="n">logger</span>
+                <span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">err</span>
+
+<div class="viewcode-block" id="BackupJobs.threaded_job"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.BackupJobs.threaded_job">[docs]</a>    <span class="k">def</span> <span class="nf">threaded_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Threaded job.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        job : dict</span>
+<span class="sd">            Initialized job to start a thread.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        threading.Thread</span>
+<span class="sd">            Return the thread to be joined.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">job</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">thread</span></div>
+
+<div class="viewcode-block" id="BackupJobs.run"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.BackupJobs.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Run.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span><span class="p">:</span>
+            <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">threaded_job</span><span class="p">(</span><span class="n">job</span><span class="p">))</span>
+
+            <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">thread</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="Backup"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup">[docs]</a><span class="k">class</span> <span class="nc">Backup</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Main backup job class.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    backup_elapsed_time : str</span>
+<span class="sd">        Backup job duration.</span>
+<span class="sd">    backup_end_time : str</span>
+<span class="sd">        The time at which the backup job ended.</span>
+<span class="sd">    backup_errors : int</span>
+<span class="sd">        Number of errors produced during a backup job.</span>
+<span class="sd">    backup_items : list</span>
+<span class="sd">        The list of backup items (Not validated).</span>
+<span class="sd">    backup_list : list</span>
+<span class="sd">        The list of backup items (Validated).</span>
+<span class="sd">    backup_name : str</span>
+<span class="sd">        An optional name for the backup job to be displayed on lg messages, etc.</span>
+<span class="sd">    backup_start_time : str</span>
+<span class="sd">        The time at which the backup job started.</span>
+<span class="sd">    backup_type : str</span>
+<span class="sd">        The type of backup to perform.</span>
+<span class="sd">    desktop_notification : bool</span>
+<span class="sd">        Whether or not to perform a desktop notification when a backup job ends.</span>
+<span class="sd">    destination : str</span>
+<span class="sd">        The destination file/folder for the backed up items.</span>
+<span class="sd">    ignore_symlinks : bool</span>
+<span class="sd">        Wheter the backup job will ignore to back up symlinks.</span>
+<span class="sd">    ignored_patterns : list</span>
+<span class="sd">        A list of file name patterns to be ignored by the copy functions.</span>
+<span class="sd">    items_root_folder : str</span>
+<span class="sd">        An optional path to a folder that will be used to &quot;generate&quot; the full path of the items</span>
+<span class="sd">        that will be backed up.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    mail_notification : bool</span>
+<span class="sd">        Whether or not to send an email notification when a backup job ends.</span>
+<span class="sd">    mail_settings : dict</span>
+<span class="sd">        The settings that will be used by the :any:`mail_system.MailSystem`.</span>
+<span class="sd">    sound_notification : bool</span>
+<span class="sd">        Whether or not to perform a sound notification when a backup job ends.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_settings</span><span class="o">=</span><span class="p">{},</span> <span class="n">global_settings</span><span class="o">=</span><span class="p">{},</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        job_settings : dict, optional</span>
+<span class="sd">            The actual backup job to be processed.</span>
+<span class="sd">        global_settings : dict, optional</span>
+<span class="sd">            Global settings to attach to the backup job.</span>
+<span class="sd">        logger : object</span>
+<span class="sd">            See &lt;class :any:`LogSystem`&gt;.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        RuntimeError</span>
+<span class="sd">            Could raise if &quot;backup_type&quot; option is not present among the backup job settings.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backup_elapsed_time</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backup_start_time</span> <span class="o">=</span> <span class="n">misc_utils</span><span class="o">.</span><span class="n">get_date_time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backup_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backup_errors</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">backup_items</span> <span class="o">=</span> <span class="n">job_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backup_type</span> <span class="o">=</span> <span class="n">job_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;backup_type&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backup_name</span> <span class="o">=</span> <span class="n">job_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;backup_name&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">backup_type</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sound_notification</span> <span class="o">=</span> <span class="n">global_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sound_notification&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">desktop_notification</span> <span class="o">=</span> <span class="n">global_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;desktop_notification&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mail_notification</span> <span class="o">=</span> <span class="n">global_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mail_notification&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ignore_symlinks</span> <span class="o">=</span> <span class="n">global_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ignore_symlinks&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mail_notification</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mail_settings</span> <span class="o">=</span> <span class="n">global_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mail_settings&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="n">job_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ignore_symlinks&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ignore_symlinks</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">items_root_folder</span> <span class="o">=</span> <span class="n">job_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items_root_folder&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">prefix</span> <span class="o">=</span> <span class="n">job_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;destination_prefix&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">prefix</span> <span class="o">+=</span> <span class="s2">&quot;-&quot;</span>
+
+        <span class="n">date_for_filename</span> <span class="o">=</span> <span class="n">misc_utils</span><span class="o">.</span><span class="n">micro_to_milli</span><span class="p">(</span><span class="n">misc_utils</span><span class="o">.</span><span class="n">get_date_time</span><span class="p">(</span><span class="s2">&quot;filename&quot;</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">backup_type</span> <span class="ow">is</span> <span class="s2">&quot;stacked&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">destination</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">job_settings</span><span class="p">[</span><span class="s2">&quot;destination&quot;</span><span class="p">],</span>
+                                            <span class="n">prefix</span> <span class="o">+</span> <span class="n">date_for_filename</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">backup_type</span> <span class="ow">is</span> <span class="s2">&quot;incremental&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">destination</span> <span class="o">=</span> <span class="n">job_settings</span><span class="p">[</span><span class="s2">&quot;destination&quot;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">backup_type</span> <span class="ow">is</span> <span class="s2">&quot;compressed&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">destination</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">job_settings</span><span class="p">[</span><span class="s2">&quot;destination&quot;</span><span class="p">],</span>
+                                            <span class="n">prefix</span> <span class="o">+</span> <span class="n">date_for_filename</span> <span class="o">+</span> <span class="s2">&quot;.tar.xz&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s2">&quot;Non optional setting &lt;backup_type&gt; missing or with wrong value. Value found: &lt;</span><span class="si">%s</span><span class="s2">&gt;&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">backup_type</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">None</span>
+
+        <span class="c1"># Work with sets at first to avoid repeated items.</span>
+        <span class="n">globally_ignored_patterns</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">global_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ignored_patterns&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+        <span class="n">job_ignored_patterns</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">global_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ignored_patterns&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+
+        <span class="c1"># There shouldn&#39;t be a need to convert it back into a list, but lets do it</span>
+        <span class="c1"># to avoid surprises. Furthermore, the &quot;ignore_patterns&quot; function of the</span>
+        <span class="c1"># &quot;shutil&quot; module expects a list.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ignored_patterns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">globally_ignored_patterns</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">job_ignored_patterns</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Backup.validate_list"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.validate_list">[docs]</a>    <span class="k">def</span> <span class="nf">validate_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Validate the list of items to be backed up.</span>
+
+<span class="sd">        - If it&#39;s empty, get out.</span>
+<span class="sd">        - If an item exists and is not a symlink, keep it on the list. Otherwise, ignore it.</span>
+<span class="sd">        - Display the list of ignored items all at once at the end of the validation process.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">backup_items</span><span class="p">:</span>
+            <span class="c1"># Using the logger and sys.exit() because the freaking exceptions.CustomRuntimeError</span>
+            <span class="c1"># class doesn&#39;t work in here!!! (/&amp;···/&amp;·/&amp;$$/!!!)</span>
+            <span class="c1"># It works as expected in cli.py:main, WHY THE HELL DOESN&#39;T WORK HERE?!?!?!?!!</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Empty backup_items list! Can&#39;t proceed! Leaving...&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">ignored_items</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">backup_items</span><span class="p">:</span>
+            <span class="n">item_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items_root_folder</span><span class="p">,</span>
+                             <span class="n">item</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">items_root_folder</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">item</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">item_path</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">item_path</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">backup_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item_path</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">increment_backup_errors_count</span><span class="p">()</span>
+                <span class="c1"># Just store the ignored items.</span>
+                <span class="n">ignored_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item_path</span><span class="p">)</span>
+
+        <span class="c1"># If there are ignored items, log them all at once.</span>
+        <span class="k">if</span> <span class="n">ignored_items</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;Invalid items. They weren&#39;t added to the backup list:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ignored_items</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Backup.threaded_item"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.threaded_item">[docs]</a>    <span class="k">def</span> <span class="nf">threaded_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">is_dir</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;&quot;Thread&quot; the :any:`Backup.process_item` usage.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        source : str</span>
+<span class="sd">            Source path.</span>
+<span class="sd">        destination : str</span>
+<span class="sd">            Destination path.</span>
+<span class="sd">        is_dir : bool</span>
+<span class="sd">            Whether the item is a directory or not.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        threading.Thread</span>
+<span class="sd">            A &quot;thread&quot; to be joined.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">process_item</span><span class="p">,</span>
+                        <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">is_dir</span><span class="p">))</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">thread</span></div>
+
+<div class="viewcode-block" id="Backup.process_item"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.process_item">[docs]</a>    <span class="k">def</span> <span class="nf">process_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">is_dir</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process individual items on the backup items list.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        source : str</span>
+<span class="sd">            Source path.</span>
+<span class="sd">        destination : str</span>
+<span class="sd">            Destination path.</span>
+<span class="sd">        is_dir : bool</span>
+<span class="sd">            Whether the item is a directory or not.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">is_dir</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># custom_copytree can handle non existent destination folders.</span>
+                <span class="n">file_utils</span><span class="o">.</span><span class="n">custom_copytree</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">symlinks</span><span class="o">=</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">ignore_symlinks</span><span class="p">,</span>
+                                           <span class="n">ignored_patterns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ignored_patterns</span><span class="p">,</span>
+                                           <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">increment_backup_errors_count</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Error processing directory &lt;</span><span class="si">%s</span><span class="s2">&gt;: &lt;</span><span class="si">%s</span><span class="s2">&gt;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># copy2 can&#39;t candle non existent destination folders, so create it</span>
+                <span class="c1"># before attempting the file copy operation.</span>
+                <span class="n">container_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">container_folder</span><span class="p">):</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">container_folder</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+                <span class="n">file_utils</span><span class="o">.</span><span class="n">custom_copy2</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">increment_backup_errors_count</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Error processing file &lt;</span><span class="si">%s</span><span class="s2">&gt;: &lt;</span><span class="si">%s</span><span class="s2">&gt;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Backup.process_list"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.process_list">[docs]</a>    <span class="k">def</span> <span class="nf">process_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process the list of items depending on the backup job type.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">default_dest</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">backup_type</span> <span class="ow">is</span> <span class="s2">&quot;stacked&quot;</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">backup_type</span> <span class="ow">is</span> <span class="s2">&quot;incremental&quot;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">backup_list</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">source</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">items_root_folder</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">destination</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                            <span class="n">default_dest</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">items_root_folder</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">destination</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">default_dest</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Processing directory: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">item</span><span class="p">)</span>
+                        <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">threaded_item</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">is_dir</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Processing file: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">item</span><span class="p">)</span>
+                        <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">threaded_item</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">is_dir</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+                    <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">thread</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">increment_backup_errors_count</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                        <span class="s2">&quot;Failed to process item &lt;</span><span class="si">%s</span><span class="s2">&gt; in &lt;backup_list&gt;: %a&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+                    <span class="k">continue</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">notify</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">backup_type</span> <span class="ow">is</span> <span class="s2">&quot;compressed&quot;</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">do_compression</span><span class="p">)</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+            <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">thread</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Backup.do_compression"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.do_compression">[docs]</a>    <span class="k">def</span> <span class="nf">do_compression</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Do the compressed backup job.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">tempfile</span>
+
+        <span class="n">files_list</span> <span class="o">=</span> <span class="n">app_utils</span><span class="o">.</span><span class="n">FilesListForTar</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">backup_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ignored_patterns</span><span class="p">)</span><span class="o">.</span><span class="n">get_full_list_of_files</span><span class="p">()</span>
+        <span class="n">full_list_of_files</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">files_list</span><span class="p">)</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">,</span> <span class="s2">&quot;XZ_OPT&quot;</span><span class="p">:</span> <span class="s2">&quot;-7&quot;</span><span class="p">}</span>
+        <span class="n">destination_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">destination_dir</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">destination_dir</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;compressed-backup-files-list-&quot;</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">tmp_file</span><span class="p">:</span>
+            <span class="n">tmp_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">full_list_of_files</span><span class="p">))</span>
+            <span class="n">tmp_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+            <span class="n">p</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">([</span>
+                <span class="s2">&quot;tar&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;--keep-directory-symlink&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;--create&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;--preserve-permissions&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;--xz&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;--file&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="p">,</span>
+                <span class="s2">&quot;--files-from=&quot;</span> <span class="o">+</span> <span class="n">tmp_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s2">&quot;--totals&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;--record-size=1M&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;--checkpoint=50&quot;</span><span class="p">,</span>
+                <span class="s1">&#39;--checkpoint-action=echo=&quot;%T&quot;&#39;</span>
+            <span class="p">],</span>
+                <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span>
+                <span class="n">stderr</span><span class="o">=</span><span class="n">STDOUT</span><span class="p">,</span>
+                <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">)</span>
+
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="c1"># Without decoding output, the loop will run forever. ¬¬</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">output</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="ow">and</span> <span class="n">p</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">break</span>
+
+                <span class="k">if</span> <span class="n">output</span><span class="p">:</span>
+                    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+                    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notify</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Backup.notify"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.notify">[docs]</a>    <span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Notify that the backup job ended.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backup_end_time</span> <span class="o">=</span> <span class="n">misc_utils</span><span class="o">.</span><span class="n">get_date_time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backup_elapsed_time</span> <span class="o">=</span> <span class="n">misc_utils</span><span class="o">.</span><span class="n">get_time_diff</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">backup_start_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">backup_end_time</span><span class="p">)</span>
+
+        <span class="n">n_errors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_backup_errors_count</span><span class="p">()</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">app_utils</span><span class="o">.</span><span class="n">REPORT_TEMPLATE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">backup_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">backup_name</span><span class="p">,</span>
+            <span class="n">backup_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">backup_type</span><span class="p">,</span>
+            <span class="n">n_errors</span><span class="o">=</span><span class="n">n_errors</span><span class="p">,</span>
+            <span class="n">started</span><span class="o">=</span><span class="n">misc_utils</span><span class="o">.</span><span class="n">micro_to_milli</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">backup_start_time</span><span class="p">),</span>
+            <span class="n">finished</span><span class="o">=</span><span class="n">misc_utils</span><span class="o">.</span><span class="n">micro_to_milli</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">backup_end_time</span><span class="p">),</span>
+            <span class="n">elapsed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">backup_elapsed_time</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># TODO: Investigate if this is recommended.</span>
+        <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s2">&quot;warning&quot;</span> <span class="k">if</span> <span class="n">n_errors</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;success&quot;</span><span class="p">)(</span><span class="n">message</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sound_notification</span><span class="p">:</span>
+            <span class="n">app_utils</span><span class="o">.</span><span class="n">play_sound</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;sounds&quot;</span><span class="p">,</span> <span class="s2">&quot;ding.wav&quot;</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">desktop_notification</span><span class="p">:</span>
+            <span class="n">app_utils</span><span class="o">.</span><span class="n">notify_send</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">backup_name</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mail_notification</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">mail_system</span>
+
+            <span class="n">mail</span> <span class="o">=</span> <span class="n">mail_system</span><span class="o">.</span><span class="n">MailSystem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mail_settings</span><span class="p">)</span>
+            <span class="n">subject</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mail_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mail_subject&quot;</span><span class="p">,</span> <span class="s2">&quot;Backup Tool Report&quot;</span><span class="p">)</span>
+
+            <span class="n">mail_body</span> <span class="o">=</span> <span class="n">message</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">mail_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mail_body&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+            <span class="n">mail</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">mail_body</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Backup.increment_backup_errors_count"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.increment_backup_errors_count">[docs]</a>    <span class="k">def</span> <span class="nf">increment_backup_errors_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set backup errors.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backup_errors</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="Backup.get_backup_errors_count"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.get_backup_errors_count">[docs]</a>    <span class="k">def</span> <span class="nf">get_backup_errors_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get backup errors.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        int</span>
+<span class="sd">            The number of errors produced during the backup job.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">backup_errors</span></div>
+
+<div class="viewcode-block" id="Backup.run"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Start the backup job.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Starting &lt;</span><span class="si">%s</span><span class="s2">&gt; backup job...&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">backup_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">validate_list</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">process_list</span><span class="p">()</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
