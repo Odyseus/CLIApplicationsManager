@@ -1,0 +1,7 @@
+KnowledgeBaseApp.repositories\_handler module
+=============================================
+
+.. automodule:: KnowledgeBaseApp.repositories_handler
+    :members:
+    :undoc-members:
+    :show-inheritance:

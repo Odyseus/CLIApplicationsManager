@@ -1,0 +1,33 @@
+[submodule "AppData/python_modules/python_utils"]
+    path = AppData/python_modules/python_utils
+    url = git@gitlab.com:Odyseus/python_utils.git
+[submodule "AppData/docs_sources/sphinx_extensions"]
+    path = AppData/docs_sources/sphinx_extensions
+    url = git@gitlab.com:Odyseus/sphinx_extensions.git
+[submodule "AppData/docs_sources/sphinx_rtd_theme_mod"]
+    path = AppData/docs_sources/sphinx_rtd_theme_mod
+    url = git@gitlab.com:Odyseus/sphinx_rtd_theme_mod.git
+[submodule "UserData/BackupTool"]
+    path = UserData/BackupTool
+    url = git@gitlab.com:PythonCLIApplications/BackupTool.git
+[submodule "UserData/ChrootHelper"]
+    path = UserData/ChrootHelper
+    url = git@gitlab.com:PythonCLIApplications/ChrootHelper
+[submodule "UserData/FilesCleaner"]
+    path = UserData/FilesCleaner
+    url = git@gitlab.com:PythonCLIApplications/FilesCleaner
+[submodule "UserData/HostsManager"]
+    path = UserData/HostsManager
+    url = git@gitlab.com:PythonCLIApplications/HostsManager
+[submodule "UserData/KnowledgeBase"]
+    path = UserData/KnowledgeBase
+    url = git@gitlab.com:PythonCLIApplications/KnowledgeBase
+[submodule "UserData/MakeCinnamonXletPOT"]
+    path = UserData/MakeCinnamonXletPOT
+    url = git@gitlab.com:PythonCLIApplications/MakeCinnamonXletPOT
+[submodule "UserData/MoviesDB"]
+    path = UserData/MoviesDB
+    url = git@gitlab.com:PythonCLIApplications/MoviesDB
+[submodule "UserData/PackageManager"]
+    path = UserData/PackageManager
+    url = git@gitlab.com:PythonCLIApplications/PackageManager

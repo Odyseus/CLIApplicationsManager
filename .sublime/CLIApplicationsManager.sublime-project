@@ -1,0 +1,28 @@
+{
+    "folders": [{
+        "file_exclude_patterns": [
+            "*.inv",
+            "*.png",
+            "*.po",
+            "*.pot",
+            "*.svg",
+            ".python-cli-applications.flag",
+            "LICENSE.md"
+        ],
+        "folder_exclude_patterns": [
+            "*/icons",
+            "__app__/docs_sources/_static",
+            "__app__/docs_sources/coverage",
+            "__app__/docs_sources/images",
+            "__app__/docs_sources/modules",
+            "__app__/docs_sources/sphinx_rtd_theme_mod",
+            "__app__/docs_sources/sphinx_extensions",
+            "docs",
+            "__pycache__"
+        ],
+        "index_exclude_patterns": [
+            "UserData/**/UserData"
+        ],
+        "path": ".."
+    }]
+}
