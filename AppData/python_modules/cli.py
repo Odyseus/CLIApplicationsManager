@@ -213,7 +213,7 @@ class CommandLineTool():
         from .python_utils import template_utils
 
         template_utils.system_executable_generation(
-            exec_name="app-manager-cli",
+            exec_name="apps-manager-cli",
             app_root_folder=root_folder,
             sys_exec_template_path=os.path.join(
                 root_folder, "AppData", "data", "templates", "system_executable"),
