@@ -15,7 +15,7 @@ import os
 import sys
 
 from . import app_utils
-from .__init__ import __appname__, __version__, __status__
+from .__init__ import __appname__, __appdescription__, __version__, __status__
 from .python_utils import exceptions, shell_utils, file_utils, log_system
 from .python_utils.docopt import docopt
 
@@ -29,6 +29,8 @@ root_folder = os.path.realpath(os.path.abspath(os.path.join(
 
 
 docopt_doc = """{__appname__} {__version__} {__status__}
+
+{__appdescription__}
 
 Usage:
     app.py gen_base_app
@@ -91,6 +93,7 @@ Sub-commands for the `repo` command:
     subtrees             Manage repository's sub-trees.
 
 """.format(__appname__=__appname__,
+           __appdescription__=__appdescription__,
            __version__=__version__,
            __status__=__status__)
 
