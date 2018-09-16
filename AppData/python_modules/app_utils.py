@@ -73,14 +73,14 @@ def system_executable_generation_for_all_apps(logger):
     from .python_utils import template_utils
 
     print(Ansi.WARNING("""
-1. System executables will be created and bash completions will be installed
-   for all Python applications, including the master application.
+1. System executables will be created and bash completions will be installed \
+for all Python applications, including the master application.
 2. The executable names are pre-defined.
 3. Any existent files will be overwritten without exceptions.
-4. There will be no attempt to set up a Bash completions loading mechanism.
-   It will have to be done manually.
-5. There will be no prompts of any king, except to ask once the location where
-   the executables will be stored.
+4. There will be no attempt to set up a Bash completions loading mechanism. \
+It will have to be done manually.
+5. There will be no prompts of any king, except to ask once for the location \
+where the executables will be stored.
 """))
 
     if prompts.confirm(prompt="Proceed?", response=False):
@@ -90,12 +90,15 @@ def system_executable_generation_for_all_apps(logger):
             "sys_exec_path": os.path.join(user_home, ".local", "bin")
         }
 
-        print(Ansi.PURPLE("Set full path to store all generated executable files or press Enter to use default"))
-        prompts.do_prompt(d, "sys_exec_path", "Enter absolute path", d["sys_exec_path"])
+        print(Ansi.PURPLE("Set path to store all generated executable files or press Enter to use default"))
+        prompts.do_prompt(d, "sys_exec_path", "Enter path", d["sys_exec_path"])
+
+        d["sys_exec_path"] = os.path.expanduser(d["sys_exec_path"])
+        d["sys_exec_path"] = os.path.expandvars(d["sys_exec_path"])
 
         # Define arguments for "master app".
         apps_args = [{
-            "exec_name": "dev-python-apps-cli",
+            "exec_name": "apps-manager-cli",
             "app_root_folder": root_folder,
             "sys_exec_template_path": os.path.join(
                 root_folder, "AppData", "data", "templates", "system_executable"),
@@ -113,7 +116,7 @@ def system_executable_generation_for_all_apps(logger):
                 "sys_exec_template_path": os.path.join(
                     app_root_folder, "AppData", "data", "templates", "system_executable"),
                 "bash_completions_template_path": os.path.join(
-                    app_root_folder, "AppData", "data", "templates", app["slug"])
+                    app_root_folder, "AppData", "data", "templates", "bash_completions.bash")
             })
 
         # Extend with arguments common to all apps.
