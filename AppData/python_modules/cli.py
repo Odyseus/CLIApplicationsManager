@@ -36,6 +36,7 @@ Usage:
     app.py gen_base_app
     app.py gen_sys_exec_self
     app.py gen_sys_exec_all
+    app.py gen_readmes
     app.py bump_app_version [-a <name>... | --app=<name>...]
     app.py install_deps [-a <name>... | --app=<name>...]
     app.py repo (submodules | subtrees) (init | update)
@@ -84,6 +85,10 @@ Command `gen_sys_exec_self`:
 Command `gen_sys_exec_all`:
     Create an executable for all applications on the system PATH to be able
     to run them from anywhere.
+
+Command `gen_readmes`:
+    Generate README files for all applications, including the applications
+    manager.
 
 Command `install_deps`:
     Install the dependencies for all Python applications.
@@ -165,6 +170,10 @@ class CommandLineTool():
             self.logger.info("Installing dependencies...")
             self.action = self.install_dependencies
 
+        if args["gen_readmes"]:
+            self.logger.info("Generating readmes...")
+            self.action = self.generate_readmes
+
         if args["repo"]:
             self.repo_action = "init" if args["init"] else "update" if args["update"] else ""
 
@@ -206,6 +215,11 @@ class CommandLineTool():
         """See :any:`app_utils.install_dependencies`
         """
         app_utils.install_dependencies(app_slugs=self.app_slugs, logger=self.logger)
+
+    def generate_readmes(self):
+        """See :any:`app_utils.generate_readmes`
+        """
+        app_utils.generate_readmes(self.logger)
 
     def system_executable_generation_self(self):
         """See :any:`template_utils.system_executable_generation`

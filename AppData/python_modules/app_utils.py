@@ -446,3 +446,81 @@ def bump_app_version(app_slug, logger):
 
     logger.info("%s's version updated." % app_slug)
     print()
+
+
+apps_manager_readme_template = """
+## {apps_man_name} ([documentation]({docs_url}))
+
+{apps_man_description}
+
+## List of CLI applications
+
+[GitLab]: https://i.imgur.com/Z4XcUKe.png "GitLab"
+[GitHub]: https://i.imgur.com/J015ugC.png "GitHub"
+[BitBucket]: https://i.imgur.com/igK1F8b.png "BitBucket"
+
+| App. name | Status | Description | Repositories | Docs |
+| --------- | :----: | ----------- | :----------: | :--: |
+"""
+
+app_table_row_template = """| **{app_name}** | {app_status} | {app_description} | \
+[![GitLab][GitLab]]({app_repo_url}) \
+[![GitHub][GitHub]](https://github.com/Odyseus/{app_slug}) \
+[![BitBucket][BitBucket]](https://bitbucket.org/Odyseus/{app_slug}) \
+| [Docs]({app_docs_url}) |
+"""
+
+app_readme_template = """
+## {app_name} ([documentation]({app_docs_url}))
+
+{app_description}
+"""
+
+
+def generate_readmes(logger):
+    from runpy import run_path
+
+    from .__init__ import __appname__, __appdescription__
+
+    docs_base_url = "https://pythoncliapplications.gitlab.io/CLIApplicationsManager"
+    repo_base_url = "https://gitlab.com/PythonCLIApplications/{app_slug}"
+    apps_manager_readme_path = os.path.join(root_folder, "README.md")
+    apps_table_data = ""
+    apps_manager_readme_data = apps_manager_readme_template.format(
+        apps_man_name=__appname__,
+        apps_man_description=__appdescription__,
+        docs_url=docs_base_url
+    )
+
+    for app in sorted(get_apps(), key=lambda k: k["slug"]):
+        app_docs_url = docs_base_url + "/includes/%s/index.html" % app["slug"]
+        app_init_file_path = os.path.join(root_folder, "UserData", app["slug"], "AppData",
+                                          "%sApp" % app["slug"], "__init__.py")
+        app_readme_file_path = os.path.join(root_folder, "UserData", app["slug"], "README.md")
+        init_data = run_path(app_init_file_path)
+        apps_table_data += app_table_row_template.format(
+            app_slug=app["slug"],
+            app_name=init_data["__appname__"],
+            app_status=init_data["__status__"][1:-1],
+            app_description=init_data["__appdescription__"],
+            app_repo_url=repo_base_url.format(app_slug=app["slug"]),
+            app_docs_url=app_docs_url
+        )
+
+        logger.info("Generating README for %s" % init_data["__appname__"])
+        with open(app_readme_file_path, "w", encoding="UTF-8") as app_readme_file:
+            app_readme_file.write(app_readme_template.format(
+                app_name=init_data["__appname__"],
+                app_description=init_data["__appdescription__"],
+                app_docs_url=app_docs_url
+            ))
+
+    logger.info("Generating README for %s" % __appname__)
+    with open(apps_manager_readme_path, "w", encoding="UTF-8") as main_readme_file:
+        main_readme_file.write(apps_manager_readme_data + apps_table_data)
+
+    logger.info("READMEs generation finished")
+
+
+if __name__ == "__main__":
+    pass

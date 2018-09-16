@@ -50,7 +50,7 @@ _my_python_apps_{current_date}(){
     # Completion of commands and "first level options.
     if [[ $COMP_CWORD == 1 ]]; then
         COMPREPLY=( $(compgen -W "bump_app_version gen_base_app gen_docs gen_docs_no_api \
-gen_sys_exec_self gen_sys_exec_all install_deps repo \
+gen_sys_exec_self gen_sys_exec_all gen_readmes install_deps repo \
 -h --help --version" -- "${cur}") )
         return 0
     fi
