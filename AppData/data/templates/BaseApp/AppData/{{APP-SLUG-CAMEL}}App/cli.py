@@ -101,7 +101,14 @@ class CommandLineTool():
         from .python_utils import template_utils
 
         template_utils.system_executable_generation(
-            "{{APP-SLUG-LOWER-DASHED}}-cli", root_folder, logger=self.logger)
+            exec_name="{{APP-SLUG-LOWER-DASHED}}-cli",
+            app_root_folder=root_folder,
+            sys_exec_template_path=os.path.join(
+                root_folder, "AppData", "data", "templates", "system_executable"),
+            bash_completions_template_path=os.path.join(
+                root_folder, "AppData", "data", "templates", "bash_completions.bash"),
+            logger=self.logger
+        )
 
 
 def main():
