@@ -59,6 +59,10 @@ gen_sys_exec_self gen_sys_exec_all install_deps repo \
     cmd="${COMP_WORDS[1]}"
 
     case $cmd in
+    "gen_docs"|"gen_docs_no_api")
+        COMPREPLY=( $(compgen -W \
+            "-f --force-clean-build -u --update-inventories" -- "${cur}") )
+        ;;
     "install_deps"|"bump_app_version")
         COMPREPLY=( $(compgen -W "-a --app=" -- "${cur}") )
         _decide_nospace ${COMPREPLY[0]}
