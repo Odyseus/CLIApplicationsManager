@@ -116,15 +116,13 @@ where the executables will be stored.
 
         # Define arguments for the rest of apps.
         for app in get_apps():
-            app_root_folder = os.path.join(root_folder, "UserData", app["slug"])
-
             apps_args.append({
                 "exec_name": "-".join([s.lower() for s in string_utils.split_on_uppercase(app["slug"])]) + "-cli",
-                "app_root_folder": app_root_folder,
+                "app_root_folder": app["path"],
                 "sys_exec_template_path": os.path.join(
-                    app_root_folder, "AppData", "data", "templates", "system_executable"),
+                    app["path"], "AppData", "data", "templates", "system_executable"),
                 "bash_completions_template_path": os.path.join(
-                    app_root_folder, "AppData", "data", "templates", "bash_completions.bash")
+                    app["path"], "AppData", "data", "templates", "bash_completions.bash")
             })
 
         # Extend with arguments common to all apps.
