@@ -1,3 +1,12 @@
+############################
+# Project specific ignores #
+############################
+
+# Ignore all the UserData folders content, except for the README.md files inside them.
+/UserData/*
+!/UserData/README.md
+
+
 ##################
 # Global ignores #
 ##################
