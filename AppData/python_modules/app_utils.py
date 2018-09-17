@@ -20,6 +20,8 @@ from .python_utils.ansi_colors import Ansi
 root_folder = os.path.realpath(os.path.abspath(os.path.join(
     os.path.normpath(os.path.join(os.path.dirname(__file__), *([".."] * 2))))))
 
+app_man_user_data_path = os.path.join(root_folder, "UserData")
+
 
 class InvalidApplicationName(exceptions.ExceptionWhitoutTraceBack):
     """InvalidApplicationName
@@ -432,7 +434,7 @@ def bump_app_version(app_slug, logger):
 
     logger.info("Bumping %s's version..." % app_slug)
     version_number = misc_utils.micro_to_milli(misc_utils.get_date_time())
-    init_file_path = os.path.join(root_folder, "UserData", app_slug, "AppData",
+    init_file_path = os.path.join(app_man_user_data_path, app_slug, "AppData",
                                   "%sApp" % app_slug, "__init__.py")
 
     with open(init_file_path, "r", encoding="UTF-8") as old:
@@ -494,9 +496,9 @@ def generate_readmes(logger):
 
     for app in sorted(get_apps(), key=lambda k: k["slug"]):
         app_docs_url = docs_base_url + "/includes/%s/index.html" % app["slug"]
-        app_init_file_path = os.path.join(root_folder, "UserData", app["slug"], "AppData",
+        app_init_file_path = os.path.join(app_man_user_data_path, app["slug"], "AppData",
                                           "%sApp" % app["slug"], "__init__.py")
-        app_readme_file_path = os.path.join(root_folder, "UserData", app["slug"], "README.md")
+        app_readme_file_path = os.path.join(app_man_user_data_path, app["slug"], "README.md")
         init_data = run_path(app_init_file_path)
         apps_table_data += app_table_row_template.format(
             app_slug=app["slug"],
