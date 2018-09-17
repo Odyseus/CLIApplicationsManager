@@ -11,8 +11,6 @@ root_folder : str
 
 import os
 
-from subprocess import check_call, CalledProcessError
-
 from .python_utils import string_utils, prompts, exceptions, file_utils, misc_utils
 from .python_utils.ansi_colors import Ansi
 
@@ -201,6 +199,8 @@ You might need to enter your password.
     print()
 
     if do_install and prompts.confirm(prompt="Proceed?", response=False):
+        from subprocess import check_call, CalledProcessError
+
         try:
             check_call(cmd, cwd=root_folder)
         except (KeyboardInterrupt, SystemExit):
