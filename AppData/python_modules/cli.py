@@ -37,6 +37,7 @@ Usage:
     app.py gen_sys_exec_self
     app.py gen_sys_exec_all
     app.py gen_readmes
+    app.py git_gui_apps
     app.py bump_app_version [-a <name>... | --app=<name>...]
     app.py install_deps [-a <name>... | --app=<name>...]
     app.py repo (submodules | subtrees) (init | update)
@@ -174,6 +175,10 @@ class CommandLineTool():
             self.logger.info("Generating readmes...")
             self.action = self.generate_readmes
 
+        if args["git_gui_apps"]:
+            self.logger.info("Opening Git GUI for all applications...")
+            self.action = self.git_gui_apps
+
         if args["repo"]:
             self.repo_action = "init" if args["init"] else "update" if args["update"] else ""
 
@@ -220,6 +225,11 @@ class CommandLineTool():
         """See :any:`app_utils.generate_readmes`
         """
         app_utils.generate_readmes(self.logger)
+
+    def git_gui_apps(self):
+        """See :any:`app_utils.git_gui_apps`
+        """
+        app_utils.git_gui_apps(self.logger)
 
     def system_executable_generation_self(self):
         """See :any:`template_utils.system_executable_generation`

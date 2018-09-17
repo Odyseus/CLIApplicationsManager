@@ -522,5 +522,18 @@ def generate_readmes(logger):
     logger.info("READMEs generation finished")
 
 
+def git_gui_apps(logger):
+    from subprocess import Popen, SubprocessError
+    from time import sleep
+
+    for app in get_apps():
+        try:
+            Popen(["git", "gui"], cwd=app["path"], close_fds=True)
+            sleep(0.3)
+        except SubprocessError as err:
+            logger.error(err)
+            continue
+
+
 if __name__ == "__main__":
     pass
