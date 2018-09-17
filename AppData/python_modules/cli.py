@@ -140,9 +140,12 @@ class CommandLineTool():
         self.generate_api_docs = args["gen_docs"]
 
         self.app_slugs = list(set(args["--app"]))
-        file_utils.remove_surplus_files("AppData/logs", "CLI*")
-        self.logger = log_system.LogSystem(filename=log_system.get_log_file(
-            storage_dir="AppData/logs", prefix="CLI"), verbose=True)
+
+        logs_storage_dir = "UserData/0_manager/logs"
+        log_file = log_system.get_log_file(storage_dir=logs_storage_dir,
+                                           prefix="CLI")
+        file_utils.remove_surplus_files(logs_storage_dir, "CLI*")
+        self.logger = log_system.LogSystem(log_file, verbose=True)
 
         self.logger.info(shell_utils.get_cli_header(__appname__), date=False)
         print("")
