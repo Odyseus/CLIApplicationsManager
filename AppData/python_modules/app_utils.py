@@ -20,6 +20,10 @@ root_folder = os.path.realpath(os.path.abspath(os.path.join(
 
 app_man_user_data_path = os.path.join(root_folder, "UserData")
 
+app_man_user_data_backlist = [
+    "0_manager"
+]
+
 
 class InvalidApplicationName(exceptions.ExceptionWhitoutTraceBack):
     """InvalidApplicationName
@@ -44,19 +48,23 @@ def get_apps():
     list
         The application directory names or paths.
     """
-    root_app_user_data = os.path.join(root_folder, "UserData")
-    list_of_app_dirs = os.listdir(root_app_user_data)
+    list_of_app_dirs = [entry.name for entry in os.scandir(
+        app_man_user_data_path) if entry.is_dir(
+        follow_symlinks=False) and entry.name not in app_man_user_data_backlist]
     apps = []
 
     for dir_name in list_of_app_dirs:
-        app_data_dir = os.path.join(root_app_user_data, dir_name, "AppData")
+        app_flag_file_name = ".%s.flag" % "-".join([s.lower()
+                                                    for s in string_utils.split_on_uppercase(dir_name)])
+        app_flag_file_path = os.path.join(app_man_user_data_path, dir_name, app_flag_file_name)
 
-        # Check for the AppData dir in case in the future there are other directories
+        # Check for the "flag" file in case in the future there are other directories
         # that aren't actual applications.
-        if os.path.exists(app_data_dir):
+        # It's a more complex procedure, but infinitely more accurate.
+        if file_utils.is_real_file(app_flag_file_path):
             apps.append({
                 "slug": dir_name,
-                "path": os.path.dirname(app_data_dir)
+                "path": os.path.dirname(app_flag_file_path)
             })
 
     return apps
