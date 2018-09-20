@@ -2,6 +2,9 @@
 # Project specific ignores #
 ############################
 
+# The "temp" folder at the root of the repository.
+/tmp
+
 # Ignore all the UserData folders content, except for the README.md files inside them.
 /UserData/*
 !/UserData/README.md
