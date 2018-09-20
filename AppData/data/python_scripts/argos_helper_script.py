@@ -34,7 +34,7 @@ bash="(cd {root_folder} && xdg-open {root_folder}/docs/index.html)"
 ---
 
 Search all apps AppData folder | iconName=search bash="(spacefm --find-files \
-{root_folder}/AppData/python_modules \
+{root_folder}/AppData \
 {root_folder}/UserData/BackupTool/AppData \
 {root_folder}/UserData/FilesCleaner/AppData \
 {root_folder}/UserData/HostsManager/AppData \
