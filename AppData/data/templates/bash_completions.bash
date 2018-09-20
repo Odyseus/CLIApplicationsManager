@@ -4,12 +4,12 @@
 # https://unix.stackexchange.com/a/55622
 
 _have {executable_name} &&
-_decide_nospace(){
+_decide_nospace_{current_date}(){
     if [[ ${1} == "--"*"=" ]] ; then
         compopt -o nospace
     fi
 } &&
-_list_dirs(){
+_list_dirs_{current_date}(){
     # <3 https://stackoverflow.com/a/31603260
     # List all directories found inside the passed folder ($1).
     # WARNING! Fails on empty directories!
@@ -24,7 +24,7 @@ _my_python_apps_{current_date}(){
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
     apps_dir="{full_path_to_app_folder}/UserData"
-    app_names=( $(_list_dirs ${apps_dir}) )
+    app_names=( $(_list_dirs_{current_date} ${apps_dir}) )
 
     case $prev in
         --app)
@@ -49,8 +49,18 @@ _my_python_apps_{current_date}(){
 
     # Completion of commands and "first level options.
     if [[ $COMP_CWORD == 1 ]]; then
-        COMPREPLY=( $(compgen -W "bump_app_version gen_base_app gen_docs gen_docs_no_api \
-gen_sys_exec_self gen_sys_exec_all gen_readmes git_gui_apps install_deps repo \
+        COMPREPLY=( $(compgen -W "
+bump_app_version \
+gen_base_app \
+gen_docs \
+gen_docs_no_api \
+gen_readmes \
+gen_sys_exec_all \
+gen_sys_exec_self \
+git_gui_apps \
+install_deps \
+repo app_repos \
+run_cmd_on_app \
 -h --help --version" -- "${cur}") )
         return 0
     fi
@@ -65,11 +75,16 @@ gen_sys_exec_self gen_sys_exec_all gen_readmes git_gui_apps install_deps repo \
         ;;
     "install_deps"|"bump_app_version")
         COMPREPLY=( $(compgen -W "-a --app=" -- "${cur}") )
-        _decide_nospace ${COMPREPLY[0]}
+        _decide_nospace_{current_date} ${COMPREPLY[0]}
         ;;
-    "repo")
+    "repo"|"app_repos")
         COMPREPLY=( $(compgen -W \
             "submodules subtrees" -- "${cur}") )
+        ;;
+    "run_cmd_on_app")
+        COMPREPLY=( $(compgen -W \
+            "-c --command= -a --app= -p --parallel" -- "${cur}") )
+        _decide_nospace_{current_date} ${COMPREPLY[0]}
         ;;
     esac
 
