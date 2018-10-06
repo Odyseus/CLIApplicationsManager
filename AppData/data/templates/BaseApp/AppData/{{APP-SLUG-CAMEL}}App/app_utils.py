@@ -5,7 +5,7 @@
 Attributes
 ----------
 root_folder : str
-    The main folder containing the Knowledge Base. All commands must be executed
+    The main folder containing the application. All commands must be executed
     from this location without exceptions.
 """
 
