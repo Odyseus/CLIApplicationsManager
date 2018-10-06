@@ -45,6 +45,7 @@ Usage:
     app.py run_cmd_on_app (-c <command> | --command=<command>)
                           [-p | --parallel ]
                           [-a <name>... | --app=<name>...]
+    app.py spacefm_find_files
 
 Options:
 
@@ -109,13 +110,19 @@ class CommandLineInterface(cli_utils.CommandLineInterfaceSuper):
             The dictionary of arguments as returned by docopt parser.
         """
         self.a = docopt_args
-        self._cli_header_blacklist = [self.a["--manual"], self.a["print_all_apps"]]
+        self._cli_header_blacklist = [
+            self.a["spacefm_find_files"],
+            self.a["--manual"],
+            self.a["print_all_apps"]
+        ]
 
         super().__init__(__appname__, "UserData/0_manager/logs")
 
         self.app_slugs = list(set(self.a["--app"]))
 
-        if self.a["print_all_apps"]:
+        if self.a["spacefm_find_files"]:
+            self.action = self.spacefm_find_files
+        elif self.a["print_all_apps"]:
             self.action = self.print_all_apps
         elif self.a["--manual"]:
             self.action = self.display_manual_page
@@ -269,6 +276,11 @@ class CommandLineInterface(cli_utils.CommandLineInterfaceSuper):
         """See :any:`app_utils.print_all_apps`
         """
         app_utils.print_all_apps()
+
+    def spacefm_find_files(self):
+        """See :any:`app_utils.spacefm_find_files`
+        """
+        app_utils.spacefm_find_files()
 
 
 def main():

@@ -748,5 +748,15 @@ def eradicate_man_pages_data_json():
         pass
 
 
+def spacefm_find_files():
+    from .python_utils import cmd_utils
+
+    cmd = ["spacefm", "--find-files"]
+    cmd = cmd + [os.path.join(root_folder, "AppData")]
+    cmd = cmd + [os.path.join(app["path"], "AppData") for app in get_all_apps()]
+
+    cmd_utils.run_cmd(cmd, stdout=None, stderr=None)
+
+
 if __name__ == "__main__":
     pass

@@ -31,18 +31,7 @@ bash="(cd {root_folder} && {root_folder}/app.py install_deps)" terminal=true
 Open local documentation webpage | iconName=html \
 bash="(cd {root_folder} && xdg-open {root_folder}/docs/index.html)"
 
----
-
-Search all apps AppData folder | iconName=search bash="(spacefm --find-files \
-{root_folder}/AppData \
-{root_folder}/UserData/BackupTool/AppData \
-{root_folder}/UserData/ChrootHelper/AppData \
-{root_folder}/UserData/FilesCleaner/AppData \
-{root_folder}/UserData/HostsManager/AppData \
-{root_folder}/UserData/KnowledgeBase/AppData \
-{root_folder}/UserData/MakeCinnamonXletPOT/AppData \
-{root_folder}/UserData/MoviesDB/AppData \
-{root_folder}/UserData/PackageManager/AppData)"
-
+Search all apps AppData folder | iconName=search \
+bash="(cd {root_folder} && {root_folder}/app.py spacefm_find_files)"
 
 """.format(root_folder=root_folder))
