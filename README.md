@@ -1,9 +1,9 @@
 
-## CLI Applications Manager ([documentation](https://pythoncliapplications.gitlab.io/CLIApplicationsManager))
+# CLI Applications Manager ([documentation](https://pythoncliapplications.gitlab.io/CLIApplicationsManager))
 
 CLI utility to manage/develop other CLI utilities.
 
-## List of CLI applications
+# List of CLI applications
 
 [GitLab]: https://i.imgur.com/Z4XcUKe.png "GitLab"
 [GitHub]: https://i.imgur.com/J015ugC.png "GitHub"
@@ -19,3 +19,4 @@ CLI utility to manage/develop other CLI utilities.
 | **Make Cinnamon Xlet POT** | Stable | A CLI utility to generate POT files for Cinnamon xlets. | [![GitLab][GitLab]](https://gitlab.com/PythonCLIApplications/MakeCinnamonXletPOT) [![GitHub][GitHub]](https://github.com/Odyseus/MakeCinnamonXletPOT) [![BitBucket][BitBucket]](https://bitbucket.org/Odyseus/MakeCinnamonXletPOT) | [Docs](https://pythoncliapplications.gitlab.io/CLIApplicationsManager/includes/MakeCinnamonXletPOT/index.html) |
 | **Movies DB** | Unstable | A CLI utility to create a movies data base on GNU/Linux. | [![GitLab][GitLab]](https://gitlab.com/PythonCLIApplications/MoviesDB) [![GitHub][GitHub]](https://github.com/Odyseus/MoviesDB) [![BitBucket][BitBucket]](https://bitbucket.org/Odyseus/MoviesDB) | [Docs](https://pythoncliapplications.gitlab.io/CLIApplicationsManager/includes/MoviesDB/index.html) |
 | **Package Manager** | Unstable | A CLI utility to manage system packages on GNU/Linux. It basically installs and/or eliminates packages in bulk using the system's package manager. | [![GitLab][GitLab]](https://gitlab.com/PythonCLIApplications/PackageManager) [![GitHub][GitHub]](https://github.com/Odyseus/PackageManager) [![BitBucket][BitBucket]](https://bitbucket.org/Odyseus/PackageManager) | [Docs](https://pythoncliapplications.gitlab.io/CLIApplicationsManager/includes/PackageManager/index.html) |
+| **User Applications Manager** | Unstable | Utility to manage applications inside a user's home directory. | [![GitLab][GitLab]](https://gitlab.com/PythonCLIApplications/UserApplicationsManager) [![GitHub][GitHub]](https://github.com/Odyseus/UserApplicationsManager) [![BitBucket][BitBucket]](https://bitbucket.org/Odyseus/UserApplicationsManager) | [Docs](https://pythoncliapplications.gitlab.io/CLIApplicationsManager/includes/UserApplicationsManager/index.html) |
