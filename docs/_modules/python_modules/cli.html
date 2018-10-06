@@ -76,7 +76,6 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
@@ -205,6 +204,7 @@
 <span class="s2">    app.py run_cmd_on_app (-c &lt;command&gt; | --command=&lt;command&gt;)</span>
 <span class="s2">                          [-p | --parallel ]</span>
 <span class="s2">                          [-a &lt;name&gt;... | --app=&lt;name&gt;...]</span>
+<span class="s2">    app.py spacefm_find_files</span>
 
 <span class="s2">Options:</span>
 
@@ -269,13 +269,19 @@
 <span class="sd">            The dictionary of arguments as returned by docopt parser.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">docopt_args</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_cli_header_blacklist</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--manual&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;print_all_apps&quot;</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cli_header_blacklist</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;spacefm_find_files&quot;</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--manual&quot;</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;print_all_apps&quot;</span><span class="p">]</span>
+        <span class="p">]</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">__appname__</span><span class="p">,</span> <span class="s2">&quot;UserData/0_manager/logs&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">app_slugs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--app&quot;</span><span class="p">]))</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;print_all_apps&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;spacefm_find_files&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacefm_find_files</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;print_all_apps&quot;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_all_apps</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--manual&quot;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">display_manual_page</span>
@@ -428,7 +434,12 @@
 <div class="viewcode-block" id="CommandLineInterface.print_all_apps"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.print_all_apps">[docs]</a>    <span class="k">def</span> <span class="nf">print_all_apps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`app_utils.print_all_apps`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">app_utils</span><span class="o">.</span><span class="n">print_all_apps</span><span class="p">()</span></div></div>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">print_all_apps</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CommandLineInterface.spacefm_find_files"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.spacefm_find_files">[docs]</a>    <span class="k">def</span> <span class="nf">spacefm_find_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`app_utils.spacefm_find_files`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">spacefm_find_files</span><span class="p">()</span></div></div>
 
 
 <div class="viewcode-block" id="main"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>

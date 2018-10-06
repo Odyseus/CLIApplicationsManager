@@ -12,7 +12,6 @@ Table of Content
 .. toctree::
     :maxdepth: 2
 
-    includes/0-structure
     includes/1-general-notes
     includes/CLIApplicationsManager/index
     includes/BackupTool/index

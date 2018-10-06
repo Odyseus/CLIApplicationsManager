@@ -76,7 +76,6 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
@@ -906,6 +905,16 @@
         <span class="k">pass</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="spacefm_find_files"><a class="viewcode-back" href="../../modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.spacefm_find_files">[docs]</a><span class="k">def</span> <span class="nf">spacefm_find_files</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cmd_utils</span>
+
+    <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;spacefm&quot;</span><span class="p">,</span> <span class="s2">&quot;--find-files&quot;</span><span class="p">]</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="n">cmd</span> <span class="o">+</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">)]</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="n">cmd</span> <span class="o">+</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">],</span> <span class="s2">&quot;AppData&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">get_all_apps</span><span class="p">()]</span>
+
+    <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
