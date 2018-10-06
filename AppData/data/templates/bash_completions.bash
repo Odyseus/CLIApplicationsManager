@@ -3,28 +3,21 @@
 # It would have been impossible to create this without the following post on Stack Exchange!!!
 # https://unix.stackexchange.com/a/55622
 
-_have {executable_name} &&
+type "{executable_name}" &> /dev/null &&
 _decide_nospace_{current_date}(){
     if [[ ${1} == "--"*"=" ]] ; then
-        compopt -o nospace
+        type "compopt" &> /dev/null && compopt -o nospace
     fi
 } &&
-_list_dirs_{current_date}(){
-    # <3 https://stackoverflow.com/a/31603260
-    # List all directories found inside the passed folder ($1).
-    # WARNING! Fails on empty directories!
-    (
-        cd "${1}" && \
-        set -- */; printf "%s\n" "${@%/}";
-    )
+_get_app_slugs_{current_date}(){
+    echo $(cd {full_path_to_app_folder}; ./app.py print_all_apps)
 } &&
-_my_python_apps_{current_date}(){
+_apps_manager_cli_{current_date}(){
     local cur prev cmd app_names apps_dir
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
-    apps_dir="{full_path_to_app_folder}/UserData"
-    app_names=( $(_list_dirs_{current_date} ${apps_dir}) )
+    app_names=( $(_get_app_slugs_{current_date}) )
 
     case $prev in
         --app)
@@ -54,6 +47,7 @@ bump_app_version \
 gen_base_app \
 gen_docs \
 gen_docs_no_api \
+gen_man_pages \
 gen_readmes \
 gen_sys_exec_all \
 gen_sys_exec_self \
@@ -61,7 +55,7 @@ git_gui_apps \
 install_deps \
 repo app_repos \
 run_cmd_on_app \
--h --help --version" -- "${cur}") )
+-h --help --manual --version" -- "${cur}") )
         return 0
     fi
 
@@ -73,7 +67,7 @@ run_cmd_on_app \
         COMPREPLY=( $(compgen -W \
             "-f --force-clean-build -u --update-inventories" -- "${cur}") )
         ;;
-    "install_deps"|"bump_app_version")
+    "install_deps"|"bump_app_version"|"gen_man_pages")
         COMPREPLY=( $(compgen -W "-a --app=" -- "${cur}") )
         _decide_nospace_{current_date} ${COMPREPLY[0]}
         ;;
@@ -101,4 +95,4 @@ run_cmd_on_app \
 
     return 0
 } &&
-complete -F _my_python_apps_{current_date} {executable_name}
+complete -F _apps_manager_cli_{current_date} {executable_name}
