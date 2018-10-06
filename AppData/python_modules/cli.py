@@ -15,41 +15,44 @@ import os
 import sys
 
 from . import app_utils
-from .__init__ import __appname__, __appdescription__, __version__, __status__
-from .python_utils import exceptions, shell_utils, file_utils, log_system
-from .python_utils.docopt import docopt
-
-
-if sys.version_info < (3, 5):
-    raise exceptions.WrongPythonVersion()
-
+from .__init__ import __appdescription__
+from .__init__ import __appname__
+from .__init__ import __status__
+from .__init__ import __version__
+from .python_utils import cli_utils
 
 root_folder = os.path.realpath(os.path.abspath(os.path.join(
     os.path.normpath(os.path.join(os.path.dirname(__file__), *([".."] * 2))))))
 
+docopt_doc = """{appname} {version} ({status})
 
-docopt_doc = """{__appname__} {__version__} {__status__}
-
-{__appdescription__}
+{appdescription}
 
 Usage:
-    app.py gen_base_app
-    app.py gen_sys_exec_self
-    app.py gen_sys_exec_all
-    app.py gen_readmes
-    app.py git_gui_apps
+    app.py (-h | --help | --manual | --version)
+    app.py app_repos (submodules | subtrees) (init | update)
     app.py bump_app_version [-a <name>... | --app=<name>...]
+    app.py gen_base_app
+    app.py (gen_docs | gen_docs_no_api) [-f | --force-clean-build]
+                                        [-u | --update-inventories]
+    app.py gen_man_pages [-a <name>... | --app=<name>...]
+    app.py gen_readmes
+    app.py gen_sys_exec_all
+    app.py gen_sys_exec_self
     app.py install_deps [-a <name>... | --app=<name>...]
+    app.py print_all_apps
     app.py repo (submodules | subtrees) (init | update)
-    app.py (gen_docs | gen_docs_no_api)
-           [-f | --force-clean-build]
-           [-u | --update-inventories]
-    app.py (-h | --help | --version)
+    app.py run_cmd_on_app (-c <command> | --command=<command>)
+                          [-p | --parallel ]
+                          [-a <name>... | --app=<name>...]
 
 Options:
 
 -h, --help
-    Show this screen.
+    Show this application basic help.
+
+--manual
+    Show this application manual page.
 
 --version
     Show application version.
@@ -59,139 +62,107 @@ Options:
     specified on the commands that make use of it, the command will work with
     all available applications.
 
+-c <command>, --command=<command>
+    Command to execute inside a managed application folder.
+
 -f, --force-clean-build
     Clear doctree cache and destination folder when building the documentation.
+
+-p, --parallel
+    Run command in parallel instead of after finishing each command execution.
 
 -u, --update-inventories
     Update inventory files from their on-line resources when building the
     documentation. Inventory files will be updated automatically if they don't
     already exist.
 
-Command `bump_app_version`:
-    Bump the specified application version.
-
-Command `gen_base_app`:
-    Generate a new base ("empty") application from template.
-
-Command `gen_docs`:
-    Generate documentation page.
-
-Command `gen_docs_no_api`:
-    Generate documentation page without extracting Python modules docstrings.
-
-Command `gen_sys_exec_self`:
-    Create an executable for this application on the system PATH to be able
-    to run it from anywhere.
-
-Command `gen_sys_exec_all`:
-    Create an executable for all applications on the system PATH to be able
-    to run them from anywhere.
-
-Command `gen_readmes`:
-    Generate README files for all applications, including the applications
-    manager.
-
-Command `install_deps`:
-    Install the dependencies for all Python applications.
-
-Sub-commands for the `repo` command:
-    submodules           Manage repository's sub-modules.
-    subtrees             Manage repository's sub-trees.
-
-""".format(__appname__=__appname__,
-           __appdescription__=__appdescription__,
-           __version__=__version__,
-           __status__=__status__)
+""".format(appname=__appname__,
+           appdescription=__appdescription__,
+           version=__version__,
+           status=__status__)
 
 
-class CommandLineTool():
-    """Command line tool.
+class CommandLineInterface(cli_utils.CommandLineInterfaceSuper):
+    """Command line interface.
 
     It handles the arguments parsed by the docopt module.
 
     Attributes
     ----------
+    a : dict
+        Where docopt_args is stored.
     action : method
-        Set the method that will be executed when calling CommandLineTool.run().
-    app_slugs : list
-        List of applications.
-    update_inventories : bool
-        See :any:`sphinx_docs_utils.generate_docs`.
-    force_clean_build : bool
-        See :any:`sphinx_docs_utils.generate_docs`.
-    generate_api_docs : bool
-        See :any:`sphinx_docs_utils.generate_docs`.
-    logger : object
-        See <class :any:`LogSystem`>.
+        Set the method that will be executed when calling CommandLineInterface.run().
+    repo_action : str
+        Which action to perform on a repository.
     """
+    action = None
+    repo_action = None
+    app_slugs = []
 
-    def __init__(self, args):
-        """
+    def __init__(self, docopt_args):
+        """Initialize.
+
         Parameters
         ----------
-        args : dict
+        docopt_args : dict
             The dictionary of arguments as returned by docopt parser.
         """
-        super(CommandLineTool, self).__init__()
+        self.a = docopt_args
+        self._cli_header_blacklist = [self.a["--manual"], self.a["print_all_apps"]]
 
-        self.action = None
-        self.force_clean_build = args["--force-clean-build"]
-        self.update_inventories = args["--update-inventories"]
-        self.generate_api_docs = args["gen_docs"]
+        super().__init__(__appname__, "UserData/0_manager/logs")
 
-        self.app_slugs = list(set(args["--app"]))
+        self.app_slugs = list(set(self.a["--app"]))
 
-        logs_storage_dir = "UserData/0_manager/logs"
-        log_file = log_system.get_log_file(storage_dir=logs_storage_dir,
-                                           prefix="CLI")
-        file_utils.remove_surplus_files(logs_storage_dir, "CLI*")
-        self.logger = log_system.LogSystem(log_file, verbose=True)
-
-        self.logger.info(shell_utils.get_cli_header(__appname__), date=False)
-        print("")
-
-        if args["bump_app_version"]:
+        if self.a["print_all_apps"]:
+            self.action = self.print_all_apps
+        elif self.a["--manual"]:
+            self.action = self.display_manual_page
+        elif self.a["bump_app_version"]:
             self.logger.info("Bumping applications' versions...")
             self.action = self.bump_versions
-
-        if args["gen_base_app"]:
+        elif self.a["gen_base_app"]:
             self.logger.info("New application generation...")
             self.action = self.generate_base_app
-
-        if args["gen_docs"] or args["gen_docs_no_api"]:
+        elif self.a["gen_docs"] or self.a["gen_docs_no_api"]:
             self.logger.info("Documentation generation...")
             self.action = self.generate_docs
-
-        if args["gen_sys_exec_all"]:
+        elif self.a["gen_man_pages"]:
+            self.logger.info("Generating manual pages...")
+            self.action = self.generate_man_pages
+        elif self.a["gen_readmes"]:
+            self.logger.info("Generating READMEs...")
+            self.action = self.generate_readmes
+        elif self.a["gen_sys_exec_all"]:
             self.logger.info("System executable generation for all applications...")
             self.action = self.system_executable_generation_all
-
-        if args["gen_sys_exec_self"]:
+        elif self.a["gen_sys_exec_self"]:
             self.logger.info("System executable generation...")
             self.action = self.system_executable_generation_self
-
-        if args["install_deps"]:
+        elif self.a["install_deps"]:
             self.logger.info("Installing dependencies...")
             self.action = self.install_dependencies
+        elif self.a["run_cmd_on_app"]:
+            self.logger.info("Running command on selected applications...")
+            self.action = self.run_cmd_on_apps
+        elif self.a["repo"] or self.a["app_repos"]:
+            self.repo_action = "init" if self.a["init"] else "update" if self.a["update"] else ""
 
-        if args["gen_readmes"]:
-            self.logger.info("Generating readmes...")
-            self.action = self.generate_readmes
-
-        if args["git_gui_apps"]:
-            self.logger.info("Opening Git GUI for all applications...")
-            self.action = self.git_gui_apps
-
-        if args["repo"]:
-            self.repo_action = "init" if args["init"] else "update" if args["update"] else ""
-
-            if args["submodules"]:
-                self.logger.info("Managing repository sub-modules...")
-                self.action = self.manage_repo_submodules
-
-            if args["subtrees"]:
-                self.logger.info("Managing repository sub-trees...")
-                self.action = self.manage_repo_subtrees
+            if self.a["submodules"]:
+                if self.a["app_repos"]:
+                    self.logger.info("Managing application repositories sub-modules...")
+                    self.action = self.manage_app_repos_submodules
+                elif self.a["repo"]:
+                    self.logger.info("Managing repository sub-modules...")
+                    self.action = self.manage_repo_submodules
+            elif self.a["subtrees"]:
+                if self.a["app_repos"]:
+                    self.logger.info("Managing application repositories sub-trees...")
+                    self.action = self.manage_app_repos_subtrees
+                elif self.a["repo"]:
+                    self.logger.info("Managing repository sub-trees...")
+                    self.action = self.manage_repo_subtrees
 
     def run(self):
         """Execute the assigned action stored in self.action if any.
@@ -214,32 +185,34 @@ class CommandLineTool():
     def generate_docs(self):
         """See :any:`sphinx_docs_utils.generate_docs`
         """
-        app_utils.generate_docs(generate_api_docs=self.generate_api_docs,
-                                update_inventories=self.update_inventories,
-                                force_clean_build=self.force_clean_build,
+        app_utils.generate_docs(generate_api_docs=self.a["gen_docs"],
+                                update_inventories=self.a["--update-inventories"],
+                                force_clean_build=self.a["--force-clean-build"],
                                 logger=self.logger)
 
     def install_dependencies(self):
         """See :any:`app_utils.install_dependencies`
         """
-        app_utils.install_dependencies(app_slugs=self.app_slugs, logger=self.logger)
+        app_utils.install_dependencies(app_slugs=self.app_slugs,
+                                       logger=self.logger)
 
     def generate_readmes(self):
         """See :any:`app_utils.generate_readmes`
         """
         app_utils.generate_readmes(self.logger)
 
-    def git_gui_apps(self):
-        """See :any:`app_utils.git_gui_apps`
+    def run_cmd_on_apps(self):
+        """See :any:`app_utils.run_cmd_on_apps`
         """
-        app_utils.git_gui_apps(self.logger)
+        app_utils.run_cmd_on_apps(self.a["--command"],
+                                  run_in_parallel=self.a["--parallel"],
+                                  app_slugs=self.app_slugs,
+                                  logger=self.logger)
 
     def system_executable_generation_self(self):
-        """See :any:`template_utils.system_executable_generation`
+        """See :any:`cli_utils.CommandLineInterfaceSuper._system_executable_generation`.
         """
-        from .python_utils import template_utils
-
-        template_utils.system_executable_generation(
+        self._system_executable_generation(
             exec_name="apps-manager-cli",
             app_root_folder=root_folder,
             sys_exec_template_path=os.path.join(
@@ -271,22 +244,42 @@ class CommandLineTool():
         """
         self.logger.warning("Not using sub-trees in this application for now.")
 
+    def manage_app_repos_submodules(self):
+        """See :any:`git_utils.manage_repo`
+        """
+        self.logger.warning("Not using sub-modules in applications for now.")
+
+    def manage_app_repos_subtrees(self):
+        """See :any:`git_utils.manage_repo`
+        """
+        app_utils.manage_app_repos_subtrees(self.repo_action, self.logger)
+
+    def display_manual_page(self):
+        """See :any:`cli_utils.CommandLineInterfaceSuper._display_manual_page`.
+        """
+        self._display_manual_page(os.path.join(root_folder, "AppData", "data", "man", "app.py.1"))
+
+    def generate_man_pages(self):
+        """See :any:`app_utils.generate_man_pages`
+        """
+        app_utils.generate_man_pages(app_slugs=self.app_slugs,
+                                     logger=self.logger)
+
+    def print_all_apps(self):
+        """See :any:`app_utils.print_all_apps`
+        """
+        app_utils.print_all_apps()
+
 
 def main():
-    """Initialize main command line interface.
-
-    Raises
-    ------
-    exceptions.BadExecutionLocation
-        Do not allow to run any command if the "flag" file isn't
-        found where it should be. See :any:`exceptions.BadExecutionLocation`.
+    """Initialize command line interface.
     """
-    if not os.path.exists(".cli-applications-manager.flag"):
-        raise exceptions.BadExecutionLocation()
-
-    arguments = docopt(docopt_doc, version="%s %s %s" % (__appname__, __version__, __status__))
-    cli = CommandLineTool(arguments)
-    cli.run()
+    cli_utils.run_cli(flag_file=".cli-applications-manager.flag",
+                      docopt_doc=docopt_doc,
+                      app_name=__appname__,
+                      app_version=__version__,
+                      app_status=__status__,
+                      cli_class=CommandLineInterface)
 
 
 if __name__ == "__main__":

@@ -4,6 +4,16 @@
 
 Attributes
 ----------
+app_man_user_data_backlist : list
+    List of folder names to ignore.
+app_man_user_data_path : str
+    Path to the UserData folder.
+app_readme_template : str
+    README template for this application.
+app_table_row_template : str
+    A Markdown table row template used inside app_readme_template.
+apps_manager_readme_template : str
+    README template for applications managed by this application.
 root_folder : str
     The main folder containing the application. All commands must be executed from this location
     without exceptions.
@@ -11,7 +21,13 @@ root_folder : str
 
 import os
 
-from .python_utils import string_utils, prompts, exceptions, file_utils, misc_utils
+from .__init__ import __appdescription__
+from .__init__ import __appname__
+from .python_utils import exceptions
+from .python_utils import file_utils
+from .python_utils import misc_utils
+from .python_utils import prompts
+from .python_utils import string_utils
 from .python_utils.ansi_colors import Ansi
 
 
@@ -37,11 +53,11 @@ class InvalidApplicationName(exceptions.ExceptionWhitoutTraceBack):
         msg : str, optional
             Message that the exception should display.
         """
-        super(InvalidApplicationName, self).__init__(msg=msg)
+        super().__init__(msg=msg)
 
 
-def get_apps():
-    """Get application directories.
+def get_all_apps():
+    """Get all applications directories and slugs.
 
     Returns
     -------
@@ -54,20 +70,82 @@ def get_apps():
     apps = []
 
     for dir_name in list_of_app_dirs:
-        app_flag_file_name = ".%s.flag" % "-".join([s.lower()
-                                                    for s in string_utils.split_on_uppercase(dir_name)])
+        app_slugyfied_name = get_app_slugyfied_name(dir_name)
+        app_flag_file_name = ".%s.flag" % app_slugyfied_name
         app_flag_file_path = os.path.join(app_man_user_data_path, dir_name, app_flag_file_name)
 
         # Check for the "flag" file in case in the future there are other directories
         # that aren't actual applications.
         # It's a more complex procedure, but infinitely more accurate.
         if file_utils.is_real_file(app_flag_file_path):
-            apps.append({
+            app = {
                 "slug": dir_name,
                 "path": os.path.dirname(app_flag_file_path)
-            })
+            }
+
+            apps.append(app)
 
     return apps
+
+
+def print_all_apps():
+    """Print application slugs.
+
+    This method is called by the Bash completions script to auto-complete
+    application slugs for the ``--app=`` and ``-a`` CLI options.
+    """
+    for app in get_all_apps():
+        print(app["slug"])
+
+
+def get_selected_apps(app_slugs=[], logger=None):
+    """Get application directories.
+
+    Returns
+    -------
+    list
+        The application directory names or paths.
+
+    Parameters
+    ----------
+    app_slugs : list, optional
+        Description
+    logger : None, optional
+        Description
+    """
+    selected_apps = []
+    all_apps = get_all_apps()
+
+    for slug in app_slugs:
+        if slug not in [a["slug"] for a in all_apps]:
+            logger.warning("%s slug doesn't belong to an existent application." % slug)
+            continue
+
+        for app in all_apps:
+            if app["path"].endswith(slug):
+                selected_apps.append({
+                    "slug": app["slug"],
+                    "path": app["path"]
+                })
+                break
+
+    return selected_apps
+
+
+def get_app_slugyfied_name(app_slug):
+    """Get slugyfied application name.
+
+    Parameters
+    ----------
+    app_slug : str
+        An application "slug" (the name of an application folder).
+
+    Returns
+    -------
+    str
+        The "slugyfied" app name.
+    """
+    return "-".join([s.lower() for s in string_utils.split_on_uppercase(app_slug)])
 
 
 def system_executable_generation_for_all_apps(logger):
@@ -115,9 +193,9 @@ where the executables will be stored.
         }]
 
         # Define arguments for the rest of apps.
-        for app in get_apps():
+        for app in get_all_apps():
             apps_args.append({
-                "exec_name": "-".join([s.lower() for s in string_utils.split_on_uppercase(app["slug"])]) + "-cli",
+                "exec_name": "%s-cli" % get_app_slugyfied_name(app["slug"]),
                 "app_root_folder": app["path"],
                 "sys_exec_template_path": os.path.join(
                     app["path"], "AppData", "data", "templates", "system_executable"),
@@ -162,29 +240,14 @@ You might need to enter your password.
 """))
 
     do_install = False
-    all_apps = get_apps()
     cmd = ["/usr/bin/sudo", "--set-home", "pip3", "install"]
 
-    for app in app_slugs if app_slugs else all_apps:
-        if isinstance(app, dict):
-            app_slug = app["slug"]
-            app_path = app["path"]
-        else:
-            if app not in [a["slug"] for a in all_apps]:
-                raise InvalidApplicationName(app)
-
-            app_slug = app
-
-            for a in all_apps:
-                if a["path"].endswith(app):
-                    app_path = a["path"]
-                    break
-
-        req_file_path = os.path.join(app_path, "requirements.txt")
+    for app in get_selected_apps(app_slugs, logger) if app_slugs else get_all_apps():
+        req_file_path = os.path.join(app["path"], "requirements.txt")
 
         if file_utils.is_real_file(req_file_path):
             print()
-            logger.warning("The following dependencies for %s will be installed." % app_slug)
+            logger.warning("The following dependencies for %s will be installed." % app["slug"])
 
             do_install = True
             cmd += ["--requirement", req_file_path]
@@ -197,7 +260,7 @@ You might need to enter your password.
                         logger.info(line, date=False)
         else:
             print()
-            logger.info("%s has no extra dependencies." % app_slug)
+            logger.info("%s has no extra dependencies." % app["slug"])
 
     print()
     logger.warning("The following command will be executed:")
@@ -229,10 +292,12 @@ def generate_docs(generate_api_docs=False,
         See :any:`sphinx_docs_utils.generate_docs`.
     force_clean_build : bool, optional
         See :any:`sphinx_docs_utils.generate_docs`.
-    logger : None, optional
-        See :any:`LogSystem`.
+    logger : object
+        See <class :any:`LogSystem`>.
     """
     from .python_utils import sphinx_docs_utils
+
+    eradicate_man_pages_data_json()
 
     ignored_apidoc_modules = [
         os.path.join("AppData", "python_modules", "python_utils", "bottle.py"),
@@ -248,7 +313,7 @@ def generate_docs(generate_api_docs=False,
         os.path.join("AppData", "python_modules", "python_utils", "tqdm_wget.py"),
         # Ignore the python_utils folder from all apps.
     ] + [os.path.join("UserData", app["slug"], "AppData", app["slug"] + "App", "python_utils")
-         for app in get_apps()]
+         for app in get_all_apps()]
 
     base_apidoc_dest_path_rel_to_root = os.path.join("AppData", "docs_sources", "modules")
 
@@ -257,7 +322,7 @@ def generate_docs(generate_api_docs=False,
             os.path.join(base_apidoc_dest_path_rel_to_root, "python_modules"))
     ] + [(os.path.join("UserData", app["slug"], "AppData", app["slug"] + "App"),
           os.path.join(base_apidoc_dest_path_rel_to_root, app["slug"]))
-         for app in get_apps()]
+         for app in get_all_apps()]
 
     sphinx_docs_utils.generate_docs(root_folder=root_folder,
                                     docs_src_path_rel_to_root=os.path.join(
@@ -305,7 +370,7 @@ class BaseAppGenerator():
         logger : object
             See <class :any:`LogSystem`>.
         """
-        super(BaseAppGenerator, self).__init__()
+        super().__init__()
         self.logger = logger
         self.default_name = "My Python Application"
         self.app = {
@@ -333,8 +398,8 @@ class BaseAppGenerator():
         self.app_slug = "".join(self.app["name"].split())
         self.app_slug_lower_dashed = "-".join(self.app["name"].split()).lower()
         self.app_slug_lower_lodashed = "_".join(self.app["name"].split()).lower()
-        self.base_app_path = os.path.join(root_folder, "__app__", "data", "templates", "BaseApp")
-        self.new_app_destination = os.path.join(root_folder, self.app_slug)
+        self.base_app_path = os.path.join(root_folder, "AppData", "data", "templates", "BaseApp")
+        self.new_app_destination = os.path.join(app_man_user_data_path, self.app_slug)
         self.replacement_data = [
             ("{{APP-NAME}}", self.app["name"]),
             ("{{APP-SLUG-LOWER-DASHED}}", self.app_slug_lower_dashed),
@@ -416,32 +481,24 @@ def bump_versions(app_slugs, logger):
     """
     print()
 
-    for app in app_slugs if app_slugs else get_apps():
-        bump_app_version(app["slug"] if isinstance(app, dict) else app, logger)
+    for app in get_selected_apps(app_slugs, logger) if app_slugs else get_all_apps():
+        bump_app_version(app, logger)
 
 
-def bump_app_version(app_slug, logger):
+def bump_app_version(app, logger):
     """Bump application version.
 
     Parameters
     ----------
-    app_slug : str
+    app : str
         The application to which to bump its version.
     logger : object
         See <class :any:`LogSystem`>.
-
-    Raises
-    ------
-    InvalidApplicationName
-        See <class :any:`InvalidApplicationName`>.
     """
-    if app_slug not in [app["slug"] for app in get_apps()]:
-        raise InvalidApplicationName(app_slug)
-
-    logger.info("Bumping %s's version..." % app_slug)
+    logger.info("Bumping %s's version..." % app["slug"])
     version_number = misc_utils.micro_to_milli(misc_utils.get_date_time())
-    init_file_path = os.path.join(app_man_user_data_path, app_slug, "AppData",
-                                  "%sApp" % app_slug, "__init__.py")
+    init_file_path = os.path.join(app["path"], "AppData",
+                                  "%sApp" % app["slug"], "__init__.py")
 
     with open(init_file_path, "r", encoding="UTF-8") as old:
         old_lines = old.readlines()
@@ -452,16 +509,16 @@ def bump_app_version(app_slug, logger):
     with open(init_file_path, "w", encoding="UTF-8") as new:
         new.write("%s\n" % new_lines)
 
-    logger.info("%s's version updated." % app_slug)
+    logger.info("%s's version updated." % app["slug"])
     print()
 
 
 apps_manager_readme_template = """
-## {apps_man_name} ([documentation]({docs_url}))
+# {apps_man_name} ([documentation]({docs_url}))
 
 {apps_man_description}
 
-## List of CLI applications
+# List of CLI applications
 
 [GitLab]: https://i.imgur.com/Z4XcUKe.png "GitLab"
 [GitHub]: https://i.imgur.com/J015ugC.png "GitHub"
@@ -479,16 +536,21 @@ app_table_row_template = """| **{app_name}** | {app_status} | {app_description} 
 """
 
 app_readme_template = """
-## {app_name} ([documentation]({app_docs_url}))
+# {app_name} ([documentation]({app_docs_url}))
 
 {app_description}
 """
 
 
 def generate_readmes(logger):
-    from runpy import run_path
+    """Generate README files.
 
-    from .__init__ import __appname__, __appdescription__
+    Parameters
+    ----------
+    logger : object
+        See <class :any:`LogSystem`>.
+    """
+    from runpy import run_path
 
     docs_base_url = "https://pythoncliapplications.gitlab.io/CLIApplicationsManager"
     repo_base_url = "https://gitlab.com/PythonCLIApplications/{app_slug}"
@@ -500,7 +562,7 @@ def generate_readmes(logger):
         docs_url=docs_base_url
     )
 
-    for app in sorted(get_apps(), key=lambda k: k["slug"]):
+    for app in sorted(get_all_apps(), key=lambda k: k["slug"]):
         app_docs_url = docs_base_url + "/includes/%s/index.html" % app["slug"]
         app_init_file_path = os.path.join(app_man_user_data_path, app["slug"], "AppData",
                                           "%sApp" % app["slug"], "__init__.py")
@@ -509,7 +571,7 @@ def generate_readmes(logger):
         apps_table_data += app_table_row_template.format(
             app_slug=app["slug"],
             app_name=init_data["__appname__"],
-            app_status=init_data["__status__"][1:-1],
+            app_status=init_data["__status__"],
             app_description=init_data["__appdescription__"],
             app_repo_url=repo_base_url.format(app_slug=app["slug"]),
             app_docs_url=app_docs_url
@@ -530,17 +592,160 @@ def generate_readmes(logger):
     logger.info("READMEs generation finished")
 
 
-def git_gui_apps(logger):
-    from subprocess import Popen, SubprocessError
-    from time import sleep
+def manage_app_repos_subtrees(action, logger):
+    """See :any:`git_utils.manage_repo`
 
-    for app in get_apps():
+    Parameters
+    ----------
+    action : str
+        See :any:`git_utils.manage_repo`
+    logger : object
+        See <class :any:`LogSystem`>.
+    """
+    from .python_utils import git_utils
+
+    if prompts.confirm(prompt="Proceed?", response=False):
+        python_utils_base_subtree = {
+            "remote_name": "python_utils",
+            "remote_url": "git@gitlab.com:Odyseus/python_utils.git",
+        }
+
+        for app in get_all_apps():
+            python_utils_subtree = {
+                "path": "AppData/%sApp/python_utils" % app["slug"]
+            }
+            python_utils_subtree.update(python_utils_base_subtree)
+
+            git_utils.manage_repo(
+                "subtree",
+                action,
+                subtrees=[python_utils_subtree],
+                do_not_confirm=True,
+                cwd=app["path"],
+                logger=logger
+            )
+
+
+def run_cmd_on_apps(cmd, run_in_parallel=False, app_slugs=[], logger=None):
+    """Run command on applications.
+
+    Parameters
+    ----------
+    cmd : str
+        The command to run on all applications or the selected ones.
+    run_in_parallel : bool, optional
+        Run commands in parallel and do not wait for each command to finish.
+    app_slugs : list, optional
+        The list of applications slugs to run the command on.
+    logger : object
+        See <class :any:`LogSystem`>.
+    """
+    from threading import Thread
+
+    from .python_utils import cmd_utils
+
+    threads = []
+
+    for app in get_selected_apps(app_slugs, logger) if app_slugs else get_all_apps():
+        if run_in_parallel:
+            import shlex
+
+            command = shlex.split(cmd)  # <3 Python!!!
+            exec_funct = cmd_utils.popen
+        else:
+            command = cmd
+            exec_funct = cmd_utils.exec_command
+
+        t = Thread(target=exec_funct, args=(command,), kwargs={
+            "cwd": app["path"],
+            "logger": logger
+        })
+
+        print()
+        logger.info("Executing command on:")
+        logger.info(app["path"], date=False)
+
+        t.start()
+        threads.append(t)
+
+        for thread in threads:
+            if thread is not None and thread.isAlive():
+                thread.join()
+
+
+def generate_man_pages(app_slugs=[], logger=None):
+    """Generate manual pages.
+
+    Parameters
+    ----------
+    logger : object
+        See <class :any:`LogSystem`>.
+    """
+    import json
+
+    from runpy import run_path
+
+    from .python_utils import sphinx_docs_utils
+
+    eradicate_man_pages_data_json()
+
+    docs_sources_path = os.path.join(root_folder, "AppData", "docs_sources")
+    man_pages_data_json_path = os.path.join(docs_sources_path, "man_pages_data.json")
+
+    if app_slugs:
+        man_pages_data = []
+    else:
+        man_pages_data = [{
+            "doc_path": "includes/CLIApplicationsManager/index",
+            "app_name": __appname__,
+            "app_description": __appdescription__,
+            "man_destination": os.path.join("AppData", "data", "man")
+        }]
+
+    for app in get_selected_apps(app_slugs, logger) if app_slugs else get_all_apps():
+        # for app in get_all_apps():
+        if file_utils.is_real_file(os.path.join(
+                docs_sources_path, "includes", app["slug"], "index.rst")):
+            app_init_file_path = os.path.join(app_man_user_data_path, app["slug"],
+                                              "AppData", "%sApp" % app["slug"], "__init__.py")
+            app_init_data = run_path(app_init_file_path)
+            man_pages_data.append({
+                "doc_path": "includes/%s/index" % app["slug"],
+                "app_name": app_init_data["__appname__"],
+                "app_description": app_init_data["__appdescription__"],
+                "man_destination": os.path.join(app_man_user_data_path, app["slug"],
+                                                "AppData", "data", "man")
+            })
+
+    for data in man_pages_data:
         try:
-            Popen(["git", "gui"], cwd=app["path"], close_fds=True)
-            sleep(0.3)
-        except SubprocessError as err:
-            logger.error(err)
-            continue
+            with open(man_pages_data_json_path, "w",
+                      encoding="UTF-8") as man_pages_data_json_file:
+                man_pages_data_json_file.write(json.dumps(data))
+
+            # Not really needed...but just in case.
+            man_pages_data_json_file.close()
+
+            sphinx_docs_utils.generate_man_pages(root_folder=root_folder,
+                                                 docs_src_path_rel_to_root=os.path.join(
+                                                     "AppData", "docs_sources"),
+                                                 docs_dest_path_rel_to_root=data["man_destination"],
+                                                 doctree_temp_location_rel_to_sys_temp="PythonCLIApps-doctrees",
+                                                 logger=logger)
+        except KeyboardInterrupt:
+            raise exceptions.KeyboardInterruption
+
+    # Get rid of it so I don't keep adding garbage to .gitignore.
+    eradicate_man_pages_data_json()
+
+
+def eradicate_man_pages_data_json():
+    try:
+        os.remove(os.path.join(root_folder, "AppData", "docs_sources", "man_pages_data.json"))
+    except (FileNotFoundError, OSError):
+        pass
+    finally:
+        pass
 
 
 if __name__ == "__main__":
