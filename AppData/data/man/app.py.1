@@ -1,0 +1,168 @@
+.\" Man page generated from reStructuredText.
+.
+.TH "APP.PY" "1" "Oct 06, 2018" "" "CLI Applications Manager"
+.SH NAME
+app.py \- CLI utility to manage/develop other CLI utilities.
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.SH HINT
+.sp
+This Python application can generate a system executable with Bash completions support for itself and for all applications it manages. See \fBapp.py gen_sys_exec_self\fP and \fBapp.py gen_sys_exec_all\fP\&.
+.SH CLI SYNOPSIS
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+
+app.py (\-h | \-\-help | \-\-manual | \-\-version)
+app.py app_repos (submodules | subtrees) (init | update)
+app.py bump_app_version [\-a <name>... | \-\-app=<name>...]
+app.py gen_base_app
+app.py (gen_docs | gen_docs_no_api) [\-f | \-\-force\-clean\-build]
+                                    [\-u | \-\-update\-inventories]
+app.py gen_man_pages [\-a <name>... | \-\-app=<name>...]
+app.py gen_readmes
+app.py gen_sys_exec_all
+app.py gen_sys_exec_self
+app.py install_deps [\-a <name>... | \-\-app=<name>...]
+app.py print_all_apps
+app.py repo (submodules | subtrees) (init | update)
+app.py run_cmd_on_app (\-c <command> | \-\-command=<command>)
+                      [\-p | \-\-parallel ]
+                      [\-a <name>... | \-\-app=<name>...]
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SH REQUIREMENTS
+.sp
+No mayor requirements are needed to execute this application other than Python 3 (Python 3.5+ to be precise).
+.INDENT 0.0
+.INDENT 3.5
+.IP "Documentation building requirements"
+.INDENT 0.0
+.IP \(bu 2
+\fBsphinx>=1.6.5\fP: \fBsudo pip3 install sphinx\fP
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SH DETAILED USAGE
+.SS CLI options
+.INDENT 0.0
+.IP \(bu 2
+\fB\-h\fP or \fB\-\-help\fP: Display this application basic help screen.
+.IP \(bu 2
+\fB\-\-manual\fP: Display this application manual.
+.IP \(bu 2
+\fB\-\-version\fP: Show this application version.
+.IP \(bu 2
+\fB\-a\fP or \fB\-\-app=<name>\fP:  Specify one or more application names to work with. If this option isn\(aqt specified on the commands that make use of it, the command will work with all available applications.
+.UNINDENT
+.SS Commands
+.SS app.py app_repos
+.sp
+Perform tasks on the applications repositories managed by this application. See \fBrepo\fP command for sub\-commands.
+.SS app.py bump_app_version
+.sp
+Bump all applications or only the specified applications versions. See \fB\-\-app\fP option.
+.SS app.py gen_base_app
+.sp
+Generate a new base (\fIempty\fP) application from a template.
+.SS app.py gen_docs
+.sp
+Generate documentation page.
+.SS Options
+.INDENT 0.0
+.IP \(bu 2
+\fB\-f\fP or \fB\-\-force\-clean\-build\fP: Clear doctree cache and destination folder when building the documentation.
+.IP \(bu 2
+\fB\-u\fP or \fB\-\-update\-inventories\fP: Update inventory files from their on\-line resources when building the documentation. Inventory files will be updated automatically if they don\(aqt already exist.
+.UNINDENT
+.SS app.py gen_docs_no_api
+.sp
+Same as \fBgen_docs\fP command, but without extracting Python modules docstrings. Same options apply.
+.SS app.py gen_readmes
+.sp
+Generate README files for all managed applications, including the applications manager.
+.SS app.py gen_sys_exec_all
+.sp
+Create an executable for all managed applications on the system PATH to be able to run them from anywhere. For creating an executable for an individual application, each one of the applications has a system executable generation mechanism.
+.SS app.py gen_sys_exec_self
+.sp
+Create an executable for this application on the system PATH to be able to run it from anywhere.
+.SS app.py install_deps
+.sp
+Install the dependencies for all managed applications of just for the specified ones. See \fB\-\-app\fP option.
+.SS app.py repo
+.sp
+Perform tasks on this application repository.
+.SS Sub\-commands
+.INDENT 0.0
+.IP \(bu 2
+\fBsubmodules\fP: Manage repository\(aqs sub\-modules.
+.INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fBinit\fP: Initialize sub\-modules.
+.IP \(bu 2
+\fBupdate\fP: Update sub\-modules.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.IP \(bu 2
+\fBsubtrees\fP: Manage repository\(aqs sub\-trees.
+.INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fBinit\fP: Initialize sub\-trees.
+.IP \(bu 2
+\fBupdate\fP: Update sub\-trees.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS app.py run_cmd_on_app
+.sp
+Run a command on all managed applications or only on the specified ones. See \fB\-\-parallel\fP and \fB\-\-command\fP options.
+.SS Options
+.INDENT 0.0
+.IP \(bu 2
+\fB\-c <command>\fP or \fB\-\-command=<command>\fP: Command to execute inside a managed application folder.
+.IP \(bu 2
+\fB\-p\fP or \fB\-\-parallel\fP: Run command in parallel instead of after finishing each command execution.
+.UNINDENT
+.SH AUTHOR
+Odyseus
+.SH COPYRIGHT
+2016-2018, Odyseus
+.\" Generated by docutils manpage writer.
+.
