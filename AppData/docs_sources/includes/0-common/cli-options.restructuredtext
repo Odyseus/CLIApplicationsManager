@@ -1,0 +1,7 @@
+
+:abbr:`CLI (Command Line Interface)` options
+--------------------------------------------
+
+- ``-h`` or ``--help``: Display this application basic help screen.
+- ``--manual``: Display this application manual.
+- ``--version``: Show this application version.

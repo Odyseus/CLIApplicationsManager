@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Make Cinnamon Xlet POT’s documentation &mdash; CLI Applications Manager  documentation</title>
+  <title>Make Cinnamon Xlet POT’s documentation &mdash; Python CLI Applications Documentations  documentation</title>
   
 
   
@@ -47,7 +47,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           
 
           
@@ -80,30 +80,34 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../0-structure.html">Folder structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BackupTool/index.html">Backup Tool’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../HostsManager/index.html">Hosts Manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Make Cinnamon Xlet POT’s documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cli-synopsis">CLI Synopsis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mentions">Mentions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#differences-with-the-original-script">Differences with the original script</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#cli-help-page"><abbr title="Command Line Interface">CLI</abbr> help page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detailed-usage">Detailed usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#differences-with-the-original-script">Differences with the original script</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cli-options"><abbr title="Command Line Interface">CLI</abbr> options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commands">Commands</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../MoviesDB/index.html">Movies DB’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
 </ul>
 
             
@@ -118,7 +122,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">CLI Applications Manager</a>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
         
       </nav>
 
@@ -180,38 +184,19 @@
   <div class="section" id="make-cinnamon-xlet-pot-s-documentation">
 <h1>Make Cinnamon Xlet POT’s documentation<a class="headerlink" href="#make-cinnamon-xlet-pot-s-documentation" title="Permalink to this headline">¶</a></h1>
 <p>A <abbr title="Command Line Interface">CLI</abbr> utility written in Python 3 to generate POT files for Cinnamon xlets.</p>
-<div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>No mayor requirements are needed to run this application other than Python 3 (Python 3.5+ to be precise).</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This Python application can generate a system executable with Bash completions support. See <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">generate</span></code>.</p>
 </div>
-</div>
-<div class="section" id="mentions">
-<h2>Mentions<a class="headerlink" href="#mentions" title="Permalink to this headline">¶</a></h2>
-<p>Application inspired by <a class="reference external" href="https://github.com/linuxmint/Cinnamon/blob/master/files/usr/bin/cinnamon-xlet-makepot">the script with similar</a> functions that comes with <a class="reference external" href="https://github.com/linuxmint/Cinnamon">Cinnamon Desktop Environment</a>.</p>
-</div>
-<div class="section" id="differences-with-the-original-script">
-<h2>Differences with the original script<a class="headerlink" href="#differences-with-the-original-script" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Use of Python 3 instead of Python 2 on the script itself. Newer versions of the official script are already ported to Python 3.</p></li>
-<li><p>Possibility to scan Python files. Newer versions of the official script can also scan Python files.</p></li>
-<li><p>Possibility to set a custom header for the .pot file with data automatically generated and/or set through a settings file.</p></li>
-<li><p>Possibility to <em>blacklist</em> a set of preference keys found inside the <strong>settings-schema.json</strong> file so the generated .pot file doesn’t need to be manually edited later.</p></li>
-<li><p>Possibility to pass more than one <cite>–keyword</cite> argument to the <cite>xgettext</cite>.</p></li>
-<li><p>Possibility to scan files outside the xlet folder.</p></li>
-</ul>
-</div>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="cli-help-page">
-<h3><abbr title="Command Line Interface">CLI</abbr> help page<a class="headerlink" href="#cli-help-page" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="cli-synopsis">
+<h2>CLI Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight">
 <pre><span class="text-bold">Make Cinnamon Xlet POT 2018-09-15 01:19:13.335 (Stable)</span>
 
 <span class="text-bold">A CLI utility to generate POT files for Cinnamon xlets.</span>
 
 <span class="text-bold">Usage:</span>
+    app.py (-h | --help | --manual | --version)
     app.py [-j | --skip-js] [-p | --skip-python]
            [-o &lt;path&gt; | --output=&lt;path&gt;]
            [-c | --custom-header]
@@ -223,12 +208,14 @@
     app.py (-i | --install | -r | --remove)
            [-x &lt;path&gt; | --xlet-dir=&lt;path&gt;]
     app.py generate system_executable
-    app.py (-h | --help | --version)
 
 <span class="text-bold">Options:</span>
 
 <span class="text-bold">-h, --help</span>
     Show this screen.
+
+<span class="text-bold">--manual</span>
+    Show this application manual page.
 
 <span class="text-bold">--version</span>
     Show application version.
@@ -243,19 +230,21 @@
 <span class="text-bold">-k &lt;keyword&gt;, --keyword=&lt;keyword&gt;</span>
     Assign one or more keywords to be passed to the xgettext command.
     If none is passed, the &quot;_&quot; keyword will be used. Specifying this option
-    will override the default one (&quot;_&quot;). If &quot;_&quot; is intended to be used in
+    will override the default one (&quot;_&quot;). If &quot;_&quot; is intended to also be used in
     addition to a new keyword, &quot;_&quot; should also be passed.
 
 <span class="text-bold">-g &lt;pattern&gt;, --ignored-pattern=&lt;pattern&gt;</span>
-    A list of file/folder names patterns to ignore when scanning an xlet
-    directory.
+    A list of file/folder names patterns (in glob-style) to ignore when
+    scanning an xlet directory.
 
 <span class="text-bold">-o &lt;path&gt;, --output=&lt;path&gt;</span>
-    Use this option to specify the location for the generated .pot file.
-    By default &lt;uuid&gt;/po/&lt;uuid&gt;.pot is used.
+    Use this option to specify the location where to store the generated .pot
+    file. By default &lt;uuid&gt;/po/&lt;uuid&gt;.pot is used.
 
 <span class="text-bold">-c, --custom-header</span>
-    Modify the .pot file header with custom data.
+    Modify the .pot file header with custom data. The data will be extracted
+    from a file named exactly &lt;uuid&gt;.pot that should be placed inside an xlet
+    &quot;po&quot; folder.
 
 <span class="text-bold">-a &lt;path&gt;, --scan-additional-file=&lt;path&gt;</span>
     Specify additional files to scan that are outside the xlet folder.
@@ -282,6 +271,54 @@
     The opposite of install, removes translations from the system locale store.
     Again, the xlet UUID will be used to find the correct files to remove.</pre>
 </div></div>
+</div>
+<div class="section" id="mentions">
+<h2>Mentions<a class="headerlink" href="#mentions" title="Permalink to this headline">¶</a></h2>
+<p>Application inspired by <a class="reference external" href="https://github.com/linuxmint/Cinnamon/blob/master/files/usr/bin/cinnamon-xlet-makepot">the script with similar</a> functions that comes with <a class="reference external" href="https://github.com/linuxmint/Cinnamon">Cinnamon Desktop Environment</a>.</p>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>No mayor requirements are needed to run this application other than Python 3 (Python 3.5+ to be precise).</p>
+</div>
+<div class="section" id="detailed-usage">
+<h2>Detailed usage<a class="headerlink" href="#detailed-usage" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="differences-with-the-original-script">
+<h2>Differences with the original script<a class="headerlink" href="#differences-with-the-original-script" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Use of Python 3 instead of Python 2 on the script itself. Newer versions of the official script are already ported to Python 3.</p></li>
+<li><p>Possibility to scan Python files. Newer versions of the official script can also scan Python files.</p></li>
+<li><p>Possibility to set a custom header for the .pot file with data automatically generated and/or set through a settings file.</p></li>
+<li><p>Possibility to <em>blacklist</em> a set of preference keys found inside the <strong>settings-schema.json</strong> file so the generated .pot file doesn’t need to be manually edited later.</p></li>
+<li><p>Possibility to pass more than one <cite>–keyword</cite> argument to the <cite>xgettext</cite>.</p></li>
+<li><p>Possibility to scan files outside the xlet folder.</p></li>
+</ul>
+<div class="section" id="cli-options">
+<h3><abbr title="Command Line Interface">CLI</abbr> options<a class="headerlink" href="#cli-options" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code>: Display this application basic help screen.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--manual</span></code>: Display this application manual.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--version</span></code>: Show this application version.</p></li>
+</ul>
+</div>
+<div class="section" id="commands">
+<h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="app-py-generate">
+<h4>app.py generate<a class="headerlink" href="#app-py-generate" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="sub-commands">
+<h5>Sub-commands<a class="headerlink" href="#sub-commands" title="Permalink to this headline">¶</a></h5>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">system_executable</span></code>: Create an executable for the <code class="docutils literal notranslate"><span class="pre">app.py</span></code> application on the system <code class="docutils literal notranslate"><span class="pre">PATH</span></code> to be able to run it from anywhere.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The system executable creation process will ask for an executable name and the absolute path to store the executable file (the default is <code class="docutils literal notranslate"><span class="pre">$HOME/.local/bin</span></code>).</p></li>
+<li><p>It will also ask for bash completions creation.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>

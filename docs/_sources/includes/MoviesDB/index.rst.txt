@@ -3,7 +3,22 @@
 Movies DB's documentation
 *************************
 
-A :abbr:`CLI (Command Line Interface)` utility written in Python 3 to create a movies data base on GNU/Linux.
+.. only:: html
+
+    A :abbr:`CLI (Command Line Interface)` utility written in Python 3 to create a movies data base on GNU/Linux.
+
+.. include:: ../0-common/system-executable-hint.restructuredtext
+
+CLI Synopsis
+============
+
+.. only:: html
+
+    .. docopt-docstring:: moviesdb
+
+.. only:: man
+
+    .. custom-literalinclude:: moviesdb-usage
 
 Requirements
 ============
@@ -13,8 +28,5 @@ Requirements
     - Python 3.5+.
     - ``guessit>2`` module.
     - ``requests`` module.
-
-Mentions
-========
 
 .. include:: ./usage.rst

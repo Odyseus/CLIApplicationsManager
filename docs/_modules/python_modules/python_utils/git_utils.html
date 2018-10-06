@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>python_modules.python_utils.git_utils &mdash; CLI Applications Manager  documentation</title>
+  <title>python_modules.python_utils.git_utils &mdash; Python CLI Applications Documentations  documentation</title>
   
 
   
@@ -45,7 +45,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> CLI Applications Manager
+            <a href="../../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           
 
           
@@ -78,6 +78,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-structure.html">Folder structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
@@ -86,13 +87,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
 </ul>
 
             
@@ -107,7 +109,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">CLI Applications Manager</a>
+          <a href="../../../index.html">Python CLI Applications Documentations</a>
         
       </nav>
 
@@ -165,7 +167,7 @@
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">prompts</span>
 
 
-<div class="viewcode-block" id="manage_repo"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.git_utils.html#python_modules.python_utils.git_utils.manage_repo">[docs]</a><span class="k">def</span> <span class="nf">manage_repo</span><span class="p">(</span><span class="n">mechanism</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">subtrees</span><span class="o">=</span><span class="p">[],</span> <span class="n">cwd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="manage_repo"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.git_utils.html#python_modules.python_utils.git_utils.manage_repo">[docs]</a><span class="k">def</span> <span class="nf">manage_repo</span><span class="p">(</span><span class="n">mechanism</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">subtrees</span><span class="o">=</span><span class="p">[],</span> <span class="n">do_not_confirm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manage repository.</span>
 
 <span class="sd">    Perform some complex tasks on a repository. Mostly sub-trees and sub-modules initialization.</span>
@@ -182,6 +184,8 @@
 <span class="sd">        - **remote_name**: The sub-tree remote name.</span>
 <span class="sd">        - **remote_url**: The sub-tree remote URL.</span>
 <span class="sd">        - **path**: Path inside the parent repository where the sub-tree will be stored.</span>
+<span class="sd">    do_not_confirm : bool, optional</span>
+<span class="sd">        Do not ask for confirmation before executing commands.</span>
 <span class="sd">    cwd : None, optional</span>
 <span class="sd">        Path to working directory. It should be a folder that belongs to a Git repository.</span>
 <span class="sd">    logger : object</span>
@@ -215,7 +219,7 @@
 
         <span class="nb">print</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="n">prompts</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Proceed?&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">do_not_confirm</span> <span class="ow">or</span> <span class="n">prompts</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Proceed?&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
                 <span class="n">call</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">cwd</span><span class="p">)</span></div>
 

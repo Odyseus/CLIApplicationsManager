@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>BackupToolApp.backup &mdash; CLI Applications Manager  documentation</title>
+  <title>BackupToolApp.backup &mdash; Python CLI Applications Documentations  documentation</title>
   
 
   
@@ -45,7 +45,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           
 
           
@@ -78,6 +78,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
@@ -86,13 +87,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
 </ul>
 
             
@@ -107,7 +109,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">CLI Applications Manager</a>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
         
       </nav>
 
@@ -164,11 +166,15 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">Popen</span><span class="p">,</span> <span class="n">PIPE</span><span class="p">,</span> <span class="n">STDOUT</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">PIPE</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">Popen</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">STDOUT</span>
 <span class="kn">from</span> <span class="nn">threading</span> <span class="k">import</span> <span class="n">Thread</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">app_utils</span>
-<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">file_utils</span><span class="p">,</span> <span class="n">misc_utils</span><span class="p">,</span> <span class="n">shell_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">file_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">misc_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">shell_utils</span>
 
 
 <div class="viewcode-block" id="BackupJobs"><a class="viewcode-back" href="../../modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.BackupJobs">[docs]</a><span class="k">class</span> <span class="nc">BackupJobs</span><span class="p">():</span>
@@ -194,7 +200,7 @@
 <span class="sd">        err</span>
 <span class="sd">            Could raise if the passed backup jobs are malformed.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">BackupJobs</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="n">global_settings</span> <span class="o">=</span> <span class="n">backup_jobs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;global_settings&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>

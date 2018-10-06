@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>python_modules.app_utils module &mdash; CLI Applications Manager  documentation</title>
+  <title>python_modules.app_utils module &mdash; Python CLI Applications Documentations  documentation</title>
   
 
   
@@ -47,7 +47,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           
 
           
@@ -80,6 +80,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
@@ -88,13 +89,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
 </ul>
 
             
@@ -109,7 +111,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">CLI Applications Manager</a>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
         
       </nav>
 
@@ -176,6 +178,36 @@
 <span id="python-modules-app-utils-module"></span><h1>python_modules.app_utils module<a class="headerlink" href="#module-python_modules.app_utils" title="Permalink to this headline">¶</a></h1>
 <p>Module with utility functions and classes.</p>
 <dl class="attribute">
+<dt id="python_modules.app_utils.app_man_user_data_backlist">
+<code class="descclassname">python_modules.app_utils.</code><code class="descname">app_man_user_data_backlist</code><a class="headerlink" href="#python_modules.app_utils.app_man_user_data_backlist" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – List of folder names to ignore.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="python_modules.app_utils.app_man_user_data_path">
+<code class="descclassname">python_modules.app_utils.</code><code class="descname">app_man_user_data_path</code><a class="headerlink" href="#python_modules.app_utils.app_man_user_data_path" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Path to the UserData folder.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="python_modules.app_utils.app_readme_template">
+<code class="descclassname">python_modules.app_utils.</code><code class="descname">app_readme_template</code><a class="headerlink" href="#python_modules.app_utils.app_readme_template" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – README template for this application.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="python_modules.app_utils.app_table_row_template">
+<code class="descclassname">python_modules.app_utils.</code><code class="descname">app_table_row_template</code><a class="headerlink" href="#python_modules.app_utils.app_table_row_template" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – A Markdown table row template used inside app_readme_template.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="python_modules.app_utils.apps_manager_readme_template">
+<code class="descclassname">python_modules.app_utils.</code><code class="descname">apps_manager_readme_template</code><a class="headerlink" href="#python_modules.app_utils.apps_manager_readme_template" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – README template for applications managed by this application.</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="python_modules.app_utils.root_folder">
 <code class="descclassname">python_modules.app_utils.</code><code class="descname">root_folder</code><a class="headerlink" href="#python_modules.app_utils.root_folder" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>str</em> – The main folder containing the application. All commands must be executed from this location
@@ -195,8 +227,30 @@ without exceptions.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="python_modules.app_utils.get_apps">
-<code class="descclassname">python_modules.app_utils.</code><code class="descname">get_apps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/app_utils.html#get_apps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.app_utils.get_apps" title="Permalink to this definition">¶</a></dt>
+<dt id="python_modules.app_utils.get_all_apps">
+<code class="descclassname">python_modules.app_utils.</code><code class="descname">get_all_apps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/app_utils.html#get_all_apps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.app_utils.get_all_apps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all applications directories and slugs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The application directory names or paths.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.app_utils.print_all_apps">
+<code class="descclassname">python_modules.app_utils.</code><code class="descname">print_all_apps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/app_utils.html#print_all_apps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.app_utils.print_all_apps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print application slugs.</p>
+<p>This method is called by the Bash completions script to auto-complete
+application slugs for the <code class="docutils literal notranslate"><span class="pre">--app=</span></code> and <code class="docutils literal notranslate"><span class="pre">-a</span></code> CLI options.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.app_utils.get_selected_apps">
+<code class="descclassname">python_modules.app_utils.</code><code class="descname">get_selected_apps</code><span class="sig-paren">(</span><em>app_slugs=[]</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/app_utils.html#get_selected_apps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.app_utils.get_selected_apps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get application directories.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -204,6 +258,29 @@ without exceptions.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)">list</a></p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_slugs</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a><em>, </em><em>optional</em>) – Description</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/constants.html#None" title="(in Python v3.5)"><em>None</em></a><em>, </em><em>optional</em>) – Description</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.app_utils.get_app_slugyfied_name">
+<code class="descclassname">python_modules.app_utils.</code><code class="descname">get_app_slugyfied_name</code><span class="sig-paren">(</span><em>app_slug</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/app_utils.html#get_app_slugyfied_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.app_utils.get_app_slugyfied_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get slugyfied application name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>app_slug</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – An application “slug” (the name of an application folder).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The “slugyfied” app name.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -246,7 +323,7 @@ without exceptions.</p>
 <li><p><strong>generate_api_docs</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="python_modules.python_utils.sphinx_docs_utils.html#python_modules.python_utils.sphinx_docs_utils.generate_docs" title="python_modules.python_utils.sphinx_docs_utils.generate_docs"><code class="xref any py py-func docutils literal notranslate"><span class="pre">sphinx_docs_utils.generate_docs</span></code></a>.</p></li>
 <li><p><strong>update_inventories</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="python_modules.python_utils.sphinx_docs_utils.html#python_modules.python_utils.sphinx_docs_utils.generate_docs" title="python_modules.python_utils.sphinx_docs_utils.generate_docs"><code class="xref any py py-func docutils literal notranslate"><span class="pre">sphinx_docs_utils.generate_docs</span></code></a>.</p></li>
 <li><p><strong>force_clean_build</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="python_modules.python_utils.sphinx_docs_utils.html#python_modules.python_utils.sphinx_docs_utils.generate_docs" title="python_modules.python_utils.sphinx_docs_utils.generate_docs"><code class="xref any py py-func docutils literal notranslate"><span class="pre">sphinx_docs_utils.generate_docs</span></code></a>.</p></li>
-<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/constants.html#None" title="(in Python v3.5)"><em>None</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
 </ul>
 </dd>
 </dl>
@@ -381,20 +458,74 @@ without exceptions.</p>
 
 <dl class="function">
 <dt id="python_modules.app_utils.bump_app_version">
-<code class="descclassname">python_modules.app_utils.</code><code class="descname">bump_app_version</code><span class="sig-paren">(</span><em>app_slug</em>, <em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/app_utils.html#bump_app_version"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.app_utils.bump_app_version" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">python_modules.app_utils.</code><code class="descname">bump_app_version</code><span class="sig-paren">(</span><em>app</em>, <em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/app_utils.html#bump_app_version"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.app_utils.bump_app_version" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bump application version.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>app_slug</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The application to which to bump its version.</p></li>
+<li><p><strong>app</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The application to which to bump its version.</p></li>
 <li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><a class="reference internal" href="#python_modules.app_utils.InvalidApplicationName" title="python_modules.app_utils.InvalidApplicationName"><code class="xref py py-exc docutils literal notranslate"><span class="pre">InvalidApplicationName</span></code></a> – See &lt;class <a class="reference internal" href="#python_modules.app_utils.InvalidApplicationName" title="python_modules.app_utils.InvalidApplicationName"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">InvalidApplicationName</span></code></a>&gt;.</p>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.app_utils.generate_readmes">
+<code class="descclassname">python_modules.app_utils.</code><code class="descname">generate_readmes</code><span class="sig-paren">(</span><em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/app_utils.html#generate_readmes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.app_utils.generate_readmes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate README files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="function">
+<dt id="python_modules.app_utils.manage_app_repos_subtrees">
+<code class="descclassname">python_modules.app_utils.</code><code class="descname">manage_app_repos_subtrees</code><span class="sig-paren">(</span><em>action</em>, <em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/app_utils.html#manage_app_repos_subtrees"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.app_utils.manage_app_repos_subtrees" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="python_modules.python_utils.git_utils.html#python_modules.python_utils.git_utils.manage_repo" title="python_modules.python_utils.git_utils.manage_repo"><code class="xref any py py-func docutils literal notranslate"><span class="pre">git_utils.manage_repo</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>action</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – See <a class="reference internal" href="python_modules.python_utils.git_utils.html#python_modules.python_utils.git_utils.manage_repo" title="python_modules.python_utils.git_utils.manage_repo"><code class="xref any py py-func docutils literal notranslate"><span class="pre">git_utils.manage_repo</span></code></a></p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.app_utils.run_cmd_on_apps">
+<code class="descclassname">python_modules.app_utils.</code><code class="descname">run_cmd_on_apps</code><span class="sig-paren">(</span><em>cmd</em>, <em>run_in_parallel=False</em>, <em>app_slugs=[]</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/app_utils.html#run_cmd_on_apps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.app_utils.run_cmd_on_apps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run command on applications.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmd</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The command to run on all applications or the selected ones.</p></li>
+<li><p><strong>run_in_parallel</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Run commands in parallel and do not wait for each command to finish.</p></li>
+<li><p><strong>app_slugs</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a><em>, </em><em>optional</em>) – The list of applications slugs to run the command on.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.app_utils.generate_man_pages">
+<code class="descclassname">python_modules.app_utils.</code><code class="descname">generate_man_pages</code><span class="sig-paren">(</span><em>app_slugs=[]</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/app_utils.html#generate_man_pages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.app_utils.generate_man_pages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate manual pages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.app_utils.eradicate_man_pages_data_json">
+<code class="descclassname">python_modules.app_utils.</code><code class="descname">eradicate_man_pages_data_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/app_utils.html#eradicate_man_pages_data_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.app_utils.eradicate_man_pages_data_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 

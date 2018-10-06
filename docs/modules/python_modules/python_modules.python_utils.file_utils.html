@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>python_modules.python_utils.file_utils module &mdash; CLI Applications Manager  documentation</title>
+  <title>python_modules.python_utils.file_utils module &mdash; Python CLI Applications Documentations  documentation</title>
   
 
   
@@ -47,7 +47,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           
 
           
@@ -80,6 +80,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
@@ -88,13 +89,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
 </ul>
 
             
@@ -109,7 +111,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">CLI Applications Manager</a>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
         
       </nav>
 
@@ -177,6 +179,25 @@
   <div class="section" id="module-python_modules.python_utils.file_utils">
 <span id="python-modules-python-utils-file-utils-module"></span><h1>python_modules.python_utils.file_utils module<a class="headerlink" href="#module-python_modules.python_utils.file_utils" title="Permalink to this headline">¶</a></h1>
 <p>Common utilities to perform file operations.</p>
+<dl class="function">
+<dt id="python_modules.python_utils.file_utils.expand_path">
+<code class="descclassname">python_modules.python_utils.file_utils.</code><code class="descname">expand_path</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/file_utils.html#expand_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.file_utils.expand_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expand environment variables used in <code class="docutils literal notranslate"><span class="pre">path</span></code>. See <a class="reference external" href="https://docs.python.org/3.5/library/os.path.html#os.path.expandvars" title="(in Python v3.5)"><code class="xref any docutils literal notranslate"><span class="pre">os.path.expandvars</span></code></a> and
+<a class="reference external" href="https://docs.python.org/3.5/library/os.path.html#os.path.expanduser" title="(in Python v3.5)"><code class="xref any docutils literal notranslate"><span class="pre">os.path.expanduser</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Path with environment variables or with a start “~” character that will
+be expanded.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An absolute path with expanded environment variables.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="function">
 <dt id="python_modules.python_utils.file_utils.is_real_dir">
 <code class="descclassname">python_modules.python_utils.file_utils.</code><code class="descname">is_real_dir</code><span class="sig-paren">(</span><em>dir_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/file_utils.html#is_real_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.file_utils.is_real_dir" title="Permalink to this definition">¶</a></dt>
@@ -348,8 +369,8 @@ before performing the copy.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="python_modules.python_utils.file_utils.copy_symlink">
-<code class="descclassname">python_modules.python_utils.file_utils.</code><code class="descname">copy_symlink</code><span class="sig-paren">(</span><em>source</em>, <em>destination</em>, <em>logger=None</em>, <em>follow_symlinks=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/file_utils.html#copy_symlink"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.file_utils.copy_symlink" title="Permalink to this definition">¶</a></dt>
+<dt id="python_modules.python_utils.file_utils.copy_create_symlink">
+<code class="descclassname">python_modules.python_utils.file_utils.</code><code class="descname">copy_create_symlink</code><span class="sig-paren">(</span><em>source</em>, <em>destination</em>, <em>source_is_symlink=False</em>, <em>logger=None</em>, <em>follow_symlinks=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/file_utils.html#copy_create_symlink"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.file_utils.copy_create_symlink" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copy symlinks avoiding at all cost throwing errors.</p>
 <p>This function is always triggered when “source” is a symlink. It will create the symlink only
 after the following three tasks has been performed:</p>
@@ -386,7 +407,7 @@ always empty.</p>
 differences:</p>
 <ul class="simple">
 <li><p>It copies directories whether the destination directory exists or not.</p></li>
-<li><p>It uses a custom function to copy symlinks (<a class="reference internal" href="#python_modules.python_utils.file_utils.copy_symlink" title="python_modules.python_utils.file_utils.copy_symlink"><code class="xref any py py-func docutils literal notranslate"><span class="pre">copy_symlink</span></code></a>), it not just uses     <a class="reference external" href="https://docs.python.org/3.5/library/os.html#os.symlink" title="(in Python v3.5)"><code class="xref any docutils literal notranslate"><span class="pre">os.symlink</span></code></a> directly.</p></li>
+<li><p>It uses a custom function to copy symlinks (<a class="reference internal" href="#python_modules.python_utils.file_utils.copy_create_symlink" title="python_modules.python_utils.file_utils.copy_create_symlink"><code class="xref any py py-func docutils literal notranslate"><span class="pre">copy_create_symlink</span></code></a>), it not just uses     <a class="reference external" href="https://docs.python.org/3.5/library/os.html#os.symlink" title="(in Python v3.5)"><code class="xref any docutils literal notranslate"><span class="pre">os.symlink</span></code></a> directly.</p></li>
 <li><p>Switched the <em>ignore</em> parameter (originally a method) into <em>ignored_patterns</em> (now a list     of file patterns). Just for the kick of it, not really needed.</p></li>
 </ul>
 <dl class="field-list simple">

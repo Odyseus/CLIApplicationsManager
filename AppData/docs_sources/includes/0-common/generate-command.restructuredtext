@@ -1,0 +1,10 @@
+app.py generate
+^^^^^^^^^^^^^^^
+
+Sub-commands
+~~~~~~~~~~~~
+
+- ``system_executable``: Create an executable for the ``app.py`` application on the system ``PATH`` to be able to run it from anywhere.
+
+    + The system executable creation process will ask for an executable name and the absolute path to store the executable file (the default is ``$HOME/.local/bin``).
+    + It will also ask for bash completions creation.

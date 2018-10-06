@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pyperclip’s documentation &mdash; CLI Applications Manager  documentation</title>
+  <title>Contributing to polib &mdash; Python CLI Applications Documentations  documentation</title>
   
 
   
@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Introduction" href="introduction.html" />
-    <link rel="prev" title="Projects using polib" href="../polib/projects.html" /> 
+    <link rel="next" title="Projects using polib" href="projects.html" />
+    <link rel="prev" title="polib API" href="api.html" /> 
 
 </head>
 
@@ -47,7 +47,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> CLI Applications Manager
+            <a href="../../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           
 
           
@@ -80,6 +80,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../0-structure.html">Folder structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../BackupTool/index.html">Backup Tool’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
@@ -88,14 +89,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../MoviesDB/index.html">Movies DB’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../docopt.html">docopt’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../polib/index.html">polib’s documentation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">pyperclip’s documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">polib’s documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html">polib API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Contributing to polib</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-contribute">How to contribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-test-suite">Running the test suite</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects using polib</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../titlecase.html">titlecase’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tqdm.html">tqdm’s documentation</a></li>
 </ul>
@@ -112,7 +122,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">CLI Applications Manager</a>
+          <a href="../../../index.html">Python CLI Applications Documentations</a>
         
       </nav>
 
@@ -143,13 +153,15 @@
     
       <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
-      <li>pyperclip’s documentation</li>
+          <li><a href="index.html">polib’s documentation</a> &raquo;</li>
+        
+      <li>Contributing to polib</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/includes/thirdparty_docs.d/pyperclip/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/includes/0-thirdparty_docs.d/polib/contributing.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -159,10 +171,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="projects.html" class="btn btn-neutral float-right" title="Projects using polib" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../polib/projects.html" class="btn btn-neutral" title="Projects using polib" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral" title="polib API" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -171,17 +183,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="pyperclip-s-documentation">
-<h1>pyperclip’s documentation<a class="headerlink" href="#pyperclip-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#purpose">Purpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#not-implemented-error">Not Implemented Error</a></li>
+  <div class="section" id="contributing-to-polib">
+<span id="contributing"></span><h1>Contributing to polib<a class="headerlink" href="#contributing-to-polib" title="Permalink to this headline">¶</a></h1>
+<p>You are very welcome to contribute to the project!
+The bugtracker, wiki and mercurial repository can be found at the
+<a class="reference external" href="http://bitbucket.org/izi/polib/">project’s page</a>.</p>
+<p>New releases are also published at the
+<a class="reference external" href="http://cheeseshop.python.org/pypi/polib/">cheeseshop</a>.</p>
+<div class="section" id="how-to-contribute">
+<h2>How to contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">¶</a></h2>
+<p>There are various possibilities to get involved, for example you can:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.bitbucket.org/izi/polib/issues/new/">Report bugs</a>
+preferably with patches if you can;</p></li>
+<li><p>Enhance this <a class="reference external" href="http://www.bitbucket.org/izi/polib/src/tip/docs/">documentation</a></p></li>
+<li><p><a class="reference external" href="http://www.bitbucket.org/izi/polib/">Fork the code</a>, implement new
+features, test and send a pull request</p></li>
 </ul>
-</li>
-</ul>
+</div>
+<div class="section" id="running-the-test-suite">
+<h2>Running the test suite<a class="headerlink" href="#running-the-test-suite" title="Permalink to this headline">¶</a></h2>
+<p>To run the tests, just type the following on a terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /path/to/polib/
+$ ./runtests.sh
+</pre></div>
+</div>
+<p>If you want to generate coverage information:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install coverage
+$ ./runtests.sh
+$ coverage html
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -193,10 +225,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="projects.html" class="btn btn-neutral float-right" title="Projects using polib" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../polib/projects.html" class="btn btn-neutral" title="Projects using polib" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral" title="polib API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

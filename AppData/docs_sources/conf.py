@@ -14,6 +14,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
+import json
 import os
 import sys
 
@@ -22,18 +23,25 @@ from datetime import datetime
 root_folder = os.path.realpath(os.path.abspath(os.path.join(
     os.path.normpath(os.path.join(os.path.dirname(__file__), *([".."] * 2))))))
 
-root_app_user_data = os.path.join(root_folder, "UserData")
-app_dirs = os.listdir(root_app_user_data)
+# root_app_user_data = os.path.join(root_folder, "UserData")
+# app_dirs = os.listdir(root_app_user_data)
 
-# Insert all the  applications to sys.path.
-for dir in app_dirs:
-    app_data_dir = os.path.join(root_app_user_data, dir, "AppData")
+# # Insert all the  applications to sys.path.
+# for dir in app_dirs:
+#     app_data_dir = os.path.join(root_app_user_data, dir, "AppData")
 
-    if os.path.exists(app_data_dir):
-        sys.path.insert(0, app_data_dir)
+#     if os.path.exists(app_data_dir):
+#         sys.path.insert(0, app_data_dir)
 
 # Insert the root application to sys.path.
 sys.path.insert(0, os.path.join(root_folder, "AppData"))
+
+from python_modules.app_utils import get_all_apps
+
+all_apps = get_all_apps()
+
+for app in all_apps:
+    sys.path.insert(0, os.path.join(app["path"], "AppData"))
 
 # Insert Sphinx extensions to sys.path.
 sys.path.insert(0, os.path.abspath("."))
@@ -41,14 +49,14 @@ sys.path.insert(0, os.path.abspath("."))
 # I couldn't directly import this data from the extension code itself (freaking python's relative
 # imports nonsense!!!), so I import it here and pass the data to the extension as an option
 # dictionary. Moving on!!!
-from BackupToolApp.cli import docopt_doc as backuptool_docopt_doc
-from ChrootHelperApp.cli import docopt_doc as chroothelper_docopt_doc
-from FilesCleanerApp.cli import docopt_doc as filescleaner_docopt_doc
-from HostsManagerApp.cli import docopt_doc as hostsmanager_docopt_doc
-from KnowledgeBaseApp.cli import docopt_doc as knowledgebase_docopt_doc
-from MakeCinnamonXletPOTApp.cli import docopt_doc as makecinnamonxletpot_docopt_doc
-from MoviesDBApp.cli import docopt_doc as moviesdb_docopt_doc
-from PackageManagerApp.cli import docopt_doc as packagemanager_docopt_doc
+from python_modules.cli import docopt_doc as appmanager_docopt_doc
+
+# Dynamically import all docopt docstrings from all applications.
+for app in all_apps:
+    exec("from {app_slug}App.cli import docopt_doc as {app_slug_lower}_docopt_doc".format(
+        app_slug=app["slug"],
+        app_slug_lower=app["slug"].lower(),
+    ))
 
 # ##############################################################################
 # ########################### General configuration ############################
@@ -62,13 +70,15 @@ templates_path = ["_templates"]
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
+# rst is for all standard files.
+# txt is for the coverage generated files.
 source_suffix = [".rst", ".txt"]
 
 # The master toctree document.
 master_doc = "index"
 
 # General information about the project.
-project = "CLI Applications Manager"
+project = "Python CLI Applications Documentations"
 copyright = "2016-%s, Odyseus" % datetime.today().year
 author = "Odyseus"
 
@@ -140,6 +150,7 @@ extensions = [
     "sphinx.ext.githubpages",
     # My Sphinx extensions
     "sphinx_extensions.contextual_admonition",
+    "sphinx_extensions.custom_literalinclude",
     "sphinx_extensions.docopt_docstrings"
 ]
 
@@ -158,19 +169,42 @@ napoleon_use_rtype = True
 
 
 # sphinx.ext.coverage.
-coverage_ignore_modules = ["common_modules.docopt", "common_modules.pyperclip"]
+coverage_ignore_modules = []
+
 
 # extensions.docopt_docstrings.
+def extract_usage(doc_string):
+    """Extract the Usage section from a docopt docstring.
+
+    Parameters
+    ----------
+    doc_string : str
+        The docopt doctring section.
+
+    Returns
+    -------
+    str
+        The Usage section of a docopt docstring.
+    """
+    usage = doc_string[doc_string.find("Usage:") + len("Usage:"):
+                       doc_string.rfind("Options:")]
+    return "\n".join([line[4:] for line in usage.splitlines()])
+
+
 docopt_docstrings = {
-    "backuptool": backuptool_docopt_doc,
-    "chroothelper": chroothelper_docopt_doc,
-    "filescleaner": filescleaner_docopt_doc,
-    "hostsmanager": hostsmanager_docopt_doc,
-    "knowledgebase": knowledgebase_docopt_doc,
-    "makecinnamonxletpot": makecinnamonxletpot_docopt_doc,
-    "moviesdb": moviesdb_docopt_doc,
-    "packagemanager": packagemanager_docopt_doc,
+    "appmanager": appmanager_docopt_doc,
 }
+
+# extensions.custom_literalinclude.
+custom_literalincludes = {
+    "appmanager-usage": extract_usage(appmanager_docopt_doc),
+}
+
+# Expand "docopt_docstrings" and "custom_literalincludes" with dynamically imported data.
+for app in all_apps:
+    slug_lower = app["slug"].lower()
+    docopt_docstrings[slug_lower] = globals()["%s_docopt_doc" % slug_lower]
+    custom_literalincludes["%s-usage" % slug_lower] = extract_usage(globals()["%s_docopt_doc" % slug_lower])
 
 # ##############################################################################
 # ########################## SMACK SOME FREAKING SENCE #########################
@@ -191,16 +225,20 @@ autoclass_content = "both"
 # Group method docstrings in sphinx
 autodoc_member_order = "bysource"
 
-# Just to know how to do this.
-# I don't need custom JavaScript yet.
-# I use a custom theme, so I made all CSS changes in there.
-# def setup(app):
-#     # In case that I need in the future to add CSS.
-#     app.add_stylesheet("css/custom.css")
-#     # In case that I need in the future to add JavaScript.
-#     app.add_javascript("js/custom.js")
+# ##############################################################################
+# ####################### Options for manual page output #######################
+# ##############################################################################
 
+# When a scalpel doesn't cut it, use a f*cking sledgehammer!!!
+# FINALLY SOME F*CKING CONTROL OVER THE MAN PAGES BUILDING PROCESS!!!
+if os.path.exists("man_pages_data.json"):
+    man_pages_data = json.load(open("man_pages_data.json"))
+    # Override project name so the application's name is shown as the manual page title.
+    project = man_pages_data["app_name"]
 
-man_pages = [
-    ("includes/KnowledgeBase/usage", 'dev-python-apps-cli2-docs', u'dev-python-apps-cli2 Documentation', [author], 1)
-]
+    man_pages = [(man_pages_data["doc_path"],
+                  "app.py",
+                  man_pages_data["app_description"],
+                  [author], 1)]
+
+    man_show_urls = True

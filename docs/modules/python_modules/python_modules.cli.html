@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>python_modules.cli module &mdash; CLI Applications Manager  documentation</title>
+  <title>python_modules.cli module &mdash; Python CLI Applications Documentations  documentation</title>
   
 
   
@@ -46,7 +46,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           
 
           
@@ -79,6 +79,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
@@ -87,13 +88,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
 </ul>
 
             
@@ -108,7 +110,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">CLI Applications Manager</a>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
         
       </nav>
 
@@ -186,104 +188,144 @@ without exceptions.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="python_modules.cli.CommandLineTool">
-<em class="property">class </em><code class="descclassname">python_modules.cli.</code><code class="descname">CommandLineTool</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineTool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineTool" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Command line tool.</p>
+<dt id="python_modules.cli.CommandLineInterface">
+<em class="property">class </em><code class="descclassname">python_modules.cli.</code><code class="descname">CommandLineInterface</code><span class="sig-paren">(</span><em>docopt_args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper" title="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper"><code class="xref py py-class docutils literal notranslate"><span class="pre">python_modules.python_utils.cli_utils.CommandLineInterfaceSuper</span></code></a></p>
+<p>Command line interface.</p>
 <p>It handles the arguments parsed by the docopt module.</p>
 <dl class="attribute">
-<dt id="python_modules.cli.CommandLineTool.action">
-<code class="descname">action</code><a class="headerlink" href="#python_modules.cli.CommandLineTool.action" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>method</em> – Set the method that will be executed when calling CommandLineTool.run().</p>
+<dt id="python_modules.cli.CommandLineInterface.a">
+<code class="descname">a</code><a class="headerlink" href="#python_modules.cli.CommandLineInterface.a" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – Where docopt_args is stored.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="python_modules.cli.CommandLineTool.app_slugs">
-<code class="descname">app_slugs</code><a class="headerlink" href="#python_modules.cli.CommandLineTool.app_slugs" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list</em> – List of applications.</p>
+<dt id="python_modules.cli.CommandLineInterface.action">
+<code class="descname">action</code><a class="headerlink" href="#python_modules.cli.CommandLineInterface.action" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>method</em> – Set the method that will be executed when calling CommandLineInterface.run().</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="python_modules.cli.CommandLineTool.update_inventories">
-<code class="descname">update_inventories</code><a class="headerlink" href="#python_modules.cli.CommandLineTool.update_inventories" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>bool</em> – See <a class="reference internal" href="python_modules.python_utils.sphinx_docs_utils.html#python_modules.python_utils.sphinx_docs_utils.generate_docs" title="python_modules.python_utils.sphinx_docs_utils.generate_docs"><code class="xref any py py-func docutils literal notranslate"><span class="pre">sphinx_docs_utils.generate_docs</span></code></a>.</p>
+<dt id="python_modules.cli.CommandLineInterface.repo_action">
+<code class="descname">repo_action</code><a class="headerlink" href="#python_modules.cli.CommandLineInterface.repo_action" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Which action to perform on a repository.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="python_modules.cli.CommandLineTool.force_clean_build">
-<code class="descname">force_clean_build</code><a class="headerlink" href="#python_modules.cli.CommandLineTool.force_clean_build" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>bool</em> – See <a class="reference internal" href="python_modules.python_utils.sphinx_docs_utils.html#python_modules.python_utils.sphinx_docs_utils.generate_docs" title="python_modules.python_utils.sphinx_docs_utils.generate_docs"><code class="xref any py py-func docutils literal notranslate"><span class="pre">sphinx_docs_utils.generate_docs</span></code></a>.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="python_modules.cli.CommandLineTool.generate_api_docs">
-<code class="descname">generate_api_docs</code><a class="headerlink" href="#python_modules.cli.CommandLineTool.generate_api_docs" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>bool</em> – See <a class="reference internal" href="python_modules.python_utils.sphinx_docs_utils.html#python_modules.python_utils.sphinx_docs_utils.generate_docs" title="python_modules.python_utils.sphinx_docs_utils.generate_docs"><code class="xref any py py-func docutils literal notranslate"><span class="pre">sphinx_docs_utils.generate_docs</span></code></a>.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="python_modules.cli.CommandLineTool.logger">
-<code class="descname">logger</code><a class="headerlink" href="#python_modules.cli.CommandLineTool.logger" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>object</em> – See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
-</dd></dl>
-
+<p>Initialize.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – The dictionary of arguments as returned by docopt parser.</p>
+<dd class="field-odd"><p><strong>docopt_args</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – The dictionary of arguments as returned by docopt parser.</p>
 </dd>
 </dl>
+<dl class="attribute">
+<dt id="python_modules.cli.CommandLineInterface.app_slugs">
+<code class="descname">app_slugs</code><em class="property"> = []</em><a class="headerlink" href="#python_modules.cli.CommandLineInterface.app_slugs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">repo_action</code><em class="property"> = None</em></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">action</code><em class="property"> = None</em></dt>
+<dd></dd></dl>
+
 <dl class="method">
-<dt id="python_modules.cli.CommandLineTool.run">
-<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineTool.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineTool.run" title="Permalink to this definition">¶</a></dt>
+<dt id="python_modules.cli.CommandLineInterface.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute the assigned action stored in self.action if any.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="python_modules.cli.CommandLineTool.bump_versions">
-<code class="descname">bump_versions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineTool.bump_versions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineTool.bump_versions" title="Permalink to this definition">¶</a></dt>
+<dt id="python_modules.cli.CommandLineInterface.bump_versions">
+<code class="descname">bump_versions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.bump_versions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.bump_versions" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="python_modules.app_utils.html#python_modules.app_utils.bump_versions" title="python_modules.app_utils.bump_versions"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.bump_versions</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="python_modules.cli.CommandLineTool.generate_base_app">
-<code class="descname">generate_base_app</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineTool.generate_base_app"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineTool.generate_base_app" title="Permalink to this definition">¶</a></dt>
+<dt id="python_modules.cli.CommandLineInterface.generate_base_app">
+<code class="descname">generate_base_app</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.generate_base_app"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.generate_base_app" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="python_modules.app_utils.html#python_modules.app_utils.BaseAppGenerator" title="python_modules.app_utils.BaseAppGenerator"><code class="xref any py py-class docutils literal notranslate"><span class="pre">app_utils.BaseAppGenerator</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="python_modules.cli.CommandLineTool.generate_docs">
-<code class="descname">generate_docs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineTool.generate_docs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineTool.generate_docs" title="Permalink to this definition">¶</a></dt>
+<dt id="python_modules.cli.CommandLineInterface.generate_docs">
+<code class="descname">generate_docs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.generate_docs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.generate_docs" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="python_modules.python_utils.sphinx_docs_utils.html#python_modules.python_utils.sphinx_docs_utils.generate_docs" title="python_modules.python_utils.sphinx_docs_utils.generate_docs"><code class="xref any py py-func docutils literal notranslate"><span class="pre">sphinx_docs_utils.generate_docs</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="python_modules.cli.CommandLineTool.install_dependencies">
-<code class="descname">install_dependencies</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineTool.install_dependencies"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineTool.install_dependencies" title="Permalink to this definition">¶</a></dt>
+<dt id="python_modules.cli.CommandLineInterface.install_dependencies">
+<code class="descname">install_dependencies</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.install_dependencies"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.install_dependencies" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="python_modules.app_utils.html#python_modules.app_utils.install_dependencies" title="python_modules.app_utils.install_dependencies"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.install_dependencies</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="python_modules.cli.CommandLineTool.system_executable_generation_self">
-<code class="descname">system_executable_generation_self</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineTool.system_executable_generation_self"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineTool.system_executable_generation_self" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference internal" href="python_modules.python_utils.template_utils.html#python_modules.python_utils.template_utils.system_executable_generation" title="python_modules.python_utils.template_utils.system_executable_generation"><code class="xref any py py-func docutils literal notranslate"><span class="pre">template_utils.system_executable_generation</span></code></a></p>
+<dt id="python_modules.cli.CommandLineInterface.generate_readmes">
+<code class="descname">generate_readmes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.generate_readmes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.generate_readmes" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="python_modules.app_utils.html#python_modules.app_utils.generate_readmes" title="python_modules.app_utils.generate_readmes"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.generate_readmes</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="python_modules.cli.CommandLineTool.system_executable_generation_all">
-<code class="descname">system_executable_generation_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineTool.system_executable_generation_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineTool.system_executable_generation_all" title="Permalink to this definition">¶</a></dt>
+<dt id="python_modules.cli.CommandLineInterface.run_cmd_on_apps">
+<code class="descname">run_cmd_on_apps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.run_cmd_on_apps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.run_cmd_on_apps" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="python_modules.app_utils.html#python_modules.app_utils.run_cmd_on_apps" title="python_modules.app_utils.run_cmd_on_apps"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.run_cmd_on_apps</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="python_modules.cli.CommandLineInterface.system_executable_generation_self">
+<code class="descname">system_executable_generation_self</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.system_executable_generation_self"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.system_executable_generation_self" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._system_executable_generation" title="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._system_executable_generation"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">cli_utils.CommandLineInterfaceSuper._system_executable_generation</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="python_modules.cli.CommandLineInterface.system_executable_generation_all">
+<code class="descname">system_executable_generation_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.system_executable_generation_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.system_executable_generation_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="python_modules.app_utils.html#python_modules.app_utils.system_executable_generation_for_all_apps" title="python_modules.app_utils.system_executable_generation_for_all_apps"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.system_executable_generation_for_all_apps</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="python_modules.cli.CommandLineTool.manage_repo_submodules">
-<code class="descname">manage_repo_submodules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineTool.manage_repo_submodules"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineTool.manage_repo_submodules" title="Permalink to this definition">¶</a></dt>
+<dt id="python_modules.cli.CommandLineInterface.manage_repo_submodules">
+<code class="descname">manage_repo_submodules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.manage_repo_submodules"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.manage_repo_submodules" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="python_modules.python_utils.git_utils.html#python_modules.python_utils.git_utils.manage_repo" title="python_modules.python_utils.git_utils.manage_repo"><code class="xref any py py-func docutils literal notranslate"><span class="pre">git_utils.manage_repo</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="python_modules.cli.CommandLineTool.manage_repo_subtrees">
-<code class="descname">manage_repo_subtrees</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineTool.manage_repo_subtrees"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineTool.manage_repo_subtrees" title="Permalink to this definition">¶</a></dt>
+<dt id="python_modules.cli.CommandLineInterface.manage_repo_subtrees">
+<code class="descname">manage_repo_subtrees</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.manage_repo_subtrees"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.manage_repo_subtrees" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="python_modules.python_utils.git_utils.html#python_modules.python_utils.git_utils.manage_repo" title="python_modules.python_utils.git_utils.manage_repo"><code class="xref any py py-func docutils literal notranslate"><span class="pre">git_utils.manage_repo</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="python_modules.cli.CommandLineInterface.manage_app_repos_submodules">
+<code class="descname">manage_app_repos_submodules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.manage_app_repos_submodules"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.manage_app_repos_submodules" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="python_modules.python_utils.git_utils.html#python_modules.python_utils.git_utils.manage_repo" title="python_modules.python_utils.git_utils.manage_repo"><code class="xref any py py-func docutils literal notranslate"><span class="pre">git_utils.manage_repo</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="python_modules.cli.CommandLineInterface.manage_app_repos_subtrees">
+<code class="descname">manage_app_repos_subtrees</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.manage_app_repos_subtrees"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.manage_app_repos_subtrees" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="python_modules.python_utils.git_utils.html#python_modules.python_utils.git_utils.manage_repo" title="python_modules.python_utils.git_utils.manage_repo"><code class="xref any py py-func docutils literal notranslate"><span class="pre">git_utils.manage_repo</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="python_modules.cli.CommandLineInterface.display_manual_page">
+<code class="descname">display_manual_page</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.display_manual_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.display_manual_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._display_manual_page" title="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._display_manual_page"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">cli_utils.CommandLineInterfaceSuper._display_manual_page</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="python_modules.cli.CommandLineInterface.generate_man_pages">
+<code class="descname">generate_man_pages</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.generate_man_pages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.generate_man_pages" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="python_modules.app_utils.html#python_modules.app_utils.generate_man_pages" title="python_modules.app_utils.generate_man_pages"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.generate_man_pages</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="python_modules.cli.CommandLineInterface.print_all_apps">
+<code class="descname">print_all_apps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#CommandLineInterface.print_all_apps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.CommandLineInterface.print_all_apps" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="python_modules.app_utils.html#python_modules.app_utils.print_all_apps" title="python_modules.app_utils.print_all_apps"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.print_all_apps</span></code></a></p>
 </dd></dl>
 
 </dd></dl>
@@ -291,13 +333,7 @@ without exceptions.</p>
 <dl class="function">
 <dt id="python_modules.cli.main">
 <code class="descclassname">python_modules.cli.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/cli.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.cli.main" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize main command line interface.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.BadExecutionLocation</span></code> – Do not allow to run any command if the “flag” file isn’t
-found where it should be. See <a class="reference internal" href="python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.BadExecutionLocation" title="python_modules.python_utils.exceptions.BadExecutionLocation"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.BadExecutionLocation</span></code></a>.</p>
-</dd>
-</dl>
+<dd><p>Initialize command line interface.</p>
 </dd></dl>
 
 </div>

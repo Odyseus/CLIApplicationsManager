@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>BackupToolApp.cli module &mdash; CLI Applications Manager  documentation</title>
+  <title>BackupToolApp.cli module &mdash; Python CLI Applications Documentations  documentation</title>
   
 
   
@@ -47,7 +47,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           
 
           
@@ -80,6 +80,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
@@ -88,13 +89,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
 </ul>
 
             
@@ -109,7 +111,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">CLI Applications Manager</a>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
         
       </nav>
 
@@ -189,46 +191,56 @@ without exceptions.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="BackupToolApp.cli.CommandLineTool">
-<em class="property">class </em><code class="descclassname">BackupToolApp.cli.</code><code class="descname">CommandLineTool</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineTool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineTool" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Command line tool.</p>
+<dt id="BackupToolApp.cli.CommandLineInterface">
+<em class="property">class </em><code class="descclassname">BackupToolApp.cli.</code><code class="descname">CommandLineInterface</code><span class="sig-paren">(</span><em>docopt_args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BackupToolApp.python_utils.cli_utils.CommandLineInterfaceSuper</span></code></p>
+<p>Command line interface.</p>
 <p>It handles the arguments parsed by the docopt module.</p>
 <dl class="attribute">
-<dt id="BackupToolApp.cli.CommandLineTool.action">
-<code class="descname">action</code><a class="headerlink" href="#BackupToolApp.cli.CommandLineTool.action" title="Permalink to this definition">¶</a></dt>
+<dt id="BackupToolApp.cli.CommandLineInterface.a">
+<code class="descname">a</code><a class="headerlink" href="#BackupToolApp.cli.CommandLineInterface.a" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – Where docopt_args is stored.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="BackupToolApp.cli.CommandLineInterface.action">
+<code class="descname">action</code><a class="headerlink" href="#BackupToolApp.cli.CommandLineInterface.action" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>method</em> – Set the method that will be executed when calling CommandLineTool.run().</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="BackupToolApp.cli.CommandLineTool.global_settings">
-<code class="descname">global_settings</code><a class="headerlink" href="#BackupToolApp.cli.CommandLineTool.global_settings" title="Permalink to this definition">¶</a></dt>
+<dt id="BackupToolApp.cli.CommandLineInterface.global_settings">
+<code class="descname">global_settings</code><a class="headerlink" href="#BackupToolApp.cli.CommandLineInterface.global_settings" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>list</em> – Global settings.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="BackupToolApp.cli.CommandLineTool.jobs">
-<code class="descname">jobs</code><a class="headerlink" href="#BackupToolApp.cli.CommandLineTool.jobs" title="Permalink to this definition">¶</a></dt>
+<dt id="BackupToolApp.cli.CommandLineInterface.jobs">
+<code class="descname">jobs</code><a class="headerlink" href="#BackupToolApp.cli.CommandLineInterface.jobs" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>list</em> – Storage for the backup jobs that will be performed.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="BackupToolApp.cli.CommandLineTool.logger">
-<code class="descname">logger</code><a class="headerlink" href="#BackupToolApp.cli.CommandLineTool.logger" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>object</em> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
 </dd></dl>
 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – The dictionary of arguments as returned by docopt parser.</p>
+<dd class="field-odd"><p><strong>docopt_args</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – The dictionary of arguments as returned by docopt parser.</p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/exceptions.html#Exception" title="(in Python v3.5)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code></a> – Error reading globals settings file.</p>
 </dd>
 </dl>
+<dl class="attribute">
+<dt>
+<code class="descname">global_settings</code><em class="property"> = None</em></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">action</code><em class="property"> = None</em></dt>
+<dd></dd></dl>
+
 <dl class="method">
-<dt id="BackupToolApp.cli.CommandLineTool.process_jobs">
-<code class="descname">process_jobs</code><span class="sig-paren">(</span><em>type</em>, <em>jobs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineTool.process_jobs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineTool.process_jobs" title="Permalink to this definition">¶</a></dt>
+<dt id="BackupToolApp.cli.CommandLineInterface.process_jobs">
+<code class="descname">process_jobs</code><span class="sig-paren">(</span><em>type</em>, <em>jobs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineInterface.process_jobs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineInterface.process_jobs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process jobs.</p>
 <p>Process the full path or file name arguments that contain the backup jobs themselves.
 Then they are stored into self.jobs for later execution.</p>
@@ -249,51 +261,57 @@ Then they are stored into self.jobs for later execution.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="BackupToolApp.cli.CommandLineTool.run">
-<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineTool.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineTool.run" title="Permalink to this definition">¶</a></dt>
+<dt id="BackupToolApp.cli.CommandLineInterface.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineInterface.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineInterface.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute the assigned action stored in self.action if any.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="BackupToolApp.cli.CommandLineTool.do_backups">
-<code class="descname">do_backups</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineTool.do_backups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineTool.do_backups" title="Permalink to this definition">¶</a></dt>
+<dt id="BackupToolApp.cli.CommandLineInterface.do_backups">
+<code class="descname">do_backups</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineInterface.do_backups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineInterface.do_backups" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform the backups jobs through joined threads.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="BackupToolApp.cli.CommandLineTool.generate_backup_jobs_template">
-<code class="descname">generate_backup_jobs_template</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineTool.generate_backup_jobs_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineTool.generate_backup_jobs_template" title="Permalink to this definition">¶</a></dt>
+<dt id="BackupToolApp.cli.CommandLineInterface.generate_backup_jobs_template">
+<code class="descname">generate_backup_jobs_template</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineInterface.generate_backup_jobs_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineInterface.generate_backup_jobs_template" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="BackupToolApp.app_utils.html#BackupToolApp.app_utils.generate_from_app_template" title="BackupToolApp.app_utils.generate_from_app_template"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.generate_from_app_template</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="BackupToolApp.cli.CommandLineTool.generate_global_settings_template">
-<code class="descname">generate_global_settings_template</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineTool.generate_global_settings_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineTool.generate_global_settings_template" title="Permalink to this definition">¶</a></dt>
+<dt id="BackupToolApp.cli.CommandLineInterface.generate_global_settings_template">
+<code class="descname">generate_global_settings_template</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineInterface.generate_global_settings_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineInterface.generate_global_settings_template" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="BackupToolApp.app_utils.html#BackupToolApp.app_utils.generate_from_app_template" title="BackupToolApp.app_utils.generate_from_app_template"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.generate_from_app_template</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="BackupToolApp.cli.CommandLineTool.system_executable_generation">
-<code class="descname">system_executable_generation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineTool.system_executable_generation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineTool.system_executable_generation" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference internal" href="../python_modules/python_modules.python_utils.template_utils.html#python_modules.python_utils.template_utils.system_executable_generation" title="python_modules.python_utils.template_utils.system_executable_generation"><code class="xref any py py-func docutils literal notranslate"><span class="pre">template_utils.system_executable_generation</span></code></a></p>
+<dt id="BackupToolApp.cli.CommandLineInterface.system_executable_generation">
+<code class="descname">system_executable_generation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineInterface.system_executable_generation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineInterface.system_executable_generation" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="../python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._system_executable_generation" title="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._system_executable_generation"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">cli_utils.CommandLineInterfaceSuper._system_executable_generation</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="BackupToolApp.cli.CommandLineTool.check_sound_notification">
-<code class="descname">check_sound_notification</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineTool.check_sound_notification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineTool.check_sound_notification" title="Permalink to this definition">¶</a></dt>
+<dt id="BackupToolApp.cli.CommandLineInterface.check_sound_notification">
+<code class="descname">check_sound_notification</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineInterface.check_sound_notification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineInterface.check_sound_notification" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="BackupToolApp.app_utils.html#BackupToolApp.app_utils.check_notification" title="BackupToolApp.app_utils.check_notification"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.check_notification</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="BackupToolApp.cli.CommandLineTool.check_desktop_notification">
-<code class="descname">check_desktop_notification</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineTool.check_desktop_notification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineTool.check_desktop_notification" title="Permalink to this definition">¶</a></dt>
+<dt id="BackupToolApp.cli.CommandLineInterface.check_desktop_notification">
+<code class="descname">check_desktop_notification</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineInterface.check_desktop_notification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineInterface.check_desktop_notification" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="BackupToolApp.app_utils.html#BackupToolApp.app_utils.check_notification" title="BackupToolApp.app_utils.check_notification"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.check_notification</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="BackupToolApp.cli.CommandLineTool.check_mail_notification">
-<code class="descname">check_mail_notification</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineTool.check_mail_notification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineTool.check_mail_notification" title="Permalink to this definition">¶</a></dt>
+<dt id="BackupToolApp.cli.CommandLineInterface.check_mail_notification">
+<code class="descname">check_mail_notification</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineInterface.check_mail_notification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineInterface.check_mail_notification" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="BackupToolApp.app_utils.html#BackupToolApp.app_utils.check_notification" title="BackupToolApp.app_utils.check_notification"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.check_notification</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="BackupToolApp.cli.CommandLineInterface.display_manual_page">
+<code class="descname">display_manual_page</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#CommandLineInterface.display_manual_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.CommandLineInterface.display_manual_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="../python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._display_manual_page" title="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._display_manual_page"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">cli_utils.CommandLineInterfaceSuper._display_manual_page</span></code></a>.</p>
 </dd></dl>
 
 </dd></dl>
@@ -301,13 +319,7 @@ Then they are stored into self.jobs for later execution.</p>
 <dl class="function">
 <dt id="BackupToolApp.cli.main">
 <code class="descclassname">BackupToolApp.cli.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupToolApp/cli.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupToolApp.cli.main" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize main command line interface.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.BadExecutionLocation</span></code> – Do not allow to run any command if the “flag” file isn’t
-found where it should be. See <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.BadExecutionLocation" title="python_modules.python_utils.exceptions.BadExecutionLocation"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.BadExecutionLocation</span></code></a>.</p>
-</dd>
-</dl>
+<dd><p>Initialize command line interface.</p>
 </dd></dl>
 
 </div>

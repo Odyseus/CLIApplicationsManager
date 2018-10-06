@@ -1,0 +1,13 @@
+
+.. only:: html
+
+    .. hint::
+
+        This Python application can generate a system executable with Bash completions support for itself and for all applications it manages. See ``app.py gen_sys_exec_self`` and ``app.py gen_sys_exec_all``.
+
+.. only:: man
+
+    Hint
+    ====
+
+    This Python application can generate a system executable with Bash completions support for itself and for all applications it manages. See ``app.py gen_sys_exec_self`` and ``app.py gen_sys_exec_all``.

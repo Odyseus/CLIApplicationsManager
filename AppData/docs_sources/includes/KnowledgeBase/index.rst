@@ -3,20 +3,35 @@
 Knowledge Base's documentation
 ******************************
 
-A :abbr:`CLI (Command Line Interface)` utility written in Python 3 to generate and manage a personal and self-hosted *Knowledge Base* on GNU/Linux.
+.. only:: html
+
+    A :abbr:`CLI (Command Line Interface)` utility written in Python 3 to generate and manage a personal and self-hosted *Knowledge Base* on GNU/Linux.
+
+.. include:: ../0-common/system-executable-hint.restructuredtext
+
+CLI Synopsis
+============
+
+.. only:: html
+
+    .. docopt-docstring:: knowledgebase
+
+.. only:: man
+
+    .. custom-literalinclude:: knowledgebase-usage
 
 Requirements
 ============
 
-.. attention::
+No mayor requirements are needed to run this application other than Python 3 (Python 3.5+ to be precise).
 
-    No mayor requirements are needed to run this application other than Python 3 (Python 3.5+ to be precise).
-
-Mentions
-========
 
 .. include:: ./usage.rst
 
-.. include:: ./templates.rst
+.. only:: html
 
-.. include:: ./notes.rst
+    .. include:: ./templates.rst
+
+.. only:: html
+
+    .. include:: ./notes.rst

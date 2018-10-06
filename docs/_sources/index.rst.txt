@@ -1,7 +1,7 @@
 
-##########################################################################
-:abbr:`CLI (Command Line Interface)` Applications Manager's documentations
-##########################################################################
+########################################################################
+Python :abbr:`CLI (Command Line Interface)` Applications' documentations
+########################################################################
 
 A collection of :abbr:`CLI (Command Line Interface)` utilities written in Python 3.
 
@@ -14,6 +14,7 @@ Table of Content
 
     includes/0-structure
     includes/1-general-notes
+    includes/CLIApplicationsManager/index
     includes/BackupTool/index
     includes/ChrootHelper/index
     includes/FilesCleaner/index
@@ -22,6 +23,7 @@ Table of Content
     includes/MakeCinnamonXletPOT/index
     includes/MoviesDB/index
     includes/PackageManager/index
+    includes/UserApplicationsManager/index
 
 ###############################################
 Self hosted third-party module's documentations
@@ -32,11 +34,11 @@ Self hosted third-party module's documentations
 .. toctree::
     :maxdepth: 1
 
-    includes/thirdparty_docs.d/docopt
-    includes/thirdparty_docs.d/polib/index
-    includes/thirdparty_docs.d/pyperclip/index
-    includes/thirdparty_docs.d/titlecase
-    includes/thirdparty_docs.d/tqdm
+    includes/0-thirdparty_docs.d/docopt
+    includes/0-thirdparty_docs.d/polib/index
+    includes/0-thirdparty_docs.d/pyperclip/index
+    includes/0-thirdparty_docs.d/titlecase
+    includes/0-thirdparty_docs.d/tqdm
 
 
 ###########################################################
@@ -61,6 +63,7 @@ Third-party module's documentations hosted by their authors
     modules/MakeCinnamonXletPOT/modules
     modules/MoviesDB/modules
     modules/PackageManager/modules
+    modules/UserApplicationsManager/modules
     modules/python_modules/modules
 
 ##################

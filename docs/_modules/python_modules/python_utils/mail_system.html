@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>python_modules.python_utils.mail_system &mdash; CLI Applications Manager  documentation</title>
+  <title>python_modules.python_utils.mail_system &mdash; Python CLI Applications Documentations  documentation</title>
   
 
   
@@ -45,7 +45,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> CLI Applications Manager
+            <a href="../../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           
 
           
@@ -78,6 +78,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-structure.html">Folder structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
@@ -86,13 +87,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
 </ul>
 
             
@@ -107,7 +109,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">CLI Applications Manager</a>
+          <a href="../../../index.html">Python CLI Applications Documentations</a>
         
       </nav>
 
@@ -173,7 +175,8 @@
 
 <span class="kn">from</span> <span class="nn">email.mime.multipart</span> <span class="k">import</span> <span class="n">MIMEMultipart</span>
 <span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="k">import</span> <span class="n">MIMEText</span>
-<span class="kn">from</span> <span class="nn">smtplib</span> <span class="k">import</span> <span class="n">SMTP</span><span class="p">,</span> <span class="n">SMTPException</span>
+<span class="kn">from</span> <span class="nn">smtplib</span> <span class="k">import</span> <span class="n">SMTP</span>
+<span class="kn">from</span> <span class="nn">smtplib</span> <span class="k">import</span> <span class="n">SMTPException</span>
 
 
 <div class="viewcode-block" id="MailSystem"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem">[docs]</a><span class="k">class</span> <span class="nc">MailSystem</span><span class="p">():</span>
@@ -223,7 +226,7 @@
 <span class="sd">        mail_settings : dict</span>
 <span class="sd">            Where all the data to send the email/s is stored.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MailSystem</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">allowed</span> <span class="o">=</span> <span class="kc">True</span>
 

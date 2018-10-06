@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>python_modules.cli &mdash; CLI Applications Manager  documentation</title>
+  <title>python_modules.cli &mdash; Python CLI Applications Documentations  documentation</title>
   
 
   
@@ -45,7 +45,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           
 
           
@@ -78,6 +78,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
@@ -86,13 +87,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
 </ul>
 
             
@@ -107,7 +109,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">CLI Applications Manager</a>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
         
       </nav>
 
@@ -173,37 +175,44 @@
 <span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">app_utils</span>
-<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appname__</span><span class="p">,</span> <span class="n">__version__</span><span class="p">,</span> <span class="n">__status__</span>
-<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span><span class="p">,</span> <span class="n">shell_utils</span><span class="p">,</span> <span class="n">file_utils</span><span class="p">,</span> <span class="n">log_system</span>
-<span class="kn">from</span> <span class="nn">.python_utils.docopt</span> <span class="k">import</span> <span class="n">docopt</span>
-
-
-<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">WrongPythonVersion</span><span class="p">()</span>
-
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appdescription__</span>
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appname__</span>
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__status__</span>
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__version__</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cli_utils</span>
 
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="o">*</span><span class="p">([</span><span class="s2">&quot;..&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))))))</span>
 
+<span class="n">docopt_doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">{appname}</span><span class="s2"> </span><span class="si">{version}</span><span class="s2"> (</span><span class="si">{status}</span><span class="s2">)</span>
 
-<span class="n">docopt_doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">{__appname__}</span><span class="s2"> </span><span class="si">{__version__}</span><span class="s2"> </span><span class="si">{__status__}</span><span class="s2"></span>
+<span class="si">{appdescription}</span><span class="s2"></span>
 
 <span class="s2">Usage:</span>
-<span class="s2">    app.py gen_base_app</span>
-<span class="s2">    app.py gen_sys_exec_self</span>
-<span class="s2">    app.py gen_sys_exec_all</span>
+<span class="s2">    app.py (-h | --help | --manual | --version)</span>
+<span class="s2">    app.py app_repos (submodules | subtrees) (init | update)</span>
 <span class="s2">    app.py bump_app_version [-a &lt;name&gt;... | --app=&lt;name&gt;...]</span>
+<span class="s2">    app.py gen_base_app</span>
+<span class="s2">    app.py (gen_docs | gen_docs_no_api) [-f | --force-clean-build]</span>
+<span class="s2">                                        [-u | --update-inventories]</span>
+<span class="s2">    app.py gen_man_pages [-a &lt;name&gt;... | --app=&lt;name&gt;...]</span>
+<span class="s2">    app.py gen_readmes</span>
+<span class="s2">    app.py gen_sys_exec_all</span>
+<span class="s2">    app.py gen_sys_exec_self</span>
 <span class="s2">    app.py install_deps [-a &lt;name&gt;... | --app=&lt;name&gt;...]</span>
+<span class="s2">    app.py print_all_apps</span>
 <span class="s2">    app.py repo (submodules | subtrees) (init | update)</span>
-<span class="s2">    app.py (gen_docs | gen_docs_no_api)</span>
-<span class="s2">           [-f | --force-clean-build]</span>
-<span class="s2">           [-u | --update-inventories]</span>
-<span class="s2">    app.py (-h | --help | --version)</span>
+<span class="s2">    app.py run_cmd_on_app (-c &lt;command&gt; | --command=&lt;command&gt;)</span>
+<span class="s2">                          [-p | --parallel ]</span>
+<span class="s2">                          [-a &lt;name&gt;... | --app=&lt;name&gt;...]</span>
 
 <span class="s2">Options:</span>
 
 <span class="s2">-h, --help</span>
-<span class="s2">    Show this screen.</span>
+<span class="s2">    Show this application basic help.</span>
+
+<span class="s2">--manual</span>
+<span class="s2">    Show this application manual page.</span>
 
 <span class="s2">--version</span>
 <span class="s2">    Show application version.</span>
@@ -213,162 +222,158 @@
 <span class="s2">    specified on the commands that make use of it, the command will work with</span>
 <span class="s2">    all available applications.</span>
 
+<span class="s2">-c &lt;command&gt;, --command=&lt;command&gt;</span>
+<span class="s2">    Command to execute inside a managed application folder.</span>
+
 <span class="s2">-f, --force-clean-build</span>
 <span class="s2">    Clear doctree cache and destination folder when building the documentation.</span>
+
+<span class="s2">-p, --parallel</span>
+<span class="s2">    Run command in parallel instead of after finishing each command execution.</span>
 
 <span class="s2">-u, --update-inventories</span>
 <span class="s2">    Update inventory files from their on-line resources when building the</span>
 <span class="s2">    documentation. Inventory files will be updated automatically if they don&#39;t</span>
 <span class="s2">    already exist.</span>
 
-<span class="s2">Command `bump_app_version`:</span>
-<span class="s2">    Bump the specified application version.</span>
-
-<span class="s2">Command `gen_base_app`:</span>
-<span class="s2">    Generate a new base (&quot;empty&quot;) application from template.</span>
-
-<span class="s2">Command `gen_docs`:</span>
-<span class="s2">    Generate documentation page.</span>
-
-<span class="s2">Command `gen_docs_no_api`:</span>
-<span class="s2">    Generate documentation page without extracting Python modules docstrings.</span>
-
-<span class="s2">Command `gen_sys_exec_self`:</span>
-<span class="s2">    Create an executable for this application on the system PATH to be able</span>
-<span class="s2">    to run it from anywhere.</span>
-
-<span class="s2">Command `gen_sys_exec_all`:</span>
-<span class="s2">    Create an executable for all applications on the system PATH to be able</span>
-<span class="s2">    to run them from anywhere.</span>
-
-<span class="s2">Command `install_deps`:</span>
-<span class="s2">    Install the dependencies for all Python applications.</span>
-
-<span class="s2">Sub-commands for the `repo` command:</span>
-<span class="s2">    submodules           Manage repository&#39;s sub-modules.</span>
-<span class="s2">    subtrees             Manage repository&#39;s sub-trees.</span>
-
-<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">__appname__</span><span class="o">=</span><span class="n">__appname__</span><span class="p">,</span>
-           <span class="n">__version__</span><span class="o">=</span><span class="n">__version__</span><span class="p">,</span>
-           <span class="n">__status__</span><span class="o">=</span><span class="n">__status__</span><span class="p">)</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">appname</span><span class="o">=</span><span class="n">__appname__</span><span class="p">,</span>
+           <span class="n">appdescription</span><span class="o">=</span><span class="n">__appdescription__</span><span class="p">,</span>
+           <span class="n">version</span><span class="o">=</span><span class="n">__version__</span><span class="p">,</span>
+           <span class="n">status</span><span class="o">=</span><span class="n">__status__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="CommandLineTool"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineTool">[docs]</a><span class="k">class</span> <span class="nc">CommandLineTool</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Command line tool.</span>
+<div class="viewcode-block" id="CommandLineInterface"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface">[docs]</a><span class="k">class</span> <span class="nc">CommandLineInterface</span><span class="p">(</span><span class="n">cli_utils</span><span class="o">.</span><span class="n">CommandLineInterfaceSuper</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Command line interface.</span>
 
 <span class="sd">    It handles the arguments parsed by the docopt module.</span>
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
+<span class="sd">    a : dict</span>
+<span class="sd">        Where docopt_args is stored.</span>
 <span class="sd">    action : method</span>
-<span class="sd">        Set the method that will be executed when calling CommandLineTool.run().</span>
-<span class="sd">    app_slugs : list</span>
-<span class="sd">        List of applications.</span>
-<span class="sd">    update_inventories : bool</span>
-<span class="sd">        See :any:`sphinx_docs_utils.generate_docs`.</span>
-<span class="sd">    force_clean_build : bool</span>
-<span class="sd">        See :any:`sphinx_docs_utils.generate_docs`.</span>
-<span class="sd">    generate_api_docs : bool</span>
-<span class="sd">        See :any:`sphinx_docs_utils.generate_docs`.</span>
-<span class="sd">    logger : object</span>
-<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">        Set the method that will be executed when calling CommandLineInterface.run().</span>
+<span class="sd">    repo_action : str</span>
+<span class="sd">        Which action to perform on a repository.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">repo_action</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">app_slugs</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docopt_args</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize.</span>
+
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        args : dict</span>
+<span class="sd">        docopt_args : dict</span>
 <span class="sd">            The dictionary of arguments as returned by docopt parser.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">CommandLineTool</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">docopt_args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cli_header_blacklist</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--manual&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;print_all_apps&quot;</span><span class="p">]]</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">force_clean_build</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--force-clean-build&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">update_inventories</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--update-inventories&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">generate_api_docs</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;gen_docs&quot;</span><span class="p">]</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">__appname__</span><span class="p">,</span> <span class="s2">&quot;UserData/0_manager/logs&quot;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">app_slugs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;--app&quot;</span><span class="p">]))</span>
-        <span class="n">file_utils</span><span class="o">.</span><span class="n">remove_surplus_files</span><span class="p">(</span><span class="s2">&quot;AppData/logs&quot;</span><span class="p">,</span> <span class="s2">&quot;CLI*&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">log_system</span><span class="o">.</span><span class="n">LogSystem</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">log_system</span><span class="o">.</span><span class="n">get_log_file</span><span class="p">(</span>
-            <span class="n">storage_dir</span><span class="o">=</span><span class="s2">&quot;AppData/logs&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;CLI&quot;</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app_slugs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--app&quot;</span><span class="p">]))</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_header</span><span class="p">(</span><span class="n">__appname__</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;bump_app_version&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;print_all_apps&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_all_apps</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--manual&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">display_manual_page</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;bump_app_version&quot;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Bumping applications&#39; versions...&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bump_versions</span>
-
-        <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;gen_base_app&quot;</span><span class="p">]:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;gen_base_app&quot;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;New application generation...&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_base_app</span>
-
-        <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;gen_docs&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;gen_docs_no_api&quot;</span><span class="p">]:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;gen_docs&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;gen_docs_no_api&quot;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Documentation generation...&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_docs</span>
-
-        <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;gen_sys_exec_all&quot;</span><span class="p">]:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;gen_man_pages&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating manual pages...&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_man_pages</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;gen_readmes&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating READMEs...&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_readmes</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;gen_sys_exec_all&quot;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;System executable generation for all applications...&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_executable_generation_all</span>
-
-        <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;gen_sys_exec_self&quot;</span><span class="p">]:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;gen_sys_exec_self&quot;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;System executable generation...&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_executable_generation_self</span>
-
-        <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;install_deps&quot;</span><span class="p">]:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;install_deps&quot;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Installing dependencies...&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">install_dependencies</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;run_cmd_on_app&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Running command on selected applications...&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_cmd_on_apps</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;repo&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;app_repos&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo_action</span> <span class="o">=</span> <span class="s2">&quot;init&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;init&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;update&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;update&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
 
-        <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;repo&quot;</span><span class="p">]:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">repo_action</span> <span class="o">=</span> <span class="s2">&quot;init&quot;</span> <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;init&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;update&quot;</span> <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;update&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;submodules&quot;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;app_repos&quot;</span><span class="p">]:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Managing application repositories sub-modules...&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">manage_app_repos_submodules</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;repo&quot;</span><span class="p">]:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Managing repository sub-modules...&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">manage_repo_submodules</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;subtrees&quot;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;app_repos&quot;</span><span class="p">]:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Managing application repositories sub-trees...&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">manage_app_repos_subtrees</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;repo&quot;</span><span class="p">]:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Managing repository sub-trees...&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">manage_repo_subtrees</span>
 
-            <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;submodules&quot;</span><span class="p">]:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Managing repository sub-modules...&quot;</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">manage_repo_submodules</span>
-
-            <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;subtrees&quot;</span><span class="p">]:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Managing repository sub-trees...&quot;</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">manage_repo_subtrees</span>
-
-<div class="viewcode-block" id="CommandLineTool.run"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineTool.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CommandLineInterface.run"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Execute the assigned action stored in self.action if any.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">()</span>
             <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CommandLineTool.bump_versions"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineTool.bump_versions">[docs]</a>    <span class="k">def</span> <span class="nf">bump_versions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CommandLineInterface.bump_versions"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.bump_versions">[docs]</a>    <span class="k">def</span> <span class="nf">bump_versions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`app_utils.bump_versions`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">app_utils</span><span class="o">.</span><span class="n">bump_versions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">app_slugs</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CommandLineTool.generate_base_app"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineTool.generate_base_app">[docs]</a>    <span class="k">def</span> <span class="nf">generate_base_app</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CommandLineInterface.generate_base_app"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.generate_base_app">[docs]</a>    <span class="k">def</span> <span class="nf">generate_base_app</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`app_utils.BaseAppGenerator`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">base_app_generetor</span> <span class="o">=</span> <span class="n">app_utils</span><span class="o">.</span><span class="n">BaseAppGenerator</span><span class="p">(</span><span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
         <span class="n">base_app_generetor</span><span class="o">.</span><span class="n">generate</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="CommandLineTool.generate_docs"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineTool.generate_docs">[docs]</a>    <span class="k">def</span> <span class="nf">generate_docs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CommandLineInterface.generate_docs"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.generate_docs">[docs]</a>    <span class="k">def</span> <span class="nf">generate_docs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`sphinx_docs_utils.generate_docs`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">app_utils</span><span class="o">.</span><span class="n">generate_docs</span><span class="p">(</span><span class="n">generate_api_docs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">generate_api_docs</span><span class="p">,</span>
-                                <span class="n">update_inventories</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">update_inventories</span><span class="p">,</span>
-                                <span class="n">force_clean_build</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">force_clean_build</span><span class="p">,</span>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">generate_docs</span><span class="p">(</span><span class="n">generate_api_docs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;gen_docs&quot;</span><span class="p">],</span>
+                                <span class="n">update_inventories</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--update-inventories&quot;</span><span class="p">],</span>
+                                <span class="n">force_clean_build</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--force-clean-build&quot;</span><span class="p">],</span>
                                 <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CommandLineTool.install_dependencies"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineTool.install_dependencies">[docs]</a>    <span class="k">def</span> <span class="nf">install_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CommandLineInterface.install_dependencies"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.install_dependencies">[docs]</a>    <span class="k">def</span> <span class="nf">install_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`app_utils.install_dependencies`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">app_utils</span><span class="o">.</span><span class="n">install_dependencies</span><span class="p">(</span><span class="n">app_slugs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">app_slugs</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">install_dependencies</span><span class="p">(</span><span class="n">app_slugs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">app_slugs</span><span class="p">,</span>
+                                       <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CommandLineTool.system_executable_generation_self"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineTool.system_executable_generation_self">[docs]</a>    <span class="k">def</span> <span class="nf">system_executable_generation_self</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;See :any:`template_utils.system_executable_generation`</span>
+<div class="viewcode-block" id="CommandLineInterface.generate_readmes"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.generate_readmes">[docs]</a>    <span class="k">def</span> <span class="nf">generate_readmes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`app_utils.generate_readmes`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">template_utils</span>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">generate_readmes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
 
-        <span class="n">template_utils</span><span class="o">.</span><span class="n">system_executable_generation</span><span class="p">(</span>
-            <span class="n">exec_name</span><span class="o">=</span><span class="s2">&quot;app-manager-cli&quot;</span><span class="p">,</span>
+<div class="viewcode-block" id="CommandLineInterface.run_cmd_on_apps"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.run_cmd_on_apps">[docs]</a>    <span class="k">def</span> <span class="nf">run_cmd_on_apps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`app_utils.run_cmd_on_apps`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">run_cmd_on_apps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--command&quot;</span><span class="p">],</span>
+                                  <span class="n">run_in_parallel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--parallel&quot;</span><span class="p">],</span>
+                                  <span class="n">app_slugs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">app_slugs</span><span class="p">,</span>
+                                  <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineInterface.system_executable_generation_self"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.system_executable_generation_self">[docs]</a>    <span class="k">def</span> <span class="nf">system_executable_generation_self</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`cli_utils.CommandLineInterfaceSuper._system_executable_generation`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_system_executable_generation</span><span class="p">(</span>
+            <span class="n">exec_name</span><span class="o">=</span><span class="s2">&quot;apps-manager-cli&quot;</span><span class="p">,</span>
             <span class="n">app_root_folder</span><span class="o">=</span><span class="n">root_folder</span><span class="p">,</span>
             <span class="n">sys_exec_template_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                 <span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;templates&quot;</span><span class="p">,</span> <span class="s2">&quot;system_executable&quot;</span><span class="p">),</span>
@@ -377,12 +382,12 @@
             <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="CommandLineTool.system_executable_generation_all"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineTool.system_executable_generation_all">[docs]</a>    <span class="k">def</span> <span class="nf">system_executable_generation_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CommandLineInterface.system_executable_generation_all"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.system_executable_generation_all">[docs]</a>    <span class="k">def</span> <span class="nf">system_executable_generation_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`app_utils.system_executable_generation_for_all_apps`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">app_utils</span><span class="o">.</span><span class="n">system_executable_generation_for_all_apps</span><span class="p">(</span><span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CommandLineTool.manage_repo_submodules"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineTool.manage_repo_submodules">[docs]</a>    <span class="k">def</span> <span class="nf">manage_repo_submodules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CommandLineInterface.manage_repo_submodules"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.manage_repo_submodules">[docs]</a>    <span class="k">def</span> <span class="nf">manage_repo_submodules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`git_utils.manage_repo`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">git_utils</span>
@@ -394,27 +399,47 @@
             <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="CommandLineTool.manage_repo_subtrees"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineTool.manage_repo_subtrees">[docs]</a>    <span class="k">def</span> <span class="nf">manage_repo_subtrees</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CommandLineInterface.manage_repo_subtrees"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.manage_repo_subtrees">[docs]</a>    <span class="k">def</span> <span class="nf">manage_repo_subtrees</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`git_utils.manage_repo`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Not using sub-trees in this application for now.&quot;</span><span class="p">)</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Not using sub-trees in this application for now.&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineInterface.manage_app_repos_submodules"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.manage_app_repos_submodules">[docs]</a>    <span class="k">def</span> <span class="nf">manage_app_repos_submodules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`git_utils.manage_repo`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Not using sub-modules in applications for now.&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineInterface.manage_app_repos_subtrees"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.manage_app_repos_subtrees">[docs]</a>    <span class="k">def</span> <span class="nf">manage_app_repos_subtrees</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`git_utils.manage_repo`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">manage_app_repos_subtrees</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo_action</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineInterface.display_manual_page"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.display_manual_page">[docs]</a>    <span class="k">def</span> <span class="nf">display_manual_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`cli_utils.CommandLineInterfaceSuper._display_manual_page`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_display_manual_page</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;app.py.1&quot;</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="CommandLineInterface.generate_man_pages"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.generate_man_pages">[docs]</a>    <span class="k">def</span> <span class="nf">generate_man_pages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`app_utils.generate_man_pages`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">generate_man_pages</span><span class="p">(</span><span class="n">app_slugs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">app_slugs</span><span class="p">,</span>
+                                     <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineInterface.print_all_apps"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.print_all_apps">[docs]</a>    <span class="k">def</span> <span class="nf">print_all_apps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`app_utils.print_all_apps`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">print_all_apps</span><span class="p">()</span></div></div>
 
 
 <div class="viewcode-block" id="main"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Initialize main command line interface.</span>
-
-<span class="sd">    Raises</span>
-<span class="sd">    ------</span>
-<span class="sd">    exceptions.BadExecutionLocation</span>
-<span class="sd">        Do not allow to run any command if the &quot;flag&quot; file isn&#39;t</span>
-<span class="sd">        found where it should be. See :any:`exceptions.BadExecutionLocation`.</span>
+    <span class="sd">&quot;&quot;&quot;Initialize command line interface.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;.cli-applications-manager.flag&quot;</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">BadExecutionLocation</span><span class="p">()</span>
-
-    <span class="n">arguments</span> <span class="o">=</span> <span class="n">docopt</span><span class="p">(</span><span class="n">docopt_doc</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">__appname__</span><span class="p">,</span> <span class="n">__version__</span><span class="p">,</span> <span class="n">__status__</span><span class="p">))</span>
-    <span class="n">cli</span> <span class="o">=</span> <span class="n">CommandLineTool</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
-    <span class="n">cli</span><span class="o">.</span><span class="n">run</span><span class="p">()</span></div>
+    <span class="n">cli_utils</span><span class="o">.</span><span class="n">run_cli</span><span class="p">(</span><span class="n">flag_file</span><span class="o">=</span><span class="s2">&quot;.cli-applications-manager.flag&quot;</span><span class="p">,</span>
+                      <span class="n">docopt_doc</span><span class="o">=</span><span class="n">docopt_doc</span><span class="p">,</span>
+                      <span class="n">app_name</span><span class="o">=</span><span class="n">__appname__</span><span class="p">,</span>
+                      <span class="n">app_version</span><span class="o">=</span><span class="n">__version__</span><span class="p">,</span>
+                      <span class="n">app_status</span><span class="o">=</span><span class="n">__status__</span><span class="p">,</span>
+                      <span class="n">cli_class</span><span class="o">=</span><span class="n">CommandLineInterface</span><span class="p">)</span></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>

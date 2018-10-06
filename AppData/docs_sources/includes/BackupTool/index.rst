@@ -3,14 +3,37 @@
 Backup Tool's documentation
 ***************************
 
-A :abbr:`CLI (Command Line Interface)` utility written in Python 3 to backup files on GNU/Linux.
+.. only:: html
+
+    A :abbr:`CLI (Command Line Interface)` utility written in Python 3 to backup files on GNU/Linux.
+
+.. include:: ../0-common/system-executable-hint.restructuredtext
+
+CLI Synopsis
+============
+
+.. only:: html
+
+    .. docopt-docstring:: backuptool
+
+.. only:: man
+
+    .. custom-literalinclude:: backuptool-usage
+
+Mentions
+========
+
+Application inspired by the `PyBackup <https://github.com/FRReinert/PyBackup>`__ Python module.
 
 Requirements
 ============
 
-.. attention::
+No mayor requirements are needed to run this application other than Python 3 (Python 3.5+ to be precise).
 
-    - Python 3.5+.
+.. contextual-admonition::
+    :context: warning
+    :title: Mail system requirements
+
     - ``keyring`` module.
 
 ``keyring`` module
@@ -41,10 +64,5 @@ keyring, the details tab for the generated "storage" will display the following:
     username: backup_secret_name
     application: python-keyring
     service: backup_secret_context
-
-Mentions
---------
-
-Application inspired by the `PyBackup <https://github.com/FRReinert/PyBackup>`__ Python module.
 
 .. include:: ./usage.rst

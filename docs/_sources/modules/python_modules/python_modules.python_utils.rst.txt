@@ -19,10 +19,12 @@ Submodules
 .. toctree::
 
    python_modules.python_utils.ansi_colors
+   python_modules.python_utils.cli_utils
    python_modules.python_utils.cmd_utils
    python_modules.python_utils.exceptions
    python_modules.python_utils.file_utils
    python_modules.python_utils.git_utils
+   python_modules.python_utils.hash_utils
    python_modules.python_utils.log_system
    python_modules.python_utils.mail_system
    python_modules.python_utils.menu

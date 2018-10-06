@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>python_modules.python_utils.exceptions module &mdash; CLI Applications Manager  documentation</title>
+  <title>python_modules.python_utils.exceptions module &mdash; Python CLI Applications Documentations  documentation</title>
   
 
   
@@ -47,7 +47,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> CLI Applications Manager
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           
 
           
@@ -80,6 +80,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
@@ -88,13 +89,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
 </ul>
 
             
@@ -109,7 +111,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">CLI Applications Manager</a>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
         
       </nav>
 
@@ -415,6 +417,30 @@ the point, and highlighted in red.</p>
 <dd class="field-odd"><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Message that the exception should display.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="exception">
+<dt id="python_modules.python_utils.exceptions.MissingMandatoryArgument">
+<em class="property">exception </em><code class="descclassname">python_modules.python_utils.exceptions.</code><code class="descname">MissingMandatoryArgument</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/exceptions.html#MissingMandatoryArgument"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.exceptions.MissingMandatoryArgument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack" title="python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack"><code class="xref py py-class docutils literal notranslate"><span class="pre">python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack</span></code></a></p>
+<p>Initialize.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Message that the exception should display.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="exception">
+<dt id="python_modules.python_utils.exceptions.MethodNotImplemented">
+<em class="property">exception </em><code class="descclassname">python_modules.python_utils.exceptions.</code><code class="descname">MethodNotImplemented</code><span class="sig-paren">(</span><em>method=''</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/exceptions.html#MethodNotImplemented"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.exceptions.MethodNotImplemented" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack" title="python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack"><code class="xref py py-class docutils literal notranslate"><span class="pre">python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack</span></code></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="python_modules.python_utils.exceptions.MissingMandatoryProperty">
+<em class="property">exception </em><code class="descclassname">python_modules.python_utils.exceptions.</code><code class="descname">MissingMandatoryProperty</code><span class="sig-paren">(</span><em>prop=''</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/exceptions.html#MissingMandatoryProperty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.exceptions.MissingMandatoryProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack" title="python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack"><code class="xref py py-class docutils literal notranslate"><span class="pre">python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack</span></code></a></p>
 </dd></dl>
 
 </div>

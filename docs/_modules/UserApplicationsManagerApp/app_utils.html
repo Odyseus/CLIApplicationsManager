@@ -1,0 +1,965 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>UserApplicationsManagerApp.app_utils &mdash; Python CLI Applications Documentations  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>UserApplicationsManagerApp.app_utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for UserApplicationsManagerApp.app_utils</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Module with utility functions and classes.</span>
+
+<span class="sd">Attributes</span>
+<span class="sd">----------</span>
+<span class="sd">base_app_keys : set</span>
+<span class="sd">    Mandatory keys for all applications.</span>
+<span class="sd">base_app_keys_for_archives : set</span>
+<span class="sd">    Mandatory keys for applications of type &quot;archive&quot;.</span>
+<span class="sd">base_app_keys_for_files : set</span>
+<span class="sd">    Mandatory keys for applications of type &quot;file&quot;.</span>
+<span class="sd">base_app_keys_for_repos : set</span>
+<span class="sd">    Mandatory keys for applications of type &quot;\*_repo&quot;.</span>
+<span class="sd">conf_file : str</span>
+<span class="sd">    Path to the configuration file.</span>
+<span class="sd">home : str</span>
+<span class="sd">    Path to the User&#39;s home folder.</span>
+<span class="sd">root_folder : str</span>
+<span class="sd">    The main folder containing the application. All commands must be executed</span>
+<span class="sd">    from this location without exceptions.</span>
+<span class="sd">update_data_file : str</span>
+<span class="sd">    Path to the file where the update data for applications is stored.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">urllib.request</span>
+
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cmd_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">file_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">hash_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">shell_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">tqdm_wget</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">runpy</span> <span class="k">import</span> <span class="n">run_path</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">CalledProcessError</span>
+<span class="kn">from</span> <span class="nn">urllib.error</span> <span class="k">import</span> <span class="n">HTTPError</span>
+<span class="kn">from</span> <span class="nn">urllib.error</span> <span class="k">import</span> <span class="n">URLError</span>
+
+<span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
+
+<span class="n">home</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">)</span>
+<span class="n">conf_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;conf.py&quot;</span><span class="p">)</span>
+<span class="n">update_data_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;update-data.json&quot;</span><span class="p">)</span>
+<span class="n">base_app_keys</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">}</span>
+<span class="n">base_app_keys_for_archives</span> <span class="o">=</span> <span class="n">base_app_keys</span><span class="o">.</span><span class="n">union</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;unzip_prog&quot;</span><span class="p">,</span> <span class="s2">&quot;post_extraction_actions&quot;</span><span class="p">,</span> <span class="s2">&quot;unzip_targets&quot;</span><span class="p">})</span>
+<span class="n">base_app_keys_for_files</span> <span class="o">=</span> <span class="n">base_app_keys</span><span class="o">.</span><span class="n">union</span><span class="p">({</span><span class="s2">&quot;destination&quot;</span><span class="p">})</span>
+<span class="n">base_app_keys_for_repos</span> <span class="o">=</span> <span class="n">base_app_keys</span><span class="o">.</span><span class="n">union</span><span class="p">({</span><span class="s2">&quot;destination&quot;</span><span class="p">})</span>
+
+
+<div class="viewcode-block" id="get_applications"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.get_applications">[docs]</a><span class="k">def</span> <span class="nf">get_applications</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get applications.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See :any:`LogSystem`.</span>
+<span class="sd">    validate : bool, optional</span>
+<span class="sd">        Whether or not to validate each application. An application is &quot;valid&quot; if</span>
+<span class="sd">        its dictionary data contains all mandatory keys. Validation is omitted when</span>
+<span class="sd">        this method is called by the Bash completions script (to *keep things fast*).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        All applications as found on the **conf.py** file.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    exceptions.MissingMandatoryField</span>
+<span class="sd">        See :any:`exceptions.MissingMandatoryField`.</span>
+<span class="sd">    exceptions.MissingRequiredFile</span>
+<span class="sd">        See :any:`exceptions.MissingRequiredFile`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">all_apps</span> <span class="o">=</span> <span class="n">run_path</span><span class="p">(</span><span class="n">conf_file</span><span class="p">)[</span><span class="s2">&quot;applications&quot;</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">conf_file</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingRequiredFile</span><span class="p">(</span>
+            <span class="s2">&quot;The &lt;conf.py&gt; file should exist at the above location.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingMandatoryField</span><span class="p">(</span>
+            <span class="s2">&quot;The &lt;conf.py&gt; file should have the &lt;applications&gt; property defined.&quot;</span><span class="p">)</span>
+
+    <span class="n">missing_fields</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">if</span> <span class="n">validate</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">app_id</span><span class="p">,</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">all_apps</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">app_type</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">app_type</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Application ID: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">app_id</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingMandatoryField</span><span class="p">(</span><span class="s2">&quot;The &lt;type&gt; field is required.&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">app_type</span> <span class="o">==</span> <span class="s2">&quot;archive&quot;</span><span class="p">:</span>
+                <span class="n">validator_set</span> <span class="o">=</span> <span class="n">base_app_keys_for_archives</span>
+            <span class="k">elif</span> <span class="n">app_type</span> <span class="o">==</span> <span class="s2">&quot;file&quot;</span><span class="p">:</span>
+                <span class="n">validator_set</span> <span class="o">=</span> <span class="n">base_app_keys_for_files</span>
+            <span class="k">elif</span> <span class="n">app_type</span> <span class="o">==</span> <span class="s2">&quot;git_repo&quot;</span> <span class="ow">or</span> <span class="n">app_type</span> <span class="o">==</span> <span class="s2">&quot;hg_repo&quot;</span><span class="p">:</span>
+                <span class="n">validator_set</span> <span class="o">=</span> <span class="n">base_app_keys_for_repos</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">validator_set</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+                <span class="n">missing_fields</span> <span class="o">+=</span> <span class="p">[</span><span class="n">field</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">validator_set</span> <span class="k">if</span> <span class="n">field</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">app</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">missing_fields</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Application ID: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">app_id</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingMandatoryField</span><span class="p">(</span>
+                    <span class="s2">&quot;The &lt;</span><span class="si">%s</span><span class="s2">&gt; field/s is/are required.&quot;</span> <span class="o">%</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missing_fields</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">all_apps</span></div>
+
+
+<div class="viewcode-block" id="print_app_ids"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.print_app_ids">[docs]</a><span class="k">def</span> <span class="nf">print_app_ids</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Print application IDs.</span>
+
+<span class="sd">    This method is called by the Bash completions script to auto-complete</span>
+<span class="sd">    application IDs for the ``--id=`` and ``-i`` CLI options.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See :any:`LogSystem`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">app_id</span> <span class="ow">in</span> <span class="n">get_applications</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">app_id</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ApplicationsManager"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager">[docs]</a><span class="k">class</span> <span class="nc">ApplicationsManager</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;ApplicationsManager class.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    all_apps : dict</span>
+<span class="sd">        All applications as found in the conf.py file.</span>
+<span class="sd">    app_ids : list</span>
+<span class="sd">        All application IDs passed by the ``--id=`` or ``-i`` CLI options.</span>
+<span class="sd">    app_type : str</span>
+<span class="sd">        An application &quot;type&quot; as passed by the ``--type=`` or ``-t`` CLI options.</span>
+<span class="sd">    current_date : str</span>
+<span class="sd">        The current date.</span>
+<span class="sd">    force_update : bool</span>
+<span class="sd">        Ignore application update frequency and update its file/s anyway.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See :any:`LogSystem`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_apps_type_archive</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_apps_type_file</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_apps_type_git_repo</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_apps_type_hg_repo</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_last_update_data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_operation_aborted_msg</span> <span class="o">=</span> <span class="s2">&quot;Operations for &lt;</span><span class="si">%s</span><span class="s2">&gt; aborted.&quot;</span>
+    <span class="n">_repo_types</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;hg&quot;</span><span class="p">]</span>
+    <span class="n">_repo_types_names_map</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;git&quot;</span><span class="p">:</span> <span class="s2">&quot;Git&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;hg&quot;</span><span class="p">:</span> <span class="s2">&quot;Mercurial&quot;</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app_ids</span><span class="o">=</span><span class="p">[],</span> <span class="n">app_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force_update</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        app_ids : list</span>
+<span class="sd">            All application IDs passed by the ``--id=`` or ``-i`` CLI options.</span>
+<span class="sd">        app_type : str</span>
+<span class="sd">            An application &quot;type&quot; as passed by the ``--type=`` or ``-t`` CLI options.</span>
+<span class="sd">        force_update : bool, optional</span>
+<span class="sd">            Ignore application update frequency and update its file/s anyway.</span>
+<span class="sd">        logger : object, optional</span>
+<span class="sd">            See :any:`LogSystem`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app_ids</span> <span class="o">=</span> <span class="n">app_ids</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app_type</span> <span class="o">=</span> <span class="n">app_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">force_update</span> <span class="o">=</span> <span class="n">force_update</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_date</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%B </span><span class="si">%d</span><span class="s2"> %Y&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">())</span>  <span class="c1"># Format = January 1 2018</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">all_apps</span> <span class="o">=</span> <span class="n">get_applications</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_filter_group_extend_apps</span><span class="p">()</span>
+
+<div class="viewcode-block" id="ApplicationsManager._print_shell_separator"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._print_shell_separator">[docs]</a>    <span class="k">def</span> <span class="nf">_print_shell_separator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print shell separator.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ApplicationsManager._check_url"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._check_url">[docs]</a>    <span class="k">def</span> <span class="nf">_check_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if an URL can be reached.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        url : str</span>
+<span class="sd">            The URL to check.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple</span>
+<span class="sd">            If the URL can be reached at index 0 and the URL itself at index 1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">url</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Checking URL...&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">can_download</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+                <span class="n">status_code</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">getcode</span><span class="p">()</span>
+                <span class="n">can_download</span> <span class="o">=</span> <span class="n">status_code</span> <span class="o">&lt;</span> <span class="mi">400</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Status code: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">status_code</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">HTTPError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">URLError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">timeout</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Socket timed out.&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">can_download</span><span class="p">,</span> <span class="n">url</span>
+
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="ApplicationsManager._get_github_asset_url"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._get_github_asset_url">[docs]</a>    <span class="k">def</span> <span class="nf">_get_github_asset_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app_id</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get GitHub asset URL.</span>
+
+<span class="sd">        This method uses the GitHub API to download a JSON file with information on a</span>
+<span class="sd">        release of a repository. The &quot;name&quot; key of each element of the array/list</span>
+<span class="sd">        called &quot;assets&quot; of the downloaded JSON file is scanned for different matches to</span>
+<span class="sd">        locate the URL of the asset that one actually want to download.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        app_id : str</span>
+<span class="sd">            The application ID.</span>
+<span class="sd">        app : dict</span>
+<span class="sd">            The application data.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str|None</span>
+<span class="sd">            The URL of the asset that one wants to download or None.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        exceptions.KeyboardInterruption</span>
+<span class="sd">            See :any:`exceptions.KeyboardInterruption`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Attempting to get asset URL from GitHub API.&quot;</span><span class="p">)</span>
+        <span class="n">release_tag</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">json_data</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">can_download</span><span class="p">,</span> <span class="n">github_api_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_url</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">can_download</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="n">app_id</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tmp_file</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">tqdm_wget</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">github_api_url</span><span class="p">,</span> <span class="n">tmp_file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">KeyboardInterruption</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tmp_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                        <span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+            <span class="k">if</span> <span class="n">json_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">release_tag</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tag_name&quot;</span><span class="p">)</span>
+                <span class="n">checks</span> <span class="o">=</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;github_api_asset_data&quot;</span><span class="p">]</span>
+
+                <span class="k">for</span> <span class="n">asset</span> <span class="ow">in</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+                    <span class="n">contains</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">checks</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;asset_name_contains&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="k">else</span> \
+                        <span class="n">checks</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;asset_name_contains&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">asset</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+                    <span class="n">starts</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">checks</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;asset_name_starts&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="k">else</span> \
+                        <span class="n">asset</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">checks</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;asset_name_starts&quot;</span><span class="p">))</span>
+                    <span class="n">ends</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">checks</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;asset_name_ends&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="k">else</span> \
+                        <span class="n">asset</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">checks</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;asset_name_ends&quot;</span><span class="p">))</span>
+
+                    <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="n">contains</span><span class="p">,</span> <span class="n">starts</span><span class="p">,</span> <span class="n">ends</span><span class="p">]):</span>
+                        <span class="k">return</span> <span class="n">release_tag</span><span class="p">,</span> <span class="n">asset</span><span class="p">[</span><span class="s2">&quot;browser_download_url&quot;</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">continue</span>
+
+        <span class="k">return</span> <span class="n">release_tag</span><span class="p">,</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="ApplicationsManager._filter_group_extend_apps"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._filter_group_extend_apps">[docs]</a>    <span class="k">def</span> <span class="nf">_filter_group_extend_apps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Filter, group and extend applications data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">filtered_apps</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">update_data_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_last_update_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">app_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">filtered_apps</span> <span class="o">=</span> <span class="p">{</span><span class="nb">id</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_apps</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_apps</span>
+                             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_apps</span><span class="p">[</span><span class="nb">id</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">app_type</span><span class="p">}</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">app_ids</span><span class="p">:</span>
+            <span class="n">filtered_apps</span> <span class="o">=</span> <span class="p">{</span><span class="nb">id</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_apps</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">app_ids</span>
+                             <span class="k">if</span> <span class="nb">id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_apps</span><span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">filtered_apps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_apps</span>
+
+        <span class="k">if</span> <span class="n">filtered_apps</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">app_id</span><span class="p">,</span> <span class="n">app</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">filtered_apps</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+                <span class="n">app</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_last_update_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="p">{}))</span>
+
+                <span class="c1"># Do it here so it has to be done just once.</span>
+                <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;destination&quot;</span><span class="p">):</span>
+                    <span class="n">app</span><span class="p">[</span><span class="s2">&quot;destination&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s2">&quot;destination&quot;</span><span class="p">])</span>
+
+                <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_apps_type_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span> <span class="p">[])[</span><span class="n">app_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">app</span></div>
+
+<div class="viewcode-block" id="ApplicationsManager._get_check_repo_cmd"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._get_check_repo_cmd">[docs]</a>    <span class="k">def</span> <span class="nf">_get_check_repo_cmd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the command to check a repository.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            The command to check the repository.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        repo_type : str</span>
+<span class="sd">            &quot;git&quot; or &quot;hg&quot;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">repo_type</span> <span class="o">==</span> <span class="s2">&quot;git&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;ls-remote&quot;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">repo_type</span> <span class="o">==</span> <span class="s2">&quot;hg&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;hg&quot;</span><span class="p">,</span> <span class="s2">&quot;-R&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;root&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="ApplicationsManager._do_pull"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._do_pull">[docs]</a>    <span class="k">def</span> <span class="nf">_do_pull</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_type</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pull from a repository.</span>
+
+<span class="sd">        There are only two SCM software (that I know how to use), ``git`` and ``hg``, and they</span>
+<span class="sd">        both have the same command structure to pull from a repository.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        repo_type : str</span>
+<span class="sd">            &quot;git&quot; or &quot;hg&quot;.</span>
+<span class="sd">        repo_path : str</span>
+<span class="sd">            Path to the local repository.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span>
+            <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> pull&quot;</span> <span class="o">%</span> <span class="n">repo_type</span><span class="p">,</span>
+            <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">cwd</span><span class="o">=</span><span class="n">repo_path</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="ApplicationsManager._do_clone"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._do_clone">[docs]</a>    <span class="k">def</span> <span class="nf">_do_clone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_type</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">,</span> <span class="n">repo_url</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Clone a repository.</span>
+
+<span class="sd">        There are only two SCM software (that I know how to use), ``git`` and ``hg``, and they</span>
+<span class="sd">        both have the same command structure to clone a repository.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        repo_type : str</span>
+<span class="sd">            &quot;git&quot; or &quot;hg&quot;.</span>
+<span class="sd">        repo_path : str</span>
+<span class="sd">            Path to the local repository.</span>
+<span class="sd">        repo_url : str</span>
+<span class="sd">            URL of the on-line repository.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span>
+            <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> clone </span><span class="si">{1}</span><span class="s2"> </span><span class="si">{2}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">repo_type</span><span class="p">,</span>
+                <span class="n">repo_url</span><span class="p">,</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">repo_path</span><span class="p">)</span>
+            <span class="p">),</span>
+            <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">cwd</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">repo_path</span><span class="p">),</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="ApplicationsManager._manage_repositories"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._manage_repositories">[docs]</a>    <span class="k">def</span> <span class="nf">_manage_repositories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Manage applications of type &quot;git_repo&quot; or &quot;hg_repo&quot;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">repo_type</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_repo_types</span><span class="p">:</span>
+            <span class="n">apps</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_apps_type_</span><span class="si">%s</span><span class="s2">_repo&quot;</span> <span class="o">%</span> <span class="n">repo_type</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">apps</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_print_shell_separator</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling </span><span class="si">%s</span><span class="s2"> repositories...&quot;</span> <span class="o">%</span>
+                                 <span class="bp">self</span><span class="o">.</span><span class="n">_repo_types_names_map</span><span class="p">[</span><span class="n">repo_type</span><span class="p">])</span>
+
+                <span class="k">for</span> <span class="n">app_id</span><span class="p">,</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">apps</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_update</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_update</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling </span><span class="si">%s</span><span class="s2">&#39;s repository...&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+                        <span class="n">repo_path</span> <span class="o">=</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;destination&quot;</span><span class="p">]</span>
+
+                        <span class="k">if</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_dir</span><span class="p">(</span><span class="n">repo_path</span><span class="p">):</span>
+                            <span class="c1"># If the repository path exists, check if it is a valid repository</span>
+                            <span class="c1"># and proceed to attempt to pull from it.</span>
+                            <span class="n">p</span> <span class="o">=</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_check_repo_cmd</span><span class="p">(</span><span class="n">repo_type</span><span class="p">),</span>
+                                                  <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                                  <span class="n">cwd</span><span class="o">=</span><span class="n">repo_path</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="c1"># If the repository path doesn&#39;t exists, attempt to clone the</span>
+                            <span class="c1"># repository and get out of the loop.</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                                <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> repository doesn&#39;t seem to exist.&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Cloning </span><span class="si">%s</span><span class="s2"> repository.&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_do_clone</span><span class="p">(</span><span class="n">repo_type</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">,</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">])</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_set_update_data</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="s2">&quot;update_date&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_date</span><span class="p">)</span>
+                            <span class="k">continue</span>
+
+                        <span class="c1"># Return code should be zero. If it isn&#39;t, then the destination</span>
+                        <span class="c1"># isn&#39;t a repository.</span>
+                        <span class="k">if</span> <span class="n">p</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">returncode</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Pulling from </span><span class="si">%s</span><span class="s2">&#39;s repository.&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_do_pull</span><span class="p">(</span><span class="n">repo_type</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">)</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_set_update_data</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="s2">&quot;update_date&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_date</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Manual intervention required!&quot;</span><span class="p">)</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                                <span class="s2">&quot;The following path doesn&#39;t seem to be a repository:&quot;</span><span class="p">)</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">repo_path</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> doesn&#39;t need updating.&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="ApplicationsManager._manage_files"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._manage_files">[docs]</a>    <span class="k">def</span> <span class="nf">_manage_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Manage applications of type &quot;file&quot;.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        exceptions.KeyboardInterruption</span>
+<span class="sd">            See :any:`exceptions.KeyboardInterruption`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apps_type_file</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_print_shell_separator</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling individual files...&quot;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">app_id</span><span class="p">,</span> <span class="n">app</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apps_type_file</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_update</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_update</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling </span><span class="si">%s</span><span class="s2">&#39;s file...&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+                    <span class="n">release_tag</span> <span class="o">=</span> <span class="kc">None</span>
+                    <span class="n">file_path</span> <span class="o">=</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;destination&quot;</span><span class="p">]</span>
+
+                    <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;github_api_asset_data&quot;</span><span class="p">):</span>
+                        <span class="n">release_tag</span><span class="p">,</span> <span class="n">asset_download_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_github_asset_url</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="n">app</span><span class="p">)</span>
+                        <span class="n">can_download</span><span class="p">,</span> <span class="n">download_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_url</span><span class="p">(</span><span class="n">asset_download_url</span><span class="p">)</span>
+
+                        <span class="c1"># Logic:</span>
+                        <span class="c1"># If an already downloaded file exists, only download a new one under the</span>
+                        <span class="c1"># following conditions:</span>
+                        <span class="c1"># - If an stored tag name is different from the newly obtained one.</span>
+                        <span class="c1"># - If the tag names are identical, check for file hashes.</span>
+                        <span class="c1"># - If the file hashes are different, then and only then download a</span>
+                        <span class="c1">#   new copy of a file.</span>
+                        <span class="k">if</span> <span class="n">download_url</span> <span class="ow">and</span> <span class="n">can_download</span> <span class="ow">and</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span> \
+                                <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_update</span><span class="p">:</span>
+                            <span class="c1"># Do not bother comparing the tag versions. Just check that they are</span>
+                            <span class="c1"># different and move on. Comparing version numbers in any language is a</span>
+                            <span class="c1"># freaking nightmare.</span>
+                            <span class="k">if</span> <span class="n">release_tag</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                                <span class="n">can_download</span> <span class="o">=</span> <span class="n">release_tag</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_update_data</span><span class="p">(</span>
+                                    <span class="n">app_id</span><span class="p">,</span> <span class="s2">&quot;tag_name&quot;</span><span class="p">)</span>
+
+                            <span class="k">if</span> <span class="ow">not</span> <span class="n">can_download</span><span class="p">:</span>
+                                <span class="n">can_download</span> <span class="o">=</span> <span class="n">hash_utils</span><span class="o">.</span><span class="n">file_hash</span><span class="p">(</span>
+                                    <span class="n">file_path</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_update_data</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="s2">&quot;hash&quot;</span><span class="p">)</span>
+
+                            <span class="k">if</span> <span class="ow">not</span> <span class="n">can_download</span><span class="p">:</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> doesn&#39;t need updating.&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">can_download</span><span class="p">,</span> <span class="n">download_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_url</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">])</span>
+
+                    <span class="k">if</span> <span class="n">download_url</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No download URL could be determined. Aborted!&quot;</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">download_url</span> <span class="ow">and</span> <span class="n">can_download</span><span class="p">:</span>
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="n">tqdm_wget</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">download_url</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span>
+                        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">KeyboardInterruption</span><span class="p">()</span>
+                        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_set_update_data</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="s2">&quot;update_date&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_date</span><span class="p">)</span>
+
+                            <span class="k">if</span> <span class="n">release_tag</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_set_update_data</span><span class="p">(</span>
+                                    <span class="n">app_id</span><span class="p">,</span> <span class="s2">&quot;hash&quot;</span><span class="p">,</span> <span class="n">hash_utils</span><span class="o">.</span><span class="n">file_hash</span><span class="p">(</span><span class="n">file_path</span><span class="p">))</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_set_update_data</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="s2">&quot;tag_name&quot;</span><span class="p">,</span> <span class="n">release_tag</span><span class="p">)</span>
+
+                            <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="mo">0o755</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> doesn&#39;t need updating.&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="ApplicationsManager._handle_archive"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._handle_archive">[docs]</a>    <span class="k">def</span> <span class="nf">_handle_archive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app_id</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">archive</span><span class="p">,</span> <span class="n">temp_wd</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Handle archive.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        app_id : str</span>
+<span class="sd">            The application ID.</span>
+<span class="sd">        app : dict</span>
+<span class="sd">            The application data.</span>
+<span class="sd">        archive : str</span>
+<span class="sd">            Path to an archive to handle.</span>
+<span class="sd">        temp_wd : str</span>
+<span class="sd">            Path to a temporary working directory.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">post_extraction_actions</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;post_extraction_actions&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling &lt;</span><span class="si">%s</span><span class="s2">&gt;&#39;s archive.&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">unzip_target</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;unzip_targets&quot;</span><span class="p">]:</span>
+            <span class="n">destination</span> <span class="o">=</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+            <span class="n">cmd</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="c1"># if app[&quot;unzip_prog&quot;] == &quot;7z&quot;:</span>
+            <span class="c1">#     cmd += [&quot;7z&quot;, &quot;e&quot;, &quot;-y&quot;, app[&quot;downloaded_filename&quot;]]</span>
+            <span class="c1"># elif app[&quot;unzip_prog&quot;] == &quot;unzip&quot;:</span>
+            <span class="c1">#     cmd += [&quot;unzip&quot;, &quot;-o&quot;, app[&quot;downloaded_filename&quot;]]</span>
+            <span class="k">if</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;unzip_prog&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;tar&quot;</span><span class="p">:</span>
+                <span class="n">args</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unzip_args&quot;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+                    <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">app_id</span><span class="p">,</span> <span class="s2">&quot;Missing required &lt;unzip_args&gt; key.&quot;</span><span class="p">))</span>
+                    <span class="k">continue</span>
+
+                <span class="n">cmd</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;tar&quot;</span><span class="p">,</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;unzip_args&quot;</span><span class="p">],</span> <span class="n">archive</span><span class="p">,</span> <span class="s2">&quot;-C&quot;</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">unzip_target</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">cmd</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">temp_wd</span><span class="p">)</span>
+                <span class="k">except</span> <span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                    <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="n">err</span><span class="p">))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                    <span class="k">continue</span>
+
+        <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;The following errors were found while processing </span><span class="si">%s</span><span class="s2">:&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Post-extraction actions will not be performed.&quot;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">cmd_path_app</span><span class="p">,</span> <span class="n">err</span> <span class="ow">in</span> <span class="n">errors</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Command, path or application ID:&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">cmd_path_app</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Error:&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">post_extraction_actions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;set_exec&quot;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Setting files as executable...&quot;</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">post_extraction_actions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;set_exec&quot;</span><span class="p">):</span>
+                    <span class="n">f_path</span> <span class="o">=</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_file</span><span class="p">(</span><span class="n">f_path</span><span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">f_path</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">f_path</span><span class="p">,</span> <span class="mo">0o755</span><span class="p">)</span>
+                        <span class="k">except</span> <span class="ne">EnvironmentError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                            <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">f_path</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span>
+
+            <span class="k">if</span> <span class="n">post_extraction_actions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;symlinks&quot;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating symbolic links...&quot;</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">tgt</span><span class="p">,</span> <span class="n">dst</span> <span class="ow">in</span> <span class="n">post_extraction_actions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;symlinks&quot;</span><span class="p">):</span>
+                    <span class="n">tgt_path</span> <span class="o">=</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="n">tgt</span><span class="p">)</span>
+                    <span class="n">dst_path</span> <span class="o">=</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="n">dst</span><span class="p">)</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Target: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">tgt_path</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Destination: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                                     <span class="n">dst_path</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+                    <span class="n">file_utils</span><span class="o">.</span><span class="n">copy_create_symlink</span><span class="p">(</span><span class="n">tgt_path</span><span class="p">,</span>
+                                                   <span class="n">dst_path</span><span class="p">,</span>
+                                                   <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ApplicationsManager._manage_archives"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._manage_archives">[docs]</a>    <span class="k">def</span> <span class="nf">_manage_archives</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Manage applications of type &quot;archive&quot;.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        exceptions.KeyboardInterruption</span>
+<span class="sd">            See :any:`exceptions.KeyboardInterruption`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apps_type_archive</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_print_shell_separator</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling archives...&quot;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">app_id</span><span class="p">,</span> <span class="n">app</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apps_type_archive</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s2">&quot;unzip_prog&quot;</span><span class="p">]):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Command &lt;</span><span class="si">%s</span><span class="s2">&gt; not found on your system.&quot;</span> <span class="o">%</span>
+                                        <span class="n">app</span><span class="p">[</span><span class="s2">&quot;unzip_prog&quot;</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_operation_aborted_msg</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+                    <span class="k">continue</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_update</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_update</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling </span><span class="si">%s</span><span class="s2">&#39;s archive...&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+                    <span class="n">release_tag</span> <span class="o">=</span> <span class="kc">None</span>
+
+                    <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;github_api_asset_data&quot;</span><span class="p">):</span>
+                        <span class="n">release_tag</span><span class="p">,</span> <span class="n">asset_download_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_github_asset_url</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="n">app</span><span class="p">)</span>
+                        <span class="n">can_download</span><span class="p">,</span> <span class="n">download_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_url</span><span class="p">(</span><span class="n">asset_download_url</span><span class="p">)</span>
+
+                        <span class="k">if</span> <span class="n">download_url</span> <span class="ow">and</span> <span class="n">can_download</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_update</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">release_tag</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                                <span class="n">can_download</span> <span class="o">=</span> <span class="n">release_tag</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_update_data</span><span class="p">(</span>
+                                    <span class="n">app_id</span><span class="p">,</span> <span class="s2">&quot;tag_name&quot;</span><span class="p">)</span>
+
+                            <span class="k">if</span> <span class="ow">not</span> <span class="n">can_download</span><span class="p">:</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> doesn&#39;t need updating.&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">can_download</span><span class="p">,</span> <span class="n">download_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_url</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">])</span>
+
+                    <span class="k">if</span> <span class="n">download_url</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No download URL could be determined. Aborted!&quot;</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">download_url</span> <span class="ow">and</span> <span class="n">can_download</span><span class="p">:</span>
+                        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="n">app_id</span><span class="p">)</span> <span class="k">as</span> <span class="n">tmp_dir</span><span class="p">:</span>
+                            <span class="c1"># Use of app_id for the downloaded file name because getting it from</span>
+                            <span class="c1"># the URL itself could be a nightmare.</span>
+                            <span class="n">archive_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="p">,</span> <span class="n">app_id</span><span class="p">)</span>
+
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">tqdm_wget</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">download_url</span><span class="p">,</span> <span class="n">archive_path</span><span class="p">)</span>
+                            <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+                                <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">KeyboardInterruption</span><span class="p">()</span>
+                            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="k">try</span><span class="p">:</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle_archive</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">archive_path</span><span class="p">,</span> <span class="n">tmp_dir</span><span class="p">)</span>
+                                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                                <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+                                    <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">KeyboardInterruption</span><span class="p">()</span>
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">_set_update_data</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="s2">&quot;update_date&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_date</span><span class="p">)</span>
+
+                                    <span class="k">if</span> <span class="n">release_tag</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">_set_update_data</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="s2">&quot;tag_name&quot;</span><span class="p">,</span> <span class="n">release_tag</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> doesn&#39;t need updating.&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="ApplicationsManager._should_update"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._should_update">[docs]</a>    <span class="k">def</span> <span class="nf">_should_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if source should be updated.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        app : dict</span>
+<span class="sd">            The application data.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            If the source needs to be updated depending on its configured specified</span>
+<span class="sd">            update frequency.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">frequency</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;frequency&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+        <span class="n">update_date</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;update_date&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">update_date</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">frequency</span> <span class="o">==</span> <span class="s2">&quot;d&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;file&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_file</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s2">&quot;destination&quot;</span><span class="p">]):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="c1"># Do not check for this for now. Archive types are kind of a PITA.</span>
+        <span class="c1"># Considerations:</span>
+        <span class="c1"># - Archive type destinations could be folders or files alike.</span>
+        <span class="c1"># if app[&quot;type&quot;] == &quot;archive&quot; and not file_utils.is_real_dir(app[&quot;destination&quot;]):</span>
+        <span class="c1">#     return True</span>
+
+        <span class="n">then</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">update_date</span><span class="p">,</span> <span class="s2">&quot;%B </span><span class="si">%d</span><span class="s2"> %Y&quot;</span><span class="p">)</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_date</span><span class="p">,</span> <span class="s2">&quot;%B </span><span class="si">%d</span><span class="s2"> %Y&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">frequency</span> <span class="o">==</span> <span class="s2">&quot;w&quot;</span><span class="p">:</span>  <span class="c1"># Weekly.</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">then</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">frequency</span> <span class="o">==</span> <span class="s2">&quot;m&quot;</span><span class="p">:</span>  <span class="c1"># Monthly.</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">then</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">29</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ApplicationsManager._get_update_data"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._get_update_data">[docs]</a>    <span class="k">def</span> <span class="nf">_get_update_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app_id</span><span class="p">,</span> <span class="n">prop_key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get update data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        app_id : str</span>
+<span class="sd">            The application ID.</span>
+<span class="sd">        prop_key : str</span>
+<span class="sd">            The property to get the value of.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The value of a property.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app_update_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_update_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="k">return</span> <span class="n">app_update_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">prop_key</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ApplicationsManager._set_update_data"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._set_update_data">[docs]</a>    <span class="k">def</span> <span class="nf">_set_update_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app_id</span><span class="p">,</span> <span class="n">prop_key</span><span class="p">,</span> <span class="n">prop_val</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set update data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        app_id : str</span>
+<span class="sd">            The application ID.</span>
+<span class="sd">        prop_key : str</span>
+<span class="sd">            Property to modify.</span>
+<span class="sd">        prop_val : str</span>
+<span class="sd">            New value for the property.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app_update_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_update_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">app_update_data</span><span class="p">[</span><span class="n">prop_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">prop_val</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_last_update_data</span><span class="p">[</span><span class="n">app_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">app_update_data</span></div>
+
+<div class="viewcode-block" id="ApplicationsManager._save_update_data"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._save_update_data">[docs]</a>    <span class="k">def</span> <span class="nf">_save_update_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Save update data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">update_data_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">data_file</span><span class="p">:</span>
+            <span class="n">data_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_last_update_data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ApplicationsManager.manage_apps"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager.manage_apps">[docs]</a>    <span class="k">def</span> <span class="nf">manage_apps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Manage applications.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_manage_repositories</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_manage_files</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_manage_archives</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_save_update_data</span><span class="p">()</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

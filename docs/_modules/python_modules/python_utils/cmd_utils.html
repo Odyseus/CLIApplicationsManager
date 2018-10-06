@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>python_modules.python_utils.cmd_utils &mdash; CLI Applications Manager  documentation</title>
+  <title>python_modules.python_utils.cmd_utils &mdash; Python CLI Applications Documentations  documentation</title>
   
 
   
@@ -45,7 +45,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> CLI Applications Manager
+            <a href="../../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           
 
           
@@ -78,6 +78,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-structure.html">Folder structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
@@ -86,13 +87,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
 </ul>
 
             
@@ -107,7 +109,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">CLI Applications Manager</a>
+          <a href="../../../index.html">Python CLI Applications Documentations</a>
         
       </nav>
 
@@ -171,7 +173,10 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
-<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">Popen</span><span class="p">,</span> <span class="n">PIPE</span><span class="p">,</span> <span class="n">DEVNULL</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">DEVNULL</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">PIPE</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">Popen</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">run</span>
 
 
 <span class="n">STREAM_STDOUT</span> <span class="o">=</span> <span class="mi">1</span>
@@ -213,9 +218,12 @@
     <span class="k">elif</span> <span class="n">output_stream</span> <span class="o">==</span> <span class="n">STREAM_STDOUT</span><span class="p">:</span>
         <span class="n">stdout</span> <span class="o">=</span> <span class="n">stdout</span> <span class="ow">or</span> <span class="n">PIPE</span>
         <span class="n">stderr</span> <span class="o">=</span> <span class="n">DEVNULL</span>
-    <span class="k">else</span><span class="p">:</span>  <span class="c1"># STREAM_STDERR</span>
+    <span class="k">elif</span> <span class="n">output_stream</span> <span class="o">==</span> <span class="n">STREAM_STDERR</span><span class="p">:</span>
         <span class="n">stdout</span> <span class="o">=</span> <span class="n">DEVNULL</span>
         <span class="n">stderr</span> <span class="o">=</span> <span class="n">stderr</span> <span class="ow">or</span> <span class="n">PIPE</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">stdout</span> <span class="o">=</span> <span class="n">DEVNULL</span>
+        <span class="n">stderr</span> <span class="o">=</span> <span class="n">DEVNULL</span>
 
     <span class="k">if</span> <span class="n">env</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">env</span> <span class="o">=</span> <span class="n">get_environment</span><span class="p">()</span>
@@ -239,7 +247,7 @@
         <span class="k">raise</span></div>
 
 
-<div class="viewcode-block" id="exec_command"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.exec_command">[docs]</a><span class="k">def</span> <span class="nf">exec_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">working_directory</span><span class="p">,</span> <span class="n">do_wait</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">do_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="exec_command"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.exec_command">[docs]</a><span class="k">def</span> <span class="nf">exec_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">do_wait</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">do_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Execute command.</span>
 
 <span class="sd">    Run commands using Popen.</span>
@@ -248,7 +256,7 @@
 <span class="sd">    ----------</span>
 <span class="sd">    cmd : str</span>
 <span class="sd">        The command to run.</span>
-<span class="sd">    working_directory : str</span>
+<span class="sd">    cwd : str</span>
 <span class="sd">        Working directory used by the command.</span>
 <span class="sd">    do_wait : bool, optional</span>
 <span class="sd">        Call or not the Popen wait() method. (default: {True})</span>
@@ -258,9 +266,6 @@
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="c1"># Passing a list instead of a string is the recommended.</span>
-        <span class="c1"># I would do so if it would freaking work!!!</span>
-        <span class="c1"># Always one step forward and two steps back with Python!!!</span>
         <span class="n">po</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span>
             <span class="n">cmd</span><span class="p">,</span>
             <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -268,7 +273,7 @@
             <span class="n">stdin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">env</span><span class="o">=</span><span class="n">get_environment</span><span class="p">(),</span>
-            <span class="n">cwd</span><span class="o">=</span><span class="n">working_directory</span>
+            <span class="n">cwd</span><span class="o">=</span><span class="n">cwd</span>
         <span class="p">)</span>
 
         <span class="k">if</span> <span class="n">do_wait</span><span class="p">:</span>
@@ -357,6 +362,10 @@
             <span class="k">yield</span> <span class="n">path</span>
 
     <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="run_cmd"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.run_cmd">[docs]</a><span class="k">def</span> <span class="nf">run_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">stderr</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>

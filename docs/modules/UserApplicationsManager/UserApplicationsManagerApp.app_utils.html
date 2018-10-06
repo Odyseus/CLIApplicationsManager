@@ -1,0 +1,608 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>UserApplicationsManagerApp.app_utils module &mdash; Python CLI Applications Documentations  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="UserApplicationsManagerApp.cli module" href="UserApplicationsManagerApp.cli.html" />
+    <link rel="prev" title="UserApplicationsManagerApp package" href="UserApplicationsManagerApp.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-structure.html">Folder structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">UserApplicationsManagerApp</a> &raquo;</li>
+        
+          <li><a href="UserApplicationsManagerApp.html">UserApplicationsManagerApp package</a> &raquo;</li>
+        
+      <li>UserApplicationsManagerApp.app_utils module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="UserApplicationsManagerApp.cli.html" class="btn btn-neutral float-right" title="UserApplicationsManagerApp.cli module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="UserApplicationsManagerApp.html" class="btn btn-neutral" title="UserApplicationsManagerApp package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-UserApplicationsManagerApp.app_utils">
+<span id="userapplicationsmanagerapp-app-utils-module"></span><h1>UserApplicationsManagerApp.app_utils module<a class="headerlink" href="#module-UserApplicationsManagerApp.app_utils" title="Permalink to this headline">¶</a></h1>
+<p>Module with utility functions and classes.</p>
+<dl class="attribute">
+<dt id="UserApplicationsManagerApp.app_utils.base_app_keys">
+<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">base_app_keys</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.base_app_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em> – Mandatory keys for all applications.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="UserApplicationsManagerApp.app_utils.base_app_keys_for_archives">
+<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">base_app_keys_for_archives</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.base_app_keys_for_archives" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em> – Mandatory keys for applications of type “archive”.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="UserApplicationsManagerApp.app_utils.base_app_keys_for_files">
+<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">base_app_keys_for_files</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.base_app_keys_for_files" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em> – Mandatory keys for applications of type “file”.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="UserApplicationsManagerApp.app_utils.base_app_keys_for_repos">
+<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">base_app_keys_for_repos</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.base_app_keys_for_repos" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em> – Mandatory keys for applications of type “*_repo”.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="UserApplicationsManagerApp.app_utils.conf_file">
+<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">conf_file</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.conf_file" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Path to the configuration file.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="UserApplicationsManagerApp.app_utils.home">
+<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">home</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.home" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Path to the User’s home folder.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="UserApplicationsManagerApp.app_utils.root_folder">
+<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">root_folder</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.root_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The main folder containing the application. All commands must be executed
+from this location without exceptions.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="UserApplicationsManagerApp.app_utils.update_data_file">
+<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">update_data_file</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.update_data_file" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Path to the file where the update data for applications is stored.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="UserApplicationsManagerApp.app_utils.get_applications">
+<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">get_applications</code><span class="sig-paren">(</span><em>logger</em>, <em>validate=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#get_applications"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.get_applications" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get applications.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>.</p></li>
+<li><p><strong>validate</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether or not to validate each application. An application is “valid” if
+its dictionary data contains all mandatory keys. Validation is omitted when
+this method is called by the Bash completions script (to <em>keep things fast</em>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>All applications as found on the <strong>conf.py</strong> file.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)">dict</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingMandatoryField</span></code> – See <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.MissingMandatoryField" title="python_modules.python_utils.exceptions.MissingMandatoryField"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingMandatoryField</span></code></a>.</p></li>
+<li><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingRequiredFile</span></code> – See <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.MissingRequiredFile" title="python_modules.python_utils.exceptions.MissingRequiredFile"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingRequiredFile</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="UserApplicationsManagerApp.app_utils.print_app_ids">
+<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">print_app_ids</code><span class="sig-paren">(</span><em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#print_app_ids"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.print_app_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print application IDs.</p>
+<p>This method is called by the Bash completions script to auto-complete
+application IDs for the <code class="docutils literal notranslate"><span class="pre">--id=</span></code> and <code class="docutils literal notranslate"><span class="pre">-i</span></code> CLI options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager">
+<em class="property">class </em><code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">ApplicationsManager</code><span class="sig-paren">(</span><em>app_ids=[]</em>, <em>app_type=None</em>, <em>force_update=False</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>ApplicationsManager class.</p>
+<dl class="attribute">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager.all_apps">
+<code class="descname">all_apps</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager.all_apps" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – All applications as found in the conf.py file.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager.app_ids">
+<code class="descname">app_ids</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager.app_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – All application IDs passed by the <code class="docutils literal notranslate"><span class="pre">--id=</span></code> or <code class="docutils literal notranslate"><span class="pre">-i</span></code> CLI options.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager.app_type">
+<code class="descname">app_type</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager.app_type" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – An application “type” as passed by the <code class="docutils literal notranslate"><span class="pre">--type=</span></code> or <code class="docutils literal notranslate"><span class="pre">-t</span></code> CLI options.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager.current_date">
+<code class="descname">current_date</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager.current_date" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The current date.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager.force_update">
+<code class="descname">force_update</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager.force_update" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em> – Ignore application update frequency and update its file/s anyway.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager.logger">
+<code class="descname">logger</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager.logger" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – See <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>.</p>
+</dd></dl>
+
+<p>Initialize.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_ids</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a>) – All application IDs passed by the <code class="docutils literal notranslate"><span class="pre">--id=</span></code> or <code class="docutils literal notranslate"><span class="pre">-i</span></code> CLI options.</p></li>
+<li><p><strong>app_type</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – An application “type” as passed by the <code class="docutils literal notranslate"><span class="pre">--type=</span></code> or <code class="docutils literal notranslate"><span class="pre">-t</span></code> CLI options.</p></li>
+<li><p><strong>force_update</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Ignore application update frequency and update its file/s anyway.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._print_shell_separator">
+<code class="descname">_print_shell_separator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._print_shell_separator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._print_shell_separator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print shell separator.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._check_url">
+<code class="descname">_check_url</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._check_url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._check_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if an URL can be reached.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>url</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The URL to check.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>If the URL can be reached at index 0 and the URL itself at index 1.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#tuple" title="(in Python v3.5)">tuple</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._get_github_asset_url">
+<code class="descname">_get_github_asset_url</code><span class="sig-paren">(</span><em>app_id</em>, <em>app</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._get_github_asset_url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._get_github_asset_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get GitHub asset URL.</p>
+<p>This method uses the GitHub API to download a JSON file with information on a
+release of a repository. The “name” key of each element of the array/list
+called “assets” of the downloaded JSON file is scanned for different matches to
+locate the URL of the asset that one actually want to download.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_id</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The application ID.</p></li>
+<li><p><strong>app</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – The application data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The URL of the asset that one wants to download or None.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str|None</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code> – See <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._filter_group_extend_apps">
+<code class="descname">_filter_group_extend_apps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._filter_group_extend_apps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._filter_group_extend_apps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter, group and extend applications data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._get_check_repo_cmd">
+<code class="descname">_get_check_repo_cmd</code><span class="sig-paren">(</span><em>repo_type</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._get_check_repo_cmd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._get_check_repo_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the command to check a repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The command to check the repository.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)">list</a></p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo_type</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – “git” or “hg”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._do_pull">
+<code class="descname">_do_pull</code><span class="sig-paren">(</span><em>repo_type</em>, <em>repo_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._do_pull"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._do_pull" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pull from a repository.</p>
+<p>There are only two SCM software (that I know how to use), <code class="docutils literal notranslate"><span class="pre">git</span></code> and <code class="docutils literal notranslate"><span class="pre">hg</span></code>, and they
+both have the same command structure to pull from a repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo_type</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – “git” or “hg”.</p></li>
+<li><p><strong>repo_path</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Path to the local repository.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._do_clone">
+<code class="descname">_do_clone</code><span class="sig-paren">(</span><em>repo_type</em>, <em>repo_path</em>, <em>repo_url</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._do_clone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._do_clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clone a repository.</p>
+<p>There are only two SCM software (that I know how to use), <code class="docutils literal notranslate"><span class="pre">git</span></code> and <code class="docutils literal notranslate"><span class="pre">hg</span></code>, and they
+both have the same command structure to clone a repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo_type</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – “git” or “hg”.</p></li>
+<li><p><strong>repo_path</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Path to the local repository.</p></li>
+<li><p><strong>repo_url</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – URL of the on-line repository.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._manage_repositories">
+<code class="descname">_manage_repositories</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._manage_repositories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._manage_repositories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage applications of type “git_repo” or “hg_repo”.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._manage_files">
+<code class="descname">_manage_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._manage_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._manage_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage applications of type “file”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code> – See <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._handle_archive">
+<code class="descname">_handle_archive</code><span class="sig-paren">(</span><em>app_id</em>, <em>app</em>, <em>archive</em>, <em>temp_wd</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._handle_archive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._handle_archive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle archive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_id</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The application ID.</p></li>
+<li><p><strong>app</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – The application data.</p></li>
+<li><p><strong>archive</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Path to an archive to handle.</p></li>
+<li><p><strong>temp_wd</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Path to a temporary working directory.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._manage_archives">
+<code class="descname">_manage_archives</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._manage_archives"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._manage_archives" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage applications of type “archive”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code> – See <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._should_update">
+<code class="descname">_should_update</code><span class="sig-paren">(</span><em>app</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._should_update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._should_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if source should be updated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>app</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – The application data.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>If the source needs to be updated depending on its configured specified
+update frequency.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._get_update_data">
+<code class="descname">_get_update_data</code><span class="sig-paren">(</span><em>app_id</em>, <em>prop_key</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._get_update_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._get_update_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get update data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_id</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The application ID.</p></li>
+<li><p><strong>prop_key</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The property to get the value of.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The value of a property.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._set_update_data">
+<code class="descname">_set_update_data</code><span class="sig-paren">(</span><em>app_id</em>, <em>prop_key</em>, <em>prop_val</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._set_update_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._set_update_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set update data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_id</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The application ID.</p></li>
+<li><p><strong>prop_key</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Property to modify.</p></li>
+<li><p><strong>prop_val</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – New value for the property.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._save_update_data">
+<code class="descname">_save_update_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._save_update_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._save_update_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save update data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager.manage_apps">
+<code class="descname">manage_apps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager.manage_apps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager.manage_apps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage applications.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="UserApplicationsManagerApp.cli.html" class="btn btn-neutral float-right" title="UserApplicationsManagerApp.cli module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="UserApplicationsManagerApp.html" class="btn btn-neutral" title="UserApplicationsManagerApp package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

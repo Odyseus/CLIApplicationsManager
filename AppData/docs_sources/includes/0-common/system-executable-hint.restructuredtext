@@ -1,0 +1,14 @@
+
+.. only:: html
+
+    .. hint::
+
+        This Python application can generate a system executable with Bash completions support. See ``app.py generate``.
+
+.. only:: man
+
+    Hint
+    ====
+
+    This Python application can generate a system executable with Bash completions support. See ``app.py generate``.
+

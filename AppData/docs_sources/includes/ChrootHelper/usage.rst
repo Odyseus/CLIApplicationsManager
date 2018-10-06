@@ -1,8 +1,10 @@
 
-Usage
-=====
+Detailed usage
+==============
 
-:abbr:`CLI (Command Line Interface)` help page
-----------------------------------------------
+.. include:: ../0-common/cli-options.restructuredtext
 
-.. docopt-docstring:: chroothelper
+Commands
+--------
+
+.. include:: ../0-common/generate-command.restructuredtext

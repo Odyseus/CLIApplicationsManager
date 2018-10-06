@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>General development notes &mdash; CLI Applications Manager  documentation</title>
+  <title>General development notes &mdash; Python CLI Applications Documentations  documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Backup Tool’s documentation" href="BackupTool/index.html" />
+    <link rel="next" title="CLI applications manager’s documentation" href="CLIApplicationsManager/index.html" />
     <link rel="prev" title="Folder structure" href="0-structure.html" /> 
 
 </head>
@@ -47,7 +47,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> CLI Applications Manager
+            <a href="../index.html" class="icon icon-home"> Python CLI Applications Documentations
           
 
           
@@ -95,6 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#making-applications-standalone">Making applications standalone</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BackupTool/index.html">Backup Tool’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
@@ -103,13 +104,14 @@
 <li class="toctree-l1"><a class="reference internal" href="MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MoviesDB/index.html">Movies DB’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
 </ul>
 
             
@@ -124,7 +126,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">CLI Applications Manager</a>
+          <a href="../index.html">Python CLI Applications Documentations</a>
         
       </nav>
 
@@ -171,7 +173,7 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="BackupTool/index.html" class="btn btn-neutral float-right" title="Backup Tool’s documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="CLIApplicationsManager/index.html" class="btn btn-neutral float-right" title="CLI applications manager’s documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="0-structure.html" class="btn btn-neutral" title="Folder structure" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -199,6 +201,7 @@
 </div>
 <div class="section" id="docopt-module-usage-notes">
 <span id="docopt-usage-notes-reference"></span><h2>docopt module usage notes<a class="headerlink" href="#docopt-module-usage-notes" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/docopt/docopt">docopt Python module</a> is used as command line arguments parser for all <abbr title="Command Line Interface">CLI</abbr> applications.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">docopt_doc</span></code> variable defined in each <strong>cli.py</strong> file for each application is used to store/define the doc string that will be passed to <code class="docutils literal notranslate"><span class="pre">docopt</span></code> as the <strong>doc</strong> argument. This was done because, if I use a doc string that complies with Sphinx/RST, <code class="docutils literal notranslate"><span class="pre">docopt</span></code> will not parse it correctly. If I use a doc string that complies with <code class="docutils literal notranslate"><span class="pre">docopt</span></code>, Sphinx doesn’t SHUT UP about incorrect indentations and the likes. So, I store the <em>``docopt`` document</em> in a variable. This will SHUT UP Sphinx because it <em>cannot see</em> the doc string. The variable then is explicitly passed to <code class="docutils literal notranslate"><span class="pre">docopt</span></code> as the <strong>doc</strong> argument. Moving the on!!!</p>
 <div class="section" id="docopt-warnings-workarounds-known-issues">
 <h3>docopt warnings/workarounds/known issues<a class="headerlink" href="#docopt-warnings-workarounds-known-issues" title="Permalink to this headline">¶</a></h3>
@@ -309,7 +312,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="BackupTool/index.html" class="btn btn-neutral float-right" title="Backup Tool’s documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="CLIApplicationsManager/index.html" class="btn btn-neutral float-right" title="CLI applications manager’s documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="0-structure.html" class="btn btn-neutral" title="Folder structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
