@@ -80,7 +80,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -177,24 +177,6 @@
 <span id="hostsmanagerapp-app-utils-module"></span><h1>HostsManagerApp.app_utils module<a class="headerlink" href="#module-HostsManagerApp.app_utils" title="Permalink to this headline">¶</a></h1>
 <p>Module with utility functions and classes.</p>
 <dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HOSTNAME_REGEX">
-<code class="descclassname">HostsManagerApp.app_utils.</code><code class="descname">HOSTNAME_REGEX</code><a class="headerlink" href="#HostsManagerApp.app_utils.HOSTNAME_REGEX" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>re</em> – Regular expression used to validate the host names.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.INVALID_INTEGER_MSG">
-<code class="descclassname">HostsManagerApp.app_utils.</code><code class="descname">INVALID_INTEGER_MSG</code><a class="headerlink" href="#HostsManagerApp.app_utils.INVALID_INTEGER_MSG" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Message to show validating integers.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.INVALID_IP_MSG">
-<code class="descclassname">HostsManagerApp.app_utils.</code><code class="descname">INVALID_IP_MSG</code><a class="headerlink" href="#HostsManagerApp.app_utils.INVALID_IP_MSG" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Message to show validating IP addresses.</p>
-</dd></dl>
-
-<dl class="attribute">
 <dt id="HostsManagerApp.app_utils.root_folder">
 <code class="descclassname">HostsManagerApp.app_utils.</code><code class="descname">root_folder</code><a class="headerlink" href="#HostsManagerApp.app_utils.root_folder" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>str</em> – The main folder containing the application. All commands must be executed from this location
@@ -202,47 +184,18 @@ without exceptions.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="HostsManagerApp.app_utils.ValidatedOverrides">
-<em class="property">class </em><code class="descclassname">HostsManagerApp.app_utils.</code><code class="descname">ValidatedOverrides</code><span class="sig-paren">(</span><em>raw_overrides</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#ValidatedOverrides"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.ValidatedOverrides" title="Permalink to this definition">¶</a></dt>
+<dt id="HostsManagerApp.app_utils.OverridesValidator">
+<em class="property">class </em><code class="descclassname">HostsManagerApp.app_utils.</code><code class="descname">OverridesValidator</code><span class="sig-paren">(</span><em>raw_overrides</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Validate a list of options passed as arguments.</p>
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.ValidatedOverrides.errors">
-<code class="descname">errors</code><a class="headerlink" href="#HostsManagerApp.app_utils.ValidatedOverrides.errors" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list</em> – A list of validation errors to be displayed.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.ValidatedOverrides.raw_overrides">
-<code class="descname">raw_overrides</code><a class="headerlink" href="#HostsManagerApp.app_utils.ValidatedOverrides.raw_overrides" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list</em> – The raw list of options as passed to the CLI.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.ValidatedOverrides.valid_options">
-<code class="descname">valid_options</code><a class="headerlink" href="#HostsManagerApp.app_utils.ValidatedOverrides.valid_options" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list</em> – The list of valid options used to check.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.ValidatedOverrides.valid_overrides">
-<code class="descname">valid_overrides</code><a class="headerlink" href="#HostsManagerApp.app_utils.ValidatedOverrides.valid_overrides" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> – The final list of options validated.</p>
-</dd></dl>
-
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>raw_overrides</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a>) – The raw list of options as passed to the CLI.</p>
 </dd>
 </dl>
-<dl class="attribute">
-<dt>
-<code class="descname">valid_options</code><em class="property"> = ['target_ip', 'keep_domain_comments', 'skip_static_hosts', 'backup_old_generated_hosts', 'backup_system_hosts']</em></dt>
-<dd></dd></dl>
-
 <dl class="method">
-<dt id="HostsManagerApp.app_utils.ValidatedOverrides.get_valid_overrides">
-<code class="descname">get_valid_overrides</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#ValidatedOverrides.get_valid_overrides"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.ValidatedOverrides.get_valid_overrides" title="Permalink to this definition">¶</a></dt>
+<dt id="HostsManagerApp.app_utils.OverridesValidator.get_valid_overrides">
+<code class="descname">get_valid_overrides</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator.get_valid_overrides"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator.get_valid_overrides" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get valid overrides.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -255,8 +208,8 @@ without exceptions.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="HostsManagerApp.app_utils.ValidatedOverrides.get_errors">
-<code class="descname">get_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#ValidatedOverrides.get_errors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.ValidatedOverrides.get_errors" title="Permalink to this definition">¶</a></dt>
+<dt id="HostsManagerApp.app_utils.OverridesValidator.get_errors">
+<code class="descname">get_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator.get_errors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator.get_errors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get validation errors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -269,14 +222,14 @@ without exceptions.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="HostsManagerApp.app_utils.ValidatedOverrides._validate_overrides">
-<code class="descname">_validate_overrides</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#ValidatedOverrides._validate_overrides"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.ValidatedOverrides._validate_overrides" title="Permalink to this definition">¶</a></dt>
+<dt id="HostsManagerApp.app_utils.OverridesValidator._validate_overrides">
+<code class="descname">_validate_overrides</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator._validate_overrides"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator._validate_overrides" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validate the raw overrides.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="HostsManagerApp.app_utils.ValidatedOverrides._validate_bool">
-<code class="descname">_validate_bool</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#ValidatedOverrides._validate_bool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.ValidatedOverrides._validate_bool" title="Permalink to this definition">¶</a></dt>
+<dt id="HostsManagerApp.app_utils.OverridesValidator._validate_bool">
+<code class="descname">_validate_bool</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator._validate_bool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator._validate_bool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validate Boolean.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -292,8 +245,8 @@ without exceptions.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="HostsManagerApp.app_utils.ValidatedOverrides._get_bool">
-<code class="descname">_get_bool</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#ValidatedOverrides._get_bool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.ValidatedOverrides._get_bool" title="Permalink to this definition">¶</a></dt>
+<dt id="HostsManagerApp.app_utils.OverridesValidator._get_bool">
+<code class="descname">_get_bool</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator._get_bool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator._get_bool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a Boolean.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -312,205 +265,20 @@ without exceptions.</p>
 
 <dl class="class">
 <dt id="HostsManagerApp.app_utils.HostsManager">
-<em class="property">class </em><code class="descclassname">HostsManagerApp.app_utils.</code><code class="descname">HostsManager</code><span class="sig-paren">(</span><em>profile=''</em>, <em>options_overrides={}</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">HostsManagerApp.app_utils.</code><code class="descname">HostsManager</code><span class="sig-paren">(</span><em>profile=''</em>, <em>dry_run=False</em>, <em>options_overrides={}</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>HostsManager class.</p>
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.backup_old_generated_hosts">
-<code class="descname">backup_old_generated_hosts</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.backup_old_generated_hosts" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>bool</em> – Back up the old generated hosts file before generating a new one.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.backup_system_hosts">
-<code class="descname">backup_system_hosts</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.backup_system_hosts" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>bool</em> – Backup the system hosts file before installing a new one.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.backups_storage">
-<code class="descname">backups_storage</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.backups_storage" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Path to the profile’s back ups files.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.basedir_path">
-<code class="descname">basedir_path</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.basedir_path" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – The path to the USerData directory.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.blacklist">
-<code class="descname">blacklist</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.blacklist" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Path to the blacklist file for the profile.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.compressed_sources">
-<code class="descname">compressed_sources</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.compressed_sources" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list</em> – The list of compressed sources.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.current_date">
-<code class="descname">current_date</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.current_date" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – The current date.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.exclusions">
-<code class="descname">exclusions</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.exclusions" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list</em> – List of domains to exclude from the hosts file.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.final_file">
-<code class="descname">final_file</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.final_file" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>file object</em> – The file object that points to the newly-created hosts file.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.global_blacklist">
-<code class="descname">global_blacklist</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.global_blacklist" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Path to the global_blacklist file.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.global_whitelist">
-<code class="descname">global_whitelist</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.global_whitelist" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Path to the global_whitelist file.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.header">
-<code class="descname">header</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.header" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Hosts file template header.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.header_static_hosts">
-<code class="descname">header_static_hosts</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.header_static_hosts" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Static hosts template.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.hosts_file">
-<code class="descname">hosts_file</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.hosts_file" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Path to the hosts file for the profile.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.invalid_rule">
-<code class="descname">invalid_rule</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.invalid_rule" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>tuple</em> – Invalid rule template.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.keep_domain_comments">
-<code class="descname">keep_domain_comments</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.keep_domain_comments" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>bool</em> – Keep domain comments.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.last_update_data">
-<code class="descname">last_update_data</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.last_update_data" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> – The dictionary containing the dates in which the sources were updated.</p>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="HostsManagerApp.app_utils.HostsManager.logger">
 <code class="descname">logger</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.logger" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>object</em> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.max_backups_to_keep">
-<code class="descname">max_backups_to_keep</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.max_backups_to_keep" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>int</em> – The maximum amount of backup file to keep.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.merge_file">
-<code class="descname">merge_file</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.merge_file" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>file object</em> – The temporary file object that contains the host names from all sources.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.number_of_ignores">
-<code class="descname">number_of_ignores</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.number_of_ignores" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>int</em> – Number of ignored rules that didn’t passed the host name validation.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.number_of_rules">
-<code class="descname">number_of_rules</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.number_of_rules" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>int</em> – The total amount of rules that the generated hosts file will contain.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.profile">
-<code class="descname">profile</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.profile" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Path to the current profile.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.profiles_path">
-<code class="descname">profiles_path</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.profiles_path" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – The path to were all profiles are stored.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.skip_static_hosts">
-<code class="descname">skip_static_hosts</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.skip_static_hosts" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>bool</em> – Skip static local host entries in the final hosts file.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.sources">
-<code class="descname">sources</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.sources" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list</em> – The list of sources used to retrieve the hosts files.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.sources_last_updated">
-<code class="descname">sources_last_updated</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.sources_last_updated" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Path to the JSON file were the last updated dates are stored for the profile.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.sources_storage">
-<code class="descname">sources_storage</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.sources_storage" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Path to the folder were the downloaded sources are stored.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.sources_storage_compressed">
-<code class="descname">sources_storage_compressed</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.sources_storage_compressed" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Storage for sources whose downloaded files are compressed files.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.sources_storage_raw">
-<code class="descname">sources_storage_raw</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.sources_storage_raw" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Storage for sources whose downloaded files are raw files.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.target_ip">
-<code class="descname">target_ip</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.target_ip" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Target IP address that will be used in the generated hosts file.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.whitelist">
-<code class="descname">whitelist</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.whitelist" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Path to the whitelist file for the profile.</p>
-</dd></dl>
-
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>profile</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em>, </em><em>optional</em>) – The profile name.</p></li>
+<li><p><strong>dry_run</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Description</p></li>
 <li><p><strong>options_overrides</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a><em>, </em><em>optional</em>) – A list of options to override the default ones or the defined in the profile’s
 configuration file.</p></li>
 <li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
@@ -523,31 +291,6 @@ configuration file.</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="attribute">
-<dt>
-<code class="descname">basedir_path</code><em class="property"> = '/home/odyseus/PythonCLIApplications/AppData/docs_sources/UserData'</em></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">profiles_path</code><em class="property"> = '/home/odyseus/PythonCLIApplications/AppData/docs_sources/UserData/profiles'</em></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">invalid_rule</code><em class="property"> = (None, None, None)</em></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">header</code><em class="property"> = '# Date: {date}\n# Number of unique domains: {number_of_rules}\n# ===============================================================\n'</em></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">header_static_hosts</code><em class="property"> = '\n127.0.0.1 localhost\n127.0.0.1 localhost.localdomain\n127.0.0.1 local\n255.255.255.255 broadcasthost\n::1 localhost ip6-localhost ip6-loopback\nfe80::1%lo0 localhost\nff02::1 ip6-allnodes\nff02::2 ip6-allrouters\n0.0.0.0 0.0.0.0\n127.0.1.1 {host_name}\n127.0.0.53 {host_name}\n\n'</em></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="HostsManagerApp.app_utils.HostsManager._validate_sources">
 <code class="descname">_validate_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._validate_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._validate_sources" title="Permalink to this definition">¶</a></dt>
@@ -569,8 +312,8 @@ configuration file.</p></li>
 </dd></dl>
 
 <dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._validate_keys">
-<code class="descname">_validate_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._validate_keys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._validate_keys" title="Permalink to this definition">¶</a></dt>
+<dt id="HostsManagerApp.app_utils.HostsManager._validate_option_keys">
+<code class="descname">_validate_option_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._validate_option_keys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._validate_option_keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validate keys.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -624,12 +367,9 @@ update frequency.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._move_hosts_file_into_place">
-<code class="descname">_move_hosts_file_into_place</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._move_hosts_file_into_place"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._move_hosts_file_into_place" title="Permalink to this definition">¶</a></dt>
+<dt id="HostsManagerApp.app_utils.HostsManager._install_hosts_file">
+<code class="descname">_install_hosts_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._install_hosts_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._install_hosts_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copy the newly-created hosts file into its correct location on the OS.</p>
-<p>The hosts file is located at “/etc/hosts”.</p>
-<p>For the file copy to work, you must have administrator privileges.
-This means having “sudo” access.</p>
 </dd></dl>
 
 <dl class="method">
@@ -771,11 +511,14 @@ have been explicitly excluded by the user.</p>
 
 <dl class="function">
 <dt id="HostsManagerApp.app_utils.flush_dns_cache">
-<code class="descclassname">HostsManagerApp.app_utils.</code><code class="descname">flush_dns_cache</code><span class="sig-paren">(</span><em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#flush_dns_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.flush_dns_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">HostsManagerApp.app_utils.</code><code class="descname">flush_dns_cache</code><span class="sig-paren">(</span><em>dry_run=False</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#flush_dns_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.flush_dns_cache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flush the DNS cache.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dry_run</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Description</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

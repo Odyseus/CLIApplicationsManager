@@ -78,7 +78,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -170,7 +170,7 @@
 <span class="sd">custom_copytree_global_ignored_patterns : list</span>
 <span class="sd">    List of globally ignored patterns for the :any:`file_utils.custom_copytree` function.</span>
 <span class="sd">root_folder : str</span>
-<span class="sd">    The main folder containing the Knowledge Base. All commands must be executed</span>
+<span class="sd">    The main folder containing the application. All commands must be executed</span>
 <span class="sd">    from this location without exceptions.</span>
 <span class="sd">WWW_BASE_PATH : str</span>
 <span class="sd">    The path to the www folder.</span>
@@ -179,9 +179,12 @@
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
+<span class="kn">from</span> <span class="nn">shlex</span> <span class="k">import</span> <span class="n">quote</span> <span class="k">as</span> <span class="n">shell_quote</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">CalledProcessError</span>
+
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cmd_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">file_utils</span>
-<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">misc_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">shell_utils</span>
 
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
@@ -189,6 +192,25 @@
 <span class="n">custom_copytree_global_ignored_patterns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;.git&quot;</span><span class="p">]</span>
 
 <span class="n">WWW_BASE_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;www&quot;</span><span class="p">)</span>
+
+
+<span class="n">CAT_LIST_ITEM_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">{indent}</span><span class="s2">&lt;li class=&quot;nav-item&quot;&gt;</span>
+<span class="si">{indent}</span><span class="s2">    &lt;span class=&quot;btn-group&quot; role=&quot;group&quot;&gt;</span>
+<span class="si">{indent}</span><span class="s2">        &lt;a class=&quot;nav-link </span><span class="si">{cat_class}</span><span class="s2"> cat-btn btn&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;cat-icon nf </span><span class="si">{cat_icon}</span><span class="s2">&quot;&gt;&lt;/i&gt;</span><span class="si">{cat_title}</span><span class="s2">&lt;/a&gt;</span>
+<span class="si">{indent}</span><span class="s2">    &lt;/span&gt;</span>
+<span class="si">{indent}</span><span class="s2">&lt;/li&gt;&quot;&quot;&quot;</span>
+
+
+<span class="n">CAT_MENU_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;li class=&quot;nav-item&quot;&gt;</span>
+<span class="s2">    &lt;span class=&quot;btn-group&quot; role=&quot;group&quot;&gt;</span>
+<span class="s2">        &lt;a class=&quot;nav-link cat-btn btn&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;cat-icon nf </span><span class="si">{cat_icon}</span><span class="s2">&quot;&gt;</span><span class="se">\</span>
+<span class="s2">&lt;/i&gt;</span><span class="si">{cat_title}</span><span class="s2">&lt;/a&gt;</span>
+<span class="s2">        &lt;a class=&quot;toggle-cat-btn btn&quot; href=&quot;#</span><span class="si">{cat_menu_id}</span><span class="s2">&quot; data-toggle=&quot;collapse&quot; aria-expanded=&quot;false&quot;&gt;&lt;/a&gt;</span>
+<span class="s2">    &lt;/span&gt;</span>
+<span class="s2">    &lt;ul class=&quot;collapse list-unstyled subcats&quot; id=&quot;</span><span class="si">{cat_menu_id}</span><span class="s2">&quot;&gt;</span>
+<span class="si">{sub_cat_items}</span><span class="s2"></span>
+<span class="s2">    &lt;/ul&gt;</span>
+<span class="s2">&lt;/li&gt;&quot;&quot;&quot;</span>
 
 
 <div class="viewcode-block" id="DataTablesObject"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject">[docs]</a><span class="k">class</span> <span class="nc">DataTablesObject</span><span class="p">():</span>
@@ -200,38 +222,38 @@
 <span class="sd">    ----------</span>
 <span class="sd">    data_tables_obj : list</span>
 <span class="sd">        Where the JSON data is stored before finally save it into a JSON file.</span>
-<span class="sd">    file_extensions : list</span>
-<span class="sd">        Used by the :any:`DataTablesObject.generate_data_by_file_extension` method.</span>
 <span class="sd">    logger : object</span>
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_extensions</span><span class="o">=</span><span class="p">[],</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_extensions</span><span class="o">=</span><span class="p">[],</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        file_extensions : list, optional</span>
-<span class="sd">            Used by the :any:`DataTablesObject.generate_data_by_file_extension` method.</span>
+<span class="sd">            Used by the :any:`DataTablesObject._get_data_by_file_extension` method.</span>
+<span class="sd">        dry_run : bool, optional</span>
+<span class="sd">            Log an action without actually performing it.</span>
 <span class="sd">        logger : object</span>
 <span class="sd">            See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">data_tables_obj</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span> <span class="o">=</span> <span class="n">dry_run</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">file_extensions</span> <span class="o">=</span> <span class="n">file_extensions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_file_extensions</span> <span class="o">=</span> <span class="n">file_extensions</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">generate_data_by_file_extension</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">generate_data_from_html_pages</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">generate_data_from_repositories</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">generate_data_from_html_pages_from_archives</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_by_file_extension</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_from_html_pages</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_from_repositories</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_from_html_pages_from_archives</span><span class="p">()</span>
 
-<div class="viewcode-block" id="DataTablesObject.generate_data_by_file_extension"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject.generate_data_by_file_extension">[docs]</a>    <span class="k">def</span> <span class="nf">generate_data_by_file_extension</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generate JSON data depending on the file extensions stored in self.file_extensions.</span>
+<div class="viewcode-block" id="DataTablesObject._get_data_by_file_extension"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension">[docs]</a>    <span class="k">def</span> <span class="nf">_get_data_by_file_extension</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate JSON data depending on the file extensions stored in self._file_extensions.</span>
 
 <span class="sd">        The file extensions are actually name of folders located inside the UserData/www</span>
-<span class="sd">        folder (as of now, &quot;md&quot; for Markdown files, &quot;html&quot; for HTML pages and &quot;pdf&quot; for PDF files).</span>
+<span class="sd">        folder (as of now, &quot;md&quot; for Markdown files, &quot;html&quot; for HTML pages, &quot;pdf&quot; for PDF files and</span>
+<span class="sd">        epub for ePub files).</span>
 <span class="sd">        Inside these folders are sub-folders (representing category names) which contain other</span>
 <span class="sd">        folders (representing sub-category names). Finally, all second level sub-folders contain</span>
 <span class="sd">        files of said file types.</span>
@@ -239,7 +261,7 @@
 <span class="sd">        These folders will be scanned in search for files and generate &quot;JSON data objects&quot; that</span>
 <span class="sd">        will be stored into self.data_tables_obj.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">for</span> <span class="n">file_extension</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_extensions</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">file_extension</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_file_extensions</span><span class="p">:</span>
             <span class="n">file_pattern</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">file_extension</span>
             <span class="n">pages_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="n">file_extension</span><span class="p">)</span>
 
@@ -277,12 +299,28 @@
                                         <span class="c1"># Icon name</span>
                                         <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="n">file_extension</span>
                                     <span class="p">})</span>
+
+                                    <span class="k">if</span> <span class="n">file_extension</span> <span class="o">==</span> <span class="s2">&quot;epub&quot;</span><span class="p">:</span>
+                                        <span class="n">rel_epub</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                                            <span class="n">file_extension</span><span class="p">,</span> <span class="n">cat</span><span class="p">,</span> <span class="n">sub_cat</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)</span>
+                                        <span class="n">abs_epub</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="n">rel_epub</span><span class="p">)</span>
+
+                                        <span class="k">if</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_file</span><span class="p">(</span><span class="n">abs_epub</span><span class="p">):</span>
+                                            <span class="bp">self</span><span class="o">.</span><span class="n">data_tables_obj</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                                                <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+                                                <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="n">category</span><span class="p">,</span>
+                                                <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                                                <span class="c1"># Full path to files from the www folder.</span>
+                                                <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">rel_epub</span><span class="p">,</span>
+                                                <span class="c1"># Icon name</span>
+                                                <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="s2">&quot;html-external&quot;</span>
+                                            <span class="p">})</span>
                             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
                                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
                                 <span class="k">continue</span></div>
 
-<div class="viewcode-block" id="DataTablesObject.generate_data_from_html_pages"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject.generate_data_from_html_pages">[docs]</a>    <span class="k">def</span> <span class="nf">generate_data_from_html_pages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="DataTablesObject._get_data_from_html_pages"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject._get_data_from_html_pages">[docs]</a>    <span class="k">def</span> <span class="nf">_get_data_from_html_pages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Obtain the JSON data stored in html_pages.json and store it into self.data_tables_obj.</span>
 
 <span class="sd">        The UserData/www/html_pages/html_pages.json is manually maintained and it contains</span>
@@ -296,12 +334,20 @@
                 <span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
             <span class="k">if</span> <span class="n">json_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># Add this common data here instead of specifying the same data</span>
+                <span class="c1"># a million times inside the JSON file.</span>
+                <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">json_data</span><span class="p">:</span>
+                    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;html_pages/</span><span class="si">{title}</span><span class="s2">/</span><span class="si">{html_file}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">],</span>
+                                                                        <span class="n">html_file</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">])</span>
+                    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;html-external&quot;</span>
+
                 <span class="bp">self</span><span class="o">.</span><span class="n">data_tables_obj</span> <span class="o">+=</span> <span class="n">json_data</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;get_data_from_html_pages&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="DataTablesObject.generate_data_from_repositories"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject.generate_data_from_repositories">[docs]</a>    <span class="k">def</span> <span class="nf">generate_data_from_repositories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="DataTablesObject._get_data_from_repositories"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject._get_data_from_repositories">[docs]</a>    <span class="k">def</span> <span class="nf">_get_data_from_repositories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Obtain the JSON data generated for each repository.</span>
 
 <span class="sd">        Each repository, after it&#39;s &quot;handled&quot;, will generate a JSON file containing data related</span>
@@ -309,18 +355,21 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">repositories_handler</span>
 
-        <span class="n">data_tables_obj</span> <span class="o">=</span> <span class="n">repositories_handler</span><span class="o">.</span><span class="n">get_json_data_from_repositories</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="n">repositories_handler</span><span class="o">.</span><span class="n">RepositoriesHandler</span><span class="p">(</span><span class="n">dry_run</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">,</span>
+                                                           <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+        <span class="n">data_tables_obj</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="n">get_data_tables_obj</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="n">data_tables_obj</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data_tables_obj</span> <span class="o">+=</span> <span class="n">data_tables_obj</span></div>
 
-<div class="viewcode-block" id="DataTablesObject.generate_data_from_html_pages_from_archives"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject.generate_data_from_html_pages_from_archives">[docs]</a>    <span class="k">def</span> <span class="nf">generate_data_from_html_pages_from_archives</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="DataTablesObject._get_data_from_html_pages_from_archives"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject._get_data_from_html_pages_from_archives">[docs]</a>    <span class="k">def</span> <span class="nf">_get_data_from_html_pages_from_archives</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Obtain the JSON data generated for downloaded archives.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">archives_handler</span>
 
-        <span class="n">handler</span> <span class="o">=</span> <span class="n">archives_handler</span><span class="o">.</span><span class="n">ArchivesHandler</span><span class="p">(</span><span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
-        <span class="n">data_tables_obj</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="n">get_archives_json_data</span><span class="p">()</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="n">archives_handler</span><span class="o">.</span><span class="n">ArchivesHandler</span><span class="p">(</span><span class="n">dry_run</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">,</span>
+                                                   <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+        <span class="n">data_tables_obj</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="n">get_data_tables_obj</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="n">data_tables_obj</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data_tables_obj</span> <span class="o">+=</span> <span class="n">data_tables_obj</span></div>
@@ -407,7 +456,7 @@
 <span class="sd">        Halt execution.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">file_pattern</span> <span class="o">=</span> <span class="s2">&quot;.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">from_format</span>
-    <span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;tmp&quot;</span><span class="p">,</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;data_storage&quot;</span><span class="p">,</span>
                                <span class="s2">&quot;pandoc_convertions&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_to_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">from_format</span><span class="p">,</span> <span class="n">to_format</span><span class="p">))</span>
 
     <span class="c1"># Use of the latest version of pandoc downloaded from their repository.</span>
@@ -500,60 +549,105 @@
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="main_json_file_creation"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.main_json_file_creation">[docs]</a><span class="k">def</span> <span class="nf">main_json_file_creation</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="convert_epub_to_html"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.convert_epub_to_html">[docs]</a><span class="k">def</span> <span class="nf">convert_epub_to_html</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert epub to html.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;data_storage&quot;</span><span class="p">,</span>
+                               <span class="s2">&quot;pandoc_convertions&quot;</span><span class="p">,</span> <span class="s2">&quot;epub_to_html&quot;</span><span class="p">)</span>
+
+    <span class="n">header_include_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span>
+                                       <span class="s2">&quot;includes&quot;</span><span class="p">,</span> <span class="s2">&quot;epub_to_html_header_include.html&quot;</span><span class="p">)</span>
+
+    <span class="n">list_of_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">entry</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">scandir</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span> <span class="k">if</span>
+                     <span class="n">entry</span><span class="o">.</span><span class="n">is_file</span><span class="p">(</span><span class="n">follow_symlinks</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="ow">and</span> <span class="n">entry</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.epub&quot;</span><span class="p">)]</span>
+
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">list_of_files</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Converting:&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">f_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+        <span class="n">dst_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">f</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">dst_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">dst_name</span><span class="p">)</span>
+
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dst_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mo">0o777</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;pandoc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--standalone&quot;</span><span class="p">,</span>
+            <span class="n">shell_quote</span><span class="p">(</span><span class="n">f_path</span><span class="p">),</span>
+            <span class="s2">&quot;--output&quot;</span><span class="p">,</span>
+            <span class="n">shell_quote</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/index.html&quot;</span> <span class="o">%</span> <span class="n">dst_path</span><span class="p">),</span>
+            <span class="s2">&quot;--extract-media=assets&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--include-in-header=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">shell_quote</span><span class="p">(</span><span class="n">header_include_path</span><span class="p">),</span>
+            <span class="s2">&quot;--wrap=none&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--table-of-contents&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--to=html5&quot;</span>
+        <span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+            <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                              <span class="n">cwd</span><span class="o">=</span><span class="n">dst_path</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="create_main_json_file"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.create_main_json_file">[docs]</a><span class="k">def</span> <span class="nf">create_main_json_file</span><span class="p">(</span><span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate the data_tables.json file.</span>
 
 <span class="sd">    See :any:`DataTablesObject`</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    debug : bool, optional</span>
-<span class="sd">        Save JSON files with indentation.</span>
+<span class="sd">    dry_run : bool, optional</span>
+<span class="sd">        See :any:`DataTablesObject` &gt; dry_run parameter.</span>
 <span class="sd">    logger : object</span>
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">data_tables_obj</span> <span class="o">=</span> <span class="n">DataTablesObject</span><span class="p">(</span>
-        <span class="n">file_extensions</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;md&quot;</span><span class="p">,</span> <span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">],</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span><span class="o">.</span><span class="n">get_data_tables_obj</span><span class="p">()</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating main JSON file...&quot;</span><span class="p">)</span>
+    <span class="n">data_tables_obj</span> <span class="o">=</span> <span class="n">DataTablesObject</span><span class="p">(</span><span class="n">file_extensions</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;md&quot;</span><span class="p">,</span> <span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="s2">&quot;epub&quot;</span><span class="p">],</span>
+                                       <span class="n">dry_run</span><span class="o">=</span><span class="n">dry_run</span><span class="p">,</span>
+                                       <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span><span class="o">.</span><span class="n">get_data_tables_obj</span><span class="p">()</span>
 
     <span class="n">data_tables_json_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;data_tables.json&quot;</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_tables_json_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">data_tables_json_file</span><span class="p">:</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">debug</span><span class="p">):</span>
-                <span class="n">data_tables_json_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data_tables_obj</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-            <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dry_run</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[DRY_RUN] Main JSON file will be created at: </span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                        <span class="n">data_tables_json_path</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_tables_json_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">data_tables_json_file</span><span class="p">:</span>
                 <span class="n">data_tables_json_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data_tables_obj</span><span class="p">))</span>
+
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;data_tables.json file created at: </span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">data_tables_json_path</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
 
 
-<span class="n">CAT_LIST_ITEM_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">{indent}</span><span class="s2">&lt;li class=&quot;nav-item&quot;&gt;</span>
-<span class="si">{indent}</span><span class="s2">    &lt;span class=&quot;btn-group&quot; role=&quot;group&quot;&gt;</span>
-<span class="si">{indent}</span><span class="s2">        &lt;a class=&quot;nav-link </span><span class="si">{cat_class}</span><span class="s2"> cat-btn btn&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;cat-icon nf </span><span class="si">{cat_icon}</span><span class="s2">&quot;&gt;&lt;/i&gt;</span><span class="si">{cat_title}</span><span class="s2">&lt;/a&gt;</span>
-<span class="si">{indent}</span><span class="s2">    &lt;/span&gt;</span>
-<span class="si">{indent}</span><span class="s2">&lt;/li&gt;&quot;&quot;&quot;</span>
-
-
-<span class="n">CAT_MENU_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;li class=&quot;nav-item&quot;&gt;</span>
-<span class="s2">    &lt;span class=&quot;btn-group&quot; role=&quot;group&quot;&gt;</span>
-<span class="s2">        &lt;a class=&quot;nav-link cat-btn btn&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;cat-icon nf </span><span class="si">{cat_icon}</span><span class="s2">&quot;&gt;</span><span class="se">\</span>
-<span class="s2">&lt;/i&gt;</span><span class="si">{cat_title}</span><span class="s2">&lt;/a&gt;</span>
-<span class="s2">        &lt;a class=&quot;toggle-cat-btn btn&quot; href=&quot;#</span><span class="si">{cat_menu_id}</span><span class="s2">&quot; data-toggle=&quot;collapse&quot; aria-expanded=&quot;false&quot;&gt;&lt;/a&gt;</span>
-<span class="s2">    &lt;/span&gt;</span>
-<span class="s2">    &lt;ul class=&quot;collapse list-unstyled subcats&quot; id=&quot;</span><span class="si">{cat_menu_id}</span><span class="s2">&quot;&gt;</span>
-<span class="si">{sub_cat_items}</span><span class="s2"></span>
-<span class="s2">    &lt;/ul&gt;</span>
-<span class="s2">&lt;/li&gt;&quot;&quot;&quot;</span>
-
-
-<div class="viewcode-block" id="categories_html_generation"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.categories_html_generation">[docs]</a><span class="k">def</span> <span class="nf">categories_html_generation</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+<div class="viewcode-block" id="generate_categories_html"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.generate_categories_html">[docs]</a><span class="k">def</span> <span class="nf">generate_categories_html</span><span class="p">(</span><span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate the categories.html file.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
+<span class="sd">    dry_run : bool, optional</span>
+<span class="sd">        See :any:`DataTablesObject` &gt; dry_run parameter.</span>
 <span class="sd">    logger : object</span>
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    SystemExit</span>
+<span class="sd">        Halt execution.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating categories.html file...&quot;</span><span class="p">)</span>
     <span class="c1"># Collect all categories from the data_tables.json file.</span>
     <span class="n">data_tables_json</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;data_tables.json&quot;</span><span class="p">)</span>
     <span class="n">temp_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
@@ -565,7 +659,7 @@
                 <span class="n">temp_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cat_data</span><span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">])</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-        <span class="n">exit</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">()</span>
 
     <span class="c1"># Collect categories&#39; data. Just icons are stored for now.</span>
     <span class="n">categories_data_json</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
@@ -588,7 +682,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;UserData/categories_data/categories.json non existent.</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;This file is used to add custom icons to each category.</span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;Can be created with `./app.py run categories_html_generation` command.</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;Can be created with `./app.py run generate_categories_html` command.</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;Or let categories use a generic icon.&quot;</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
@@ -656,24 +750,39 @@
 
     <span class="c1"># And finally, save the HTML list items into categories.html file.</span>
     <span class="n">categories_html_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;categories.html&quot;</span><span class="p">)</span>
+    <span class="n">categories_html_data</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">categories_html_list_items</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">categories_html_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">html_file</span><span class="p">:</span>
-            <span class="n">html_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">categories_html_list_items</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">dry_run</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;categories.html file will be created at:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">categories_html_file</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[DRY_RUN] </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">msg</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[DRY_RUN] File content: </span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">categories_html_data</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">categories_html_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">html_file</span><span class="p">:</span>
+                <span class="n">html_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">categories_html_data</span><span class="p">)</span>
 
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;categories.html file created.&quot;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;categories.html file created at: </span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">categories_html_file</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="index_html_generation"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.index_html_generation">[docs]</a><span class="k">def</span> <span class="nf">index_html_generation</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+<div class="viewcode-block" id="generate_index_html"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.generate_index_html">[docs]</a><span class="k">def</span> <span class="nf">generate_index_html</span><span class="p">(</span><span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;generate the index.html file.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
+<span class="sd">    dry_run : bool, optional</span>
+<span class="sd">        See :any:`DataTablesObject` &gt; dry_run parameter.</span>
 <span class="sd">    logger : object</span>
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    SystemExit</span>
+<span class="sd">        Halt execution.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating index.html file...&quot;</span><span class="p">)</span>
     <span class="n">categories_html_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;categories.html&quot;</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
@@ -681,7 +790,7 @@
             <span class="n">categories_data</span> <span class="o">=</span> <span class="n">html_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-        <span class="n">exit</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="n">base_index_html_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;index-base.html&quot;</span><span class="p">)</span>
 
@@ -690,97 +799,22 @@
             <span class="n">index_data</span> <span class="o">=</span> <span class="n">html_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&lt;!-- {{categories}} --&gt;&quot;</span><span class="p">,</span> <span class="n">categories_data</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-        <span class="n">exit</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="n">index_html_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">index_html_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">html_file</span><span class="p">:</span>
-            <span class="n">html_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">index_data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dry_run</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;index.html file will be created at:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">index_html_file</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[DRY_RUN] </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">msg</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[DRY_RUN] File content: </span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">index_data</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">index_html_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">html_file</span><span class="p">:</span>
+                <span class="n">html_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">index_data</span><span class="p">)</span>
 
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;index.html file created.&quot;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;index.html file created at: </span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">index_html_file</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="create_file_from_template"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.create_file_from_template">[docs]</a><span class="k">def</span> <span class="nf">create_file_from_template</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create a &quot;user&quot; file from a template.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    action : str</span>
-<span class="sd">        An &quot;action&quot; that will be used to generate certain files from their</span>
-<span class="sd">        predefined templates.</span>
-<span class="sd">    logger : object</span>
-<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">actions_map</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;app_launcher_script&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="s2">&quot;app_launcher&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;ext&quot;</span><span class="p">:</span> <span class="s2">&quot;.sh&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;destination&quot;</span><span class="p">:</span> <span class="s2">&quot;UserData/bash_scripts&quot;</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;github_data_file&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="s2">&quot;github&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;template_filename&quot;</span><span class="p">:</span> <span class="s2">&quot;repository&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;ext&quot;</span><span class="p">:</span> <span class="s2">&quot;.py&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;destination&quot;</span><span class="p">:</span> <span class="s2">&quot;UserData/data_sources&quot;</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;bitbucket_data_file&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="s2">&quot;bitbucket&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;template_filename&quot;</span><span class="p">:</span> <span class="s2">&quot;repository&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;ext&quot;</span><span class="p">:</span> <span class="s2">&quot;.py&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;destination&quot;</span><span class="p">:</span> <span class="s2">&quot;UserData/data_sources&quot;</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;argos_script&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="s2">&quot;argos_helper_script&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;ext&quot;</span><span class="p">:</span> <span class="s2">&quot;.py&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;destination&quot;</span><span class="p">:</span> <span class="s2">&quot;UserData/argos_script&quot;</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;categories_data_file&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="s2">&quot;categories&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;ext&quot;</span><span class="p">:</span> <span class="s2">&quot;.json&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;destination&quot;</span><span class="p">:</span> <span class="s2">&quot;UserData/categories_data&quot;</span>
-        <span class="p">},</span>
-    <span class="p">}</span>
-
-    <span class="n">src_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;templates&quot;</span><span class="p">)</span>
-    <span class="n">dst_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="n">actions_map</span><span class="p">[</span><span class="n">action</span><span class="p">][</span><span class="s2">&quot;destination&quot;</span><span class="p">])</span>
-
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">):</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">)</span>
-
-    <span class="n">src_filename</span> <span class="o">=</span> <span class="n">actions_map</span><span class="p">[</span><span class="n">action</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;template_filename&quot;</span><span class="p">,</span> <span class="n">actions_map</span><span class="p">[</span><span class="n">action</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;filename&quot;</span><span class="p">))</span>
-    <span class="n">src_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">src_dir</span><span class="p">,</span> <span class="n">src_filename</span> <span class="o">+</span> <span class="n">actions_map</span><span class="p">[</span><span class="n">action</span><span class="p">][</span><span class="s2">&quot;ext&quot;</span><span class="p">])</span>
-    <span class="n">dst_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">,</span> <span class="n">actions_map</span><span class="p">[</span><span class="n">action</span><span class="p">][</span><span class="s2">&quot;filename&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">actions_map</span><span class="p">[</span><span class="n">action</span><span class="p">][</span><span class="s2">&quot;ext&quot;</span><span class="p">])</span>
-
-    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dst_file</span><span class="p">):</span>
-        <span class="n">renamed_file_name</span> <span class="o">=</span> <span class="n">actions_map</span><span class="p">[</span><span class="n">action</span><span class="p">][</span><span class="s2">&quot;filename&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> \
-            <span class="n">misc_utils</span><span class="o">.</span><span class="n">micro_to_milli</span><span class="p">(</span><span class="n">misc_utils</span><span class="o">.</span><span class="n">get_date_time</span><span class="p">(</span>
-                <span class="s2">&quot;filename&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">actions_map</span><span class="p">[</span><span class="n">action</span><span class="p">][</span><span class="s2">&quot;ext&quot;</span><span class="p">]</span>
-        <span class="n">renamed_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">,</span> <span class="n">renamed_file_name</span><span class="p">)</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">dst_file</span><span class="p">,</span> <span class="n">renamed_file_path</span><span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Destination file already in existence. Renamed to:&quot;</span><span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">renamed_file_path</span><span class="p">,</span> <span class="n">root_folder</span><span class="p">))</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">file_utils</span><span class="o">.</span><span class="n">custom_copy2</span><span class="p">(</span><span class="n">src_file</span><span class="p">,</span> <span class="n">dst_file</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
-    <span class="k">finally</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">action</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;github_data_file&quot;</span><span class="p">,</span> <span class="s2">&quot;bitbucket_data_file&quot;</span><span class="p">]:</span>
-            <span class="c1"># The fileinput module is absolute garbage. So...</span>
-            <span class="c1"># Let&#39;s read in the file...</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dst_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-                <span class="n">filedata</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-            <span class="c1"># Replace the target string...</span>
-            <span class="n">filedata</span> <span class="o">=</span> <span class="n">filedata</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{repository}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">actions_map</span><span class="p">[</span><span class="n">action</span><span class="p">][</span><span class="s2">&quot;filename&quot;</span><span class="p">])</span>
-
-            <span class="c1"># Write the file out again...</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dst_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-                <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">filedata</span><span class="p">)</span>
-
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;New file created at:&quot;</span><span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">dst_file</span><span class="p">,</span> <span class="n">root_folder</span><span class="p">))</span></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>

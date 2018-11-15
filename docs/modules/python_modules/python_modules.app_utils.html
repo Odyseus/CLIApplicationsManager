@@ -80,7 +80,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -260,8 +260,8 @@ application slugs for the <code class="docutils literal notranslate"><span class
 </dd>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>app_slugs</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a><em>, </em><em>optional</em>) – Description</p></li>
-<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/constants.html#None" title="(in Python v3.5)"><em>None</em></a><em>, </em><em>optional</em>) – Description</p></li>
+<li><p><strong>app_slugs</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a><em>, </em><em>optional</em>) – The applications slugs from which to get data.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
 </ul>
 </dd>
 </dl>
@@ -516,7 +516,13 @@ application slugs for the <code class="docutils literal notranslate"><span class
 <dd><p>Generate manual pages.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_slugs</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a><em>, </em><em>optional</em>) – The list of application to gererate manaul pages.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code> – Halt execution</p>
 </dd>
 </dl>
 </dd></dl>
@@ -524,12 +530,14 @@ application slugs for the <code class="docutils literal notranslate"><span class
 <dl class="function">
 <dt id="python_modules.app_utils.eradicate_man_pages_data_json">
 <code class="descclassname">python_modules.app_utils.</code><code class="descname">eradicate_man_pages_data_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/app_utils.html#eradicate_man_pages_data_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.app_utils.eradicate_man_pages_data_json" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Delete man_pages_data.json file.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="python_modules.app_utils.spacefm_find_files">
 <code class="descclassname">python_modules.app_utils.</code><code class="descname">spacefm_find_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/app_utils.html#spacefm_find_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.app_utils.spacefm_find_files" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Launch SpaceFM find files.</p>
+</dd></dl>
 
 </div>
 

@@ -80,7 +80,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -178,15 +178,79 @@
   <div class="section" id="module-python_modules.python_utils.hash_utils">
 <span id="python-modules-python-utils-hash-utils-module"></span><h1>python_modules.python_utils.hash_utils module<a class="headerlink" href="#module-python_modules.python_utils.hash_utils" title="Permalink to this headline">¶</a></h1>
 <p>Common utilities to get files/directories hashes.</p>
+<dl class="attribute">
+<dt id="python_modules.python_utils.hash_utils.HASH_FUNCS">
+<code class="descclassname">python_modules.python_utils.hash_utils.</code><code class="descname">HASH_FUNCS</code><a class="headerlink" href="#python_modules.python_utils.hash_utils.HASH_FUNCS" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – Hash functions.</p>
+</dd></dl>
+
 <dl class="function">
 <dt id="python_modules.python_utils.hash_utils.dir_hash">
 <code class="descclassname">python_modules.python_utils.hash_utils.</code><code class="descname">dir_hash</code><span class="sig-paren">(</span><em>dirname</em>, <em>hashfunc='sha256'</em>, <em>followlinks=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/hash_utils.html#dir_hash"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.hash_utils.dir_hash" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Get directory hash.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dirname</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Path to a directory.</p></li>
+<li><p><strong>hashfunc</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em>, </em><em>optional</em>) – Hash function to use.</p></li>
+<li><p><strong>followlinks</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference external" href="https://docs.python.org/3.5/library/os.html#os.walk" title="(in Python v3.5)"><code class="xref any docutils literal notranslate"><span class="pre">os.walk</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A directory hash.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/exceptions.html#NotImplementedError" title="(in Python v3.5)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NotImplementedError</span></code></a> – If an invalid hash function is passed.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="function">
 <dt id="python_modules.python_utils.hash_utils.file_hash">
 <code class="descclassname">python_modules.python_utils.hash_utils.</code><code class="descname">file_hash</code><span class="sig-paren">(</span><em>filepath</em>, <em>hashfunc='sha256'</em>, <em>hasher=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/hash_utils.html#file_hash"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.hash_utils.file_hash" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Get file hash.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Path to a file.</p></li>
+<li><p><strong>hashfunc</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em>, </em><em>optional</em>) – The name of a hash function.</p></li>
+<li><p><strong>hasher</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/constants.html#None" title="(in Python v3.5)"><em>None</em></a><em>, </em><em>optional</em>) – A hash function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A file hash.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/exceptions.html#NotImplementedError" title="(in Python v3.5)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NotImplementedError</span></code></a> – If an invalid hash function is passed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.hash_utils._reduce_hash">
+<code class="descclassname">python_modules.python_utils.hash_utils.</code><code class="descname">_reduce_hash</code><span class="sig-paren">(</span><em>hashlist</em>, <em>hashfunc</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/hash_utils.html#_reduce_hash"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.hash_utils._reduce_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduce hash.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hashlist</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a>) – A list of hashes.</p></li>
+<li><p><strong>hashfunc</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – The hash function to use.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A hash.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 

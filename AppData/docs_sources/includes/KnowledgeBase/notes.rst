@@ -21,7 +21,7 @@ General notes
     + There seems to exist only a handful of javaScript libraries (I found only two) and they either have limited rendering capabilities (`restructured <https://github.com/seikichi/restructured/>`_) or they are an absolute nightmare to build and use (`Est <https://github.com/frantic1048/Est/>`_). And the only thing that both have in common is that they are immensely bloated.
     + In light of this, either ignore ``.rst`` files, convert them to Markdown if they are simple and not too extensive or convert them to HTML if they are complex and too large. **Moving on...**
 
-- To keep it simple, and to avoid to check if I'm dealing with files or folders, the folders **md** and **pdf** should always containg their files in two (2) levels sub-directories (Category Name/Sub-Category Name/File Name.ext). This is to simplify the function :any:`KnowledgeBaseApp.app_utils.DataTablesObject.generate_data_by_file_extension`. The first level directories are always a category name and the second level directories are always sub-categories.
+- To keep it simple, and to avoid to check if I'm dealing with files or folders, the folders **epub**, **html**, **md** and **pdf** should always containg their files in two (2) levels sub-directories (Category Name/Sub-Category Name/File Name.ext). This is to simplify the function :any:`KnowledgeBaseApp.app_utils.DataTablesObject.generate_data_by_file_extension`. The first level directories are always a category name and the second level directories are always sub-categories.
 
 HTML to Markdown conversion
 ---------------------------
@@ -29,7 +29,7 @@ HTML to Markdown conversion
 I use Pandoc to convert HTML articles that I find on the net into Markdown.
 
 - Markdown files are easier to create/maintain/read than HTML files.
-- Some of the articles that I find are in HTML 4.1 or older. Converting them into Markdown is infinitely easier that to convert them into HTML5.
+- Some of the articles that I find are in HTML 4.1 or older. Converting them into Markdown is infinitely easier than to convert them into HTML5.
 - I have found some HTML documents without closing HTML tags (for example, they use <p> tags without closing them with the </p> tag) (the people responsible for allowing this atrocity should be castrated!!!).
 
     + These documents cannot be prettified with any HTML prettifier in existence!!!
@@ -64,17 +64,11 @@ Bootstrap JavaScript/CSS framework
 
 **Note 3:** Non-minified files are included in case I want to see the source.
 
-- Download Boostrap 4 `Flaty theme <https://bootswatch.com/flatly/>`__.
+- Using my own `Boostrap 4 theme <https://gitlab.com/Odyseus/flatly_bootstrap_theme>`__ based on `Bootswatch's <https://bootswatch.com>`__'s `Flatly theme <https://bootswatch.com/flatly>`__.
 - Files used::
 
-    bootstrap.css
-
-- Files changes::
-
-    - Removed :root declarations.
-    - Removed Lato font import.
-    - Fonts overriden in bootstrap.tweaks.css.
-    - Gigantic heading tags overriden in bootstrap.tweaks.css.
+    /dist/flatly_bootstrap_theme.css
+    /dist/flatly_bootstrap_theme.min.css
 
 
 DataTables JavaScript library
@@ -100,13 +94,8 @@ DataTables JavaScript library
 jQuery JavaScript library
 -------------------------
 
-- Download jQuery from its `web site <https://jquery.com/download/>`__.
-- Files used::
-
-    /DataTables/datatables.css
-    /DataTables/datatables.js
-    /DataTables/datatables.min.css
-    /DataTables/datatables.min.js
+- Download jQuery from its `web site <https://jquery.com/download/>`__ the compressed and uncompressed files.
+- Rename the compressed file to jquery.min.js.
 
 **Note 1:** Non-minified files are included in case I want to see the source.
 
@@ -121,8 +110,7 @@ Nerd Fonts glyphs icons
     + I went to `Nerd Fonts's site <http://nerdfonts.com/>`__
     + Looked at the site's source for `its style sheet <http://nerdfonts.com/combo.css>`__.
     + Extracted the link to the font `and downloaded it <http://nerdfonts.com/fonts/Symbols-2048-em Nerd Font Complete.ttf>`__.
-    + Stripped the style sheet of all the declarations that weren't font declarations and renamed it nerdicons.css.
-    + Lastly, I created the nerdicons.min.css (crystal clear).
+    + Then went to `their repository <https://github.com/ryanoasis/nerd-fonts/tree/master/css>`__ and downloaded the generated CSS files and renamed them to **nerdicons.css** and **nerdicons.min.css**.
     + **Moving on...**
 
 

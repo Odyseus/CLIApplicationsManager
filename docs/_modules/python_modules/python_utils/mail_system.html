@@ -78,7 +78,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -163,19 +163,27 @@
 
 <span class="sd">Send email to an email list.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">exceptions</span>
-
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">keyring</span>
 <span class="k">except</span> <span class="p">(</span><span class="ne">SystemError</span><span class="p">,</span> <span class="ne">ImportError</span><span class="p">):</span>
     <span class="n">keyring</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingDependencyModule</span><span class="p">(</span><span class="s2">&quot;Module not installed: &lt;keyring&gt;&quot;</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">email.mime.multipart</span> <span class="k">import</span> <span class="n">MIMEMultipart</span>
 <span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="k">import</span> <span class="n">MIMEText</span>
 <span class="kn">from</span> <span class="nn">smtplib</span> <span class="k">import</span> <span class="n">SMTP</span>
 <span class="kn">from</span> <span class="nn">smtplib</span> <span class="k">import</span> <span class="n">SMTPException</span>
+
+<span class="n">__pass_setup_msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">There are two ways to specify a password to send e-mails:</span>
+
+<span class="s2">1. Unattended: This requires to have the &lt;keyring&gt; Python 3 module installed and</span>
+<span class="s2">the keys &lt;secret_service_name&gt; and &lt;secret_user_name&gt; specified in the mail</span>
+<span class="s2">system settings. See documentation/manual page for details.</span>
+<span class="s2">2. Always prompt: With the key called &lt;ask_for_password&gt; set to True in the</span>
+<span class="s2">mail system settings, every attempt to send an e-mail will prompt for the</span>
+<span class="s2">sender&#39;s e-mail password. This method supersedes the unattended method.</span>
+
+<span class="s2">&quot;&quot;&quot;</span>
 
 
 <div class="viewcode-block" id="MailSystem"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem">[docs]</a><span class="k">class</span> <span class="nc">MailSystem</span><span class="p">():</span>
@@ -183,65 +191,74 @@
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    allowed : bool</span>
-<span class="sd">        If set to False, it will not allow to send the email/s.</span>
 <span class="sd">    logger : object</span>
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
-<span class="sd">    mailing_list : list</span>
-<span class="sd">        A list of email addresses to which to send the backup report/s.</span>
-<span class="sd">    mandatory_fields : list</span>
-<span class="sd">        A fixed list of mandatory fields. If any of them is missing, email/s will not be sent.</span>
-<span class="sd">    sender_address : str</span>
-<span class="sd">        The email address of the sender.</span>
-<span class="sd">    sender_secret : tuple</span>
-<span class="sd">        The &quot;secret&quot; tuple to retrieve the sender&#39;s password from the system keyring.</span>
-<span class="sd">    sender_username : str</span>
-<span class="sd">        The sender user name.</span>
-<span class="sd">    smtp_port : int</span>
-<span class="sd">        The port number of the SMTP server.</span>
-<span class="sd">    smtp_server : str</span>
-<span class="sd">        The SMTP server address.</span>
-<span class="sd">    use_tls : bool</span>
-<span class="sd">        Sets the use of TLS by the SMTP server.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">mandatory_fields</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;smtp_server&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;smtp_port&quot;</span><span class="p">,</span>
+    <span class="n">_validator_set</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;ask_for_password&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mailing_list&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;secret_service_name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;secret_user_name&quot;</span><span class="p">,</span>
         <span class="s2">&quot;sender_address&quot;</span><span class="p">,</span>
         <span class="s2">&quot;sender_username&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;sender_secret&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;smtp_port&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;smtp_server&quot;</span><span class="p">,</span>
         <span class="s2">&quot;use_tls&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;mailing_list&quot;</span><span class="p">,</span>
-    <span class="p">]</span>
+    <span class="p">}</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">mail_settings</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mail_settings</span><span class="o">=</span><span class="p">{},</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        logger : object</span>
-<span class="sd">            See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">        mail_settings : dict</span>
 <span class="sd">            Where all the data to send the email/s is stored.</span>
+<span class="sd">        logger : object</span>
+<span class="sd">            See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_config</span> <span class="o">=</span> <span class="n">mail_settings</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">allowed</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_allowed</span> <span class="o">=</span> <span class="kc">True</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">smtp_server</span> <span class="o">=</span> <span class="n">mail_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;smtp_server&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">smtp_port</span> <span class="o">=</span> <span class="n">mail_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;smtp_port&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sender_address</span> <span class="o">=</span> <span class="n">mail_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sender_address&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sender_username</span> <span class="o">=</span> <span class="n">mail_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sender_username&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sender_secret</span> <span class="o">=</span> <span class="n">mail_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sender_secret&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">use_tls</span> <span class="o">=</span> <span class="n">mail_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;use_tls&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mailing_list</span> <span class="o">=</span> <span class="n">mail_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mailing_list&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_config</span><span class="p">()</span>
 
-        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mandatory_fields</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">allowed</span> <span class="o">=</span> <span class="kc">False</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
-                    <span class="s2">&quot;Missing mandatory field &lt;</span><span class="si">%s</span><span class="s2">&gt; for MailSystem.&quot;</span> <span class="o">%</span> <span class="n">f</span><span class="p">)</span>
+<div class="viewcode-block" id="MailSystem._validate_config"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem._validate_config">[docs]</a>    <span class="k">def</span> <span class="nf">_validate_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Validate mail settings.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">missing_fields</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validator_set</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">):</span>
+            <span class="n">missing_fields</span> <span class="o">+=</span> <span class="p">[</span><span class="n">field</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validator_set</span> <span class="k">if</span> <span class="n">field</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">missing_fields</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_allowed</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;MailSystem::MissingMandatoryFields&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;The &lt;</span><span class="si">%s</span><span class="s2">&gt; field/s is/are required.&quot;</span> <span class="o">%</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missing_fields</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="MailSystem._get_password"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem._get_password">[docs]</a>    <span class="k">def</span> <span class="nf">_get_password</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get password.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The serder&#39;s e-mail password.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ask_for_password</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ask_for_password&quot;</span><span class="p">)</span>
+        <span class="n">sender_password</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">secret_service_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;secret_service_name&quot;</span><span class="p">)</span>
+        <span class="n">secret_user_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;secret_user_name&quot;</span><span class="p">)</span>
+        <span class="n">use_keyring</span> <span class="o">=</span> <span class="n">keyring</span> <span class="ow">and</span> <span class="n">secret_service_name</span> <span class="ow">and</span> <span class="n">secret_user_name</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">ask_for_password</span>
+
+        <span class="k">if</span> <span class="n">use_keyring</span><span class="p">:</span>
+            <span class="n">sender_password</span> <span class="o">=</span> <span class="n">keyring</span><span class="o">.</span><span class="n">get_password</span><span class="p">(</span><span class="n">secret_service_name</span><span class="p">,</span>
+                                                   <span class="n">secret_user_name</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">ask_for_password</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">getpass</span>
+
+            <span class="n">sender_password</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Enter Sender E-Mail Password: &quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">sender_password</span></div>
 
 <div class="viewcode-block" id="MailSystem.send"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem.send">[docs]</a>    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Send the email/s.</span>
@@ -258,32 +275,38 @@
 <span class="sd">        bool</span>
 <span class="sd">            It returns only if it is not allowed to send emails.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">allowed</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allowed</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="n">sender_password</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_password</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">sender_password</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No password could be obtained. Aborted.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">__pass_setup_msg</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
 
         <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">()</span>
         <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;Subject&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subject</span>
-        <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;From&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sender_address</span>
-        <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;To&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mailing_list</span><span class="p">)</span>
+        <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;From&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sender_address&quot;</span><span class="p">)</span>
+        <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;To&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mailing_list&quot;</span><span class="p">))</span>
 
         <span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">MIMEText</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;plain&quot;</span><span class="p">))</span>
 
-        <span class="n">sender_password</span> <span class="o">=</span> <span class="n">keyring</span><span class="o">.</span><span class="n">get_password</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">sender_secret</span><span class="p">)</span>
-
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">with</span> <span class="n">SMTP</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">smtp_server</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">smtp_port</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_tls</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">SMTP</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;smtp_server&quot;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;smtp_port&quot;</span><span class="p">))</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;use_tls&quot;</span><span class="p">):</span>
                     <span class="n">s</span><span class="o">.</span><span class="n">ehlo</span><span class="p">()</span>
                     <span class="n">s</span><span class="o">.</span><span class="n">starttls</span><span class="p">()</span>
 
                 <span class="n">s</span><span class="o">.</span><span class="n">ehlo</span><span class="p">()</span>
-                <span class="n">s</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sender_username</span><span class="p">,</span> <span class="n">sender_password</span><span class="p">)</span>
-                <span class="n">s</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sender_address</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mailing_list</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sender_username&quot;</span><span class="p">),</span> <span class="n">sender_password</span><span class="p">)</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sender_address&quot;</span><span class="p">),</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mailing_list&quot;</span><span class="p">),</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span>
                 <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Email sent!&quot;</span><span class="p">,</span> <span class="s2">&quot;INFO&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Email sent!&quot;</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">SMTPException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Could not send the emails: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="p">)</span></div></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Could not send the e-mail/s: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="p">)</span></div></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>

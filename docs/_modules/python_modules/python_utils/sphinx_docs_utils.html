@@ -78,7 +78,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -164,8 +164,8 @@
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">rmtree</span>
-<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">call</span>
 
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">cmd_utils</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">exceptions</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">tqdm_wget</span>
 <span class="kn">from</span> <span class="nn">.misc_utils</span> <span class="k">import</span> <span class="n">get_system_tempdir</span>
@@ -237,6 +237,7 @@
                   <span class="n">generate_api_docs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                   <span class="n">update_inventories</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                   <span class="n">force_clean_build</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                  <span class="n">build_coverage</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                   <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Build this application documentation.</span>
 
@@ -266,6 +267,8 @@
 <span class="sd">        anyway f they don&#39;t exist.</span>
 <span class="sd">    force_clean_build : bool, optional</span>
 <span class="sd">        Remove destination and doctrees directories before building the documentation.</span>
+<span class="sd">    build_coverage : bool, optional</span>
+<span class="sd">        If True, build Sphinx coverage documents.</span>
 <span class="sd">    logger : object</span>
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -290,19 +293,23 @@
             <span class="k">if</span> <span class="n">force_clean_build</span><span class="p">:</span>
                 <span class="n">rmtree</span><span class="p">(</span><span class="n">apidoc_destination_path</span><span class="p">,</span> <span class="n">ignore_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-            <span class="n">call</span><span class="p">([</span><span class="s2">&quot;sphinx-apidoc&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">commmon_args</span> <span class="o">+</span> <span class="p">[</span>
+            <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">([</span><span class="s2">&quot;sphinx-apidoc&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">commmon_args</span> <span class="o">+</span> <span class="p">[</span>
                 <span class="n">apidoc_destination_path</span><span class="p">,</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="n">rel_source_path</span><span class="p">)</span>
             <span class="p">]</span> <span class="o">+</span> <span class="n">ignored_modules</span><span class="p">,</span>
+                <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                 <span class="n">cwd</span><span class="o">=</span><span class="n">root_folder</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">call</span><span class="p">([</span><span class="s2">&quot;sphinx-build&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;-b&quot;</span><span class="p">,</span> <span class="s2">&quot;coverage&quot;</span><span class="p">,</span> <span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="n">doctree_temp_location</span><span class="p">,</span> <span class="s2">&quot;./coverage&quot;</span><span class="p">],</span>
-             <span class="n">cwd</span><span class="o">=</span><span class="n">docs_sources_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">build_coverage</span><span class="p">:</span>
+            <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">([</span><span class="s2">&quot;sphinx-build&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;-b&quot;</span><span class="p">,</span> <span class="s2">&quot;coverage&quot;</span><span class="p">,</span> <span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="n">doctree_temp_location</span><span class="p">,</span> <span class="s2">&quot;./coverage&quot;</span><span class="p">],</span>
+                              <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                              <span class="n">cwd</span><span class="o">=</span><span class="n">docs_sources_path</span><span class="p">)</span>
     <span class="k">finally</span><span class="p">:</span>
-        <span class="n">call</span><span class="p">([</span><span class="s2">&quot;sphinx-build&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;-b&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="n">doctree_temp_location</span><span class="p">,</span>
-              <span class="n">docs_destination_path</span><span class="p">],</span>
-             <span class="n">cwd</span><span class="o">=</span><span class="n">docs_sources_path</span><span class="p">)</span></div>
+        <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">([</span><span class="s2">&quot;sphinx-build&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;-b&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="n">doctree_temp_location</span><span class="p">,</span>
+                           <span class="n">docs_destination_path</span><span class="p">],</span>
+                          <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                          <span class="n">cwd</span><span class="o">=</span><span class="n">docs_sources_path</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="generate_man_pages"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.sphinx_docs_utils.html#python_modules.python_utils.sphinx_docs_utils.generate_man_pages">[docs]</a><span class="k">def</span> <span class="nf">generate_man_pages</span><span class="p">(</span><span class="n">root_folder</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -331,9 +338,10 @@
     <span class="n">docs_sources_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="n">docs_src_path_rel_to_root</span><span class="p">)</span>
     <span class="n">man_pages_destination_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="n">docs_dest_path_rel_to_root</span><span class="p">)</span>
 
-    <span class="n">call</span><span class="p">([</span><span class="s2">&quot;sphinx-build&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;-b&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="n">doctree_temp_location</span><span class="p">,</span>
-          <span class="n">man_pages_destination_path</span><span class="p">],</span>
-         <span class="n">cwd</span><span class="o">=</span><span class="n">docs_sources_path</span><span class="p">)</span></div>
+    <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">([</span><span class="s2">&quot;sphinx-build&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;-b&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="n">doctree_temp_location</span><span class="p">,</span>
+                       <span class="n">man_pages_destination_path</span><span class="p">],</span>
+                      <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                      <span class="n">cwd</span><span class="o">=</span><span class="n">docs_sources_path</span><span class="p">)</span></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>

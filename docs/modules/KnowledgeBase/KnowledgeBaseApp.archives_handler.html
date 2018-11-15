@@ -80,7 +80,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -179,57 +179,15 @@
 <dl class="attribute">
 <dt id="KnowledgeBaseApp.archives_handler.root_folder">
 <code class="descclassname">KnowledgeBaseApp.archives_handler.</code><code class="descname">root_folder</code><a class="headerlink" href="#KnowledgeBaseApp.archives_handler.root_folder" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – The main folder containing the Knowledge Base. All commands must be executed
+<dd><p><em>str</em> – The main folder containing the application. All commands must be executed
 from this location without exceptions.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="KnowledgeBaseApp.archives_handler.ArchivesHandler">
-<em class="property">class </em><code class="descclassname">KnowledgeBaseApp.archives_handler.</code><code class="descname">ArchivesHandler</code><span class="sig-paren">(</span><em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/archives_handler.html#ArchivesHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.archives_handler.ArchivesHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">KnowledgeBaseApp.archives_handler.</code><code class="descname">ArchivesHandler</code><span class="sig-paren">(</span><em>dry_run=False</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/archives_handler.html#ArchivesHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.archives_handler.ArchivesHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class to handle archives downloaded from the net (compressed or not).</p>
-<dl class="attribute">
-<dt id="KnowledgeBaseApp.archives_handler.ArchivesHandler.archives_data">
-<code class="descname">archives_data</code><a class="headerlink" href="#KnowledgeBaseApp.archives_handler.ArchivesHandler.archives_data" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list</em> – The list containing all the data needed to handle archives.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KnowledgeBaseApp.archives_handler.ArchivesHandler.archives_destination">
-<code class="descname">archives_destination</code><a class="headerlink" href="#KnowledgeBaseApp.archives_handler.ArchivesHandler.archives_destination" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – The final path where to store the downloaded archives.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KnowledgeBaseApp.archives_handler.ArchivesHandler.archives_last_updated">
-<code class="descname">archives_last_updated</code><a class="headerlink" href="#KnowledgeBaseApp.archives_handler.ArchivesHandler.archives_last_updated" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – Path to the JSON file were the last updated dates are stored.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KnowledgeBaseApp.archives_handler.ArchivesHandler.archives_storage">
-<code class="descname">archives_storage</code><a class="headerlink" href="#KnowledgeBaseApp.archives_handler.ArchivesHandler.archives_storage" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – The path to the temporary folder to store downloaded archives and other data.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KnowledgeBaseApp.archives_handler.ArchivesHandler.compressed_archives">
-<code class="descname">compressed_archives</code><a class="headerlink" href="#KnowledgeBaseApp.archives_handler.ArchivesHandler.compressed_archives" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list</em> – The list of compressed archives.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KnowledgeBaseApp.archives_handler.ArchivesHandler.current_date">
-<code class="descname">current_date</code><a class="headerlink" href="#KnowledgeBaseApp.archives_handler.ArchivesHandler.current_date" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – The current date.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KnowledgeBaseApp.archives_handler.ArchivesHandler.last_update_data">
-<code class="descname">last_update_data</code><a class="headerlink" href="#KnowledgeBaseApp.archives_handler.ArchivesHandler.last_update_data" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> – The dictionary containing the dates in which the archives were updated.</p>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="KnowledgeBaseApp.archives_handler.ArchivesHandler.logger">
 <code class="descname">logger</code><a class="headerlink" href="#KnowledgeBaseApp.archives_handler.ArchivesHandler.logger" title="Permalink to this definition">¶</a></dt>
@@ -239,13 +197,16 @@ from this location without exceptions.</p>
 <p>Initialize.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dry_run</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Log an action without actually performing it.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+</ul>
 </dd>
 </dl>
 <dl class="method">
-<dt id="KnowledgeBaseApp.archives_handler.ArchivesHandler.get_archives_json_data">
-<code class="descname">get_archives_json_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/archives_handler.html#ArchivesHandler.get_archives_json_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.archives_handler.ArchivesHandler.get_archives_json_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get archives DataTables JSON data.</p>
+<dt id="KnowledgeBaseApp.archives_handler.ArchivesHandler.get_data_tables_obj">
+<code class="descname">get_data_tables_obj</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/archives_handler.html#ArchivesHandler.get_data_tables_obj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.archives_handler.ArchivesHandler.get_data_tables_obj" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get DataTables object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>DataTables object.</p>
@@ -271,9 +232,9 @@ from this location without exceptions.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="KnowledgeBaseApp.archives_handler.ArchivesHandler._handle_append_to_files">
-<code class="descname">_handle_append_to_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/archives_handler.html#ArchivesHandler._handle_append_to_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.archives_handler.ArchivesHandler._handle_append_to_files" title="Permalink to this definition">¶</a></dt>
-<dd><p>Summary</p>
+<dt id="KnowledgeBaseApp.archives_handler.ArchivesHandler._append_to_files">
+<code class="descname">_append_to_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/archives_handler.html#ArchivesHandler._append_to_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.archives_handler.ArchivesHandler._append_to_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append to files.</p>
 </dd></dl>
 
 <dl class="method">

@@ -80,7 +80,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -207,26 +207,6 @@ without exceptions.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KnowledgeBaseApp.cli.CommandLineInterface.app_args">
-<code class="descname">app_args</code><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.app_args" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list</em> – A list of arguments that will be passed to the app_launcher.sh script.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KnowledgeBaseApp.cli.CommandLineInterface.debug">
-<code class="descname">debug</code><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.debug" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>bool</em> – Attribute used by some function calls. As of now, it defines if the functions
-should generate JSON files indented or not indented.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KnowledgeBaseApp.cli.CommandLineInterface.file_generation_action">
-<code class="descname">file_generation_action</code><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.file_generation_action" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – An “action” that will be used to generate certain files from their
-predefined templates.</p>
-</dd></dl>
-
-<dl class="attribute">
 <dt id="KnowledgeBaseApp.cli.CommandLineInterface.func_names">
 <code class="descname">func_names</code><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.func_names" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>list</em> – A list of function names that will be used to execute those functions
@@ -247,17 +227,12 @@ in the order they were defined (passed as arguments).</p>
 </dl>
 <dl class="attribute">
 <dt>
-<code class="descname">run_args_order</code><em class="property"> = ['github_repos_update', 'bitbucket_repos_update', 'github_repos_json_files_creation', 'bitbucket_repos_json_files_creation', 'archives_download', 'main_json_file_creation', 'html_to_markdown_files', 'html_to_markdown_clip', 'bitbucket_sphinx_docs_build', 'github_sphinx_docs_build', 'categories_html_generation', 'index_html_generation', 'open_main_webpage']</em></dt>
+<code class="descname">run_args_order</code><em class="property"> = ['update_all_repositories', 'handle_all_repositories', 'download_all_archives', 'create_main_json_file', 'html_to_markdown_files', 'html_to_markdown_clip', 'epub_to_html', 'build_sphinx_docs', 'generate_categories_html', 'generate_index_html', 'open_main_webpage']</em></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt>
-<code class="descname">app_args</code><em class="property"> = []</em></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">debug</code><em class="property"> = None</em></dt>
+<dt id="KnowledgeBaseApp.cli.CommandLineInterface.args_to_init_repo_handler">
+<code class="descname">args_to_init_repo_handler</code><em class="property"> = ['update_all_repositories', 'handle_all_repositories', 'build_sphinx_docs']</em><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.args_to_init_repo_handler" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -270,11 +245,6 @@ in the order they were defined (passed as arguments).</p>
 <code class="descname">action</code><em class="property"> = None</em></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt>
-<code class="descname">file_generation_action</code><em class="property"> = None</em></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="KnowledgeBaseApp.cli.CommandLineInterface.run">
 <code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.run" title="Permalink to this definition">¶</a></dt>
@@ -284,50 +254,27 @@ at the same time because they are set by mutually exclusive arguments.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="KnowledgeBaseApp.cli.CommandLineInterface.run_app">
-<code class="descname">run_app</code><span class="sig-paren">(</span><em>arg</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.run_app"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.run_app" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function to run applications through the app_launcher.sh script.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>arg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The argument that will be passed to the app_launcher.sh script.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="KnowledgeBaseApp.cli.CommandLineInterface.archives_download">
-<code class="descname">archives_download</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.archives_download"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.archives_download" title="Permalink to this definition">¶</a></dt>
+<dt id="KnowledgeBaseApp.cli.CommandLineInterface.download_all_archives">
+<code class="descname">download_all_archives</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.download_all_archives"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.download_all_archives" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler" title="KnowledgeBaseApp.archives_handler.ArchivesHandler"><code class="xref any py py-class docutils literal notranslate"><span class="pre">archives_handler.ArchivesHandler</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="KnowledgeBaseApp.cli.CommandLineInterface.github_repos_update">
-<code class="descname">github_repos_update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.github_repos_update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.github_repos_update" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.github_repos_update" title="KnowledgeBaseApp.repositories_handler.github_repos_update"><code class="xref any py py-func docutils literal notranslate"><span class="pre">repositories_handler.github_repos_update</span></code></a></p>
+<dt id="KnowledgeBaseApp.cli.CommandLineInterface.update_all_repositories">
+<code class="descname">update_all_repositories</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.update_all_repositories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.update_all_repositories" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler.update_all_repositories" title="KnowledgeBaseApp.repositories_handler.RepositoriesHandler.update_all_repositories"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">RepositoriesHandler.update_all_repositories</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="KnowledgeBaseApp.cli.CommandLineInterface.bitbucket_repos_update">
-<code class="descname">bitbucket_repos_update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.bitbucket_repos_update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.bitbucket_repos_update" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.bitbucket_repos_update" title="KnowledgeBaseApp.repositories_handler.bitbucket_repos_update"><code class="xref any py py-func docutils literal notranslate"><span class="pre">repositories_handler.bitbucket_repos_update</span></code></a></p>
+<dt id="KnowledgeBaseApp.cli.CommandLineInterface.handle_all_repositories">
+<code class="descname">handle_all_repositories</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.handle_all_repositories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.handle_all_repositories" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler.handle_all_repositories" title="KnowledgeBaseApp.repositories_handler.RepositoriesHandler.handle_all_repositories"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">RepositoriesHandler.handle_all_repositories</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="KnowledgeBaseApp.cli.CommandLineInterface.github_repos_json_files_creation">
-<code class="descname">github_repos_json_files_creation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.github_repos_json_files_creation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.github_repos_json_files_creation" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.github_repos_json_files_creation" title="KnowledgeBaseApp.repositories_handler.github_repos_json_files_creation"><code class="xref any py py-func docutils literal notranslate"><span class="pre">repositories_handler.github_repos_json_files_creation</span></code></a></p>
-</dd></dl>
-
-<dl class="method">
-<dt id="KnowledgeBaseApp.cli.CommandLineInterface.bitbucket_repos_json_files_creation">
-<code class="descname">bitbucket_repos_json_files_creation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.bitbucket_repos_json_files_creation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.bitbucket_repos_json_files_creation" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.bitbucket_repos_json_files_creation" title="KnowledgeBaseApp.repositories_handler.bitbucket_repos_json_files_creation"><code class="xref any py py-func docutils literal notranslate"><span class="pre">repositories_handler.bitbucket_repos_json_files_creation</span></code></a></p>
-</dd></dl>
-
-<dl class="method">
-<dt id="KnowledgeBaseApp.cli.CommandLineInterface.main_json_file_creation">
-<code class="descname">main_json_file_creation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.main_json_file_creation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.main_json_file_creation" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.main_json_file_creation" title="KnowledgeBaseApp.app_utils.main_json_file_creation"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.main_json_file_creation</span></code></a></p>
+<dt id="KnowledgeBaseApp.cli.CommandLineInterface.create_main_json_file">
+<code class="descname">create_main_json_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.create_main_json_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.create_main_json_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.create_main_json_file" title="KnowledgeBaseApp.app_utils.create_main_json_file"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.create_main_json_file</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
@@ -372,39 +319,45 @@ at the same time because they are set by mutually exclusive arguments.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="KnowledgeBaseApp.cli.CommandLineInterface.epub_to_html">
+<code class="descname">epub_to_html</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.epub_to_html"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.epub_to_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.convert_epub_to_html" title="KnowledgeBaseApp.app_utils.convert_epub_to_html"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.convert_epub_to_html</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
 <dt id="KnowledgeBaseApp.cli.CommandLineInterface.open_main_webpage">
 <code class="descname">open_main_webpage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.open_main_webpage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.open_main_webpage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Self explanatory.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="KnowledgeBaseApp.cli.CommandLineInterface.bitbucket_sphinx_docs_build">
-<code class="descname">bitbucket_sphinx_docs_build</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.bitbucket_sphinx_docs_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.bitbucket_sphinx_docs_build" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.bitbucket_sphinx_docs_build" title="KnowledgeBaseApp.repositories_handler.bitbucket_sphinx_docs_build"><code class="xref any py py-func docutils literal notranslate"><span class="pre">repositories_handler.bitbucket_sphinx_docs_build</span></code></a></p>
+<dt id="KnowledgeBaseApp.cli.CommandLineInterface.build_sphinx_docs">
+<code class="descname">build_sphinx_docs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.build_sphinx_docs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.build_sphinx_docs" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler.build_sphinx_docs" title="KnowledgeBaseApp.repositories_handler.RepositoriesHandler.build_sphinx_docs"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">RepositoriesHandler.build_sphinx_docs</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="KnowledgeBaseApp.cli.CommandLineInterface.github_sphinx_docs_build">
-<code class="descname">github_sphinx_docs_build</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.github_sphinx_docs_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.github_sphinx_docs_build" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.github_sphinx_docs_build" title="KnowledgeBaseApp.repositories_handler.github_sphinx_docs_build"><code class="xref any py py-func docutils literal notranslate"><span class="pre">repositories_handler.github_sphinx_docs_build</span></code></a></p>
+<dt id="KnowledgeBaseApp.cli.CommandLineInterface.generate_categories_html">
+<code class="descname">generate_categories_html</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.generate_categories_html"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.generate_categories_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.generate_categories_html" title="KnowledgeBaseApp.app_utils.generate_categories_html"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.generate_categories_html</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
-<dt id="KnowledgeBaseApp.cli.CommandLineInterface.categories_html_generation">
-<code class="descname">categories_html_generation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.categories_html_generation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.categories_html_generation" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.categories_html_generation" title="KnowledgeBaseApp.app_utils.categories_html_generation"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.categories_html_generation</span></code></a></p>
-</dd></dl>
-
-<dl class="method">
-<dt id="KnowledgeBaseApp.cli.CommandLineInterface.index_html_generation">
-<code class="descname">index_html_generation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.index_html_generation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.index_html_generation" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.index_html_generation" title="KnowledgeBaseApp.app_utils.index_html_generation"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.index_html_generation</span></code></a></p>
+<dt id="KnowledgeBaseApp.cli.CommandLineInterface.generate_index_html">
+<code class="descname">generate_index_html</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.generate_index_html"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.generate_index_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.generate_index_html" title="KnowledgeBaseApp.app_utils.generate_index_html"><code class="xref any py py-func docutils literal notranslate"><span class="pre">app_utils.generate_index_html</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
 <dt id="KnowledgeBaseApp.cli.CommandLineInterface.display_manual_page">
 <code class="descname">display_manual_page</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.display_manual_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.display_manual_page" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="../python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._display_manual_page" title="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._display_manual_page"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">cli_utils.CommandLineInterfaceSuper._display_manual_page</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.cli.CommandLineInterface.system_executable_generation">
+<code class="descname">system_executable_generation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.system_executable_generation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.system_executable_generation" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="../python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._system_executable_generation" title="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._system_executable_generation"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">cli_utils.CommandLineInterfaceSuper._system_executable_generation</span></code></a>.</p>
 </dd></dl>
 
 </dd></dl>

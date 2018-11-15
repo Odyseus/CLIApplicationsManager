@@ -79,7 +79,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -171,7 +171,6 @@
  | <a href="#G"><strong>G</strong></a>
  | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
- | <a href="#J"><strong>J</strong></a>
  | <a href="#K"><strong>K</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
@@ -199,9 +198,13 @@
         <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.POFile.__unicode__">(polib.POFile method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository._append_data_to_files">_append_data_to_files() (KnowledgeBaseApp.repositories_handler.Repository method)</a>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._append_data_to_files">_append_data_to_files() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler._append_to_files">_append_to_files() (KnowledgeBaseApp.archives_handler.ArchivesHandler method)</a>
 </li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner._apply">_apply() (FilesCleanerApp.app_utils.FilesCleaner method)</a>
+</li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.backup.html#BackupUtilsApp.backup.Backup._backup">_backup() (BackupUtilsApp.backup.Backup method)</a>
 </li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._check_url">_check_url() (UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
 </li>
@@ -215,14 +218,22 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._display_manual_page">_display_manual_page() (python_modules.python_utils.cli_utils.CommandLineInterfaceSuper method)</a>
 </li>
-      <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._do_clone">_do_clone() (UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._do_clone">_do_clone() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+
+      <ul>
+        <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._do_clone">(UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
 </li>
+      </ul></li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.BaseAppGenerator._do_copy">_do_copy() (python_modules.app_utils.BaseAppGenerator method)</a>
 </li>
       <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._do_install">_do_install() (in module MakeCinnamonXletPOTApp.app_utils)</a>
 </li>
-      <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._do_pull">_do_pull() (UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._do_pull">_do_pull() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+
+      <ul>
+        <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._do_pull">(UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
 </li>
+      </ul></li>
       <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._do_remove">_do_remove() (in module MakeCinnamonXletPOTApp.app_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.BaseAppGenerator._do_replacements">_do_replacements() (python_modules.app_utils.BaseAppGenerator method)</a>
@@ -251,21 +262,47 @@
 </li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._filter_group_extend_apps">_filter_group_extend_apps() (UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.ValidatedOverrides._get_bool">_get_bool() (HostsManagerApp.app_utils.ValidatedOverrides method)</a>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._generate_repositories_data_tables_json_file">_generate_repositories_data_tables_json_file() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
 </li>
-      <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._get_check_repo_cmd">_get_check_repo_cmd() (UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
+      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.OverridesValidator._get_bool">_get_bool() (HostsManagerApp.app_utils.OverridesValidator method)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_check_repo_cmd">_get_check_repo_cmd() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+
+      <ul>
+        <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._get_check_repo_cmd">(UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension">_get_data_by_file_extension() (KnowledgeBaseApp.app_utils.DataTablesObject method)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject._get_data_from_html_pages">_get_data_from_html_pages() (KnowledgeBaseApp.app_utils.DataTablesObject method)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject._get_data_from_html_pages_from_archives">_get_data_from_html_pages_from_archives() (KnowledgeBaseApp.app_utils.DataTablesObject method)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject._get_data_from_repositories">_get_data_from_repositories() (KnowledgeBaseApp.app_utils.DataTablesObject method)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_filename">_get_filename() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_folder_name">_get_folder_name() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
 </li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._get_github_asset_url">_get_github_asset_url() (UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
 </li>
+      <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem._get_password">_get_password() (python_modules.python_utils.mail_system.MailSystem method)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_path">_get_path() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_repo_service_slug">_get_repo_service_slug() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_sphinx_generated_pages_storage">_get_sphinx_generated_pages_storage() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_storage_path">_get_storage_path() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+</li>
       <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._get_time_zone">_get_time_zone() (in module MakeCinnamonXletPOTApp.app_utils)</a>
 </li>
       <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._get_timestamp">_get_timestamp() (in module MakeCinnamonXletPOTApp.app_utils)</a>
 </li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._get_update_data">_get_update_data() (UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler._handle_append_to_files">_handle_append_to_files() (KnowledgeBaseApp.archives_handler.ArchivesHandler method)</a>
 </li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._handle_archive">_handle_archive() (UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
 </li>
@@ -273,7 +310,15 @@
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._handle_compressed_sources">_handle_compressed_sources() (HostsManagerApp.app_utils.HostsManager method)</a>
 </li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._handle_multi_files_repo_type">_handle_multi_files_repo_type() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._handle_single_file_repo_type">_handle_single_file_repo_type() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._handle_sphinx_docs_repo_type">_handle_sphinx_docs_repo_type() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+</li>
       <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._insert_custom_header">_insert_custom_header() (in module MakeCinnamonXletPOTApp.app_utils)</a>
+</li>
+      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._install_hosts_file">_install_hosts_file() (HostsManagerApp.app_utils.HostsManager method)</a>
 </li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._manage_archives">_manage_archives() (UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
 </li>
@@ -281,19 +326,27 @@
 </li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._manage_repositories">_manage_repositories() (UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._move_hosts_file_into_place">_move_hosts_file_into_place() (HostsManagerApp.app_utils.HostsManager method)</a>
-</li>
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._normalize_rule">_normalize_rule() (HostsManagerApp.app_utils.HostsManager method)</a>
+</li>
+      <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem._obfuscate_user_home">_obfuscate_user_home() (python_modules.python_utils.log_system.LogSystem method)</a>
 </li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner._onerror">_onerror() (FilesCleanerApp.app_utils.FilesCleaner static method)</a>
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._populate_final_file">_populate_final_file() (HostsManagerApp.app_utils.HostsManager method)</a>
 </li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.FilteredFilesList._populate_list">_populate_list() (BackupUtilsApp.app_utils.FilteredFilesList method)</a>
+</li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._print_shell_separator">_print_shell_separator() (UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
+</li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.FilteredFilesList._process_directory">_process_directory() (BackupUtilsApp.app_utils.FilteredFilesList method)</a>
+</li>
+      <li><a href="modules/python_modules/python_modules.python_utils.hash_utils.html#python_modules.python_utils.hash_utils._reduce_hash">_reduce_hash() (in module python_modules.python_utils.hash_utils)</a>
 </li>
       <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._remove_empty_folders">_remove_empty_folders() (in module MakeCinnamonXletPOTApp.app_utils)</a>
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._remove_old_hosts_file">_remove_old_hosts_file() (HostsManagerApp.app_utils.HostsManager method)</a>
+</li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask._run_hook">_run_hook() (BackupUtilsApp.tasks.BaseTask method)</a>
 </li>
       <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._save_entry">_save_entry() (in module MakeCinnamonXletPOTApp.app_utils)</a>
 </li>
@@ -311,15 +364,25 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._system_executable_generation">_system_executable_generation() (python_modules.python_utils.cli_utils.CommandLineInterfaceSuper method)</a>
 </li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.TarLocalTask._TarLocalTask__get_compression_data">_TarLocalTask__get_compression_data() (BackupUtilsApp.tasks.TarLocalTask method)</a>
+</li>
+      <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem._update_log">_update_log() (python_modules.python_utils.log_system.LogSystem method)</a>
+</li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler._validate_archives_data">_validate_archives_data() (KnowledgeBaseApp.archives_handler.ArchivesHandler method)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.ValidatedOverrides._validate_bool">_validate_bool() (HostsManagerApp.app_utils.ValidatedOverrides method)</a>
+      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.OverridesValidator._validate_bool">_validate_bool() (HostsManagerApp.app_utils.OverridesValidator method)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._validate_keys">_validate_keys() (HostsManagerApp.app_utils.HostsManager method)</a>
+      <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem._validate_config">_validate_config() (python_modules.python_utils.mail_system.MailSystem method)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.ValidatedOverrides._validate_overrides">_validate_overrides() (HostsManagerApp.app_utils.ValidatedOverrides method)</a>
+      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._validate_option_keys">_validate_option_keys() (HostsManagerApp.app_utils.HostsManager method)</a>
+</li>
+      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.OverridesValidator._validate_overrides">_validate_overrides() (HostsManagerApp.app_utils.OverridesValidator method)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._validate_repo_data">_validate_repo_data() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._validate_sources">_validate_sources() (HostsManagerApp.app_utils.HostsManager method)</a>
+</li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask._validate_task">_validate_task() (BackupUtilsApp.tasks.BaseTask method)</a>
 </li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner._walk">_walk() (FilesCleanerApp.app_utils.FilesCleaner method)</a>
 </li>
@@ -331,7 +394,7 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.a">a (BackupToolApp.cli.CommandLineInterface attribute)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.a">a (BackupUtilsApp.cli.CommandLineInterface attribute)</a>
 
       <ul>
         <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.a">(ChrootHelperApp.cli.CommandLineInterface attribute)</a>
@@ -355,7 +418,7 @@
       </ul></li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.aborted">aborted (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.action">action (BackupToolApp.cli.CommandLineInterface attribute)</a>, <a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.action">[1]</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.action">action (BackupUtilsApp.cli.CommandLineInterface attribute)</a>, <a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.action">[1]</a>
 
       <ul>
         <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.action">(ChrootHelperApp.cli.CommandLineInterface attribute)</a>, <a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.action">[1]</a>
@@ -381,21 +444,17 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.add_menu_item">add_menu_item() (python_modules.python_utils.menu.Menu method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager.all_apps">all_apps (UserApplicationsManagerApp.app_utils.ApplicationsManager attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.all_menu_items">all_menu_items (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
-      <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem.allowed">allowed (python_modules.python_utils.mail_system.MailSystem attribute)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.Ansi">Ansi (in module python_modules.python_utils.ansi_colors)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors">ANSIColors (class in python_modules.python_utils.ansi_colors)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.BaseAppGenerator.app">app (python_modules.app_utils.BaseAppGenerator attribute)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.app_args">app_args (KnowledgeBaseApp.cli.CommandLineInterface attribute)</a>, <a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.app_args">[1]</a>
 </li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager.app_ids">app_ids (UserApplicationsManagerApp.app_utils.ApplicationsManager attribute)</a>
 </li>
@@ -423,16 +482,6 @@
 </li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.apps_manager_readme_template">apps_manager_readme_template (in module python_modules.app_utils)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler.archives_data">archives_data (KnowledgeBaseApp.archives_handler.ArchivesHandler attribute)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler.archives_destination">archives_destination (KnowledgeBaseApp.archives_handler.ArchivesHandler attribute)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.archives_download">archives_download() (KnowledgeBaseApp.cli.CommandLineInterface method)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler.archives_last_updated">archives_last_updated (KnowledgeBaseApp.archives_handler.ArchivesHandler attribute)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler.archives_storage">archives_storage (KnowledgeBaseApp.archives_handler.ArchivesHandler attribute)</a>
-</li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler">ArchivesHandler (class in KnowledgeBaseApp.archives_handler)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack.args">args (python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack attribute)</a>
@@ -441,6 +490,8 @@
         <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.ExceptionWhitoutTraceBackWarning.args">(python_modules.python_utils.exceptions.ExceptionWhitoutTraceBackWarning attribute)</a>
 </li>
       </ul></li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.args_to_init_repo_handler">args_to_init_repo_handler (KnowledgeBaseApp.cli.CommandLineInterface attribute)</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.arrow">arrow (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
   </ul></td>
@@ -449,43 +500,17 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup">Backup (class in BackupToolApp.backup)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.backup.html#BackupUtilsApp.backup.Backup">Backup (class in BackupUtilsApp.backup)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.backup_elapsed_time">backup_elapsed_time (BackupToolApp.backup.Backup attribute)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.html#module-BackupUtilsApp">BackupUtilsApp (module)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.backup_end_time">backup_end_time (BackupToolApp.backup.Backup attribute)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#module-BackupUtilsApp.app_utils">BackupUtilsApp.app_utils (module)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.backup_errors">backup_errors (BackupToolApp.backup.Backup attribute)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.backup.html#module-BackupUtilsApp.backup">BackupUtilsApp.backup (module)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.backup_items">backup_items (BackupToolApp.backup.Backup attribute)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#module-BackupUtilsApp.cli">BackupUtilsApp.cli (module)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.FilesListForTar.backup_list">backup_list (BackupToolApp.app_utils.FilesListForTar attribute)</a>
-
-      <ul>
-        <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.backup_list">(BackupToolApp.backup.Backup attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.backup_name">backup_name (BackupToolApp.backup.Backup attribute)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.backup_old_generated_hosts">backup_old_generated_hosts (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.backup_start_time">backup_start_time (BackupToolApp.backup.Backup attribute)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.backup_system_hosts">backup_system_hosts (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.backup_type">backup_type (BackupToolApp.backup.Backup attribute)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.BackupJobs">BackupJobs (class in BackupToolApp.backup)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.backups_storage">backups_storage (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.html#module-BackupToolApp">BackupToolApp (module)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.app_utils.html#module-BackupToolApp.app_utils">BackupToolApp.app_utils (module)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#module-BackupToolApp.backup">BackupToolApp.backup (module)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#module-BackupToolApp.cli">BackupToolApp.cli (module)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#module-BackupUtilsApp.tasks">BackupUtilsApp.tasks (module)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.BadExecutionLocation">BadExecutionLocation</a>
 </li>
@@ -503,41 +528,17 @@
 </li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.BaseAppGenerator">BaseAppGenerator (class in python_modules.app_utils)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.collator.html#python_modules.python_utils.pyuca.collator.BaseCollator">BaseCollator (class in python_modules.python_utils.pyuca.collator)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.basedir_path">basedir_path (HostsManagerApp.app_utils.HostsManager attribute)</a>, <a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.basedir_path">[1]</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask">BaseTask (class in BackupUtilsApp.tasks)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.template_utils.html#python_modules.python_utils.template_utils.BASH_COMPLETION_LOADER_CONTENT">BASH_COMPLETION_LOADER_CONTENT (in module python_modules.python_utils.template_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.template_utils.html#python_modules.python_utils.template_utils.bash_completions_step1">bash_completions_step1 (in module python_modules.python_utils.template_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.template_utils.html#python_modules.python_utils.template_utils.bash_completions_step2">bash_completions_step2 (in module python_modules.python_utils.template_utils)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoBridge.bitbucket">bitbucket() (KnowledgeBaseApp.repositories_handler.RepoBridge method)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.bitbucket_repos_json_files_creation">bitbucket_repos_json_files_creation() (in module KnowledgeBaseApp.repositories_handler)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.bitbucket_repos_json_files_creation">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
-</li>
-      </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.bitbucket_repos_update">bitbucket_repos_update() (in module KnowledgeBaseApp.repositories_handler)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.bitbucket_repos_update">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
-</li>
-      </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.bitbucket_sphinx_docs_build">bitbucket_sphinx_docs_build() (in module KnowledgeBaseApp.repositories_handler)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.bitbucket_sphinx_docs_build">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
-</li>
-      </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.BitBucketRepo">BitBucketRepo (class in KnowledgeBaseApp.repositories_handler)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.blacklist">blacklist (HostsManagerApp.app_utils.HostsManager attribute)</a>
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.HostsManager_webapp.html#HostsManagerApp.HostsManager_webapp.bottle_app">bottle_app (in module HostsManagerApp.HostsManager_webapp)</a>
 
@@ -559,10 +560,10 @@
         <li><a href="modules/python_modules/python_modules.python_utils.pyuca.collator.html#python_modules.python_utils.pyuca.collator.Collator_5_2_0.build_lookup_key">(python_modules.python_utils.pyuca.collator.Collator_5_2_0 method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.build_sphinx_docs">build_sphinx_docs() (in module KnowledgeBaseApp.repositories_handler)</a>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.build_sphinx_docs">build_sphinx_docs() (KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 
       <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.build_sphinx_docs">(KnowledgeBaseApp.repositories_handler.Repository method)</a>
+        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler.build_sphinx_docs">(KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
 </li>
       </ul></li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.bump_app_version">bump_app_version() (in module python_modules.app_utils)</a>
@@ -585,14 +586,6 @@
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.CAT_MENU_TEMPLATE">CAT_MENU_TEMPLATE (in module KnowledgeBaseApp.app_utils)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.categories_html_generation">categories_html_generation() (in module KnowledgeBaseApp.app_utils)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.categories_html_generation">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
-</li>
-      </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.category">category (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.char_empty">char_empty (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.char_selected">char_selected (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
@@ -601,19 +594,11 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.check_cursor_up">check_cursor_up() (python_modules.python_utils.multi_select.MultiSelect method)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.check_desktop_notification">check_desktop_notification() (BackupToolApp.cli.CommandLineInterface method)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.python_utils.sphinx_docs_utils.html#python_modules.python_utils.sphinx_docs_utils.check_inventories_existence">check_inventories_existence() (in module python_modules.python_utils.sphinx_docs_utils)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.check_mail_notification">check_mail_notification() (BackupToolApp.cli.CommandLineInterface method)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.check_notification">check_notification() (in module BackupToolApp.app_utils)</a>
 </li>
       <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.check_package">check_package() (PackageManagerApp.pkg_manager.PackageManager method)</a>
 </li>
       <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.check_packages">check_packages() (PackageManagerApp.pkg_manager.PackageManager method)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.check_sound_notification">check_sound_notification() (BackupToolApp.cli.CommandLineInterface method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.trie.html#python_modules.python_utils.pyuca.trie.Node.children">children (python_modules.python_utils.pyuca.trie.Node attribute)</a>
 </li>
@@ -675,12 +660,12 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.CLOSE">CLOSE() (python_modules.python_utils.menu.Menu method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.close">close() (python_modules.python_utils.menu.Menu method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.collator.html#python_modules.python_utils.pyuca.collator.BaseCollator.collation_elements">collation_elements() (python_modules.python_utils.pyuca.collator.BaseCollator method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.collator.html#python_modules.python_utils.pyuca.collator.Collator">Collator (in module python_modules.python_utils.pyuca.collator)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.collator.html#python_modules.python_utils.pyuca.collator.Collator_10_0_0">Collator_10_0_0 (class in python_modules.python_utils.pyuca.collator)</a>
@@ -693,7 +678,7 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.collator.html#python_modules.python_utils.pyuca.collator.Collator_9_0_0">Collator_9_0_0 (class in python_modules.python_utils.pyuca.collator)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface">CommandLineInterface (class in BackupToolApp.cli)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface">CommandLineInterface (class in BackupUtilsApp.cli)</a>
 
       <ul>
         <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface">(class in ChrootHelperApp.cli)</a>
@@ -717,13 +702,11 @@
       </ul></li>
       <li><a href="modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper">CommandLineInterfaceSuper (class in python_modules.python_utils.cli_utils)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler.compressed_archives">compressed_archives (KnowledgeBaseApp.archives_handler.ArchivesHandler attribute)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.compressed_sources">compressed_sources (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.conf_file">conf_file (in module UserApplicationsManagerApp.app_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.prompts.html#python_modules.python_utils.prompts.confirm">confirm() (in module python_modules.python_utils.prompts)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.convert_epub_to_html">convert_epub_to_html() (in module KnowledgeBaseApp.app_utils)</a>
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.convert_html_to_markdown">convert_html_to_markdown() (in module KnowledgeBaseApp.app_utils)</a>
 </li>
@@ -733,20 +716,16 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.file_utils.html#python_modules.python_utils.file_utils.copy_create_symlink">copy_create_symlink() (in module python_modules.python_utils.file_utils)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.copy_full_repo">copy_full_repo (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.create_file_from_template">create_file_from_template() (in module KnowledgeBaseApp.app_utils)</a>
-</li>
-      <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner.cum_size">cum_size (FilesCleanerApp.app_utils.FilesCleaner attribute)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.current_date">current_date (HostsManagerApp.app_utils.HostsManager attribute)</a>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.create_main_json_file">create_main_json_file() (in module KnowledgeBaseApp.app_utils)</a>
 
       <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler.current_date">(KnowledgeBaseApp.archives_handler.ArchivesHandler attribute)</a>
-</li>
-        <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager.current_date">(UserApplicationsManagerApp.app_utils.ApplicationsManager attribute)</a>
+        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.create_main_json_file">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner.cum_size">cum_size (FilesCleanerApp.app_utils.FilesCleaner attribute)</a>
+</li>
+      <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager.current_date">current_date (UserApplicationsManagerApp.app_utils.ApplicationsManager attribute)</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.curses_loop">curses_loop() (python_modules.python_utils.multi_select.MultiSelect method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.curses_start">curses_start() (python_modules.python_utils.multi_select.MultiSelect method)</a>
@@ -770,28 +749,14 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject.data_tables_obj">data_tables_obj (KnowledgeBaseApp.app_utils.DataTablesObject attribute)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoHandlers.data_tables_obj">(KnowledgeBaseApp.repositories_handler.RepoHandlers attribute)</a>
 </li>
-      </ul></li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject">DataTablesObject (class in KnowledgeBaseApp.app_utils)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.debug">debug (KnowledgeBaseApp.cli.CommandLineInterface attribute)</a>, <a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.debug">[1]</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoHandlers.debug">(KnowledgeBaseApp.repositories_handler.RepoHandlers attribute)</a>
-</li>
-      </ul></li>
       <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.debug">debug() (python_modules.python_utils.log_system.LogSystem method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.BaseAppGenerator.default_name">default_name (python_modules.app_utils.BaseAppGenerator attribute)</a>
 </li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.delete">delete() (FilesCleanerApp.cli.CommandLineInterface method)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.desktop_notification">desktop_notification (BackupToolApp.backup.Backup attribute)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.destination">destination (BackupToolApp.backup.Backup attribute)</a>
 </li>
       <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.detect_encoding">detect_encoding() (in module polib)</a>
 </li>
@@ -801,7 +766,7 @@
 </li>
       <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.display_initial_report">display_initial_report() (PackageManagerApp.pkg_manager.PackageManager method)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.display_manual_page">display_manual_page() (BackupToolApp.cli.CommandLineInterface method)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.display_manual_page">display_manual_page() (BackupUtilsApp.cli.CommandLineInterface method)</a>
 
       <ul>
         <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.display_manual_page">(ChrootHelperApp.cli.CommandLineInterface method)</a>
@@ -825,31 +790,15 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.do_backups">do_backups() (BackupToolApp.cli.CommandLineInterface method)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.BitBucketRepo.do_clone">do_clone() (KnowledgeBaseApp.repositories_handler.BitBucketRepo method)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.GitHubRepo.do_clone">(KnowledgeBaseApp.repositories_handler.GitHubRepo method)</a>
-</li>
-      </ul></li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.do_compression">do_compression() (BackupToolApp.backup.Backup method)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.python_utils.prompts.html#python_modules.python_utils.prompts.do_prompt">do_prompt() (in module python_modules.python_utils.prompts)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.BitBucketRepo.do_pull">do_pull() (KnowledgeBaseApp.repositories_handler.BitBucketRepo method)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.GitHubRepo.do_pull">(KnowledgeBaseApp.repositories_handler.GitHubRepo method)</a>
-</li>
-      </ul></li>
       <li><a href="modules/python_modules/python_modules.python_utils.string_utils.html#python_modules.python_utils.string_utils.do_replacements">do_replacements() (in module python_modules.python_utils.string_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.string_utils.html#python_modules.python_utils.string_utils.do_string_substitutions">do_string_substitutions() (in module python_modules.python_utils.string_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.template_utils.html#python_modules.python_utils.template_utils.do_template_copy">do_template_copy() (in module python_modules.python_utils.template_utils)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.docopt_doc">docopt_doc (in module BackupToolApp.cli)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.docopt_doc">docopt_doc (in module BackupUtilsApp.cli)</a>
 
       <ul>
         <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.docopt_doc">(in module ChrootHelperApp.cli)</a>
@@ -872,7 +821,11 @@
 </li>
       </ul></li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler.download_all_archives">download_all_archives() (KnowledgeBaseApp.archives_handler.ArchivesHandler method)</a>
+
+      <ul>
+        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.download_all_archives">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -880,6 +833,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.edit">edit() (FilesCleanerApp.cli.CommandLineInterface method)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.epub_to_html">epub_to_html() (KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.eradicate_man_pages_data_json">eradicate_man_pages_data_json() (in module python_modules.app_utils)</a>
 </li>
@@ -889,21 +844,15 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.error">error() (python_modules.python_utils.log_system.LogSystem method)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.ValidatedOverrides.errors">errors (HostsManagerApp.app_utils.ValidatedOverrides attribute)</a>
-
-      <ul>
-        <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.errors">(PackageManagerApp.pkg_manager.PackageManager attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.escape">escape() (in module polib)</a>
+      <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.errors">errors (PackageManagerApp.pkg_manager.PackageManager attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.escape">escape() (in module polib)</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack">ExceptionWhitoutTraceBack</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.ExceptionWhitoutTraceBackWarning">ExceptionWhitoutTraceBackWarning</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.exclusions">exclusions (HostsManagerApp.app_utils.HostsManager attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.exec_command">exec_command() (in module python_modules.python_utils.cmd_utils)</a>
 </li>
@@ -921,19 +870,9 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.file_append">file_append (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject.file_extensions">file_extensions (KnowledgeBaseApp.app_utils.DataTablesObject attribute)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.file_generation_action">file_generation_action (KnowledgeBaseApp.cli.CommandLineInterface attribute)</a>, <a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.file_generation_action">[1]</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.factory">factory() (in module BackupUtilsApp.tasks)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.hash_utils.html#python_modules.python_utils.hash_utils.file_hash">file_hash() (in module python_modules.python_utils.hash_utils)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.file_pattern">file_pattern (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.filename">filename (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.files_to_ignore">files_to_ignore (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
 </li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner">FilesCleaner (class in FilesCleanerApp.app_utils)</a>
 </li>
@@ -943,16 +882,14 @@
 </li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#module-FilesCleanerApp.cli">FilesCleanerApp.cli (module)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.FilesListForTar">FilesListForTar (class in BackupToolApp.app_utils)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.FilteredFilesList">FilteredFilesList (class in BackupUtilsApp.app_utils)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.final_file">final_file (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.find_executables">find_executables() (in module python_modules.python_utils.cmd_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.trie.html#python_modules.python_utils.pyuca.trie.Trie.find_prefix">find_prefix() (python_modules.python_utils.pyuca.trie.Trie method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.flush_dns_cache">flush_dns_cache() (HostsManagerApp.cli.CommandLineInterface method)</a>
 
       <ul>
@@ -966,8 +903,6 @@
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.utils.html#python_modules.python_utils.pyuca.utils.format_collation_elements">format_collation_elements() (in module python_modules.python_utils.pyuca.utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.utils.html#python_modules.python_utils.pyuca.utils.format_sort_key">format_sort_key() (in module python_modules.python_utils.pyuca.utils)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.FilesListForTar.full_list_of_files">full_list_of_files (BackupToolApp.app_utils.FilesListForTar attribute)</a>
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.func_names">func_names (HostsManagerApp.cli.CommandLineInterface attribute)</a>, <a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.func_names">[1]</a>
 
@@ -989,20 +924,14 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.BaseAppGenerator.generate">generate() (python_modules.app_utils.BaseAppGenerator method)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.generate_backup_jobs_template">generate_backup_jobs_template() (BackupToolApp.cli.CommandLineInterface method)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.generate_base_app">generate_base_app() (python_modules.cli.CommandLineInterface method)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject.generate_data_by_file_extension">generate_data_by_file_extension() (KnowledgeBaseApp.app_utils.DataTablesObject method)</a>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.generate_categories_html">generate_categories_html() (in module KnowledgeBaseApp.app_utils)</a>
+
+      <ul>
+        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.generate_categories_html">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoHandlers.generate_data_file">generate_data_file() (KnowledgeBaseApp.repositories_handler.RepoHandlers method)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject.generate_data_from_html_pages">generate_data_from_html_pages() (KnowledgeBaseApp.app_utils.DataTablesObject method)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject.generate_data_from_html_pages_from_archives">generate_data_from_html_pages_from_archives() (KnowledgeBaseApp.app_utils.DataTablesObject method)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject.generate_data_from_repositories">generate_data_from_repositories() (KnowledgeBaseApp.app_utils.DataTablesObject method)</a>
-</li>
+      </ul></li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.generate_docs">generate_docs() (in module python_modules.app_utils)</a>
 
       <ul>
@@ -1011,12 +940,14 @@
         <li><a href="modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.generate_docs">(python_modules.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.generate_from_app_template">generate_from_app_template() (in module BackupToolApp.app_utils)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.python_utils.template_utils.html#python_modules.python_utils.template_utils.generate_from_template">generate_from_template() (in module python_modules.python_utils.template_utils)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.generate_global_settings_template">generate_global_settings_template() (BackupToolApp.cli.CommandLineInterface method)</a>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.generate_index_html">generate_index_html() (in module KnowledgeBaseApp.app_utils)</a>
+
+      <ul>
+        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.generate_index_html">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
+      </ul></li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.generate_man_pages">generate_man_pages() (in module python_modules.app_utils)</a>
 
       <ul>
@@ -1037,8 +968,6 @@
         <li><a href="modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.generate_readmes">(python_modules.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.generate_repositories_json_files">generate_repositories_json_files() (in module KnowledgeBaseApp.repositories_handler)</a>
-</li>
       <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.generic_summary">generic_summary (in module PackageManagerApp.pkg_manager)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.get_all_apps">get_all_apps() (in module python_modules.app_utils)</a>
@@ -1047,93 +976,53 @@
 </li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.get_applications">get_applications() (in module UserApplicationsManagerApp.app_utils)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler.get_archives_json_data">get_archives_json_data() (KnowledgeBaseApp.archives_handler.ArchivesHandler method)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.get_backup_errors_count">get_backup_errors_count() (BackupToolApp.backup.Backup method)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.BitBucketRepo.get_check_repo_cmd">get_check_repo_cmd() (KnowledgeBaseApp.repositories_handler.BitBucketRepo method)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.GitHubRepo.get_check_repo_cmd">(KnowledgeBaseApp.repositories_handler.GitHubRepo method)</a>
-</li>
-      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.shell_utils.html#python_modules.python_utils.shell_utils.get_cli_header">get_cli_header() (in module python_modules.python_utils.shell_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.shell_utils.html#python_modules.python_utils.shell_utils.get_cli_separator">get_cli_separator() (in module python_modules.python_utils.shell_utils)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject.get_data_tables_obj">get_data_tables_obj() (KnowledgeBaseApp.app_utils.DataTablesObject method)</a>
+
+      <ul>
+        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler.get_data_tables_obj">(KnowledgeBaseApp.archives_handler.ArchivesHandler method)</a>
 </li>
+        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler.get_data_tables_obj">(KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+</li>
+      </ul></li>
       <li><a href="modules/python_modules/python_modules.python_utils.misc_utils.html#python_modules.python_utils.misc_utils.get_date_time">get_date_time() (in module python_modules.python_utils.misc_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.get_environment">get_environment() (in module python_modules.python_utils.cmd_utils)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.ValidatedOverrides.get_errors">get_errors() (HostsManagerApp.app_utils.ValidatedOverrides method)</a>
+      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.OverridesValidator.get_errors">get_errors() (HostsManagerApp.app_utils.OverridesValidator method)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.get_folder_name">get_folder_name() (KnowledgeBaseApp.repositories_handler.Repository method)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.FilesListForTar.get_full_list_of_files">get_full_list_of_files() (BackupToolApp.app_utils.FilesListForTar method)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.get_json_data_from_repositories">get_json_data_from_repositories() (in module KnowledgeBaseApp.repositories_handler)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.get_json_path">get_json_path() (KnowledgeBaseApp.repositories_handler.Repository method)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.FilteredFilesList.get_full_list_of_files">get_full_list_of_files() (BackupUtilsApp.app_utils.FilteredFilesList method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.get_log_file">get_log_file() (in module python_modules.python_utils.log_system)</a>
+
+      <ul>
+        <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.get_log_file">(python_modules.python_utils.log_system.LogSystem method)</a>
 </li>
+      </ul></li>
       <li><a href="modules/MoviesDB/MoviesDBApp.app_utils.html#MoviesDBApp.app_utils.get_movie_info">get_movie_info() (in module MoviesDBApp.app_utils)</a>
-</li>
-      <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.get_now">get_now() (python_modules.python_utils.log_system.LogSystem method)</a>
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.get_pandoc_path">get_pandoc_path() (in module KnowledgeBaseApp.app_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.file_utils.html#python_modules.python_utils.file_utils.get_parent_dir">get_parent_dir() (in module python_modules.python_utils.file_utils)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.get_path">get_path() (KnowledgeBaseApp.repositories_handler.Repository method)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.get_selected_apps">get_selected_apps() (in module python_modules.app_utils)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.get_sphinx_generated_pages_storage">get_sphinx_generated_pages_storage() (KnowledgeBaseApp.repositories_handler.Repository method)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.get_storage_path">get_storage_path() (KnowledgeBaseApp.repositories_handler.Repository method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.misc_utils.html#python_modules.python_utils.misc_utils.get_system_tempdir">get_system_tempdir() (in module python_modules.python_utils.misc_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.misc_utils.html#python_modules.python_utils.misc_utils.get_time_diff">get_time_diff() (in module python_modules.python_utils.misc_utils)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.ValidatedOverrides.get_valid_overrides">get_valid_overrides() (HostsManagerApp.app_utils.ValidatedOverrides method)</a>
+      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.OverridesValidator.get_valid_overrides">get_valid_overrides() (HostsManagerApp.app_utils.OverridesValidator method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.getSelected">getSelected() (python_modules.python_utils.multi_select.MultiSelect method)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoBridge.github">github() (KnowledgeBaseApp.repositories_handler.RepoBridge method)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.github_repos_json_files_creation">github_repos_json_files_creation() (in module KnowledgeBaseApp.repositories_handler)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.github_repos_json_files_creation">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
-</li>
-      </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.github_repos_update">github_repos_update() (in module KnowledgeBaseApp.repositories_handler)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.github_repos_update">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
-</li>
-      </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.github_sphinx_docs_build">github_sphinx_docs_build() (in module KnowledgeBaseApp.repositories_handler)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.github_sphinx_docs_build">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
-</li>
-      </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.GitHubRepo">GitHubRepo (class in KnowledgeBaseApp.repositories_handler)</a>
-</li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.glob_deletion">glob_deletion (FilesCleanerApp.cli.CommandLineInterface attribute)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.global_blacklist">global_blacklist (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.global_settings">global_settings (BackupToolApp.cli.CommandLineInterface attribute)</a>, <a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.global_settings">[1]</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.global_whitelist">global_whitelist (HostsManagerApp.app_utils.HostsManager attribute)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.global_settings">global_settings (BackupUtilsApp.cli.CommandLineInterface attribute)</a>, <a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.global_settings">[1]</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1141,13 +1030,17 @@
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.handle_all_repositories">handle_all_repositories() (KnowledgeBaseApp.cli.CommandLineInterface method)</a>
+
+      <ul>
+        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler.handle_all_repositories">(KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+</li>
+      </ul></li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp.handle_local_files">handle_local_files() (KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp method)</a>
 </li>
       <li><a href="modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.handle_video_path">handle_video_path() (MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp method)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.header">header (HostsManagerApp.app_utils.HostsManager attribute)</a>, <a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.header">[1]</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.header_static_hosts">header_static_hosts (HostsManagerApp.app_utils.HostsManager attribute)</a>, <a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.header_static_hosts">[1]</a>
+      <li><a href="modules/python_modules/python_modules.python_utils.hash_utils.html#python_modules.python_utils.hash_utils.HASH_FUNCS">HASH_FUNCS (in module python_modules.python_utils.hash_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.utils.html#python_modules.python_utils.pyuca.utils.hexstrings2int">hexstrings2int() (in module python_modules.python_utils.pyuca.utils)</a>
 </li>
@@ -1161,10 +1054,6 @@
         <li><a href="modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.host">(MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp attribute)</a>
 </li>
       </ul></li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HOSTNAME_REGEX">HOSTNAME_REGEX (in module HostsManagerApp.app_utils)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.hosts_file">hosts_file (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
       <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.hosts_manager">hosts_manager (HostsManagerApp.cli.CommandLineInterface attribute)</a>
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager">HostsManager (class in HostsManagerApp.app_utils)</a>
@@ -1227,17 +1116,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.collator.html#python_modules.python_utils.pyuca.collator.Collator_5_2_0.i">i (python_modules.python_utils.pyuca.collator.Collator_5_2_0 attribute)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.ignore_symlinks">ignore_symlinks (BackupToolApp.backup.Backup attribute)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.FilesListForTar.ignored_patterns">ignored_patterns (BackupToolApp.app_utils.FilesListForTar attribute)</a>
-
-      <ul>
-        <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.ignored_patterns">(BackupToolApp.backup.Backup attribute)</a>
-</li>
-      </ul></li>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.collator.html#python_modules.python_utils.pyuca.collator.BaseCollator.implicit_weight">implicit_weight() (python_modules.python_utils.pyuca.collator.BaseCollator method)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.increment_backup_errors_count">increment_backup_errors_count() (BackupToolApp.backup.Backup method)</a>
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.HostsManager_webapp.html#HostsManagerApp.HostsManager_webapp.HostsManager.index">index() (HostsManagerApp.HostsManager_webapp.HostsManager method)</a>
 
@@ -1245,12 +1124,6 @@
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp.index">(KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp method)</a>
 </li>
         <li><a href="modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.index">(MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp method)</a>
-</li>
-      </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.index_html_generation">index_html_generation() (in module KnowledgeBaseApp.app_utils)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.index_html_generation">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
       <li><a href="modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors.INFO">INFO() (python_modules.python_utils.ansi_colors.ANSIColors method)</a>
@@ -1279,25 +1152,29 @@
         <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.install_packages">(PackageManagerApp.pkg_manager.PackageManager method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.install_summary">install_summary (in module PackageManagerApp.pkg_manager)</a>
 </li>
       <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.installed_pkgs">installed_pkgs (PackageManagerApp.pkg_manager.PackageManager attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.utils.html#python_modules.python_utils.pyuca.utils.int2hexstrings">int2hexstrings() (in module python_modules.python_utils.pyuca.utils)</a>
 </li>
       <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.interface">interface (PackageManagerApp.pkg_manager.PackageManager attribute)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.INVALID_INTEGER_MSG">INVALID_INTEGER_MSG (in module HostsManagerApp.app_utils)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.INVALID_IP_MSG">INVALID_IP_MSG (in module HostsManagerApp.app_utils)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.invalid_rule">invalid_rule (HostsManagerApp.app_utils.HostsManager attribute)</a>, <a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.invalid_rule">[1]</a>
-</li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.InvalidApplicationName">InvalidApplicationName</a>
 </li>
+      <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.InvalidArgument">InvalidArgument</a>
+</li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.InvalidCompressionLevel">InvalidCompressionLevel</a>
+</li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.InvalidCompressionType">InvalidCompressionType</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.InvalidDestination">InvalidDestination</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.InvalidRepositoryData">InvalidRepositoryData</a>
+</li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.InvalidTaskName">InvalidTaskName</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.file_utils.html#python_modules.python_utils.file_utils.is_exec">is_exec() (in module python_modules.python_utils.file_utils)</a>
 </li>
@@ -1317,42 +1194,22 @@
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.is_valid_ip">is_valid_ip() (in module HostsManagerApp.app_utils)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.items_root_folder">items_root_folder (BackupToolApp.backup.Backup attribute)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="J">J</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.BackupJobs.jobs">jobs (BackupToolApp.backup.BackupJobs attribute)</a>
-
-      <ul>
-        <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.jobs">(BackupToolApp.cli.CommandLineInterface attribute)</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.json_data">json_data (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
-</li>
   </ul></td>
 </tr></table>
 
 <h2 id="K">K</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.keep_domain_comments">keep_domain_comments (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption">KeyboardInterruption</a>
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.html#module-KnowledgeBaseApp">KnowledgeBaseApp (module)</a>
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#module-KnowledgeBaseApp.app_utils">KnowledgeBaseApp.app_utils (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#module-KnowledgeBaseApp.archives_handler">KnowledgeBaseApp.archives_handler (module)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#module-KnowledgeBaseApp.cli">KnowledgeBaseApp.cli (module)</a>
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#module-KnowledgeBaseApp.KnowledgeBase_webapp">KnowledgeBaseApp.KnowledgeBase_webapp (module)</a>
@@ -1367,12 +1224,6 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.last_update_data">last_update_data (HostsManagerApp.app_utils.HostsManager attribute)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler.last_update_data">(KnowledgeBaseApp.archives_handler.ArchivesHandler attribute)</a>
-</li>
-      </ul></li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.length">length (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.collator.html#python_modules.python_utils.pyuca.collator.BaseCollator.load">load() (python_modules.python_utils.pyuca.collator.BaseCollator method)</a>
@@ -1381,9 +1232,13 @@
 </li>
       <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.log_details">log_details() (PackageManagerApp.pkg_manager.PackageManager method)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.logger">logger (BackupToolApp.backup.Backup attribute)</a>
+      <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.log_dry_run">log_dry_run() (python_modules.python_utils.log_system.LogSystem method)</a>
+</li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.backup.html#BackupUtilsApp.backup.Backup.logger">logger (BackupUtilsApp.backup.Backup attribute)</a>
 
       <ul>
+        <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask.logger">(BackupUtilsApp.tasks.BaseTask attribute)</a>
+</li>
         <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner.logger">(FilesCleanerApp.app_utils.FilesCleaner attribute)</a>
 </li>
         <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.logger">(HostsManagerApp.app_utils.HostsManager attribute)</a>
@@ -1392,9 +1247,7 @@
 </li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler.logger">(KnowledgeBaseApp.archives_handler.ArchivesHandler attribute)</a>
 </li>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoHandlers.logger">(KnowledgeBaseApp.repositories_handler.RepoHandlers attribute)</a>
-</li>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.logger">(KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
+        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler.logger">(KnowledgeBaseApp.repositories_handler.RepositoriesHandler attribute)</a>
 </li>
         <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.logger">(PackageManagerApp.pkg_manager.PackageManager attribute)</a>
 </li>
@@ -1417,15 +1270,9 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.mail_notification">mail_notification (BackupToolApp.backup.Backup attribute)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.mail_settings">mail_settings (BackupToolApp.backup.Backup attribute)</a>
-</li>
-      <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem.mailing_list">mailing_list (python_modules.python_utils.mail_system.MailSystem attribute)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem">MailSystem (class in python_modules.python_utils.mail_system)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.main">main() (in module BackupToolApp.cli)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.main">main() (in module BackupUtilsApp.cli)</a>
 
       <ul>
         <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.main">(in module ChrootHelperApp.cli)</a>
@@ -1445,12 +1292,6 @@
         <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.cli.html#UserApplicationsManagerApp.cli.main">(in module UserApplicationsManagerApp.cli)</a>
 </li>
         <li><a href="modules/python_modules/python_modules.cli.html#python_modules.cli.main">(in module python_modules.cli)</a>
-</li>
-      </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.main_json_file_creation">main_json_file_creation() (in module KnowledgeBaseApp.app_utils)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.main_json_file_creation">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
       <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.html#module-MakeCinnamonXletPOTApp">MakeCinnamonXletPOTApp (module)</a>
@@ -1481,25 +1322,21 @@
 </li>
       <li><a href="modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.manage_repo_subtrees">manage_repo_subtrees() (python_modules.cli.CommandLineInterface method)</a>
 </li>
-      <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem.mandatory_fields">mandatory_fields (python_modules.python_utils.mail_system.MailSystem attribute)</a>, <a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem.mandatory_fields">[1]</a>
-</li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner.matchers">matchers (FilesCleanerApp.app_utils.FilesCleaner attribute)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.max_backups_to_keep">max_backups_to_keep (HostsManagerApp.app_utils.HostsManager attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu">Menu (class in python_modules.python_utils.menu)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.menu_items">menu_items (python_modules.python_utils.menu.Menu attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.POEntry.merge">merge() (polib.POEntry method)</a>
 
       <ul>
         <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.POFile.merge">(polib.POFile method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.merge_file">merge_file (HostsManagerApp.app_utils.HostsManager attribute)</a>
+      <li><a href="modules/python_modules/python_modules.python_utils.misc_utils.html#python_modules.python_utils.misc_utils.merge_dict">merge_dict() (in module python_modules.python_utils.misc_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.message">message (python_modules.python_utils.menu.Menu attribute)</a>
 </li>
@@ -1547,8 +1384,6 @@
 </li>
       <li><a href="modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp">MoviesDBWebapp (class in MoviesDBApp.MoviesDB_webapp)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoHandlers.multi_file_handler">multi_file_handler() (KnowledgeBaseApp.repositories_handler.RepoHandlers method)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect">MultiSelect (class in python_modules.python_utils.multi_select)</a>
 </li>
   </ul></td>
@@ -1573,10 +1408,10 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.collator.html#python_modules.python_utils.pyuca.collator.Collator_5_2_0.non_char_code_points">non_char_code_points (python_modules.python_utils.pyuca.collator.Collator_5_2_0 attribute)</a>
 </li>
-      <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.non_existent_pkgs">non_existent_pkgs (PackageManagerApp.pkg_manager.PackageManager attribute)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.non_existent_pkgs">non_existent_pkgs (PackageManagerApp.pkg_manager.PackageManager attribute)</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.prompts.html#python_modules.python_utils.prompts.nonempty">nonempty() (in module python_modules.python_utils.prompts)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.NoProfileNameProvided">NoProfileNameProvided</a>
@@ -1585,13 +1420,9 @@
 </li>
       <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.not_installed_pkgs">not_installed_pkgs (PackageManagerApp.pkg_manager.PackageManager attribute)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.notify">notify() (BackupToolApp.backup.Backup method)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.backup.html#BackupUtilsApp.backup.Backup.notify">notify() (BackupUtilsApp.backup.Backup method)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.notify_send">notify_send() (in module BackupToolApp.app_utils)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.number_of_ignores">number_of_ignores (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.number_of_rules">number_of_rules (HostsManagerApp.app_utils.HostsManager attribute)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.notify_send">notify_send() (in module BackupUtilsApp.app_utils)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1599,8 +1430,6 @@
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.obfuscate_user_home">obfuscate_user_home() (python_modules.python_utils.log_system.LogSystem method)</a>
-</li>
       <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.MOFile.obsolete_entries">obsolete_entries() (polib.MOFile method)</a>
 
       <ul>
@@ -1609,10 +1438,10 @@
       </ul></li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.offset">offset (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/MoviesDB/MoviesDBApp.app_utils.html#MoviesDBApp.app_utils.omdb">omdb() (in module MoviesDBApp.app_utils)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/MoviesDB/MoviesDBApp.app_utils.html#MoviesDBApp.app_utils.OMDB_URL">OMDB_URL (in module MoviesDBApp.app_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.open">open() (python_modules.python_utils.menu.Menu method)</a>
@@ -1620,6 +1449,8 @@
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.open_main_webpage">open_main_webpage() (KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.OperationAborted">OperationAborted</a>
+</li>
+      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.OverridesValidator">OverridesValidator (class in HostsManagerApp.app_utils)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1643,8 +1474,6 @@
 </li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner.path">path (FilesCleanerApp.app_utils.FilesCleaner attribute)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.path_handler">path_handler (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
-</li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner.patterns">patterns (FilesCleanerApp.app_utils.FilesCleaner attribute)</a>
 </li>
       <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.MOFile.percent_translated">percent_translated() (polib.MOFile method)</a>
@@ -1655,7 +1484,7 @@
       </ul></li>
       <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.pkgs_to_handle">pkgs_to_handle (PackageManagerApp.pkg_manager.PackageManager attribute)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.play_sound">play_sound() (in module BackupToolApp.app_utils)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.play_sound">play_sound() (in module BackupUtilsApp.app_utils)</a>
 </li>
       <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.POEntry">POEntry (class in polib)</a>
 </li>
@@ -1664,8 +1493,6 @@
       <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.pofile">pofile() (in module polib)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.popen">popen() (in module python_modules.python_utils.cmd_utils)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.FilesListForTar.populate_list">populate_list() (BackupToolApp.app_utils.FilesListForTar method)</a>
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.HostsManager_webapp.html#HostsManagerApp.HostsManager_webapp.HostsManager.port">port (HostsManagerApp.HostsManager_webapp.HostsManager attribute)</a>
 
@@ -1689,19 +1516,13 @@
         <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.cli.html#UserApplicationsManagerApp.cli.CommandLineInterface.print_app_ids">(UserApplicationsManagerApp.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.FilesListForTar.process_directory">process_directory() (BackupToolApp.app_utils.FilesListForTar method)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.print_config_files_list">print_config_files_list() (in module BackupUtilsApp.app_utils)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.process_item">process_item() (BackupToolApp.backup.Backup method)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.process_jobs">process_jobs() (BackupToolApp.cli.CommandLineInterface method)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.print_settings">print_settings() (BackupUtilsApp.cli.CommandLineInterface method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.process_list">process_list() (BackupToolApp.backup.Backup method)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.profile">profile (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.profiles_path">profiles_path (HostsManagerApp.app_utils.HostsManager attribute)</a>, <a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.profiles_path">[1]</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.print_tasks">print_tasks() (BackupUtilsApp.cli.CommandLineInterface method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.prompt">prompt (python_modules.python_utils.menu.Menu attribute)</a>
 </li>
@@ -1763,8 +1584,6 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.ValidatedOverrides.raw_overrides">raw_overrides (HostsManagerApp.app_utils.ValidatedOverrides attribute)</a>
-</li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.readchar">readchar() (in module FilesCleanerApp.app_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.file_utils.html#python_modules.python_utils.file_utils.recursive_glob">recursive_glob() (in module python_modules.python_utils.file_utils)</a>
@@ -1772,8 +1591,6 @@
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.redraw">redraw() (python_modules.python_utils.multi_select.MultiSelect method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.refresh">refresh (python_modules.python_utils.menu.Menu attribute)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.rel_path">rel_path (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
 </li>
       <li><a href="modules/PackageManager/PackageManagerApp.cli.html#PackageManagerApp.cli.CommandLineInterface.remove_packages">remove_packages() (PackageManagerApp.cli.CommandLineInterface method)</a>
 
@@ -1787,30 +1604,18 @@
 </li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.BaseAppGenerator.replacement_data">replacement_data (python_modules.app_utils.BaseAppGenerator attribute)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoHandlers.repo">repo (KnowledgeBaseApp.repositories_handler.RepoHandlers attribute)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.repo_action">repo_action (python_modules.cli.CommandLineInterface attribute)</a>, <a href="modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.repo_action">[1]</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.repo_img">repo_img (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask.report_called_process_errors">report_called_process_errors() (BackupUtilsApp.tasks.BaseTask method)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.repo_name">repo_name (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.REPORT_TEMPLATE">REPORT_TEMPLATE (in module BackupUtilsApp.app_utils)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.repo_owner">repo_owner (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler">RepositoriesHandler (class in KnowledgeBaseApp.repositories_handler)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.repo_url">repo_url (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoBridge">RepoBridge (class in KnowledgeBaseApp.repositories_handler)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoHandlers">RepoHandlers (class in KnowledgeBaseApp.repositories_handler)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.REPORT_TEMPLATE">REPORT_TEMPLATE (in module BackupToolApp.app_utils)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository">Repository (class in KnowledgeBaseApp.repositories_handler)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.root_folder">root_folder (in module BackupToolApp.app_utils)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.root_folder">root_folder (in module BackupUtilsApp.app_utils)</a>
 
       <ul>
-        <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.root_folder">(in module BackupToolApp.cli)</a>
+        <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.root_folder">(in module BackupUtilsApp.cli)</a>
 </li>
         <li><a href="modules/ChrootHelper/ChrootHelperApp.app_utils.html#ChrootHelperApp.app_utils.root_folder">(in module ChrootHelperApp.app_utils)</a>
 </li>
@@ -1861,12 +1666,18 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.run">run() (BackupToolApp.backup.Backup method)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.RsyncLocalTask">RsyncLocalTask (class in BackupUtilsApp.tasks)</a>
+</li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.backup.html#BackupUtilsApp.backup.Backup.run">run() (BackupUtilsApp.backup.Backup method)</a>
 
       <ul>
-        <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.BackupJobs.run">(BackupToolApp.backup.BackupJobs method)</a>
+        <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.run">(BackupUtilsApp.cli.CommandLineInterface method)</a>
 </li>
-        <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.run">(BackupToolApp.cli.CommandLineInterface method)</a>
+        <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask.run">(BackupUtilsApp.tasks.BaseTask method)</a>
+</li>
+        <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.RsyncLocalTask.run">(BackupUtilsApp.tasks.RsyncLocalTask method)</a>
+</li>
+        <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.TarLocalTask.run">(BackupUtilsApp.tasks.TarLocalTask method)</a>
 </li>
         <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.run">(ChrootHelperApp.cli.CommandLineInterface method)</a>
 </li>
@@ -1897,8 +1708,6 @@
         <li><a href="modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper.run">(python_modules.python_utils.cli_utils.CommandLineInterfaceSuper method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.run_app">run_app() (KnowledgeBaseApp.cli.CommandLineInterface method)</a>
-</li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.run_args_order">run_args_order (KnowledgeBaseApp.cli.CommandLineInterface attribute)</a>, <a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.run_args_order">[1]</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.run_cli">run_cli() (in module python_modules.python_utils.cli_utils)</a>
@@ -1911,6 +1720,8 @@
         <li><a href="modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.run_cmd_on_apps">(python_modules.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.run_tasks">run_tasks() (BackupUtilsApp.cli.CommandLineInterface method)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -1941,20 +1752,12 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem.send">send() (python_modules.python_utils.mail_system.MailSystem method)</a>
 </li>
-      <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem.sender_address">sender_address (python_modules.python_utils.mail_system.MailSystem attribute)</a>
-</li>
-      <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem.sender_secret">sender_secret (python_modules.python_utils.mail_system.MailSystem attribute)</a>
-</li>
-      <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem.sender_username">sender_username (python_modules.python_utils.mail_system.MailSystem attribute)</a>
-</li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp.server_static">server_static() (KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp method)</a>
 
       <ul>
         <li><a href="modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.server_static">(MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.set_json_data">set_json_data() (KnowledgeBaseApp.repositories_handler.Repository method)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.set_menu_items">set_menu_items() (python_modules.python_utils.menu.Menu method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.set_message">set_message() (python_modules.python_utils.menu.Menu method)</a>
@@ -1971,31 +1774,9 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.show">show() (python_modules.python_utils.menu.Menu method)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoHandlers.single_file_handler">single_file_handler() (KnowledgeBaseApp.repositories_handler.RepoHandlers method)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.skip_static_hosts">skip_static_hosts (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
-      <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem.smtp_port">smtp_port (python_modules.python_utils.mail_system.MailSystem attribute)</a>
-</li>
-      <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem.smtp_server">smtp_server (python_modules.python_utils.mail_system.MailSystem attribute)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.collator.html#python_modules.python_utils.pyuca.collator.BaseCollator.sort_key">sort_key() (python_modules.python_utils.pyuca.collator.BaseCollator method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.collator.html#python_modules.python_utils.pyuca.collator.BaseCollator.sort_key_from_collation_elements">sort_key_from_collation_elements() (python_modules.python_utils.pyuca.collator.BaseCollator method)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.sound_notification">sound_notification (BackupToolApp.backup.Backup attribute)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.sources">sources (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.sources_last_updated">sources_last_updated (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.sources_storage">sources_storage (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.sources_storage_compressed">sources_storage_compressed (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.sources_storage_raw">sources_storage_raw (HostsManagerApp.app_utils.HostsManager attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.spacefm_find_files">spacefm_find_files() (in module python_modules.app_utils)</a>
 
@@ -2003,9 +1784,11 @@
         <li><a href="modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.spacefm_find_files">(python_modules.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoHandlers.sphinx_generated_handler">sphinx_generated_handler() (KnowledgeBaseApp.repositories_handler.RepoHandlers method)</a>
-</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.string_utils.html#python_modules.python_utils.string_utils.split_on_uppercase">split_on_uppercase() (in module python_modules.python_utils.string_utils)</a>
+</li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask.start">start() (BackupUtilsApp.tasks.BaseTask method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.stdscr">stdscr (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
@@ -2015,15 +1798,13 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.STREAM_STDOUT">STREAM_STDOUT (in module python_modules.python_utils.cmd_utils)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepoHandlers.success">success (KnowledgeBaseApp.repositories_handler.RepoHandlers attribute)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors.SUCCESS">SUCCESS() (python_modules.python_utils.ansi_colors.ANSIColors method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.success">success() (python_modules.python_utils.log_system.LogSystem method)</a>
 </li>
       <li><a href="modules/ChrootHelper/ChrootHelperApp.app_utils.html#ChrootHelperApp.app_utils.sudo">sudo (in module ChrootHelperApp.app_utils)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.cli.html#BackupToolApp.cli.CommandLineInterface.system_executable_generation">system_executable_generation() (BackupToolApp.cli.CommandLineInterface method)</a>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.system_executable_generation">system_executable_generation() (BackupUtilsApp.cli.CommandLineInterface method)</a>
 
       <ul>
         <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.system_executable_generation">(ChrootHelperApp.cli.CommandLineInterface method)</a>
@@ -2031,6 +1812,8 @@
         <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.system_executable_generation">(FilesCleanerApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.system_executable_generation">(HostsManagerApp.cli.CommandLineInterface method)</a>
+</li>
+        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.system_executable_generation">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.cli.html#MakeCinnamonXletPOTApp.cli.CommandLineInterface.system_executable_generation">(MakeCinnamonXletPOTApp.cli.CommandLineInterface method)</a>
 </li>
@@ -2055,32 +1838,24 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.target_ip">target_ip (HostsManagerApp.app_utils.HostsManager attribute)</a>
-</li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner.targets">targets (FilesCleanerApp.app_utils.FilesCleaner attribute)</a>
+</li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.TarLocalTask">TarLocalTask (class in BackupUtilsApp.tasks)</a>
+</li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.tasks">tasks (BackupUtilsApp.cli.CommandLineInterface attribute)</a>, <a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.tasks">[1]</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.prompts.html#python_modules.python_utils.prompts.term_decode">term_decode() (in module python_modules.python_utils.prompts)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.prompts.html#python_modules.python_utils.prompts.term_input">term_input() (in module python_modules.python_utils.prompts)</a>
 </li>
-      <li><a href="modules/BackupTool/BackupToolApp.app_utils.html#BackupToolApp.app_utils.TEST_NOTIFICATION_BODY">TEST_NOTIFICATION_BODY (in module BackupToolApp.app_utils)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.threaded_item">threaded_item() (BackupToolApp.backup.Backup method)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.BackupJobs.threaded_job">threaded_job() (BackupToolApp.backup.BackupJobs method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.title">title (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
+      <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.title">title (python_modules.python_utils.menu.Menu attribute)</a>
 
       <ul>
-        <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.title">(python_modules.python_utils.menu.Menu attribute)</a>
-</li>
         <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.title">(python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
       </ul></li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.title_prefix">title_prefix (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
-</li>
       <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.POEntry.translated">translated() (polib.POEntry method)</a>
 </li>
       <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.MOFile.translated_entries">translated_entries() (polib.MOFile method)</a>
@@ -2119,6 +1894,12 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.update_all_repositories">update_all_repositories() (KnowledgeBaseApp.cli.CommandLineInterface method)</a>
+
+      <ul>
+        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler.update_all_repositories">(KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+</li>
+      </ul></li>
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.update_all_sources">update_all_sources() (HostsManagerApp.app_utils.HostsManager method)</a>
 
       <ul>
@@ -2126,12 +1907,6 @@
 </li>
       </ul></li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.update_data_file">update_data_file (in module UserApplicationsManagerApp.app_utils)</a>
-</li>
-      <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.update_log">update_log() (python_modules.python_utils.log_system.LogSystem method)</a>
-</li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.update_repositories">update_repositories() (in module KnowledgeBaseApp.repositories_handler)</a>
-</li>
-      <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem.use_tls">use_tls (python_modules.python_utils.mail_system.MailSystem attribute)</a>
 </li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.html#module-UserApplicationsManagerApp">UserApplicationsManagerApp (module)</a>
 </li>
@@ -2145,18 +1920,10 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.ValidatedOverrides.valid_options">valid_options (HostsManagerApp.app_utils.ValidatedOverrides attribute)</a>, <a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.ValidatedOverrides.valid_options">[1]</a>
-</li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.ValidatedOverrides.valid_overrides">valid_overrides (HostsManagerApp.app_utils.ValidatedOverrides attribute)</a>
-</li>
-      <li><a href="modules/BackupTool/BackupToolApp.backup.html#BackupToolApp.backup.Backup.validate_list">validate_list() (BackupToolApp.backup.Backup method)</a>
+      <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.ValidationError">ValidationError</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.ValidatedOverrides">ValidatedOverrides (class in HostsManagerApp.app_utils)</a>
-</li>
-      <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.ValidationError">ValidationError</a>
-</li>
       <li><a href="modules/python_modules/python_modules.python_utils.pyuca.trie.html#python_modules.python_utils.pyuca.trie.Node.value">value (python_modules.python_utils.pyuca.trie.Node attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.verbose">verbose (python_modules.python_utils.log_system.LogSystem attribute)</a>
@@ -2171,16 +1938,12 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.warning">warning() (python_modules.python_utils.log_system.LogSystem method)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.Repository.web_service">web_service (KnowledgeBaseApp.repositories_handler.Repository attribute)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.which">which() (in module python_modules.python_utils.cmd_utils)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.whitelist">whitelist (HostsManagerApp.app_utils.HostsManager attribute)</a>
+      <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.win">win (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.win">win (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.window_height">window_height (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.window_width">window_width (python_modules.python_utils.multi_select.MultiSelect attribute)</a>

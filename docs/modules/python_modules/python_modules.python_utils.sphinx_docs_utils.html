@@ -80,7 +80,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -209,7 +209,7 @@ inventory is enough.</p>
 
 <dl class="function">
 <dt id="python_modules.python_utils.sphinx_docs_utils.generate_docs">
-<code class="descclassname">python_modules.python_utils.sphinx_docs_utils.</code><code class="descname">generate_docs</code><span class="sig-paren">(</span><em>root_folder=''</em>, <em>docs_src_path_rel_to_root=''</em>, <em>docs_dest_path_rel_to_root='docs'</em>, <em>apidoc_paths_rel_to_root=[]</em>, <em>doctree_temp_location_rel_to_sys_temp=''</em>, <em>ignored_modules=[]</em>, <em>generate_api_docs=False</em>, <em>update_inventories=False</em>, <em>force_clean_build=False</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/sphinx_docs_utils.html#generate_docs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.sphinx_docs_utils.generate_docs" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">python_modules.python_utils.sphinx_docs_utils.</code><code class="descname">generate_docs</code><span class="sig-paren">(</span><em>root_folder=''</em>, <em>docs_src_path_rel_to_root=''</em>, <em>docs_dest_path_rel_to_root='docs'</em>, <em>apidoc_paths_rel_to_root=[]</em>, <em>doctree_temp_location_rel_to_sys_temp=''</em>, <em>ignored_modules=[]</em>, <em>generate_api_docs=False</em>, <em>update_inventories=False</em>, <em>force_clean_build=False</em>, <em>build_coverage=True</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/sphinx_docs_utils.html#generate_docs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.sphinx_docs_utils.generate_docs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build this application documentation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -229,6 +229,7 @@ will produce hundred of annoying Sphinx warnings.</p></li>
 <li><p><strong>update_inventories</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to force the update of the inventory files. Inventory files will be updated
 anyway f they don’t exist.</p></li>
 <li><p><strong>force_clean_build</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Remove destination and doctrees directories before building the documentation.</p></li>
+<li><p><strong>build_coverage</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, build Sphinx coverage documents.</p></li>
 <li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
 </ul>
 </dd>

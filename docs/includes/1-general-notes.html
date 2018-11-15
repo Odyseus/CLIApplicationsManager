@@ -91,11 +91,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#system-executable-generation">System executable generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installing-dependencies">Installing dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#making-applications-standalone">Making applications standalone</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -192,11 +191,10 @@
 <li><p><a class="reference internal" href="#docs-generation-reference"><span class="std std-ref">Documentation generation</span></a></p></li>
 <li><p><a class="reference internal" href="#sys-exec-generation-reference"><span class="std std-ref">System executable generation</span></a></p></li>
 <li><p><a class="reference internal" href="#installing-dependencies-reference"><span class="std std-ref">Installing dependencies</span></a></p></li>
-<li><p><a class="reference internal" href="#making-apps-standalone-reference"><span class="std std-ref">Making applications standalone</span></a></p></li>
 </ul>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p>All commands described in this page should be executed from the root folder of the main application (at the same level as the __app__ folder).</p>
+<p>All commands described in this page should be executed from the root folder of the main application (at the same level as the <strong>AppData</strong> folder).</p>
 </div>
 <div class="section" id="docopt-module-usage-notes">
 <span id="docopt-usage-notes-reference"></span><h2>docopt module usage notes<a class="headerlink" href="#docopt-module-usage-notes" title="Permalink to this headline">¶</a></h2>
@@ -284,7 +282,7 @@
 </div>
 <div class="section" id="installing-dependencies">
 <span id="installing-dependencies-reference"></span><h2>Installing dependencies<a class="headerlink" href="#installing-dependencies" title="Permalink to this headline">¶</a></h2>
-<p>All applications use one or more third party Python modules. Some of these third party modules are directly included with the main python application (__app__/common_modules folder), but some others need to be installed on the system.</p>
+<p>All applications use one or more third party Python modules. Some of these third party modules are directly included with the main python application (<strong>AppData/python_modules</strong> folder), but some others need to be installed on the system.</p>
 <ul class="simple">
 <li><p>Command: <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">install_deps</span></code></p></li>
 </ul>
@@ -292,14 +290,6 @@
 <p class="admonition-title">Note</p>
 <p>The third party modules that are directly included in the main application are modules that doesn’t have dependencies (they only use modules from the Python standard library). The third party modules that need to be installed in the system are modules with one or more dependencies.</p>
 </div>
-</div>
-<div class="section" id="making-applications-standalone">
-<span id="making-apps-standalone-reference"></span><h2>Making applications standalone<a class="headerlink" href="#making-applications-standalone" title="Permalink to this headline">¶</a></h2>
-<p>All applications depend on files and/or Python modules that, for convenience (basically, to avoid repeating hundreds of times the same code), are shared between them (__app__/common_modules folder and some template files). But each application can be made “standalone”. This basically means that the files that are shared will be copied directly into the application’s own folder so that it doesn’t depend anymore on the main application (__app__). Dependency modules still need to be installed on a system to make the application fully functional.</p>
-<ul class="simple">
-<li><p>Command (For all applications): <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">make_standalone</span> <span class="pre">--all</span></code></p></li>
-<li><p>Command (For an specific application): <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">make_standalone</span> <span class="pre">--app=&lt;name&gt;</span></code></p></li>
-</ul>
 </div>
 </div>
 

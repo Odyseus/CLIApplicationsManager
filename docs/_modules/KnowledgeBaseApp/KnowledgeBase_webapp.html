@@ -78,7 +78,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -159,7 +159,7 @@
   <h1>Source code for KnowledgeBaseApp.KnowledgeBase_webapp</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;Summary</span>
+<span class="sd">&quot;&quot;&quot;Web application.</span>
 
 <span class="sd">Attributes</span>
 <span class="sd">----------</span>
@@ -171,7 +171,7 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">call</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">run</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">python_utils</span> <span class="k">import</span> <span class="n">bottle</span>
@@ -184,7 +184,7 @@
 <span class="n">bottle_app</span> <span class="o">=</span> <span class="n">bottle</span><span class="o">.</span><span class="n">Bottle</span><span class="p">()</span>
 
 
-<div class="viewcode-block" id="KnowledgeBaseWebapp"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp">[docs]</a><span class="k">class</span> <span class="nc">KnowledgeBaseWebapp</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="KnowledgeBaseWebapp"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp">[docs]</a><span class="k">class</span> <span class="nc">KnowledgeBaseWebapp</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Knowledge Base web server.</span>
 
 <span class="sd">    Attributes</span>
@@ -205,7 +205,6 @@
 <span class="sd">        port : str</span>
 <span class="sd">            The port number used by the web server.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">host</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">port</span>
 
@@ -255,7 +254,7 @@
         <span class="n">action</span> <span class="o">=</span> <span class="n">bottle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span>
         <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="n">bottle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;href&quot;</span><span class="p">]))</span>
         <span class="n">file_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
-        <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;file&quot;</span><span class="p">:</span>
             <span class="c1"># FIXME:</span>
@@ -265,9 +264,14 @@
             <span class="c1"># but what actually fixed it was the restart of the server. It seems that the problem</span>
             <span class="c1"># is triggered when the server is started at system start up.</span>
             <span class="c1"># call(&#39;xdg-open &quot;%s&quot;&#39; % file_name, cwd=file_folder, shell=True)</span>
-            <span class="n">call</span><span class="p">([</span><span class="s2">&quot;xdg-open&quot;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">],</span> <span class="n">cwd</span><span class="o">=</span><span class="n">file_folder</span><span class="p">)</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">run</span><span class="p">([</span><span class="s2">&quot;xdg-open&quot;</span><span class="p">,</span> <span class="n">file_path</span><span class="p">],</span> <span class="n">cwd</span><span class="o">=</span><span class="n">file_folder</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;folder&quot;</span><span class="p">:</span>
-            <span class="n">call</span><span class="p">([</span><span class="s2">&quot;xdg-open&quot;</span><span class="p">,</span> <span class="n">file_folder</span><span class="p">],</span> <span class="n">cwd</span><span class="o">=</span><span class="n">file_folder</span><span class="p">)</span></div></div>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">run</span><span class="p">([</span><span class="s2">&quot;xdg-open&quot;</span><span class="p">,</span> <span class="n">file_folder</span><span class="p">],</span> <span class="n">cwd</span><span class="o">=</span><span class="n">file_folder</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">p</span> <span class="ow">and</span> <span class="n">p</span><span class="o">.</span><span class="n">returncode</span><span class="p">:</span>
+            <span class="c1"># Implement a fallback.</span>
+            <span class="c1"># Delay it as long as possible before swallowing GLib or Gio.</span>
+            <span class="k">pass</span></div></div>
 
 
 <span class="c1"># FIXME: Convert this script into a module.</span>

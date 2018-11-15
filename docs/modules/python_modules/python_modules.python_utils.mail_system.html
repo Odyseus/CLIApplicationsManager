@@ -80,7 +80,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -181,82 +181,43 @@
 <p>Send email to an email list.</p>
 <dl class="class">
 <dt id="python_modules.python_utils.mail_system.MailSystem">
-<em class="property">class </em><code class="descclassname">python_modules.python_utils.mail_system.</code><code class="descname">MailSystem</code><span class="sig-paren">(</span><em>logger</em>, <em>mail_settings</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/mail_system.html#MailSystem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">python_modules.python_utils.mail_system.</code><code class="descname">MailSystem</code><span class="sig-paren">(</span><em>mail_settings={}</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/mail_system.html#MailSystem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Email system class.</p>
-<dl class="attribute">
-<dt id="python_modules.python_utils.mail_system.MailSystem.allowed">
-<code class="descname">allowed</code><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem.allowed" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>bool</em> – If set to False, it will not allow to send the email/s.</p>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="python_modules.python_utils.mail_system.MailSystem.logger">
 <code class="descname">logger</code><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem.logger" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>object</em> – See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="python_modules.python_utils.mail_system.MailSystem.mailing_list">
-<code class="descname">mailing_list</code><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem.mailing_list" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list</em> – A list of email addresses to which to send the backup report/s.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="python_modules.python_utils.mail_system.MailSystem.mandatory_fields">
-<code class="descname">mandatory_fields</code><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem.mandatory_fields" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list</em> – A fixed list of mandatory fields. If any of them is missing, email/s will not be sent.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="python_modules.python_utils.mail_system.MailSystem.sender_address">
-<code class="descname">sender_address</code><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem.sender_address" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – The email address of the sender.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="python_modules.python_utils.mail_system.MailSystem.sender_secret">
-<code class="descname">sender_secret</code><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem.sender_secret" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>tuple</em> – The “secret” tuple to retrieve the sender’s password from the system keyring.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="python_modules.python_utils.mail_system.MailSystem.sender_username">
-<code class="descname">sender_username</code><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem.sender_username" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – The sender user name.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="python_modules.python_utils.mail_system.MailSystem.smtp_port">
-<code class="descname">smtp_port</code><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem.smtp_port" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>int</em> – The port number of the SMTP server.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="python_modules.python_utils.mail_system.MailSystem.smtp_server">
-<code class="descname">smtp_server</code><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem.smtp_server" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – The SMTP server address.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="python_modules.python_utils.mail_system.MailSystem.use_tls">
-<code class="descname">use_tls</code><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem.use_tls" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>bool</em> – Sets the use of TLS by the SMTP server.</p>
-</dd></dl>
-
 <p>Initialize.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
 <li><p><strong>mail_settings</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – Where all the data to send the email/s is stored.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="attribute">
-<dt>
-<code class="descname">mandatory_fields</code><em class="property"> = ['smtp_server', 'smtp_port', 'sender_address', 'sender_username', 'sender_secret', 'use_tls', 'mailing_list']</em></dt>
-<dd></dd></dl>
+<dl class="method">
+<dt id="python_modules.python_utils.mail_system.MailSystem._validate_config">
+<code class="descname">_validate_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/mail_system.html#MailSystem._validate_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem._validate_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate mail settings.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="python_modules.python_utils.mail_system.MailSystem._get_password">
+<code class="descname">_get_password</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/mail_system.html#MailSystem._get_password"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem._get_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get password.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The serder’s e-mail password.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="python_modules.python_utils.mail_system.MailSystem.send">

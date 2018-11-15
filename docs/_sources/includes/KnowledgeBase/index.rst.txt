@@ -23,14 +23,15 @@ CLI Synopsis
 Requirements
 ============
 
-No mayor requirements are needed to run this application other than Python 3 (Python 3.5+ to be precise).
+.. attention::
+
+    - Python 3.5+.
+    - ``python-slugify`` module.
 
 
 .. include:: ./usage.rst
 
-.. only:: html
-
-    .. include:: ./templates.rst
+.. include:: ./templates.rst
 
 .. only:: html
 

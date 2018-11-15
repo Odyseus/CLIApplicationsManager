@@ -78,7 +78,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -177,7 +177,6 @@
 <span class="sd">    The main folder containing the application. All commands must be executed from this location</span>
 <span class="sd">    without exceptions.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appdescription__</span>
@@ -186,6 +185,7 @@
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">file_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">misc_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">prompts</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">shell_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">string_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils.ansi_colors</span> <span class="k">import</span> <span class="n">Ansi</span>
 
@@ -194,10 +194,11 @@
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="o">*</span><span class="p">([</span><span class="s2">&quot;..&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))))))</span>
 
 <span class="n">app_man_user_data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">)</span>
-
 <span class="n">app_man_user_data_backlist</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;0_manager&quot;</span>
 <span class="p">]</span>
+<span class="n">docs_sources_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;docs_sources&quot;</span><span class="p">)</span>
+<span class="n">man_pages_data_json_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">docs_sources_path</span><span class="p">,</span> <span class="s2">&quot;man_pages_data.json&quot;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="InvalidApplicationName"><a class="viewcode-back" href="../../modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.InvalidApplicationName">[docs]</a><span class="k">class</span> <span class="nc">InvalidApplicationName</span><span class="p">(</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ExceptionWhitoutTraceBack</span><span class="p">):</span>
@@ -268,9 +269,9 @@
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    app_slugs : list, optional</span>
-<span class="sd">        Description</span>
-<span class="sd">    logger : None, optional</span>
-<span class="sd">        Description</span>
+<span class="sd">        The applications slugs from which to get data.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">selected_apps</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">all_apps</span> <span class="o">=</span> <span class="n">get_all_apps</span><span class="p">()</span>
@@ -529,7 +530,6 @@
 <span class="sd">        logger : object</span>
 <span class="sd">            See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">default_name</span> <span class="o">=</span> <span class="s2">&quot;My Python Application&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="p">{</span>
@@ -837,8 +837,15 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
+<span class="sd">    app_slugs : list, optional</span>
+<span class="sd">        The list of application to gererate manaul pages.</span>
 <span class="sd">    logger : object</span>
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    exceptions.KeyboardInterruption</span>
+<span class="sd">        Halt execution</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">json</span>
 
@@ -847,9 +854,6 @@
     <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">sphinx_docs_utils</span>
 
     <span class="n">eradicate_man_pages_data_json</span><span class="p">()</span>
-
-    <span class="n">docs_sources_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;docs_sources&quot;</span><span class="p">)</span>
-    <span class="n">man_pages_data_json_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">docs_sources_path</span><span class="p">,</span> <span class="s2">&quot;man_pages_data.json&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">app_slugs</span><span class="p">:</span>
         <span class="n">man_pages_data</span> <span class="o">=</span> <span class="p">[]</span>
@@ -862,7 +866,6 @@
         <span class="p">}]</span>
 
     <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">get_selected_apps</span><span class="p">(</span><span class="n">app_slugs</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span> <span class="k">if</span> <span class="n">app_slugs</span> <span class="k">else</span> <span class="n">get_all_apps</span><span class="p">():</span>
-        <span class="c1"># for app in get_all_apps():</span>
         <span class="k">if</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_file</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                 <span class="n">docs_sources_path</span><span class="p">,</span> <span class="s2">&quot;includes&quot;</span><span class="p">,</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">],</span> <span class="s2">&quot;index.rst&quot;</span><span class="p">)):</span>
             <span class="n">app_init_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app_man_user_data_path</span><span class="p">,</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">],</span>
@@ -878,6 +881,9 @@
 
     <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">man_pages_data</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating manual page for </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;app_name&quot;</span><span class="p">])</span>
+
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">man_pages_data_json_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span>
                       <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">man_pages_data_json_file</span><span class="p">:</span>
                 <span class="n">man_pages_data_json_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
@@ -899,8 +905,10 @@
 
 
 <div class="viewcode-block" id="eradicate_man_pages_data_json"><a class="viewcode-back" href="../../modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.eradicate_man_pages_data_json">[docs]</a><span class="k">def</span> <span class="nf">eradicate_man_pages_data_json</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Delete man_pages_data.json file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;docs_sources&quot;</span><span class="p">,</span> <span class="s2">&quot;man_pages_data.json&quot;</span><span class="p">))</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">man_pages_data_json_path</span><span class="p">)</span>
     <span class="k">except</span> <span class="p">(</span><span class="ne">FileNotFoundError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">):</span>
         <span class="k">pass</span>
     <span class="k">finally</span><span class="p">:</span>
@@ -908,6 +916,8 @@
 
 
 <div class="viewcode-block" id="spacefm_find_files"><a class="viewcode-back" href="../../modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.spacefm_find_files">[docs]</a><span class="k">def</span> <span class="nf">spacefm_find_files</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Launch SpaceFM find files.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cmd_utils</span>
 
     <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;spacefm&quot;</span><span class="p">,</span> <span class="s2">&quot;--find-files&quot;</span><span class="p">]</span>

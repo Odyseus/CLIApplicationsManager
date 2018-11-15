@@ -78,7 +78,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -161,164 +161,154 @@
   <div class="section" id="file-templates">
 <h1>File templates<a class="headerlink" href="#file-templates" title="Permalink to this headline">¶</a></h1>
 <p>These templates are files used to perform several tasks within the Knowledge Base application.</p>
-<div class="section" id="argos-helper-script-py-script">
-<h2><strong>argos_helper_script.py</strong> script<a class="headerlink" href="#argos-helper-script-py-script" title="Permalink to this headline">¶</a></h2>
-<p>Script to be used with Argos for Cinnamon extension.</p>
+<div class="section" id="archives-py-template">
+<h2><strong>archives.py</strong> template<a class="headerlink" href="#archives-py-template" title="Permalink to this headline">¶</a></h2>
+<p>In this file is stored all the data to handle on-line archives. Its location should always be <strong>/UserData/KnowledgeBase/UserData/data_sources/archives.py</strong>.</p>
+<div class="admonition-info info admonition">
+<p class="admonition-title">Highlights</p>
+<ul class="simple">
+<li><p>Compressed/Tared archives are downloaded into a temporary location (<strong>UserData/data_storage/downloaded_archives</strong>) and then their content extracted into their final location (<strong>UserData/www/html_pages_from_archives/&lt;kb_title&gt;</strong>).</p></li>
+<li><p>Non-compressed/Non-tared files are directly downloaded into their final destination.</p></li>
+</ul>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="c1"># The root_folder is two (2) levels up from were the argos script is located.</span>
-<span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="o">*</span><span class="p">([</span><span class="s2">&quot;..&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))))))</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;---</span>
-<span class="s2">&lt;b&gt;Shortcuts&lt;/b&gt;</span>
-<span class="s2">Launch DevDocs App | iconName=devhelp bash=&quot;(knowledge-base-app launch run_devdocs_app)&quot;</span>
-<span class="s2">Launch Zeal App | iconName=zeal bash=&quot;(knowledge-base-app launch run_zeal_app)&quot;</span>
-<span class="s2">Open Webpage | iconName=html bash=&quot;(knowledge-base-app run open_main_webpage)&quot;</span>
-<span class="s2">Start Server &amp;amp; Open Webpage | iconName=html bash=&quot;(knowledge-base-app run http_server_start open_main_webpage)&quot; alternate=true</span>
-<span class="s2">HTML to Markdown - Clipboard | iconName=html bash=&quot;(knowledge-base-app run html_to_markdown_clip)&quot;</span>
-<span class="s2">HTML to Markdown - HTML files | iconName=html bash=&quot;(knowledge-base-app run html_to_markdown_files)&quot; alternate=true</span>
-<span class="s2">---</span>
-<span class="s2">&lt;b&gt;Knowledge Base HTTP Server&lt;/b&gt;</span>
-<span class="s2">--Start HTTP Server | iconName=media-playback-start bash=&quot;(knowledge-base-app server start)&quot;</span>
-<span class="s2">--Stop HTTP Server | iconName=process-stop bash=&quot;(knowledge-base-app server stop)&quot;</span>
-<span class="s2">--Restart HTTP Server | iconName=stock-refresh bash=&quot;(knowledge-base-app server restart)&quot;</span>
-<span class="s2">---</span>
-<span class="s2">&lt;b&gt;Direct Access to Files&lt;/b&gt;</span>
-<span class="s2">--Open html_pages.json file | bash=&quot;xdg-open &#39;{root_folder}&#39;/UserData/www/html_pages/html_pages.json&quot;</span>
-<span class="s2">--Open categories_data.json file | bash=&quot;xdg-open &#39;{root_folder}&#39;/UserData/www/assets/data/categories_data.json&quot;</span>
-<span class="s2">--Open from_clipboard.html file | bash=&quot;xdg-open &#39;{root_folder}&#39;/tmp/html_to_markdown/from_clipboard.html&quot;</span>
-<span class="s2">--Open from_clipboard.md file | bash=&quot;xdg-open &#39;{root_folder}&#39;/tmp/html_to_markdown/from_clipboard.md&quot;</span>
-<span class="s2">--Open archives.py data file | bash=&quot;xdg-open &#39;{root_folder}&#39;/UserData/data_sources/archives.py&quot;</span>
-<span class="s2">--Open bitbucket.py data file | bash=&quot;xdg-open &#39;{root_folder}&#39;/UserData/data_sources/bitbucket.py&quot;</span>
-<span class="s2">--Open github.py data file | bash=&quot;xdg-open &#39;{root_folder}&#39;/UserData/data_sources/github.py&quot;</span>
-<span class="s2">---</span>
-<span class="s2">&lt;b&gt;DataTables JSON creation&lt;/b&gt;</span>
-<span class="s2">--Generate GitHub repositories JSON files (Terminal) | bash=&quot;(knowledge-base-app run github_repos_json_files_creation)&quot; terminal=true</span>
-<span class="s2">--Generate BitBucket repositories JSON files (Terminal) | bash=&quot;(knowledge-base-app run bitbucket_repos_json_files_creation)&quot; terminal=true</span>
-<span class="s2">--Generate main JSON file (Terminal) | bash=&quot;(knowledge-base-app run main_json_file_creation)&quot; terminal=true</span>
-<span class="s2">--Generate all JSON files (Terminal) | bash=&quot;(knowledge-base-app run github_repos_json_files_creation bitbucket_repos_json_files_creation main_json_file_creation)&quot; terminal=true</span>
-<span class="s2">--Generate categories.html file | bash=&quot;(knowledge-base-app run categories_html_generation)&quot; terminal=true</span>
-<span class="s2">---</span>
-<span class="s2">&lt;b&gt;Repositories handling&lt;/b&gt;</span>
-<span class="s2">--&lt;b&gt;GitHub repositories handling&lt;/b&gt;</span>
-<span class="s2">--Update repositories | bash=&quot;(knowledge-base-app run github_repos_update)&quot; terminal=true</span>
-<span class="s2">--Update repositories &amp;amp; generate all JSON files | bash=&quot;(knowledge-base-app run github_repos_update github_repos_json_files_creation main_json_file_creation)&quot; terminal=true</span>
-<span class="s2">--Generate Sphinx docs | bash=&quot;(knowledge-base-app run github_sphinx_docs_build)&quot; terminal=true</span>
-<span class="s2">-----</span>
-<span class="s2">--&lt;b&gt;BitBucket repositories handling&lt;/b&gt;</span>
-<span class="s2">--Update repositories | bash=&quot;(knowledge-base-app run bitbucket_repos_update)&quot; terminal=true</span>
-<span class="s2">--Update repositories &amp;amp; generate all JSON files | bash=&quot;(knowledge-base-app run bitbucket_repos_update bitbucket_repos_json_files_creation main_json_file_creation)&quot; terminal=true</span>
-<span class="s2">--Generate Sphinx docs | bash=&quot;(knowledge-base-app run bitbucket_sphinx_docs_build)&quot; terminal=true</span>
-<span class="s2">-----</span>
-<span class="s2">--&lt;b&gt;All repositories handling&lt;/b&gt;</span>
-<span class="s2">----Update all repositories | bash=&quot;(knowledge-base-app run github_repos_update bitbucket_repos_update)&quot; terminal=true</span>
-<span class="s2">----Update all repositories &amp;amp; generate all JSON files | bash=&quot;(knowledge-base-app run github_repos_update bitbucket_repos_update github_repos_json_files_creation bitbucket_repos_json_files_creation main_json_file_creation)&quot; terminal=true</span>
-<span class="s2">&lt;b&gt;Various&lt;/b&gt;</span>
-<span class="s2">--Create system executable | bash=&quot;(knowledge-base-app generate system_executable)&quot; terminal=true</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">root_folder</span><span class="o">=</span><span class="n">root_folder</span><span class="p">))</span>
+<span class="sd">&quot;&quot;&quot;Archives data practical example.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;kb_title&quot;</span><span class="p">:</span> <span class="s2">&quot;PyGObject API Reference (By Lazka)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kb_category&quot;</span><span class="p">:</span> <span class="s2">&quot;Software|Documentation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;arch_url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://github.com/lazka/pgi-docs/archive/master.zip&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kb_rel_path&quot;</span><span class="p">:</span> <span class="s2">&quot;pgi-docs-master&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;unzip_prog&quot;</span><span class="p">:</span> <span class="s2">&quot;unzip&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;file_append&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;pgi-docs-master/_static/css/theme.css&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    /* CSS code that will be appended to the</span>
+<span class="s2">       pgi-docs-master/_static/css/theme.css file*/</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;kb_title&quot;</span><span class="p">:</span> <span class="s2">&quot;Bash Reference Manual&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kb_category&quot;</span><span class="p">:</span> <span class="s2">&quot;Software|Documentation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;arch_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.gnu.org/software/bash/manual/bash.html&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;frequency&quot;</span><span class="p">:</span> <span class="s2">&quot;s&quot;</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;kb_title&quot;</span><span class="p">:</span> <span class="s2">&quot;ZSH Documentation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kb_category&quot;</span><span class="p">:</span> <span class="s2">&quot;Software|Documentation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;arch_url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://zsh.sourceforge.net/Doc/zsh_html.tar.gz&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kb_rel_path&quot;</span><span class="p">:</span> <span class="s2">&quot;zsh_html&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;unzip_prog&quot;</span><span class="p">:</span> <span class="s2">&quot;tar&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;untar_arg&quot;</span><span class="p">:</span> <span class="s2">&quot;--gzip&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;frequency&quot;</span><span class="p">:</span> <span class="s2">&quot;s&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="app-launcher-sh-script">
-<h2><strong>app_launcher.sh</strong> script<a class="headerlink" href="#app-launcher-sh-script" title="Permalink to this headline">¶</a></h2>
-<p>This script is used to launch applications <em>in bulk</em> through the <code class="docutils literal notranslate"><span class="pre">kbapp.py</span></code> <abbr title="Command Line Interface">CLI</abbr>. It’s mostly useful if used to launch <em>self contained</em> applications that are stored inside <strong>Data/apps</strong> and if at the same time the Argos for Cinnamon extension is used.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-
-<span class="nv">workdir</span><span class="o">=</span><span class="s2">&quot;`pwd`&quot;</span>
-
-run_zeal_app<span class="o">()</span> <span class="o">{</span>
-    <span class="o">(</span>
-        zeal <span class="p">&amp;</span>
-    <span class="o">)</span>
-<span class="o">}</span>
-
-run_devdocs_app<span class="o">()</span> <span class="o">{</span>
-    <span class="o">(</span>
-        <span class="nb">cd</span> <span class="nv">$workdir</span>/Data/apps/DevDocs
-        ./DevDocs.AppImage <span class="p">&amp;</span>
-    <span class="o">)</span>
-<span class="o">}</span>
-
-
-<span class="k">case</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> in
-    run_zeal_app<span class="o">)</span>
-        run_zeal_app
-    <span class="p">;;</span>
-    run_devdocs_app<span class="o">)</span>
-        run_devdocs_app
-    <span class="p">;;</span>
-    *<span class="o">)</span>
-        <span class="nb">echo</span> <span class="s2">&quot;Usage: /app_launcher.sh (run_zeal_app | run_devdocs_app)&quot;</span>
-        <span class="nb">exit</span> <span class="m">1</span>
-<span class="k">esac</span>
-
-<span class="nb">exit</span> <span class="m">0</span>
-</pre></div>
+<div class="section" id="data-keys">
+<h3>Data keys<a class="headerlink" href="#data-keys" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_title</span></code> (Madatory): The title that will be displayed in the web page index.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_category</span></code> (Madatory): A category name to organize the web page index.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arch_url</span></code> (Madatory): The url from which to download an archive.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_rel_path</span></code> (<strong>Optional</strong>): The path (relative to <strong>UserData/www/html_pages_from_archives/&lt;kb_title&gt;</strong>) to the a folder containing an HTML file (<code class="docutils literal notranslate"><span class="pre">kb_filename</span></code>) found inside the extracted content of an archive. <strong>Default</strong>: empty.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_filename</span></code> (<strong>Optional</strong>): The file name found inside the extracted content of an archive relative to <code class="docutils literal notranslate"><span class="pre">kb_rel_path</span></code>. <strong>Default</strong>: <strong>index.html</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_file_append</span></code> (<strong>Optional</strong>): A list of tuples. Each tuple must contain a path to a file (relative to <strong>UserData/www/html_pages_from_archives/&lt;title key&gt;</strong>) at index 0 (zero) and a string at index 1 (one). The string will be appended at the end of the file defined at index zero.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_frequency</span></code> (<strong>Optional</strong>): The frequency at which an archive should be downloaded. Default: <strong>m</strong>. Possible values:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">w</span></code>: Weekly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: Monthly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code>: Semestrial.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unzip_prog</span></code> (<strong>Optional</strong>): The command to use to decompress archives. Possible values are <strong>7z</strong>, <strong>unzip</strong> and <strong>tar</strong>. The tar command can accept a decompression argument (See <code class="docutils literal notranslate"><span class="pre">untar_arg</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">untar_arg</span></code> (<strong>Optional</strong>): The decompress argument used by the <code class="docutils literal notranslate"><span class="pre">tar</span></code> program. Possible values are <strong>–xz</strong>, <strong>-J</strong>, <strong>–gzip</strong>, <strong>-z</strong>, <strong>–bzip2</strong> or <strong>-j</strong>. <strong>Default</strong>: empty (no decompression argument is passed to <code class="docutils literal notranslate"><span class="pre">tar</span></code>).</p></li>
+</ul>
 </div>
 </div>
-<div class="section" id="bitbucket-py-and-github-py-scripts">
-<h2><strong>bitbucket.py</strong> and <strong>github.py</strong> scripts<a class="headerlink" href="#bitbucket-py-and-github-py-scripts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="repositories-py-template">
+<h2><strong>repositories.py</strong> template<a class="headerlink" href="#repositories-py-template" title="Permalink to this headline">¶</a></h2>
+<p>In this file is stored all the data to handle on-line repositories. Its location should always be <strong>/UserData/KnowledgeBase/UserData/data_sources/repositories.py</strong>.</p>
+<div class="admonition-info info admonition">
+<p class="admonition-title">Highlights</p>
+<ul class="simple">
+<li><p><strong>sphinx&gt;=1.6.5</strong>: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">sphinx</span></code></p></li>
+</ul>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c1"># web_service : (str) (Mandatory)</span>
-    <span class="c1"># Possible values: &quot;github&quot; or &quot;bitbucket&quot;</span>
-    <span class="s2">&quot;web_service&quot;</span><span class="p">:</span> <span class="s2">&quot;{repository}&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;repositories&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;sphinx_generated_handler&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="c1"># repo_owner : (str) (mandatory)</span>
-                <span class="c1"># The owner of the GitHub repository.</span>
-                <span class="s2">&quot;repo_owner&quot;</span><span class="p">:</span> <span class="s2">&quot;sphinx-doc&quot;</span><span class="p">,</span>
-
-                <span class="c1"># repo_name : (str) (mandatory)</span>
-                <span class="c1"># The name of the GitHub repository.</span>
-                <span class="s2">&quot;repo_name&quot;</span><span class="p">:</span> <span class="s2">&quot;sphinx&quot;</span><span class="p">,</span>
-
-                <span class="c1"># path_handler : (int) (optional) (default: 0)</span>
-                <span class="c1"># An integer that will be used to determine the JavaScript</span>
-                <span class="c1"># function that will be used to handle the path to the</span>
-                <span class="c1"># Markdown/HHTML/PDF files.</span>
-                <span class="c1">#   0 = A function that is used to handle Markdown files.</span>
-                <span class="c1">#       They will be rendered inline inside the index page.</span>
-                <span class="c1">#   1 = A function that is used to handle HTML/PDF files.</span>
-                <span class="c1">#       They will be loaded into a new browser tab.</span>
-                <span class="s2">&quot;path_handler&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-
-                <span class="c1"># repo_img : (str) (optional) (default: md)</span>
-                <span class="c1"># The name of the image used by the entries on the table.</span>
-                <span class="s2">&quot;repo_img&quot;</span><span class="p">:</span> <span class="s2">&quot;html5&quot;</span><span class="p">,</span>
-
-                <span class="c1"># category : (str) (optional)</span>
-                <span class="c1"># Category name. The category must exist in the</span>
-                <span class="c1"># assets/data/categories_data.json file.</span>
-                <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;Documentation&quot;</span><span class="p">,</span>
-
-                <span class="c1"># title : (str) (optional)</span>
-                <span class="c1"># Title.</span>
-                <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Sphinx Documentation&quot;</span><span class="p">,</span>
-
-                <span class="c1"># filename : (str) (optional)</span>
-                <span class="c1"># &quot;single_file_handler&quot; and &quot;sphinx_generated_handler&quot; only.</span>
-                <span class="c1"># The file that will be used. If not specified, README.md will</span>
-                <span class="c1"># be used for single_file_handler repositories and index.html</span>
-                <span class="c1"># for sphinx_generated_handler.</span>
-                <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="s2">&quot;index.html&quot;</span><span class="p">,</span>
-
-                <span class="c1"># rel_path : (str) (optional)</span>
-                <span class="c1"># Path relative to the repository. In case that the</span>
-                <span class="c1"># needed/wanted file is inside a sub-folder.</span>
-                <span class="s2">&quot;rel_path&quot;</span><span class="p">:</span> <span class="s2">&quot;doc&quot;</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="s2">&quot;multi_file_handler&quot;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="s2">&quot;single_file_handler&quot;</span><span class="p">:</span> <span class="p">[]</span>
-    <span class="p">}}</span>
+<span class="sd">&quot;&quot;&quot;Repositories data practical example.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;repo_owner&quot;</span><span class="p">:</span> <span class="s2">&quot;hexchat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;repo_name&quot;</span><span class="p">:</span> <span class="s2">&quot;documentation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;repo_handler&quot;</span><span class="p">:</span> <span class="s2">&quot;sphinx_docs&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kb_category&quot;</span><span class="p">:</span> <span class="s2">&quot;Software|Documentation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kb_title&quot;</span><span class="p">:</span> <span class="s2">&quot;HexChat documentation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kb_rel_path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;repo_owner&quot;</span><span class="p">:</span> <span class="s2">&quot;sindresorhus&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;repo_name&quot;</span><span class="p">:</span> <span class="s2">&quot;awesome&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;repo_handler&quot;</span><span class="p">:</span> <span class="s2">&quot;single_file&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;repo_filename&quot;</span><span class="p">:</span> <span class="s2">&quot;readme.md&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kb_category&quot;</span><span class="p">:</span> <span class="s2">&quot;Bookmark&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kb_title&quot;</span><span class="p">:</span> <span class="s2">&quot;Awesome (Curated list of awesome lists)&quot;</span><span class="p">,</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;repo_owner&quot;</span><span class="p">:</span> <span class="s2">&quot;rstacruz&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;repo_name&quot;</span><span class="p">:</span> <span class="s2">&quot;cheatsheets&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;repo_handler&quot;</span><span class="p">:</span> <span class="s2">&quot;multi_files&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;repo_file_pattern&quot;</span><span class="p">:</span> <span class="s2">&quot;.md&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kb_category&quot;</span><span class="p">:</span> <span class="s2">&quot;Software|Quick Reference&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kb_title_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;Devhints cheatsheets - &quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kb_file_ignore&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;README.md&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
+<div class="section" id="id1">
+<h3>Data keys<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_owner</span></code> (<strong>Mandatory</strong>): Repository owner/organization.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_name</span></code> (<strong>Mandatory</strong>): Repository name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_service</span></code> (<strong>Optional</strong>): <strong>Default</strong>: <strong>github</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_handler</span></code> (<strong>Mandatory</strong>): Repository handler. Possible values:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx_docs</span></code>: Repositories that contain Sphinx documentation sources. These sources are then used to build the HTML documentation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">single_file</span></code>: Repositories from which one file is used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multi_files</span></code>: Repositories from which more than file is used.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_type</span></code> (<strong>Optional</strong>): Repository type (<strong>git</strong> or <strong>hg</strong>). <strong>Default</strong>: <strong>git</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_filename</span></code> (<strong>Optional</strong>): <strong>Default</strong>: <strong>index.html</strong> for <strong>repo_handler</strong> <code class="docutils literal notranslate"><span class="pre">sphinx_docs</span></code> and <strong>README.md</strong> for <strong>repo_handler</strong> <code class="docutils literal notranslate"><span class="pre">single_file</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_files_ignore</span></code> (<strong>Optional|List</strong>):</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_file_pattern</span></code> (<strong>Optional</strong>):</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_category</span></code> (<strong>Optional</strong>): <strong>Default</strong>: <strong>Uncategorized</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_title</span></code> (<strong>Optional</strong>):</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_title_prefix</span></code> (<strong>Optional</strong>):</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_rel_path</span></code> (<strong>Optional</strong>): Relative path to the desired file/folder/Sphinx docs sources.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx_docs</span></code>: The path should be relative to a downloaded repository and point to a Sphinx docs source folder (e.g. if the docs sources of a downloaded repository are at <strong>UserData/tmp/&lt;repo_service&gt;_repositories/&lt;repo_owner&gt;-&lt;repo_name&gt;/doc</strong>, then the <code class="docutils literal notranslate"><span class="pre">kb_rel_path</span></code> key value should be <strong>doc</strong>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">single_file</span></code>: Repositories that</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multi_files</span></code>:</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_file_append</span></code> (<strong>Optional|List</strong>):</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both previously mentioned files should contain one property called <strong>data</strong>. A list containing dictionaries.</p>
+</div>
+</div>
+</div>
+<div class="section" id="categories-json-template">
+<h2><strong>categories.json</strong> template<a class="headerlink" href="#categories-json-template" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

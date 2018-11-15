@@ -14,7 +14,7 @@ Table of Content
 
     includes/1-general-notes
     includes/CLIApplicationsManager/index
-    includes/BackupTool/index
+    includes/BackupUtils/index
     includes/ChrootHelper/index
     includes/FilesCleaner/index
     includes/HostsManager/index
@@ -54,7 +54,7 @@ Third-party module's documentations hosted by their authors
 
     coverage/c
     coverage/python
-    modules/BackupTool/modules
+    modules/BackupUtils/modules
     modules/ChrootHelper/modules
     modules/FilesCleaner/modules
     modules/HostsManager/modules

@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BackupUtilsApp.app_utils &mdash; Python CLI Applications Documentations  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>BackupUtilsApp.app_utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for BackupUtilsApp.app_utils</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Module with utility functions and classes.</span>
+
+<span class="sd">Attributes</span>
+<span class="sd">----------</span>
+<span class="sd">REPORT_TEMPLATE : str</span>
+<span class="sd">    Finalized task report template.</span>
+<span class="sd">root_folder : str</span>
+<span class="sd">    The main folder containing the application. All commands must be executed</span>
+<span class="sd">    from this location without exceptions.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">ignore_patterns</span>
+
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cmd_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">file_utils</span>
+
+<span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
+
+<span class="n">_paths_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;tasks&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;tasks&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;settings&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">REPORT_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Backup task finished</span>
+
+<span class="s2">Task Name: </span><span class="si">{task_name}</span><span class="s2"></span>
+<span class="s2">Task Type: </span><span class="si">{task_type}</span><span class="s2"></span>
+<span class="s2">Number of Errors: </span><span class="si">{n_errors}</span><span class="s2"></span>
+<span class="s2">Number of Warnings: </span><span class="si">{n_warnings}</span><span class="s2"></span>
+<span class="s2">Started at: </span><span class="si">{started}</span><span class="s2"></span>
+<span class="s2">Finished at: </span><span class="si">{finished}</span><span class="s2"></span>
+<span class="s2">Elapsed Time: </span><span class="si">{elapsed}</span><span class="s2"></span>
+
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="InvalidCompressionLevel"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.InvalidCompressionLevel">[docs]</a><span class="k">class</span> <span class="nc">InvalidCompressionLevel</span><span class="p">(</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ExceptionWhitoutTraceBack</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;InvalidCompressionLevel</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selected_comp_level</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        selected_comp_level : str</span>
+<span class="sd">            Invalid compression level.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is an invalid compression level. Valid values are from -1 to -9.&quot;</span> <span class="o">%</span> \
+            <span class="nb">str</span><span class="p">(</span><span class="n">selected_comp_level</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="InvalidCompressionType"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.InvalidCompressionType">[docs]</a><span class="k">class</span> <span class="nc">InvalidCompressionType</span><span class="p">(</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ExceptionWhitoutTraceBack</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;InvalidCompressionType</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selected_comp_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        selected_comp_type : str</span>
+<span class="sd">            Invalid compression type.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is an invalid compression type. Valid values are &#39;xz&#39;, &#39;gzip&#39; or &#39;bzip2&#39;.&quot;</span> <span class="o">%</span> \
+            <span class="nb">str</span><span class="p">(</span><span class="n">selected_comp_type</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="InvalidTaskName"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.InvalidTaskName">[docs]</a><span class="k">class</span> <span class="nc">InvalidTaskName</span><span class="p">(</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ExceptionWhitoutTraceBack</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;InvalidTaskName</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        task_name : str, optional</span>
+<span class="sd">            Invalid task name.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> task name isn&#39;t valid.&quot;</span> <span class="o">%</span> <span class="n">task_name</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="play_sound"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.play_sound">[docs]</a><span class="k">def</span> <span class="nf">play_sound</span><span class="p">(</span><span class="n">soundfile</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Play a sound file using `aplay` command.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    soundfile : str</span>
+<span class="sd">        The path to a sound file.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">cmd_utils</span><span class="o">.</span><span class="n">popen</span><span class="p">([</span><span class="s2">&quot;play&quot;</span><span class="p">,</span> <span class="s2">&quot;-V0&quot;</span><span class="p">,</span> <span class="s2">&quot;--no-show-progress&quot;</span><span class="p">,</span> <span class="s2">&quot;--type=.wav&quot;</span><span class="p">,</span> <span class="n">soundfile</span><span class="p">],</span>
+                        <span class="n">cwd</span><span class="o">=</span><span class="n">root_folder</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cmd_utils</span><span class="o">.</span><span class="n">popen</span><span class="p">([</span><span class="s2">&quot;aplay&quot;</span><span class="p">,</span> <span class="s2">&quot;--quiet&quot;</span><span class="p">,</span> <span class="s2">&quot;--file-type=wav&quot;</span><span class="p">,</span> <span class="n">soundfile</span><span class="p">],</span>
+                            <span class="n">cwd</span><span class="o">=</span><span class="n">root_folder</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">logger</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="notify_send"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.notify_send">[docs]</a><span class="k">def</span> <span class="nf">notify_send</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">urgency</span><span class="o">=</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="s2">&quot;dialog-info&quot;</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Send a desktop notification using `notify-send` command.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    title : str</span>
+<span class="sd">        Notification title.</span>
+<span class="sd">    body : str</span>
+<span class="sd">        notification body.</span>
+<span class="sd">    urgency : str, optional</span>
+<span class="sd">        Notification priority.</span>
+<span class="sd">    icon : str, optional</span>
+<span class="sd">        Notification ison.</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">cmd_utils</span><span class="o">.</span><span class="n">popen</span><span class="p">([</span><span class="s2">&quot;notify-send&quot;</span><span class="p">,</span> <span class="s2">&quot;--urgency=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">urgency</span><span class="p">,</span> <span class="s2">&quot;--category=transfer&quot;</span><span class="p">,</span>
+                         <span class="s2">&quot;--icon=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">icon</span><span class="p">,</span> <span class="s2">&quot;--hint=int:resident:1&quot;</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">body</span><span class="p">],</span>
+                        <span class="n">cwd</span><span class="o">=</span><span class="n">root_folder</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">logger</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="print_config_files_list"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.print_config_files_list">[docs]</a><span class="k">def</span> <span class="nf">print_config_files_list</span><span class="p">(</span><span class="n">file_type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Print config files list.</span>
+
+<span class="sd">    Used to print to standard output the list of configuration files (either &quot;tasks&quot; or &quot;settings&quot;</span>
+<span class="sd">    configuration files). The output is used only by the Bash completions script.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    file_type : str</span>
+<span class="sd">        One of &quot;tasks&quot; or &quot;settings&quot;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># FUTURE:</span>
+    <span class="c1"># Use context manager with os.scandir().</span>
+    <span class="n">list_of_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">entry</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">scandir</span><span class="p">(</span><span class="n">_paths_map</span><span class="p">[</span><span class="n">file_type</span><span class="p">])</span> <span class="k">if</span>
+                     <span class="n">entry</span><span class="o">.</span><span class="n">is_file</span><span class="p">(</span><span class="n">follow_symlinks</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">list_of_files</span><span class="p">:</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s2">&quot;.py&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FilteredFilesList"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.FilteredFilesList">[docs]</a><span class="k">class</span> <span class="nc">FilteredFilesList</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Create a files list.</span>
+
+<span class="sd">    Create a comprehensive list of files and folders based on passed &quot;base list&quot; and filter the</span>
+<span class="sd">    list using shutil.ignore_patterns.</span>
+
+<span class="sd">    This list of files is used to be passed to `tar` as an argument for its `--files-from` option. I</span>
+<span class="sd">    deemed this infinitely more simple and less prone to errors than using `tar` inside a loop and</span>
+<span class="sd">    using `tar`&#39;s arguments to filter the files.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paths_list</span><span class="p">,</span> <span class="n">ignored_patterns</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        paths_list : list</span>
+<span class="sd">            The list of files/folders already validated by :any:`tasks.BaseTask._validate_task`</span>
+<span class="sd">        ignored_patterns : list</span>
+<span class="sd">            A list of file patters to not include into _full_list_of_files.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_paths_list</span> <span class="o">=</span> <span class="n">paths_list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ignored_patterns</span> <span class="o">=</span> <span class="n">ignored_patterns</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_full_list_of_files</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_populate_list</span><span class="p">()</span>
+
+<div class="viewcode-block" id="FilteredFilesList._populate_list"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.FilteredFilesList._populate_list">[docs]</a>    <span class="k">def</span> <span class="nf">_populate_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Populate _full_list_of_files.</span>
+
+<span class="sd">        If an item in &quot;_paths_list&quot; is the path to a file or a symlink, append it to</span>
+<span class="sd">        &quot;_full_list_of_files&quot;. If it&#39;s a folder, recursively process the folder.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paths_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_dir</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_process_directory</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_full_list_of_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilteredFilesList._process_directory"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.FilteredFilesList._process_directory">[docs]</a>    <span class="k">def</span> <span class="nf">_process_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process directory.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        directory : str</span>
+<span class="sd">            The directory to process.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ignored_patterns</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ignored_names</span> <span class="o">=</span> <span class="n">ignore_patterns</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_ignored_patterns</span><span class="p">)(</span><span class="n">directory</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ignored_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">ignored_names</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">srcname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_dir</span><span class="p">(</span><span class="n">srcname</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_process_directory</span><span class="p">(</span><span class="n">srcname</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_full_list_of_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">srcname</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">why</span><span class="p">:</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">srcname</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">why</span><span class="p">)))</span></div>
+
+<div class="viewcode-block" id="FilteredFilesList.get_full_list_of_files"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.FilteredFilesList.get_full_list_of_files">[docs]</a>    <span class="k">def</span> <span class="nf">get_full_list_of_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            The full list of files filtered.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_full_list_of_files</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

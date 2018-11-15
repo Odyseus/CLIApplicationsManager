@@ -8,11 +8,10 @@ General development notes
 - :ref:`docs-generation-reference`
 - :ref:`sys-exec-generation-reference`
 - :ref:`installing-dependencies-reference`
-- :ref:`making-apps-standalone-reference`
 
 .. attention::
 
-    All commands described in this page should be executed from the root folder of the main application (at the same level as the __app__ folder).
+    All commands described in this page should be executed from the root folder of the main application (at the same level as the **AppData** folder).
 
 
 .. _docopt-usage-notes-reference:
@@ -117,7 +116,7 @@ To avoid being forced to execute all applications from their root folders, a sys
 Installing dependencies
 =======================
 
-All applications use one or more third party Python modules. Some of these third party modules are directly included with the main python application (__app__/common_modules folder), but some others need to be installed on the system.
+All applications use one or more third party Python modules. Some of these third party modules are directly included with the main python application (**AppData/python_modules** folder), but some others need to be installed on the system.
 
 - Command: ``app.py install_deps``
 
@@ -125,12 +124,3 @@ All applications use one or more third party Python modules. Some of these third
 
     The third party modules that are directly included in the main application are modules that doesn't have dependencies (they only use modules from the Python standard library). The third party modules that need to be installed in the system are modules with one or more dependencies.
 
-.. _making-apps-standalone-reference:
-
-Making applications standalone
-==============================
-
-All applications depend on files and/or Python modules that, for convenience (basically, to avoid repeating hundreds of times the same code), are shared between them (__app__/common_modules folder and some template files). But each application can be made "standalone". This basically means that the files that are shared will be copied directly into the application's own folder so that it doesn't depend anymore on the main application (__app__). Dependency modules still need to be installed on a system to make the application fully functional.
-
-- Command (For all applications): ``app.py make_standalone --all``
-- Command (For an specific application): ``app.py make_standalone --app=<name>``

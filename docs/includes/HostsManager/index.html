@@ -80,7 +80,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Hosts Manager’s documentation</a><ul>
@@ -194,12 +194,14 @@
 <span class="text-bold">A CLI utility to manage hosts files on GNU/Linux.</span>
 
 <span class="text-bold">Usage:</span>
-    app.py (-h | --help | --manual | --version | -d | --flush-dns-cache)
+    app.py (-h | --help | --manual | --version)
+    app.py (-f | --flush-dns-cache) [-d | --dry-run]
     app.py run (update | build | install) [update] [build] [install]
                (-p &lt;name&gt; | --profile=&lt;name&gt;)
                [-o &lt;key=value&gt;... | --override=&lt;key=value&gt;...]
-               [-d | --flush-dns-cache]
-               [-f | --force-update]
+               [-f | --flush-dns-cache]
+               [-u | --force-update]
+               [-d | --dry-run]
     app.py server (start | stop | restart)
                   [--host=&lt;host&gt;]
                   [--port=&lt;port&gt;]
@@ -224,28 +226,24 @@
     One or more sets of &lt;key=value&gt; that will override the configuration
     options set in the conf.py file.
 
-<span class="text-bold">-d, --flush-dns-cache</span>
+<span class="text-bold">-f, --flush-dns-cache</span>
     Attempt to flush DNS cache for the new hosts file to take effect.
 
-<span class="text-bold">-f, --force-update</span>
+<span class="text-bold">-u, --force-update</span>
     Force the update of all sources, ignoring the frequency in which they
     should be updated.
+
+<span class="text-bold">-d, --dry-run</span>
+    Do not perform file system changes. Only display messages informing of the
+    actions that will be performed or commands that will be executed.
+    WARNING! Some file system changes will be performed (e.g. temporary files
+    creation).
 
 <span class="text-bold">--host=&lt;host&gt;</span>
     Host name. [Default: 0.0.0.0]
 
 <span class="text-bold">--port=&lt;port&gt;</span>
-    Port name. [Default: 80]
-
-<span class="text-bold">Sub-commands for the `server` command:</span>
-    start                Start server.
-    stop                 Stop server.
-    restart              Restart server.
-
-<span class="text-bold">Sub-commands for the `generate` command:</span>
-    new_profile          Generate a new profile.
-    system_executable    Create an executable for this application on the system
-                         PATH to be able to run it from anywhere.</pre>
+    Port name. [Default: 80]</pre>
 </div></div>
 </div>
 <div class="section" id="mentions">

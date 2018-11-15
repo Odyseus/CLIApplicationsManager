@@ -80,7 +80,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -180,7 +180,7 @@
 <p>A very simple logging system.</p>
 <dl class="class">
 <dt id="python_modules.python_utils.log_system.LogSystem">
-<em class="property">class </em><code class="descclassname">python_modules.python_utils.log_system.</code><code class="descname">LogSystem</code><span class="sig-paren">(</span><em>filename='backup.log'</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/log_system.html#LogSystem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.log_system.LogSystem" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">python_modules.python_utils.log_system.</code><code class="descname">LogSystem</code><span class="sig-paren">(</span><em>filename='log.log'</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/log_system.html#LogSystem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.log_system.LogSystem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>LogSystem class.</p>
 <dl class="attribute">
@@ -201,15 +201,40 @@
 </dd>
 </dl>
 <dl class="method">
+<dt id="python_modules.python_utils.log_system.LogSystem.get_log_file">
+<code class="descname">get_log_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/log_system.html#LogSystem.get_log_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.log_system.LogSystem.get_log_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get log file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The path to the log file.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="python_modules.python_utils.log_system.LogSystem.log_dry_run">
+<code class="descname">log_dry_run</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/log_system.html#LogSystem.log_dry_run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.log_system.LogSystem.log_dry_run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log message with “INFO” level prefixed with “[DRY_RUN]” and no date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; msg</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="python_modules.python_utils.log_system.LogSystem.debug">
 <code class="descname">debug</code><span class="sig-paren">(</span><em>msg</em>, <em>term=True</em>, <em>date=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/log_system.html#LogSystem.debug"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.log_system.LogSystem.debug" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log message with “DEBUG” level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="python_modules.python_utils.log_system.LogSystem.update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem.update_log</span></code></a> &gt; msg</p></li>
-<li><p><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="python_modules.python_utils.log_system.LogSystem.update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem.update_log</span></code></a> &gt; term</p></li>
-<li><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="python_modules.python_utils.log_system.LogSystem.update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem.update_log</span></code></a> &gt; date</p></li>
+<li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; msg</p></li>
+<li><p><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; term</p></li>
+<li><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; date</p></li>
 </ul>
 </dd>
 </dl>
@@ -222,9 +247,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="python_modules.python_utils.log_system.LogSystem.update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem.update_log</span></code></a> &gt; msg</p></li>
-<li><p><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="python_modules.python_utils.log_system.LogSystem.update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem.update_log</span></code></a> &gt; term</p></li>
-<li><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="python_modules.python_utils.log_system.LogSystem.update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem.update_log</span></code></a> &gt; date</p></li>
+<li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; msg</p></li>
+<li><p><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; term</p></li>
+<li><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; date</p></li>
 </ul>
 </dd>
 </dl>
@@ -237,9 +262,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="python_modules.python_utils.log_system.LogSystem.update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem.update_log</span></code></a> &gt; msg</p></li>
-<li><p><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="python_modules.python_utils.log_system.LogSystem.update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem.update_log</span></code></a> &gt; term</p></li>
-<li><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="python_modules.python_utils.log_system.LogSystem.update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem.update_log</span></code></a> &gt; date</p></li>
+<li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; msg</p></li>
+<li><p><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; term</p></li>
+<li><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; date</p></li>
 </ul>
 </dd>
 </dl>
@@ -252,9 +277,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="python_modules.python_utils.log_system.LogSystem.update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem.update_log</span></code></a> &gt; msg</p></li>
-<li><p><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="python_modules.python_utils.log_system.LogSystem.update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem.update_log</span></code></a> &gt; term</p></li>
-<li><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="python_modules.python_utils.log_system.LogSystem.update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem.update_log</span></code></a> &gt; date</p></li>
+<li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; msg</p></li>
+<li><p><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; term</p></li>
+<li><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; date</p></li>
 </ul>
 </dd>
 </dl>
@@ -267,37 +292,23 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="python_modules.python_utils.log_system.LogSystem.update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem.update_log</span></code></a> &gt; msg</p></li>
-<li><p><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="python_modules.python_utils.log_system.LogSystem.update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem.update_log</span></code></a> &gt; term</p></li>
-<li><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="python_modules.python_utils.log_system.LogSystem.update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem.update_log</span></code></a> &gt; date</p></li>
+<li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; msg</p></li>
+<li><p><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; term</p></li>
+<li><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – See <a class="reference internal" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="python_modules.python_utils.log_system.LogSystem._update_log"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">LogSystem._update_log</span></code></a> &gt; date</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
-<dt id="python_modules.python_utils.log_system.LogSystem.get_now">
-<code class="descname">get_now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/log_system.html#LogSystem.get_now"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.log_system.LogSystem.get_now" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get current time.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Date formatted with milliseconds instead of microseconds.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="python_modules.python_utils.log_system.LogSystem.update_log">
-<code class="descname">update_log</code><span class="sig-paren">(</span><em>msg</em>, <em>type='ERROR'</em>, <em>term=True</em>, <em>date=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/log_system.html#LogSystem.update_log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.log_system.LogSystem.update_log" title="Permalink to this definition">¶</a></dt>
+<dt id="python_modules.python_utils.log_system.LogSystem._update_log">
+<code class="descname">_update_log</code><span class="sig-paren">(</span><em>msg</em>, <em>log_level='ERROR'</em>, <em>term=True</em>, <em>date=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/log_system.html#LogSystem._update_log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.log_system.LogSystem._update_log" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do the actual logging.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The message to log.</p></li>
-<li><p><strong>type</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em>, </em><em>optional</em>) – The logging level (DEBUG, INFO, WARNING or ERROR).</p></li>
+<li><p><strong>log_level</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em>, </em><em>optional</em>) – The logging level (DEBUG, INFO, WARNING or ERROR).</p></li>
 <li><p><strong>term</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Display message in terminal. If set to False, and even with versbose set to True,
 the message will not be printed in terminal.</p></li>
 <li><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Log the date. If set to False, the current date will not be attached to the logged
@@ -308,9 +319,21 @@ message.</p></li>
 </dd></dl>
 
 <dl class="method">
-<dt id="python_modules.python_utils.log_system.LogSystem.obfuscate_user_home">
-<code class="descname">obfuscate_user_home</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/log_system.html#LogSystem.obfuscate_user_home"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.log_system.LogSystem.obfuscate_user_home" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="python_modules.python_utils.log_system.LogSystem._obfuscate_user_home">
+<code class="descname">_obfuscate_user_home</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/log_system.html#LogSystem._obfuscate_user_home"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.log_system.LogSystem._obfuscate_user_home" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obfuscate User’s home path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The string from which the path to the User’s home will be replaced by the “~” character.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The obfuscated string.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

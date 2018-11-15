@@ -78,7 +78,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupTool/index.html">Backup Tool’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
@@ -345,10 +345,10 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_filter_group_extend_apps</span><span class="p">()</span>
 
-<div class="viewcode-block" id="ApplicationsManager._print_shell_separator"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._print_shell_separator">[docs]</a>    <span class="k">def</span> <span class="nf">_print_shell_separator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ApplicationsManager._print_shell_separator"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._print_shell_separator">[docs]</a>    <span class="k">def</span> <span class="nf">_print_shell_separator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sep_char</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Print shell separator.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="n">sep_char</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ApplicationsManager._check_url"><a class="viewcode-back" href="../../modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._check_url">[docs]</a>    <span class="k">def</span> <span class="nf">_check_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check if an URL can be reached.</span>
@@ -535,10 +535,11 @@
 <span class="sd">            URL of the on-line repository.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span>
-            <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> clone </span><span class="si">{1}</span><span class="s2"> </span><span class="si">{2}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">repo_type</span><span class="p">,</span>
-                <span class="n">repo_url</span><span class="p">,</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">repo_path</span><span class="p">)</span>
+            <span class="s2">&quot;</span><span class="si">{cmd}</span><span class="s2"> clone </span><span class="si">{depth}</span><span class="s2"> </span><span class="si">{url}</span><span class="s2"> </span><span class="si">{path}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">cmd</span><span class="o">=</span><span class="n">repo_type</span><span class="p">,</span>
+                <span class="n">depth</span><span class="o">=</span><span class="s2">&quot;--depth=1&quot;</span> <span class="k">if</span> <span class="n">repo_type</span> <span class="ow">is</span> <span class="s2">&quot;git&quot;</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="n">url</span><span class="o">=</span><span class="n">repo_url</span><span class="p">,</span>
+                <span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">repo_path</span><span class="p">)</span>
             <span class="p">),</span>
             <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -554,13 +555,15 @@
             <span class="n">apps</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_apps_type_</span><span class="si">%s</span><span class="s2">_repo&quot;</span> <span class="o">%</span> <span class="n">repo_type</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">apps</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_print_shell_separator</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_print_shell_separator</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling </span><span class="si">%s</span><span class="s2"> repositories...&quot;</span> <span class="o">%</span>
                                  <span class="bp">self</span><span class="o">.</span><span class="n">_repo_types_names_map</span><span class="p">[</span><span class="n">repo_type</span><span class="p">])</span>
 
                 <span class="k">for</span> <span class="n">app_id</span><span class="p">,</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">apps</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_print_shell_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling </span><span class="si">%s</span><span class="s2">&#39;s repository...&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
                     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_update</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_update</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling </span><span class="si">%s</span><span class="s2">&#39;s repository...&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
                         <span class="n">repo_path</span> <span class="o">=</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;destination&quot;</span><span class="p">]</span>
 
                         <span class="k">if</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_dir</span><span class="p">(</span><span class="n">repo_path</span><span class="p">):</span>
@@ -602,12 +605,14 @@
 <span class="sd">            See :any:`exceptions.KeyboardInterruption`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apps_type_file</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_print_shell_separator</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_print_shell_separator</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling individual files...&quot;</span><span class="p">)</span>
 
             <span class="k">for</span> <span class="n">app_id</span><span class="p">,</span> <span class="n">app</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apps_type_file</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_print_shell_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling </span><span class="si">%s</span><span class="s2">&#39;s file...&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_update</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_update</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling </span><span class="si">%s</span><span class="s2">&#39;s file...&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
                     <span class="n">release_tag</span> <span class="o">=</span> <span class="kc">None</span>
                     <span class="n">file_path</span> <span class="o">=</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;destination&quot;</span><span class="p">]</span>
 
@@ -754,10 +759,13 @@
 <span class="sd">            See :any:`exceptions.KeyboardInterruption`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apps_type_archive</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_print_shell_separator</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_print_shell_separator</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling archives...&quot;</span><span class="p">)</span>
 
             <span class="k">for</span> <span class="n">app_id</span><span class="p">,</span> <span class="n">app</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apps_type_archive</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_print_shell_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling </span><span class="si">%s</span><span class="s2">&#39;s archive...&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s2">&quot;unzip_prog&quot;</span><span class="p">]):</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Command &lt;</span><span class="si">%s</span><span class="s2">&gt; not found on your system.&quot;</span> <span class="o">%</span>
                                         <span class="n">app</span><span class="p">[</span><span class="s2">&quot;unzip_prog&quot;</span><span class="p">])</span>
@@ -765,7 +773,6 @@
                     <span class="k">continue</span>
 
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_update</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_update</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling </span><span class="si">%s</span><span class="s2">&#39;s archive...&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
                     <span class="n">release_tag</span> <span class="o">=</span> <span class="kc">None</span>
 
                     <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;github_api_asset_data&quot;</span><span class="p">):</span>

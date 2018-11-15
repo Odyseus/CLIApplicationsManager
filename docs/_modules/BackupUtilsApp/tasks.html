@@ -1,0 +1,632 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BackupUtilsApp.tasks &mdash; Python CLI Applications Documentations  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>BackupUtilsApp.tasks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for BackupUtilsApp.tasks</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Backup tasks.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Callable</span>
+<span class="kn">from</span> <span class="nn">shlex</span> <span class="k">import</span> <span class="n">quote</span> <span class="k">as</span> <span class="n">shell_quote</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">CalledProcessError</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">STDOUT</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">app_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cmd_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">file_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">misc_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">shell_utils</span>
+
+<span class="n">__xz_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;ext&quot;</span><span class="p">:</span> <span class="s2">&quot;.xz&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;env&quot;</span><span class="p">:</span> <span class="s2">&quot;XZ_OPT&quot;</span>
+<span class="p">}</span>
+
+<span class="n">__gzip_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;ext&quot;</span><span class="p">:</span> <span class="s2">&quot;.gz&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;env&quot;</span><span class="p">:</span> <span class="s2">&quot;GZIP_OPT&quot;</span>
+<span class="p">}</span>
+
+<span class="n">__bzip2_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;ext&quot;</span><span class="p">:</span> <span class="s2">&quot;.bz2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;env&quot;</span><span class="p">:</span> <span class="s2">&quot;BZIP2&quot;</span>
+<span class="p">}</span>
+
+<span class="n">__tar_comp_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;--xz&quot;</span><span class="p">:</span> <span class="n">__xz_map</span><span class="p">,</span>
+    <span class="s2">&quot;-J&quot;</span><span class="p">:</span> <span class="n">__xz_map</span><span class="p">,</span>
+    <span class="s2">&quot;--gzip&quot;</span><span class="p">:</span> <span class="n">__gzip_map</span><span class="p">,</span>
+    <span class="s2">&quot;-z&quot;</span><span class="p">:</span> <span class="n">__gzip_map</span><span class="p">,</span>
+    <span class="s2">&quot;--bzip2&quot;</span><span class="p">:</span> <span class="n">__bzip2_map</span><span class="p">,</span>
+    <span class="s2">&quot;-j&quot;</span><span class="p">:</span> <span class="n">__bzip2_map</span>
+<span class="p">}</span>
+
+<span class="n">__tar_comp_level_values</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;-1&quot;</span><span class="p">,</span> <span class="s2">&quot;-2&quot;</span><span class="p">,</span> <span class="s2">&quot;-3&quot;</span><span class="p">,</span> <span class="s2">&quot;-4&quot;</span><span class="p">,</span> <span class="s2">&quot;-5&quot;</span><span class="p">,</span> <span class="s2">&quot;-6&quot;</span><span class="p">,</span> <span class="s2">&quot;-7&quot;</span><span class="p">,</span> <span class="s2">&quot;-8&quot;</span><span class="p">,</span> <span class="s2">&quot;-9&quot;</span><span class="p">,</span>
+                           <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">}</span>
+
+
+<div class="viewcode-block" id="BaseTask"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask">[docs]</a><span class="k">class</span> <span class="nc">BaseTask</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Base task class.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    logger : object</span>
+<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_cmd</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_base_mandatory_keys</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;destination&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;items&quot;</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="p">{},</span> <span class="n">settings</span><span class="o">=</span><span class="p">{},</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        task : dict, optional</span>
+<span class="sd">            A task as defined in a tasks file.</span>
+<span class="sd">        settings : dict, optional</span>
+<span class="sd">            Settings as defined in a settings file or a tasks file.</span>
+<span class="sd">        dry_run : bool, optional</span>
+<span class="sd">            Do not perform file system changes.</span>
+<span class="sd">        logger : object</span>
+<span class="sd">            See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_task</span> <span class="o">=</span> <span class="n">task</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span> <span class="o">=</span> <span class="n">settings</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span> <span class="o">=</span> <span class="n">dry_run</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_errors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_errors_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_warnings_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_task</span><span class="p">()</span>
+
+<div class="viewcode-block" id="BaseTask.report_called_process_errors"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask.report_called_process_errors">[docs]</a>    <span class="k">def</span> <span class="nf">report_called_process_errors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Report called process errors.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_errors</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Errors have been found!&quot;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">err</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_errors</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_errors_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Command: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">cmd</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;STDERR:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">stderr</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;STDOUT:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">stdout</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="BaseTask._validate_task"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask._validate_task">[docs]</a>    <span class="k">def</span> <span class="nf">_validate_task</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Validate task.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        exceptions.MissingCommand</span>
+<span class="sd">            See :any:`exceptions.MissingCommand`.</span>
+<span class="sd">        exceptions.MissingMandatoryField</span>
+<span class="sd">            See :any:`exceptions.MissingMandatoryField`.</span>
+<span class="sd">        SystemExit</span>
+<span class="sd">            Halt execution.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">missing_fields</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base_mandatory_keys</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="p">):</span>
+            <span class="n">missing_fields</span> <span class="o">+=</span> <span class="p">[</span><span class="n">field</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base_mandatory_keys</span>
+                               <span class="k">if</span> <span class="n">field</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">missing_fields</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Task:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingMandatoryField</span><span class="p">(</span>
+                <span class="s2">&quot;The &lt;</span><span class="si">%s</span><span class="s2">&gt; field/s is/are required.&quot;</span> <span class="o">%</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missing_fields</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingCommand</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="p">)</span>
+
+        <span class="n">empty_list_items_msg</span> <span class="o">=</span> <span class="s2">&quot;Empty items list! Can&#39;t proceed! Leaving...&quot;</span>
+        <span class="n">valid_items</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">ignored_items</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">empty_list_items_msg</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">)):</span>
+            <span class="n">item_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">item_path</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">item_path</span><span class="p">):</span>
+                <span class="n">valid_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item_path</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_warnings_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">ignored_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item_path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">valid_items</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">empty_list_items_msg</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">valid_items</span><span class="p">)</span>
+
+        <span class="c1"># If there are ignored items, log them all at once.</span>
+        <span class="k">if</span> <span class="n">ignored_items</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Invalid items found.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;They weren&#39;t added to the backup list:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ignored_items</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="BaseTask.start"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Main method to start the backup process.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple</span>
+<span class="sd">            The errors and warnings count to be logged.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_run_hook</span><span class="p">(</span><span class="s2">&quot;pre&quot;</span><span class="p">)</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_run_hook</span><span class="p">(</span><span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span> <span class="k">if</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="p">{})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report_called_process_errors</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_errors_count</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_warnings_count</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseTask._run_hook"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask._run_hook">[docs]</a>    <span class="k">def</span> <span class="nf">_run_hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hook_type</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Run hook.</span>
+
+<span class="sd">        A hook is a Python function defined inside a tasks file and is referenced in one of</span>
+<span class="sd">        the ``pre_hook`` or ``post_hook`` task options.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        hook_type : str</span>
+<span class="sd">            One of &quot;pre&quot; or &quot;post&quot;.</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            Some tasks can return a dictionary of options that can be passed to a ``post_hook``</span>
+<span class="sd">            function.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        SystemExit</span>
+<span class="sd">            Halt execution if an exception is thrown when executing a hook.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">hook</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_hook&quot;</span> <span class="o">%</span> <span class="n">hook_type</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hook</span><span class="p">,</span> <span class="n">Callable</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Attempting to run </span><span class="si">%s</span><span class="s2">-hook.&quot;</span> <span class="o">%</span> <span class="n">hook_type</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">hook</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">,</span>
+                     <span class="n">dry_run</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">-hook not configured.&quot;</span> <span class="o">%</span> <span class="n">hook_type</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="BaseTask.run"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Run a backup task.</span>
+
+<span class="sd">        This method needs to be implemented in a sub-class of this super class.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        exceptions.MethodNotImplemented</span>
+<span class="sd">            See :any:`exceptions.MethodNotImplemented`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MethodNotImplemented</span><span class="p">(</span><span class="s2">&quot;run&quot;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="RsyncLocalTask"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.RsyncLocalTask">[docs]</a><span class="k">class</span> <span class="nc">RsyncLocalTask</span><span class="p">(</span><span class="n">BaseTask</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Task to perform backups using the rsync command.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            See &lt;class :any:`BaseTask`&gt;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span> <span class="o">=</span> <span class="s2">&quot;rsync&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_base_mandatory_keys</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;rsync_args&quot;</span><span class="p">})</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="RsyncLocalTask.run"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.RsyncLocalTask.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See &lt;class :any:`BaseTask.run`&gt;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">root_destination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;destination&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">seps</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">altsep</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">altsep</span> <span class="k">else</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;rsync_args&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">exclude_patterns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;--exclude=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">shell_quote</span><span class="p">(</span><span class="n">ptrn</span><span class="p">)</span> <span class="k">for</span> <span class="n">ptrn</span> <span class="ow">in</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ignored_patterns&quot;</span><span class="p">,</span> <span class="p">[])]</span>
+        <span class="n">cmd</span> <span class="o">+=</span> <span class="n">exclude_patterns</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;[DRY-RUN] Destination folder to be created:&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">root_destination</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">root_destination</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">source_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_dir</span><span class="p">(</span><span class="n">source_item</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">item_destination</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="n">root_destination</span><span class="p">,</span>
+                    <span class="c1"># Trick to join two absolute paths.</span>
+                    <span class="c1"># Source: https://stackoverflow.com/a/50846104/4147432 &lt;3</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitdrive</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">source_item</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="n">seps</span><span class="p">)</span>
+                <span class="p">)</span>
+
+                <span class="n">final_cmd</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span> <span class="o">+</span> <span class="p">[</span><span class="n">shell_quote</span><span class="p">(</span><span class="n">source_item</span><span class="p">),</span>
+                                            <span class="n">shell_quote</span><span class="p">(</span><span class="n">item_destination</span><span class="p">)])</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Mirroring: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">source_item</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;[DRY-RUN] Command to be executed:&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">final_cmd</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">start_time</span> <span class="o">=</span> <span class="n">misc_utils</span><span class="o">.</span><span class="n">get_date_time</span><span class="p">()</span>
+
+                        <span class="c1"># Forced to use shell=True. Otherwise, --exclude rsync arguments</span>
+                        <span class="c1"># wouldn&#39;t freaking work due to shell expansions nonsense.</span>
+                        <span class="c1"># I tried using the --from-files, but its logic is too &quot;convoluted&quot;.</span>
+                        <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">final_cmd</span><span class="p">,</span>
+                                          <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                          <span class="n">stderr</span><span class="o">=</span><span class="n">STDOUT</span><span class="p">,</span>
+                                          <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                          <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+                        <span class="n">finished_time</span> <span class="o">=</span> <span class="n">misc_utils</span><span class="o">.</span><span class="n">get_date_time</span><span class="p">()</span>
+                        <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">misc_utils</span><span class="o">.</span><span class="n">get_time_diff</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">finished_time</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Elapsed time: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">elapsed_time</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                        <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_warnings_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Omitted path. Not a directory:&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">source_item</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="TarLocalTask"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.TarLocalTask">[docs]</a><span class="k">class</span> <span class="nc">TarLocalTask</span><span class="p">(</span><span class="n">BaseTask</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Task to perform backups using the tar command.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            See &lt;class :any:`BaseTask`&gt;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span> <span class="o">=</span> <span class="s2">&quot;tar&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__get_compression_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get compression data.</span>
+
+<span class="sd">        Scan ``func_args`` option for tar compression arguments and, if found, return</span>
+<span class="sd">        a dictionary with the extension that will be used to name the compressed archive</span>
+<span class="sd">        and the environment variable used to define the compression level.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict|False</span>
+<span class="sd">            Compression data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;func_args&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="k">if</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">__tar_comp_map</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">{</span>
+                    <span class="s2">&quot;ext&quot;</span><span class="p">:</span> <span class="n">__tar_comp_map</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s2">&quot;ext&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;env&quot;</span><span class="p">:</span> <span class="n">__tar_comp_map</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s2">&quot;env&quot;</span><span class="p">]</span>
+                <span class="p">}</span>
+
+        <span class="k">return</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="TarLocalTask.run"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.TarLocalTask.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See &lt;class :any:`BaseTask.run`&gt;.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Dictionary with data that will be passed to a ``post_hook``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">processed_list</span> <span class="o">=</span> <span class="n">app_utils</span><span class="o">.</span><span class="n">FilteredFilesList</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ignored_patterns&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+        <span class="n">full_list_of_files</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">processed_list</span><span class="o">.</span><span class="n">get_full_list_of_files</span><span class="p">())</span>
+        <span class="n">tar_env</span> <span class="o">=</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">get_environment</span><span class="p">()</span>
+        <span class="n">compression_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_compression_data</span><span class="p">()</span>
+        <span class="n">compression_level</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression_level&quot;</span><span class="p">,</span> <span class="s2">&quot;-7&quot;</span><span class="p">)</span>
+        <span class="n">archive_destination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;destination&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">archive_file_name</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">.tar&quot;</span> <span class="o">%</span> \
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;destination_prefix&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+             <span class="n">misc_utils</span><span class="o">.</span><span class="n">micro_to_milli</span><span class="p">(</span><span class="n">misc_utils</span><span class="o">.</span><span class="n">get_date_time</span><span class="p">(</span><span class="s2">&quot;filename&quot;</span><span class="p">)))</span>
+        <span class="n">archive_file_ext</span> <span class="o">=</span> <span class="n">compression_data</span><span class="p">[</span><span class="s2">&quot;ext&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">compression_data</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">archive_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">archive_destination</span><span class="p">,</span>
+                                    <span class="n">archive_file_name</span> <span class="o">+</span> <span class="n">archive_file_ext</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;[DRY-RUN] Destination folder to be created:&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">archive_destination</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">archive_destination</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">compression_data</span><span class="p">:</span>
+            <span class="n">tar_env</span><span class="p">[</span><span class="n">compression_data</span><span class="p">[</span><span class="s2">&quot;env&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">compression_level</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">-&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">))</span> <span class="k">as</span> <span class="n">tmp_file</span><span class="p">:</span>
+            <span class="n">tmp_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">full_list_of_files</span><span class="p">))</span>
+            <span class="n">tmp_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+            <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="p">,</span>
+                <span class="s2">&quot;--create&quot;</span><span class="p">,</span>
+            <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;func_args&quot;</span><span class="p">,</span> <span class="p">[])</span> <span class="o">+</span> <span class="p">[</span>
+                <span class="s2">&quot;--file&quot;</span><span class="p">,</span>
+                <span class="n">shell_quote</span><span class="p">(</span><span class="n">archive_path</span><span class="p">),</span>
+                <span class="s2">&quot;--files-from=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">tmp_file</span><span class="o">.</span><span class="n">name</span>
+            <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;opt_args&quot;</span><span class="p">,</span> <span class="p">[])</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;[DRY-RUN] Command to be executed:&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span>
+                                      <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                      <span class="n">stderr</span><span class="o">=</span><span class="n">STDOUT</span><span class="p">,</span>
+                                      <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                      <span class="n">env</span><span class="o">=</span><span class="n">tar_env</span><span class="p">)</span>
+                <span class="k">except</span> <span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;archive_path&quot;</span><span class="p">:</span> <span class="n">archive_path</span><span class="p">}</span></div></div>
+
+
+<span class="n">_tasks_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;base_task&quot;</span><span class="p">:</span> <span class="n">BaseTask</span><span class="p">,</span>
+    <span class="s2">&quot;rsync_local&quot;</span><span class="p">:</span> <span class="n">RsyncLocalTask</span><span class="p">,</span>
+    <span class="s2">&quot;tar_local&quot;</span><span class="p">:</span> <span class="n">TarLocalTask</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="factory"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.factory">[docs]</a><span class="k">def</span> <span class="nf">factory</span><span class="p">(</span><span class="n">task_name</span><span class="o">=</span><span class="s2">&quot;base_task&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Task factory.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    task_name : str, optional</span>
+<span class="sd">        Task name.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    object</span>
+<span class="sd">        A task class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_tasks_map</span><span class="p">[</span><span class="n">task_name</span><span class="p">]</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

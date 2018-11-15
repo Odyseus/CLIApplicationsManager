@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BackupUtilsApp.tasks module &mdash; Python CLI Applications Documentations  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ChrootHelperApp" href="../ChrootHelper/modules.html" />
+    <link rel="prev" title="BackupUtilsApp.cli module" href="BackupUtilsApp.cli.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">BackupUtilsApp</a> &raquo;</li>
+        
+          <li><a href="BackupUtilsApp.html">BackupUtilsApp package</a> &raquo;</li>
+        
+      <li>BackupUtilsApp.tasks module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/modules/BackupUtils/BackupUtilsApp.tasks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="../ChrootHelper/modules.html" class="btn btn-neutral float-right" title="ChrootHelperApp" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="BackupUtilsApp.cli.html" class="btn btn-neutral" title="BackupUtilsApp.cli module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-BackupUtilsApp.tasks">
+<span id="backuputilsapp-tasks-module"></span><h1>BackupUtilsApp.tasks module<a class="headerlink" href="#module-BackupUtilsApp.tasks" title="Permalink to this headline">¶</a></h1>
+<p>Backup tasks.</p>
+<dl class="class">
+<dt id="BackupUtilsApp.tasks.BaseTask">
+<em class="property">class </em><code class="descclassname">BackupUtilsApp.tasks.</code><code class="descname">BaseTask</code><span class="sig-paren">(</span><em>task={}</em>, <em>settings={}</em>, <em>dry_run=False</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupUtilsApp/tasks.html#BaseTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupUtilsApp.tasks.BaseTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Base task class.</p>
+<dl class="attribute">
+<dt id="BackupUtilsApp.tasks.BaseTask.logger">
+<code class="descname">logger</code><a class="headerlink" href="#BackupUtilsApp.tasks.BaseTask.logger" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+</dd></dl>
+
+<p>Initialize.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>task</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a><em>, </em><em>optional</em>) – A task as defined in a tasks file.</p></li>
+<li><p><strong>settings</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a><em>, </em><em>optional</em>) – Settings as defined in a settings file or a tasks file.</p></li>
+<li><p><strong>dry_run</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Do not perform file system changes.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="BackupUtilsApp.tasks.BaseTask.report_called_process_errors">
+<code class="descname">report_called_process_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupUtilsApp/tasks.html#BaseTask.report_called_process_errors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupUtilsApp.tasks.BaseTask.report_called_process_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report called process errors.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="BackupUtilsApp.tasks.BaseTask._validate_task">
+<code class="descname">_validate_task</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupUtilsApp/tasks.html#BaseTask._validate_task"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupUtilsApp.tasks.BaseTask._validate_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingCommand</span></code> – See <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.MissingCommand" title="python_modules.python_utils.exceptions.MissingCommand"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingCommand</span></code></a>.</p></li>
+<li><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingMandatoryField</span></code> – See <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.MissingMandatoryField" title="python_modules.python_utils.exceptions.MissingMandatoryField"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingMandatoryField</span></code></a>.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3.5/library/exceptions.html#SystemExit" title="(in Python v3.5)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SystemExit</span></code></a> – Halt execution.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="BackupUtilsApp.tasks.BaseTask.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupUtilsApp/tasks.html#BaseTask.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupUtilsApp.tasks.BaseTask.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main method to start the backup process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The errors and warnings count to be logged.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#tuple" title="(in Python v3.5)">tuple</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="BackupUtilsApp.tasks.BaseTask._run_hook">
+<code class="descname">_run_hook</code><span class="sig-paren">(</span><em>hook_type</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupUtilsApp/tasks.html#BaseTask._run_hook"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupUtilsApp.tasks.BaseTask._run_hook" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run hook.</p>
+<p>A hook is a Python function defined inside a tasks file and is referenced in one of
+the <code class="docutils literal notranslate"><span class="pre">pre_hook</span></code> or <code class="docutils literal notranslate"><span class="pre">post_hook</span></code> task options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hook_type</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – One of “pre” or “post”.</p></li>
+<li><p><strong>**kwargs</strong> – Some tasks can return a dictionary of options that can be passed to a <code class="docutils literal notranslate"><span class="pre">post_hook</span></code>
+function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/exceptions.html#SystemExit" title="(in Python v3.5)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SystemExit</span></code></a> – Halt execution if an exception is thrown when executing a hook.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="BackupUtilsApp.tasks.BaseTask.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupUtilsApp/tasks.html#BaseTask.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupUtilsApp.tasks.BaseTask.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run a backup task.</p>
+<p>This method needs to be implemented in a sub-class of this super class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.MethodNotImplemented</span></code> – See <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.MethodNotImplemented" title="python_modules.python_utils.exceptions.MethodNotImplemented"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.MethodNotImplemented</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="BackupUtilsApp.tasks.RsyncLocalTask">
+<em class="property">class </em><code class="descclassname">BackupUtilsApp.tasks.</code><code class="descname">RsyncLocalTask</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupUtilsApp/tasks.html#RsyncLocalTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupUtilsApp.tasks.RsyncLocalTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#BackupUtilsApp.tasks.BaseTask" title="BackupUtilsApp.tasks.BaseTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackupUtilsApp.tasks.BaseTask</span></code></a></p>
+<p>Task to perform backups using the rsync command.</p>
+<p>Initialize.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> – See &lt;class <a class="reference internal" href="#BackupUtilsApp.tasks.BaseTask" title="BackupUtilsApp.tasks.BaseTask"><code class="xref any py py-class docutils literal notranslate"><span class="pre">BaseTask</span></code></a>&gt;.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="BackupUtilsApp.tasks.RsyncLocalTask.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupUtilsApp/tasks.html#RsyncLocalTask.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupUtilsApp.tasks.RsyncLocalTask.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>See &lt;class <a class="reference internal" href="#BackupUtilsApp.tasks.BaseTask.run" title="BackupUtilsApp.tasks.BaseTask.run"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">BaseTask.run</span></code></a>&gt;.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="BackupUtilsApp.tasks.TarLocalTask">
+<em class="property">class </em><code class="descclassname">BackupUtilsApp.tasks.</code><code class="descname">TarLocalTask</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupUtilsApp/tasks.html#TarLocalTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupUtilsApp.tasks.TarLocalTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#BackupUtilsApp.tasks.BaseTask" title="BackupUtilsApp.tasks.BaseTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackupUtilsApp.tasks.BaseTask</span></code></a></p>
+<p>Task to perform backups using the tar command.</p>
+<p>Initialize.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> – See &lt;class <a class="reference internal" href="#BackupUtilsApp.tasks.BaseTask" title="BackupUtilsApp.tasks.BaseTask"><code class="xref any py py-class docutils literal notranslate"><span class="pre">BaseTask</span></code></a>&gt;.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="BackupUtilsApp.tasks.TarLocalTask.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupUtilsApp/tasks.html#TarLocalTask.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupUtilsApp.tasks.TarLocalTask.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>See &lt;class <a class="reference internal" href="#BackupUtilsApp.tasks.BaseTask.run" title="BackupUtilsApp.tasks.BaseTask.run"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">BaseTask.run</span></code></a>&gt;.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Dictionary with data that will be passed to a <code class="docutils literal notranslate"><span class="pre">post_hook</span></code>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="BackupUtilsApp.tasks.TarLocalTask._TarLocalTask__get_compression_data">
+<code class="descname">_TarLocalTask__get_compression_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#BackupUtilsApp.tasks.TarLocalTask._TarLocalTask__get_compression_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get compression data.</p>
+<p>Scan <code class="docutils literal notranslate"><span class="pre">func_args</span></code> option for tar compression arguments and, if found, return
+a dictionary with the extension that will be used to name the compressed archive
+and the environment variable used to define the compression level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Compression data.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict|False</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="BackupUtilsApp.tasks.factory">
+<code class="descclassname">BackupUtilsApp.tasks.</code><code class="descname">factory</code><span class="sig-paren">(</span><em>task_name='base_task'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BackupUtilsApp/tasks.html#factory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BackupUtilsApp.tasks.factory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Task factory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>task_name</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em>, </em><em>optional</em>) – Task name.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A task class.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ChrootHelper/modules.html" class="btn btn-neutral float-right" title="ChrootHelperApp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="BackupUtilsApp.cli.html" class="btn btn-neutral" title="BackupUtilsApp.cli module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
