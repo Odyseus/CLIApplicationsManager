@@ -18,7 +18,6 @@ root_folder : str
     The main folder containing the application. All commands must be executed from this location
     without exceptions.
 """
-
 import os
 
 from .__init__ import __appdescription__
@@ -27,6 +26,7 @@ from .python_utils import exceptions
 from .python_utils import file_utils
 from .python_utils import misc_utils
 from .python_utils import prompts
+from .python_utils import shell_utils
 from .python_utils import string_utils
 from .python_utils.ansi_colors import Ansi
 
@@ -35,10 +35,11 @@ root_folder = os.path.realpath(os.path.abspath(os.path.join(
     os.path.normpath(os.path.join(os.path.dirname(__file__), *([".."] * 2))))))
 
 app_man_user_data_path = os.path.join(root_folder, "UserData")
-
 app_man_user_data_backlist = [
     "0_manager"
 ]
+docs_sources_path = os.path.join(root_folder, "AppData", "docs_sources")
+man_pages_data_json_path = os.path.join(docs_sources_path, "man_pages_data.json")
 
 
 class InvalidApplicationName(exceptions.ExceptionWhitoutTraceBack):
@@ -109,9 +110,9 @@ def get_selected_apps(app_slugs=[], logger=None):
     Parameters
     ----------
     app_slugs : list, optional
-        Description
-    logger : None, optional
-        Description
+        The applications slugs from which to get data.
+    logger : object
+        See <class :any:`LogSystem`>.
     """
     selected_apps = []
     all_apps = get_all_apps()
@@ -370,7 +371,6 @@ class BaseAppGenerator():
         logger : object
             See <class :any:`LogSystem`>.
         """
-        super().__init__()
         self.logger = logger
         self.default_name = "My Python Application"
         self.app = {
@@ -678,8 +678,15 @@ def generate_man_pages(app_slugs=[], logger=None):
 
     Parameters
     ----------
+    app_slugs : list, optional
+        The list of application to gererate manaul pages.
     logger : object
         See <class :any:`LogSystem`>.
+
+    Raises
+    ------
+    exceptions.KeyboardInterruption
+        Halt execution
     """
     import json
 
@@ -688,9 +695,6 @@ def generate_man_pages(app_slugs=[], logger=None):
     from .python_utils import sphinx_docs_utils
 
     eradicate_man_pages_data_json()
-
-    docs_sources_path = os.path.join(root_folder, "AppData", "docs_sources")
-    man_pages_data_json_path = os.path.join(docs_sources_path, "man_pages_data.json")
 
     if app_slugs:
         man_pages_data = []
@@ -703,7 +707,6 @@ def generate_man_pages(app_slugs=[], logger=None):
         }]
 
     for app in get_selected_apps(app_slugs, logger) if app_slugs else get_all_apps():
-        # for app in get_all_apps():
         if file_utils.is_real_file(os.path.join(
                 docs_sources_path, "includes", app["slug"], "index.rst")):
             app_init_file_path = os.path.join(app_man_user_data_path, app["slug"],
@@ -719,6 +722,9 @@ def generate_man_pages(app_slugs=[], logger=None):
 
     for data in man_pages_data:
         try:
+            logger.info(shell_utils.get_cli_separator("-"), date=False)
+            logger.info("Generating manual page for %s." % data["app_name"])
+
             with open(man_pages_data_json_path, "w",
                       encoding="UTF-8") as man_pages_data_json_file:
                 man_pages_data_json_file.write(json.dumps(data))
@@ -740,8 +746,10 @@ def generate_man_pages(app_slugs=[], logger=None):
 
 
 def eradicate_man_pages_data_json():
+    """Delete man_pages_data.json file.
+    """
     try:
-        os.remove(os.path.join(root_folder, "AppData", "docs_sources", "man_pages_data.json"))
+        os.remove(man_pages_data_json_path)
     except (FileNotFoundError, OSError):
         pass
     finally:
@@ -749,6 +757,8 @@ def eradicate_man_pages_data_json():
 
 
 def spacefm_find_files():
+    """Launch SpaceFM find files.
+    """
     from .python_utils import cmd_utils
 
     cmd = ["spacefm", "--find-files"]
