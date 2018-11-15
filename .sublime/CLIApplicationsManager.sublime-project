@@ -11,6 +11,7 @@
         ],
         "folder_exclude_patterns": [
             "*/icons",
+            "UserData/0_manager",
             "__app__/docs_sources/_static",
             "__app__/docs_sources/coverage",
             "__app__/docs_sources/images",
@@ -21,7 +22,9 @@
             "__pycache__"
         ],
         "index_exclude_patterns": [
-            "UserData/**/UserData"
+            "UserData/**/UserData",
+            "UserData/**/UserData/*",
+            "UserData/**/UserData/**",
         ],
         "path": ".."
     }],
