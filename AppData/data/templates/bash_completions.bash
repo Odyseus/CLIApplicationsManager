@@ -93,6 +93,15 @@ run_cmd_on_app \
         ;;
     esac
 
+    # Completion of options and sub-commands.
+    cmd="${COMP_WORDS[3]}"
+
+    case $cmd in
+    "init"|"update")
+        COMPREPLY=( $(compgen -W "--dry-run" -- "${cur}") )
+        ;;
+    esac
+
     return 0
 } &&
 complete -F _apps_manager_cli_{current_date} {executable_name}
