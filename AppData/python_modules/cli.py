@@ -31,6 +31,8 @@ docopt_doc = """{appname} {version} ({status})
 Usage:
     app.py (-h | --help | --manual | --version)
     app.py app_repos (submodules | subtrees) (init | update)
+                     [-a <name>... | --app=<name>...]
+                     [--dry-run]
     app.py bump_app_version [-a <name>... | --app=<name>...]
     app.py gen_base_app
     app.py (gen_docs | gen_docs_no_api) [-f | --force-clean-build]
@@ -41,7 +43,7 @@ Usage:
     app.py gen_sys_exec_self
     app.py install_deps [-a <name>... | --app=<name>...]
     app.py print_all_apps
-    app.py repo (submodules | subtrees) (init | update)
+    app.py repo (submodules | subtrees) (init | update) [--dry-run]
     app.py run_cmd_on_app (-c <command> | --command=<command>)
                           [-p | --parallel ]
                           [-a <name>... | --app=<name>...]
@@ -65,6 +67,10 @@ Options:
 
 -c <command>, --command=<command>
     Command to execute inside a managed application folder.
+
+--dry-run
+    Do not perform file system changes. Only display messages informing of the
+    actions that will be performed or commands that will be executed.
 
 -f, --force-clean-build
     Clear doctree cache and destination folder when building the documentation.
@@ -243,6 +249,7 @@ class CommandLineInterface(cli_utils.CommandLineInterfaceSuper):
             "submodule",
             self.repo_action,
             cwd=root_folder,
+            dry_run=self.a["--dry-run"],
             logger=self.logger
         )
 
@@ -259,7 +266,10 @@ class CommandLineInterface(cli_utils.CommandLineInterfaceSuper):
     def manage_app_repos_subtrees(self):
         """See :any:`git_utils.manage_repo`
         """
-        app_utils.manage_app_repos_subtrees(self.repo_action, self.logger)
+        app_utils.manage_app_repos_subtrees(self.repo_action,
+                                            app_slugs=self.app_slugs,
+                                            dry_run=self.a["--dry-run"],
+                                            logger=self.logger)
 
     def display_manual_page(self):
         """See :any:`cli_utils.CommandLineInterfaceSuper._display_manual_page`.

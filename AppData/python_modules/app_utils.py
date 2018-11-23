@@ -22,14 +22,15 @@ import os
 
 from .__init__ import __appdescription__
 from .__init__ import __appname__
+from .python_utils import cmd_utils
 from .python_utils import exceptions
 from .python_utils import file_utils
+from .python_utils import git_utils
 from .python_utils import misc_utils
 from .python_utils import prompts
 from .python_utils import shell_utils
 from .python_utils import string_utils
 from .python_utils.ansi_colors import Ansi
-
 
 root_folder = os.path.realpath(os.path.abspath(os.path.join(
     os.path.normpath(os.path.join(os.path.dirname(__file__), *([".."] * 2))))))
@@ -79,14 +80,12 @@ def get_all_apps():
         # that aren't actual applications.
         # It's a more complex procedure, but infinitely more accurate.
         if file_utils.is_real_file(app_flag_file_path):
-            app = {
+            apps.append({
                 "slug": dir_name,
                 "path": os.path.dirname(app_flag_file_path)
-            }
+            })
 
-            apps.append(app)
-
-    return apps
+    return sorted(apps, key=lambda k: k["slug"])
 
 
 def print_all_apps():
@@ -130,7 +129,7 @@ def get_selected_apps(app_slugs=[], logger=None):
                 })
                 break
 
-    return selected_apps
+    return sorted(selected_apps, key=lambda k: k["slug"])
 
 
 def get_app_slugyfied_name(app_slug):
@@ -562,7 +561,7 @@ def generate_readmes(logger):
         docs_url=docs_base_url
     )
 
-    for app in sorted(get_all_apps(), key=lambda k: k["slug"]):
+    for app in get_all_apps():
         app_docs_url = docs_base_url + "/includes/%s/index.html" % app["slug"]
         app_init_file_path = os.path.join(app_man_user_data_path, app["slug"], "AppData",
                                           "%sApp" % app["slug"], "__init__.py")
@@ -592,8 +591,8 @@ def generate_readmes(logger):
     logger.info("READMEs generation finished")
 
 
-def manage_app_repos_subtrees(action, logger):
-    """See :any:`git_utils.manage_repo`
+def manage_app_repos_subtrees(action, app_slugs=[], dry_run=False, logger=None):
+    """Manage handled applications' sub-trees.
 
     Parameters
     ----------
@@ -602,15 +601,12 @@ def manage_app_repos_subtrees(action, logger):
     logger : object
         See <class :any:`LogSystem`>.
     """
-    from .python_utils import git_utils
-
     if prompts.confirm(prompt="Proceed?", response=False):
         python_utils_base_subtree = {
-            "remote_name": "python_utils",
-            "remote_url": "git@gitlab.com:Odyseus/python_utils.git",
+            "url": "git@gitlab.com:Odyseus/python_utils.git",
         }
 
-        for app in get_all_apps():
+        for app in get_selected_apps(app_slugs, logger) if app_slugs else get_all_apps():
             python_utils_subtree = {
                 "path": "AppData/%sApp/python_utils" % app["slug"]
             }
@@ -622,6 +618,7 @@ def manage_app_repos_subtrees(action, logger):
                 subtrees=[python_utils_subtree],
                 do_not_confirm=True,
                 cwd=app["path"],
+                dry_run=dry_run,
                 logger=logger
             )
 
@@ -641,8 +638,6 @@ def run_cmd_on_apps(cmd, run_in_parallel=False, app_slugs=[], logger=None):
         See <class :any:`LogSystem`>.
     """
     from threading import Thread
-
-    from .python_utils import cmd_utils
 
     threads = []
 
@@ -759,8 +754,6 @@ def eradicate_man_pages_data_json():
 def spacefm_find_files():
     """Launch SpaceFM find files.
     """
-    from .python_utils import cmd_utils
-
     cmd = ["spacefm", "--find-files"]
     cmd = cmd + [os.path.join(root_folder, "AppData")]
     cmd = cmd + [os.path.join(app["path"], "AppData") for app in get_all_apps()]
