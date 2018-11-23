@@ -195,6 +195,8 @@
 <span class="text-bold">Usage:</span>
     app.py (-h | --help | --manual | --version)
     app.py app_repos (submodules | subtrees) (init | update)
+                     [-a &lt;name&gt;... | --app=&lt;name&gt;...]
+                     [--dry-run]
     app.py bump_app_version [-a &lt;name&gt;... | --app=&lt;name&gt;...]
     app.py gen_base_app
     app.py (gen_docs | gen_docs_no_api) [-f | --force-clean-build]
@@ -205,7 +207,7 @@
     app.py gen_sys_exec_self
     app.py install_deps [-a &lt;name&gt;... | --app=&lt;name&gt;...]
     app.py print_all_apps
-    app.py repo (submodules | subtrees) (init | update)
+    app.py repo (submodules | subtrees) (init | update) [--dry-run]
     app.py run_cmd_on_app (-c &lt;command&gt; | --command=&lt;command&gt;)
                           [-p | --parallel ]
                           [-a &lt;name&gt;... | --app=&lt;name&gt;...]
@@ -229,6 +231,10 @@
 
 <span class="text-bold">-c &lt;command&gt;, --command=&lt;command&gt;</span>
     Command to execute inside a managed application folder.
+
+<span class="text-bold">--dry-run</span>
+    Do not perform file system changes. Only display messages informing of the
+    actions that will be performed or commands that will be executed.
 
 <span class="text-bold">-f, --force-clean-build</span>
     Clear doctree cache and destination folder when building the documentation.

@@ -1,3 +1,6 @@
+.. Abbreviations
+
+.. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
 
 *****************************
 Hosts Manager's documentation
@@ -5,7 +8,7 @@ Hosts Manager's documentation
 
 .. only:: html
 
-    A :abbr:`CLI (Command Line Interface)` utility written in Python 3 to manage hosts files on GNU/Linux.
+    A |CLI| utility written in Python 3 to manage hosts files on GNU/Linux.
 
 .. include:: ../0-common/system-executable-hint.restructuredtext
 
@@ -34,3 +37,5 @@ Requirements
     - ``python-slugify`` module.
 
 .. include:: ./usage.rst
+
+.. include:: ./templates.rst

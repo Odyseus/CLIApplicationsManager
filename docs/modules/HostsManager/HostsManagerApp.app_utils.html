@@ -179,18 +179,23 @@
 <dl class="attribute">
 <dt id="HostsManagerApp.app_utils.root_folder">
 <code class="descclassname">HostsManagerApp.app_utils.</code><code class="descname">root_folder</code><a class="headerlink" href="#HostsManagerApp.app_utils.root_folder" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – The main folder containing the application. All commands must be executed from this location
+<dd><p>The main folder containing the application. All commands must be executed from this location
 without exceptions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="class">
 <dt id="HostsManagerApp.app_utils.OverridesValidator">
 <em class="property">class </em><code class="descclassname">HostsManagerApp.app_utils.</code><code class="descname">OverridesValidator</code><span class="sig-paren">(</span><em>raw_overrides</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Validate a list of options passed as arguments.</p>
+<p>Validate a list of settings passed as arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>raw_overrides</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a>) – The raw list of options as passed to the CLI.</p>
+<dd class="field-odd"><p><strong>raw_overrides</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a>) – The raw list of settings as passed to the CLI.</p>
 </dd>
 </dl>
 <dl class="method">
@@ -199,7 +204,7 @@ without exceptions.</p>
 <dd><p>Get valid overrides.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The final list of options validated.</p>
+<dd class="field-odd"><p>The final list of settings validated.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)">dict</a></p>
@@ -265,13 +270,18 @@ without exceptions.</p>
 
 <dl class="class">
 <dt id="HostsManagerApp.app_utils.HostsManager">
-<em class="property">class </em><code class="descclassname">HostsManagerApp.app_utils.</code><code class="descname">HostsManager</code><span class="sig-paren">(</span><em>profile=''</em>, <em>dry_run=False</em>, <em>options_overrides={}</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">HostsManagerApp.app_utils.</code><code class="descname">HostsManager</code><span class="sig-paren">(</span><em>profile=''</em>, <em>dry_run=False</em>, <em>settings_overrides={}</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>HostsManager class.</p>
 <dl class="attribute">
 <dt id="HostsManagerApp.app_utils.HostsManager.logger">
 <code class="descname">logger</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.logger" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>object</em> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+<dd><p>See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)">object</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="field-list simple">
@@ -279,7 +289,7 @@ without exceptions.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>profile</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em>, </em><em>optional</em>) – The profile name.</p></li>
 <li><p><strong>dry_run</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Description</p></li>
-<li><p><strong>options_overrides</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a><em>, </em><em>optional</em>) – A list of options to override the default ones or the defined in the profile’s
+<li><p><strong>settings_overrides</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a><em>, </em><em>optional</em>) – A list of settings to override the default ones or the defined in the profile’s
 configuration file.</p></li>
 <li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
 </ul>

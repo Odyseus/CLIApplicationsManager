@@ -190,6 +190,8 @@
 <span class="s2">Usage:</span>
 <span class="s2">    app.py (-h | --help | --manual | --version)</span>
 <span class="s2">    app.py app_repos (submodules | subtrees) (init | update)</span>
+<span class="s2">                     [-a &lt;name&gt;... | --app=&lt;name&gt;...]</span>
+<span class="s2">                     [--dry-run]</span>
 <span class="s2">    app.py bump_app_version [-a &lt;name&gt;... | --app=&lt;name&gt;...]</span>
 <span class="s2">    app.py gen_base_app</span>
 <span class="s2">    app.py (gen_docs | gen_docs_no_api) [-f | --force-clean-build]</span>
@@ -200,7 +202,7 @@
 <span class="s2">    app.py gen_sys_exec_self</span>
 <span class="s2">    app.py install_deps [-a &lt;name&gt;... | --app=&lt;name&gt;...]</span>
 <span class="s2">    app.py print_all_apps</span>
-<span class="s2">    app.py repo (submodules | subtrees) (init | update)</span>
+<span class="s2">    app.py repo (submodules | subtrees) (init | update) [--dry-run]</span>
 <span class="s2">    app.py run_cmd_on_app (-c &lt;command&gt; | --command=&lt;command&gt;)</span>
 <span class="s2">                          [-p | --parallel ]</span>
 <span class="s2">                          [-a &lt;name&gt;... | --app=&lt;name&gt;...]</span>
@@ -224,6 +226,10 @@
 
 <span class="s2">-c &lt;command&gt;, --command=&lt;command&gt;</span>
 <span class="s2">    Command to execute inside a managed application folder.</span>
+
+<span class="s2">--dry-run</span>
+<span class="s2">    Do not perform file system changes. Only display messages informing of the</span>
+<span class="s2">    actions that will be performed or commands that will be executed.</span>
 
 <span class="s2">-f, --force-clean-build</span>
 <span class="s2">    Clear doctree cache and destination folder when building the documentation.</span>
@@ -402,6 +408,7 @@
             <span class="s2">&quot;submodule&quot;</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">repo_action</span><span class="p">,</span>
             <span class="n">cwd</span><span class="o">=</span><span class="n">root_folder</span><span class="p">,</span>
+            <span class="n">dry_run</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--dry-run&quot;</span><span class="p">],</span>
             <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
         <span class="p">)</span></div>
 
@@ -418,7 +425,10 @@
 <div class="viewcode-block" id="CommandLineInterface.manage_app_repos_subtrees"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.manage_app_repos_subtrees">[docs]</a>    <span class="k">def</span> <span class="nf">manage_app_repos_subtrees</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`git_utils.manage_repo`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">app_utils</span><span class="o">.</span><span class="n">manage_app_repos_subtrees</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo_action</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">manage_app_repos_subtrees</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo_action</span><span class="p">,</span>
+                                            <span class="n">app_slugs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">app_slugs</span><span class="p">,</span>
+                                            <span class="n">dry_run</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--dry-run&quot;</span><span class="p">],</span>
+                                            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CommandLineInterface.display_manual_page"><a class="viewcode-back" href="../../modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.display_manual_page">[docs]</a>    <span class="k">def</span> <span class="nf">display_manual_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`cli_utils.CommandLineInterfaceSuper._display_manual_page`.</span>

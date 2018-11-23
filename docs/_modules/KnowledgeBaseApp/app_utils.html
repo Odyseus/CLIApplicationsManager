@@ -292,7 +292,6 @@
                                     <span class="bp">self</span><span class="o">.</span><span class="n">data_tables_obj</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
                                         <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
                                         <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="n">category</span><span class="p">,</span>
-                                        <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">file_extension</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;md&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="mi">1</span><span class="p">,</span>
                                         <span class="c1"># Full path to files from the www folder.</span>
                                         <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">file_extension</span><span class="p">,</span> <span class="n">cat</span><span class="p">,</span> <span class="n">sub_cat</span><span class="p">,</span>
                                                           <span class="n">title</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">file_extension</span><span class="p">),</span>
@@ -309,7 +308,6 @@
                                             <span class="bp">self</span><span class="o">.</span><span class="n">data_tables_obj</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
                                                 <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
                                                 <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="n">category</span><span class="p">,</span>
-                                                <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
                                                 <span class="c1"># Full path to files from the www folder.</span>
                                                 <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">rel_epub</span><span class="p">,</span>
                                                 <span class="c1"># Icon name</span>
@@ -339,7 +337,6 @@
                 <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">json_data</span><span class="p">:</span>
                     <span class="n">data</span><span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;html_pages/</span><span class="si">{title}</span><span class="s2">/</span><span class="si">{html_file}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">],</span>
                                                                         <span class="n">html_file</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">])</span>
-                    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
                     <span class="n">data</span><span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;html-external&quot;</span>
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">data_tables_obj</span> <span class="o">+=</span> <span class="n">json_data</span>

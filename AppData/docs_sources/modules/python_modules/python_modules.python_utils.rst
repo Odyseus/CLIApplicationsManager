@@ -6,13 +6,6 @@ python\_modules.python\_utils package
     :undoc-members:
     :show-inheritance:
 
-Subpackages
------------
-
-.. toctree::
-
-    python_modules.python_utils.pyuca
-
 Submodules
 ----------
 

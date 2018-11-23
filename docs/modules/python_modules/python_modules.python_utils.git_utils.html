@@ -180,7 +180,7 @@
 <p>Git utilities.</p>
 <dl class="function">
 <dt id="python_modules.python_utils.git_utils.manage_repo">
-<code class="descclassname">python_modules.python_utils.git_utils.</code><code class="descname">manage_repo</code><span class="sig-paren">(</span><em>mechanism</em>, <em>action</em>, <em>subtrees=[]</em>, <em>do_not_confirm=False</em>, <em>cwd=None</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/git_utils.html#manage_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.git_utils.manage_repo" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">python_modules.python_utils.git_utils.</code><code class="descname">manage_repo</code><span class="sig-paren">(</span><em>mechanism</em>, <em>action</em>, <em>subtrees=[]</em>, <em>do_not_confirm=False</em>, <em>cwd=None</em>, <em>dry_run=False</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/git_utils.html#manage_repo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.git_utils.manage_repo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Manage repository.</p>
 <p>Perform some complex tasks on a repository. Mostly sub-trees and sub-modules initialization.</p>
 <dl class="field-list simple">
@@ -190,9 +190,9 @@
 <li><p><strong>action</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Which action to perform (“init” or “update”).</p></li>
 <li><p><strong>subtrees</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a><em>, </em><em>optional</em>) – <p>A list of dictionaries representing sub-tree options.</p>
 <ul>
-<li><p><strong>remote_name</strong>: The sub-tree remote name.</p></li>
-<li><p><strong>remote_url</strong>: The sub-tree remote URL.</p></li>
+<li><p><strong>url</strong>: The sub-tree repository URL.</p></li>
 <li><p><strong>path</strong>: Path inside the parent repository where the sub-tree will be stored.</p></li>
+<li><p><strong>ref</strong>: The sub-tree repository remote reference (Default: master).</p></li>
 </ul>
 </p></li>
 <li><p><strong>do_not_confirm</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Do not ask for confirmation before executing commands.</p></li>
@@ -201,6 +201,11 @@
 </ul>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sub-modules are initialized or updated <em>in-bulk</em> with just one command. Sub-trees are
+initialized or updated with one command per sub-tree repository.</p>
+</div>
 </dd></dl>
 
 </div>

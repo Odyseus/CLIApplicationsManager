@@ -22,6 +22,10 @@ In this file is stored all the data to handle on-line archives. Its location sho
 Data keys
 ^^^^^^^^^
 
+.. note::
+
+    All data keys are of type string and are optional unless specified otherwise.
+
 - ``kb_title`` (Madatory): The title that will be displayed in the web page index.
 - ``kb_category`` (Madatory): A category name to organize the web page index.
 - ``arch_url`` (Madatory): The url from which to download an archive.
@@ -43,8 +47,8 @@ Data keys
 In this file is stored all the data to handle on-line repositories. Its location should always be **/UserData/KnowledgeBase/UserData/data_sources/repositories.py**.
 
 .. contextual-admonition::
-    :context: info
-    :title: Highlights
+    :context: warning
+    :title: Documentations building requirement
 
     - **sphinx>=1.6.5**: ``sudo pip3 install sphinx``
 
@@ -54,29 +58,33 @@ In this file is stored all the data to handle on-line repositories. Its location
 Data keys
 ^^^^^^^^^
 
+.. note::
+
+    All data keys are of type string and are optional unless specified otherwise.
+
 - ``repo_owner`` (**Mandatory**): Repository owner/organization.
 - ``repo_name`` (**Mandatory**): Repository name.
-- ``repo_service`` (**Optional**): **Default**: **github**.
+- ``repo_service``: **Default**: **github**.
 - ``repo_handler`` (**Mandatory**): Repository handler. Possible values:
 
     + ``sphinx_docs``: Repositories that contain Sphinx documentation sources. These sources are then used to build the HTML documentation.
     + ``single_file``: Repositories from which one file is used.
     + ``multi_files``: Repositories from which more than file is used.
 
-- ``repo_type`` (**Optional**): Repository type (**git** or **hg**). **Default**: **git**.
-- ``repo_filename`` (**Optional**): **Default**: **index.html** for **repo_handler** ``sphinx_docs`` and **README.md** for **repo_handler** ``single_file``.
-- ``repo_files_ignore`` (**Optional|List**):
-- ``repo_file_pattern`` (**Optional**):
-- ``kb_category`` (**Optional**): **Default**: **Uncategorized**.
-- ``kb_title`` (**Optional**):
-- ``kb_title_prefix`` (**Optional**):
-- ``kb_rel_path`` (**Optional**): Relative path to the desired file/folder/Sphinx docs sources.
+- ``repo_type``: Repository type (**git** or **hg**). **Default**: **git**.
+- ``repo_filename``: **Default**: **index.html** for **repo_handler** ``sphinx_docs`` and **README.md** for **repo_handler** ``single_file``.
+- ``repo_files_ignore`` (**List**):
+- ``repo_file_pattern``:
+- ``kb_category``: **Default**: **Uncategorized**.
+- ``kb_title``:
+- ``kb_title_prefix``:
+- ``kb_rel_path``: Relative path to the desired file/folder/Sphinx docs sources.
 
     + ``sphinx_docs``: The path should be relative to a downloaded repository and point to a Sphinx docs source folder (e.g. if the docs sources of a downloaded repository are at **UserData/tmp/<repo_service>_repositories/<repo_owner>-<repo_name>/doc**, then the ``kb_rel_path`` key value should be **doc**).
     + ``single_file``: Repositories that 
     + ``multi_files``:
 
-- ``kb_file_append`` (**Optional|List**):
+- ``kb_file_append`` (**List**):
 
 .. note::
 
@@ -84,3 +92,8 @@ Data keys
 
 **categories.json** template
 ----------------------------
+
+This file is used to assign custom icons to the categories in the sidebar of the web page index.
+
+.. literalinclude:: ../../../../UserData/KnowledgeBase/AppData/data/templates/categories.json
+    :language: python

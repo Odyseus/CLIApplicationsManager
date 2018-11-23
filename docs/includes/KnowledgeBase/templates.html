@@ -207,6 +207,10 @@
 </div>
 <div class="section" id="data-keys">
 <h3>Data keys<a class="headerlink" href="#data-keys" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All data keys are of type string and are optional unless specified otherwise.</p>
+</div>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">kb_title</span></code> (Madatory): The title that will be displayed in the web page index.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kb_category</span></code> (Madatory): A category name to organize the web page index.</p></li>
@@ -231,8 +235,8 @@
 <div class="section" id="repositories-py-template">
 <h2><strong>repositories.py</strong> template<a class="headerlink" href="#repositories-py-template" title="Permalink to this headline">¶</a></h2>
 <p>In this file is stored all the data to handle on-line repositories. Its location should always be <strong>/UserData/KnowledgeBase/UserData/data_sources/repositories.py</strong>.</p>
-<div class="admonition-info info admonition">
-<p class="admonition-title">Highlights</p>
+<div class="admonition-warning warning admonition">
+<p class="admonition-title">Documentations building requirement</p>
 <ul class="simple">
 <li><p><strong>sphinx&gt;=1.6.5</strong>: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">sphinx</span></code></p></li>
 </ul>
@@ -270,10 +274,14 @@
 </div>
 <div class="section" id="id1">
 <h3>Data keys<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All data keys are of type string and are optional unless specified otherwise.</p>
+</div>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">repo_owner</span></code> (<strong>Mandatory</strong>): Repository owner/organization.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">repo_name</span></code> (<strong>Mandatory</strong>): Repository name.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">repo_service</span></code> (<strong>Optional</strong>): <strong>Default</strong>: <strong>github</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_service</span></code>: <strong>Default</strong>: <strong>github</strong>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">repo_handler</span></code> (<strong>Mandatory</strong>): Repository handler. Possible values:</p>
 <blockquote>
 <div><ul class="simple">
@@ -283,14 +291,14 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">repo_type</span></code> (<strong>Optional</strong>): Repository type (<strong>git</strong> or <strong>hg</strong>). <strong>Default</strong>: <strong>git</strong>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">repo_filename</span></code> (<strong>Optional</strong>): <strong>Default</strong>: <strong>index.html</strong> for <strong>repo_handler</strong> <code class="docutils literal notranslate"><span class="pre">sphinx_docs</span></code> and <strong>README.md</strong> for <strong>repo_handler</strong> <code class="docutils literal notranslate"><span class="pre">single_file</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">repo_files_ignore</span></code> (<strong>Optional|List</strong>):</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">repo_file_pattern</span></code> (<strong>Optional</strong>):</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kb_category</span></code> (<strong>Optional</strong>): <strong>Default</strong>: <strong>Uncategorized</strong>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kb_title</span></code> (<strong>Optional</strong>):</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kb_title_prefix</span></code> (<strong>Optional</strong>):</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kb_rel_path</span></code> (<strong>Optional</strong>): Relative path to the desired file/folder/Sphinx docs sources.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_type</span></code>: Repository type (<strong>git</strong> or <strong>hg</strong>). <strong>Default</strong>: <strong>git</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_filename</span></code>: <strong>Default</strong>: <strong>index.html</strong> for <strong>repo_handler</strong> <code class="docutils literal notranslate"><span class="pre">sphinx_docs</span></code> and <strong>README.md</strong> for <strong>repo_handler</strong> <code class="docutils literal notranslate"><span class="pre">single_file</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_files_ignore</span></code> (<strong>List</strong>):</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_file_pattern</span></code>:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_category</span></code>: <strong>Default</strong>: <strong>Uncategorized</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_title</span></code>:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_title_prefix</span></code>:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_rel_path</span></code>: Relative path to the desired file/folder/Sphinx docs sources.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">sphinx_docs</span></code>: The path should be relative to a downloaded repository and point to a Sphinx docs source folder (e.g. if the docs sources of a downloaded repository are at <strong>UserData/tmp/&lt;repo_service&gt;_repositories/&lt;repo_owner&gt;-&lt;repo_name&gt;/doc</strong>, then the <code class="docutils literal notranslate"><span class="pre">kb_rel_path</span></code> key value should be <strong>doc</strong>).</p></li>
@@ -299,7 +307,7 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kb_file_append</span></code> (<strong>Optional|List</strong>):</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_file_append</span></code> (<strong>List</strong>):</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -309,6 +317,17 @@
 </div>
 <div class="section" id="categories-json-template">
 <h2><strong>categories.json</strong> template<a class="headerlink" href="#categories-json-template" title="Permalink to this headline">¶</a></h2>
+<p>This file is used to assign custom icons to the categories in the sidebar of the web page index.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Bookmark&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;nf-oct-bookmark&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Web Development&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;nf-dev-webplatform&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 

@@ -235,9 +235,9 @@
 
 
 <div class="viewcode-block" id="OverridesValidator"><a class="viewcode-back" href="../../modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.OverridesValidator">[docs]</a><span class="k">class</span> <span class="nc">OverridesValidator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Validate a list of options passed as arguments.</span>
+    <span class="sd">&quot;&quot;&quot;Validate a list of settings passed as arguments.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">_valid_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">_valid_settings</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;target_ip&quot;</span><span class="p">,</span>
         <span class="s2">&quot;keep_domain_comments&quot;</span><span class="p">,</span>
         <span class="s2">&quot;skip_static_hosts&quot;</span><span class="p">,</span>
@@ -250,7 +250,7 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        raw_overrides : list</span>
-<span class="sd">            The raw list of options as passed to the CLI.</span>
+<span class="sd">            The raw list of settings as passed to the CLI.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_raw_overrides</span> <span class="o">=</span> <span class="n">raw_overrides</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_valid_overrides</span> <span class="o">=</span> <span class="p">{}</span>
@@ -264,7 +264,7 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        dict</span>
-<span class="sd">            The final list of options validated.</span>
+<span class="sd">            The final list of settings validated.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_overrides</span></div>
 
@@ -291,7 +291,7 @@
 
             <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">override</span>
 
-            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_options</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_settings</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Wrong key name: &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">key</span><span class="p">)</span>
                 <span class="k">continue</span>
 
@@ -355,7 +355,7 @@
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">options_overrides</span><span class="o">=</span><span class="p">{},</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">settings_overrides</span><span class="o">=</span><span class="p">{},</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -363,8 +363,8 @@
 <span class="sd">            The profile name.</span>
 <span class="sd">        dry_run : bool, optional</span>
 <span class="sd">            Description</span>
-<span class="sd">        options_overrides : dict, optional</span>
-<span class="sd">            A list of options to override the default ones or the defined in the profile&#39;s</span>
+<span class="sd">        settings_overrides : dict, optional</span>
+<span class="sd">            A list of settings to override the default ones or the defined in the profile&#39;s</span>
 <span class="sd">            configuration file.</span>
 <span class="sd">        logger : object</span>
 <span class="sd">            See &lt;class :any:`LogSystem`&gt;.</span>
@@ -396,8 +396,8 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_sources</span><span class="p">()</span>
 
-        <span class="n">profile_options</span> <span class="o">=</span> <span class="n">config_file</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;options&quot;</span><span class="p">,</span> <span class="p">{})</span>
-        <span class="n">profile_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">options_overrides</span><span class="p">)</span>
+        <span class="n">profile_settings</span> <span class="o">=</span> <span class="n">config_file</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;settings&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">profile_settings</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings_overrides</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_last_update_data</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="c1"># Changing self._exclusions from a list to a set improved items iterations</span>
@@ -407,13 +407,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_number_of_rules</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_number_of_ignores</span> <span class="o">=</span> <span class="mi">0</span>
 
-        <span class="c1"># Customizable options.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_target_ip</span> <span class="o">=</span> <span class="n">profile_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;target_ip&quot;</span><span class="p">,</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_keep_domain_comments</span> <span class="o">=</span> <span class="n">profile_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;keep_domain_comments&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_skip_static_hosts</span> <span class="o">=</span> <span class="n">profile_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;skip_static_hosts&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_backup_old_generated_hosts</span> <span class="o">=</span> <span class="n">profile_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;backup_old_generated_hosts&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_backup_system_hosts</span> <span class="o">=</span> <span class="n">profile_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;backup_system_hosts&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_max_backups_to_keep</span> <span class="o">=</span> <span class="n">profile_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;max_backups_to_keep&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="c1"># Customizable settings.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_target_ip</span> <span class="o">=</span> <span class="n">profile_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;target_ip&quot;</span><span class="p">,</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_keep_domain_comments</span> <span class="o">=</span> <span class="n">profile_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;keep_domain_comments&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_skip_static_hosts</span> <span class="o">=</span> <span class="n">profile_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;skip_static_hosts&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_backup_old_generated_hosts</span> <span class="o">=</span> <span class="n">profile_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;backup_old_generated_hosts&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_backup_system_hosts</span> <span class="o">=</span> <span class="n">profile_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;backup_system_hosts&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_backups_to_keep</span> <span class="o">=</span> <span class="n">profile_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;max_backups_to_keep&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_option_keys</span><span class="p">()</span>
 

@@ -1,3 +1,6 @@
+.. Abbreviations
+
+.. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
 
 **************************************
 Make Cinnamon Xlet POT's documentation
@@ -5,7 +8,7 @@ Make Cinnamon Xlet POT's documentation
 
 .. only:: html
 
-    A :abbr:`CLI (Command Line Interface)` utility written in Python 3 to generate POT files for Cinnamon xlets.
+    A |CLI| utility written in Python 3 to generate POT files for Cinnamon xlets.
 
 .. include:: ../0-common/system-executable-hint.restructuredtext
 

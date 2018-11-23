@@ -1,3 +1,6 @@
+.. Abbreviations
+
+.. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
 
 *************************
 Movies DB's documentation
@@ -5,7 +8,7 @@ Movies DB's documentation
 
 .. only:: html
 
-    A :abbr:`CLI (Command Line Interface)` utility written in Python 3 to create a movies data base on GNU/Linux.
+    A |CLI| utility written in Python 3 to create a movies data base on GNU/Linux.
 
 .. include:: ../0-common/system-executable-hint.restructuredtext
 

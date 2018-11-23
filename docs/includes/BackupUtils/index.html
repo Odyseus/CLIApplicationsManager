@@ -90,7 +90,16 @@
 <li class="toctree-l2"><a class="reference internal" href="#detailed-usage">Detailed usage</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#cli-options"><abbr title="Command Line Interface">CLI</abbr> options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#commands">Commands</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#example-configuration-files">Example configuration files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#file-templates">File templates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#task-example-file">Task example file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings-example-file">Settings example file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#task-types">Task types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tar-local">tar_local</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rsync-local">rsync_local</a></li>
 </ul>
 </li>
 </ul>
@@ -185,7 +194,7 @@
             
   <div class="section" id="backup-utils-documentation">
 <h1>Backup Utils’ documentation<a class="headerlink" href="#backup-utils-documentation" title="Permalink to this headline">¶</a></h1>
-<p>A <abbr title="Command Line Interface">CLI</abbr> utility written in Python 3 to backup files on GNU/Linux.</p>
+<p>A <abbr title="Command Line Interface">CLI</abbr> utility to backup files on GNU/Linux.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>This Python application can generate a system executable with Bash completions support. See <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">generate</span></code>.</p>
@@ -204,7 +213,7 @@
                   [-g &lt;name&gt; | --global=&lt;name&gt;]
                   [-d | --dry-run]
     app.py (print_tasks | print_settings)
-    app.py generate (task | global | system_executable)
+    app.py generate system_executable
 
 <span class="text-bold">Options:</span>
 
@@ -238,35 +247,47 @@
 <p>Application inspired by the <a class="reference external" href="https://gitlab.com/Oprax/backup-utils">backup-utils</a> Python module.</p>
 </div>
 <div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<span id="backup-utils-requirements-reference"></span><h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <p>No mayor requirements are needed to run this application other than Python 3.5+.</p>
 <div class="admonition-warning warning admonition">
-<p class="admonition-title">Mail system requirements</p>
+<p class="admonition-title">Mail system optional requirement</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">keyring</span></code> module.</p></li>
 </ul>
 </div>
 <div class="section" id="keyring-module">
 <h3><code class="docutils literal notranslate"><span class="pre">keyring</span></code> module<a class="headerlink" href="#keyring-module" title="Permalink to this headline">¶</a></h3>
-<p>This module is only used by the email system and it is used to retrieve a password stored in the system’s default keyring. This application will not store nor use passwords saved in plain text.</p>
-<p>The following command executed from a terminal will store a password:</p>
-<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span>$ keyring set backup_secret_context backup_secret_name
+<p>This module is only used by the email system and it is used to retrieve a password stored in the system’s default keyring. This module is optional because the mail system can be configured to ask for a password. This application will not store nor use passwords saved in plain text.</p>
+<p>The following command executed from a terminal will prompt for a password that will be stored into the system’s keyring:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span>$ keyring set backup_secret_service_name backup_secret_user_name
 </pre></div>
 </div>
-<p>Then the password is retrieved by the application email system using the <code class="docutils literal notranslate"><span class="pre">sender_secret</span></code> tuple specified in <code class="docutils literal notranslate"><span class="pre">global_settings</span></code> like so:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">keyring</span><span class="o">.</span><span class="n">get_password</span><span class="p">(</span><span class="s2">&quot;backup_secret_context&quot;</span><span class="p">,</span> <span class="s2">&quot;backup_secret_name&quot;</span><span class="p">)</span>
+<p>Then the password is retrieved from the system’s keyring by the application email system using the <code class="docutils literal notranslate"><span class="pre">secret_service_name</span></code> and <code class="docutils literal notranslate"><span class="pre">secret_user_name</span></code> keys specified in the <code class="docutils literal notranslate"><span class="pre">settings</span></code> property from a <strong>settings</strong> file or a <strong>tasks</strong> file like so:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">keyring</span><span class="o">.</span><span class="n">get_password</span><span class="p">(</span><span class="s2">&quot;backup_secret_service_name&quot;</span><span class="p">,</span> <span class="s2">&quot;backup_secret_user_name&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">backup_secret_context</span></code> and <code class="docutils literal notranslate"><span class="pre">backup_secret_name</span></code> can have any other names that one deems to give them. As to what these names actually mean, I have no idea. What I know is that in Gnome keyring, the details tab for the generated “storage” will display the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">username</span><span class="p">:</span> <span class="n">backup_secret_name</span>
+<p><code class="docutils literal notranslate"><span class="pre">backup_secret_service_name</span></code> and <code class="docutils literal notranslate"><span class="pre">backup_secret_user_name</span></code> can have any other names that one deems to give them. As an example, in Gnome keyring, the details tab for the generated <em>storage</em> will display the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">username</span><span class="p">:</span> <span class="n">backup_secret_user_name</span>
 <span class="n">application</span><span class="p">:</span> <span class="n">python</span><span class="o">-</span><span class="n">keyring</span>
-<span class="n">service</span><span class="p">:</span> <span class="n">backup_secret_context</span>
+<span class="n">service</span><span class="p">:</span> <span class="n">backup_secret_service_name</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="detailed-usage">
 <h2>Detailed usage<a class="headerlink" href="#detailed-usage" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Always use the <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> <abbr title="Command Line Interface">CLI</abbr> option to see the exact command/s that will be executed.</p>
+</div>
+<div class="admonition-info info admonition">
+<p class="admonition-title">Highlights</p>
+<ul class="simple">
+<li><p>Backup tasks are read from configuration files located in <strong>UserData/tasks/*.py</strong>.</p></li>
+<li><p>Global settings are read from configuration files located in <strong>UserData/settings/*.py</strong>.</p></li>
+<li><p>Each tasks file can have defined their own settings and contain one or more backup tasks of any type.</p></li>
+</ul>
+</div>
 <div class="section" id="cli-options">
 <h3><abbr title="Command Line Interface">CLI</abbr> options<a class="headerlink" href="#cli-options" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -277,6 +298,33 @@
 </div>
 <div class="section" id="commands">
 <h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="app-py-backup">
+<h4>app.py backup<a class="headerlink" href="#app-py-backup" title="Permalink to this headline">¶</a></h4>
+<p>The main command to perform backup tasks.</p>
+<div class="section" id="options">
+<h5>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h5>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">&lt;name&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--task=&lt;name&gt;</span></code>: File name of the file containing the backup tasks. Should be the name of a file stored in <strong>UserData/tasks/&lt;name&gt;.py</strong>. Extension omitted.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-g</span> <span class="pre">&lt;name&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--global=&lt;name&gt;</span></code>: File name of the file containing the global settings that all the backup tasks will use. Should be the name of a file stored in <strong>UserData/settings/&lt;name&gt;.py</strong>. Extension omitted.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code> or <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code>: Do not perform file system changes. Only display messages informing of the actions that will be performed or commands that will be executed.</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Some file system changes will be performed (e.g. temporary files creation).</p>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="app-py-print-tasks">
+<h4>app.py print_tasks<a class="headerlink" href="#app-py-print-tasks" title="Permalink to this headline">¶</a></h4>
+<p>Command only used by the Bash completions script to assist in the auto-completion of the <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">&lt;name&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--task=&lt;name&gt;</span></code> <abbr title="Command Line Interface">CLI</abbr> options.</p>
+</div>
+<div class="section" id="app-py-print-settings">
+<h4>app.py print_settings<a class="headerlink" href="#app-py-print-settings" title="Permalink to this headline">¶</a></h4>
+<p>Command only used by the Bash completions script to assist in the auto-completion of the <code class="docutils literal notranslate"><span class="pre">-g</span> <span class="pre">&lt;name&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--global=&lt;name&gt;</span></code> <abbr title="Command Line Interface">CLI</abbr> options.</p>
+</div>
 <div class="section" id="app-py-generate">
 <h4>app.py generate<a class="headerlink" href="#app-py-generate" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="sub-commands">
@@ -294,10 +342,16 @@
 </div>
 </div>
 </div>
-<div class="section" id="example-configuration-files">
-<h3>Example configuration files<a class="headerlink" href="#example-configuration-files" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="file-templates">
+<h2>File templates<a class="headerlink" href="#file-templates" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Always use the <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> <abbr title="Command Line Interface">CLI</abbr> option to see the exact command/s that will be executed.</p>
+</div>
 <div class="section" id="task-example-file">
-<h4>Task example file<a class="headerlink" href="#task-example-file" title="Permalink to this headline">¶</a></h4>
+<h3>Task example file<a class="headerlink" href="#task-example-file" title="Permalink to this headline">¶</a></h3>
+<p>A tasks file is a Python script containing at least a property called <strong>tasks</strong> (mandatory). The <strong>tasks</strong> property must be a list of dictionaries, each dictionary representing a backup task.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;Tasks example file.</span>
@@ -305,16 +359,16 @@
 <span class="sd">Attributes</span>
 <span class="sd">----------</span>
 <span class="sd">settings : dict, optional</span>
-<span class="sd">    Description</span>
+<span class="sd">    See documentation/manual for details.</span>
 <span class="sd">tasks : dict, mandatory</span>
-<span class="sd">    Description</span>
+<span class="sd">    See documentation/manual for details.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 
 <span class="k">def</span> <span class="nf">__pre_hook</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Pre task hook.</span>
+    <span class="sd">&quot;&quot;&quot;Pre-task hook.</span>
 
-<span class="sd">    Function that will be executed BEFORE a task is performed.</span>
+<span class="sd">    Function that will be executed BEFORE a backup task is performed.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -326,9 +380,9 @@
 
 
 <span class="k">def</span> <span class="nf">__post_hook</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Post task hook.</span>
+    <span class="sd">&quot;&quot;&quot;Post-task hook.</span>
 
-<span class="sd">    Function that will be executed AFTER a task is performed.</span>
+<span class="sd">    Function that will be executed AFTER a backup task is performed.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -359,12 +413,12 @@
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Descriptive name for this task&quot;</span><span class="p">,</span>
         <span class="s2">&quot;destination&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/a/folder&quot;</span><span class="p">,</span>
         <span class="s2">&quot;destination_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;MyHome-&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;compression_level&quot;</span><span class="p">:</span> <span class="s2">&quot;-7&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tar_compression_level&quot;</span><span class="p">:</span> <span class="s2">&quot;-7&quot;</span><span class="p">,</span>
         <span class="c1"># WARNING!</span>
         <span class="c1"># DO NOT USE GROUPED FUNCTION ARGUMENTS (A.K.A Old Option Style)!</span>
         <span class="c1"># Read the documentation/manual for details.</span>
-        <span class="s2">&quot;func_args&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;--xz&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;opt_args&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;tar_func_args&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;--xz&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;tar_opt_args&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;--totals&quot;</span><span class="p">,</span>
             <span class="s2">&quot;--record-size=1M&quot;</span><span class="p">,</span>
             <span class="s2">&quot;--checkpoint=50&quot;</span><span class="p">,</span>
@@ -408,9 +462,48 @@
     <span class="k">pass</span>
 </pre></div>
 </div>
+<div class="section" id="data-keys">
+<h4>Data keys<a class="headerlink" href="#data-keys" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All data keys are of type string and are optional unless specified otherwise.</p>
+</div>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> (<strong>Mandatory</strong>): Task type. See <a class="reference internal" href="tasks.html#backup-utils-task-types-reference"><span class="std std-ref">Task types</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (<strong>Mandatory</strong>): Task name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">destination</span></code> (<strong>Mandatory</strong>): Absolute path to where the backup files or folders will be stored.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">items</span></code> (<strong>Mandatory</strong> | <strong>List</strong>): The list of paths to backup. Depending on the task type, path can be files or folders of both. See <a class="reference internal" href="tasks.html#backup-utils-task-types-reference"><span class="std std-ref">Task types</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">destination_prefix</span></code>: A string that will be added to the backed up files/folders. Its usage depends on the type of task. See <a class="reference internal" href="tasks.html#backup-utils-task-types-reference"><span class="std std-ref">Task types</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tar_compression_level</span></code> (<strong>tar_local</strong> only): See <a class="reference internal" href="tasks.html#backup-utils-tar-local-type-reference"><span class="std std-ref">tar_local</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tar_comp_arg</span></code> (<strong>List</strong> | <strong>tar_local</strong> only): See <a class="reference internal" href="tasks.html#backup-utils-tar-local-type-reference"><span class="std std-ref">tar_local</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tar_opt_args</span></code> (<strong>List</strong> | <strong>tar_local</strong> only): See <a class="reference internal" href="tasks.html#backup-utils-tar-local-type-reference"><span class="std std-ref">tar_local</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rsync_args</span></code> (<strong>List</strong> | <strong>rsync_local</strong> only): See <a class="reference internal" href="tasks.html#backup-utils-rsync-type-reference"><span class="std std-ref">rsync_local</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pre_hook</span></code> (<strong>Method</strong>): A Python function to be executed <strong>BEFORE</strong> a backup job is performed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">post_hook</span></code> (<strong>Method</strong>): A Python function to be executed <strong>AFTER</strong> a backup job is performed.</p>
+<blockquote>
+<div><div class="admonition-info info admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">pre_hook</span></code> and <code class="docutils literal notranslate"><span class="pre">post_hook</span></code> methods passed arguments</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>: A modified copy of the task object that was used to run the backup job. Modifications:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">items</span></code> key contains only valid paths.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">pre_hook</span></code> and <code class="docutils literal notranslate"><span class="pre">post_hook</span></code> keys are removed to avoid accidental infinite loops.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">settings</span></code>: The settings object that was used when running the backup job.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dry_run</span></code>: Whether the <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> <abbr title="Command Line Interface">CLI</abbr> option was used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">logger</span></code>: See &lt;class <a class="reference internal" href="../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+</ul>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="settings-example-file">
-<h4>Settings example file<a class="headerlink" href="#settings-example-file" title="Permalink to this headline">¶</a></h4>
+<h3>Settings example file<a class="headerlink" href="#settings-example-file" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;Global settings example file.</span>
@@ -418,7 +511,7 @@
 <span class="sd">Attributes</span>
 <span class="sd">----------</span>
 <span class="sd">settings : dict, mandatory</span>
-<span class="sd">    Description</span>
+<span class="sd">    See documentation/manual for details.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="n">settings</span> <span class="o">=</span> <span class="p">{</span>
@@ -461,6 +554,86 @@
     <span class="k">pass</span>
 </pre></div>
 </div>
+<div class="section" id="id1">
+<h4>Data keys<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All data keys are of type string and are optional unless specified otherwise.</p>
+</div>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">sound_notification</span></code> (<strong>Boolean</strong>) (<strong>Default</strong>: True): Whether to play a sound or not after a backup job is finished.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">desktop_notification</span></code> (<strong>Boolean</strong>) (<strong>Default</strong>: True): Whether to display a desktop notification or not after a backup job is finished.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mail_notification</span></code> (<strong>Boolean</strong>) (<strong>Default</strong>: False): Whether to send a report via e-mail or not after a backup job is finished.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ignored_patterns</span></code> (<strong>List</strong>): A list of file patterns to exclude from a backup job.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mail_settings</span></code> (<strong>Dictionary</strong>): Settings used to send e-mails in case that <code class="docutils literal notranslate"><span class="pre">mail_notification</span></code> is set to <strong>True</strong>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ask_for_password</span></code> (<strong>Boolean</strong>) (<strong>Default</strong>: False): If set to <strong>False</strong>, an attempt to get the sender’s password from the system’s keyring will be performed. The keys <code class="docutils literal notranslate"><span class="pre">secret_service_name</span></code> and <code class="docutils literal notranslate"><span class="pre">secret_user_name</span></code> should contain valid data to retrieve said password. If set to <strong>True</strong>, the mail system will always prompt for a password, and no attempt to retrieve a password from the system’s keyring will be made. See <a class="reference internal" href="#backup-utils-requirements-reference"><span class="std std-ref">Requirements</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sender_address</span></code>: The sender’s e-mail address.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sender_username</span></code>: The sender’s user name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">smtp_server</span></code>: The SMTP server for the sender’s account.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">smtp_port</span></code> (<strong>Integer</strong>): The SMTP port for the sender’s account.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">secret_service_name</span></code>: See <a class="reference internal" href="#backup-utils-requirements-reference"><span class="std std-ref">Requirements</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">secret_user_name</span></code>: See <a class="reference internal" href="#backup-utils-requirements-reference"><span class="std std-ref">Requirements</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_tls</span></code> (<strong>Boolean</strong>) (<strong>Default</strong>: True): Whether to use TLS or not.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mail_subject</span></code> (<strong>Default</strong>: Backup Utils Report): Text that will be used in the <strong>Subject</strong> of the sent e-mail.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mail_body</span></code>: Text that will be displayed after the backup report.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mailing_list</span></code> (<strong>List</strong>): A list of e-mail addresses to send a backup report to.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="task-types">
+<span id="backup-utils-task-types-reference"></span><h2>Task types<a class="headerlink" href="#task-types" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Always use the <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> <abbr title="Command Line Interface">CLI</abbr> option to see the exact command/s that will be executed.</p>
+</div>
+<div class="section" id="tar-local">
+<span id="backup-utils-tar-local-type-reference"></span><h3>tar_local<a class="headerlink" href="#tar-local" title="Permalink to this headline">¶</a></h3>
+<p>This task uses the <code class="docutils literal notranslate"><span class="pre">tar</span></code> command available on a system to create an archive with the content of all the items (files and folder) defined in a task object.</p>
+<div class="admonition-info info admonition">
+<p class="admonition-title">Highlights</p>
+<ul class="simple">
+<li><p>This task can backup files and folders.</p></li>
+<li><p>Only local file system paths are allowed.</p></li>
+</ul>
+</div>
+<div class="section" id="data-keys-specific-to-this-task-type">
+<h4>Data keys specific to this task type<a class="headerlink" href="#data-keys-specific-to-this-task-type" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All data keys are of type string and are optional unless specified otherwise.</p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tar_compression_level</span></code> (<strong>Default</strong>: -7): A value between -1 and -9. This value is used to set environment variables used by <code class="docutils literal notranslate"><span class="pre">tar</span></code> (XZ_OPT, GZIP_OPT or BZIP2) to set a compression level. If no compression argument is defined in <code class="docutils literal notranslate"><span class="pre">tar_func_args</span></code>, the environment variables will not be set and <code class="docutils literal notranslate"><span class="pre">tar_compression_level</span></code> will not be used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tar_func_args</span></code> (<strong>List</strong>) (<strong>Default</strong>: empty (no function arguments are passed to <code class="docutils literal notranslate"><span class="pre">tar</span></code>)): A list of function arguments used by the <code class="docutils literal notranslate"><span class="pre">tar</span></code> program. Possible values for the compression arguments are <strong>–xz</strong>, <strong>-J</strong>, <strong>–gzip</strong>, <strong>-z</strong>, <strong>–bzip2</strong> or <strong>-j</strong>. Do not use <em>old option style</em>, either use short options (e.g.: <code class="docutils literal notranslate"><span class="pre">-j</span></code>) or long options (e.g.: <code class="docutils literal notranslate"><span class="pre">--xz</span></code>). See <a class="reference external" href="https://www.gnu.org/software/tar/manual/tar.html">GNU tar manual</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tar_opt_args</span></code> (<strong>List</strong>): See <a class="reference internal" href="tasks.html#backup-utils-tar-local-type-reference"><span class="std std-ref">tar_local</span></a>.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="rsync-local">
+<span id="backup-utils-rsync-type-reference"></span><h3>rsync_local<a class="headerlink" href="#rsync-local" title="Permalink to this headline">¶</a></h3>
+<p>This task uses the <code class="docutils literal notranslate"><span class="pre">rsync</span></code> command available on a system to create a mirror of each folder (<code class="docutils literal notranslate"><span class="pre">items</span></code> key) defined in a task object.</p>
+<div class="admonition-info info admonition">
+<p class="admonition-title">Highlights</p>
+<ul class="simple">
+<li><p>This task can only backup folders.</p></li>
+<li><p>Only local file system paths are allowed.</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h4>Data keys specific to this task type<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All data keys are of type string and are optional unless specified otherwise.</p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rsync_args</span></code> (<strong>List</strong>): Extra arguments passed to the <code class="docutils literal notranslate"><span class="pre">rsync</span></code> command.</p></li>
+</ul>
 </div>
 </div>
 </div>

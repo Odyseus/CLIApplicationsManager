@@ -1,0 +1,83 @@
+
+File templates
+==============
+
+.. warning::
+
+    Always use the ``--dry-run`` |CLI| option to see the exact command/s that will be executed.
+
+Task example file
+-----------------
+
+A tasks file is a Python script containing at least a property called **tasks** (mandatory). The **tasks** property must be a list of dictionaries, each dictionary representing a backup task.
+
+.. literalinclude:: ../../../../UserData/BackupUtils/AppData/data/templates/tasks_example.py
+    :language: python
+
+Data keys
+^^^^^^^^^
+
+.. note::
+
+    All data keys are of type string and are optional unless specified otherwise.
+
+- ``type`` (**Mandatory**): Task type. See :ref:`backup-utils-task-types-reference`.
+- ``name`` (**Mandatory**): Task name.
+- ``destination`` (**Mandatory**): Absolute path to where the backup files or folders will be stored.
+- ``items`` (**Mandatory** | **List**): The list of paths to backup. Depending on the task type, path can be files or folders of both. See :ref:`backup-utils-task-types-reference`.
+- ``destination_prefix``: A string that will be added to the backed up files/folders. Its usage depends on the type of task. See :ref:`backup-utils-task-types-reference`.
+- ``tar_compression_level`` (**tar_local** only): See :ref:`backup-utils-tar-local-type-reference`.
+- ``tar_comp_arg`` (**List** | **tar_local** only): See :ref:`backup-utils-tar-local-type-reference`.
+- ``tar_opt_args`` (**List** | **tar_local** only): See :ref:`backup-utils-tar-local-type-reference`.
+- ``rsync_args`` (**List** | **rsync_local** only): See :ref:`backup-utils-rsync-type-reference`.
+- ``pre_hook`` (**Method**): A Python function to be executed **BEFORE** a backup job is performed.
+- ``post_hook`` (**Method**): A Python function to be executed **AFTER** a backup job is performed.
+
+    .. contextual-admonition::
+        :context: info
+        :title: ``pre_hook`` and ``post_hook`` methods passed arguments
+
+        - ``task``: A modified copy of the task object that was used to run the backup job. Modifications:
+
+            + The ``items`` key contains only valid paths.
+            + The ``pre_hook`` and ``post_hook`` keys are removed to avoid accidental infinite loops.
+
+        - ``settings``: The settings object that was used when running the backup job.
+        - ``dry_run``: Whether the ``--dry-run`` |CLI| option was used.
+        - ``logger``: See <class :any:`LogSystem`>.
+
+
+Settings example file
+---------------------
+
+.. literalinclude:: ../../../../UserData/BackupUtils/AppData/data/templates/settings_example.py
+    :language: python
+
+Data keys
+^^^^^^^^^
+
+.. note::
+
+    All data keys are of type string and are optional unless specified otherwise.
+
+- ``sound_notification`` (**Boolean**) (**Default**: True): Whether to play a sound or not after a backup job is finished.
+- ``desktop_notification`` (**Boolean**) (**Default**: True): Whether to display a desktop notification or not after a backup job is finished.
+- ``mail_notification`` (**Boolean**) (**Default**: False): Whether to send a report via e-mail or not after a backup job is finished.
+- ``ignored_patterns`` (**List**): A list of file patterns to exclude from a backup job.
+- ``mail_settings`` (**Dictionary**): Settings used to send e-mails in case that ``mail_notification`` is set to **True**.
+
+    + ``ask_for_password`` (**Boolean**) (**Default**: False): If set to **False**, an attempt to get the sender's password from the system's keyring will be performed. The keys ``secret_service_name`` and ``secret_user_name`` should contain valid data to retrieve said password. If set to **True**, the mail system will always prompt for a password, and no attempt to retrieve a password from the system's keyring will be made. See :ref:`backup-utils-requirements-reference`.
+    + ``sender_address``: The sender's e-mail address.
+    + ``sender_username``: The sender's user name.
+    + ``smtp_server``: The SMTP server for the sender's account.
+    + ``smtp_port`` (**Integer**): The SMTP port for the sender's account.
+    + ``secret_service_name``: See :ref:`backup-utils-requirements-reference`.
+    + ``secret_user_name``: See :ref:`backup-utils-requirements-reference`.
+    + ``use_tls`` (**Boolean**) (**Default**: True): Whether to use TLS or not.
+    + ``mail_subject`` (**Default**: Backup Utils Report): Text that will be used in the **Subject** of the sent e-mail.
+    + ``mail_body``: Text that will be displayed after the backup report.
+    + ``mailing_list`` (**List**): A list of e-mail addresses to send a backup report to.
+
+    .. info::
+
+        All ``mail_settings`` keys are mandatory.

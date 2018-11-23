@@ -1,3 +1,6 @@
+.. Abbreviations
+
+.. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
 
 ***************************
 Backup Utils' documentation
@@ -5,7 +8,7 @@ Backup Utils' documentation
 
 .. only:: html
 
-    A :abbr:`CLI (Command Line Interface)` utility written in Python 3 to backup files on GNU/Linux.
+    A |CLI| utility to backup files on GNU/Linux.
 
 .. include:: ../0-common/system-executable-hint.restructuredtext
 
@@ -25,6 +28,8 @@ Mentions
 
 Application inspired by the `backup-utils <https://gitlab.com/Oprax/backup-utils>`__ Python module.
 
+.. _backup-utils-requirements-reference:
+
 Requirements
 ============
 
@@ -32,33 +37,37 @@ No mayor requirements are needed to run this application other than Python 3.5+.
 
 .. contextual-admonition::
     :context: warning
-    :title: Mail system requirements
+    :title: Mail system optional requirement
 
     - ``keyring`` module.
 
 ``keyring`` module
 ------------------
 
-This module is only used by the email system and it is used to retrieve a password stored in the system's default keyring. This application will not store nor use passwords saved in plain text.
+This module is only used by the email system and it is used to retrieve a password stored in the system's default keyring. This module is optional because the mail system can be configured to ask for a password. This application will not store nor use passwords saved in plain text.
 
-The following command executed from a terminal will store a password:
+The following command executed from a terminal will prompt for a password that will be stored into the system's keyring:
 
 .. code:: shell
 
-    $ keyring set backup_secret_context backup_secret_name
+    $ keyring set backup_secret_service_name backup_secret_user_name
 
-Then the password is retrieved by the application email system using the ``sender_secret`` tuple specified in ``global_settings`` like so:
+Then the password is retrieved from the system's keyring by the application email system using the ``secret_service_name`` and ``secret_user_name`` keys specified in the ``settings`` property from a **settings** file or a **tasks** file like so:
 
 .. code:: python
 
-    keyring.get_password("backup_secret_context", "backup_secret_name")
+    keyring.get_password("backup_secret_service_name", "backup_secret_user_name")
 
-``backup_secret_context`` and ``backup_secret_name`` can have any other names that one deems to give them. As to what these names actually mean, I have no idea. What I know is that in Gnome keyring, the details tab for the generated "storage" will display the following:
+``backup_secret_service_name`` and ``backup_secret_user_name`` can have any other names that one deems to give them. As an example, in Gnome keyring, the details tab for the generated *storage* will display the following:
 
 ::
 
-    username: backup_secret_name
+    username: backup_secret_user_name
     application: python-keyring
-    service: backup_secret_context
+    service: backup_secret_service_name
 
 .. include:: ./usage.rst
+
+.. include:: ./templates.rst
+
+.. include:: ./tasks.rst

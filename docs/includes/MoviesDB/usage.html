@@ -161,7 +161,7 @@
   <div class="section" id="detailed-usage">
 <h1>Detailed usage<a class="headerlink" href="#detailed-usage" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="cli-options">
-<h2><abbr title="Command Line Interface">CLI</abbr> options<a class="headerlink" href="#cli-options" title="Permalink to this headline">¶</a></h2>
+<h2><a href="#id2"><span class="problematic" id="id3">|CLI|</span></a> options<a class="headerlink" href="#cli-options" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code>: Display this application basic help screen.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--manual</span></code>: Display this application manual.</p></li>
@@ -170,10 +170,29 @@
 </div>
 <div class="section" id="commands">
 <h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="app-py-generate">
-<h3>app.py generate<a class="headerlink" href="#app-py-generate" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="app-py-server">
+<h3>app.py server<a class="headerlink" href="#app-py-server" title="Permalink to this headline">¶</a></h3>
+<p>The HTTP server started will host the folder at <strong>UserData/www</strong>.</p>
 <div class="section" id="sub-commands">
 <h4>Sub-commands<a class="headerlink" href="#sub-commands" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code>: Start HTTP server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stop</span></code>: Stop HTTP server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">restart</span></code>: Restart HTTP server.</p></li>
+</ul>
+</div>
+<div class="section" id="options">
+<h4>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--host=&lt;host&gt;</span></code> Host name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--port=&lt;port&gt;</span></code> Port number.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="app-py-generate">
+<h3>app.py generate<a class="headerlink" href="#app-py-generate" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4>Sub-commands<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">system_executable</span></code>: Create an executable for the <code class="docutils literal notranslate"><span class="pre">app.py</span></code> application on the system <code class="docutils literal notranslate"><span class="pre">PATH</span></code> to be able to run it from anywhere.</p>
 <blockquote>

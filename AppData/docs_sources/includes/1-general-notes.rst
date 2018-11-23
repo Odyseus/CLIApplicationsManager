@@ -1,3 +1,6 @@
+.. Abbreviations
+
+.. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
 
 *************************
 General development notes
@@ -19,7 +22,7 @@ General development notes
 docopt module usage notes
 =========================
 
-The `docopt Python module <https://github.com/docopt/docopt>`__ is used as command line arguments parser for all :abbr:`CLI (Command Line Interface)` applications.
+The `docopt Python module <https://github.com/docopt/docopt>`__ is used as command line arguments parser for all |CLI| applications.
 
 The ``docopt_doc`` variable defined in each **cli.py** file for each application is used to store/define the doc string that will be passed to ``docopt`` as the **doc** argument. This was done because, if I use a doc string that complies with Sphinx/RST, ``docopt`` will not parse it correctly. If I use a doc string that complies with ``docopt``, Sphinx doesn't SHUT UP about incorrect indentations and the likes. So, I store the *``docopt`` document* in a variable. This will SHUT UP Sphinx because it *cannot see* the doc string. The variable then is explicitly passed to ``docopt`` as the **doc** argument. Moving the on!!!
 

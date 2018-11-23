@@ -161,12 +161,15 @@
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;Git utilities.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">call</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">CalledProcessError</span>
 
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">cmd_utils</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">prompts</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">shell_utils</span>
 
 
-<div class="viewcode-block" id="manage_repo"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.git_utils.html#python_modules.python_utils.git_utils.manage_repo">[docs]</a><span class="k">def</span> <span class="nf">manage_repo</span><span class="p">(</span><span class="n">mechanism</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">subtrees</span><span class="o">=</span><span class="p">[],</span> <span class="n">do_not_confirm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="manage_repo"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.git_utils.html#python_modules.python_utils.git_utils.manage_repo">[docs]</a><span class="k">def</span> <span class="nf">manage_repo</span><span class="p">(</span><span class="n">mechanism</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">subtrees</span><span class="o">=</span><span class="p">[],</span> <span class="n">do_not_confirm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">cwd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Manage repository.</span>
 
 <span class="sd">    Perform some complex tasks on a repository. Mostly sub-trees and sub-modules initialization.</span>
@@ -180,47 +183,51 @@
 <span class="sd">    subtrees : list, optional</span>
 <span class="sd">        A list of dictionaries representing sub-tree options.</span>
 
-<span class="sd">        - **remote_name**: The sub-tree remote name.</span>
-<span class="sd">        - **remote_url**: The sub-tree remote URL.</span>
+<span class="sd">        - **url**: The sub-tree repository URL.</span>
 <span class="sd">        - **path**: Path inside the parent repository where the sub-tree will be stored.</span>
+<span class="sd">        - **ref**: The sub-tree repository remote reference (Default: master).</span>
 <span class="sd">    do_not_confirm : bool, optional</span>
 <span class="sd">        Do not ask for confirmation before executing commands.</span>
 <span class="sd">    cwd : None, optional</span>
 <span class="sd">        Path to working directory. It should be a folder that belongs to a Git repository.</span>
 <span class="sd">    logger : object</span>
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Sub-modules are initialized or updated *in-bulk* with just one command. Sub-trees are</span>
+<span class="sd">    initialized or updated with one command per sub-tree repository.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">commands</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">if</span> <span class="n">mechanism</span> <span class="o">==</span> <span class="s2">&quot;submodule&quot;</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;init&quot;</span><span class="p">:</span>
-            <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;git submodule update --init&quot;</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;update&quot;</span><span class="p">:</span>
-            <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;git submodule update --remote --merge&quot;</span><span class="p">)</span>
+        <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;git submodule update </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                        <span class="p">(</span><span class="s2">&quot;--init&quot;</span> <span class="k">if</span> <span class="n">action</span> <span class="ow">is</span> <span class="s2">&quot;init&quot;</span> <span class="k">else</span> <span class="s2">&quot;--remote --merge&quot;</span><span class="p">))</span>
     <span class="k">elif</span> <span class="n">mechanism</span> <span class="o">==</span> <span class="s2">&quot;subtree&quot;</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">sub_tree</span> <span class="ow">in</span> <span class="n">subtrees</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;init&quot;</span><span class="p">:</span>
-                <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;git remote add -f </span><span class="si">{remote_name}</span><span class="s2"> </span><span class="si">{remote_url}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="n">remote_name</span><span class="o">=</span><span class="n">sub_tree</span><span class="p">[</span><span class="s2">&quot;remote_name&quot;</span><span class="p">],</span>
-                    <span class="n">remote_url</span><span class="o">=</span><span class="n">sub_tree</span><span class="p">[</span><span class="s2">&quot;remote_url&quot;</span><span class="p">]</span>
-                <span class="p">))</span>
-            <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;update&quot;</span><span class="p">:</span>
-                <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;git pull --strategy-option=subtree=</span><span class="si">{path}</span><span class="s2"> </span><span class="si">{remote_name}</span><span class="s2"> master&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="n">path</span><span class="o">=</span><span class="n">sub_tree</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">],</span>
-                    <span class="n">remote_name</span><span class="o">=</span><span class="n">sub_tree</span><span class="p">[</span><span class="s2">&quot;remote_name&quot;</span><span class="p">]</span>
-                <span class="p">))</span>
+            <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;git subtree </span><span class="si">{cmd}</span><span class="s2"> --prefix </span><span class="si">{prefix}</span><span class="s2"> </span><span class="si">{url}</span><span class="s2"> </span><span class="si">{ref}</span><span class="s2"> --squash&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;add&quot;</span> <span class="k">if</span> <span class="n">action</span> <span class="ow">is</span> <span class="s2">&quot;init&quot;</span> <span class="k">else</span> <span class="s2">&quot;pull&quot;</span><span class="p">,</span>
+                <span class="n">prefix</span><span class="o">=</span><span class="n">sub_tree</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">],</span>
+                <span class="n">url</span><span class="o">=</span><span class="n">sub_tree</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">],</span>
+                <span class="n">ref</span><span class="o">=</span><span class="n">sub_tree</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;master&quot;</span><span class="p">)</span>
+            <span class="p">))</span>
 
     <span class="k">if</span> <span class="n">commands</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;The following command/s will be executed:&quot;</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-        <span class="nb">print</span><span class="p">()</span>
-
         <span class="k">if</span> <span class="n">do_not_confirm</span> <span class="ow">or</span> <span class="n">prompts</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Proceed?&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
-                <span class="n">call</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">cwd</span><span class="p">)</span></div>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">dry_run</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;Command that will be executed:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cmd</span><span class="p">)</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;Command will be executed at:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cwd</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Executing command:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cmd</span><span class="p">)</span>
+                        <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                          <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">cwd</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                        <span class="k">continue</span></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>

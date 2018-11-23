@@ -2,9 +2,66 @@
 Detailed usage
 ==============
 
+.. contextual-admonition::
+    :context: info
+    :title: Highlights
+
+    - This application works with *profiles* stored in **UserData/profiles**.
+    - A profile is just a folder that contains a configuration file (**UserData/profiles/<profle_name>/conf.py**) and where all downloaded sources are stored and processed to generate a hosts file.
+    - Each profile can have files named **whitelist** and **blacklist** which contain a host name per line without inline comments.
+    - Files named **global_blacklist** and **global_whitelist** inside **UserData** will be used by all profiles.
+    - A **whitelist** file contains a list of host names that **will NEVER be added** to the final hosts file.
+    - A **blacklist** file contains a list of host names that **will ALWAYS be added** to the final hosts file.
+    - The **conf.py** file should contain at least a property named **sources** (mandatory - a list of dictionaries) and another property named **settings** (optional - a dictionary).
+    - This application can process text files formatted as a hosts file (**0.0.0.0 hostname.com** one rule per line), text files formatted as a list of host names (**hostname.com** one domain per line) and archives (7Zip files, Zip files and compressed and non-compressed Tar files) containing any of the aforementioned text files.
+
 .. include:: ../0-common/cli-options.restructuredtext
+- ``-f`` or ``--flush-dns-cache``: Attempt to flush DNS cache for the new hosts file to take effect.
+- ``-d`` or ``--dry-run``: Do not perform file system changes. Only display messages informing of the actions that will be performed or commands that will be executed.
+
+    .. warning::
+
+        Some file system changes will be performed (e.g. temporary files creation).
 
 Commands
 --------
+
+app.py run
+^^^^^^^^^^
+
+The main command to update, build and install a hosts file.
+
+Sub-commands
+~~~~~~~~~~~~
+
+- ``update``: Update all sources defined inside the **conf.py** file.
+- ``build``: Build a hosts file based on the downloaded sources.
+- ``install``: Install a generated hosts file into the system.
+
+Options
+~~~~~~~
+
+- ``-p <name>`` or ``--profile=<name>``: The profile name to work with. This is actually the name of a folder inside the **UserData/profiles** folder.
+- ``-o <key=value>`` or ``--override=<key=value>``: One or more sets of **<key=value>** that will override the configuration options set inside a profile's **conf.py** file.
+- ``-u`` or ``--force-update``: Force the update of all sources, ignoring the frequency in which they should be updated.
+- ``-f`` or ``--flush-dns-cache``: Attempt to flush DNS cache for the new hosts file to take effect.
+- ``-d`` or ``--dry-run``: Do not perform file system changes. Only display messages informing of the actions that will be performed or commands that will be executed.
+
+app.py server
+^^^^^^^^^^^^^
+
+The HTTP server started will host the folder at **UserData/block_page**. This web page will be displayed when an attempt to contact a blocked host name is performed.
+
+.. warning::
+
+    Since the server needs to be started in the port **80**, elevated privileges are required. To bypass the password prompts for starting/stopping the server, the **sudoers** file can be edited.
+
+    .. code::
+
+        user_name ALL = (root) NOPASSWD: /home/user_name/.local/bin/hosts-manager-cli server start
+        user_name ALL = (root) NOPASSWD: /home/user_name/.local/bin/hosts-manager-cli server stop
+        user_name ALL = (root) NOPASSWD: /home/user_name/.local/bin/hosts-manager-cli server restart
+
+.. include:: ../0-common/server-command.restructuredtext
 
 .. include:: ../0-common/generate-command.restructuredtext

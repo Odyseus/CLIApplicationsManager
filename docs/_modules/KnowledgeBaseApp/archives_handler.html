@@ -203,14 +203,14 @@
 <span class="sd">    logger : object</span>
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">_tar_allowed_args</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">_tar_allowed_args</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;--xz&quot;</span><span class="p">,</span>
         <span class="s2">&quot;-J&quot;</span><span class="p">,</span>
         <span class="s2">&quot;--gzip&quot;</span><span class="p">,</span>
         <span class="s2">&quot;-z&quot;</span><span class="p">,</span>
         <span class="s2">&quot;--bzip2&quot;</span><span class="p">,</span>
         <span class="s2">&quot;-j&quot;</span>
-    <span class="p">]</span>
+    <span class="p">}</span>
     <span class="n">_source_mandatory_keys</span> <span class="o">=</span> <span class="p">[</span>
         <span class="s2">&quot;kb_title&quot;</span><span class="p">,</span>
         <span class="s2">&quot;kb_category&quot;</span><span class="p">,</span>
@@ -373,7 +373,7 @@
                             <span class="k">if</span> <span class="n">untar_arg</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tar_allowed_args</span><span class="p">:</span>
                                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;untar_arg key ignored!&quot;</span><span class="p">)</span>
                                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Allowed arguments are:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
-                                                    <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tar_allowed_args</span><span class="p">))</span>
+                                                    <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tar_allowed_args</span><span class="p">)))</span>
                             <span class="k">else</span><span class="p">:</span>
                                 <span class="n">cmd</span> <span class="o">+=</span> <span class="p">[</span><span class="n">untar_arg</span><span class="p">]</span>
 
@@ -524,13 +524,13 @@
 <span class="sd">        exceptions.MalformedSources</span>
 <span class="sd">            See &lt;class :any:`exceptions.MalformedSources`&gt;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">titles</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">titles</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_archives_data</span><span class="p">:</span>
             <span class="n">source_title</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_title&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
             <span class="n">report_source</span> <span class="o">=</span> <span class="n">source_title</span> <span class="k">if</span> <span class="n">source_title</span> <span class="k">else</span> <span class="n">data</span>
-            <span class="n">source_keys</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+            <span class="n">source_keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
             <span class="c1"># Do not allow sources without mandatory keys.</span>
             <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_source_mandatory_keys</span><span class="p">:</span>
@@ -543,7 +543,7 @@
                 <span class="k">if</span> <span class="n">source_title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
                     <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;More than one source with the same title. &lt;</span><span class="si">%s</span><span class="s2">&gt;&quot;</span> <span class="o">%</span> <span class="n">source_title</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">titles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">source_title</span><span class="p">)</span>
+                    <span class="n">titles</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">source_title</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MalformedSources</span><span class="p">(</span>

@@ -1,6 +1,6 @@
 
-:abbr:`CLI (Command Line Interface)` options
---------------------------------------------
+|CLI| options
+-------------
 
 - ``-h`` or ``--help``: Display this application basic help screen.
 - ``--manual``: Display this application manual.

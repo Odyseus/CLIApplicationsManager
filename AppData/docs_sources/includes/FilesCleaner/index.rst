@@ -1,3 +1,6 @@
+.. Abbreviations
+
+.. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
 
 *****************************
 Files Cleaner's documentation
@@ -5,7 +8,7 @@ Files Cleaner's documentation
 
 .. only:: html
 
-    A :abbr:`CLI (Command Line Interface)` utility written in Python 3 to delete/clean files from a folder based on a pattern of file names on GNU/Linux.
+    A |CLI| utility written in Python 3 to delete/clean files from a folder based on a pattern of file names on GNU/Linux.
 
 .. include:: ../0-common/system-executable-hint.restructuredtext
 

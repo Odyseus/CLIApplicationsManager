@@ -159,6 +159,31 @@
   <h1>Source code for HostsManagerApp.python_utils.bottle</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">cgi</span>
+<span class="kn">import</span> <span class="nn">email.utils</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">hmac</span>
+<span class="kn">import</span> <span class="nn">imp</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">mimetypes</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">weakref</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">date</span> <span class="k">as</span> <span class="n">datedate</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">TemporaryFile</span>
+<span class="kn">from</span> <span class="nn">traceback</span> <span class="k">import</span> <span class="n">format_exc</span>
+<span class="kn">from</span> <span class="nn">traceback</span> <span class="k">import</span> <span class="n">print_exc</span>
+<span class="kn">from</span> <span class="nn">types</span> <span class="k">import</span> <span class="n">FunctionType</span>
+<span class="kn">from</span> <span class="nn">unicodedata</span> <span class="k">import</span> <span class="n">normalize</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Bottle is a fast and simple micro-framework for small web applications. It</span>
 <span class="sd">offers request dispatching (Routes) with URL parameter support, templates,</span>
@@ -168,7 +193,7 @@
 
 <span class="sd">Homepage and documentation: http://bottlepy.org/</span>
 
-<span class="sd">Copyright (c) 2017, Marcel Hellkamp.</span>
+<span class="sd">Copyright (c) 2009-2018, Marcel Hellkamp.</span>
 <span class="sd">License: MIT (see LICENSE for details)</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -227,23 +252,6 @@
 <span class="c1"># Imports and Python 2/3 unification ##########################################</span>
 <span class="c1">###############################################################################</span>
 
-
-<span class="kn">import</span> <span class="nn">base64</span>
-<span class="kn">import</span> <span class="nn">cgi</span>
-<span class="kn">import</span> <span class="nn">email.utils</span>
-<span class="kn">import</span> <span class="nn">functools</span>
-<span class="kn">import</span> <span class="nn">hmac</span>
-<span class="kn">import</span> <span class="nn">imp</span>
-<span class="kn">import</span> <span class="nn">itertools</span>
-<span class="kn">import</span> <span class="nn">mimetypes</span>
-<span class="kn">import</span> \
-    <span class="nn">os</span><span class="o">,</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">tempfile</span><span class="o">,</span> <span class="nn">threading</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">warnings</span><span class="o">,</span> <span class="nn">weakref</span><span class="o">,</span> <span class="nn">hashlib</span>
-
-<span class="kn">from</span> <span class="nn">types</span> <span class="k">import</span> <span class="n">FunctionType</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">date</span> <span class="k">as</span> <span class="n">datedate</span><span class="p">,</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
-<span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">TemporaryFile</span>
-<span class="kn">from</span> <span class="nn">traceback</span> <span class="k">import</span> <span class="n">format_exc</span><span class="p">,</span> <span class="n">print_exc</span>
-<span class="kn">from</span> <span class="nn">unicodedata</span> <span class="k">import</span> <span class="n">normalize</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">ujson</span> <span class="k">import</span> <span class="n">dumps</span> <span class="k">as</span> <span class="n">json_dumps</span><span class="p">,</span> <span class="n">loads</span> <span class="k">as</span> <span class="n">json_lds</span>
@@ -345,8 +353,6 @@
 
 
 <span class="n">tonat</span> <span class="o">=</span> <span class="n">touni</span> <span class="k">if</span> <span class="n">py3k</span> <span class="k">else</span> <span class="n">tob</span>
-
-<span class="c1"># 3.2 fixes cgi.FieldStorage to accept bytes (which makes a lot of sense).</span>
 
 
 <span class="c1"># A bug in functools causes it to break if the wrapper is an instance method</span>
@@ -1892,8 +1898,10 @@
         <span class="n">copy</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span>
         <span class="n">copy</span><span class="o">.</span><span class="n">_headers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">[:])</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span><span class="p">:</span>
-            <span class="n">copy</span><span class="o">.</span><span class="n">_cookies</span> <span class="o">=</span> <span class="n">SimpleCookie</span><span class="p">()</span>
-            <span class="n">copy</span><span class="o">.</span><span class="n">_cookies</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+            <span class="n">cookies</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">_cookies</span> <span class="o">=</span> <span class="n">SimpleCookie</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">cookies</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">value</span>
+                <span class="n">cookies</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>  <span class="c1"># also copy cookie attributes</span>
         <span class="k">return</span> <span class="n">copy</span>
 
     <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -2020,7 +2028,7 @@
 <span class="sd">            Additionally, this method accepts all RFC 2109 attributes that are</span>
 <span class="sd">            supported by :class:`cookie.Morsel`, including:</span>
 
-<span class="sd">            :param max_age: maximum age in seconds. (default: None)</span>
+<span class="sd">            :param maxage: maximum age in seconds. (default: None)</span>
 <span class="sd">            :param expires: a datetime object or UNIX timestamp. (default: None)</span>
 <span class="sd">            :param domain: the domain that is allowed to read the cookie.</span>
 <span class="sd">              (default: current domain)</span>
@@ -2028,12 +2036,12 @@
 <span class="sd">            :param secure: limit the cookie to HTTPS connections (default: off).</span>
 <span class="sd">            :param httponly: prevents client-side javascript to read this cookie</span>
 <span class="sd">              (default: off, requires Python 2.6 or newer).</span>
-<span class="sd">            :param same_site: disables third-party use for a cookie.</span>
+<span class="sd">            :param samesite: disables third-party use for a cookie.</span>
 <span class="sd">              Allowed attributes: `lax` and `strict`.</span>
 <span class="sd">              In strict mode the cookie will never be sent.</span>
 <span class="sd">              In lax mode the cookie is only sent with a top-level GET request.</span>
 
-<span class="sd">            If neither `expires` nor `max_age` is set (default), the cookie will</span>
+<span class="sd">            If neither `expires` nor `maxage` is set (default), the cookie will</span>
 <span class="sd">            expire at the end of the browser session (as soon as the browser</span>
 <span class="sd">            window is closed).</span>
 
@@ -2054,8 +2062,9 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span> <span class="o">=</span> <span class="n">SimpleCookie</span><span class="p">()</span>
 
-        <span class="c1"># To add &quot;SameSite&quot; cookie support.</span>
-        <span class="n">Morsel</span><span class="o">.</span><span class="n">_reserved</span><span class="p">[</span><span class="s1">&#39;same-site&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;SameSite&#39;</span>
+        <span class="c1"># Monkey-patch Cookie lib to support &#39;SameSite&#39; parameter</span>
+        <span class="c1"># https://tools.ietf.org/html/draft-west-first-party-cookies-07#section-4.1</span>
+        <span class="n">Morsel</span><span class="o">.</span><span class="n">_reserved</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;samesite&#39;</span><span class="p">,</span> <span class="s1">&#39;SameSite&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">secret</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">basestring</span><span class="p">):</span>
@@ -2076,7 +2085,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;max_age&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;max_age&#39;</span><span class="p">,</span> <span class="s1">&#39;maxage&#39;</span><span class="p">):</span>  <span class="c1"># &#39;maxage&#39; variant added in 0.13</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;max-age&#39;</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">):</span>
                     <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">seconds</span> <span class="o">+</span> <span class="n">value</span><span class="o">.</span><span class="n">days</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">3600</span>
             <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;expires&#39;</span><span class="p">:</span>
@@ -2085,12 +2095,14 @@
                 <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
                     <span class="n">value</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%a, </span><span class="si">%d</span><span class="s2"> %b %Y %H:%M:%S GMT&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-            <span class="c1"># check values for SameSite cookie, because it&#39;s not natively supported by http.cookies.</span>
-            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;same_site&#39;</span> <span class="ow">and</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;lax&#39;</span><span class="p">,</span> <span class="s1">&#39;strict&#39;</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="n">CookieError</span><span class="p">(</span><span class="s2">&quot;Invalid attribute </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,))</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;same_site&#39;</span><span class="p">,</span> <span class="s1">&#39;samesite&#39;</span><span class="p">):</span>  <span class="c1"># &#39;samesite&#39; variant added in 0.13</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;samesite&#39;</span>
+                <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;lax&#39;</span><span class="p">,</span> <span class="s1">&#39;strict&#39;</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">CookieError</span><span class="p">(</span>
+                        <span class="s2">&quot;Invalid value samesite=</span><span class="si">%r</span><span class="s2"> (expected &#39;lax&#39; or &#39;strict&#39;)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,))</span>
             <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;secure&#39;</span><span class="p">,</span> <span class="s1">&#39;httponly&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
                 <span class="k">continue</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="n">key</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 
     <span class="k">def</span> <span class="nf">delete_cookie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Delete a cookie. Be sure to use the same `domain` and `path`</span>
@@ -4274,7 +4286,6 @@
 
 
 <span class="k">class</span> <span class="nc">StplSyntaxError</span><span class="p">(</span><span class="n">TemplateError</span><span class="p">):</span>
-
     <span class="k">pass</span>
 
 
@@ -4371,8 +4382,8 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
                 <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># Escape syntax</span>
                     <span class="n">line</span><span class="p">,</span> <span class="n">sep</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">:]</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">text_buffer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">():</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span> <span class="o">+</span>
-                                            <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">line</span> <span class="o">+</span> <span class="n">sep</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">text_buffer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">():</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+                                            <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">line</span> <span class="o">+</span> <span class="n">sep</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="n">sep</span><span class="p">)</span>
                     <span class="k">continue</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">flush_text</span><span class="p">()</span>
@@ -4416,17 +4427,20 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">paren_depth</span> <span class="o">-=</span> <span class="mi">1</span>
                 <span class="n">code_line</span> <span class="o">+=</span> <span class="n">_pc</span>
             <span class="k">elif</span> <span class="n">_blk1</span><span class="p">:</span>  <span class="c1"># Start-block keyword (if/for/while/def/try/...)</span>
-                <span class="n">code_line</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indent_mod</span> <span class="o">=</span> <span class="n">_blk1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
+                <span class="n">code_line</span> <span class="o">=</span> <span class="n">_blk1</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">indent</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">indent_mod</span> <span class="o">-=</span> <span class="mi">1</span>
             <span class="k">elif</span> <span class="n">_blk2</span><span class="p">:</span>  <span class="c1"># Continue-block keyword (else/elif/except/...)</span>
-                <span class="n">code_line</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indent_mod</span> <span class="o">=</span> <span class="n">_blk2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
-            <span class="k">elif</span> <span class="n">_end</span><span class="p">:</span>  <span class="c1"># The non-standard &#39;end&#39;-keyword (ends a block)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">indent</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">code_line</span> <span class="o">=</span> <span class="n">_blk2</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">indent_mod</span> <span class="o">-=</span> <span class="mi">1</span>
             <span class="k">elif</span> <span class="n">_cend</span><span class="p">:</span>  <span class="c1"># The end-code-block template token (usually &#39;%&gt;&#39;)</span>
                 <span class="k">if</span> <span class="n">multiline</span><span class="p">:</span>
                     <span class="n">multiline</span> <span class="o">=</span> <span class="kc">False</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">code_line</span> <span class="o">+=</span> <span class="n">_cend</span>
+            <span class="k">elif</span> <span class="n">_end</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">indent</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">indent_mod</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">else</span><span class="p">:</span>  <span class="c1"># \n</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">write_code</span><span class="p">(</span><span class="n">code_line</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">comment</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">lineno</span> <span class="o">+=</span> <span class="mi">1</span>

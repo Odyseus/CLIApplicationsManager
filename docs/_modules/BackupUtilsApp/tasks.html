@@ -166,6 +166,7 @@
 <span class="kn">import</span> <span class="nn">tempfile</span>
 
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Callable</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
 <span class="kn">from</span> <span class="nn">shlex</span> <span class="k">import</span> <span class="n">quote</span> <span class="k">as</span> <span class="n">shell_quote</span>
 <span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">CalledProcessError</span>
 <span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">STDOUT</span>
@@ -177,32 +178,32 @@
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">misc_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">shell_utils</span>
 
-<span class="n">__xz_map</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">_xz_map</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;ext&quot;</span><span class="p">:</span> <span class="s2">&quot;.xz&quot;</span><span class="p">,</span>
     <span class="s2">&quot;env&quot;</span><span class="p">:</span> <span class="s2">&quot;XZ_OPT&quot;</span>
 <span class="p">}</span>
 
-<span class="n">__gzip_map</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">_gzip_map</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;ext&quot;</span><span class="p">:</span> <span class="s2">&quot;.gz&quot;</span><span class="p">,</span>
     <span class="s2">&quot;env&quot;</span><span class="p">:</span> <span class="s2">&quot;GZIP_OPT&quot;</span>
 <span class="p">}</span>
 
-<span class="n">__bzip2_map</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">_bzip2_map</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;ext&quot;</span><span class="p">:</span> <span class="s2">&quot;.bz2&quot;</span><span class="p">,</span>
     <span class="s2">&quot;env&quot;</span><span class="p">:</span> <span class="s2">&quot;BZIP2&quot;</span>
 <span class="p">}</span>
 
-<span class="n">__tar_comp_map</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;--xz&quot;</span><span class="p">:</span> <span class="n">__xz_map</span><span class="p">,</span>
-    <span class="s2">&quot;-J&quot;</span><span class="p">:</span> <span class="n">__xz_map</span><span class="p">,</span>
-    <span class="s2">&quot;--gzip&quot;</span><span class="p">:</span> <span class="n">__gzip_map</span><span class="p">,</span>
-    <span class="s2">&quot;-z&quot;</span><span class="p">:</span> <span class="n">__gzip_map</span><span class="p">,</span>
-    <span class="s2">&quot;--bzip2&quot;</span><span class="p">:</span> <span class="n">__bzip2_map</span><span class="p">,</span>
-    <span class="s2">&quot;-j&quot;</span><span class="p">:</span> <span class="n">__bzip2_map</span>
+<span class="n">_tar_comp_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;--xz&quot;</span><span class="p">:</span> <span class="n">_xz_map</span><span class="p">,</span>
+    <span class="s2">&quot;-J&quot;</span><span class="p">:</span> <span class="n">_xz_map</span><span class="p">,</span>
+    <span class="s2">&quot;--gzip&quot;</span><span class="p">:</span> <span class="n">_gzip_map</span><span class="p">,</span>
+    <span class="s2">&quot;-z&quot;</span><span class="p">:</span> <span class="n">_gzip_map</span><span class="p">,</span>
+    <span class="s2">&quot;--bzip2&quot;</span><span class="p">:</span> <span class="n">_bzip2_map</span><span class="p">,</span>
+    <span class="s2">&quot;-j&quot;</span><span class="p">:</span> <span class="n">_bzip2_map</span>
 <span class="p">}</span>
 
-<span class="n">__tar_comp_level_values</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;-1&quot;</span><span class="p">,</span> <span class="s2">&quot;-2&quot;</span><span class="p">,</span> <span class="s2">&quot;-3&quot;</span><span class="p">,</span> <span class="s2">&quot;-4&quot;</span><span class="p">,</span> <span class="s2">&quot;-5&quot;</span><span class="p">,</span> <span class="s2">&quot;-6&quot;</span><span class="p">,</span> <span class="s2">&quot;-7&quot;</span><span class="p">,</span> <span class="s2">&quot;-8&quot;</span><span class="p">,</span> <span class="s2">&quot;-9&quot;</span><span class="p">,</span>
-                           <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">}</span>
+<span class="n">_tar_comp_level_values</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;-1&quot;</span><span class="p">,</span> <span class="s2">&quot;-2&quot;</span><span class="p">,</span> <span class="s2">&quot;-3&quot;</span><span class="p">,</span> <span class="s2">&quot;-4&quot;</span><span class="p">,</span> <span class="s2">&quot;-5&quot;</span><span class="p">,</span> <span class="s2">&quot;-6&quot;</span><span class="p">,</span> <span class="s2">&quot;-7&quot;</span><span class="p">,</span> <span class="s2">&quot;-8&quot;</span><span class="p">,</span> <span class="s2">&quot;-9&quot;</span><span class="p">,</span>
+                          <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">}</span>
 
 
 <div class="viewcode-block" id="BaseTask"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask">[docs]</a><span class="k">class</span> <span class="nc">BaseTask</span><span class="p">():</span>
@@ -352,10 +353,17 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hook</span><span class="p">,</span> <span class="n">Callable</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Attempting to run </span><span class="si">%s</span><span class="s2">-hook.&quot;</span> <span class="o">%</span> <span class="n">hook_type</span><span class="p">)</span>
 
+            <span class="n">task_copy</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;pre_hook&quot;</span><span class="p">,</span> <span class="s2">&quot;post_hook&quot;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">task_copy</span><span class="p">:</span>
+                    <span class="k">del</span> <span class="n">task_copy</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">hook</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">,</span>
+                <span class="n">hook</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task_copy</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">,</span>
                      <span class="n">dry_run</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;WTF&quot;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
                 <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -401,8 +409,7 @@
         <span class="n">cmd</span> <span class="o">+=</span> <span class="n">exclude_patterns</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;[DRY-RUN] Destination folder to be created:&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">root_destination</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;Destination folder will be created:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">root_destination</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">root_destination</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -422,8 +429,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Mirroring: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">source_item</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;[DRY-RUN] Command to be executed:&quot;</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">final_cmd</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;Command that will be executed:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">final_cmd</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">try</span><span class="p">:</span>
                         <span class="n">start_time</span> <span class="o">=</span> <span class="n">misc_utils</span><span class="o">.</span><span class="n">get_date_time</span><span class="p">()</span>
@@ -467,7 +473,7 @@
     <span class="k">def</span> <span class="nf">__get_compression_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get compression data.</span>
 
-<span class="sd">        Scan ``func_args`` option for tar compression arguments and, if found, return</span>
+<span class="sd">        Scan ``tar_func_args`` option for tar compression arguments and, if found, return</span>
 <span class="sd">        a dictionary with the extension that will be used to name the compressed archive</span>
 <span class="sd">        and the environment variable used to define the compression level.</span>
 
@@ -476,11 +482,11 @@
 <span class="sd">        dict|False</span>
 <span class="sd">            Compression data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;func_args&quot;</span><span class="p">,</span> <span class="p">[]):</span>
-            <span class="k">if</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">__tar_comp_map</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tar_func_args&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="k">if</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">_tar_comp_map</span><span class="p">:</span>
                 <span class="k">return</span> <span class="p">{</span>
-                    <span class="s2">&quot;ext&quot;</span><span class="p">:</span> <span class="n">__tar_comp_map</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s2">&quot;ext&quot;</span><span class="p">],</span>
-                    <span class="s2">&quot;env&quot;</span><span class="p">:</span> <span class="n">__tar_comp_map</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s2">&quot;env&quot;</span><span class="p">]</span>
+                    <span class="s2">&quot;ext&quot;</span><span class="p">:</span> <span class="n">_tar_comp_map</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s2">&quot;ext&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;env&quot;</span><span class="p">:</span> <span class="n">_tar_comp_map</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s2">&quot;env&quot;</span><span class="p">]</span>
                 <span class="p">}</span>
 
         <span class="k">return</span> <span class="kc">False</span>
@@ -498,7 +504,7 @@
         <span class="n">full_list_of_files</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">processed_list</span><span class="o">.</span><span class="n">get_full_list_of_files</span><span class="p">())</span>
         <span class="n">tar_env</span> <span class="o">=</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">get_environment</span><span class="p">()</span>
         <span class="n">compression_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_compression_data</span><span class="p">()</span>
-        <span class="n">compression_level</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression_level&quot;</span><span class="p">,</span> <span class="s2">&quot;-7&quot;</span><span class="p">)</span>
+        <span class="n">compression_level</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tar_compression_level&quot;</span><span class="p">,</span> <span class="s2">&quot;-7&quot;</span><span class="p">)</span>
         <span class="n">archive_destination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;destination&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="n">archive_file_name</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">.tar&quot;</span> <span class="o">%</span> \
             <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;destination_prefix&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
@@ -508,8 +514,7 @@
                                     <span class="n">archive_file_name</span> <span class="o">+</span> <span class="n">archive_file_ext</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;[DRY-RUN] Destination folder to be created:&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">archive_destination</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;Destination folder will be created:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">archive_destination</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">archive_destination</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -523,15 +528,14 @@
             <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="p">,</span>
                 <span class="s2">&quot;--create&quot;</span><span class="p">,</span>
-            <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;func_args&quot;</span><span class="p">,</span> <span class="p">[])</span> <span class="o">+</span> <span class="p">[</span>
+            <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tar_func_args&quot;</span><span class="p">,</span> <span class="p">[])</span> <span class="o">+</span> <span class="p">[</span>
                 <span class="s2">&quot;--file&quot;</span><span class="p">,</span>
                 <span class="n">shell_quote</span><span class="p">(</span><span class="n">archive_path</span><span class="p">),</span>
                 <span class="s2">&quot;--files-from=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">tmp_file</span><span class="o">.</span><span class="n">name</span>
-            <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;opt_args&quot;</span><span class="p">,</span> <span class="p">[])</span>
+            <span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tar_opt_args&quot;</span><span class="p">,</span> <span class="p">[])</span>
 
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;[DRY-RUN] Command to be executed:&quot;</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;Command that will be executed:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span>

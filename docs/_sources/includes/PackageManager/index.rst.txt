@@ -1,3 +1,6 @@
+.. Abbreviations
+
+.. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
 
 *******************************
 Package Manager's documentation
@@ -5,7 +8,7 @@ Package Manager's documentation
 
 .. only:: html
 
-    A :abbr:`CLI (Command Line Interface)` utility written in Python 3 to manage system packages on GNU/Linux. It basically installs and/or eliminates packages in bulk using the system's package manager.
+    A |CLI| utility written in Python 3 to manage system packages on GNU/Linux. It basically installs and/or eliminates packages in bulk using the system's package manager.
 
 .. include:: ../0-common/system-executable-hint.restructuredtext
 

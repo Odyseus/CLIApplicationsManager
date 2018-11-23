@@ -1,3 +1,6 @@
+.. Abbreviations
+
+.. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
 
 ******************************
 Knowledge Base's documentation
@@ -5,7 +8,7 @@ Knowledge Base's documentation
 
 .. only:: html
 
-    A :abbr:`CLI (Command Line Interface)` utility written in Python 3 to generate and manage a personal and self-hosted *Knowledge Base* on GNU/Linux.
+    A |CLI| utility written in Python 3 to generate and manage a personal and self-hosted *Knowledge Base* on GNU/Linux.
 
 .. include:: ../0-common/system-executable-hint.restructuredtext
 

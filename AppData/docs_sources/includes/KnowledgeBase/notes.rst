@@ -40,7 +40,6 @@ I use Pandoc to convert HTML articles that I find on the net into Markdown.
 
     + Fixed by using a newer version of Pandoc. I simply downloaded the official .deb package, extracted it, and use Pandoc binaries from inside a folder located inside UserData folder. If these binaries are found, they will have precedence over the installed ones.
 
-
 Bootstrap JavaScript/CSS framework
 ----------------------------------
 
@@ -58,18 +57,17 @@ Bootstrap JavaScript/CSS framework
     /dist/js/bootstrap.bundle.min.js
     /dist/js/bootstrap.bundle.min.js.map
 
-**Note 1:** \*.bundle.js files contain the Popper plugin.
+    .. note::
 
-**Note 2:** \*.css.map files are included to STFU console warnings. ¬¬
-
-**Note 3:** Non-minified files are included in case I want to see the source.
+        - ``\*.bundle.js`` files contain the Popper plugin.
+        - ``\*.css.map`` files are included to :abbr:`STFU (Shut The F*** Up)` browser console warnings. ¬¬
+        - Non-minified files are included in case I want to see the source.
 
 - Using my own `Boostrap 4 theme <https://gitlab.com/Odyseus/flatly_bootstrap_theme>`__ based on `Bootswatch's <https://bootswatch.com>`__'s `Flatly theme <https://bootswatch.com/flatly>`__.
 - Files used::
 
     /dist/flatly_bootstrap_theme.css
     /dist/flatly_bootstrap_theme.min.css
-
 
 DataTables JavaScript library
 -----------------------------
@@ -88,19 +86,20 @@ DataTables JavaScript library
     /DataTables/datatables.min.css
     /DataTables/datatables.min.js
 
-**Note:** Non-minified files are included in case I want to see the source.
+.. note::
 
+    - Non-minified files are included in case I want to see the source.
 
 jQuery JavaScript library
 -------------------------
 
 - Download jQuery from its `web site <https://jquery.com/download/>`__ the compressed and uncompressed files.
-- Rename the compressed file to jquery.min.js.
+- Rename the compressed file to ``jquery.min.js``.
 
-**Note 1:** Non-minified files are included in case I want to see the source.
+.. note::
 
-**Note 2:** The files with the version on them are kept so I can know what version I'm using. The jquery.min.js is a copy of the jquery.version.min.js and is the actually used by the web pages.
-
+    - Non-minified files are included in case I want to see the source.
+    - The files with the version on them are kept so I can know what version I'm using. The ``jquery.min.js`` is a copy of the ``jquery.version.min.js`` and is the actually used by the web pages.
 
 Nerd Fonts glyphs icons
 -----------------------
@@ -110,9 +109,8 @@ Nerd Fonts glyphs icons
     + I went to `Nerd Fonts's site <http://nerdfonts.com/>`__
     + Looked at the site's source for `its style sheet <http://nerdfonts.com/combo.css>`__.
     + Extracted the link to the font `and downloaded it <http://nerdfonts.com/fonts/Symbols-2048-em Nerd Font Complete.ttf>`__.
-    + Then went to `their repository <https://github.com/ryanoasis/nerd-fonts/tree/master/css>`__ and downloaded the generated CSS files and renamed them to **nerdicons.css** and **nerdicons.min.css**.
+    + Then went to `their repository <https://github.com/ryanoasis/nerd-fonts/tree/master/css>`__ and downloaded the generated CSS files and renamed them to ``nerdicons.css`` and ``nerdicons.min.css``.
     + **Moving on...**
-
 
 Markdown-it JavaScript library
 ------------------------------
@@ -123,8 +121,23 @@ Markdown-it JavaScript library
     /dist/markdown-it.js
     /dist/markdown-it.min.js
 
-**Note:** Non-minified files are included in case I want to see the source.
+.. note::
 
+    Non-minified files are included in case I want to see the source.
+
+Highlight.js syntax highlighter JavaScript library
+--------------------------------------------------
+
+- This is the library that I use to highlight the syntax of code blocks. Go to `its website <https://highlightjs.org/download/>`__, check all supported languages and download the zipped file. This torture is infinitely less painful than using Node.js to build the library from source.
+- Files used::
+
+    /highlight.pack.js
+    /styles/xcode.css
+
+.. note::
+
+    - ``highlight.pack.js`` file is already minified.
+    - Rename ``xcode.css`` to ``highlight.css`` and minify it.
 
 TODO
 ----

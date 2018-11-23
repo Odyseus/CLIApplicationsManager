@@ -1,0 +1,21 @@
+
+.. app.py server
+.. ^^^^^^^^^^^^^
+
+.. ^ Title not specified here so I can put a custom paragraph in between.
+
+Sub-commands
+~~~~~~~~~~~~
+
+- ``start``: Start HTTP server.
+- ``stop``: Stop HTTP server.
+- ``restart``: Restart HTTP server.
+
+Options
+~~~~~~~
+
+.. The defaults are stated in the docopt docstring. Not specified here to keep this docstring
+.. as generic as possible.
+
+- ``--host=<host>`` Host name.
+- ``--port=<port>`` Port number.

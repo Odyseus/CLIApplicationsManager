@@ -231,18 +231,19 @@
 </li>
 <li><p>Download Boostrap 4 <a class="reference external" href="https://getbootstrap.com/docs/4.1/getting-started/download/">from its website</a>.</p></li>
 <li><p>Files used:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">js</span><span class="o">/</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">bundle</span><span class="o">.</span><span class="n">js</span>
-<span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">js</span><span class="o">/</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">bundle</span><span class="o">.</span><span class="n">js</span><span class="o">.</span><span class="n">map</span>
-<span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">js</span><span class="o">/</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">bundle</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">js</span>
-<span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">js</span><span class="o">/</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">bundle</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">js</span><span class="o">.</span><span class="n">map</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/dist/js/bootstrap.bundle.js
+/dist/js/bootstrap.bundle.js.map
+/dist/js/bootstrap.bundle.min.js
+/dist/js/bootstrap.bundle.min.js.map
+
+.. note::
+
+    - ``\*.bundle.js`` files contain the Popper plugin.
+    - ``\*.css.map`` files are included to :abbr:`STFU (Shut The F*** Up)` browser console warnings. ¬¬
+    - Non-minified files are included in case I want to see the source.
 </pre></div>
 </div>
 </li>
-</ul>
-<p><strong>Note 1:</strong> *.bundle.js files contain the Popper plugin.</p>
-<p><strong>Note 2:</strong> *.css.map files are included to STFU console warnings. ¬¬</p>
-<p><strong>Note 3:</strong> Non-minified files are included in case I want to see the source.</p>
-<ul>
 <li><p>Using my own <a class="reference external" href="https://gitlab.com/Odyseus/flatly_bootstrap_theme">Boostrap 4 theme</a> based on <a class="reference external" href="https://bootswatch.com">Bootswatch’s</a>’s <a class="reference external" href="https://bootswatch.com/flatly">Flatly theme</a>.</p></li>
 <li><p>Files used:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">flatly_bootstrap_theme</span><span class="o">.</span><span class="n">css</span>
@@ -274,16 +275,26 @@
 </div>
 </li>
 </ul>
-<p><strong>Note:</strong> Non-minified files are included in case I want to see the source.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Non-minified files are included in case I want to see the source.</p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="jquery-javascript-library">
 <h2>jQuery JavaScript library<a class="headerlink" href="#jquery-javascript-library" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Download jQuery from its <a class="reference external" href="https://jquery.com/download/">web site</a> the compressed and uncompressed files.</p></li>
-<li><p>Rename the compressed file to jquery.min.js.</p></li>
+<li><p>Rename the compressed file to <code class="docutils literal notranslate"><span class="pre">jquery.min.js</span></code>.</p></li>
 </ul>
-<p><strong>Note 1:</strong> Non-minified files are included in case I want to see the source.</p>
-<p><strong>Note 2:</strong> The files with the version on them are kept so I can know what version I’m using. The jquery.min.js is a copy of the jquery.version.min.js and is the actually used by the web pages.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Non-minified files are included in case I want to see the source.</p></li>
+<li><p>The files with the version on them are kept so I can know what version I’m using. The <code class="docutils literal notranslate"><span class="pre">jquery.min.js</span></code> is a copy of the <code class="docutils literal notranslate"><span class="pre">jquery.version.min.js</span></code> and is the actually used by the web pages.</p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="nerd-fonts-glyphs-icons">
 <h2>Nerd Fonts glyphs icons<a class="headerlink" href="#nerd-fonts-glyphs-icons" title="Permalink to this headline">¶</a></h2>
@@ -294,7 +305,7 @@
 <li><p>I went to <a class="reference external" href="http://nerdfonts.com/">Nerd Fonts’s site</a></p></li>
 <li><p>Looked at the site’s source for <a class="reference external" href="http://nerdfonts.com/combo.css">its style sheet</a>.</p></li>
 <li><p>Extracted the link to the font <a class="reference external" href="http://nerdfonts.com/fonts/Symbols-2048-emNerdFontComplete.ttf">and downloaded it</a>.</p></li>
-<li><p>Then went to <a class="reference external" href="https://github.com/ryanoasis/nerd-fonts/tree/master/css">their repository</a> and downloaded the generated CSS files and renamed them to <strong>nerdicons.css</strong> and <strong>nerdicons.min.css</strong>.</p></li>
+<li><p>Then went to <a class="reference external" href="https://github.com/ryanoasis/nerd-fonts/tree/master/css">their repository</a> and downloaded the generated CSS files and renamed them to <code class="docutils literal notranslate"><span class="pre">nerdicons.css</span></code> and <code class="docutils literal notranslate"><span class="pre">nerdicons.min.css</span></code>.</p></li>
 <li><p><strong>Moving on…</strong></p></li>
 </ul>
 </div></blockquote>
@@ -312,7 +323,29 @@
 </div>
 </li>
 </ul>
-<p><strong>Note:</strong> Non-minified files are included in case I want to see the source.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Non-minified files are included in case I want to see the source.</p>
+</div>
+</div>
+<div class="section" id="highlight-js-syntax-highlighter-javascript-library">
+<h2>Highlight.js syntax highlighter JavaScript library<a class="headerlink" href="#highlight-js-syntax-highlighter-javascript-library" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>This is the library that I use to highlight the syntax of code blocks. Go to <a class="reference external" href="https://highlightjs.org/download/">its website</a>, check all supported languages and download the zipped file. This torture is infinitely less painful than using Node.js to build the library from source.</p></li>
+<li><p>Files used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">highlight</span><span class="o">.</span><span class="n">pack</span><span class="o">.</span><span class="n">js</span>
+<span class="o">/</span><span class="n">styles</span><span class="o">/</span><span class="n">xcode</span><span class="o">.</span><span class="n">css</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">highlight.pack.js</span></code> file is already minified.</p></li>
+<li><p>Rename <code class="docutils literal notranslate"><span class="pre">xcode.css</span></code> to <code class="docutils literal notranslate"><span class="pre">highlight.css</span></code> and minify it.</p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="todo">
 <h2>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>

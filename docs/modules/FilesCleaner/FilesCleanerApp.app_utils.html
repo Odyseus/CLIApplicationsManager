@@ -179,8 +179,13 @@
 <dl class="attribute">
 <dt id="FilesCleanerApp.app_utils.root_folder">
 <code class="descclassname">FilesCleanerApp.app_utils.</code><code class="descname">root_folder</code><a class="headerlink" href="#FilesCleanerApp.app_utils.root_folder" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – The main folder containing the Knowledge Base. All commands must be executed
+<dd><p>The main folder containing the Knowledge Base. All commands must be executed
 from this location without exceptions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -210,56 +215,101 @@ from this location without exceptions.</p>
 <dl class="attribute">
 <dt id="FilesCleanerApp.app_utils.FilesCleaner.actions">
 <code class="descname">actions</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.actions" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> – Possible actions to perform.</p>
+<dd><p>Possible actions to perform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)">dict</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FilesCleanerApp.app_utils.FilesCleaner.cum_size">
 <code class="descname">cum_size</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.cum_size" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>float</em> – Accumulated files size.</p>
+<dd><p>Accumulated files size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/functions.html#float" title="(in Python v3.5)">float</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FilesCleanerApp.app_utils.FilesCleaner.logger">
 <code class="descname">logger</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.logger" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>object</em> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+<dd><p>See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)">object</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FilesCleanerApp.app_utils.FilesCleaner.matchers">
 <code class="descname">matchers</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.matchers" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> – A dictionary of boolean function which takes a string and tries to match it against any
+<dd><p>A dictionary of boolean function which takes a string and tries to match it against any
 one of the specified patterns, returning False otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)">dict</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FilesCleanerApp.app_utils.FilesCleaner.messages">
 <code class="descname">messages</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.messages" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> – Storage for messages used by the actions.</p>
+<dd><p>Storage for messages used by the actions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)">dict</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FilesCleanerApp.app_utils.FilesCleaner.negate">
 <code class="descname">negate</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.negate" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>bool</em> – If True, treat the patterns passed as non inclusive.</p>
+<dd><p>If True, treat the patterns passed as non inclusive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)">bool</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FilesCleanerApp.app_utils.FilesCleaner.path">
 <code class="descname">path</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.path" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – The path to work on.</p>
+<dd><p>The path to work on.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FilesCleanerApp.app_utils.FilesCleaner.patterns">
 <code class="descname">patterns</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.patterns" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list</em> – The patterns to work with.</p>
+<dd><p>The patterns to work with.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)">list</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FilesCleanerApp.app_utils.FilesCleaner.targets">
 <code class="descname">targets</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.targets" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list</em> – The list of files/folders on which to perform actions.</p>
+<dd><p>The list of files/folders on which to perform actions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)">list</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <p>Initialize.</p>

@@ -181,14 +181,15 @@
 
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appdescription__</span>
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appname__</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cmd_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">file_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">git_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">misc_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">prompts</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">shell_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">string_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils.ansi_colors</span> <span class="k">import</span> <span class="n">Ansi</span>
-
 
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="o">*</span><span class="p">([</span><span class="s2">&quot;..&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))))))</span>
@@ -238,14 +239,12 @@
         <span class="c1"># that aren&#39;t actual applications.</span>
         <span class="c1"># It&#39;s a more complex procedure, but infinitely more accurate.</span>
         <span class="k">if</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_file</span><span class="p">(</span><span class="n">app_flag_file_path</span><span class="p">):</span>
-            <span class="n">app</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">apps</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
                 <span class="s2">&quot;slug&quot;</span><span class="p">:</span> <span class="n">dir_name</span><span class="p">,</span>
                 <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">app_flag_file_path</span><span class="p">)</span>
-            <span class="p">}</span>
+            <span class="p">})</span>
 
-            <span class="n">apps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">apps</span></div>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">apps</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="n">k</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="print_all_apps"><a class="viewcode-back" href="../../modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.print_all_apps">[docs]</a><span class="k">def</span> <span class="nf">print_all_apps</span><span class="p">():</span>
@@ -289,7 +288,7 @@
                 <span class="p">})</span>
                 <span class="k">break</span>
 
-    <span class="k">return</span> <span class="n">selected_apps</span></div>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">selected_apps</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="n">k</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="get_app_slugyfied_name"><a class="viewcode-back" href="../../modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.get_app_slugyfied_name">[docs]</a><span class="k">def</span> <span class="nf">get_app_slugyfied_name</span><span class="p">(</span><span class="n">app_slug</span><span class="p">):</span>
@@ -721,7 +720,7 @@
         <span class="n">docs_url</span><span class="o">=</span><span class="n">docs_base_url</span>
     <span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">get_all_apps</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="n">k</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">get_all_apps</span><span class="p">():</span>
         <span class="n">app_docs_url</span> <span class="o">=</span> <span class="n">docs_base_url</span> <span class="o">+</span> <span class="s2">&quot;/includes/</span><span class="si">%s</span><span class="s2">/index.html&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">]</span>
         <span class="n">app_init_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app_man_user_data_path</span><span class="p">,</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">],</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span>
                                           <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">App&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">],</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">)</span>
@@ -751,8 +750,8 @@
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;READMEs generation finished&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="manage_app_repos_subtrees"><a class="viewcode-back" href="../../modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.manage_app_repos_subtrees">[docs]</a><span class="k">def</span> <span class="nf">manage_app_repos_subtrees</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;See :any:`git_utils.manage_repo`</span>
+<div class="viewcode-block" id="manage_app_repos_subtrees"><a class="viewcode-back" href="../../modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.manage_app_repos_subtrees">[docs]</a><span class="k">def</span> <span class="nf">manage_app_repos_subtrees</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">app_slugs</span><span class="o">=</span><span class="p">[],</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Manage handled applications&#39; sub-trees.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -761,15 +760,12 @@
 <span class="sd">    logger : object</span>
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">git_utils</span>
-
     <span class="k">if</span> <span class="n">prompts</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Proceed?&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">python_utils_base_subtree</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;remote_name&quot;</span><span class="p">:</span> <span class="s2">&quot;python_utils&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;remote_url&quot;</span><span class="p">:</span> <span class="s2">&quot;git@gitlab.com:Odyseus/python_utils.git&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;git@gitlab.com:Odyseus/python_utils.git&quot;</span><span class="p">,</span>
         <span class="p">}</span>
 
-        <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">get_all_apps</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">get_selected_apps</span><span class="p">(</span><span class="n">app_slugs</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span> <span class="k">if</span> <span class="n">app_slugs</span> <span class="k">else</span> <span class="n">get_all_apps</span><span class="p">():</span>
             <span class="n">python_utils_subtree</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;AppData/</span><span class="si">%s</span><span class="s2">App/python_utils&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">]</span>
             <span class="p">}</span>
@@ -781,6 +777,7 @@
                 <span class="n">subtrees</span><span class="o">=</span><span class="p">[</span><span class="n">python_utils_subtree</span><span class="p">],</span>
                 <span class="n">do_not_confirm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                 <span class="n">cwd</span><span class="o">=</span><span class="n">app</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">],</span>
+                <span class="n">dry_run</span><span class="o">=</span><span class="n">dry_run</span><span class="p">,</span>
                 <span class="n">logger</span><span class="o">=</span><span class="n">logger</span>
             <span class="p">)</span></div>
 
@@ -800,8 +797,6 @@
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">threading</span> <span class="k">import</span> <span class="n">Thread</span>
-
-    <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cmd_utils</span>
 
     <span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -918,8 +913,6 @@
 <div class="viewcode-block" id="spacefm_find_files"><a class="viewcode-back" href="../../modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.spacefm_find_files">[docs]</a><span class="k">def</span> <span class="nf">spacefm_find_files</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Launch SpaceFM find files.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cmd_utils</span>
-
     <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;spacefm&quot;</span><span class="p">,</span> <span class="s2">&quot;--find-files&quot;</span><span class="p">]</span>
     <span class="n">cmd</span> <span class="o">=</span> <span class="n">cmd</span> <span class="o">+</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">)]</span>
     <span class="n">cmd</span> <span class="o">=</span> <span class="n">cmd</span> <span class="o">+</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">],</span> <span class="s2">&quot;AppData&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">get_all_apps</span><span class="p">()]</span>
