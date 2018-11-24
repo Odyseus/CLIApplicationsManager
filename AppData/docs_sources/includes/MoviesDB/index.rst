@@ -32,4 +32,4 @@ Requirements
     - ``guessit>2`` module.
     - ``requests`` module.
 
-.. include:: ./usage.rst
+.. include:: ./usage.restructuredtext

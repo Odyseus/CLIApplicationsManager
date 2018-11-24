@@ -66,8 +66,8 @@ Then the password is retrieved from the system's keyring by the application emai
     application: python-keyring
     service: backup_secret_service_name
 
-.. include:: ./usage.rst
+.. include:: ./usage.restructuredtext
 
-.. include:: ./templates.rst
+.. include:: ./templates.restructuredtext
 
-.. include:: ./tasks.rst
+.. include:: ./tasks.restructuredtext

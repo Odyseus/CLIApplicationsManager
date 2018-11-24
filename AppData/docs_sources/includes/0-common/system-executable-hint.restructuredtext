@@ -1,4 +1,8 @@
 
+.. I use this template file for several reasons:
+    1. Using the .. only:: directive allows me to declare different methods for HTML and MAN builders. The .. hint:: directive screws up indentation in generated manual pages.
+    2. I could use :ref: instead of the string "See ``app.py generate``", but then I would be forced to declare the .. hint:: directive in all index.rst files and create unique labels in every single one of them. Using this template files allows me to use a generic message for all index.rst files.
+
 .. only:: html
 
     .. hint::

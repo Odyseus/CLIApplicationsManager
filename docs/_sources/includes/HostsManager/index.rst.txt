@@ -36,6 +36,6 @@ Requirements
     - Python 3.5+.
     - ``python-slugify`` module.
 
-.. include:: ./usage.rst
+.. include:: ./usage.restructuredtext
 
-.. include:: ./templates.rst
+.. include:: ./templates.restructuredtext

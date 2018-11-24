@@ -32,10 +32,10 @@ Requirements
     - ``python-slugify`` module.
 
 
-.. include:: ./usage.rst
+.. include:: ./usage.restructuredtext
 
-.. include:: ./templates.rst
+.. include:: ./templates.restructuredtext
 
 .. only:: html
 
-    .. include:: ./notes.rst
+    .. include:: ./notes.restructuredtext

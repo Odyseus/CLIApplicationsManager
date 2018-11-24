@@ -34,4 +34,4 @@ No mayor requirements are needed to execute this application other than Python 3
 
     - **sphinx>=1.6.5**: ``sudo pip3 install sphinx``
 
-.. include:: ./usage.rst
+.. include:: ./usage.restructuredtext
