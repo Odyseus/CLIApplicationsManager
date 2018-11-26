@@ -78,6 +78,6 @@ Data keys
     + ``mail_body``: Text that will be displayed after the backup report.
     + ``mailing_list`` (**List**): A list of e-mail addresses to send a backup report to.
 
-    .. info::
+    .. note::
 
         All ``mail_settings`` keys are mandatory.

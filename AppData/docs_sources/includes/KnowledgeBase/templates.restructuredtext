@@ -13,6 +13,7 @@ In this file is stored all the data to handle on-line archives. Its location sho
     :context: info
     :title: Highlights
 
+    - This file should contain one property called **data**. A list containing dictionaries.
     - Compressed/Tared archives are downloaded into a temporary location (**UserData/data_storage/downloaded_archives**) and then their content extracted into their final location (**UserData/www/html_pages_from_archives/<kb_title>**).
     - Non-compressed/Non-tared files are directly downloaded into their final destination.
 
@@ -26,20 +27,20 @@ Data keys
 
     All data keys are of type string and are optional unless specified otherwise.
 
-- ``kb_title`` (Madatory): The title that will be displayed in the web page index.
-- ``kb_category`` (Madatory): A category name to organize the web page index.
-- ``arch_url`` (Madatory): The url from which to download an archive.
-- ``kb_rel_path`` (**Optional**): The path (relative to **UserData/www/html_pages_from_archives/<kb_title>**) to the a folder containing an HTML file (``kb_filename``) found inside the extracted content of an archive. **Default**: empty.
-- ``kb_filename`` (**Optional**): The file name found inside the extracted content of an archive relative to ``kb_rel_path``. **Default**: **index.html**.
-- ``kb_file_append`` (**Optional**): A list of tuples. Each tuple must contain a path to a file (relative to **UserData/www/html_pages_from_archives/<title key>**) at index 0 (zero) and a string at index 1 (one). The string will be appended at the end of the file defined at index zero.
-- ``download_frequency`` (**Optional**): The frequency at which an archive should be downloaded. Default: **m**. Possible values:
+- ``kb_title`` (**Madatory**): The title that will be displayed in the web page index.
+- ``kb_category`` (**Madatory**): A category name to organize the web page index.
+- ``arch_url`` (**Madatory**): The url from which to download an archive.
+- ``kb_rel_path`` (**Default**: empty): The path (relative to **UserData/www/html_pages_from_archives/<kb_title>**) to the a folder containing an HTML file (``kb_filename``) found inside the extracted content of an archive.
+- ``kb_filename`` (**Default**: **index.html**): The file name found inside the extracted content of an archive relative to ``kb_rel_path``.
+- ``kb_file_append`` (**List**): A list of tuples. Each tuple must contain a path to a file (relative to **UserData/www/html_pages_from_archives/<kb_title>**) at index 0 (zero) and a string at index 1 (one). The string will be appended at the end of the file defined at index zero.
+- ``download_frequency`` (**Default**: **m**): The frequency at which an archive should be downloaded. Possible values:
 
     + ``w``: Weekly.
     + ``m``: Monthly.
     + ``s``: Semestrial.
 
-- ``unzip_prog`` (**Optional**): The command to use to decompress archives. Possible values are **7z**, **unzip** and **tar**. The tar command can accept a decompression argument (See ``untar_arg``).
-- ``untar_arg`` (**Optional**): The decompress argument used by the ``tar`` program. Possible values are **--xz**, **-J**, **--gzip**, **-z**, **--bzip2** or **-j**. **Default**: empty (no decompression argument is passed to ``tar``).
+- ``unzip_prog``: The command to use to decompress archives. Possible values are **7z**, **unzip** and **tar**. The tar command can accept a decompression argument (See ``untar_arg``).
+- ``untar_arg`` (**Default**: empty (no decompression argument is passed to ``tar``)): The decompress argument used by the ``tar`` program. Possible values are **--xz**, **-J**, **--gzip**, **-z**, **--bzip2** or **-j**.
 
 **repositories.py** template
 ----------------------------
@@ -47,10 +48,11 @@ Data keys
 In this file is stored all the data to handle on-line repositories. Its location should always be **/UserData/KnowledgeBase/UserData/data_sources/repositories.py**.
 
 .. contextual-admonition::
-    :context: warning
-    :title: Documentations building requirement
+    :context: info
+    :title: Highlights
 
-    - **sphinx>=1.6.5**: ``sudo pip3 install sphinx``
+    - This file should contain one property called **data**. A list containing dictionaries.
+    - Repositories are cloned into a temporary location (**UserData/data_storage/<repo_service>_repositories**).
 
 .. literalinclude:: ../../../../UserData/KnowledgeBase/AppData/data/templates/repositories.py
     :language: python
@@ -64,31 +66,23 @@ Data keys
 
 - ``repo_owner`` (**Mandatory**): Repository owner/organization.
 - ``repo_name`` (**Mandatory**): Repository name.
-- ``repo_service``: **Default**: **github**.
-- ``repo_handler`` (**Mandatory**): Repository handler. Possible values:
+- ``repo_service`` (**Default**: **github**): This value is used to generate a URL to an on-line service. Possible values are: **github**, **bitbucket** and **gitlab**.
+- ``copy_full_repo`` (**Boolean**): Whether to copy the full repository to its final location or not.
+- ``repo_handler`` (**Default**: ``files``): Repository handler. Possible values:
 
     + ``sphinx_docs``: Repositories that contain Sphinx documentation sources. These sources are then used to build the HTML documentation.
-    + ``single_file``: Repositories from which one file is used.
-    + ``multi_files``: Repositories from which more than file is used.
+    + ``files``: Repositories from which one or more files are used as they are.
 
-- ``repo_type``: Repository type (**git** or **hg**). **Default**: **git**.
-- ``repo_filename``: **Default**: **index.html** for **repo_handler** ``sphinx_docs`` and **README.md** for **repo_handler** ``single_file``.
-- ``repo_files_ignore`` (**List**):
-- ``repo_file_pattern``:
-- ``kb_category``: **Default**: **Uncategorized**.
-- ``kb_title``:
-- ``kb_title_prefix``:
-- ``kb_rel_path``: Relative path to the desired file/folder/Sphinx docs sources.
-
-    + ``sphinx_docs``: The path should be relative to a downloaded repository and point to a Sphinx docs source folder (e.g. if the docs sources of a downloaded repository are at **UserData/tmp/<repo_service>_repositories/<repo_owner>-<repo_name>/doc**, then the ``kb_rel_path`` key value should be **doc**).
-    + ``single_file``: Repositories that 
-    + ``multi_files``:
-
-- ``kb_file_append`` (**List**):
-
-.. note::
-
-    Both previously mentioned files should contain one property called **data**. A list containing dictionaries.
+- ``repo_type`` (**Default**: **git**): Repository type (**git** or **hg**).
+- ``repo_file_names`` (**List**) (**Default** if ``repo_file_patterns_include`` is not defined: ``["README.md"]``): A list of file paths relative to a repository folder. These relative paths are used to generate entries in the web page index. If defined, the ``repo_file_patterns_include`` and ``repo_file_patterns_ignore`` keys will be ignored.
+- ``repo_file_patterns_include`` (**List**): A list of file patterns. This key replaces the ``repo_file_names`` key functionality. Instead of explicitly declaring file names in the ``repo_file_names`` key, one can define several file patterns in ``repo_file_patterns_include``. For example: ``["*.md"]``.
+- ``repo_file_patterns_ignore`` (**List**): A list of file patterns. This key complements the ``repo_file_patterns_include`` key functionality by ignoring the files that match the patterns defined in this key.
+- ``repo_sources_path`` (``sphinx_docs`` ``repo_handler`` only): A relative path to the desired Sphinx documentation sources. The path should be relative to a downloaded repository and point to a Sphinx documentation sources folder (e.g., if the documentation sources of a downloaded repository are at **UserData/data_storage/<repo_service>_repositories/<repo_owner>-<repo_name>/doc**, then the ``repo_sources_path`` key value should be **doc**).
+- ``kb_category`` (**Default**: **Uncategorized**):
+- ``kb_title_prefix``: If defined, this prefix will be used to generate a label that will be displayed in the web page index table. The final label will look like ``<kb_title_prefix><file_name>``. ``<file_name>`` being the name of the file or files defined either by the ``repo_file_names`` or the ``repo_file_patterns_include`` keys. This key is more suitable for use when more than one file is used in a repository.
+- ``kb_title``: If ``kb_title_prefix`` is not defined, this key will be used to display the label in the web page index table. This key is more suitable for use when only one file is used in a repository.
+- ``kb_index_filename`` (``sphinx_docs`` ``repo_handler`` only): The file name of the index file of the generated documentation. In the case that someone was malevolent enough to change the default one (LOL).
+- ``kb_file_append`` (**List**) (``sphinx_docs`` ``repo_handler`` only): A list of tuples. Each tuple must contain a path to a file inside the generated documentation (relative to **UserData/www/sphinx_generated_pages/<repo_owner>-<repo_name>/html**) at index 0 (zero) and a string at index 1 (one). The string will be appended at the end of the file defined at index zero.
 
 **categories.json** template
 ----------------------------

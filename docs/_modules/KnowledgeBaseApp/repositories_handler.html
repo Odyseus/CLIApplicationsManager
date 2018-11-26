@@ -177,6 +177,7 @@
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">file_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">shell_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">string_utils</span>
 
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
@@ -213,8 +214,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_common_mandatory_keys</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;repo_owner&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;repo_name&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;repo_handler&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;repo_name&quot;</span>
     <span class="p">}</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -330,18 +330,6 @@
                     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_to_append</span><span class="p">:</span>
                         <span class="n">file_to_append</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_data</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RepositoriesHandler._get_filename"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_filename">[docs]</a>    <span class="k">def</span> <span class="nf">_get_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_data</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get file name.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        str</span>
-<span class="sd">            The name of a file found inside a repository.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_filename&quot;</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span>
-                             <span class="k">if</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_handler&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="s2">&quot;sphinx_docs&quot;</span>
-                             <span class="k">else</span> <span class="s2">&quot;README.md&quot;</span><span class="p">)</span></div>
-
 <div class="viewcode-block" id="RepositoriesHandler._handle_sphinx_docs_repo_type"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._handle_sphinx_docs_repo_type">[docs]</a>    <span class="k">def</span> <span class="nf">_handle_sphinx_docs_repo_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Handle repositories set to build their Sphinx documentation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -351,7 +339,7 @@
                 <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_category&quot;</span><span class="p">,</span> <span class="s2">&quot;Uncategorized&quot;</span><span class="p">),</span>
                 <span class="c1"># Path to files relative to the www folder</span>
                 <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_sphinx_generated_pages_storage</span><span class="p">(</span><span class="n">repo_data</span><span class="p">),</span>
-                                  <span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_filename</span><span class="p">(</span><span class="n">repo_data</span><span class="p">)),</span>
+                                  <span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_index_filename&quot;</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)),</span>
                 <span class="c1"># Icon name</span>
                 <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_image&quot;</span><span class="p">,</span> <span class="s2">&quot;html-external&quot;</span><span class="p">)</span>
             <span class="p">})</span>
@@ -359,92 +347,69 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_owner&quot;</span><span class="p">),</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_name&quot;</span><span class="p">)))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RepositoriesHandler._handle_single_file_repo_type"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._handle_single_file_repo_type">[docs]</a>    <span class="k">def</span> <span class="nf">_handle_single_file_repo_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_data</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Handle repositories set to manage just one file on them.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">www_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_repositories&quot;</span> <span class="o">%</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_service&quot;</span><span class="p">,</span> <span class="s2">&quot;github&quot;</span><span class="p">),</span>
-                                    <span class="bp">self</span><span class="o">.</span><span class="n">_get_folder_name</span><span class="p">(</span><span class="n">repo_data</span><span class="p">),</span>
-                                    <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_rel_path&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
-                                    <span class="bp">self</span><span class="o">.</span><span class="n">_get_filename</span><span class="p">(</span><span class="n">repo_data</span><span class="p">))</span>
-            <span class="n">source_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_path</span><span class="p">(</span><span class="n">repo_data</span><span class="p">),</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_rel_path&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
-                                       <span class="bp">self</span><span class="o">.</span><span class="n">_get_filename</span><span class="p">(</span><span class="n">repo_data</span><span class="p">))</span>
-            <span class="n">destination_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="n">www_path</span><span class="p">)</span>
-
-            <span class="bp">self</span><span class="o">.</span><span class="n">_data_tables_obj</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_title&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
-                <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_category&quot;</span><span class="p">,</span> <span class="s2">&quot;Uncategorized&quot;</span><span class="p">),</span>
-                <span class="c1"># Path to files relative to the www folder</span>
-                <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">www_path</span><span class="p">,</span>
-                <span class="c1"># Icon name</span>
-                <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_image&quot;</span><span class="p">,</span> <span class="s2">&quot;md&quot;</span><span class="p">)</span>
-            <span class="p">})</span>
-
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;copy_full_repo&quot;</span><span class="p">):</span>
-                    <span class="n">source_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_path</span><span class="p">(</span><span class="n">repo_data</span><span class="p">)</span>
-                    <span class="n">destination_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span>
-                                                    <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_repositories&quot;</span> <span class="o">%</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-                                                        <span class="s2">&quot;repo_service&quot;</span><span class="p">,</span> <span class="s2">&quot;github&quot;</span><span class="p">),</span>
-                                                    <span class="bp">self</span><span class="o">.</span><span class="n">_get_folder_name</span><span class="p">(</span><span class="n">repo_data</span><span class="p">))</span>
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;A folder will be copied:&quot;</span><span class="p">)</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;Source: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">source_path</span><span class="p">)</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;Destination: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">destination_path</span><span class="p">)</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">file_utils</span><span class="o">.</span><span class="n">custom_copytree</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span>
-                                                   <span class="n">destination_path</span><span class="p">,</span>
-                                                   <span class="n">ignored_patterns</span><span class="o">=</span><span class="n">app_utils</span><span class="o">.</span><span class="n">custom_copytree_global_ignored_patterns</span><span class="p">,</span>
-                                                   <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
-                                                   <span class="n">log_copied_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                                                   <span class="n">relative_path</span><span class="o">=</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;A file will be copied:&quot;</span><span class="p">)</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;Source: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">source_path</span><span class="p">)</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;Destination: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">destination_path</span><span class="p">)</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">file_utils</span><span class="o">.</span><span class="n">custom_copy2</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
-                                                <span class="n">log_copied_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                                                <span class="n">relative_path</span><span class="o">=</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err1</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err1</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err2</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_owner&quot;</span><span class="p">),</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_name&quot;</span><span class="p">)))</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err2</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="RepositoriesHandler._handle_multi_files_repo_type"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._handle_multi_files_repo_type">[docs]</a>    <span class="k">def</span> <span class="nf">_handle_multi_files_repo_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_data</span><span class="p">):</span>
+<div class="viewcode-block" id="RepositoriesHandler._handle_files_repo_type"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._handle_files_repo_type">[docs]</a>    <span class="k">def</span> <span class="nf">_handle_files_repo_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Handle repositories set to manage more than one file on them.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">repo_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_path</span><span class="p">(</span><span class="n">repo_data</span><span class="p">)</span>
-            <span class="n">rel_path</span> <span class="o">=</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_rel_path&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-            <span class="n">file_pattern</span> <span class="o">=</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_file_pattern&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-            <span class="n">filenames</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">repo_path</span><span class="p">,</span> <span class="n">rel_path</span><span class="p">))</span>
-            <span class="n">repo_files_ignore</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_files_ignore&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+            <span class="n">repo_file_names</span> <span class="o">=</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_file_names&quot;</span><span class="p">,</span> <span class="p">[])</span>
+            <span class="n">repo_file_patterns_include</span> <span class="o">=</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_file_patterns_include&quot;</span><span class="p">,</span> <span class="p">[])</span>
+            <span class="n">repo_file_patterns_ignore</span> <span class="o">=</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_file_patterns_ignore&quot;</span><span class="p">,</span> <span class="p">[])</span>
+            <span class="n">filenames</span> <span class="o">=</span> <span class="p">[]</span>
 
-            <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">repo_files_ignore</span> <span class="ow">and</span> \
-                        <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">file_pattern</span><span class="p">):</span>
-                    <span class="k">try</span><span class="p">:</span>
-                        <span class="n">title</span> <span class="o">=</span> <span class="n">filename</span><span class="p">[:</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_pattern</span><span class="p">))]</span>
-                        <span class="n">www_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_repositories&quot;</span> <span class="o">%</span>
-                                                <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_service&quot;</span><span class="p">,</span> <span class="s2">&quot;github&quot;</span><span class="p">),</span>
-                                                <span class="bp">self</span><span class="o">.</span><span class="n">_get_folder_name</span><span class="p">(</span><span class="n">repo_data</span><span class="p">),</span>
-                                                <span class="n">rel_path</span><span class="p">,</span>
-                                                <span class="n">filename</span><span class="p">)</span>
-                        <span class="n">source_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">repo_path</span><span class="p">,</span> <span class="n">rel_path</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-                        <span class="n">destination_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="n">www_path</span><span class="p">)</span>
+            <span class="c1"># To have a default and to avoid having to specify repo_file_names in every</span>
+            <span class="c1"># single repository data object.</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">repo_file_names</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">repo_file_patterns_include</span><span class="p">:</span>
+                <span class="n">repo_file_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;README.md&quot;</span><span class="p">]</span>
 
-                        <span class="bp">self</span><span class="o">.</span><span class="n">_data_tables_obj</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                            <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_title_prefix&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">title</span><span class="p">,</span>
-                            <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_category&quot;</span><span class="p">,</span> <span class="s2">&quot;Uncategorized&quot;</span><span class="p">),</span>
-                            <span class="c1"># Path to files relative to the www folder</span>
-                            <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">www_path</span><span class="p">,</span>
-                            <span class="c1"># Icon name</span>
-                            <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_image&quot;</span><span class="p">,</span> <span class="s2">&quot;md&quot;</span><span class="p">)</span>
-                        <span class="p">})</span>
+            <span class="k">if</span> <span class="n">repo_file_names</span><span class="p">:</span>
+                <span class="n">filenames</span> <span class="o">+=</span> <span class="n">repo_file_names</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">temp_files_list</span> <span class="o">=</span> <span class="p">[]</span>
 
+                <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">repo_path</span><span class="p">,</span> <span class="n">topdown</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                    <span class="c1"># &lt;3 https://stackoverflow.com/a/19859907</span>
+                    <span class="c1"># Modify dirs in-place to avoid visiting undesired directories.</span>
+                    <span class="n">dirs</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dirs</span>
+                               <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">app_utils</span><span class="o">.</span><span class="n">custom_copytree_global_ignored_patterns</span><span class="p">)]</span>
+
+                    <span class="k">for</span> <span class="n">f_name</span> <span class="ow">in</span> <span class="n">string_utils</span><span class="o">.</span><span class="n">super_filter</span><span class="p">(</span><span class="n">files</span><span class="p">,</span>
+                                                            <span class="n">repo_file_patterns_include</span><span class="p">,</span>
+                                                            <span class="n">repo_file_patterns_ignore</span><span class="p">):</span>
+                        <span class="n">temp_files_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_file_rel_path</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">f_name</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">))</span>
+
+                <span class="c1"># Second filtering to apply exclusion_patterns. In case that there is</span>
+                <span class="c1"># a directory filtering pattern.</span>
+                <span class="n">filenames</span> <span class="o">+=</span> <span class="n">string_utils</span><span class="o">.</span><span class="n">super_filter</span><span class="p">(</span><span class="n">temp_files_list</span><span class="p">,</span>
+                                                       <span class="n">exclusion_patterns</span><span class="o">=</span><span class="n">repo_file_patterns_ignore</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">file_rel_path</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+                <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_rel_path</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_title_prefix&quot;</span><span class="p">):</span>
+                        <span class="n">title</span> <span class="o">=</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_title_prefix&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">file_name</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">title</span> <span class="o">=</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_title&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">file_name</span>
+
+                    <span class="n">www_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_repositories&quot;</span> <span class="o">%</span>
+                                            <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_service&quot;</span><span class="p">,</span> <span class="s2">&quot;github&quot;</span><span class="p">),</span>
+                                            <span class="bp">self</span><span class="o">.</span><span class="n">_get_folder_name</span><span class="p">(</span><span class="n">repo_data</span><span class="p">),</span>
+                                            <span class="n">file_rel_path</span><span class="p">)</span>
+                    <span class="n">source_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">repo_path</span><span class="p">,</span> <span class="n">file_rel_path</span><span class="p">)</span>
+                    <span class="n">destination_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="n">www_path</span><span class="p">)</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_data_tables_obj</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                        <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+                        <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_category&quot;</span><span class="p">,</span> <span class="s2">&quot;Uncategorized&quot;</span><span class="p">),</span>
+                        <span class="c1"># Path to files relative to the www folder</span>
+                        <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">www_path</span><span class="p">,</span>
+                        <span class="c1"># Icon name</span>
+                        <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_image&quot;</span><span class="p">,</span> <span class="s2">&quot;md&quot;</span><span class="p">)</span>
+                    <span class="p">})</span>
+
+                    <span class="c1"># If copy_full_repo is True, there is no need to copy the actually used files.</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;copy_full_repo&quot;</span><span class="p">):</span>
                         <span class="k">try</span><span class="p">:</span>
                             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
                                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;A file will be copied:&quot;</span><span class="p">)</span>
@@ -456,13 +421,34 @@
                                                         <span class="n">relative_path</span><span class="o">=</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">)</span>
                         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err1</span><span class="p">:</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err1</span><span class="p">)</span>
-                    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err2</span><span class="p">:</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err2</span><span class="p">)</span>
-                        <span class="k">continue</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err2</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err2</span><span class="p">)</span>
+                    <span class="k">continue</span>
+
+            <span class="k">if</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;copy_full_repo&quot;</span><span class="p">):</span>
+                <span class="n">full_repo_destination_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span>
+                                                          <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_repositories&quot;</span> <span class="o">%</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                                                              <span class="s2">&quot;repo_service&quot;</span><span class="p">,</span> <span class="s2">&quot;github&quot;</span><span class="p">),</span>
+                                                          <span class="bp">self</span><span class="o">.</span><span class="n">_get_folder_name</span><span class="p">(</span><span class="n">repo_data</span><span class="p">))</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;A folder will be copied:&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;Source: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">repo_path</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;Destination: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">full_repo_destination_path</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">file_utils</span><span class="o">.</span><span class="n">custom_copytree</span><span class="p">(</span><span class="n">repo_path</span><span class="p">,</span>
+                                               <span class="n">full_repo_destination_path</span><span class="p">,</span>
+                                               <span class="n">ignored_patterns</span><span class="o">=</span><span class="n">app_utils</span><span class="o">.</span><span class="n">custom_copytree_global_ignored_patterns</span><span class="p">,</span>
+                                               <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+                                               <span class="n">log_copied_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                               <span class="n">relative_path</span><span class="o">=</span><span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">)</span>
+
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err3</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_owner&quot;</span><span class="p">),</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_name&quot;</span><span class="p">)))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err3</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_file_rel_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">start_path</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="n">start_path</span><span class="p">)</span>
 
 <div class="viewcode-block" id="RepositoriesHandler._get_sphinx_generated_pages_storage"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_sphinx_generated_pages_storage">[docs]</a>    <span class="k">def</span> <span class="nf">_get_sphinx_generated_pages_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get Sphinx generated pages storage.</span>
@@ -530,7 +516,7 @@
         <span class="k">if</span> <span class="n">repo_type</span> <span class="o">==</span> <span class="s2">&quot;git&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;Some command that&#39;s actually useful!!!!&quot;</span><span class="p">]</span>
             <span class="c1"># Why not? Because Git can be absolutely retarded.</span>
-            <span class="c1"># I WANT TO KNOW IF THE CURRENT DIRECTORY IS A FUCKING GIT REPOSITORY!!!!</span>
+            <span class="c1"># I WANT TO KNOW IF THE CURRENT DIRECTORY IS A FREAKING GIT REPOSITORY!!!!</span>
             <span class="c1"># NOT IF THE CURRENT DIRECTORY IS INSIDE A GIT REPOSITORY!!!</span>
             <span class="c1"># return [&quot;git&quot;, &quot;rev-parse&quot;, &quot;--git-dir&quot;]</span>
             <span class="c1"># return [&quot;git&quot;, &quot;status&quot;]</span>
@@ -607,7 +593,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling repositories...&quot;</span><span class="p">)</span>
 
-        <span class="k">for</span> <span class="n">repo_data</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_repositories_data</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="n">k</span><span class="p">[</span><span class="s2">&quot;repo_handler&quot;</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">repo_data</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_repositories_data</span><span class="p">,</span>
+                                <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;repo_handler&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_handler&quot;</span><span class="p">,</span> <span class="s2">&quot;files&quot;</span><span class="p">))):</span>
             <span class="c1"># Do not generate JSON files for repositories that are used to generate</span>
             <span class="c1"># Markdown files (or other types of files) from the repository data.</span>
             <span class="c1"># Right now, there is only one repository of this type</span>
@@ -615,7 +602,7 @@
             <span class="k">if</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;no_json&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
                 <span class="k">continue</span>
 
-            <span class="n">repo_handler</span> <span class="o">=</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_handler&quot;</span><span class="p">)</span>
+            <span class="n">repo_handler</span> <span class="o">=</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_handler&quot;</span><span class="p">,</span> <span class="s2">&quot;files&quot;</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">repo_handler</span><span class="p">:</span>
                 <span class="n">handler</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_handle_</span><span class="si">%s</span><span class="s2">_repo_type&quot;</span> <span class="o">%</span> <span class="n">repo_handler</span><span class="p">)</span>
@@ -656,7 +643,7 @@
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">repo_parent</span><span class="p">):</span>
                     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">repo_parent</span><span class="p">)</span>
 
-                <span class="c1"># START USING THIS WHEN GIT GAINS SOME FUCKING SENSE!!!</span>
+                <span class="c1"># START USING THIS WHEN GIT GAINS SOME FREAKING SENSE!!!</span>
                 <span class="c1"># If the repository path exists, check if it is a valid repository</span>
                 <span class="c1"># and proceed to attempt to pull from it.</span>
                 <span class="c1"># p = cmd_utils.run_cmd(self._get_check_repo_cmd(repo_data.get(&quot;repo_type&quot;, &quot;git&quot;)),</span>
@@ -723,7 +710,7 @@
                                      <span class="bp">self</span><span class="o">.</span><span class="n">_get_sphinx_generated_pages_storage</span><span class="p">(</span><span class="n">repo_data</span><span class="p">),</span> <span class="s2">&quot;html&quot;</span><span class="p">)</span>
 
             <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sphinx-build&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;-b&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="n">doctrees_path</span><span class="p">,</span> <span class="n">html_path</span><span class="p">]</span>
-            <span class="n">cwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_path</span><span class="p">(</span><span class="n">repo_data</span><span class="p">),</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_rel_path&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+            <span class="n">cwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_path</span><span class="p">(</span><span class="n">repo_data</span><span class="p">),</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_sources_path&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
 
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;Command that will be executed:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cmd</span><span class="p">)</span>

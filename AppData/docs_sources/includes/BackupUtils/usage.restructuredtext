@@ -33,7 +33,7 @@ Options
 
     .. warning::
 
-        Some file system changes will be performed (e.g. temporary files creation).
+        Some file system changes will be performed (e.g., temporary files creation).
 
 
 app.py print_tasks

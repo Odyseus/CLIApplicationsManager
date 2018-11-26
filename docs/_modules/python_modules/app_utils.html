@@ -800,23 +800,25 @@
 
     <span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
 
+    <span class="k">if</span> <span class="n">run_in_parallel</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">shlex</span>
+
+        <span class="n">command</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>  <span class="c1"># &lt;3 Python!!!</span>
+        <span class="n">exec_funct</span> <span class="o">=</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">popen</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="n">cmd</span>
+        <span class="n">exec_funct</span> <span class="o">=</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">exec_command</span>
+
     <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">get_selected_apps</span><span class="p">(</span><span class="n">app_slugs</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span> <span class="k">if</span> <span class="n">app_slugs</span> <span class="k">else</span> <span class="n">get_all_apps</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">run_in_parallel</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">shlex</span>
-
-            <span class="n">command</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>  <span class="c1"># &lt;3 Python!!!</span>
-            <span class="n">exec_funct</span> <span class="o">=</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">popen</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">command</span> <span class="o">=</span> <span class="n">cmd</span>
-            <span class="n">exec_funct</span> <span class="o">=</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">exec_command</span>
-
         <span class="n">t</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">exec_funct</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">command</span><span class="p">,),</span> <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span>
             <span class="s2">&quot;cwd&quot;</span><span class="p">:</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">],</span>
             <span class="s2">&quot;logger&quot;</span><span class="p">:</span> <span class="n">logger</span>
         <span class="p">})</span>
 
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Executing command on:&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Command:&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Working directory:&quot;</span><span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">],</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
         <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>

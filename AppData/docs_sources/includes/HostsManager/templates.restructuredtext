@@ -44,6 +44,6 @@ Data keys for the ``sources`` property
 - ``issues``: An URL were to report issues with the source.
 - ``license``: The license for the downloaded file.
 
-.. info::
+.. note::
 
     The ``description``, ``homeurl``, ``issues`` and ``license`` keys are merely informative. They aren't used by this application in any way.

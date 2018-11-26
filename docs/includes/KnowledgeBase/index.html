@@ -243,8 +243,8 @@
 <span class="text-bold">--dry-run</span>
     Do not perform file system changes. Only display messages informing of the
     actions that will be performed or commands that will be executed.
-    WARNING! Some file system changes will be performed (e.g. temporary files
-    creation) and some commands will be executed (e.g. checking if a directory
+    WARNING! Some file system changes will be performed (e.g., temporary files
+    creation) and some commands will be executed (e.g., checking if a directory
     belongs to a repository).</pre>
 </div></div>
 </div>
@@ -316,6 +316,7 @@
 <div class="admonition-info info admonition">
 <p class="admonition-title">Highlights</p>
 <ul class="simple">
+<li><p>This file should contain one property called <strong>data</strong>. A list containing dictionaries.</p></li>
 <li><p>Compressed/Tared archives are downloaded into a temporary location (<strong>UserData/data_storage/downloaded_archives</strong>) and then their content extracted into their final location (<strong>UserData/www/html_pages_from_archives/&lt;kb_title&gt;</strong>).</p></li>
 <li><p>Non-compressed/Non-tared files are directly downloaded into their final destination.</p></li>
 </ul>
@@ -361,13 +362,13 @@
 <p>All data keys are of type string and are optional unless specified otherwise.</p>
 </div>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">kb_title</span></code> (Madatory): The title that will be displayed in the web page index.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kb_category</span></code> (Madatory): A category name to organize the web page index.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">arch_url</span></code> (Madatory): The url from which to download an archive.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kb_rel_path</span></code> (<strong>Optional</strong>): The path (relative to <strong>UserData/www/html_pages_from_archives/&lt;kb_title&gt;</strong>) to the a folder containing an HTML file (<code class="docutils literal notranslate"><span class="pre">kb_filename</span></code>) found inside the extracted content of an archive. <strong>Default</strong>: empty.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kb_filename</span></code> (<strong>Optional</strong>): The file name found inside the extracted content of an archive relative to <code class="docutils literal notranslate"><span class="pre">kb_rel_path</span></code>. <strong>Default</strong>: <strong>index.html</strong>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kb_file_append</span></code> (<strong>Optional</strong>): A list of tuples. Each tuple must contain a path to a file (relative to <strong>UserData/www/html_pages_from_archives/&lt;title key&gt;</strong>) at index 0 (zero) and a string at index 1 (one). The string will be appended at the end of the file defined at index zero.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_frequency</span></code> (<strong>Optional</strong>): The frequency at which an archive should be downloaded. Default: <strong>m</strong>. Possible values:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_title</span></code> (<strong>Madatory</strong>): The title that will be displayed in the web page index.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_category</span></code> (<strong>Madatory</strong>): A category name to organize the web page index.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arch_url</span></code> (<strong>Madatory</strong>): The url from which to download an archive.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_rel_path</span></code> (<strong>Default</strong>: empty): The path (relative to <strong>UserData/www/html_pages_from_archives/&lt;kb_title&gt;</strong>) to the a folder containing an HTML file (<code class="docutils literal notranslate"><span class="pre">kb_filename</span></code>) found inside the extracted content of an archive.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_filename</span></code> (<strong>Default</strong>: <strong>index.html</strong>): The file name found inside the extracted content of an archive relative to <code class="docutils literal notranslate"><span class="pre">kb_rel_path</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_file_append</span></code> (<strong>List</strong>): A list of tuples. Each tuple must contain a path to a file (relative to <strong>UserData/www/html_pages_from_archives/&lt;kb_title&gt;</strong>) at index 0 (zero) and a string at index 1 (one). The string will be appended at the end of the file defined at index zero.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_frequency</span></code> (<strong>Default</strong>: <strong>m</strong>): The frequency at which an archive should be downloaded. Possible values:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">w</span></code>: Weekly.</p></li>
@@ -376,18 +377,19 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">unzip_prog</span></code> (<strong>Optional</strong>): The command to use to decompress archives. Possible values are <strong>7z</strong>, <strong>unzip</strong> and <strong>tar</strong>. The tar command can accept a decompression argument (See <code class="docutils literal notranslate"><span class="pre">untar_arg</span></code>).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">untar_arg</span></code> (<strong>Optional</strong>): The decompress argument used by the <code class="docutils literal notranslate"><span class="pre">tar</span></code> program. Possible values are <strong>–xz</strong>, <strong>-J</strong>, <strong>–gzip</strong>, <strong>-z</strong>, <strong>–bzip2</strong> or <strong>-j</strong>. <strong>Default</strong>: empty (no decompression argument is passed to <code class="docutils literal notranslate"><span class="pre">tar</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unzip_prog</span></code>: The command to use to decompress archives. Possible values are <strong>7z</strong>, <strong>unzip</strong> and <strong>tar</strong>. The tar command can accept a decompression argument (See <code class="docutils literal notranslate"><span class="pre">untar_arg</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">untar_arg</span></code> (<strong>Default</strong>: empty (no decompression argument is passed to <code class="docutils literal notranslate"><span class="pre">tar</span></code>)): The decompress argument used by the <code class="docutils literal notranslate"><span class="pre">tar</span></code> program. Possible values are <strong>–xz</strong>, <strong>-J</strong>, <strong>–gzip</strong>, <strong>-z</strong>, <strong>–bzip2</strong> or <strong>-j</strong>.</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="repositories-py-template">
 <h3><strong>repositories.py</strong> template<a class="headerlink" href="#repositories-py-template" title="Permalink to this headline">¶</a></h3>
 <p>In this file is stored all the data to handle on-line repositories. Its location should always be <strong>/UserData/KnowledgeBase/UserData/data_sources/repositories.py</strong>.</p>
-<div class="admonition-warning warning admonition">
-<p class="admonition-title">Documentations building requirement</p>
+<div class="admonition-info info admonition">
+<p class="admonition-title">Highlights</p>
 <ul class="simple">
-<li><p><strong>sphinx&gt;=1.6.5</strong>: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">sphinx</span></code></p></li>
+<li><p>This file should contain one property called <strong>data</strong>. A list containing dictionaries.</p></li>
+<li><p>Repositories are cloned into a temporary location (<strong>UserData/data_storage/&lt;repo_service&gt;_repositories</strong>).</p></li>
 </ul>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
@@ -400,23 +402,22 @@
         <span class="s2">&quot;repo_name&quot;</span><span class="p">:</span> <span class="s2">&quot;documentation&quot;</span><span class="p">,</span>
         <span class="s2">&quot;repo_handler&quot;</span><span class="p">:</span> <span class="s2">&quot;sphinx_docs&quot;</span><span class="p">,</span>
         <span class="s2">&quot;kb_category&quot;</span><span class="p">:</span> <span class="s2">&quot;Software|Documentation&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;kb_title&quot;</span><span class="p">:</span> <span class="s2">&quot;HexChat documentation&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;kb_rel_path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+        <span class="s2">&quot;kb_title&quot;</span><span class="p">:</span> <span class="s2">&quot;HexChat documentation&quot;</span>
     <span class="p">},</span> <span class="p">{</span>
         <span class="s2">&quot;repo_owner&quot;</span><span class="p">:</span> <span class="s2">&quot;sindresorhus&quot;</span><span class="p">,</span>
         <span class="s2">&quot;repo_name&quot;</span><span class="p">:</span> <span class="s2">&quot;awesome&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;repo_handler&quot;</span><span class="p">:</span> <span class="s2">&quot;single_file&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;repo_filename&quot;</span><span class="p">:</span> <span class="s2">&quot;readme.md&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;repo_handler&quot;</span><span class="p">:</span> <span class="s2">&quot;files&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;repo_file_patterns_include&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;readme.md&quot;</span><span class="p">],</span>
         <span class="s2">&quot;kb_category&quot;</span><span class="p">:</span> <span class="s2">&quot;Bookmark&quot;</span><span class="p">,</span>
         <span class="s2">&quot;kb_title&quot;</span><span class="p">:</span> <span class="s2">&quot;Awesome (Curated list of awesome lists)&quot;</span><span class="p">,</span>
     <span class="p">},</span> <span class="p">{</span>
         <span class="s2">&quot;repo_owner&quot;</span><span class="p">:</span> <span class="s2">&quot;rstacruz&quot;</span><span class="p">,</span>
         <span class="s2">&quot;repo_name&quot;</span><span class="p">:</span> <span class="s2">&quot;cheatsheets&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;repo_handler&quot;</span><span class="p">:</span> <span class="s2">&quot;multi_files&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;repo_file_pattern&quot;</span><span class="p">:</span> <span class="s2">&quot;.md&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;repo_handler&quot;</span><span class="p">:</span> <span class="s2">&quot;files&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;repo_file_patterns_include&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;*.md&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;repo_file_patterns_ignore&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;README.md&quot;</span><span class="p">],</span>
         <span class="s2">&quot;kb_category&quot;</span><span class="p">:</span> <span class="s2">&quot;Software|Quick Reference&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;kb_title_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;Devhints cheatsheets - &quot;</span><span class="p">,</span>
-        <span class="s2">&quot;kb_file_ignore&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;README.md&quot;</span><span class="p">]</span>
+        <span class="s2">&quot;kb_title_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;Devhints cheatsheets - &quot;</span>
     <span class="p">}</span>
 <span class="p">]</span>
 </pre></div>
@@ -430,38 +431,27 @@
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">repo_owner</span></code> (<strong>Mandatory</strong>): Repository owner/organization.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">repo_name</span></code> (<strong>Mandatory</strong>): Repository name.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">repo_service</span></code>: <strong>Default</strong>: <strong>github</strong>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">repo_handler</span></code> (<strong>Mandatory</strong>): Repository handler. Possible values:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_service</span></code> (<strong>Default</strong>: <strong>github</strong>): This value is used to generate a URL to an on-line service. Possible values are: <strong>github</strong>, <strong>bitbucket</strong> and <strong>gitlab</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">copy_full_repo</span></code> (<strong>Boolean</strong>): Whether to copy the full repository to its final location or not.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_handler</span></code> (<strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">files</span></code>): Repository handler. Possible values:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">sphinx_docs</span></code>: Repositories that contain Sphinx documentation sources. These sources are then used to build the HTML documentation.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">single_file</span></code>: Repositories from which one file is used.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">multi_files</span></code>: Repositories from which more than file is used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">files</span></code>: Repositories from which one or more files are used as they are.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">repo_type</span></code>: Repository type (<strong>git</strong> or <strong>hg</strong>). <strong>Default</strong>: <strong>git</strong>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">repo_filename</span></code>: <strong>Default</strong>: <strong>index.html</strong> for <strong>repo_handler</strong> <code class="docutils literal notranslate"><span class="pre">sphinx_docs</span></code> and <strong>README.md</strong> for <strong>repo_handler</strong> <code class="docutils literal notranslate"><span class="pre">single_file</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">repo_files_ignore</span></code> (<strong>List</strong>):</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">repo_file_pattern</span></code>:</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kb_category</span></code>: <strong>Default</strong>: <strong>Uncategorized</strong>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kb_title</span></code>:</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kb_title_prefix</span></code>:</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kb_rel_path</span></code>: Relative path to the desired file/folder/Sphinx docs sources.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sphinx_docs</span></code>: The path should be relative to a downloaded repository and point to a Sphinx docs source folder (e.g. if the docs sources of a downloaded repository are at <strong>UserData/tmp/&lt;repo_service&gt;_repositories/&lt;repo_owner&gt;-&lt;repo_name&gt;/doc</strong>, then the <code class="docutils literal notranslate"><span class="pre">kb_rel_path</span></code> key value should be <strong>doc</strong>).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">single_file</span></code>: Repositories that</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">multi_files</span></code>:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_type</span></code> (<strong>Default</strong>: <strong>git</strong>): Repository type (<strong>git</strong> or <strong>hg</strong>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_file_names</span></code> (<strong>List</strong>) (<strong>Default</strong> if <code class="docutils literal notranslate"><span class="pre">repo_file_patterns_include</span></code> is not defined: <code class="docutils literal notranslate"><span class="pre">[&quot;README.md&quot;]</span></code>): A list of file paths relative to a repository folder. These relative paths are used to generate entries in the web page index. If defined, the <code class="docutils literal notranslate"><span class="pre">repo_file_patterns_include</span></code> and <code class="docutils literal notranslate"><span class="pre">repo_file_patterns_ignore</span></code> keys will be ignored.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_file_patterns_include</span></code> (<strong>List</strong>): A list of file patterns. This key replaces the <code class="docutils literal notranslate"><span class="pre">repo_file_names</span></code> key functionality. Instead of explicitly declaring file names in the <code class="docutils literal notranslate"><span class="pre">repo_file_names</span></code> key, one can define several file patterns in <code class="docutils literal notranslate"><span class="pre">repo_file_patterns_include</span></code>. For example: <code class="docutils literal notranslate"><span class="pre">[&quot;*.md&quot;]</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_file_patterns_ignore</span></code> (<strong>List</strong>): A list of file patterns. This key complements the <code class="docutils literal notranslate"><span class="pre">repo_file_patterns_include</span></code> key functionality by ignoring the files that match the patterns defined in this key.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repo_sources_path</span></code> (<code class="docutils literal notranslate"><span class="pre">sphinx_docs</span></code> <code class="docutils literal notranslate"><span class="pre">repo_handler</span></code> only): A relative path to the desired Sphinx documentation sources. The path should be relative to a downloaded repository and point to a Sphinx documentation sources folder (e.g., if the documentation sources of a downloaded repository are at <strong>UserData/data_storage/&lt;repo_service&gt;_repositories/&lt;repo_owner&gt;-&lt;repo_name&gt;/doc</strong>, then the <code class="docutils literal notranslate"><span class="pre">repo_sources_path</span></code> key value should be <strong>doc</strong>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_category</span></code> (<strong>Default</strong>: <strong>Uncategorized</strong>):</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_title_prefix</span></code>: If defined, this prefix will be used to generate a label that will be displayed in the web page index table. The final label will look like <code class="docutils literal notranslate"><span class="pre">&lt;kb_title_prefix&gt;&lt;file_name&gt;</span></code>. <code class="docutils literal notranslate"><span class="pre">&lt;file_name&gt;</span></code> being the name of the file or files defined either by the <code class="docutils literal notranslate"><span class="pre">repo_file_names</span></code> or the <code class="docutils literal notranslate"><span class="pre">repo_file_patterns_include</span></code> keys. This key is more suitable for use when more than one file is used in a repository.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_title</span></code>: If <code class="docutils literal notranslate"><span class="pre">kb_title_prefix</span></code> is not defined, this key will be used to display the label in the web page index table. This key is more suitable for use when only one file is used in a repository.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_index_filename</span></code> (<code class="docutils literal notranslate"><span class="pre">sphinx_docs</span></code> <code class="docutils literal notranslate"><span class="pre">repo_handler</span></code> only): The file name of the index file of the generated documentation. In the case that someone was malevolent enough to change the default one (LOL).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kb_file_append</span></code> (<strong>List</strong>) (<code class="docutils literal notranslate"><span class="pre">sphinx_docs</span></code> <code class="docutils literal notranslate"><span class="pre">repo_handler</span></code> only): A list of tuples. Each tuple must contain a path to a file inside the generated documentation (relative to <strong>UserData/www/sphinx_generated_pages/&lt;repo_owner&gt;-&lt;repo_name&gt;/html</strong>) at index 0 (zero) and a string at index 1 (one). The string will be appended at the end of the file defined at index zero.</p></li>
 </ul>
-</div></blockquote>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kb_file_append</span></code> (<strong>List</strong>):</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Both previously mentioned files should contain one property called <strong>data</strong>. A list containing dictionaries.</p>
-</div>
 </div>
 </div>
 <div class="section" id="categories-json-template">

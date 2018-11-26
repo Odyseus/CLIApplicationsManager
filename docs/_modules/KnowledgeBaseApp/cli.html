@@ -173,8 +173,6 @@
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">app_utils</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">archives_handler</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">repositories_handler</span>
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appdescription__</span>
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appname__</span>
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__status__</span>
@@ -223,8 +221,8 @@
 <span class="s2">--dry-run</span>
 <span class="s2">    Do not perform file system changes. Only display messages informing of the</span>
 <span class="s2">    actions that will be performed or commands that will be executed.</span>
-<span class="s2">    WARNING! Some file system changes will be performed (e.g. temporary files</span>
-<span class="s2">    creation) and some commands will be executed (e.g. checking if a directory</span>
+<span class="s2">    WARNING! Some file system changes will be performed (e.g., temporary files</span>
+<span class="s2">    creation) and some commands will be executed (e.g., checking if a directory</span>
 <span class="s2">    belongs to a repository).</span>
 
 <span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">appname</span><span class="o">=</span><span class="n">__appname__</span><span class="p">,</span>
@@ -314,6 +312,8 @@
                 <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">InvalidArgument</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">args_to_init_repo_handler</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;&lt;func_name&gt;&quot;</span><span class="p">]):</span>
+                <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">repositories_handler</span>
+
                 <span class="bp">self</span><span class="o">.</span><span class="n">_repositories_handler</span> <span class="o">=</span> <span class="n">repositories_handler</span><span class="o">.</span><span class="n">RepositoriesHandler</span><span class="p">(</span>
                     <span class="n">dry_run</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--dry-run&quot;</span><span class="p">],</span>
                     <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
@@ -348,6 +348,8 @@
 <div class="viewcode-block" id="CommandLineInterface.download_all_archives"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.download_all_archives">[docs]</a>    <span class="k">def</span> <span class="nf">download_all_archives</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`archives_handler.ArchivesHandler`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">archives_handler</span>
+
         <span class="n">handler</span> <span class="o">=</span> <span class="n">archives_handler</span><span class="o">.</span><span class="n">ArchivesHandler</span><span class="p">(</span>
             <span class="n">dry_run</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--dry-run&quot;</span><span class="p">],</span>
             <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span>

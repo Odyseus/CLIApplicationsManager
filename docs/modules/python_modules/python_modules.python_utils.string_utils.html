@@ -182,7 +182,6 @@
 <dt id="python_modules.python_utils.string_utils.split_on_uppercase">
 <code class="descclassname">python_modules.python_utils.string_utils.</code><code class="descname">split_on_uppercase</code><span class="sig-paren">(</span><em>string</em>, <em>keep_contiguous=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/string_utils.html#split_on_uppercase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.string_utils.split_on_uppercase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split string on uppercase.</p>
-<p>Based on <a class="reference external" href="https://stackoverflow.com/a/40382663">an answer</a> from a StackOverflow question.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -197,6 +196,10 @@
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)">list</a></p>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Based on: <a class="reference external" href="https://stackoverflow.com/a/40382663">Split a string at uppercase letters</a></p>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -231,6 +234,56 @@
 <li><p><strong>allowed_extensions</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#tuple" title="(in Python v3.5)"><em>tuple</em></a><em>, </em><em>optional</em>) – A tuple of file extensions that are allowed to be modified.</p></li>
 <li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.string_utils.super_filter">
+<code class="descclassname">python_modules.python_utils.string_utils.</code><code class="descname">super_filter</code><span class="sig-paren">(</span><em>names</em>, <em>inclusion_patterns=[]</em>, <em>exclusion_patterns=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/string_utils.html#super_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.string_utils.super_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Super filter.</p>
+<p>Enhanced version of fnmatch.filter() that accepts multiple inclusion and exclusion patterns.</p>
+<ul class="simple">
+<li><p>If only <code class="docutils literal notranslate"><span class="pre">inclusion_patterns</span></code> is specified, only the names which match one or more     patterns are returned.</p></li>
+<li><p>If only <code class="docutils literal notranslate"><span class="pre">exclusion_patterns</span></code> is specified, only the names which do not match any     pattern are returned.</p></li>
+<li><p>If both are specified, the exclusion patterns take precedence.</p></li>
+<li><p>If neither is specified, the input is returned as-is.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>names</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a>) – A list of strings to filter.</p></li>
+<li><p><strong>inclusion_patterns</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a><em>, </em><em>optional</em>) – A list of patterns to keep in names.</p></li>
+<li><p><strong>exclusion_patterns</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a><em>, </em><em>optional</em>) – A list of patterns to exclude from names.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A filtered list of strings.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)">list</a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Based on: <a class="reference external" href="https://codereview.stackexchange.com/a/74849">Filtering with multiple inclusion and exclusion patterns</a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.string_utils.multi_filter">
+<code class="descclassname">python_modules.python_utils.string_utils.</code><code class="descname">multi_filter</code><span class="sig-paren">(</span><em>names</em>, <em>patterns</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/string_utils.html#multi_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.string_utils.multi_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multi filter.</p>
+<p>Generator function which yields the names that match one or more of the patterns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>names</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a>) – A list of strings to filter.</p></li>
+<li><p><strong>patterns</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a>) – A list of patterns to match in names.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><em>str</em> – A name in names parameter that matches any of the patterns in patterns parameter.</p>
 </dd>
 </dl>
 </dd></dl>

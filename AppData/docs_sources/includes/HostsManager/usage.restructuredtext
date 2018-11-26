@@ -21,7 +21,7 @@ Detailed usage
 
     .. warning::
 
-        Some file system changes will be performed (e.g. temporary files creation).
+        Some file system changes will be performed (e.g., temporary files creation).
 
 Commands
 --------

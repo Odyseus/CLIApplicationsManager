@@ -168,15 +168,6 @@
 <div class="viewcode-block" id="Menu"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu">[docs]</a><span class="k">class</span> <span class="nc">Menu</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Easily create command-line menus.</span>
 
-<span class="sd">    .. note::</span>
-<span class="sd">        This is a slightly modified version of the `Menu module &lt;https://pypi.python.org/pypi/Menu&gt;`__.</span>
-
-<span class="sd">        **Modifications**:</span>
-
-<span class="sd">        - Changed some default values to suit my needs.</span>
-<span class="sd">        - Some aesthetic changes for better readability of the menu items on the screen.</span>
-<span class="sd">        - This modified version doesn&#39;t clear the screen every time a menu is opened.</span>
-
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
 <span class="sd">    is_message_enabled : bool</span>
@@ -195,6 +186,16 @@
 <span class="sd">        A function to call before displaying the menu.</span>
 <span class="sd">    title : str</span>
 <span class="sd">        A title to use on the menu.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Based on: `Menu module &lt;https://pypi.python.org/pypi/Menu&gt;`__.</span>
+
+<span class="sd">    **Modifications**:</span>
+
+<span class="sd">    - Changed some default values to suit my needs.</span>
+<span class="sd">    - Some aesthetic changes for better readability of the menu items on the screen.</span>
+<span class="sd">    - This modified version doesn&#39;t clear the screen every time a menu is opened.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">menu_items</span><span class="o">=</span><span class="p">[],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;❯ &quot;</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="kc">None</span><span class="p">):</span>

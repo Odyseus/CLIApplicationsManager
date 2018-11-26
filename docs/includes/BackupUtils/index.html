@@ -227,18 +227,18 @@
     Show application version.
 
 <span class="text-bold">-t &lt;name&gt;, --task=&lt;name&gt;</span>
-    File name of the file containing the backup task. Should be the name of a
+    File name of the file containing backup tasks. Should be the name of a
     file stored in UserData/tasks/&lt;name&gt;.py. Extension omitted.
 
 <span class="text-bold">-g &lt;name&gt;, --global=&lt;name&gt;</span>
-    File name of the file containing the global settings that all the backup
-    tasks will use. Should be the name of a file stored in
+    File name of a file containing global settings that all the backup tasks
+    will use. Should be the name of a file stored in
     UserData/settings/&lt;name&gt;.py. Extension omitted.
 
 <span class="text-bold">-d, --dry-run</span>
     Do not perform file system changes. Only display messages informing of the
     actions that will be performed or commands that will be executed.
-    WARNING! Some file system changes will be performed (e.g. temporary files
+    WARNING! Some file system changes will be performed (e.g., temporary files
     creation).</pre>
 </div></div>
 </div>
@@ -310,7 +310,7 @@
 <blockquote>
 <div><div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Some file system changes will be performed (e.g. temporary files creation).</p>
+<p>Some file system changes will be performed (e.g., temporary files creation).</p>
 </div>
 </div></blockquote>
 </li>
@@ -580,6 +580,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">mail_body</span></code>: Text that will be displayed after the backup report.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">mailing_list</span></code> (<strong>List</strong>): A list of e-mail addresses to send a backup report to.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All <code class="docutils literal notranslate"><span class="pre">mail_settings</span></code> keys are mandatory.</p>
+</div>
 </div></blockquote>
 </li>
 </ul>
@@ -594,7 +598,7 @@
 </div>
 <div class="section" id="tar-local">
 <span id="backup-utils-tar-local-type-reference"></span><h3>tar_local<a class="headerlink" href="#tar-local" title="Permalink to this headline">¶</a></h3>
-<p>This task uses the <code class="docutils literal notranslate"><span class="pre">tar</span></code> command available on a system to create an archive with the content of all the items (files and folder) defined in a task object.</p>
+<p>This task uses the <code class="docutils literal notranslate"><span class="pre">tar</span></code> command available on a system to create an archive with the content of all the <code class="docutils literal notranslate"><span class="pre">items</span></code> (files and folders) defined in a task object.</p>
 <div class="admonition-info info admonition">
 <p class="admonition-title">Highlights</p>
 <ul class="simple">
@@ -610,9 +614,16 @@
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">tar_compression_level</span></code> (<strong>Default</strong>: -7): A value between -1 and -9. This value is used to set environment variables used by <code class="docutils literal notranslate"><span class="pre">tar</span></code> (XZ_OPT, GZIP_OPT or BZIP2) to set a compression level. If no compression argument is defined in <code class="docutils literal notranslate"><span class="pre">tar_func_args</span></code>, the environment variables will not be set and <code class="docutils literal notranslate"><span class="pre">tar_compression_level</span></code> will not be used.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tar_func_args</span></code> (<strong>List</strong>) (<strong>Default</strong>: empty (no function arguments are passed to <code class="docutils literal notranslate"><span class="pre">tar</span></code>)): A list of function arguments used by the <code class="docutils literal notranslate"><span class="pre">tar</span></code> program. Possible values for the compression arguments are <strong>–xz</strong>, <strong>-J</strong>, <strong>–gzip</strong>, <strong>-z</strong>, <strong>–bzip2</strong> or <strong>-j</strong>. Do not use <em>old option style</em>, either use short options (e.g.: <code class="docutils literal notranslate"><span class="pre">-j</span></code>) or long options (e.g.: <code class="docutils literal notranslate"><span class="pre">--xz</span></code>). See <a class="reference external" href="https://www.gnu.org/software/tar/manual/tar.html">GNU tar manual</a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tar_opt_args</span></code> (<strong>List</strong>): See <a class="reference internal" href="#backup-utils-tar-local-type-reference"><span class="std std-ref">tar_local</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tar_func_args</span></code> (<strong>List</strong>) (<strong>Default</strong>: empty (no extra function arguments are passed to <code class="docutils literal notranslate"><span class="pre">tar</span></code>)): A list of extra function arguments passed to the <code class="docutils literal notranslate"><span class="pre">tar</span></code> program. Possible values for the compression arguments are <strong>–xz</strong>, <strong>-J</strong>, <strong>–gzip</strong>, <strong>-z</strong>, <strong>–bzip2</strong> or <strong>-j</strong>. Do not use <em>old option style</em>, either use short options (e.g., <code class="docutils literal notranslate"><span class="pre">-J</span></code>) or long options (e.g., <code class="docutils literal notranslate"><span class="pre">--xz</span></code>). See <a class="reference external" href="https://www.gnu.org/software/tar/manual/tar.html">GNU tar manual</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tar_opt_args</span></code> (<strong>List</strong>) (<strong>Default</strong>: empty (no extra option arguments are passed to <code class="docutils literal notranslate"><span class="pre">tar</span></code>)): Extra option arguments passed to the <code class="docutils literal notranslate"><span class="pre">tar</span></code> program.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The final command that will be executed will look similar to the following:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">--</span><span class="n">create</span> <span class="p">[</span><span class="n">tar_func_args</span><span class="p">]</span> <span class="o">--</span><span class="n">file</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">destination</span><span class="o">/</span><span class="p">[</span><span class="n">destination_prefix</span><span class="p">]</span><span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span><span class="n">_05</span><span class="o">.</span><span class="mf">42.06</span><span class="o">.</span><span class="mf">846.</span><span class="n">tar</span><span class="p">[</span><span class="n">extension_depending_on_tar_func_args_passed</span><span class="p">]</span> <span class="o">--</span><span class="n">files</span><span class="o">-</span><span class="n">from</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">file</span><span class="o">/</span><span class="k">with</span><span class="o">/</span><span class="n">valid</span><span class="o">/</span><span class="n">generated</span><span class="o">/</span><span class="n">paths</span> <span class="p">[</span><span class="n">tar_opt_args</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="rsync-local">
@@ -634,6 +645,14 @@
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">rsync_args</span></code> (<strong>List</strong>): Extra arguments passed to the <code class="docutils literal notranslate"><span class="pre">rsync</span></code> command.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The final command that will be executed will look similar to the following:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># The --exclude arguments are dynamically added based on values defined in ignored_patterns settings.</span>
+<span class="n">rsync</span> <span class="p">[</span><span class="n">rsync_args</span><span class="p">]</span> <span class="o">--</span><span class="n">exclude</span><span class="o">=</span><span class="n">ptrn_1</span> <span class="o">--</span><span class="n">exclude</span><span class="o">=</span><span class="n">ptrn_n</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mirror</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mirror</span><span class="o">/</span><span class="n">destination</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
