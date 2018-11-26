@@ -641,23 +641,25 @@ def run_cmd_on_apps(cmd, run_in_parallel=False, app_slugs=[], logger=None):
 
     threads = []
 
+    if run_in_parallel:
+        import shlex
+
+        command = shlex.split(cmd)  # <3 Python!!!
+        exec_funct = cmd_utils.popen
+    else:
+        command = cmd
+        exec_funct = cmd_utils.exec_command
+
     for app in get_selected_apps(app_slugs, logger) if app_slugs else get_all_apps():
-        if run_in_parallel:
-            import shlex
-
-            command = shlex.split(cmd)  # <3 Python!!!
-            exec_funct = cmd_utils.popen
-        else:
-            command = cmd
-            exec_funct = cmd_utils.exec_command
-
         t = Thread(target=exec_funct, args=(command,), kwargs={
             "cwd": app["path"],
             "logger": logger
         })
 
-        print()
-        logger.info("Executing command on:")
+        logger.info(shell_utils.get_cli_separator("-"), date=False)
+        logger.info("Command:")
+        logger.info(cmd, date=False)
+        logger.info("Working directory:")
         logger.info(app["path"], date=False)
 
         t.start()
