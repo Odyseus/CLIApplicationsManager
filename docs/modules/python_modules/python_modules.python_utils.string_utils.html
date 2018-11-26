@@ -288,6 +288,54 @@
 </dl>
 </dd></dl>
 
+<dl class="function">
+<dt id="python_modules.python_utils.string_utils.get_valid_filename">
+<code class="descclassname">python_modules.python_utils.string_utils.</code><code class="descname">get_valid_filename</code><span class="sig-paren">(</span><em>string</em>, <em>separator='_'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/string_utils.html#get_valid_filename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.string_utils.get_valid_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get valid file name.</p>
+<p>Return the given string converted to a string that can be used for a clean
+filename.</p>
+<ul class="simple">
+<li><p>Removes leading and trailing spaces.</p></li>
+<li><p>Converts any succesion of white spaces into a single underscore (configurable,     althogh it cannot be anything other than a dash, an underscore or a dot).</p></li>
+<li><p>Removes anything that is not an alphanumeric, dash, underscore, or dot.</p></li>
+</ul>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_valid_filename</span><span class="p">(</span><span class="s2">&quot;john&#39;s portrait in 2004.jpg&quot;</span><span class="p">)</span>
+<span class="go">&quot;johns_portrait_in_2004.jpg&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Based on: Utilities found in <a class="reference external" href="https://github.com/django/django">Django Web framework</a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.string_utils.slugify">
+<code class="descclassname">python_modules.python_utils.string_utils.</code><code class="descname">slugify</code><span class="sig-paren">(</span><em>string</em>, <em>allow_unicode=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/string_utils.html#slugify"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.string_utils.slugify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slugify.</p>
+<ul class="simple">
+<li><p>Convert to ASCII if <code class="docutils literal notranslate"><span class="pre">allow_unicode</span></code> is False.</p></li>
+<li><p>Convert spaces to hyphens.</p></li>
+<li><p>Remove characters that aren’t alphanumerics, underscores, or hyphens.</p></li>
+<li><p>Convert to lowercase.</p></li>
+<li><p>Strip leading and trailing whitespace.</p></li>
+</ul>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">slugify</span><span class="p">(</span><span class="s2">&quot;john&#39;s portrait in 2004.jpg&quot;</span><span class="p">)</span>
+<span class="go">&quot;johns-portrait-in-2004jpg&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Based on: Utilities found in <a class="reference external" href="https://github.com/django/django">Django Web framework</a></p>
+</div>
+</dd></dl>
+
 </div>
 
 

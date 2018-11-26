@@ -183,13 +183,8 @@
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cmd_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">shell_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">string_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">tqdm_wget</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">slugify</span> <span class="k">import</span> <span class="n">slugify</span>
-<span class="k">except</span> <span class="p">(</span><span class="ne">SystemError</span><span class="p">,</span> <span class="ne">ImportError</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingDependencyModule</span><span class="p">(</span><span class="s2">&quot;Module not installed: &lt;python-slugify&gt;&quot;</span><span class="p">)</span>
-
 
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
@@ -570,7 +565,7 @@
 
         <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_archives_data</span><span class="p">:</span>
             <span class="c1"># Generate and add &quot;slugified_name&quot;.</span>
-            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;slugified_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">slugify</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;kb_title&quot;</span><span class="p">])</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;slugified_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">string_utils</span><span class="o">.</span><span class="n">slugify</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;kb_title&quot;</span><span class="p">])</span>
 
             <span class="c1"># Generate and add the path to the extraction destination directory.</span>
             <span class="n">data</span><span class="p">[</span><span class="s2">&quot;extraction_destination&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_archives_destination</span><span class="p">,</span>

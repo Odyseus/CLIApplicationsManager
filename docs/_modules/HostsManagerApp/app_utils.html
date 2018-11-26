@@ -186,14 +186,10 @@
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cmd_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">file_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">string_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">tqdm_wget</span>
 <span class="kn">from</span> <span class="nn">.python_utils.ansi_colors</span> <span class="k">import</span> <span class="n">Ansi</span>
 <span class="kn">from</span> <span class="nn">.python_utils.tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">slugify</span> <span class="k">import</span> <span class="n">slugify</span>
-<span class="k">except</span> <span class="p">(</span><span class="ne">SystemError</span><span class="p">,</span> <span class="ne">ImportError</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingDependencyModule</span><span class="p">(</span><span class="s2">&quot;Module not installed: &lt;python-slugify&gt;&quot;</span><span class="p">)</span>
 
 
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
@@ -491,7 +487,7 @@
 
         <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">:</span>
             <span class="c1"># Generate and add &quot;slugified_name&quot;.</span>
-            <span class="n">source</span><span class="p">[</span><span class="s2">&quot;slugified_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;hosts-</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">slugify</span><span class="p">(</span><span class="n">source</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+            <span class="n">source</span><span class="p">[</span><span class="s2">&quot;slugified_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;hosts-</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">string_utils</span><span class="o">.</span><span class="n">slugify</span><span class="p">(</span><span class="n">source</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
 
             <span class="c1"># Generate and add the path for the downloaded file.</span>
             <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unzip_prog&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
@@ -776,9 +772,9 @@
                             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Running command:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">))</span>
 
                             <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span>
-                                              <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                               <span class="n">stderr</span><span class="o">=</span><span class="n">STDOUT</span><span class="p">,</span>
-                                              <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                                              <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                              <span class="n">cwd</span><span class="o">=</span><span class="n">src_dir_path</span><span class="p">)</span>
 
                         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dst_path</span><span class="p">):</span>
                             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
@@ -793,8 +789,12 @@
                             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;Destination: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dst_path</span><span class="p">)</span>
                         <span class="k">else</span><span class="p">:</span>
                             <span class="n">copy2</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
-                    <span class="k">except</span> <span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err1</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err1</span><span class="p">)</span>
+                        <span class="k">continue</span>
+                    <span class="k">except</span> <span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">err2</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err2</span><span class="p">)</span>
+                        <span class="k">continue</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">KeyboardInterrupt</span><span class="p">,</span> <span class="ne">SystemExit</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">KeyboardInterruption</span><span class="p">()</span></div>
 

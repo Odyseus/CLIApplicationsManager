@@ -36,7 +36,7 @@ Requirements
 No mayor requirements are needed to run this application other than Python 3.5+.
 
 .. contextual-admonition::
-    :context: warning
+    :context: info
     :title: Mail system optional requirement
 
     - ``keyring`` module.

@@ -31,10 +31,7 @@ Application inspired and heavily based on the ``updateHostsFile.py`` Python scri
 Requirements
 ============
 
-.. attention::
-
-    - Python 3.5+.
-    - ``python-slugify`` module.
+No mayor requirements are needed to run this application other than Python 3.5+.
 
 .. include:: ./usage.restructuredtext
 

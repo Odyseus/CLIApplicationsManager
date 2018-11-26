@@ -31,6 +31,6 @@ Application inspired by a recipe found in `ActiveState website <https://code.act
 Requirements
 ============
 
-No mayor requirements are needed to run this application other than Python 3 (Python 3.5+ to be precise).
+No mayor requirements are needed to run this application other than Python 3.5+.
 
 .. include:: ./usage.restructuredtext

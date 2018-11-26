@@ -26,7 +26,7 @@ CLI Synopsis
 Requirements
 ============
 
-No mayor requirements are needed to execute this application other than Python 3 (Python 3.5+ to be precise).
+No mayor requirements are needed to execute this application other than Python 3.5+.
 
 .. contextual-admonition::
     :context: warning
