@@ -188,30 +188,11 @@ from this location without exceptions.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="FilesCleanerApp.app_utils.readchar">
-<code class="descclassname">FilesCleanerApp.app_utils.</code><code class="descname">readchar</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/app_utils.html#readchar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.app_utils.readchar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read character.</p>
-<p>Read single characters from standard input.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>txt</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Message to display.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The read character.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="class">
 <dt id="FilesCleanerApp.app_utils.FilesCleaner">
 <em class="property">class </em><code class="descclassname">FilesCleanerApp.app_utils.</code><code class="descname">FilesCleaner</code><span class="sig-paren">(</span><em>path</em>, <em>patterns</em>, <em>negate</em>, <em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/app_utils.html#FilesCleaner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Recursively cleans patterns of files/directories.</p>
-<p>Based on a recipe from <a class="reference external" href="http://code.activestate.com/recipes/576643/">ActiveState</a></p>
 <dl class="attribute">
 <dt id="FilesCleanerApp.app_utils.FilesCleaner.actions">
 <code class="descname">actions</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.actions" title="Permalink to this definition">¶</a></dt>
@@ -269,39 +250,6 @@ one of the specified patterns, returning False otherwise.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="FilesCleanerApp.app_utils.FilesCleaner.negate">
-<code class="descname">negate</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.negate" title="Permalink to this definition">¶</a></dt>
-<dd><p>If True, treat the patterns passed as non inclusive.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)">bool</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="FilesCleanerApp.app_utils.FilesCleaner.path">
-<code class="descname">path</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.path" title="Permalink to this definition">¶</a></dt>
-<dd><p>The path to work on.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="FilesCleanerApp.app_utils.FilesCleaner.patterns">
-<code class="descname">patterns</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.patterns" title="Permalink to this definition">¶</a></dt>
-<dd><p>The patterns to work with.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)">list</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
 <dt id="FilesCleanerApp.app_utils.FilesCleaner.targets">
 <code class="descname">targets</code><a class="headerlink" href="#FilesCleanerApp.app_utils.FilesCleaner.targets" title="Permalink to this definition">¶</a></dt>
 <dd><p>The list of files/folders on which to perform actions.</p>
@@ -312,6 +260,10 @@ one of the specified patterns, returning False otherwise.</p>
 </dl>
 </dd></dl>
 
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Based on: <a class="reference external" href="http://code.activestate.com/recipes/576643/">a recipe from ActiveState</a></p>
+</div>
 <p>Initialize.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

@@ -163,6 +163,10 @@
 
 <span class="sd">Attributes</span>
 <span class="sd">----------</span>
+<span class="sd">repo_service_url_map : dict</span>
+<span class="sd">    List of repositories service URLs.</span>
+<span class="sd">repositories_data_tables_json_path : str</span>
+<span class="sd">    Path to the repositories_data_tables.json file.</span>
 <span class="sd">root_folder : str</span>
 <span class="sd">    The main folder containing the application. All commands must be executed</span>
 <span class="sd">    from this location without exceptions.</span>
@@ -279,11 +283,6 @@
 
 <div class="viewcode-block" id="RepositoriesHandler._generate_repositories_data_tables_json_file"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._generate_repositories_data_tables_json_file">[docs]</a>    <span class="k">def</span> <span class="nf">_generate_repositories_data_tables_json_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Generate the JSON file for the repository.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        None</span>
-<span class="sd">            Do not try to save the JSON file in case something went wrong handling the repository.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating repositories JSON file...&quot;</span><span class="p">)</span>
 
@@ -313,6 +312,8 @@
 <span class="sd">        ----------</span>
 <span class="sd">        html_path : str</span>
 <span class="sd">            Path to where HTML pages are stored.</span>
+<span class="sd">        repo_data : dict</span>
+<span class="sd">            Repository data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Appending data to files...&quot;</span><span class="p">)</span>
 
@@ -332,6 +333,11 @@
 
 <div class="viewcode-block" id="RepositoriesHandler._handle_sphinx_docs_repo_type"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._handle_sphinx_docs_repo_type">[docs]</a>    <span class="k">def</span> <span class="nf">_handle_sphinx_docs_repo_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Handle repositories set to build their Sphinx documentation.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        repo_data : dict</span>
+<span class="sd">            Repository data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_data_tables_obj</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
@@ -348,7 +354,12 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="RepositoriesHandler._handle_files_repo_type"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._handle_files_repo_type">[docs]</a>    <span class="k">def</span> <span class="nf">_handle_files_repo_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_data</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Handle repositories set to manage more than one file on them.</span>
+        <span class="sd">&quot;&quot;&quot;Handle repositories set to manage one or more files on them.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        repo_data : dict</span>
+<span class="sd">            Repository data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">repo_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_path</span><span class="p">(</span><span class="n">repo_data</span><span class="p">)</span>
@@ -447,8 +458,24 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_owner&quot;</span><span class="p">),</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_name&quot;</span><span class="p">)))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err3</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_get_file_rel_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">start_path</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="n">start_path</span><span class="p">)</span>
+<div class="viewcode-block" id="RepositoriesHandler._get_file_rel_path"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_file_rel_path">[docs]</a>    <span class="k">def</span> <span class="nf">_get_file_rel_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">start_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get file relative path.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        root_dir : str</span>
+<span class="sd">            Path to file location.</span>
+<span class="sd">        file_name : str</span>
+<span class="sd">            File name.</span>
+<span class="sd">        start_path : str</span>
+<span class="sd">            The path that the resulting path should be relative to.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            A relative path.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="n">start_path</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="RepositoriesHandler._get_sphinx_generated_pages_storage"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_sphinx_generated_pages_storage">[docs]</a>    <span class="k">def</span> <span class="nf">_get_sphinx_generated_pages_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get Sphinx generated pages storage.</span>
@@ -457,6 +484,11 @@
 <span class="sd">        -------</span>
 <span class="sd">        str</span>
 <span class="sd">            The path to the Sphinx generated pages storage.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        repo_data : dict</span>
+<span class="sd">            Repository data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;sphinx_generated_pages&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_folder_name</span><span class="p">(</span><span class="n">repo_data</span><span class="p">))</span></div>
 
@@ -467,6 +499,11 @@
 <span class="sd">        -------</span>
 <span class="sd">        str</span>
 <span class="sd">            The repository folder name.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        repo_data : dict</span>
+<span class="sd">            Repository data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_owner&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_name&quot;</span><span class="p">)</span></div>
 
@@ -477,6 +514,11 @@
 <span class="sd">        -------</span>
 <span class="sd">        str</span>
 <span class="sd">            The storage path.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        repo_data : dict</span>
+<span class="sd">            Repository data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;data_storage&quot;</span><span class="p">,</span>
                             <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_repositories&quot;</span> <span class="o">%</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_service&quot;</span><span class="p">,</span> <span class="s2">&quot;github&quot;</span><span class="p">))</span></div>
@@ -488,6 +530,11 @@
 <span class="sd">        -------</span>
 <span class="sd">        str</span>
 <span class="sd">            The repository path.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        repo_data : dict</span>
+<span class="sd">            Repository data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_storage_path</span><span class="p">(</span><span class="n">repo_data</span><span class="p">),</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">_get_folder_name</span><span class="p">(</span><span class="n">repo_data</span><span class="p">))</span></div>
@@ -499,6 +546,11 @@
 <span class="sd">        -------</span>
 <span class="sd">        str</span>
 <span class="sd">            The repository path.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        repo_data : dict</span>
+<span class="sd">            Repository data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_storage_path</span><span class="p">(</span><span class="n">repo_data</span><span class="p">),</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">_get_folder_name</span><span class="p">(</span><span class="n">repo_data</span><span class="p">))</span></div>
@@ -512,6 +564,11 @@
 <span class="sd">        -------</span>
 <span class="sd">        list</span>
 <span class="sd">            The command to check the repository.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        repo_type : str</span>
+<span class="sd">            Repository type (git or hg).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">repo_type</span> <span class="o">==</span> <span class="s2">&quot;git&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;Some command that&#39;s actually useful!!!!&quot;</span><span class="p">]</span>
@@ -528,6 +585,11 @@
 
 <div class="viewcode-block" id="RepositoriesHandler._do_pull"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._do_pull">[docs]</a>    <span class="k">def</span> <span class="nf">_do_pull</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Pull from the repository.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        repo_data : dict</span>
+<span class="sd">            Repository data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> pull&quot;</span> <span class="o">%</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_type&quot;</span><span class="p">,</span> <span class="s2">&quot;git&quot;</span><span class="p">)</span>
         <span class="n">cwd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_path</span><span class="p">(</span><span class="n">repo_data</span><span class="p">)</span>
@@ -547,6 +609,11 @@
 
 <div class="viewcode-block" id="RepositoriesHandler._do_clone"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._do_clone">[docs]</a>    <span class="k">def</span> <span class="nf">_do_clone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Clone the repository.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        repo_data : dict</span>
+<span class="sd">            Repository data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">repo_type</span> <span class="o">=</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_type&quot;</span><span class="p">,</span> <span class="s2">&quot;git&quot;</span><span class="p">)</span>
         <span class="n">repo_service</span> <span class="o">=</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_service&quot;</span><span class="p">,</span> <span class="s2">&quot;github&quot;</span><span class="p">)</span>

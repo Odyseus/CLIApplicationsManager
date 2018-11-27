@@ -169,13 +169,11 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">termios</span>
-<span class="kn">import</span> <span class="nn">tty</span>
 
 <span class="kn">from</span> <span class="nn">fnmatch</span> <span class="k">import</span> <span class="n">fnmatch</span>
 <span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">rmtree</span>
 
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">prompts</span>
 <span class="kn">from</span> <span class="nn">.python_utils.ansi_colors</span> <span class="k">import</span> <span class="n">Ansi</span>
 
 
@@ -183,39 +181,8 @@
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
 
 
-<div class="viewcode-block" id="readchar"><a class="viewcode-back" href="../../modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.readchar">[docs]</a><span class="k">def</span> <span class="nf">readchar</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Read character.</span>
-
-<span class="sd">    Read single characters from standard input.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    txt : str</span>
-<span class="sd">        Message to display.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    str</span>
-<span class="sd">        The read character.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">PURPLE</span><span class="p">(</span><span class="n">txt</span><span class="p">))</span>
-    <span class="c1"># print(txt, end=&#39; &#39;)</span>
-    <span class="n">fd</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span>
-    <span class="n">old_settings</span> <span class="o">=</span> <span class="n">termios</span><span class="o">.</span><span class="n">tcgetattr</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">tty</span><span class="o">.</span><span class="n">setraw</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
-        <span class="n">ch</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">finally</span><span class="p">:</span>
-        <span class="n">termios</span><span class="o">.</span><span class="n">tcsetattr</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">termios</span><span class="o">.</span><span class="n">TCSADRAIN</span><span class="p">,</span> <span class="n">old_settings</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">ch</span></div>
-
-
 <div class="viewcode-block" id="FilesCleaner"><a class="viewcode-back" href="../../modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner">[docs]</a><span class="k">class</span> <span class="nc">FilesCleaner</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Recursively cleans patterns of files/directories.</span>
-
-<span class="sd">    Based on a recipe from `ActiveState &lt;http://code.activestate.com/recipes/576643/&gt;`__</span>
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
@@ -230,14 +197,12 @@
 <span class="sd">        one of the specified patterns, returning False otherwise.</span>
 <span class="sd">    messages : dict</span>
 <span class="sd">        Storage for messages used by the actions.</span>
-<span class="sd">    negate : bool</span>
-<span class="sd">        If True, treat the patterns passed as non inclusive.</span>
-<span class="sd">    path : str</span>
-<span class="sd">        The path to work on.</span>
-<span class="sd">    patterns : list</span>
-<span class="sd">        The patterns to work with.</span>
 <span class="sd">    targets : list</span>
 <span class="sd">        The list of files/folders on which to perform actions.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Based on: `a recipe from ActiveState &lt;http://code.activestate.com/recipes/576643/&gt;`__</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">patterns</span><span class="p">,</span> <span class="n">negate</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
@@ -254,9 +219,9 @@
 <span class="sd">        logger : object</span>
 <span class="sd">            See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">patterns</span> <span class="o">=</span> <span class="n">patterns</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">negate</span> <span class="o">=</span> <span class="n">negate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_path</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_patterns</span> <span class="o">=</span> <span class="n">patterns</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_negate</span> <span class="o">=</span> <span class="n">negate</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">matchers</span> <span class="o">=</span> <span class="p">{</span>
@@ -275,7 +240,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">messages</span> <span class="o">=</span> <span class="p">{</span>
             <span class="c1"># &quot;function_name&quot;: (&quot;Question?&quot;, &quot;Info completed&quot;)</span>
             <span class="s2">&quot;_delete&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Delete files/folders&quot;</span><span class="p">,</span> <span class="s2">&quot;Deleted&quot;</span><span class="p">),</span>
-            <span class="s2">&quot;_clean_endings&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Convert all Windows endings into Unix endings&quot;</span><span class="p">,</span> <span class="s2">&quot;Line endings cleaned for&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;_clean_endings&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Convert all Windows endings into Unix endings&quot;</span><span class="p">,</span>
+                               <span class="s2">&quot;Line endings cleaned for&quot;</span><span class="p">),</span>
         <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cum_size</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -288,7 +254,8 @@
 <span class="sd">        str</span>
 <span class="sd">            Printable representation of self.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="s2">&quot;&lt;FilesCleaner: path:</span><span class="si">%s</span><span class="s2">, negated:</span><span class="si">%s</span><span class="s2">, patterns:</span><span class="si">%s</span><span class="s2">&gt;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">negate</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">patterns</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="s2">&quot;&lt;FilesCleaner: path:</span><span class="si">%s</span><span class="s2">, negated:</span><span class="si">%s</span><span class="s2">, patterns:</span><span class="si">%s</span><span class="s2">&gt;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_negate</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_patterns</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FilesCleaner._apply"><a class="viewcode-back" href="../../modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner._apply">[docs]</a>    <span class="k">def</span> <span class="nf">_apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">confirm</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Applies a function to each target path</span>
@@ -302,21 +269,28 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="si">{message}</span><span class="s2"> &#39;</span><span class="si">{path}</span><span class="s2">&#39; </span><span class="se">\n</span><span class="si">{prompt}</span><span class="s2"> &quot;</span>
 
         <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">confirm</span><span class="p">:</span>
-                <span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="si">%s</span><span class="s2"> &#39;</span><span class="si">%s</span><span class="s2">&#39; (y/n/q)? &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">messages</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">target</span><span class="p">)</span>
-                <span class="n">answer</span> <span class="o">=</span> <span class="n">readchar</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
+                <span class="n">answer</span> <span class="o">=</span> <span class="n">prompts</span><span class="o">.</span><span class="n">read_char</span><span class="p">(</span><span class="n">question</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">message</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">messages</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="n">path</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+                    <span class="n">prompt</span><span class="o">=</span><span class="n">Ansi</span><span class="o">.</span><span class="n">WARNING</span><span class="p">(</span>
+                        <span class="c1"># Clean string:</span>
+                        <span class="c1"># &quot;(Yes/No/Abort)?&quot;</span>
+                        <span class="s2">&quot;(</span><span class="se">\033</span><span class="s2">[4mY</span><span class="se">\033</span><span class="s2">[24mes/</span><span class="se">\033</span><span class="s2">[4mN</span><span class="se">\033</span><span class="s2">[24mo/</span><span class="se">\033</span><span class="s2">[4mA</span><span class="se">\033</span><span class="s2">[24mbort)?&quot;</span><span class="p">)</span>
+                <span class="p">))</span>
 
-                <span class="k">if</span> <span class="n">answer</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">}:</span>
+                <span class="k">if</span> <span class="n">answer</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">}:</span>  <span class="c1"># i.e., Yes</span>
                     <span class="k">try</span><span class="p">:</span>
                         <span class="n">func</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
                         <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
                     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                         <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">)))</span>
-                <span class="k">elif</span> <span class="n">answer</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;q&quot;</span><span class="p">}:</span>  <span class="c1"># i.e. quit</span>
+                <span class="k">elif</span> <span class="n">answer</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">}:</span>  <span class="c1"># i.e., Abort</span>
                     <span class="k">break</span>
-                <span class="k">else</span><span class="p">:</span>
+                <span class="k">else</span><span class="p">:</span>  <span class="c1"># i.e., No</span>
                     <span class="k">continue</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">try</span><span class="p">:</span>
@@ -327,7 +301,8 @@
 
         <span class="k">if</span> <span class="n">i</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> items (</span><span class="si">%s</span><span class="s2">K)&quot;</span> <span class="o">%</span> <span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">messages</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">i</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cum_size</span> <span class="o">/</span> <span class="mf">1024.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">messages</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">i</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cum_size</span> <span class="o">/</span> <span class="mf">1024.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No action taken&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
@@ -380,7 +355,7 @@
 <span class="sd">        action : str</span>
 <span class="sd">            The action to perform.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Working inside directory:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Working inside directory:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">func</span><span class="p">,</span> <span class="n">matcher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actions</span><span class="p">[</span><span class="n">action</span><span class="p">]</span>
 
         <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
@@ -396,17 +371,24 @@
 <span class="sd">            bool</span>
 <span class="sd">                If the path should be shown of not.</span>
 <span class="sd">            &quot;&quot;&quot;</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">negate</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_negate</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">path</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">matchers</span><span class="p">[</span><span class="n">matcher</span><span class="p">](</span><span class="n">path</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">path</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">matchers</span><span class="p">[</span><span class="n">matcher</span><span class="p">](</span><span class="n">path</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
 
-        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_walk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">show</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_walk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">,</span> <span class="n">show</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">results</span><span class="p">:</span>
-            <span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> item(s) found. </span><span class="si">%s</span><span class="s2"> (y/n/c)? &quot;</span> <span class="o">%</span> <span class="p">(</span>
-                <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">messages</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-            <span class="n">answer</span> <span class="o">=</span> <span class="n">readchar</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
+            <span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{results}</span><span class="s2"> item(s) found. </span><span class="si">{message}</span><span class="s2"> </span><span class="si">{prompt}</span><span class="s2"> &quot;</span>
+
+            <span class="n">answer</span> <span class="o">=</span> <span class="n">prompts</span><span class="o">.</span><span class="n">read_char</span><span class="p">(</span><span class="n">question</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">results</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">),</span>
+                <span class="n">message</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">messages</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">prompt</span><span class="o">=</span><span class="n">Ansi</span><span class="o">.</span><span class="n">WARNING</span><span class="p">(</span>
+                    <span class="c1"># Clean string:</span>
+                    <span class="c1"># &quot;(Yes/No/Confirm)?&quot;</span>
+                    <span class="s2">&quot;(</span><span class="se">\033</span><span class="s2">[4mY</span><span class="se">\033</span><span class="s2">[24mes/</span><span class="se">\033</span><span class="s2">[4mN</span><span class="se">\033</span><span class="s2">[24mo/</span><span class="se">\033</span><span class="s2">[4mC</span><span class="se">\033</span><span class="s2">[24monfirm)?&quot;</span><span class="p">)</span>
+            <span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">targets</span> <span class="o">=</span> <span class="n">results</span>
 
             <span class="k">if</span> <span class="n">answer</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">}:</span>
@@ -436,7 +418,7 @@
         <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="k">def</span> <span class="nf">visit</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">prefix</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Summary</span>
+            <span class="sd">&quot;&quot;&quot;Visit path.</span>
 
 <span class="sd">            Parameters</span>
 <span class="sd">            ----------</span>
@@ -454,8 +436,9 @@
                 <span class="k">if</span> <span class="n">obj</span><span class="p">:</span>
                     <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">cum_size</span> <span class="o">+=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+
                     <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
-                                     <span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                                     <span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">)),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
             <span class="n">visit</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="s2">&quot;+--&gt;&quot;</span><span class="p">)</span>
@@ -473,8 +456,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
             <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
             <span class="n">rmtree</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">onerror</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_onerror</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FilesCleaner._clean_endings"><a class="viewcode-back" href="../../modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner._clean_endings">[docs]</a>    <span class="k">def</span> <span class="nf">_clean_endings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>

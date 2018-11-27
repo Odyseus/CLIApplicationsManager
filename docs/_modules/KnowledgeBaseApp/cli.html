@@ -240,6 +240,8 @@
 <span class="sd">        Where docopt_args is stored.</span>
 <span class="sd">    action : method</span>
 <span class="sd">        Set the method that will be executed when calling CommandLineTool.run().</span>
+<span class="sd">    args_to_init_repo_handler : set</span>
+<span class="sd">        The arguments that should be passed to the CLI to initialize the :any:`class &lt;repositories_handler.RepositoriesHandler&gt;`.</span>
 <span class="sd">    func_names : list</span>
 <span class="sd">        A list of function names that will be used to execute those functions</span>
 <span class="sd">        in the order they were defined (passed as arguments).</span>
@@ -260,11 +262,11 @@
         <span class="s2">&quot;open_main_webpage&quot;</span><span class="p">,</span>
     <span class="p">]</span>
     <span class="n">action</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">args_to_init_repo_handler</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">args_to_init_repo_handler</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;update_all_repositories&quot;</span><span class="p">,</span>
         <span class="s2">&quot;handle_all_repositories&quot;</span><span class="p">,</span>
         <span class="s2">&quot;build_sphinx_docs&quot;</span>
-    <span class="p">]</span>
+    <span class="p">}</span>
     <span class="n">func_names</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">_repositories_handler</span> <span class="o">=</span> <span class="kc">None</span>
 
@@ -275,6 +277,11 @@
 <span class="sd">        ----------</span>
 <span class="sd">        docopt_args : dict</span>
 <span class="sd">            The dictionary of arguments as returned by docopt parser.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        exceptions.InvalidArgument</span>
+<span class="sd">            See :any:`exceptions.InvalidArgument`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">docopt_args</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cli_header_blacklist</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--manual&quot;</span><span class="p">]]</span>

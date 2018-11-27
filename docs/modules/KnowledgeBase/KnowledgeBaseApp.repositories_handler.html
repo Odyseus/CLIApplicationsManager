@@ -177,6 +177,28 @@
 <span id="knowledgebaseapp-repositories-handler-module"></span><h1>KnowledgeBaseApp.repositories_handler module<a class="headerlink" href="#module-KnowledgeBaseApp.repositories_handler" title="Permalink to this headline">¶</a></h1>
 <p>Repositories handler utilities.</p>
 <dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.repo_service_url_map">
+<code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">repo_service_url_map</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.repo_service_url_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of repositories service URLs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.repositories_data_tables_json_path">
+<code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">repositories_data_tables_json_path</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.repositories_data_tables_json_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to the repositories_data_tables.json file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="KnowledgeBaseApp.repositories_handler.root_folder">
 <code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">root_folder</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.root_folder" title="Permalink to this definition">¶</a></dt>
 <dd><p>The main folder containing the application. All commands must be executed
@@ -192,7 +214,7 @@ from this location without exceptions.</p>
 <dt id="KnowledgeBaseApp.repositories_handler.InvalidRepositoryData">
 <em class="property">exception </em><code class="descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="descname">InvalidRepositoryData</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#InvalidRepositoryData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.InvalidRepositoryData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">KnowledgeBaseApp.python_utils.exceptions.ExceptionWhitoutTraceBack</span></code></p>
-<p>Initialize.</p>
+<p>Initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Message that the exception should display.</p>
@@ -240,14 +262,6 @@ from this location without exceptions.</p>
 <dt id="KnowledgeBaseApp.repositories_handler.RepositoriesHandler._generate_repositories_data_tables_json_file">
 <code class="descname">_generate_repositories_data_tables_json_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepositoriesHandler._generate_repositories_data_tables_json_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._generate_repositories_data_tables_json_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate the JSON file for the repository.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Do not try to save the JSON file in case something went wrong handling the repository.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/constants.html#None" title="(in Python v3.5)">None</a></p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="method">
@@ -256,7 +270,10 @@ from this location without exceptions.</p>
 <dd><p>Append data to files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>html_path</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Path to where HTML pages are stored.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>html_path</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Path to where HTML pages are stored.</p></li>
+<li><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – Repository data.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -265,12 +282,43 @@ from this location without exceptions.</p>
 <dt id="KnowledgeBaseApp.repositories_handler.RepositoriesHandler._handle_sphinx_docs_repo_type">
 <code class="descname">_handle_sphinx_docs_repo_type</code><span class="sig-paren">(</span><em>repo_data</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepositoriesHandler._handle_sphinx_docs_repo_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._handle_sphinx_docs_repo_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handle repositories set to build their Sphinx documentation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – Repository data.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="KnowledgeBaseApp.repositories_handler.RepositoriesHandler._handle_files_repo_type">
 <code class="descname">_handle_files_repo_type</code><span class="sig-paren">(</span><em>repo_data</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepositoriesHandler._handle_files_repo_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._handle_files_repo_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Handle repositories set to manage more than one file on them.</p>
+<dd><p>Handle repositories set to manage one or more files on them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – Repository data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_file_rel_path">
+<code class="descname">_get_file_rel_path</code><span class="sig-paren">(</span><em>root_dir</em>, <em>file_name</em>, <em>start_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepositoriesHandler._get_file_rel_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_file_rel_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get file relative path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Path to file location.</p></li>
+<li><p><strong>file_name</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – File name.</p></li>
+<li><p><strong>start_path</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The path that the resulting path should be relative to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A relative path.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -283,6 +331,9 @@ from this location without exceptions.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – Repository data.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -298,6 +349,9 @@ from this location without exceptions.</p>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
 </dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – Repository data.</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -311,6 +365,9 @@ from this location without exceptions.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – Repository data.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -326,6 +383,9 @@ from this location without exceptions.</p>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
 </dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – Repository data.</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -339,6 +399,9 @@ from this location without exceptions.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – Repository data.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -355,6 +418,9 @@ from this location without exceptions.</p>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)">list</a></p>
 </dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo_type</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Repository type (git or hg).</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -362,12 +428,22 @@ from this location without exceptions.</p>
 <dt id="KnowledgeBaseApp.repositories_handler.RepositoriesHandler._do_pull">
 <code class="descname">_do_pull</code><span class="sig-paren">(</span><em>repo_data</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepositoriesHandler._do_pull"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._do_pull" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pull from the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – Repository data.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="KnowledgeBaseApp.repositories_handler.RepositoriesHandler._do_clone">
 <code class="descname">_do_clone</code><span class="sig-paren">(</span><em>repo_data</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepositoriesHandler._do_clone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._do_clone" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clone the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – Repository data.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
