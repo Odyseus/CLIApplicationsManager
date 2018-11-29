@@ -190,7 +190,8 @@
 
 <span class="s2">Usage:</span>
 <span class="s2">    app.py (-h | --help | --manual | --version)</span>
-<span class="s2">    app.py run &lt;func_name&gt;... [--dry-run]</span>
+<span class="s2">    app.py run &lt;func_name&gt;... [--do-not-pull]</span>
+<span class="s2">                              [--dry-run]</span>
 <span class="s2">                              [--force-download]</span>
 <span class="s2">    app.py server (start | stop | restart)</span>
 <span class="s2">                  [--host=&lt;host&gt;]</span>
@@ -214,9 +215,9 @@
 <span class="s2">--port=&lt;port&gt;</span>
 <span class="s2">    Port number. [Default: 8888]</span>
 
-<span class="s2">--force-download</span>
-<span class="s2">    Force the download of all archives, ignoring the frequency in which they</span>
-<span class="s2">    should be downloaded. Only used by the &quot;download_all_archives&quot; sub-command.</span>
+<span class="s2">--do-not-pull</span>
+<span class="s2">    Do not update repositories (do not pull), just initialize the ones that</span>
+<span class="s2">    weren&#39;t cloned yet. Only used by the &quot;update_all_repositories&quot; sub-command.</span>
 
 <span class="s2">--dry-run</span>
 <span class="s2">    Do not perform file system changes. Only display messages informing of the</span>
@@ -224,6 +225,10 @@
 <span class="s2">    WARNING! Some file system changes will be performed (e.g., temporary files</span>
 <span class="s2">    creation) and some commands will be executed (e.g., checking if a directory</span>
 <span class="s2">    belongs to a repository).</span>
+
+<span class="s2">--force-download</span>
+<span class="s2">    Force the download of all archives, ignoring the frequency in which they</span>
+<span class="s2">    should be downloaded. Only used by the &quot;download_all_archives&quot; sub-command.</span>
 
 <span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">appname</span><span class="o">=</span><span class="n">__appname__</span><span class="p">,</span>
            <span class="n">appdescription</span><span class="o">=</span><span class="n">__appdescription__</span><span class="p">,</span>
@@ -366,7 +371,7 @@
 <div class="viewcode-block" id="CommandLineInterface.update_all_repositories"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.update_all_repositories">[docs]</a>    <span class="k">def</span> <span class="nf">update_all_repositories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`RepositoriesHandler.update_all_repositories`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_repositories_handler</span><span class="o">.</span><span class="n">update_all_repositories</span><span class="p">()</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_repositories_handler</span><span class="o">.</span><span class="n">update_all_repositories</span><span class="p">(</span><span class="n">do_not_pull</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--do-not-pull&quot;</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="CommandLineInterface.handle_all_repositories"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.handle_all_repositories">[docs]</a>    <span class="k">def</span> <span class="nf">handle_all_repositories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`RepositoriesHandler.handle_all_repositories`</span>
@@ -495,7 +500,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2018, Odyseus.
+        &copy; Copyright 2016-2018, Odyseus
 
     </p>
   </div>
@@ -516,20 +521,13 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
 
   
 

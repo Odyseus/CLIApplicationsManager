@@ -22,6 +22,7 @@ Submodules
    python_modules.python_utils.mail_system
    python_modules.python_utils.menu
    python_modules.python_utils.misc_utils
+   python_modules.python_utils.mistune_utils
    python_modules.python_utils.multi_select
    python_modules.python_utils.prompts
    python_modules.python_utils.shell_utils

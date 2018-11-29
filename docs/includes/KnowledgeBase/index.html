@@ -212,7 +212,8 @@
 
 <span class="text-bold">Usage:</span>
     app.py (-h | --help | --manual | --version)
-    app.py run &lt;func_name&gt;... [--dry-run]
+    app.py run &lt;func_name&gt;... [--do-not-pull]
+                              [--dry-run]
                               [--force-download]
     app.py server (start | stop | restart)
                   [--host=&lt;host&gt;]
@@ -236,16 +237,20 @@
 <span class="text-bold">--port=&lt;port&gt;</span>
     Port number. [Default: 8888]
 
-<span class="text-bold">--force-download</span>
-    Force the download of all archives, ignoring the frequency in which they
-    should be downloaded. Only used by the &quot;download_all_archives&quot; sub-command.
+<span class="text-bold">--do-not-pull</span>
+    Do not update repositories (do not pull), just initialize the ones that
+    weren&#x27;t cloned yet. Only used by the &quot;update_all_repositories&quot; sub-command.
 
 <span class="text-bold">--dry-run</span>
     Do not perform file system changes. Only display messages informing of the
     actions that will be performed or commands that will be executed.
     WARNING! Some file system changes will be performed (e.g., temporary files
     creation) and some commands will be executed (e.g., checking if a directory
-    belongs to a repository).</pre>
+    belongs to a repository).
+
+<span class="text-bold">--force-download</span>
+    Force the download of all archives, ignoring the frequency in which they
+    should be downloaded. Only used by the &quot;download_all_archives&quot; sub-command.</pre>
 </div></div>
 </div>
 <div class="section" id="requirements">
@@ -496,7 +501,7 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p>To keep it simple, and to avoid to check if I’m dealing with files or folders, the folders <strong>epub</strong>, <strong>html</strong>, <strong>md</strong> and <strong>pdf</strong> should always containg their files in two (2) levels sub-directories (Category Name/Sub-Category Name/File Name.ext). This is to simplify the function <code class="xref any docutils literal notranslate"><span class="pre">KnowledgeBaseApp.app_utils.DataTablesObject.generate_data_by_file_extension</span></code>. The first level directories are always a category name and the second level directories are always sub-categories.</p></li>
+<li><p>To keep it simple, and to avoid to check if I’m dealing with files or folders, the folders <strong>epub</strong>, <strong>html</strong>, <strong>md</strong> and <strong>pdf</strong> should always containg their files in two (2) levels sub-directories (Category Name/Sub-Category Name/File Name.ext). This is to simplify the function <a class="reference internal" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension" title="KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension</span></code></a>. The first level directories are always a category name and the second level directories are always sub-categories.</p></li>
 </ul>
 <div class="section" id="html-to-markdown-conversion">
 <h3>HTML to Markdown conversion<a class="headerlink" href="#html-to-markdown-conversion" title="Permalink to this headline">¶</a></h3>
@@ -690,7 +695,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2018, Odyseus.
+        &copy; Copyright 2016-2018, Odyseus
 
     </p>
   </div>
@@ -711,20 +716,13 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
 
   
 

@@ -196,18 +196,18 @@
 
 <span class="n">CAT_LIST_ITEM_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">{indent}</span><span class="s2">&lt;li class=&quot;nav-item&quot;&gt;</span>
 <span class="si">{indent}</span><span class="s2">    &lt;span class=&quot;btn-group&quot; role=&quot;group&quot;&gt;</span>
-<span class="si">{indent}</span><span class="s2">        &lt;a class=&quot;nav-link </span><span class="si">{cat_class}</span><span class="s2"> cat-btn btn&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;cat-icon nf </span><span class="si">{cat_icon}</span><span class="s2">&quot;&gt;&lt;/i&gt;</span><span class="si">{cat_title}</span><span class="s2">&lt;/a&gt;</span>
+<span class="si">{indent}</span><span class="s2">        &lt;a class=&quot;nav-link </span><span class="si">{cat_class}</span><span class="s2"> KB_cat-btn btn&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;KB_cat-icon nf </span><span class="si">{cat_icon}</span><span class="s2">&quot;&gt;&lt;/i&gt;</span><span class="si">{cat_title}</span><span class="s2">&lt;/a&gt;</span>
 <span class="si">{indent}</span><span class="s2">    &lt;/span&gt;</span>
 <span class="si">{indent}</span><span class="s2">&lt;/li&gt;&quot;&quot;&quot;</span>
 
 
 <span class="n">CAT_MENU_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;li class=&quot;nav-item&quot;&gt;</span>
 <span class="s2">    &lt;span class=&quot;btn-group&quot; role=&quot;group&quot;&gt;</span>
-<span class="s2">        &lt;a class=&quot;nav-link cat-btn btn&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;cat-icon nf </span><span class="si">{cat_icon}</span><span class="s2">&quot;&gt;</span><span class="se">\</span>
+<span class="s2">        &lt;a class=&quot;nav-link KB_cat-btn btn&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;KB_cat-icon nf </span><span class="si">{cat_icon}</span><span class="s2">&quot;&gt;</span><span class="se">\</span>
 <span class="s2">&lt;/i&gt;</span><span class="si">{cat_title}</span><span class="s2">&lt;/a&gt;</span>
-<span class="s2">        &lt;a class=&quot;toggle-cat-btn btn&quot; href=&quot;#</span><span class="si">{cat_menu_id}</span><span class="s2">&quot; data-toggle=&quot;collapse&quot; aria-expanded=&quot;false&quot;&gt;&lt;/a&gt;</span>
+<span class="s2">        &lt;a class=&quot;KB_toggle-cat-btn btn&quot; href=&quot;#</span><span class="si">{cat_menu_id}</span><span class="s2">&quot; data-toggle=&quot;collapse&quot; aria-expanded=&quot;false&quot;&gt;&lt;/a&gt;</span>
 <span class="s2">    &lt;/span&gt;</span>
-<span class="s2">    &lt;ul class=&quot;collapse list-unstyled subcats&quot; id=&quot;</span><span class="si">{cat_menu_id}</span><span class="s2">&quot;&gt;</span>
+<span class="s2">    &lt;ul class=&quot;collapse list-unstyled KB_subcats&quot; id=&quot;</span><span class="si">{cat_menu_id}</span><span class="s2">&quot;&gt;</span>
 <span class="si">{sub_cat_items}</span><span class="s2"></span>
 <span class="s2">    &lt;/ul&gt;</span>
 <span class="s2">&lt;/li&gt;&quot;&quot;&quot;</span>
@@ -665,7 +665,7 @@
     <span class="n">categories_data</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">categories_html_list_items</span> <span class="o">=</span> <span class="p">[</span><span class="n">CAT_LIST_ITEM_TEMPLATE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">cat_title</span><span class="o">=</span><span class="s2">&quot;All Categories&quot;</span><span class="p">,</span>
-        <span class="n">cat_class</span><span class="o">=</span><span class="s2">&quot;cat-link&quot;</span><span class="p">,</span>
+        <span class="n">cat_class</span><span class="o">=</span><span class="s2">&quot;KB_cat-link&quot;</span><span class="p">,</span>
         <span class="n">cat_icon</span><span class="o">=</span><span class="s2">&quot;nf-fa-bars&quot;</span><span class="p">,</span>
         <span class="n">indent</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
     <span class="p">)]</span>
@@ -723,7 +723,7 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">[</span><span class="s2">&quot;subcategories&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">categories_html_list_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">CAT_LIST_ITEM_TEMPLATE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">cat_title</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span>
-                <span class="n">cat_class</span><span class="o">=</span><span class="s2">&quot;cat-link&quot;</span><span class="p">,</span>
+                <span class="n">cat_class</span><span class="o">=</span><span class="s2">&quot;KB_cat-link&quot;</span><span class="p">,</span>
                 <span class="n">cat_icon</span><span class="o">=</span><span class="n">keys</span><span class="p">[</span><span class="s2">&quot;icon&quot;</span><span class="p">],</span>
                 <span class="n">indent</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
             <span class="p">))</span>
@@ -733,7 +733,7 @@
             <span class="k">for</span> <span class="n">sub_cat</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">keys</span><span class="p">[</span><span class="s2">&quot;subcategories&quot;</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()):</span>
                 <span class="n">sub_cat_html_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">CAT_LIST_ITEM_TEMPLATE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                     <span class="n">cat_title</span><span class="o">=</span><span class="n">sub_cat</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
-                    <span class="n">cat_class</span><span class="o">=</span><span class="s2">&quot;sub-cat-link&quot;</span><span class="p">,</span>
+                    <span class="n">cat_class</span><span class="o">=</span><span class="s2">&quot;KB_sub-cat-link&quot;</span><span class="p">,</span>
                     <span class="n">cat_icon</span><span class="o">=</span><span class="n">sub_cat</span><span class="p">[</span><span class="s2">&quot;icon&quot;</span><span class="p">],</span>
                     <span class="n">indent</span><span class="o">=</span><span class="s2">&quot;        &quot;</span>
                 <span class="p">))</span>
@@ -741,7 +741,7 @@
             <span class="n">categories_html_list_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">CAT_MENU_TEMPLATE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">cat_title</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span>
                 <span class="n">cat_icon</span><span class="o">=</span><span class="n">keys</span><span class="p">[</span><span class="s2">&quot;icon&quot;</span><span class="p">],</span>
-                <span class="n">cat_menu_id</span><span class="o">=</span><span class="s2">&quot;cat-menu-</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cat</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span>
+                <span class="n">cat_menu_id</span><span class="o">=</span><span class="s2">&quot;KB_cat-menu-</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cat</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span>
                 <span class="n">sub_cat_items</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sub_cat_html_items</span><span class="p">),</span>
             <span class="p">))</span>
 
@@ -828,7 +828,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2018, Odyseus.
+        &copy; Copyright 2016-2018, Odyseus
 
     </p>
   </div>
@@ -849,20 +849,13 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
 
   
 

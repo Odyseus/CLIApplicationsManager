@@ -5817,6 +5817,10 @@ article ol li ul li {
     }
 }
 
+html {
+    font-size: 16px
+}
+
 .wy-affix {
     position: fixed;
     top: 1.618em;
