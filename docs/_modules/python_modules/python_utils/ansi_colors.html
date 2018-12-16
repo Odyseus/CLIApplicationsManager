@@ -77,11 +77,12 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
@@ -93,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -165,91 +166,120 @@
 <span class="sd">----------</span>
 <span class="sd">Ansi : object</span>
 <span class="sd">    :any:`ANSIColors` class initialization.</span>
+<span class="sd">color_table : dict</span>
+<span class="sd">    ANSI color table.</span>
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">color_table</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;default&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;39&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;49&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;black&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;30&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;40&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;red&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;31&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;41&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;green&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;32&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;42&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;yellow&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;33&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;43&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;blue&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;34&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;44&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;magenta&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;45&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;cyan&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;36&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;46&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;light-gray&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;47&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;dark-gray&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;90&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;100&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;light-red&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;91&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;101&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;light-green&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;92&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;102&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;light-yellow&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;93&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;103&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;light-blue&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;94&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;104&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;light-magenta&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;95&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;105&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;light-cyan&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;96&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;106&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;white&quot;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;97&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;107&quot;</span><span class="p">},</span>
+<span class="p">}</span>
+
+
+<span class="n">_bold_markdown_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\*\*([^\*\*]*)\*\*&quot;</span><span class="p">)</span>
+<span class="n">_bold_placeholder</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\033[0m\033[1;49;</span><span class="si">{code}</span><span class="s2">m\1\033[0m\033[0;49;</span><span class="si">{code}</span><span class="s2">m&quot;</span>
 
 
 <div class="viewcode-block" id="ANSIColors"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors">[docs]</a><span class="k">class</span> <span class="nc">ANSIColors</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Class to colorize terminal output.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="ANSIColors.ERROR"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors.ERROR">[docs]</a>    <span class="k">def</span> <span class="nf">ERROR</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Red color that symbolizes error.</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialization.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_extend</span><span class="p">()</span>
+
+<div class="viewcode-block" id="ANSIColors._extend"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors._extend">[docs]</a>    <span class="k">def</span> <span class="nf">_extend</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Extend class&#39; functions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">color_table</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">),</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_make_color_function</span><span class="p">(</span><span class="n">color_table</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s2">&quot;fg&quot;</span><span class="p">]))</span></div>
+
+<div class="viewcode-block" id="ANSIColors._colorize"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors._colorize">[docs]</a>    <span class="k">def</span> <span class="nf">_colorize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Colorize text.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        string : str</span>
-<span class="sd">            The string that will be &quot;colorized&quot;.</span>
+<span class="sd">        text : str</span>
+<span class="sd">            Text to colorize.</span>
+<span class="sd">        code : str</span>
+<span class="sd">            ANSI color code.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        str</span>
-<span class="sd">            String surrounded by ANSI codes.</span>
+<span class="sd">            ANSI formatted string.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[38;5;166;1m&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[0m&quot;</span></div>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[0;49;</span><span class="si">%s</span><span class="s2">m&quot;</span> <span class="o">%</span> <span class="n">code</span> <span class="o">+</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">_bold_markdown_re</span><span class="p">,</span>
+                                               <span class="n">_bold_placeholder</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">),</span>
+                                               <span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[0m&quot;</span></div>
 
-<div class="viewcode-block" id="ANSIColors.INFO"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors.INFO">[docs]</a>    <span class="k">def</span> <span class="nf">INFO</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;No color, just bold text.</span>
+<div class="viewcode-block" id="ANSIColors._make_color_function"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors._make_color_function">[docs]</a>    <span class="k">def</span> <span class="nf">_make_color_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Make color function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        string : str</span>
-<span class="sd">            The string that will be &quot;colorized&quot;.</span>
+<span class="sd">        code : str</span>
+<span class="sd">            ANSI color code.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        str</span>
-<span class="sd">            String surrounded by ANSI codes.</span>
+<span class="sd">        function</span>
+<span class="sd">            Function to colorize string.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[1m&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[0m&quot;</span></div>
+        <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Colorize text.</span>
 
-<div class="viewcode-block" id="ANSIColors.WARNING"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors.WARNING">[docs]</a>    <span class="k">def</span> <span class="nf">WARNING</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Yellow color that symbolizes warning.</span>
+<span class="sd">            Parameters</span>
+<span class="sd">            ----------</span>
+<span class="sd">            text : str</span>
+<span class="sd">                Text to colorize.</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        string : str</span>
-<span class="sd">            The string that will be &quot;colorized&quot;.</span>
+<span class="sd">            Returns</span>
+<span class="sd">            -------</span>
+<span class="sd">            str</span>
+<span class="sd">                ANSI formatted string.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colorize</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        str</span>
-<span class="sd">            String surrounded by ANSI codes.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[38;5;220;1m&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[0m&quot;</span></div>
-
-<div class="viewcode-block" id="ANSIColors.SUCCESS"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors.SUCCESS">[docs]</a>    <span class="k">def</span> <span class="nf">SUCCESS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Green color that symbolizes success.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        string : str</span>
-<span class="sd">            The string that will be &quot;colorized&quot;.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        str</span>
-<span class="sd">            String surrounded by ANSI codes.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[38;5;77;1m&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[0m&quot;</span></div>
-
-<div class="viewcode-block" id="ANSIColors.PURPLE"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors.PURPLE">[docs]</a>    <span class="k">def</span> <span class="nf">PURPLE</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Purple color.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        string : str</span>
-<span class="sd">            The string that will be &quot;colorized&quot;.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        str</span>
-<span class="sd">            String surrounded by ANSI codes.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[38;5;164;1m&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[0m&quot;</span></div></div>
+        <span class="k">return</span> <span class="n">f</span></div></div>
 
 
 <span class="n">Ansi</span> <span class="o">=</span> <span class="n">ANSIColors</span><span class="p">()</span>
-
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="k">pass</span>

@@ -79,11 +79,12 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
@@ -95,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -177,87 +178,10 @@
 <span id="userapplicationsmanagerapp-app-utils-module"></span><h1>UserApplicationsManagerApp.app_utils module<a class="headerlink" href="#module-UserApplicationsManagerApp.app_utils" title="Permalink to this headline">¶</a></h1>
 <p>Module with utility functions and classes.</p>
 <dl class="attribute">
-<dt id="UserApplicationsManagerApp.app_utils.base_app_keys">
-<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">base_app_keys</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.base_app_keys" title="Permalink to this definition">¶</a></dt>
-<dd><p>Mandatory keys for all applications.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#set" title="(in Python v3.5)">set</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="UserApplicationsManagerApp.app_utils.base_app_keys_for_archives">
-<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">base_app_keys_for_archives</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.base_app_keys_for_archives" title="Permalink to this definition">¶</a></dt>
-<dd><p>Mandatory keys for applications of type “archive”.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#set" title="(in Python v3.5)">set</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="UserApplicationsManagerApp.app_utils.base_app_keys_for_files">
-<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">base_app_keys_for_files</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.base_app_keys_for_files" title="Permalink to this definition">¶</a></dt>
-<dd><p>Mandatory keys for applications of type “file”.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#set" title="(in Python v3.5)">set</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="UserApplicationsManagerApp.app_utils.base_app_keys_for_repos">
-<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">base_app_keys_for_repos</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.base_app_keys_for_repos" title="Permalink to this definition">¶</a></dt>
-<dd><p>Mandatory keys for applications of type “*_repo”.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#set" title="(in Python v3.5)">set</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="UserApplicationsManagerApp.app_utils.conf_file">
-<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">conf_file</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.conf_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Path to the configuration file.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="UserApplicationsManagerApp.app_utils.home">
-<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">home</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.home" title="Permalink to this definition">¶</a></dt>
-<dd><p>Path to the User’s home folder.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
 <dt id="UserApplicationsManagerApp.app_utils.root_folder">
 <code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">root_folder</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.root_folder" title="Permalink to this definition">¶</a></dt>
 <dd><p>The main folder containing the application. All commands must be executed
 from this location without exceptions.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="UserApplicationsManagerApp.app_utils.update_data_file">
-<code class="descclassname">UserApplicationsManagerApp.app_utils.</code><code class="descname">update_data_file</code><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.update_data_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Path to the file where the update data for applications is stored.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
@@ -462,6 +386,21 @@ locate the URL of the asset that one actually want to download.</p>
 </dd>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>repo_type</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – “git” or “hg”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="UserApplicationsManagerApp.app_utils.ApplicationsManager._do_checkout">
+<code class="descname">_do_checkout</code><span class="sig-paren">(</span><em>repo_type</em>, <em>repo_path</em>, <em>revision</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/UserApplicationsManagerApp/app_utils.html#ApplicationsManager._do_checkout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#UserApplicationsManagerApp.app_utils.ApplicationsManager._do_checkout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check out revision.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo_type</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – “git” or “hg”.</p></li>
+<li><p><strong>repo_path</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Path to the local repository.</p></li>
+<li><p><strong>revision</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Branch name/Tag name/Commit hash to check out.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

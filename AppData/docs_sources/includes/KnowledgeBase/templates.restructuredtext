@@ -33,11 +33,12 @@ Data keys
 - ``kb_rel_path`` (**Default**: empty): The path (relative to **UserData/www/html_pages_from_archives/<kb_title>**) to the a folder containing an HTML file (``kb_filename``) found inside the extracted content of an archive.
 - ``kb_filename`` (**Default**: **index.html**): The file name found inside the extracted content of an archive relative to ``kb_rel_path``.
 - ``kb_file_append`` (**List**): A list of tuples. Each tuple must contain a path to a file (relative to **UserData/www/html_pages_from_archives/<kb_title>**) at index 0 (zero) and a string at index 1 (one). The string will be appended at the end of the file defined at index zero.
-- ``download_frequency`` (**Default**: **m**): The frequency at which an archive should be downloaded. Possible values:
+- ``download_frequency`` (**Default**: ``m``): The frequency at which an archive should be downloaded. Possible values:
 
-    + ``w``: Weekly.
-    + ``m``: Monthly.
-    + ``s``: Semestrial.
+    + ``d`` (daily): An archive is downloaded every time that it is managed.
+    + ``w`` (weekly): An archive is downloaded only if at least 6 days have passed since the last download.
+    + ``m`` (monthly): An archive is downloaded only if at least 28 days have passed since the last download.
+    + ``s`` (semestrial): An archive is downloaded only if at least 87 days have passed since the last download.
 
 - ``unzip_prog``: The command to use to decompress archives. Possible values are **7z**, **unzip** and **tar**. The tar command can accept a decompression argument (See ``untar_arg``).
 - ``untar_arg`` (**Default**: empty (no decompression argument is passed to ``tar``)): The decompress argument used by the ``tar`` program. Possible values are **--xz**, **-J**, **--gzip**, **-z**, **--bzip2** or **-j**.

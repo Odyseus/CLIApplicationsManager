@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>JSON Schema Validator’s documentation &mdash; Python CLI Applications Documentations  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Knowledge Base’s documentation" href="../KnowledgeBase/index.html" />
+    <link rel="prev" title="Hosts Manager’s documentation" href="../HostsManager/index.html" /> 
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BackupUtils/index.html">Backup Utils’ documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">JSON Schema Validator’s documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cli-synopsis"><abbr title="Command Line Interface">CLI</abbr> Synopsis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mentions">Mentions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detailed-usage">Detailed usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cli-options"><abbr title="Command Line Interface">CLI</abbr> options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commands">Commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MoviesDB/index.html">Movies DB’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PackageManager/index.html">Package Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>JSON Schema Validator’s documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/includes/JSONSchemaValidator/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="../KnowledgeBase/index.html" class="btn btn-neutral float-right" title="Knowledge Base’s documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../HostsManager/index.html" class="btn btn-neutral" title="Hosts Manager’s documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="json-schema-validator-s-documentation">
+<h1>JSON Schema Validator’s documentation<a class="headerlink" href="#json-schema-validator-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>A <abbr title="Command Line Interface">CLI</abbr> utility written in Python 3 to validate data from JSON schemas on GNU/Linux.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This Python application can generate a system executable with Bash completions support. See <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">generate</span></code>.</p>
+</div>
+<div class="section" id="cli-synopsis">
+<h2><abbr title="Command Line Interface">CLI</abbr> Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight">
+<pre><span class="text-bold">JSON Schema Validator 0.0.0 (Unstable)</span>
+
+<span class="text-bold">Utility to validate data from JSON schemas.</span>
+
+<span class="text-bold">Usage:</span>
+    app.py (-h | --help | --manual | --version)
+    app.py validate (-d &lt;path&gt; | --data-file=&lt;path&gt;)
+                    (-s &lt;path&gt; | --schema-file=&lt;path&gt;)
+                    [--data-prop=&lt;name&gt;] [--schema-prop=&lt;name&gt;]
+    app.py generate system_executable
+
+<span class="text-bold">Options:</span>
+
+<span class="text-bold">-h, --help</span>
+    Show this screen.
+
+<span class="text-bold">--manual</span>
+    Show this application manual page.
+
+<span class="text-bold">--version</span>
+    Show application version.
+
+<span class="text-bold">-d &lt;path&gt;, --data-file=&lt;path&gt;</span>
+    Path to a Python or JSON file containing the data to validate
+    against a JSON schema.
+
+<span class="text-bold">-s &lt;path&gt;, --schema-file=&lt;path&gt;</span>
+    Path to a Python or JSON file containing the JSON schema to validate
+    the data against.
+
+<span class="text-bold">--data-prop=&lt;name&gt;</span>
+    Name of a property found inside the file specified in <span class="text-bold">--data-file</span>.
+
+<span class="text-bold">--schema-prop=&lt;name&gt;</span>
+    Name of a property found inside the file specified in <span class="text-bold">--schema-file</span>.</pre>
+</div></div>
+</div>
+<div class="section" id="mentions">
+<h2>Mentions<a class="headerlink" href="#mentions" title="Permalink to this headline">¶</a></h2>
+<p>This application uses the <a class="reference external" href="https://github.com/Julian/jsonschema">jsonschema</a> Python module to validate data.</p>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>No mayor requirements are needed to run this application other than Python 3.5+.</p>
+</div>
+<div class="section" id="detailed-usage">
+<h2>Detailed usage<a class="headerlink" href="#detailed-usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cli-options">
+<h3><abbr title="Command Line Interface">CLI</abbr> options<a class="headerlink" href="#cli-options" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code>: Display this application basic help screen.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--manual</span></code>: Display this application manual.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--version</span></code>: Show this application version.</p></li>
+</ul>
+</div>
+<div class="section" id="commands">
+<h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="app-py-validate">
+<h4>app.py validate<a class="headerlink" href="#app-py-validate" title="Permalink to this headline">¶</a></h4>
+<p>Validate data found inside the file specified by the <code class="docutils literal notranslate"><span class="pre">--data-file</span></code> <abbr title="Command Line Interface">CLI</abbr> option against a JSON schema found inside the file specified by the <code class="docutils literal notranslate"><span class="pre">--schema-file</span></code> <abbr title="Command Line Interface">CLI</abbr> option.</p>
+<div class="section" id="options">
+<h5>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">&lt;path&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--data-file=&lt;path&gt;</span></code>: Path to a Python or JSON file containing the data to validate against a JSON schema.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-s</span> <span class="pre">&lt;path&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--schema-file=&lt;path&gt;</span></code>: Path to a Python or JSON file containing the JSON schema to validate the data against.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--data-prop=&lt;name&gt;</span></code>: Name of a property found inside the file specified in <code class="docutils literal notranslate"><span class="pre">--data-file</span></code>. This property must contain the data to validate against a JSON schema.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--schema-prop=&lt;name&gt;</span></code>:  Name of a property found inside the file specified in <code class="docutils literal notranslate"><span class="pre">--schema-file</span></code>. This property must contain the data that will be used as a JSON schema.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">--data-prop</span></code> and <code class="docutils literal notranslate"><span class="pre">--schema-prop</span></code> <abbr title="Command Line Interface">CLI</abbr> options can be used to point to properties inside Python and JSON files.</p></li>
+<li><p>Properties can be nested (e.g., prop0.prop1.propN).</p></li>
+<li><p>Only JSON files with the <strong>.json</strong> file extension and Python files with the <strong>.py</strong> file extension are supported.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="app-py-generate">
+<h4>app.py generate<a class="headerlink" href="#app-py-generate" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="sub-commands">
+<h5>Sub-commands<a class="headerlink" href="#sub-commands" title="Permalink to this headline">¶</a></h5>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">system_executable</span></code>: Create an executable for the <code class="docutils literal notranslate"><span class="pre">app.py</span></code> application on the system <code class="docutils literal notranslate"><span class="pre">PATH</span></code> to be able to run it from anywhere.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The system executable creation process will ask for an executable name and the absolute path to store the executable file (the default is <code class="docutils literal notranslate"><span class="pre">$HOME/.local/bin</span></code>).</p></li>
+<li><p>It will also ask for bash completions creation.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../KnowledgeBase/index.html" class="btn btn-neutral float-right" title="Knowledge Base’s documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../HostsManager/index.html" class="btn btn-neutral" title="Hosts Manager’s documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2018, Odyseus
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.min.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

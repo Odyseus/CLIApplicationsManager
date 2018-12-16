@@ -77,11 +77,12 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
@@ -93,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -247,12 +248,12 @@
             <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">menu_items</span><span class="p">:</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
                     <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s2">&quot;TypeError: item is not a tuple&quot;</span><span class="p">))</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_RED</span><span class="p">(</span><span class="s2">&quot;**TypeError:** item is not a tuple&quot;</span><span class="p">))</span>
                     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">()</span>
 
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
                     <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s2">&quot;ValueError: item is not of length 2&quot;</span><span class="p">))</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_RED</span><span class="p">(</span><span class="s2">&quot;**ValueError:** item is not of length 2&quot;</span><span class="p">))</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">add_menu_item</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -325,7 +326,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">refresh</span><span class="p">):</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">refresh</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s2">&quot;TypeError: refresh is not callable&quot;</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_RED</span><span class="p">(</span><span class="s2">&quot;**TypeError:** refresh is not callable&quot;</span><span class="p">))</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span> <span class="o">=</span> <span class="n">refresh</span></div>
@@ -347,7 +348,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">handler</span><span class="p">):</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s2">&quot;TypeError: handler is not callable&quot;</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_RED</span><span class="p">(</span><span class="s2">&quot;**TypeError:** handler is not callable&quot;</span><span class="p">))</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">menu_items</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">label</span><span class="p">,</span> <span class="n">handler</span><span class="p">)]</span></div>
@@ -390,7 +391,7 @@
         <span class="sd">&quot;&quot;&quot;Display menu.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_title_enabled</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">(</span><span class="s2">&quot;**</span><span class="si">%s</span><span class="s2">**&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">))</span>
             <span class="nb">print</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_message_enabled</span><span class="p">:</span>
@@ -398,7 +399,7 @@
             <span class="nb">print</span><span class="p">()</span>
 
         <span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">menu_items</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;. &quot;</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">(</span><span class="s2">&quot;**</span><span class="si">%s</span><span class="s2">**&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;. &quot;</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
         <span class="nb">print</span><span class="p">()</span></div>
@@ -419,7 +420,7 @@
             <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prompt</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">menu_items</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">WARNING</span><span class="p">(</span><span class="s2">&quot;Invalid item.&quot;</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_YELLOW</span><span class="p">(</span><span class="s2">&quot;**Invalid item selected!**&quot;</span><span class="p">))</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Menu.CLOSE"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.CLOSE">[docs]</a>    <span class="k">def</span> <span class="nf">CLOSE</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

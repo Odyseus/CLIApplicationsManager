@@ -1,9 +1,12 @@
+.. Abbreviations
 
-########################################################################
-Python :abbr:`CLI (Command Line Interface)` Applications' documentations
-########################################################################
+.. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
 
-A collection of :abbr:`CLI (Command Line Interface)` utilities written in Python 3.
+#########################################
+Python |CLI| Applications' documentations
+#########################################
+
+A collection of |CLI| utilities written in Python 3.
 
 ################
 Table of Content
@@ -18,6 +21,7 @@ Table of Content
     includes/ChrootHelper/index
     includes/FilesCleaner/index
     includes/HostsManager/index
+    includes/JSONSchemaValidator/index
     includes/KnowledgeBase/index
     includes/MakeCinnamonXletPOT/index
     includes/MoviesDB/index
@@ -58,6 +62,7 @@ Third-party module's documentations hosted by their authors
     modules/ChrootHelper/modules
     modules/FilesCleaner/modules
     modules/HostsManager/modules
+    modules/JSONSchemaValidator/modules
     modules/KnowledgeBase/modules
     modules/MakeCinnamonXletPOT/modules
     modules/MoviesDB/modules

@@ -77,11 +77,12 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
@@ -93,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -272,9 +273,9 @@
             <span class="k">for</span> <span class="n">repo_data</span><span class="p">,</span> <span class="n">error_type</span><span class="p">,</span> <span class="n">error_data</span> <span class="ow">in</span> <span class="n">invalid_repos</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Repository:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">repo_data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-                <span class="k">if</span> <span class="n">error_type</span> <span class="ow">is</span> <span class="s2">&quot;missing_fields&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">error_type</span> <span class="o">==</span> <span class="s2">&quot;missing_fields&quot;</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Missing fields: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">error_data</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-                <span class="k">elif</span> <span class="n">error_type</span> <span class="ow">is</span> <span class="s2">&quot;invalid_repo_type&quot;</span><span class="p">:</span>
+                <span class="k">elif</span> <span class="n">error_type</span> <span class="o">==</span> <span class="s2">&quot;invalid_repo_type&quot;</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Invalid repository type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">error_data</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Valid values are: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
                                         <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">_allowed_repo_types</span><span class="p">)),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -594,7 +595,7 @@
 <span class="sd">            The repository URL.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">repo_service</span> <span class="o">=</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_service&quot;</span><span class="p">,</span> <span class="s2">&quot;github&quot;</span><span class="p">)</span>
-        <span class="n">repo_url_template</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">.git&quot;</span> <span class="k">if</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_type&quot;</span><span class="p">,</span> <span class="s2">&quot;git&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="s2">&quot;git&quot;</span> <span class="k">else</span> <span class="s2">&quot;</span><span class="si">{}{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&quot;</span>
+        <span class="n">repo_url_template</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">.git&quot;</span> <span class="k">if</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_type&quot;</span><span class="p">,</span> <span class="s2">&quot;git&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;git&quot;</span> <span class="k">else</span> <span class="s2">&quot;</span><span class="si">{}{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&quot;</span>
         <span class="n">repo_base_url</span> <span class="o">=</span> <span class="n">repo_service_url_map</span><span class="p">[</span><span class="n">repo_service</span><span class="p">]</span> <span class="k">if</span> \
             <span class="n">repo_service</span> <span class="ow">in</span> <span class="n">repo_service_url_map</span> <span class="k">else</span> <span class="n">repo_service</span>
 
@@ -638,7 +639,7 @@
 
         <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{cmd}</span><span class="s2"> clone </span><span class="si">{depth}</span><span class="s2"> </span><span class="si">{url}</span><span class="s2"> </span><span class="si">{path}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">cmd</span><span class="o">=</span><span class="n">repo_type</span><span class="p">,</span>
-            <span class="n">depth</span><span class="o">=</span><span class="s2">&quot;--depth=1&quot;</span> <span class="k">if</span> <span class="n">repo_type</span> <span class="ow">is</span> <span class="s2">&quot;git&quot;</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">depth</span><span class="o">=</span><span class="s2">&quot;--depth=1&quot;</span> <span class="k">if</span> <span class="n">repo_type</span> <span class="o">==</span> <span class="s2">&quot;git&quot;</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_repo_url</span><span class="p">(</span><span class="n">repo_data</span><span class="p">),</span>
             <span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_folder_name</span><span class="p">(</span><span class="n">repo_data</span><span class="p">)</span>
         <span class="p">)</span>
@@ -781,7 +782,7 @@
         <span class="sd">&quot;&quot;&quot;Build Sphinx documentation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">repo_data</span> <span class="ow">in</span> <span class="p">[</span><span class="n">repo</span> <span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_repositories_data</span>
-                          <span class="k">if</span> <span class="n">repo</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_handler&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="s2">&quot;sphinx_docs&quot;</span><span class="p">]:</span>
+                          <span class="k">if</span> <span class="n">repo</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_handler&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;sphinx_docs&quot;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Attempting to build Sphinx docs.&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Repository: </span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>

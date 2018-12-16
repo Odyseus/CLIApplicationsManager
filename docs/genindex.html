@@ -78,11 +78,12 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="includes/1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="includes/JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
@@ -94,7 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -171,6 +172,7 @@
  | <a href="#G"><strong>G</strong></a>
  | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
  | <a href="#K"><strong>K</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
@@ -210,13 +212,17 @@
 </li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner._clean_endings">_clean_endings() (FilesCleanerApp.app_utils.FilesCleaner method)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._create_initial_file">_create_initial_file() (HostsManagerApp.app_utils.HostsManager method)</a>
+      <li><a href="modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors._colorize">_colorize() (python_modules.python_utils.ansi_colors.ANSIColors method)</a>
+</li>
+      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._create_temporary_files">_create_temporary_files() (HostsManagerApp.app_utils.HostsManager method)</a>
 </li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner._delete">_delete() (FilesCleanerApp.app_utils.FilesCleaner method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._display_cli_header">_display_cli_header() (python_modules.python_utils.cli_utils.CommandLineInterfaceSuper method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._display_manual_page">_display_manual_page() (python_modules.python_utils.cli_utils.CommandLineInterfaceSuper method)</a>
+</li>
+      <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._do_checkout">_do_checkout() (UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._do_clone">_do_clone() (KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
 
@@ -256,6 +262,12 @@
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._expand_local_sources_data">_expand_local_sources_data() (HostsManagerApp.app_utils.HostsManager method)</a>
 </li>
+      <li><a href="modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors._extend">_extend() (python_modules.python_utils.ansi_colors.ANSIColors method)</a>
+
+      <ul>
+        <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem._extend">(python_modules.python_utils.log_system.LogSystem method)</a>
+</li>
+      </ul></li>
       <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._extract_metadata_strings">_extract_metadata_strings() (in module MakeCinnamonXletPOTApp.app_utils)</a>
 </li>
       <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._extract_settings_strings">_extract_settings_strings() (in module MakeCinnamonXletPOTApp.app_utils)</a>
@@ -320,6 +332,12 @@
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._install_hosts_file">_install_hosts_file() (HostsManagerApp.app_utils.HostsManager method)</a>
 </li>
+      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._log_shell_separator">_log_shell_separator() (HostsManagerApp.app_utils.HostsManager method)</a>
+</li>
+      <li><a href="modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors._make_color_function">_make_color_function() (python_modules.python_utils.ansi_colors.ANSIColors method)</a>
+</li>
+      <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem._make_log_function">_make_log_function() (python_modules.python_utils.log_system.LogSystem method)</a>
+</li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._manage_archives">_manage_archives() (UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
 </li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager._manage_files">_manage_files() (UserApplicationsManagerApp.app_utils.ApplicationsManager method)</a>
@@ -331,6 +349,8 @@
       <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem._obfuscate_user_home">_obfuscate_user_home() (python_modules.python_utils.log_system.LogSystem method)</a>
 </li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner._onerror">_onerror() (FilesCleanerApp.app_utils.FilesCleaner static method)</a>
+</li>
+      <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._populate_exclusions_list">_populate_exclusions_list() (HostsManagerApp.app_utils.HostsManager method)</a>
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._populate_final_file">_populate_final_file() (HostsManagerApp.app_utils.HostsManager method)</a>
 </li>
@@ -403,6 +423,8 @@
 </li>
         <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.a">(HostsManagerApp.cli.CommandLineInterface attribute)</a>
 </li>
+        <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.cli.html#JSONSchemaValidatorApp.cli.CommandLineInterface.a">(JSONSchemaValidatorApp.cli.CommandLineInterface attribute)</a>
+</li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.a">(KnowledgeBaseApp.cli.CommandLineInterface attribute)</a>
 </li>
         <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.cli.html#MakeCinnamonXletPOTApp.cli.CommandLineInterface.a">(MakeCinnamonXletPOTApp.cli.CommandLineInterface attribute)</a>
@@ -425,6 +447,8 @@
 </li>
         <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.action">(FilesCleanerApp.cli.CommandLineInterface attribute)</a>, <a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.action">[1]</a>
 </li>
+        <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.cli.html#JSONSchemaValidatorApp.cli.CommandLineInterface.action">(JSONSchemaValidatorApp.cli.CommandLineInterface attribute)</a>, <a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.cli.html#JSONSchemaValidatorApp.cli.CommandLineInterface.action">[1]</a>
+</li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.action">(KnowledgeBaseApp.cli.CommandLineInterface attribute)</a>, <a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.action">[1]</a>
 </li>
         <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.cli.html#MakeCinnamonXletPOTApp.cli.CommandLineInterface.action">(MakeCinnamonXletPOTApp.cli.CommandLineInterface attribute)</a>, <a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.cli.html#MakeCinnamonXletPOTApp.cli.CommandLineInterface.action">[1]</a>
@@ -440,10 +464,10 @@
       </ul></li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner.actions">actions (FilesCleanerApp.app_utils.FilesCleaner attribute)</a>
 </li>
-      <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.add_menu_item">add_menu_item() (python_modules.python_utils.menu.Menu method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.add_menu_item">add_menu_item() (python_modules.python_utils.menu.Menu method)</a>
+</li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager.all_apps">all_apps (UserApplicationsManagerApp.app_utils.ApplicationsManager attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.all_menu_items">all_menu_items (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
@@ -508,17 +532,11 @@
 </li>
       <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#module-BackupUtilsApp.cli">BackupUtilsApp.cli (module)</a>
 </li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.schemas.html#module-BackupUtilsApp.schemas">BackupUtilsApp.schemas (module)</a>
+</li>
       <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#module-BackupUtilsApp.tasks">BackupUtilsApp.tasks (module)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.BadExecutionLocation">BadExecutionLocation</a>
-</li>
-      <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.base_app_keys">base_app_keys (in module UserApplicationsManagerApp.app_utils)</a>
-</li>
-      <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.base_app_keys_for_archives">base_app_keys_for_archives (in module UserApplicationsManagerApp.app_utils)</a>
-</li>
-      <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.base_app_keys_for_files">base_app_keys_for_files (in module UserApplicationsManagerApp.app_utils)</a>
-</li>
-      <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.base_app_keys_for_repos">base_app_keys_for_repos (in module UserApplicationsManagerApp.app_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.BaseAppGenerator.base_app_path">base_app_path (python_modules.app_utils.BaseAppGenerator attribute)</a>
 </li>
@@ -526,10 +544,10 @@
 </li>
       <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask">BaseTask (class in BackupUtilsApp.tasks)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.template_utils.html#python_modules.python_utils.template_utils.BASH_COMPLETION_LOADER_CONTENT">BASH_COMPLETION_LOADER_CONTENT (in module python_modules.python_utils.template_utils)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.template_utils.html#python_modules.python_utils.template_utils.bash_completions_step1">bash_completions_step1 (in module python_modules.python_utils.template_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.template_utils.html#python_modules.python_utils.template_utils.bash_completions_step2">bash_completions_step2 (in module python_modules.python_utils.template_utils)</a>
@@ -602,6 +620,8 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.close">close() (python_modules.python_utils.menu.Menu method)</a>
 </li>
+      <li><a href="modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.color_table">color_table (in module python_modules.python_utils.ansi_colors)</a>
+</li>
       <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface">CommandLineInterface (class in BackupUtilsApp.cli)</a>
 
       <ul>
@@ -610,6 +630,8 @@
         <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface">(class in FilesCleanerApp.cli)</a>
 </li>
         <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface">(class in HostsManagerApp.cli)</a>
+</li>
+        <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.cli.html#JSONSchemaValidatorApp.cli.CommandLineInterface">(class in JSONSchemaValidatorApp.cli)</a>
 </li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface">(class in KnowledgeBaseApp.cli)</a>
 </li>
@@ -627,8 +649,6 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper">CommandLineInterfaceSuper (class in python_modules.python_utils.cli_utils)</a>
-</li>
-      <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.conf_file">conf_file (in module UserApplicationsManagerApp.app_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.prompts.html#python_modules.python_utils.prompts.confirm">confirm() (in module python_modules.python_utils.prompts)</a>
 </li>
@@ -678,8 +698,6 @@
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject">DataTablesObject (class in KnowledgeBaseApp.app_utils)</a>
 </li>
-      <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.debug">debug() (python_modules.python_utils.log_system.LogSystem method)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.BaseAppGenerator.default_name">default_name (python_modules.app_utils.BaseAppGenerator attribute)</a>
 </li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.delete">delete() (FilesCleanerApp.cli.CommandLineInterface method)</a>
@@ -700,6 +718,8 @@
         <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.display_manual_page">(FilesCleanerApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.display_manual_page">(HostsManagerApp.cli.CommandLineInterface method)</a>
+</li>
+        <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.cli.html#JSONSchemaValidatorApp.cli.CommandLineInterface.display_manual_page">(JSONSchemaValidatorApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.display_manual_page">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
@@ -733,6 +753,8 @@
 </li>
         <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.docopt_doc">(in module HostsManagerApp.cli)</a>
 </li>
+        <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.cli.html#JSONSchemaValidatorApp.cli.docopt_doc">(in module JSONSchemaValidatorApp.cli)</a>
+</li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.docopt_doc">(in module KnowledgeBaseApp.cli)</a>
 </li>
         <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.cli.html#MakeCinnamonXletPOTApp.cli.docopt_doc">(in module MakeCinnamonXletPOTApp.cli)</a>
@@ -760,6 +782,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.edit">edit() (FilesCleanerApp.cli.CommandLineInterface method)</a>
 </li>
+      <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.EmptyMailSubjectOrBody">EmptyMailSubjectOrBody</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.mistune_utils.html#python_modules.python_utils.mistune_utils.MistuneCustomInlineLexer.enable_kbd_tag">enable_kbd_tag() (python_modules.python_utils.mistune_utils.MistuneCustomInlineLexer method)</a>
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.epub_to_html">epub_to_html() (KnowledgeBaseApp.cli.CommandLineInterface method)</a>
@@ -767,10 +791,6 @@
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.eradicate_man_pages_data_json">eradicate_man_pages_data_json() (in module python_modules.app_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.Error">Error</a>
-</li>
-      <li><a href="modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors.ERROR">ERROR() (python_modules.python_utils.ansi_colors.ANSIColors method)</a>
-</li>
-      <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.error">error() (python_modules.python_utils.log_system.LogSystem method)</a>
 </li>
       <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.errors">errors (PackageManagerApp.pkg_manager.PackageManager attribute)</a>
 </li>
@@ -870,6 +890,8 @@
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.generate_index_html">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.generate_log_path">generate_log_path() (in module python_modules.python_utils.log_system)</a>
+</li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.generate_man_pages">generate_man_pages() (in module python_modules.app_utils)</a>
 
       <ul>
@@ -898,10 +920,10 @@
 </li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.get_applications">get_applications() (in module UserApplicationsManagerApp.app_utils)</a>
 </li>
-      <li><a href="modules/python_modules/python_modules.python_utils.shell_utils.html#python_modules.python_utils.shell_utils.get_cli_header">get_cli_header() (in module python_modules.python_utils.shell_utils)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/python_modules/python_modules.python_utils.shell_utils.html#python_modules.python_utils.shell_utils.get_cli_header">get_cli_header() (in module python_modules.python_utils.shell_utils)</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.shell_utils.html#python_modules.python_utils.shell_utils.get_cli_separator">get_cli_separator() (in module python_modules.python_utils.shell_utils)</a>
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject.get_data_tables_obj">get_data_tables_obj() (KnowledgeBaseApp.app_utils.DataTablesObject method)</a>
@@ -922,12 +944,8 @@
 </li>
       <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.FilteredFilesList.get_full_list_of_files">get_full_list_of_files() (BackupUtilsApp.app_utils.FilteredFilesList method)</a>
 </li>
-      <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.get_log_file">get_log_file() (in module python_modules.python_utils.log_system)</a>
-
-      <ul>
-        <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.get_log_file">(python_modules.python_utils.log_system.LogSystem method)</a>
+      <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.get_log_file">get_log_file() (python_modules.python_utils.log_system.LogSystem method)</a>
 </li>
-      </ul></li>
       <li><a href="modules/MoviesDB/MoviesDBApp.app_utils.html#MoviesDBApp.app_utils.get_movie_info">get_movie_info() (in module MoviesDBApp.app_utils)</a>
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.get_pandoc_path">get_pandoc_path() (in module KnowledgeBaseApp.app_utils)</a>
@@ -943,6 +961,8 @@
       <li><a href="modules/python_modules/python_modules.python_utils.string_utils.html#python_modules.python_utils.string_utils.get_valid_filename">get_valid_filename() (in module python_modules.python_utils.string_utils)</a>
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.OverridesValidator.get_valid_overrides">get_valid_overrides() (HostsManagerApp.app_utils.OverridesValidator method)</a>
+</li>
+      <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.app_utils.html#JSONSchemaValidatorApp.app_utils.get_value_from_object">get_value_from_object() (in module JSONSchemaValidatorApp.app_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.getSelected">getSelected() (python_modules.python_utils.multi_select.MultiSelect method)</a>
 </li>
@@ -968,8 +988,6 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.hash_utils.html#python_modules.python_utils.hash_utils.HASH_FUNCS">HASH_FUNCS (in module python_modules.python_utils.hash_utils)</a>
 </li>
-      <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.home">home (in module UserApplicationsManagerApp.app_utils)</a>
-</li>
       <li><a href="modules/HostsManager/HostsManagerApp.HostsManager_webapp.html#HostsManagerApp.HostsManager_webapp.HostsManager.host">host (HostsManagerApp.HostsManager_webapp.HostsManager attribute)</a>
 
       <ul>
@@ -992,9 +1010,13 @@
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.cli.html#module-HostsManagerApp.cli">HostsManagerApp.cli (module)</a>
 </li>
+      <li><a href="modules/HostsManager/HostsManagerApp.HostsManager_webapp.html#module-HostsManagerApp.HostsManager_webapp">HostsManagerApp.HostsManager_webapp (module)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/HostsManager/HostsManagerApp.HostsManager_webapp.html#module-HostsManagerApp.HostsManager_webapp">HostsManagerApp.HostsManager_webapp (module)</a>
+      <li><a href="modules/HostsManager/HostsManagerApp.pre_processors.html#module-HostsManagerApp.pre_processors">HostsManagerApp.pre_processors (module)</a>
+</li>
+      <li><a href="modules/HostsManager/HostsManagerApp.schemas.html#module-HostsManagerApp.schemas">HostsManagerApp.schemas (module)</a>
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.html_to_markdown_clip">html_to_markdown_clip() (KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
@@ -1046,10 +1068,6 @@
         <li><a href="modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.index">(MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors.INFO">INFO() (python_modules.python_utils.ansi_colors.ANSIColors method)</a>
-</li>
-      <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.info">info() (python_modules.python_utils.log_system.LogSystem method)</a>
-</li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.cli.html#UserApplicationsManagerApp.cli.CommandLineInterface.init_app_manager">init_app_manager() (UserApplicationsManagerApp.cli.CommandLineInterface method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.input">input() (python_modules.python_utils.menu.Menu method)</a>
@@ -1084,11 +1102,9 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.InvalidArgument">InvalidArgument</a>
 </li>
-      <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.InvalidCompressionLevel">InvalidCompressionLevel</a>
-</li>
-      <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.InvalidCompressionType">InvalidCompressionType</a>
-</li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.InvalidDestination">InvalidDestination</a>
+</li>
+      <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.app_utils.html#JSONSchemaValidatorApp.app_utils.InvalidFile">InvalidFile</a>
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.InvalidRepositoryData">InvalidRepositoryData</a>
 </li>
@@ -1111,6 +1127,22 @@
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.is_valid_integer">is_valid_integer() (in module HostsManagerApp.app_utils)</a>
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.is_valid_ip">is_valid_ip() (in module HostsManagerApp.app_utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/HostsManager/HostsManagerApp.pre_processors.html#HostsManagerApp.pre_processors.json_array">json_array() (in module HostsManagerApp.pre_processors)</a>
+</li>
+      <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.html#module-JSONSchemaValidatorApp">JSONSchemaValidatorApp (module)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.app_utils.html#module-JSONSchemaValidatorApp.app_utils">JSONSchemaValidatorApp.app_utils (module)</a>
+</li>
+      <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.cli.html#module-JSONSchemaValidatorApp.cli">JSONSchemaValidatorApp.cli (module)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1199,6 +1231,8 @@
 </li>
         <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.main">(in module HostsManagerApp.cli)</a>
 </li>
+        <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.cli.html#JSONSchemaValidatorApp.cli.main">(in module JSONSchemaValidatorApp.cli)</a>
+</li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.main">(in module KnowledgeBaseApp.cli)</a>
 </li>
         <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.cli.html#MakeCinnamonXletPOTApp.cli.main">(in module MakeCinnamonXletPOTApp.cli)</a>
@@ -1280,6 +1314,8 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.MissingRequiredFile">MissingRequiredFile</a>
 </li>
+      <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.app_utils.html#JSONSchemaValidatorApp.app_utils.MissingRequiredParameter">MissingRequiredParameter</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.MissingSourcesOnConfigFile">MissingSourcesOnConfigFile</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.mistune_utils.html#python_modules.python_utils.mistune_utils.MistuneCustomInlineLexer">MistuneCustomInlineLexer (class in python_modules.python_utils.mistune_utils)</a>
@@ -1330,9 +1366,11 @@
 </li>
       <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.non_existent_pkgs">non_existent_pkgs (PackageManagerApp.pkg_manager.PackageManager attribute)</a>
 </li>
+      <li><a href="modules/python_modules/python_modules.python_utils.prompts.html#python_modules.python_utils.prompts.nonempty">nonempty() (in module python_modules.python_utils.prompts)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/python_modules/python_modules.python_utils.prompts.html#python_modules.python_utils.prompts.nonempty">nonempty() (in module python_modules.python_utils.prompts)</a>
+      <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.app_utils.html#JSONSchemaValidatorApp.app_utils.NonExistentFile">NonExistentFile</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.NoProfileNameProvided">NoProfileNameProvided</a>
 </li>
@@ -1438,13 +1476,11 @@
 </li>
       <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.print_settings">print_settings() (BackupUtilsApp.cli.CommandLineInterface method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.print_tasks">print_tasks() (BackupUtilsApp.cli.CommandLineInterface method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.prompt">prompt (python_modules.python_utils.menu.Menu attribute)</a>
-</li>
-      <li><a href="modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors.PURPLE">PURPLE() (python_modules.python_utils.ansi_colors.ANSIColors method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.html#module-python_modules">python_modules (module)</a>
 </li>
@@ -1468,6 +1504,8 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.hash_utils.html#module-python_modules.python_utils.hash_utils">python_modules.python_utils.hash_utils (module)</a>
 </li>
+      <li><a href="modules/python_modules/python_modules.python_utils.json_schema_utils.html#module-python_modules.python_utils.json_schema_utils">python_modules.python_utils.json_schema_utils (module)</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#module-python_modules.python_utils.log_system">python_modules.python_utils.log_system (module)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#module-python_modules.python_utils.mail_system">python_modules.python_utils.mail_system (module)</a>
@@ -1481,6 +1519,10 @@
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#module-python_modules.python_utils.multi_select">python_modules.python_utils.multi_select (module)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.prompts.html#module-python_modules.python_utils.prompts">python_modules.python_utils.prompts (module)</a>
+</li>
+      <li><a href="modules/python_modules/python_modules.python_utils.schemas.html#module-python_modules.python_utils.schemas">python_modules.python_utils.schemas (module)</a>
+</li>
+      <li><a href="modules/python_modules/python_modules.python_utils.schemas.mail_system_schema.html#module-python_modules.python_utils.schemas.mail_system_schema">python_modules.python_utils.schemas.mail_system_schema (module)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.shell_utils.html#module-python_modules.python_utils.shell_utils">python_modules.python_utils.shell_utils (module)</a>
 </li>
@@ -1547,6 +1589,10 @@
 </li>
         <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.root_folder">(in module HostsManagerApp.cli)</a>
 </li>
+        <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.app_utils.html#JSONSchemaValidatorApp.app_utils.root_folder">(in module JSONSchemaValidatorApp.app_utils)</a>
+</li>
+        <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.cli.html#JSONSchemaValidatorApp.cli.root_folder">(in module JSONSchemaValidatorApp.cli)</a>
+</li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.root_folder">(in module KnowledgeBaseApp.KnowledgeBase_webapp)</a>
 </li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.root_folder">(in module KnowledgeBaseApp.app_utils)</a>
@@ -1605,6 +1651,8 @@
 </li>
         <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.run">(HostsManagerApp.cli.CommandLineInterface method)</a>
 </li>
+        <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.cli.html#JSONSchemaValidatorApp.cli.CommandLineInterface.run">(JSONSchemaValidatorApp.cli.CommandLineInterface method)</a>
+</li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp.run">(KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp method)</a>
 </li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.run">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
@@ -1662,6 +1710,8 @@
         <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.cli.html#MakeCinnamonXletPOTApp.cli.CommandLineInterface.scan_xlet">(MakeCinnamonXletPOTApp.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/python_modules/python_modules.python_utils.json_schema_utils.html#python_modules.python_utils.json_schema_utils.SchemaValidationError">SchemaValidationError</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.selcount">selcount (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.selected">selected (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
@@ -1712,10 +1762,6 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.STREAM_STDOUT">STREAM_STDOUT (in module python_modules.python_utils.cmd_utils)</a>
 </li>
-      <li><a href="modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors.SUCCESS">SUCCESS() (python_modules.python_utils.ansi_colors.ANSIColors method)</a>
-</li>
-      <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.success">success() (python_modules.python_utils.log_system.LogSystem method)</a>
-</li>
       <li><a href="modules/ChrootHelper/ChrootHelperApp.app_utils.html#ChrootHelperApp.app_utils.sudo">sudo (in module ChrootHelperApp.app_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.string_utils.html#python_modules.python_utils.string_utils.super_filter">super_filter() (in module python_modules.python_utils.string_utils)</a>
@@ -1728,6 +1774,8 @@
         <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.system_executable_generation">(FilesCleanerApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.system_executable_generation">(HostsManagerApp.cli.CommandLineInterface method)</a>
+</li>
+        <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.cli.html#JSONSchemaValidatorApp.cli.CommandLineInterface.system_executable_generation">(JSONSchemaValidatorApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.system_executable_generation">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
@@ -1810,7 +1858,7 @@
         <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.update_all_sources">(HostsManagerApp.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.update_data_file">update_data_file (in module UserApplicationsManagerApp.app_utils)</a>
+      <li><a href="modules/HostsManager/HostsManagerApp.pre_processors.html#HostsManagerApp.pre_processors.url_parser">url_parser() (in module HostsManagerApp.pre_processors)</a>
 </li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.html#module-UserApplicationsManagerApp">UserApplicationsManagerApp (module)</a>
 </li>
@@ -1824,10 +1872,18 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.ValidationError">ValidationError</a>
+      <li><a href="modules/python_modules/python_modules.python_utils.json_schema_utils.html#python_modules.python_utils.json_schema_utils.validate">validate() (in module python_modules.python_utils.json_schema_utils)</a>
 </li>
+      <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.app_utils.html#JSONSchemaValidatorApp.app_utils.validate_schema">validate_schema() (in module JSONSchemaValidatorApp.app_utils)</a>
+
+      <ul>
+        <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.cli.html#JSONSchemaValidatorApp.cli.CommandLineInterface.validate_schema">(JSONSchemaValidatorApp.cli.CommandLineInterface method)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.ValidationError">ValidationError</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.verbose">verbose (python_modules.python_utils.log_system.LogSystem attribute)</a>
 </li>
   </ul></td>
@@ -1836,18 +1892,14 @@
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/python_modules/python_modules.python_utils.ansi_colors.html#python_modules.python_utils.ansi_colors.ANSIColors.WARNING">WARNING() (python_modules.python_utils.ansi_colors.ANSIColors method)</a>
-</li>
-      <li><a href="modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.warning">warning() (python_modules.python_utils.log_system.LogSystem method)</a>
-</li>
       <li><a href="modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.which">which() (in module python_modules.python_utils.cmd_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.win">win (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.window_height">window_height (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.window_width">window_width (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.WrongPythonVersion">WrongPythonVersion</a>

@@ -2,18 +2,18 @@
 
 .. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
 
-****************************************
-CLI applications manager's documentation
-****************************************
+******************************************
+|CLI| applications manager's documentation
+******************************************
 
 .. only:: html
 
-    A CLI utility to manage/develop other CLI utilities.
+    A |CLI| utility to manage/develop other |CLI| utilities.
 
 .. include:: ./system-executable-hint.restructuredtext
 
-CLI Synopsis
-============
+|CLI| Synopsis
+==============
 
 .. only:: html
 

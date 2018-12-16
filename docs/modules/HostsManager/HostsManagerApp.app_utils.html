@@ -79,11 +79,12 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
@@ -95,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -302,6 +303,17 @@ configuration file.</p></li>
 </dd>
 </dl>
 <dl class="method">
+<dt id="HostsManagerApp.app_utils.HostsManager._log_shell_separator">
+<code class="descname">_log_shell_separator</code><span class="sig-paren">(</span><em>char='-'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._log_shell_separator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._log_shell_separator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Summary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>char</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em>, </em><em>optional</em>) – Character used to generate the “CLI separator”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="HostsManagerApp.app_utils.HostsManager._validate_sources">
 <code class="descname">_validate_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._validate_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._validate_sources" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validate sources.</p>
@@ -325,11 +337,6 @@ configuration file.</p></li>
 <dt id="HostsManagerApp.app_utils.HostsManager._validate_option_keys">
 <code class="descname">_validate_option_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._validate_option_keys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._validate_option_keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validate keys.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.WrongValueForOption</span></code> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.WrongValueForOption" title="python_modules.python_utils.exceptions.WrongValueForOption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.WrongValueForOption</span></code></a>&gt;.</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="method">
@@ -428,9 +435,21 @@ to artifacts and duplicates.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._create_initial_file">
-<code class="descname">_create_initial_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._create_initial_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._create_initial_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize the file in which we merge all host files for later pruning.</p>
+<dt id="HostsManagerApp.app_utils.HostsManager._create_temporary_files">
+<code class="descname">_create_temporary_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._create_temporary_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._create_temporary_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create temporary files.</p>
+<p>Initialize the files in which all source files will be merged for later pruning.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="HostsManagerApp.app_utils.HostsManager._populate_exclusions_list">
+<code class="descname">_populate_exclusions_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._populate_exclusions_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._populate_exclusions_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Populate exclusions list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>&gt;.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -456,7 +475,7 @@ have been explicitly excluded by the user.</p>
 <dd class="field-odd"><p><strong>line</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The line to be standardized.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>The rules elements</strong> – The rules elements.</p>
+<dd class="field-even"><p>The rules elements.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#tuple" title="(in Python v3.5)">tuple</a></p>
@@ -470,8 +489,6 @@ have been explicitly excluded by the user.</p>
 <dt id="HostsManagerApp.app_utils.is_valid_host">
 <code class="descclassname">HostsManagerApp.app_utils.</code><code class="descname">is_valid_host</code><span class="sig-paren">(</span><em>host</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#is_valid_host"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.is_valid_host" title="Permalink to this definition">¶</a></dt>
 <dd><p>IDN compatible domain validation.</p>
-<p>Based on answers from a
-<a class="reference external" href="https://stackoverflow.com/questions/2532053/validate-a-hostname-string">StackOverflow question</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>host</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The host name to check.</p>
@@ -483,6 +500,10 @@ have been explicitly excluded by the user.</p>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)">bool</a></p>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Based on: <a class="reference external" href="https://stackoverflow.com/questions/2532053/validate-a-hostname-string">Validate-a-hostname-string</a></p>
+</div>
 </dd></dl>
 
 <dl class="function">

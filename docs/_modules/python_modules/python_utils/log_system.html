@@ -77,11 +77,12 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
@@ -93,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -168,11 +169,27 @@
 <span class="kn">from</span> <span class="nn">.misc_utils</span> <span class="k">import</span> <span class="n">get_date_time</span>
 <span class="kn">from</span> <span class="nn">.misc_utils</span> <span class="k">import</span> <span class="n">micro_to_milli</span>
 
-<span class="n">_allowed_logging_levels</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;DEBUG&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;WARNING&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;ERROR&quot;</span>
+<span class="n">_log_levels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;INFO&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;DEFAULT&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;logging_support&quot;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;DEBUG&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;DEFAULT&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;logging_support&quot;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;WARNING&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;LIGHT_YELLOW&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;logging_support&quot;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;ERROR&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;LIGHT_RED&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;logging_support&quot;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;SUCCESS&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;LIGHT_GREEN&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;logging_support&quot;</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="p">},</span>
 <span class="p">}</span>
 
 
@@ -214,6 +231,42 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_log_file</span> <span class="o">=</span> <span class="n">filename</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_user_home</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">)</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_extend</span><span class="p">()</span>
+
+<div class="viewcode-block" id="LogSystem._extend"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem._extend">[docs]</a>    <span class="k">def</span> <span class="nf">_extend</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Extend class&#39; functions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">_log_levels</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_log_function</span><span class="p">(</span><span class="n">l</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="LogSystem._make_log_function"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem._make_log_function">[docs]</a>    <span class="k">def</span> <span class="nf">_make_log_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_level</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Make log function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        log_level : str</span>
+<span class="sd">            See :any:`LogSystem._update_log` &gt; log_level</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        function</span>
+<span class="sd">            Function to log messages.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Log message.</span>
+
+<span class="sd">            Parameters</span>
+<span class="sd">            ----------</span>
+<span class="sd">            msg : str</span>
+<span class="sd">                See :any:`LogSystem._update_log` &gt; msg</span>
+<span class="sd">            term : bool, optional</span>
+<span class="sd">                See :any:`LogSystem._update_log` &gt; term</span>
+<span class="sd">            date : bool, optional</span>
+<span class="sd">                See :any:`LogSystem._update_log` &gt; date</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_log</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="n">log_level</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="n">term</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="n">to_file</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">f</span></div>
 
 <div class="viewcode-block" id="LogSystem.get_log_file"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.get_log_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_log_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get log file path.</span>
@@ -233,79 +286,9 @@
 <span class="sd">        msg : str</span>
 <span class="sd">            See :any:`LogSystem._update_log` &gt; msg</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_update_log</span><span class="p">(</span><span class="s2">&quot;[DRY_RUN] </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">),</span> <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;PURPLE&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_log</span><span class="p">(</span><span class="s2">&quot;**[DRY_RUN]** </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">),</span> <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;LIGHT_MAGENTA&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="LogSystem.debug"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.debug">[docs]</a>    <span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Log message with &quot;DEBUG&quot; level.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        msg : str</span>
-<span class="sd">            See :any:`LogSystem._update_log` &gt; msg</span>
-<span class="sd">        term : bool, optional</span>
-<span class="sd">            See :any:`LogSystem._update_log` &gt; term</span>
-<span class="sd">        date : bool, optional</span>
-<span class="sd">            See :any:`LogSystem._update_log` &gt; date</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_update_log</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="n">term</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="LogSystem.info"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.info">[docs]</a>    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Log message with &quot;INFO&quot; level.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        msg : str</span>
-<span class="sd">            See :any:`LogSystem._update_log` &gt; msg</span>
-<span class="sd">        term : bool, optional</span>
-<span class="sd">            See :any:`LogSystem._update_log` &gt; term</span>
-<span class="sd">        date : bool, optional</span>
-<span class="sd">            See :any:`LogSystem._update_log` &gt; date</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_update_log</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="n">term</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="LogSystem.success"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.success">[docs]</a>    <span class="k">def</span> <span class="nf">success</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Log message with &quot;INFO&quot; level but with green color on screen.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        msg : str</span>
-<span class="sd">            See :any:`LogSystem._update_log` &gt; msg</span>
-<span class="sd">        term : bool, optional</span>
-<span class="sd">            See :any:`LogSystem._update_log` &gt; term</span>
-<span class="sd">        date : bool, optional</span>
-<span class="sd">            See :any:`LogSystem._update_log` &gt; date</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_update_log</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="n">term</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="LogSystem.warning"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.warning">[docs]</a>    <span class="k">def</span> <span class="nf">warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Log message with &quot;WARNING&quot; level.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        msg : str</span>
-<span class="sd">            See :any:`LogSystem._update_log` &gt; msg</span>
-<span class="sd">        term : bool, optional</span>
-<span class="sd">            See :any:`LogSystem._update_log` &gt; term</span>
-<span class="sd">        date : bool, optional</span>
-<span class="sd">            See :any:`LogSystem._update_log` &gt; date</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_update_log</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;WARNING&quot;</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="n">term</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="LogSystem.error"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem.error">[docs]</a>    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Log message with &quot;ERROR&quot; level.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        msg : str</span>
-<span class="sd">            See :any:`LogSystem._update_log` &gt; msg</span>
-<span class="sd">        term : bool, optional</span>
-<span class="sd">            See :any:`LogSystem._update_log` &gt; term</span>
-<span class="sd">        date : bool, optional</span>
-<span class="sd">            See :any:`LogSystem._update_log` &gt; date</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_update_log</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="n">term</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="LogSystem._update_log"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem._update_log">[docs]</a>    <span class="k">def</span> <span class="nf">_update_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;ERROR&quot;</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="LogSystem._update_log"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem._update_log">[docs]</a>    <span class="k">def</span> <span class="nf">_update_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;ERROR&quot;</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Do the actual logging.</span>
 
 <span class="sd">        Parameters</span>
@@ -321,15 +304,22 @@
 <span class="sd">            Log the date. If set to False, the current date will not be attached to the logged</span>
 <span class="sd">            message.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">m</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: &quot;</span> <span class="o">%</span> <span class="n">micro_to_milli</span><span class="p">(</span><span class="n">get_date_time</span><span class="p">())</span> <span class="k">if</span> <span class="n">date</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: &quot;</span> <span class="o">%</span> <span class="n">micro_to_milli</span><span class="p">(</span><span class="n">get_date_time</span><span class="p">())</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-        <span class="nb">getattr</span><span class="p">(</span><span class="n">logging</span><span class="p">,</span> <span class="s2">&quot;info&quot;</span> <span class="k">if</span> <span class="n">log_level</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_allowed_logging_levels</span> <span class="k">else</span> <span class="n">log_level</span><span class="o">.</span><span class="n">lower</span><span class="p">())(</span><span class="n">m</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">to_file</span><span class="p">:</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="n">logging</span><span class="p">,</span> <span class="s2">&quot;info&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="n">log_level</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_log_levels</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">_log_levels</span><span class="p">[</span><span class="n">log_level</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="s2">&quot;logging_support&quot;</span><span class="p">))</span> <span class="k">else</span> <span class="n">log_level</span><span class="o">.</span><span class="n">lower</span><span class="p">())(</span><span class="n">now</span> <span class="o">+</span> <span class="n">m</span> <span class="k">if</span> <span class="n">date</span> <span class="k">else</span> <span class="n">m</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="ow">and</span> <span class="n">term</span><span class="p">:</span>
+            <span class="n">pm</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;**</span><span class="si">%s</span><span class="s2">**&quot;</span> <span class="o">%</span> <span class="n">now</span><span class="p">)</span> <span class="o">+</span> <span class="n">m</span> <span class="k">if</span> <span class="n">date</span> <span class="k">else</span> <span class="n">m</span>
+
             <span class="k">try</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">Ansi</span><span class="p">,</span> <span class="n">log_level</span><span class="p">,</span> <span class="s2">&quot;INFO&quot;</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">_obfuscate_user_home</span><span class="p">(</span><span class="n">m</span><span class="p">)))</span>
+                <span class="n">ansi_color</span> <span class="o">=</span> <span class="n">_log_levels</span><span class="p">[</span><span class="n">log_level</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">)</span> \
+                    <span class="k">if</span> <span class="n">log_level</span> <span class="ow">in</span> <span class="n">_log_levels</span> <span class="k">else</span> <span class="n">log_level</span>
+                <span class="nb">print</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">Ansi</span><span class="p">,</span> <span class="n">ansi_color</span><span class="p">,</span> <span class="s2">&quot;DEFAULT&quot;</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">_obfuscate_user_home</span><span class="p">(</span><span class="n">pm</span><span class="p">)))</span>
             <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span></div>
+                <span class="nb">print</span><span class="p">(</span><span class="n">pm</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="LogSystem._obfuscate_user_home"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem._obfuscate_user_home">[docs]</a>    <span class="k">def</span> <span class="nf">_obfuscate_user_home</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Obfuscate User&#39;s home path.</span>
@@ -347,8 +337,8 @@
         <span class="k">return</span> <span class="n">msg</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_user_home</span><span class="p">,</span> <span class="s2">&quot;~&quot;</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="get_log_file"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.get_log_file">[docs]</a><span class="k">def</span> <span class="nf">get_log_file</span><span class="p">(</span><span class="n">storage_dir</span><span class="o">=</span><span class="s2">&quot;tmp/logs&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">subfix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Get log file.</span>
+<div class="viewcode-block" id="generate_log_path"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.generate_log_path">[docs]</a><span class="k">def</span> <span class="nf">generate_log_path</span><span class="p">(</span><span class="n">storage_dir</span><span class="o">=</span><span class="s2">&quot;tmp/logs&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">subfix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generate log file name.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>

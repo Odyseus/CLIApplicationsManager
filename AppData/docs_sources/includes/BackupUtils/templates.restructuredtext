@@ -33,7 +33,7 @@ Data keys
 
 - ``destination_prefix``: A string that will be added to the backed up files/folders. Its usage depends on the type of task. See :ref:`backup-utils-task-types-reference`.
 - ``tar_compression_level`` (**tar_local** only): See :ref:`backup-utils-tar-local-type-reference`.
-- ``tar_comp_arg`` (**List** | **tar_local** only): See :ref:`backup-utils-tar-local-type-reference`.
+- ``tar_func_args`` (**List** | **tar_local** only): See :ref:`backup-utils-tar-local-type-reference`.
 - ``tar_opt_args`` (**List** | **tar_local** only): See :ref:`backup-utils-tar-local-type-reference`.
 - ``rsync_args`` (**List** | **rsync_local** only): See :ref:`backup-utils-rsync-type-reference`.
 - ``pre_hook`` (**Method**): A Python function to be executed **BEFORE** a backup job is performed.

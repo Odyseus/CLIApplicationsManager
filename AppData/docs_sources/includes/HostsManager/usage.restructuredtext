@@ -14,6 +14,7 @@ Detailed usage
     - A **blacklist** file contains a list of host names that **will ALWAYS be added** to the final hosts file.
     - The **conf.py** file should contain at least a property named **sources** (mandatory - a list of dictionaries) and another property named **settings** (optional - a dictionary).
     - This application can process text files formatted as a hosts file (**0.0.0.0 hostname.com** one rule per line), text files formatted as a list of host names (**hostname.com** one domain per line) and archives (7Zip files, Zip files and compressed and non-compressed Tar files) containing any of the aforementioned text files.
+    - If one wants to use data from sources in any other format, the data can be *pre-processed*. See :ref:`pre_processors data key <hosts-manager-pre-processors-reference>`.
 
 .. include:: ../0-common/cli-options.restructuredtext
 - ``-f`` or ``--flush-dns-cache``: Attempt to flush DNS cache for the new hosts file to take effect.
@@ -29,7 +30,7 @@ Commands
 app.py run
 ^^^^^^^^^^
 
-The main command to update, build and install a hosts file.
+The main command to ``update``, ``build`` and ``install`` a hosts file.
 
 Sub-commands
 ~~~~~~~~~~~~

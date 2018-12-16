@@ -1,0 +1,29 @@
+
+Detailed usage
+==============
+
+.. include:: ../0-common/cli-options.restructuredtext
+
+Commands
+--------
+
+app.py validate
+^^^^^^^^^^^^^^^
+
+Validate data found inside the file specified by the ``--data-file`` |CLI| option against a JSON schema found inside the file specified by the ``--schema-file`` |CLI| option.
+
+Options
+~~~~~~~
+
+- ``-d <path>`` or ``--data-file=<path>``: Path to a Python or JSON file containing the data to validate against a JSON schema.
+- ``-s <path>`` or ``--schema-file=<path>``: Path to a Python or JSON file containing the JSON schema to validate the data against.
+- ``--data-prop=<name>``: Name of a property found inside the file specified in ``--data-file``. This property must contain the data to validate against a JSON schema.
+- ``--schema-prop=<name>``:  Name of a property found inside the file specified in ``--schema-file``. This property must contain the data that will be used as a JSON schema.
+
+.. note::
+
+    - The ``--data-prop`` and ``--schema-prop`` |CLI| options can be used to point to properties inside Python and JSON files.
+    - Properties can be nested (e.g., prop0.prop1.propN).
+    - Only JSON files with the **.json** file extension and Python files with the **.py** file extension are supported.
+
+.. include:: ../0-common/generate-command.restructuredtext

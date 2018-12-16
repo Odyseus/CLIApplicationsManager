@@ -77,11 +77,12 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
@@ -93,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -173,11 +174,13 @@
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Callable</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">timedelta</span>
 <span class="kn">from</span> <span class="nn">ipaddress</span> <span class="k">import</span> <span class="n">ip_address</span>
 <span class="kn">from</span> <span class="nn">runpy</span> <span class="k">import</span> <span class="n">run_path</span>
 <span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">copy2</span>
+<span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">rmtree</span>
 <span class="kn">from</span> <span class="nn">socket</span> <span class="k">import</span> <span class="n">gethostname</span>
 <span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">CalledProcessError</span>
 <span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">STDOUT</span>
@@ -186,10 +189,16 @@
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cmd_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">file_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">json_schema_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">shell_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">string_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">tqdm_wget</span>
 <span class="kn">from</span> <span class="nn">.python_utils.ansi_colors</span> <span class="k">import</span> <span class="n">Ansi</span>
 <span class="kn">from</span> <span class="nn">.python_utils.tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">.schemas</span> <span class="k">import</span> <span class="n">settings_schema</span>
+<span class="kn">from</span> <span class="nn">.schemas</span> <span class="k">import</span> <span class="n">sources_schema</span>
+
+<span class="kn">from</span> <span class="nn">.pre_processors</span> <span class="k">import</span> <span class="n">pre_processors</span> <span class="k">as</span> <span class="n">builtin_pre_processors</span>
 
 
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
@@ -215,17 +224,22 @@
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="n">_header_static_hosts</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">0.0.0.0 0.0.0.0</span>
+<span class="s2">127.0.0.1 local</span>
 <span class="s2">127.0.0.1 localhost</span>
 <span class="s2">127.0.0.1 localhost.localdomain</span>
-<span class="s2">127.0.0.1 local</span>
+<span class="s2">127.0.0.53 </span><span class="si">{host_name}</span><span class="s2"></span>
+<span class="s2">127.0.1.1 </span><span class="si">{host_name}</span><span class="s2"></span>
 <span class="s2">255.255.255.255 broadcasthost</span>
-<span class="s2">::1 localhost ip6-localhost ip6-loopback</span>
+<span class="s2">::1 ip6-localhost</span>
+<span class="s2">::1 ip6-loopback</span>
+<span class="s2">::1 localhost</span>
 <span class="s2">fe80::1</span><span class="si">%lo</span><span class="s2">0 localhost</span>
+<span class="s2">ff00::0 ip6-localnet</span>
+<span class="s2">ff00::0 ip6-mcastprefix</span>
 <span class="s2">ff02::1 ip6-allnodes</span>
 <span class="s2">ff02::2 ip6-allrouters</span>
-<span class="s2">0.0.0.0 0.0.0.0</span>
-<span class="s2">127.0.1.1 </span><span class="si">{host_name}</span><span class="s2"></span>
-<span class="s2">127.0.0.53 </span><span class="si">{host_name}</span><span class="s2"></span>
+<span class="s2">ff02::3 ip6-allhosts</span>
 
 <span class="s2">&quot;&quot;&quot;</span>
 
@@ -237,6 +251,7 @@
         <span class="s2">&quot;target_ip&quot;</span><span class="p">,</span>
         <span class="s2">&quot;keep_domain_comments&quot;</span><span class="p">,</span>
         <span class="s2">&quot;skip_static_hosts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;custom_static_hosts&quot;</span><span class="p">,</span>
         <span class="s2">&quot;backup_old_generated_hosts&quot;</span><span class="p">,</span>
         <span class="s2">&quot;backup_system_hosts&quot;</span>
     <span class="p">}</span>
@@ -377,7 +392,8 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span> <span class="o">=</span> <span class="n">dry_run</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_merge_file</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_merge_blacklist_file</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_merge_whitelist_file</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_final_file</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_current_date</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%B </span><span class="si">%d</span><span class="s2"> %Y&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">())</span>  <span class="c1"># Format = January 1 2018</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_profile_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_profiles_path</span><span class="p">,</span> <span class="n">profile</span><span class="p">)</span>
@@ -392,8 +408,21 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_sources</span><span class="p">()</span>
 
+        <span class="c1"># Customizable settings.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;target_ip&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;keep_domain_comments&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">&quot;skip_static_hosts&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">&quot;custom_static_hosts&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;backup_old_generated_hosts&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;backup_system_hosts&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;max_backups_to_keep&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="p">}</span>
+
         <span class="n">profile_settings</span> <span class="o">=</span> <span class="n">config_file</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;settings&quot;</span><span class="p">,</span> <span class="p">{})</span>
         <span class="n">profile_settings</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings_overrides</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">profile_settings</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_last_update_data</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="c1"># Changing self._exclusions from a list to a set improved items iterations</span>
@@ -403,12 +432,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_number_of_rules</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_number_of_ignores</span> <span class="o">=</span> <span class="mi">0</span>
 
-        <span class="c1"># Customizable settings.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_target_ip</span> <span class="o">=</span> <span class="n">profile_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;target_ip&quot;</span><span class="p">,</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_keep_domain_comments</span> <span class="o">=</span> <span class="n">profile_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;keep_domain_comments&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_skip_static_hosts</span> <span class="o">=</span> <span class="n">profile_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;skip_static_hosts&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_backup_old_generated_hosts</span> <span class="o">=</span> <span class="n">profile_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;backup_old_generated_hosts&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_backup_system_hosts</span> <span class="o">=</span> <span class="n">profile_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;backup_system_hosts&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_max_backups_to_keep</span> <span class="o">=</span> <span class="n">profile_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;max_backups_to_keep&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_option_keys</span><span class="p">()</span>
@@ -428,6 +451,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_paths</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_expand_local_sources_data</span><span class="p">()</span>
 
+<div class="viewcode-block" id="HostsManager._log_shell_separator"><a class="viewcode-back" href="../../modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._log_shell_separator">[docs]</a>    <span class="k">def</span> <span class="nf">_log_shell_separator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">char</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        char : str, optional</span>
+<span class="sd">            Character used to generate the &quot;CLI separator&quot;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="n">char</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="HostsManager._validate_sources"><a class="viewcode-back" href="../../modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._validate_sources">[docs]</a>    <span class="k">def</span> <span class="nf">_validate_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Validate sources.</span>
 
@@ -442,28 +475,24 @@
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingSourcesOnConfigFile</span><span class="p">(</span>
                 <span class="s2">&quot;The &#39;sources&#39; variable is not declared or it&#39;s empty.&quot;</span><span class="p">)</span>
 
-        <span class="n">mandatory_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">]</span>
+        <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">,</span> <span class="n">sources_schema</span><span class="p">,</span>
+            <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="s2">&quot;File: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_profile_path</span><span class="p">,</span> <span class="s2">&quot;conf.py&quot;</span><span class="p">),</span>
+                <span class="s2">&quot;Data key: sources&quot;</span>
+            <span class="p">]),</span>
+            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+
         <span class="n">names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
 
+        <span class="c1"># TODO: Find a way to validate the following using JSON schema.</span>
+        <span class="c1"># This doesn&#39;t seem possible with current JSON schema standards.</span>
+        <span class="c1"># Checked up to daft 4 of the JSON schema standard.</span>
+        <span class="c1"># Revisit when the stable version of the jsonschema module implements</span>
+        <span class="c1"># the draft 7 of the standard.</span>
         <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">:</span>
             <span class="n">source_name</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-            <span class="n">report_source</span> <span class="o">=</span> <span class="n">source_name</span> <span class="k">if</span> <span class="n">source_name</span> <span class="k">else</span> <span class="n">source</span>
-            <span class="n">source_keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-
-            <span class="c1"># Do not allow sources without mandatory keys.</span>
-            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">mandatory_keys</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">source_keys</span><span class="p">:</span>
-                    <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Missing mandatory &lt;</span><span class="si">%s</span><span class="s2">&gt; key!!! Source: &lt;</span><span class="si">%s</span><span class="s2">&gt;&quot;</span> <span class="o">%</span>
-                                  <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">report_source</span><span class="p">))</span>
-
-            <span class="k">if</span> <span class="s2">&quot;unzip_prog&quot;</span> <span class="ow">in</span> <span class="n">source_keys</span> <span class="ow">and</span> <span class="s2">&quot;unzip_target&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">source_keys</span><span class="p">:</span>
-                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Missing mandatory &lt;</span><span class="si">%s</span><span class="s2">&gt; key!!! Source: &lt;</span><span class="si">%s</span><span class="s2">&gt;&quot;</span> <span class="o">%</span>
-                              <span class="p">(</span><span class="s2">&quot;unzip_target&quot;</span><span class="p">,</span> <span class="n">report_source</span><span class="p">))</span>
-
-            <span class="k">if</span> <span class="s2">&quot;unzip_target&quot;</span> <span class="ow">in</span> <span class="n">source_keys</span> <span class="ow">and</span> <span class="s2">&quot;unzip_prog&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">source_keys</span><span class="p">:</span>
-                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Missing mandatory &lt;</span><span class="si">%s</span><span class="s2">&gt; key!!! Source: &lt;</span><span class="si">%s</span><span class="s2">&gt;&quot;</span> <span class="o">%</span>
-                              <span class="p">(</span><span class="s2">&quot;unzip_prog&quot;</span><span class="p">,</span> <span class="n">report_source</span><span class="p">))</span>
 
             <span class="k">if</span> <span class="n">source_name</span><span class="p">:</span>
                 <span class="c1"># Do not allow more than one source with the same &quot;name&quot;.</span>
@@ -491,9 +520,10 @@
 
             <span class="c1"># Generate and add the path for the downloaded file.</span>
             <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unzip_prog&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
-                <span class="n">source</span><span class="p">[</span><span class="s2">&quot;downloaded_filename&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sources_storage_compressed</span><span class="p">,</span>
-                                                             <span class="n">source</span><span class="p">[</span><span class="s2">&quot;slugified_name&quot;</span><span class="p">],</span>
-                                                             <span class="n">source</span><span class="p">[</span><span class="s2">&quot;slugified_name&quot;</span><span class="p">])</span>
+                <span class="n">source</span><span class="p">[</span><span class="s2">&quot;downloaded_filename&quot;</span><span class="p">]</span> <span class="o">=</span> \
+                    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sources_storage_compressed</span><span class="p">,</span>
+                                 <span class="n">source</span><span class="p">[</span><span class="s2">&quot;slugified_name&quot;</span><span class="p">],</span>
+                                 <span class="n">source</span><span class="p">[</span><span class="s2">&quot;slugified_name&quot;</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">source</span><span class="p">[</span><span class="s2">&quot;downloaded_filename&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_sources_storage_raw</span><span class="p">,</span> <span class="n">source</span><span class="p">[</span><span class="s2">&quot;slugified_name&quot;</span><span class="p">])</span>
@@ -507,26 +537,24 @@
 
 <div class="viewcode-block" id="HostsManager._validate_option_keys"><a class="viewcode-back" href="../../modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._validate_option_keys">[docs]</a>    <span class="k">def</span> <span class="nf">_validate_option_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Validate keys.</span>
-
-<span class="sd">        Raises</span>
-<span class="sd">        ------</span>
-<span class="sd">        exceptions.WrongValueForOption</span>
-<span class="sd">            See &lt;class :any:`exceptions.WrongValueForOption`&gt;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_valid_integer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_max_backups_to_keep</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">WrongValueForOption</span><span class="p">(</span>
-                <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> Option &lt;max_backups_to_keep&gt;.&quot;</span> <span class="o">%</span> <span class="n">_invalid_integer_msg</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_valid_ip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_target_ip</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">WrongValueForOption</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> Option &lt;target_ip&gt;.&quot;</span> <span class="o">%</span> <span class="n">_invalid_ip_msg</span><span class="p">)</span></div>
+        <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">,</span> <span class="n">settings_schema</span><span class="p">,</span>
+            <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="s2">&quot;File: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_profile_path</span><span class="p">,</span> <span class="s2">&quot;conf.py&quot;</span><span class="p">),</span>
+                <span class="s2">&quot;Data key: settings&quot;</span>
+            <span class="p">]),</span>
+            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="HostsManager.install_hosts_file"><a class="viewcode-back" href="../../modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.install_hosts_file">[docs]</a>    <span class="k">def</span> <span class="nf">install_hosts_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Install the generated hosts file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">PURPLE</span><span class="p">(</span><span class="s2">&quot;Moving the hosts file requires administrative privileges.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                          <span class="s2">&quot;You might need to enter your password.&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_shell_separator</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backup_system_hosts</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_MAGENTA</span><span class="p">(</span><span class="s2">&quot;Moving the hosts file requires administrative privileges.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                                 <span class="s2">&quot;You might need to enter your password.&quot;</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s2">&quot;backup_system_hosts&quot;</span><span class="p">]:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Backing up the system&#39;s hosts file...&quot;</span><span class="p">)</span>
                 <span class="n">backup_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backups_storage</span><span class="p">,</span> <span class="s2">&quot;system-hosts-</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -539,8 +567,8 @@
                                             <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backups_storage</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">copy2</span><span class="p">(</span><span class="s2">&quot;/etc/hosts&quot;</span><span class="p">,</span> <span class="n">backup_file_path</span><span class="p">)</span>
-                    <span class="n">file_utils</span><span class="o">.</span><span class="n">remove_surplus_files</span><span class="p">(</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">_backups_storage</span><span class="p">,</span> <span class="s2">&quot;system-hosts-*&quot;</span><span class="p">,</span> <span class="n">max_files_to_keep</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+                    <span class="n">file_utils</span><span class="o">.</span><span class="n">remove_surplus_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backups_storage</span><span class="p">,</span> <span class="s2">&quot;system-hosts-*&quot;</span><span class="p">,</span>
+                                                    <span class="n">max_files_to_keep</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s2">&quot;max_backups_to_keep&quot;</span><span class="p">])</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
 
@@ -549,8 +577,11 @@
 <div class="viewcode-block" id="HostsManager.build_hosts_file"><a class="viewcode-back" href="../../modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.build_hosts_file">[docs]</a>    <span class="k">def</span> <span class="nf">build_hosts_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Build the hosts file from the local sources.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_create_initial_file</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_shell_separator</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_create_temporary_files</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_remove_old_hosts_file</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_populate_exclusions_list</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_populate_final_file</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_write_opening_header</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Hosts file building finished.&quot;</span><span class="p">)</span>
@@ -574,8 +605,22 @@
 <span class="sd">        force_update : bool</span>
 <span class="sd">            Ignore source update frequency and update its file/s anyway.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_shell_separator</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Updating sources...&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">force_update</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;The following directory will be removed:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                                        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_sources_storage_raw</span><span class="p">,</span>
+                                                   <span class="bp">self</span><span class="o">.</span><span class="n">_sources_storage_compressed</span><span class="p">]))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">rmtree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sources_storage_raw</span><span class="p">)</span>
+                <span class="n">rmtree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sources_storage_compressed</span><span class="p">)</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_log_shell_separator</span><span class="p">()</span>
+
                 <span class="k">if</span> <span class="n">force_update</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_update_source</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Updating source &lt;</span><span class="si">%s</span><span class="s2">&gt;&quot;</span> <span class="o">%</span> <span class="n">source</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
 
@@ -600,7 +645,6 @@
                     <span class="n">data_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_last_update_data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compressed_sources</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling compressed sources.&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_handle_compressed_sources</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="HostsManager._should_update_source"><a class="viewcode-back" href="../../modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._should_update_source">[docs]</a>    <span class="k">def</span> <span class="nf">_should_update_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
@@ -686,11 +730,11 @@
 <span class="sd">        exceptions.KeyboardInterruption</span>
 <span class="sd">            See &lt;class :any:`exceptions.KeyboardInterruption`&gt;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">is_compressed_source</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unzip_prog&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">is_compressed_source</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unzip_prog&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">is_compressed_source</span><span class="p">:</span>
-            <span class="n">parent_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">source</span><span class="p">[</span><span class="s2">&quot;downloaded_filename&quot;</span><span class="p">])</span>
+        <span class="n">parent_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">source</span><span class="p">[</span><span class="s2">&quot;downloaded_filename&quot;</span><span class="p">])</span>
 
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_dir</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">):</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;Directory will be created at:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">parent_dir</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
@@ -725,8 +769,12 @@
 <span class="sd">        exceptions.KeyboardInterruption</span>
 <span class="sd">            See &lt;class :any:`exceptions.KeyboardInterruption`&gt;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_shell_separator</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Handling compressed sources...&quot;</span><span class="p">)</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compressed_sources</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_log_shell_separator</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Decompressing source &lt;</span><span class="si">%s</span><span class="s2">&gt;.&quot;</span> <span class="o">%</span> <span class="n">source</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
 
                 <span class="n">aborted_msg</span> <span class="o">=</span> <span class="s2">&quot;Extract operation for &lt;</span><span class="si">%s</span><span class="s2">&gt; aborted.&quot;</span> <span class="o">%</span> <span class="n">source</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
@@ -803,7 +851,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Writing the opening header...&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_final_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Reset file pointer.</span>
-        <span class="n">file_contents</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_final_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  <span class="c1"># Save content.</span>
+        <span class="n">file_contents</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_final_file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>  <span class="c1"># Store content.</span>
+        <span class="n">file_contents</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>  <span class="c1"># Sort content.</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_final_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Write at the top.</span>
 
@@ -812,11 +861,14 @@
             <span class="n">number_of_rules</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:,}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_number_of_rules</span><span class="p">)</span>
         <span class="p">)</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_skip_static_hosts</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s2">&quot;skip_static_hosts&quot;</span><span class="p">]:</span>
             <span class="n">header</span> <span class="o">+=</span> <span class="n">_header_static_hosts</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host_name</span><span class="o">=</span><span class="n">gethostname</span><span class="p">())</span>
 
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s2">&quot;custom_static_hosts&quot;</span><span class="p">]:</span>
+            <span class="n">header</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s2">&quot;custom_static_hosts&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host_name</span><span class="o">=</span><span class="n">gethostname</span><span class="p">())</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_final_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">header</span><span class="p">,</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_final_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_contents</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_final_file</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">file_contents</span><span class="p">)</span>
 
         <span class="n">base_msg</span> <span class="o">=</span> <span class="s2">&quot;Newly generated hosts file at:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span>
 
@@ -849,15 +901,15 @@
             <span class="c1"># Create if already removed, so remove won&#39;t raise an error.</span>
             <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_hosts_file_path</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backup_old_generated_hosts</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s2">&quot;backup_old_generated_hosts&quot;</span><span class="p">]:</span>
                 <span class="n">backup_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backups_storage</span><span class="p">,</span> <span class="s2">&quot;generated-hosts-</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                     <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">-%H-%M-%S&quot;</span><span class="p">)))</span>
 
                 <span class="c1"># Make a backup copy, marking the date in which the list was updated</span>
                 <span class="n">copy2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_hosts_file_path</span><span class="p">,</span> <span class="n">backup_file_path</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Old generated hosts file backed up...&quot;</span><span class="p">)</span>
-                <span class="n">file_utils</span><span class="o">.</span><span class="n">remove_surplus_files</span><span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_backups_storage</span><span class="p">,</span> <span class="s2">&quot;generated-hosts-*&quot;</span><span class="p">,</span> <span class="n">max_files_to_keep</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+                <span class="n">file_utils</span><span class="o">.</span><span class="n">remove_surplus_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backups_storage</span><span class="p">,</span> <span class="s2">&quot;generated-hosts-*&quot;</span><span class="p">,</span>
+                                                <span class="n">max_files_to_keep</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s2">&quot;max_backups_to_keep&quot;</span><span class="p">])</span>
 
             <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_hosts_file_path</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Old generated hosts file removed...&quot;</span><span class="p">)</span>
@@ -878,44 +930,115 @@
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sources_storage_compressed</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backups_storage</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="HostsManager._create_initial_file"><a class="viewcode-back" href="../../modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._create_initial_file">[docs]</a>    <span class="k">def</span> <span class="nf">_create_initial_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize the file in which we merge all host files for later pruning.</span>
+<div class="viewcode-block" id="HostsManager._create_temporary_files"><a class="viewcode-back" href="../../modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._create_temporary_files">[docs]</a>    <span class="k">def</span> <span class="nf">_create_temporary_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create temporary files.</span>
+
+<span class="sd">        Initialize the files in which all source files will be merged for later pruning.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_merge_file</span> <span class="o">=</span> <span class="n">NamedTemporaryFile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_merge_blacklist_file</span> <span class="o">=</span> <span class="n">NamedTemporaryFile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_merge_whitelist_file</span> <span class="o">=</span> <span class="n">NamedTemporaryFile</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Creating initial temporary file...&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Collecting data from local sources...&quot;</span><span class="p">)</span>
-        <span class="n">sources_paths</span> <span class="o">=</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">recursive_glob</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sources_storage_raw</span><span class="p">,</span> <span class="s2">&quot;hosts-*&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Collecting data from raw sources...&quot;</span><span class="p">)</span>
 
-        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sources_paths</span><span class="p">))):</span>
-            <span class="n">source_path</span> <span class="o">=</span> <span class="n">sources_paths</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
-            <span class="n">source_path_rel</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="n">_profiles_path</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">))):</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+            <span class="n">source_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sources_storage_raw</span><span class="p">,</span> <span class="n">source</span><span class="p">[</span><span class="s2">&quot;slugified_name&quot;</span><span class="p">])</span>
 
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">curFile</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_merge_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">curFile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">))</span>
-            <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;File &lt;</span><span class="si">%s</span><span class="s2">&gt;&quot;</span> <span class="o">%</span> <span class="n">source_path_rel</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Attempt to read file with UTF-8 encoding failed.&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">source_path</span><span class="p">):</span>
+                <span class="n">source_data</span> <span class="o">=</span> <span class="kc">None</span>
 
+                <span class="c1"># Deal only with UTF-8 and cp1252 encodings.</span>
+                <span class="c1"># If a source with any other encoding is found, FORGET OF ITS EXISTENCE!!!</span>
                 <span class="k">try</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Trying to read file with cp1252 encoding.&quot;</span><span class="p">)</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">curFile</span><span class="p">:</span>
+                        <span class="n">source_data</span> <span class="o">=</span> <span class="n">curFile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;cp1252&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">curFile</span><span class="p">:</span>
+                            <span class="n">source_data</span> <span class="o">=</span> <span class="n">curFile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                    <span class="k">except</span> <span class="ne">UnicodeDecodeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Attempt to open file with cp1252 encoding failed.&quot;</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;File ignored.&quot;</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                        <span class="k">continue</span>
 
-                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">source_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;cp1252&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">curFile</span><span class="p">:</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">_merge_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">curFile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">))</span>
-                <span class="k">except</span> <span class="ne">UnicodeDecodeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Attempt to open file with cp1252 encoding failed.&quot;</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;File ignored.&quot;</span><span class="p">)</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">source_data</span><span class="p">:</span>
+                    <span class="n">source_data</span> <span class="o">=</span> <span class="n">source_data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pre_processors&quot;</span><span class="p">):</span>
+                        <span class="k">for</span> <span class="n">pp</span> <span class="ow">in</span> <span class="n">source</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pre_processors&quot;</span><span class="p">):</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pp</span><span class="p">,</span> <span class="n">Callable</span><span class="p">):</span>
+                                    <span class="n">pp_qual_name</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="vm">__qualname__</span>
+                                    <span class="n">source_data</span> <span class="o">=</span> <span class="n">pp</span><span class="p">(</span><span class="n">source_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+                                <span class="k">elif</span> <span class="n">pp</span> <span class="ow">in</span> <span class="n">builtin_pre_processors</span><span class="p">:</span>
+                                    <span class="n">builtin_pre_pro</span> <span class="o">=</span> <span class="n">builtin_pre_processors</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pp</span><span class="p">)</span>
+                                    <span class="n">pp_qual_name</span> <span class="o">=</span> <span class="n">builtin_pre_pro</span><span class="o">.</span><span class="vm">__qualname__</span>
+                                    <span class="n">source_data</span> <span class="o">=</span> <span class="n">builtin_pre_pro</span><span class="p">(</span><span class="n">source_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+                            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                                <span class="c1"># Log the pre-processor function&#39;s qualified name.</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Pre-processor error: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">pp_qual_name</span><span class="p">)</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                                <span class="k">continue</span>
+
+                    <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                            <span class="s2">&quot;_merge_whitelist_file&quot;</span>
+                            <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;is_whitelist&quot;</span><span class="p">)</span> <span class="k">else</span>
+                            <span class="s2">&quot;_merge_blacklist_file&quot;</span>
+                            <span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">source_data</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">))</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Collecting data from blacklist files...&quot;</span><span class="p">)</span>
+
         <span class="k">for</span> <span class="n">blacklist_file</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_profile_blacklist_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_blacklist_path</span><span class="p">]:</span>
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">blacklist_file</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Adding data from &lt;</span><span class="si">%s</span><span class="s2">&gt;&quot;</span> <span class="o">%</span>
                                  <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">blacklist_file</span><span class="p">,</span> <span class="n">_user_data_path</span><span class="p">))</span>
                 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">blacklist_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">curFile</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_merge_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">curFile</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">))</span></div>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_merge_blacklist_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">curFile</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="HostsManager._populate_exclusions_list"><a class="viewcode-back" href="../../modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._populate_exclusions_list">[docs]</a>    <span class="k">def</span> <span class="nf">_populate_exclusions_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Populate exclusions list.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        exceptions.KeyboardInterruption</span>
+<span class="sd">            See &lt;class :any:`exceptions.KeyboardInterruption`&gt;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Populating the exclusions list...&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Processing local whitelist files...&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">whitelist_file</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_profile_whitelist_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_whitelist_path</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">whitelist_file</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Adding data from &lt;</span><span class="si">%s</span><span class="s2">&gt;...&quot;</span> <span class="o">%</span>
+                                 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">whitelist_file</span><span class="p">,</span> <span class="n">_user_data_path</span><span class="p">))</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">whitelist_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ins</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">ins</span><span class="p">:</span>
+                        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot; </span><span class="se">\t\n\r</span><span class="s2">&quot;</span><span class="p">)</span>
+
+                        <span class="k">if</span> <span class="n">line</span> <span class="ow">and</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;#&quot;</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_exclusions</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Processing whitelist sources...&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_merge_whitelist_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reset file pointer</span>
+        <span class="n">merge_whitelist_file_lines</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_whitelist_file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">merge_whitelist_file_lines</span><span class="p">))):</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">merge_whitelist_file_lines</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+                <span class="k">if</span> <span class="n">line</span> <span class="ow">and</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;#&quot;</span> <span class="ow">and</span> <span class="n">line</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;::1&quot;</span><span class="p">:</span>
+                    <span class="n">target_ip</span><span class="p">,</span> <span class="n">hostname</span><span class="p">,</span> <span class="n">comment</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_rule</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="n">hostname</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_exclusions</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">hostname</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyboardInterrupt</span><span class="p">,</span> <span class="ne">SystemExit</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_merge_whitelist_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">KeyboardInterruption</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_merge_whitelist_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="HostsManager._populate_final_file"><a class="viewcode-back" href="../../modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._populate_final_file">[docs]</a>    <span class="k">def</span> <span class="nf">_populate_final_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Populate the final hosts file.</span>
@@ -932,71 +1055,52 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Populating the new generated hosts file...&quot;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Populating the exclusions list...&quot;</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">whitelist_file</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_profile_whitelist_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_whitelist_path</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">whitelist_file</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Adding data from &lt;</span><span class="si">%s</span><span class="s2">&gt;...&quot;</span> <span class="o">%</span>
-                                 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">whitelist_file</span><span class="p">,</span> <span class="n">_user_data_path</span><span class="p">))</span>
-                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">whitelist_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ins</span><span class="p">:</span>
-                    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">ins</span><span class="p">:</span>
-                        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot; </span><span class="se">\t\n\r</span><span class="s2">&quot;</span><span class="p">)</span>
-
-                        <span class="k">if</span> <span class="n">line</span> <span class="ow">and</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="s2">&quot;#&quot;</span><span class="p">:</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">_exclusions</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_final_file</span> <span class="o">=</span> <span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;generated-hosts-file-&quot;</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_final_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_hosts_file_path</span><span class="p">,</span> <span class="s2">&quot;w+b&quot;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_merge_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reset file pointer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_merge_blacklist_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reset file pointer</span>
+
         <span class="n">hostnames</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;0.0.0.0&quot;</span>
+            <span class="s2">&quot;broadcasthost&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ip6-allhosts&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ip6-allnodes&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ip6-allrouters&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ip6-localhost&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ip6-localnet&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ip6-loopback&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ip6-mcastprefix&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;local&quot;</span><span class="p">,</span>
             <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
             <span class="s2">&quot;localhost.localdomain&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;local&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;broadcasthost&quot;</span>
         <span class="p">}</span>
 
         <span class="n">cache_size</span> <span class="o">=</span> <span class="mi">250000</span>
         <span class="n">cache_storage</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
-        <span class="n">merge_file_lines</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-        <span class="n">processed_lines</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">merge_file_lines</span><span class="p">)</span>
+        <span class="n">merge_blacklist_file_lines</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_blacklist_file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="n">processed_lines</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">merge_blacklist_file_lines</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Adding rules to the final hosts file...&quot;</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># DO NOT USE &quot;continue&quot; INSIDE THIS LOOP!!!</span>
-            <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">merge_file_lines</span><span class="p">))):</span>
-                <span class="n">line</span> <span class="o">=</span> <span class="n">merge_file_lines</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">merge_blacklist_file_lines</span><span class="p">))):</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">merge_blacklist_file_lines</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
                 <span class="n">processed_lines</span> <span class="o">-=</span> <span class="mi">1</span>
-                <span class="n">write_line</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="n">normalized_rule</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
-                <span class="c1"># Explicit encoding.</span>
-                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span>
-
-                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-
-                <span class="c1"># Trim periods: See https://github.com/StevenBlack/hosts/issues/271</span>
-                <span class="c1"># line = line.rstrip(&quot;.&quot;)</span>
-
-                <span class="c1"># Set line to &quot;&quot; instead of using continue. This is to avoid exiting the loop</span>
+                <span class="c1"># Do not use continue. This is to avoid exiting the loop</span>
                 <span class="c1"># while there is still data stored inside cache_storage.</span>
-                <span class="k">if</span> <span class="n">line</span> <span class="ow">and</span> <span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;#&quot;</span> <span class="ow">or</span> <span class="s2">&quot;::1&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">):</span>
-                    <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-
-                <span class="k">if</span> <span class="n">line</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">line</span> <span class="ow">and</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;#&quot;</span> <span class="ow">and</span> <span class="n">line</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;::1&quot;</span><span class="p">:</span>
                     <span class="c1"># Normalize rule.</span>
                     <span class="n">target_ip</span><span class="p">,</span> <span class="n">hostname</span><span class="p">,</span> <span class="n">comment</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_rule</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
-                    <span class="c1"># Changing self._exclusions from a list to a set improved items iterations</span>
-                    <span class="c1"># from ~50.000 it/s to ~75.000 it/s.</span>
-                    <span class="k">if</span> <span class="n">hostname</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exclusions</span><span class="p">:</span>
-                        <span class="n">write_line</span> <span class="o">=</span> <span class="kc">False</span>
-
-                    <span class="k">if</span> <span class="n">write_line</span><span class="p">:</span>
-                        <span class="k">if</span> <span class="n">comment</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_keep_domain_comments</span><span class="p">:</span>
+                    <span class="c1"># Changing self._exclusions from a list to a set improved items</span>
+                    <span class="c1"># iterations from ~50.000 it/s to ~75.000 it/s.</span>
+                    <span class="k">if</span> <span class="n">hostname</span> <span class="ow">and</span> <span class="n">hostname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exclusions</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">comment</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s2">&quot;keep_domain_comments&quot;</span><span class="p">]:</span>
                             <span class="n">normalized_rule</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> #</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">target_ip</span><span class="p">,</span> <span class="n">hostname</span><span class="p">,</span> <span class="n">comment</span><span class="p">)</span>
                         <span class="k">else</span><span class="p">:</span>
                             <span class="n">normalized_rule</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">target_ip</span><span class="p">,</span> <span class="n">hostname</span><span class="p">)</span>
@@ -1012,10 +1116,10 @@
                     <span class="n">cache_storage</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
                     <span class="n">cache_size</span> <span class="o">=</span> <span class="mi">250000</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">KeyboardInterrupt</span><span class="p">,</span> <span class="ne">SystemExit</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_merge_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_merge_blacklist_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">KeyboardInterruption</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_merge_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_merge_blacklist_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="HostsManager._normalize_rule"><a class="viewcode-back" href="../../modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager._normalize_rule">[docs]</a>    <span class="k">def</span> <span class="nf">_normalize_rule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Standardize and format the rule string provided.</span>
@@ -1027,7 +1131,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        The rules elements : tuple</span>
+<span class="sd">        tuple</span>
 <span class="sd">            The rules elements.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -1039,16 +1143,16 @@
 
         <span class="k">try</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="c1"># In &quot;ip host&quot; format.</span>
+                <span class="c1"># In &quot;ip host&quot; format. Most likely a line from a file in hosts format.</span>
                 <span class="n">hostname</span> <span class="o">=</span> <span class="n">rule_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
             <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-                <span class="c1"># In &quot;host&quot; format.</span>
+                <span class="c1"># In &quot;host&quot; format. Most likely a line for a file with a list of domains.</span>
                 <span class="n">hostname</span> <span class="o">=</span> <span class="n">rule_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="n">hostname</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="k">if</span> <span class="n">hostname</span> <span class="ow">and</span> <span class="n">is_valid_host</span><span class="p">(</span><span class="n">hostname</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_ip</span><span class="p">,</span> <span class="n">hostname</span><span class="p">,</span> <span class="n">comment</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s2">&quot;target_ip&quot;</span><span class="p">],</span> <span class="n">hostname</span><span class="p">,</span> <span class="n">comment</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_number_of_ignores</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Ignored line: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">line</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1059,9 +1163,6 @@
 <div class="viewcode-block" id="is_valid_host"><a class="viewcode-back" href="../../modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.is_valid_host">[docs]</a><span class="k">def</span> <span class="nf">is_valid_host</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;IDN compatible domain validation.</span>
 
-<span class="sd">    Based on answers from a</span>
-<span class="sd">    `StackOverflow question &lt;https://stackoverflow.com/questions/2532053/validate-a-hostname-string&gt;`__</span>
-
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    host : str</span>
@@ -1071,6 +1172,11 @@
 <span class="sd">    -------</span>
 <span class="sd">    bool</span>
 <span class="sd">        Whether the host name is valid or not.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Based on: `Validate-a-hostname-string \</span>
+<span class="sd">    &lt;https://stackoverflow.com/questions/2532053/validate-a-hostname-string&gt;`__</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">host</span> <span class="o">=</span> <span class="n">host</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
 
@@ -1125,7 +1231,7 @@
 <span class="sd">    logger : object</span>
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">PURPLE</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Flushing the DNS cache to utilize new hosts file...</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_MAGENTA</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Flushing the DNS cache to utilize new hosts file...</span>
 <span class="s2">Flushing the DNS cache requires administrative privileges.</span>
 <span class="s2">You will need to enter your password.</span>
 <span class="s2">&quot;&quot;&quot;</span><span class="p">))</span>

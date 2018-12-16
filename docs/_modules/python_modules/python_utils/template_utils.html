@@ -77,11 +77,12 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
@@ -93,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -192,7 +193,7 @@
 
 
 <span class="n">bash_completions_step1</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">Bash completions creation. Step 1.</span>
+<span class="s2">**Bash completions creation. Step 1.**</span>
 
 <span class="s2">The file </span><span class="si">{0}</span><span class="s2"></span>
 <span class="s2">will be created.</span>
@@ -200,18 +201,18 @@
 
 
 <span class="n">bash_completions_step2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">Bash completions creation. Step 2.</span>
+<span class="s2">**Bash completions creation. Step 2.**</span>
 
-<span class="s2">The file </span><span class="si">{0}</span><span class="s2">/.bash_completion will be created if it doesn&#39;t exists.</span>
+<span class="s2">The file **</span><span class="si">{0}</span><span class="s2">/.bash_completion** will be created if it doesn&#39;t exists.</span>
 
 <span class="s2">Or the pertinent code to load bash completions from the .bash_completion.d</span>
 <span class="s2">directory will be appended to the existent file.</span>
 
-<span class="s2">The </span><span class="si">{0}</span><span class="s2">/.bash_completion file needs to be manually sourced in your shell&#39;s</span>
+<span class="s2">The **</span><span class="si">{0}</span><span class="s2">/.bash_completion** file needs to be manually sourced in your shell&#39;s</span>
 <span class="s2">configuration file (.bashrc, .zshrc, etc.).</span>
 
 <span class="s2">The following is the content that will be appended to the</span>
-<span class="si">{0}</span><span class="s2">/.bash_completion file.</span>
+<span class="s2">**</span><span class="si">{0}</span><span class="s2">/.bash_completion** file.</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 
@@ -290,11 +291,11 @@
     <span class="p">}</span>
 
     <span class="k">if</span> <span class="n">prompt_for_name</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">PURPLE</span><span class="p">(</span><span class="s2">&quot;Set an executable file name or press Enter to use default&quot;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_MAGENTA</span><span class="p">(</span><span class="s2">&quot;Set an executable file name or press Enter to use default&quot;</span><span class="p">))</span>
         <span class="n">prompts</span><span class="o">.</span><span class="n">do_prompt</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;Enter a file name&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
 
     <span class="k">if</span> <span class="n">prompt_for_path</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">PURPLE</span><span class="p">(</span><span class="s2">&quot;Set full path to store executable file or press Enter to use default&quot;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_MAGENTA</span><span class="p">(</span><span class="s2">&quot;Set full path to store executable file or press Enter to use default&quot;</span><span class="p">))</span>
         <span class="n">prompts</span><span class="o">.</span><span class="n">do_prompt</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;sys_exec_path&quot;</span><span class="p">,</span> <span class="s2">&quot;Enter absolute path&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;sys_exec_path&quot;</span><span class="p">])</span>
 
     <span class="n">d</span><span class="p">[</span><span class="s2">&quot;sys_exec_path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;sys_exec_path&quot;</span><span class="p">])</span>
@@ -303,12 +304,12 @@
     <span class="n">destination</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;sys_exec_path&quot;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;sys_exec_path&quot;</span><span class="p">]):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">WARNING</span><span class="p">(</span><span class="s2">&quot;Path doesn&#39;t exists and needs to be created&quot;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_YELLOW</span><span class="p">(</span><span class="s2">&quot;Path doesn&#39;t exists and needs to be created&quot;</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="n">prompts</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Proceed?&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;sys_exec_path&quot;</span><span class="p">],</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">elif</span> <span class="ow">not</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_dir</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;sys_exec_path&quot;</span><span class="p">]):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">WARNING</span><span class="p">(</span><span class="s2">&quot;Chosen path isn&#39;t a directory. Aborted!!!&quot;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_YELLOW</span><span class="p">(</span><span class="s2">&quot;Chosen path isn&#39;t a directory. Aborted!!!&quot;</span><span class="p">))</span>
         <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">()</span>
 
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating system executable...&quot;</span><span class="p">)</span>
@@ -330,7 +331,7 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">bash_comp_step_one</span><span class="p">:</span>
         <span class="k">return</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">PURPLE</span><span class="p">(</span><span class="n">bash_completions_step1</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bash_completions_file_destination</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_MAGENTA</span><span class="p">(</span><span class="n">bash_completions_step1</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bash_completions_file_destination</span><span class="p">)))</span>
 
     <span class="k">if</span> <span class="n">bash_comp_step_one_confirmed</span> <span class="ow">or</span> <span class="n">prompts</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Proceed?&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating bash completions file...&quot;</span><span class="p">)</span>
@@ -348,10 +349,10 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">bash_comp_step_two</span><span class="p">:</span>
         <span class="k">return</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">PURPLE</span><span class="p">(</span><span class="n">bash_completions_step2</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">))))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">()))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="n">BASH_COMPLETION_LOADER_CONTENT</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_MAGENTA</span><span class="p">(</span><span class="n">bash_completions_step2</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">))))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">(</span><span class="n">BASH_COMPLETION_LOADER_CONTENT</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">()))</span>
 
     <span class="k">if</span> <span class="n">prompts</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Proceed?&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Attempting to set up Bash completions loader...&quot;</span><span class="p">)</span>

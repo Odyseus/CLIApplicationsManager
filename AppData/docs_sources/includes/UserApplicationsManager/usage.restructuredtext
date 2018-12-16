@@ -21,7 +21,7 @@ Commands
 app.py manage
 ^^^^^^^^^^^^^
 
-This command will perform different actions depending on the type of application and various conditions.
+This command downloads and *installs* all applications defined in the ``conf.py`` file. It will perform different actions depending on the type of application and various conditions.
 
 - For applications of type ``git_repo`` or ``hg_repo``:
 

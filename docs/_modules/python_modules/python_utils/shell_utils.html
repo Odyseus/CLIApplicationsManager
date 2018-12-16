@@ -77,11 +77,12 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
@@ -93,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -164,7 +165,7 @@
 <span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">get_terminal_size</span>
 
 
-<div class="viewcode-block" id="get_cli_header"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.shell_utils.html#python_modules.python_utils.shell_utils.get_cli_header">[docs]</a><span class="k">def</span> <span class="nf">get_cli_header</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">char</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">80</span><span class="p">):</span>
+<div class="viewcode-block" id="get_cli_header"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.shell_utils.html#python_modules.python_utils.shell_utils.get_cli_header">[docs]</a><span class="k">def</span> <span class="nf">get_cli_header</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">char</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Get a &quot;decorated header&quot;.</span>
 
 <span class="sd">    Get a &quot;decorated header&quot; to display at the beginning of the CLI execution (or whenever it is</span>
@@ -176,8 +177,6 @@
 <span class="sd">        The application name or a &quot;title&quot; to display as a &quot;header&quot;.</span>
 <span class="sd">    char : str, optional</span>
 <span class="sd">        The &quot;decorator&quot; character.</span>
-<span class="sd">    length : int, optional</span>
-<span class="sd">        The total length that each line should have.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>

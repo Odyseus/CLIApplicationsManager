@@ -12,8 +12,8 @@ Knowledge Base's documentation
 
 .. include:: ../0-common/system-executable-hint.restructuredtext
 
-CLI Synopsis
-============
+|CLI| Synopsis
+==============
 
 .. only:: html
 

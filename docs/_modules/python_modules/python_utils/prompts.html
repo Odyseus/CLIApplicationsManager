@@ -77,11 +77,12 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
@@ -93,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -218,20 +219,20 @@
         <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;Confirm&quot;</span>
 
     <span class="k">if</span> <span class="n">response</span><span class="p">:</span>
-        <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> [</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">]: &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">)</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;**</span><span class="si">%s</span><span class="s2"> [</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">]:** &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> [</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">]: &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">)</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;**</span><span class="si">%s</span><span class="s2"> [</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">]:** &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="c1"># Lower the input case just so I don&#39;t have to micro-manage the answer.</span>
-            <span class="n">ans</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="n">prompt</span><span class="p">))</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">(</span><span class="n">prompt</span><span class="p">))</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
             <span class="k">if</span> <span class="ow">not</span> <span class="n">ans</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">response</span>
 
             <span class="k">if</span> <span class="n">ans</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">]:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="s2">&quot;Please enter y or n.&quot;</span><span class="p">))</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_YELLOW</span><span class="p">(</span><span class="s2">&quot;**Please enter y or n.**&quot;</span><span class="p">))</span>
                 <span class="k">continue</span>
 
             <span class="k">if</span> <span class="n">ans</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span>
@@ -324,9 +325,9 @@
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">text</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">WARNING</span><span class="p">(</span><span class="s2">&quot;* Note: non-ASCII characters entered &quot;</span>
-                       <span class="s2">&quot;and terminal encoding unknown -- assuming &quot;</span>
-                       <span class="s2">&quot;UTF-8 or Latin-1.&quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_YELLOW</span><span class="p">(</span><span class="s2">&quot;* Note: non-ASCII characters entered &quot;</span>
+                            <span class="s2">&quot;and terminal encoding unknown -- assuming &quot;</span>
+                            <span class="s2">&quot;UTF-8 or Latin-1.&quot;</span><span class="p">))</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
@@ -368,11 +369,11 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;&gt; &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> [</span><span class="si">%s</span><span class="s2">]: &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+                <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;**&gt; </span><span class="si">%s</span><span class="s2">:</span><span class="se">\n</span><span class="s2">&gt; Default [**</span><span class="si">%s</span><span class="s2">**]:** &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;&gt; &quot;</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span>
+                <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;**&gt; </span><span class="si">%s</span><span class="s2">:** &quot;</span> <span class="o">%</span> <span class="n">text</span>
 
-            <span class="n">prompt</span> <span class="o">=</span> <span class="n">Ansi</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+            <span class="n">prompt</span> <span class="o">=</span> <span class="n">Ansi</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
             <span class="n">x</span> <span class="o">=</span> <span class="n">term_input</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
             <span class="k">if</span> <span class="n">default</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">x</span><span class="p">:</span>
@@ -383,7 +384,7 @@
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">x</span> <span class="o">=</span> <span class="n">validator</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
             <span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">ValidationError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s2">&quot;* &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">)))</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_YELLOW</span><span class="p">(</span><span class="s2">&quot;*** </span><span class="si">%s</span><span class="s2">**&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">)))</span>
                 <span class="k">continue</span>
             <span class="k">break</span>
     <span class="k">except</span> <span class="p">(</span><span class="ne">KeyboardInterrupt</span><span class="p">,</span> <span class="ne">SystemExit</span><span class="p">):</span>
@@ -407,7 +408,7 @@
 <span class="sd">    str</span>
 <span class="sd">        The read character.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="n">txt</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">(</span><span class="n">txt</span><span class="p">))</span>
     <span class="n">fd</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span>
     <span class="n">old_settings</span> <span class="o">=</span> <span class="n">termios</span><span class="o">.</span><span class="n">tcgetattr</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
 

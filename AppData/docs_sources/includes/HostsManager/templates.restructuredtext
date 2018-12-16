@@ -20,6 +20,7 @@ In case that the ``settings`` property is not defined or any of its keys are not
 - ``target_ip`` (**Default**: "0.0.0.0"): The loop back IP address that will be used in the newly generated hosts file.
 - ``keep_domain_comments`` (**Boolean**) (**Default**: False): Keep or not the in-line comments next to the hosts rules.
 - ``skip_static_hosts`` (**Boolean**) (**Default**: False): Skip or not the static host names at the beginning of the file (localhost, localhost.localdomain, local, etc.).
+- ``custom_static_hosts`` (**Default**: empty): A list of rules that can be used as static hosts in addition to the ones added by default by this application (If the option ``skip_static_hosts`` is set to **False**). A *Python placeholder* can be used (the ``{host_name}`` will be replaced by the system host name).
 - ``backup_old_generated_hosts`` (**Boolean**) (**Default**: True): Backup or not the previously generated hosts file before generating the new one.
 - ``backup_system_hosts`` (**Boolean**) (**Default**: True): Backup or not the currently in use hosts file before replacing it.
 - ``max_backups_to_keep`` (**Integer**) (**Default**: 10): How many backed up hosts files (system's and generated) to keep. Older backup files will be automatically deleted.
@@ -29,21 +30,31 @@ Data keys for the ``sources`` property
 
 - ``name`` (**Mandatory**): A **unique** name that identifies the source. Since this *name* is used to generate the name of the downloaded file, and the downloaded files are all stored inside the same folder, this *name* **must be unique**.
 - ``url`` (**Mandatory**): The URL for the direct download of the source file.
-- ``frequency`` (**Default**: m): Frequency in which the source files should be downloaded.
+- ``is_whitelist`` (**Boolean**): If set to **True**, all host names found in a source will be added to the exclusions list (will not be added to the final hosts file).
+- ``frequency`` (**Default**: ``m``): Frequency in which the source files should be downloaded.
 
-    + **d** (daily): A source is downloaded every time that it is managed.
-    + **w** (weekly): A source is downloaded only if at least 6 days have passed since the last download.
-    + **m** (monthly): A source is downloaded only if at least 28 days have passed since the last download.
-    + **s** (semestrial): A source is downloaded only if at least 87 days have passed since the last download.
+    + ``d`` (daily): A source is downloaded every time that it is managed.
+    + ``w`` (weekly): A source is downloaded only if at least 6 days have passed since the last download.
+    + ``m`` (monthly): A source is downloaded only if at least 28 days have passed since the last download.
+    + ``s`` (semestrial): A source is downloaded only if at least 87 days have passed since the last download.
 
-- ``unzip_prog`` (**Mandatory for archives**): The name of the command used to decompress the downloaded file. Needless to say, the command should be available on the system. Possible values: ``unzip``, ``7z`` or ``tar``.
+.. _hosts-manager-pre-processors-reference:
+
+- ``pre_processors`` (**List**) (**Default**: empty): Methods used to manipulate the data from the downloaded sources so the result of the manipulation can be processed by this application to generate a hosts file.
+
+    + ``url_parser``: It converts a list of URLs separated by new lines and converts them into a list of host names separated by new lines.
+    + ``json_array``: It converts a string representing a JSON array of strings into a string that will contain each element of the array separated by new lines.
+    + Custom method (**Method**): The name of a custom function declared inside the **UserData/profiles/<profle_name>/conf.py** file that can manipulate the data from a source in any way necessary. It accepts two parameters; ``source_data`` (mandatory), the data that needs to be manipulated; and ``logger`` (optional), see :any:`LogSystem`. It should return a string that can be processed by this application.
+
+    .. note::
+
+        - Pre-processors can be chained to be able to modify the data from a source several times in different ways.
+        - Pre-processors are executed in the order that they are declared in the ``pre_processors`` key.
+
+- ``unzip_prog`` (**Mandatory for archives**): The name of the command used to decompress the downloaded file. Needless to say, the command should be available on the system. Possible values: ``unzip``, ``gzip``, ``7z`` or ``tar``.
 - ``unzip_target`` (**Mandatory for archives**): The name of the file to extract inside the compressed file.
 - ``untar_arg`` (**Default**: empty (no decompression argument is passed to ``tar``)): The decompress argument used by the ``tar`` program. Possible values are **--xz**, **-J**, **--gzip**, **-z**, **--bzip2** or **-j**.
-- ``description``: A brief description of the source and its content.
-- ``homeurl``: A home URL for the source.
-- ``issues``: An URL were to report issues with the source.
-- ``license``: The license for the downloaded file.
 
 .. note::
 
-    The ``description``, ``homeurl``, ``issues`` and ``license`` keys are merely informative. They aren't used by this application in any way.
+    Any other key that one dims to be necessary for informative purposes can be added (e.g., ``description``, ``homeurl``, ``issues``, ``license``, etc.). They will not be used by this application in any way.

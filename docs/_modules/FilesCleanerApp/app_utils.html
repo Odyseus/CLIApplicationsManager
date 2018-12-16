@@ -77,11 +77,12 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
@@ -93,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -269,17 +270,17 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="si">{message}</span><span class="s2"> &#39;</span><span class="si">{path}</span><span class="s2">&#39; </span><span class="se">\n</span><span class="si">{prompt}</span><span class="s2"> &quot;</span>
+        <span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">**</span><span class="si">{message}</span><span class="s2"> &#39;</span><span class="si">{path}</span><span class="s2">&#39; </span><span class="se">\n</span><span class="si">{prompt}</span><span class="s2">** &quot;</span>
 
         <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">confirm</span><span class="p">:</span>
                 <span class="n">answer</span> <span class="o">=</span> <span class="n">prompts</span><span class="o">.</span><span class="n">read_char</span><span class="p">(</span><span class="n">question</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                     <span class="n">message</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">messages</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
                     <span class="n">path</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
-                    <span class="n">prompt</span><span class="o">=</span><span class="n">Ansi</span><span class="o">.</span><span class="n">WARNING</span><span class="p">(</span>
+                    <span class="n">prompt</span><span class="o">=</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_YELLOW</span><span class="p">(</span>
                         <span class="c1"># Clean string:</span>
                         <span class="c1"># &quot;(Yes/No/Abort)?&quot;</span>
-                        <span class="s2">&quot;(</span><span class="se">\033</span><span class="s2">[4mY</span><span class="se">\033</span><span class="s2">[24mes/</span><span class="se">\033</span><span class="s2">[4mN</span><span class="se">\033</span><span class="s2">[24mo/</span><span class="se">\033</span><span class="s2">[4mA</span><span class="se">\033</span><span class="s2">[24mbort)?&quot;</span><span class="p">)</span>
+                        <span class="s2">&quot;**(</span><span class="se">\033</span><span class="s2">[4mY</span><span class="se">\033</span><span class="s2">[24mes/</span><span class="se">\033</span><span class="s2">[4mN</span><span class="se">\033</span><span class="s2">[24mo/</span><span class="se">\033</span><span class="s2">[4mA</span><span class="se">\033</span><span class="s2">[24mbort)?**&quot;</span><span class="p">)</span>
                 <span class="p">))</span>
 
                 <span class="k">if</span> <span class="n">answer</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">}:</span>  <span class="c1"># i.e., Yes</span>
@@ -300,15 +301,15 @@
                     <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="n">i</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> items (</span><span class="si">%s</span><span class="s2">K)&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> items (</span><span class="si">%s</span><span class="s2">K)**&quot;</span> <span class="o">%</span> <span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">messages</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">i</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cum_size</span> <span class="o">/</span> <span class="mf">1024.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
             <span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No action taken&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**No action taken**&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">err</span> <span class="ow">in</span> <span class="n">errors</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;The following errors were found:&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;**The following errors were found:**&quot;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FilesCleaner._onerror"><a class="viewcode-back" href="../../modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner._onerror">[docs]</a>    <span class="nd">@staticmethod</span>
@@ -355,7 +356,7 @@
 <span class="sd">        action : str</span>
 <span class="sd">            The action to perform.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Working inside directory:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Working inside directory:**</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">func</span><span class="p">,</span> <span class="n">matcher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actions</span><span class="p">[</span><span class="n">action</span><span class="p">]</span>
 
         <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
@@ -379,15 +380,15 @@
         <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_walk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">,</span> <span class="n">show</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">results</span><span class="p">:</span>
-            <span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{results}</span><span class="s2"> item(s) found. </span><span class="si">{message}</span><span class="s2"> </span><span class="si">{prompt}</span><span class="s2"> &quot;</span>
+            <span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;**</span><span class="si">{results}</span><span class="s2"> item(s) found. </span><span class="si">{message}</span><span class="s2"> </span><span class="si">{prompt}</span><span class="s2">** &quot;</span>
 
             <span class="n">answer</span> <span class="o">=</span> <span class="n">prompts</span><span class="o">.</span><span class="n">read_char</span><span class="p">(</span><span class="n">question</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">results</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">),</span>
                 <span class="n">message</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">messages</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">prompt</span><span class="o">=</span><span class="n">Ansi</span><span class="o">.</span><span class="n">WARNING</span><span class="p">(</span>
+                <span class="n">prompt</span><span class="o">=</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_YELLOW</span><span class="p">(</span>
                     <span class="c1"># Clean string:</span>
                     <span class="c1"># &quot;(Yes/No/Confirm)?&quot;</span>
-                    <span class="s2">&quot;(</span><span class="se">\033</span><span class="s2">[4mY</span><span class="se">\033</span><span class="s2">[24mes/</span><span class="se">\033</span><span class="s2">[4mN</span><span class="se">\033</span><span class="s2">[24mo/</span><span class="se">\033</span><span class="s2">[4mC</span><span class="se">\033</span><span class="s2">[24monfirm)?&quot;</span><span class="p">)</span>
+                    <span class="s2">&quot;**(</span><span class="se">\033</span><span class="s2">[4mY</span><span class="se">\033</span><span class="s2">[24mes/</span><span class="se">\033</span><span class="s2">[4mN</span><span class="se">\033</span><span class="s2">[24mo/</span><span class="se">\033</span><span class="s2">[4mC</span><span class="se">\033</span><span class="s2">[24monfirm)?**&quot;</span><span class="p">)</span>
             <span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">targets</span> <span class="o">=</span> <span class="n">results</span>
 
@@ -396,9 +397,9 @@
             <span class="k">elif</span> <span class="n">answer</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">}:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_apply</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">confirm</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Action cancelled.&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;**Action cancelled.**&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No results.&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**No results.**&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FilesCleaner._walk"><a class="viewcode-back" href="../../modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner._walk">[docs]</a>    <span class="k">def</span> <span class="nf">_walk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Walk path recursively collecting results of function application.</span>
@@ -437,7 +438,7 @@
                     <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">cum_size</span> <span class="o">+=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
 
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**</span><span class="si">%s</span><span class="s2">** </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
                                      <span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">)),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>

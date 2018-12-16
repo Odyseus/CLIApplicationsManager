@@ -77,11 +77,12 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
@@ -93,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -197,42 +198,6 @@
 <span class="s2">Elapsed Time: </span><span class="si">{elapsed}</span><span class="s2"></span>
 
 <span class="s2">&quot;&quot;&quot;</span>
-
-
-<div class="viewcode-block" id="InvalidCompressionLevel"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.InvalidCompressionLevel">[docs]</a><span class="k">class</span> <span class="nc">InvalidCompressionLevel</span><span class="p">(</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ExceptionWhitoutTraceBack</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;InvalidCompressionLevel</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selected_comp_level</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        selected_comp_level : str</span>
-<span class="sd">            Invalid compression level.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is an invalid compression level. Valid values are from -1 to -9.&quot;</span> <span class="o">%</span> \
-            <span class="nb">str</span><span class="p">(</span><span class="n">selected_comp_level</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="InvalidCompressionType"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.InvalidCompressionType">[docs]</a><span class="k">class</span> <span class="nc">InvalidCompressionType</span><span class="p">(</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ExceptionWhitoutTraceBack</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;InvalidCompressionType</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selected_comp_type</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        selected_comp_type : str</span>
-<span class="sd">            Invalid compression type.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is an invalid compression type. Valid values are &#39;xz&#39;, &#39;gzip&#39; or &#39;bzip2&#39;.&quot;</span> <span class="o">%</span> \
-            <span class="nb">str</span><span class="p">(</span><span class="n">selected_comp_type</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="InvalidTaskName"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.InvalidTaskName">[docs]</a><span class="k">class</span> <span class="nc">InvalidTaskName</span><span class="p">(</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ExceptionWhitoutTraceBack</span><span class="p">):</span>

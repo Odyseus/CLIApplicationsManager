@@ -14,5 +14,6 @@ Submodules
    BackupUtilsApp.app_utils
    BackupUtilsApp.backup
    BackupUtilsApp.cli
+   BackupUtilsApp.schemas
    BackupUtilsApp.tasks
 

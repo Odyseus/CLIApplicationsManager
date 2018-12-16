@@ -6,6 +6,13 @@ python\_modules.python\_utils package
     :undoc-members:
     :show-inheritance:
 
+Subpackages
+-----------
+
+.. toctree::
+
+    python_modules.python_utils.schemas
+
 Submodules
 ----------
 
@@ -18,6 +25,7 @@ Submodules
    python_modules.python_utils.file_utils
    python_modules.python_utils.git_utils
    python_modules.python_utils.hash_utils
+   python_modules.python_utils.json_schema_utils
    python_modules.python_utils.log_system
    python_modules.python_utils.mail_system
    python_modules.python_utils.menu

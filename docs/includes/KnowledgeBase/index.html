@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Make Cinnamon Xlet POT’s documentation" href="../MakeCinnamonXletPOT/index.html" />
-    <link rel="prev" title="Hosts Manager’s documentation" href="../HostsManager/index.html" /> 
+    <link rel="prev" title="JSON Schema Validator’s documentation" href="../JSONSchemaValidator/index.html" /> 
 
 </head>
 
@@ -79,13 +79,14 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Knowledge Base’s documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#cli-synopsis">CLI Synopsis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cli-synopsis"><abbr title="Command Line Interface">CLI</abbr> Synopsis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#detailed-usage">Detailed usage</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#cli-options"><abbr title="Command Line Interface">CLI</abbr> options</a></li>
@@ -122,7 +123,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -187,7 +188,7 @@
         <a href="../MakeCinnamonXletPOT/index.html" class="btn btn-neutral float-right" title="Make Cinnamon Xlet POT’s documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../HostsManager/index.html" class="btn btn-neutral" title="Hosts Manager’s documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../JSONSchemaValidator/index.html" class="btn btn-neutral" title="JSON Schema Validator’s documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -204,11 +205,11 @@
 <p>This Python application can generate a system executable with Bash completions support. See <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">generate</span></code>.</p>
 </div>
 <div class="section" id="cli-synopsis">
-<h2>CLI Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline">¶</a></h2>
+<h2><abbr title="Command Line Interface">CLI</abbr> Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight">
 <pre><span class="text-bold">Knowledge Base 2018-09-15 01:19:13.334 (Unstable)</span>
 
-<span class="text-bold">A CLI utility to generate and manage a personal and self-hosted *Knowledge Base* on GNU/Linux.</span>
+<span class="text-bold">CLI utility to generate and manage a personal and self-hosted *Knowledge Base* on GNU/Linux.</span>
 
 <span class="text-bold">Usage:</span>
     app.py (-h | --help | --manual | --version)
@@ -367,12 +368,13 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">kb_rel_path</span></code> (<strong>Default</strong>: empty): The path (relative to <strong>UserData/www/html_pages_from_archives/&lt;kb_title&gt;</strong>) to the a folder containing an HTML file (<code class="docutils literal notranslate"><span class="pre">kb_filename</span></code>) found inside the extracted content of an archive.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kb_filename</span></code> (<strong>Default</strong>: <strong>index.html</strong>): The file name found inside the extracted content of an archive relative to <code class="docutils literal notranslate"><span class="pre">kb_rel_path</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kb_file_append</span></code> (<strong>List</strong>): A list of tuples. Each tuple must contain a path to a file (relative to <strong>UserData/www/html_pages_from_archives/&lt;kb_title&gt;</strong>) at index 0 (zero) and a string at index 1 (one). The string will be appended at the end of the file defined at index zero.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">download_frequency</span></code> (<strong>Default</strong>: <strong>m</strong>): The frequency at which an archive should be downloaded. Possible values:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_frequency</span></code> (<strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">m</span></code>): The frequency at which an archive should be downloaded. Possible values:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">w</span></code>: Weekly.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: Monthly.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code>: Semestrial.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code> (daily): An archive is downloaded every time that it is managed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">w</span></code> (weekly): An archive is downloaded only if at least 6 days have passed since the last download.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code> (monthly): An archive is downloaded only if at least 28 days have passed since the last download.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code> (semestrial): An archive is downloaded only if at least 87 days have passed since the last download.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -686,7 +688,7 @@
         <a href="../MakeCinnamonXletPOT/index.html" class="btn btn-neutral float-right" title="Make Cinnamon Xlet POT’s documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../HostsManager/index.html" class="btn btn-neutral" title="Hosts Manager’s documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../JSONSchemaValidator/index.html" class="btn btn-neutral" title="JSON Schema Validator’s documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

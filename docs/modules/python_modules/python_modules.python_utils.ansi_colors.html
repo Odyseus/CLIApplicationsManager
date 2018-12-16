@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="python_modules.python_utils.cli_utils module" href="python_modules.python_utils.cli_utils.html" />
-    <link rel="prev" title="python_modules.python_utils package" href="python_modules.python_utils.html" /> 
+    <link rel="prev" title="python_modules.python_utils.schemas.mail_system_schema module" href="python_modules.python_utils.schemas.mail_system_schema.html" /> 
 
 </head>
 
@@ -79,11 +79,12 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
@@ -95,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -166,7 +167,7 @@
         <a href="python_modules.python_utils.cli_utils.html" class="btn btn-neutral float-right" title="python_modules.python_utils.cli_utils module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="python_modules.python_utils.html" class="btn btn-neutral" title="python_modules.python_utils package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="python_modules.python_utils.schemas.mail_system_schema.html" class="btn btn-neutral" title="python_modules.python_utils.schemas.mail_system_schema module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -189,21 +190,42 @@
 </dl>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="python_modules.python_utils.ansi_colors.color_table">
+<code class="descclassname">python_modules.python_utils.ansi_colors.</code><code class="descname">color_table</code><a class="headerlink" href="#python_modules.python_utils.ansi_colors.color_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>ANSI color table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="class">
 <dt id="python_modules.python_utils.ansi_colors.ANSIColors">
 <em class="property">class </em><code class="descclassname">python_modules.python_utils.ansi_colors.</code><code class="descname">ANSIColors</code><a class="reference internal" href="../../_modules/python_modules/python_utils/ansi_colors.html#ANSIColors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.ansi_colors.ANSIColors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class to colorize terminal output.</p>
+<p>Initialization.</p>
 <dl class="method">
-<dt id="python_modules.python_utils.ansi_colors.ANSIColors.ERROR">
-<code class="descname">ERROR</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/ansi_colors.html#ANSIColors.ERROR"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.ansi_colors.ANSIColors.ERROR" title="Permalink to this definition">¶</a></dt>
-<dd><p>Red color that symbolizes error.</p>
+<dt id="python_modules.python_utils.ansi_colors.ANSIColors._extend">
+<code class="descname">_extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/ansi_colors.html#ANSIColors._extend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.ansi_colors.ANSIColors._extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend class’ functions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="python_modules.python_utils.ansi_colors.ANSIColors._colorize">
+<code class="descname">_colorize</code><span class="sig-paren">(</span><em>text</em>, <em>code</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/ansi_colors.html#ANSIColors._colorize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.ansi_colors.ANSIColors._colorize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Colorize text.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The string that will be “colorized”.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – Text to colorize.</p></li>
+<li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – ANSI color code.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>String surrounded by ANSI codes.</p>
+<dd class="field-even"><p>ANSI formatted string.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
@@ -212,69 +234,18 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="python_modules.python_utils.ansi_colors.ANSIColors.INFO">
-<code class="descname">INFO</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/ansi_colors.html#ANSIColors.INFO"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.ansi_colors.ANSIColors.INFO" title="Permalink to this definition">¶</a></dt>
-<dd><p>No color, just bold text.</p>
+<dt id="python_modules.python_utils.ansi_colors.ANSIColors._make_color_function">
+<code class="descname">_make_color_function</code><span class="sig-paren">(</span><em>code</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/ansi_colors.html#ANSIColors._make_color_function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.ansi_colors.ANSIColors._make_color_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make color function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The string that will be “colorized”.</p>
+<dd class="field-odd"><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – ANSI color code.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>String surrounded by ANSI codes.</p>
+<dd class="field-even"><p>Function to colorize string.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="python_modules.python_utils.ansi_colors.ANSIColors.WARNING">
-<code class="descname">WARNING</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/ansi_colors.html#ANSIColors.WARNING"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.ansi_colors.ANSIColors.WARNING" title="Permalink to this definition">¶</a></dt>
-<dd><p>Yellow color that symbolizes warning.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The string that will be “colorized”.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>String surrounded by ANSI codes.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="python_modules.python_utils.ansi_colors.ANSIColors.SUCCESS">
-<code class="descname">SUCCESS</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/ansi_colors.html#ANSIColors.SUCCESS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.ansi_colors.ANSIColors.SUCCESS" title="Permalink to this definition">¶</a></dt>
-<dd><p>Green color that symbolizes success.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The string that will be “colorized”.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>String surrounded by ANSI codes.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="python_modules.python_utils.ansi_colors.ANSIColors.PURPLE">
-<code class="descname">PURPLE</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/ansi_colors.html#ANSIColors.PURPLE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.ansi_colors.ANSIColors.PURPLE" title="Permalink to this definition">¶</a></dt>
-<dd><p>Purple color.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The string that will be “colorized”.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>String surrounded by ANSI codes.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+<dd class="field-odd"><p>function</p>
 </dd>
 </dl>
 </dd></dl>
@@ -294,7 +265,7 @@
         <a href="python_modules.python_utils.cli_utils.html" class="btn btn-neutral float-right" title="python_modules.python_utils.cli_utils module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="python_modules.python_utils.html" class="btn btn-neutral" title="python_modules.python_utils package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="python_modules.python_utils.schemas.mail_system_schema.html" class="btn btn-neutral" title="python_modules.python_utils.schemas.mail_system_schema module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

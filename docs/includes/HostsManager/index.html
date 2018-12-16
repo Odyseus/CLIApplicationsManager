@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Knowledge Base’s documentation" href="../KnowledgeBase/index.html" />
+    <link rel="next" title="JSON Schema Validator’s documentation" href="../JSONSchemaValidator/index.html" />
     <link rel="prev" title="Files Cleaner’s documentation" href="../FilesCleaner/index.html" /> 
 
 </head>
@@ -79,12 +79,12 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../CLIApplicationsManager/index.html">CLI applications manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BackupUtils/index.html">Backup Utils’ documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Hosts Manager’s documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#cli-synopsis">CLI Synopsis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cli-synopsis"><abbr title="Command Line Interface">CLI</abbr> Synopsis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mentions">Mentions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#detailed-usage">Detailed usage</a><ul>
@@ -98,6 +98,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MoviesDB/index.html">Movies DB’s documentation</a></li>
@@ -109,7 +110,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/tqdm.html">tqdm’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
             
@@ -171,7 +172,7 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="../KnowledgeBase/index.html" class="btn btn-neutral float-right" title="Knowledge Base’s documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../JSONSchemaValidator/index.html" class="btn btn-neutral float-right" title="JSON Schema Validator’s documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../FilesCleaner/index.html" class="btn btn-neutral" title="Files Cleaner’s documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -191,11 +192,11 @@
 <p>This Python application can generate a system executable with Bash completions support. See <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">generate</span></code>.</p>
 </div>
 <div class="section" id="cli-synopsis">
-<h2>CLI Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline">¶</a></h2>
+<h2><abbr title="Command Line Interface">CLI</abbr> Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight">
 <pre><span class="text-bold">Hosts Manager 2018-09-15 01:19:13.336 (Stable)</span>
 
-<span class="text-bold">A CLI utility to manage hosts files on GNU/Linux.</span>
+<span class="text-bold">CLI utility to manage hosts files on GNU/Linux.</span>
 
 <span class="text-bold">Usage:</span>
     app.py (-h | --help | --manual | --version)
@@ -234,7 +235,7 @@
 
 <span class="text-bold">-u, --force-update</span>
     Force the update of all sources, ignoring the frequency in which they
-    should be updated.
+    should be updated. All previously downloaded sources will be removed.
 
 <span class="text-bold">-d, --dry-run</span>
     Do not perform file system changes. Only display messages informing of the
@@ -270,6 +271,7 @@
 <li><p>A <strong>blacklist</strong> file contains a list of host names that <strong>will ALWAYS be added</strong> to the final hosts file.</p></li>
 <li><p>The <strong>conf.py</strong> file should contain at least a property named <strong>sources</strong> (mandatory - a list of dictionaries) and another property named <strong>settings</strong> (optional - a dictionary).</p></li>
 <li><p>This application can process text files formatted as a hosts file (<strong>0.0.0.0 hostname.com</strong> one rule per line), text files formatted as a list of host names (<strong>hostname.com</strong> one domain per line) and archives (7Zip files, Zip files and compressed and non-compressed Tar files) containing any of the aforementioned text files.</p></li>
+<li><p>If one wants to use data from sources in any other format, the data can be <em>pre-processed</em>. See <a class="reference internal" href="#hosts-manager-pre-processors-reference"><span class="std std-ref">pre_processors data key</span></a>.</p></li>
 </ul>
 </div>
 <div class="section" id="cli-options">
@@ -293,7 +295,7 @@
 <h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="app-py-run">
 <h4>app.py run<a class="headerlink" href="#app-py-run" title="Permalink to this headline">¶</a></h4>
-<p>The main command to update, build and install a hosts file.</p>
+<p>The main command to <code class="docutils literal notranslate"><span class="pre">update</span></code>, <code class="docutils literal notranslate"><span class="pre">build</span></code> and <code class="docutils literal notranslate"><span class="pre">install</span></code> a hosts file.</p>
 <div class="section" id="sub-commands">
 <h5>Sub-commands<a class="headerlink" href="#sub-commands" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
@@ -420,6 +422,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">target_ip</span></code> (<strong>Default</strong>: “0.0.0.0”): The loop back IP address that will be used in the newly generated hosts file.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">keep_domain_comments</span></code> (<strong>Boolean</strong>) (<strong>Default</strong>: False): Keep or not the in-line comments next to the hosts rules.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">skip_static_hosts</span></code> (<strong>Boolean</strong>) (<strong>Default</strong>: False): Skip or not the static host names at the beginning of the file (localhost, localhost.localdomain, local, etc.).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">custom_static_hosts</span></code> (<strong>Default</strong>: empty): A list of rules that can be used as static hosts in addition to the ones added by default by this application (If the option <code class="docutils literal notranslate"><span class="pre">skip_static_hosts</span></code> is set to <strong>False</strong>). A <em>Python placeholder</em> can be used (the <code class="docutils literal notranslate"><span class="pre">{host_name}</span></code> will be replaced by the system host name).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">backup_old_generated_hosts</span></code> (<strong>Boolean</strong>) (<strong>Default</strong>: True): Backup or not the previously generated hosts file before generating the new one.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">backup_system_hosts</span></code> (<strong>Boolean</strong>) (<strong>Default</strong>: True): Backup or not the currently in use hosts file before replacing it.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">max_backups_to_keep</span></code> (<strong>Integer</strong>) (<strong>Default</strong>: 10): How many backed up hosts files (system’s and generated) to keep. Older backup files will be automatically deleted.</p></li>
@@ -430,27 +433,42 @@
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (<strong>Mandatory</strong>): A <strong>unique</strong> name that identifies the source. Since this <em>name</em> is used to generate the name of the downloaded file, and the downloaded files are all stored inside the same folder, this <em>name</em> <strong>must be unique</strong>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">url</span></code> (<strong>Mandatory</strong>): The URL for the direct download of the source file.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">frequency</span></code> (<strong>Default</strong>: m): Frequency in which the source files should be downloaded.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_whitelist</span></code> (<strong>Boolean</strong>): If set to <strong>True</strong>, all host names found in a source will be added to the exclusions list (will not be added to the final hosts file).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">frequency</span></code> (<strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">m</span></code>): Frequency in which the source files should be downloaded.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>d</strong> (daily): A source is downloaded every time that it is managed.</p></li>
-<li><p><strong>w</strong> (weekly): A source is downloaded only if at least 6 days have passed since the last download.</p></li>
-<li><p><strong>m</strong> (monthly): A source is downloaded only if at least 28 days have passed since the last download.</p></li>
-<li><p><strong>s</strong> (semestrial): A source is downloaded only if at least 87 days have passed since the last download.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code> (daily): A source is downloaded every time that it is managed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">w</span></code> (weekly): A source is downloaded only if at least 6 days have passed since the last download.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code> (monthly): A source is downloaded only if at least 28 days have passed since the last download.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code> (semestrial): A source is downloaded only if at least 87 days have passed since the last download.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">unzip_prog</span></code> (<strong>Mandatory for archives</strong>): The name of the command used to decompress the downloaded file. Needless to say, the command should be available on the system. Possible values: <code class="docutils literal notranslate"><span class="pre">unzip</span></code>, <code class="docutils literal notranslate"><span class="pre">7z</span></code> or <code class="docutils literal notranslate"><span class="pre">tar</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">unzip_target</span></code> (<strong>Mandatory for archives</strong>): The name of the file to extract inside the compressed file.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">untar_arg</span></code> (<strong>Default</strong>: empty (no decompression argument is passed to <code class="docutils literal notranslate"><span class="pre">tar</span></code>)): The decompress argument used by the <code class="docutils literal notranslate"><span class="pre">tar</span></code> program. Possible values are <strong>–xz</strong>, <strong>-J</strong>, <strong>–gzip</strong>, <strong>-z</strong>, <strong>–bzip2</strong> or <strong>-j</strong>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: A brief description of the source and its content.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">homeurl</span></code>: A home URL for the source.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">issues</span></code>: An URL were to report issues with the source.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">license</span></code>: The license for the downloaded file.</p></li>
+</ul>
+<ul id="hosts-manager-pre-processors-reference">
+<li><p><code class="docutils literal notranslate"><span class="pre">pre_processors</span></code> (<strong>List</strong>) (<strong>Default</strong>: empty): Methods used to manipulate the data from the downloaded sources so the result of the manipulation can be processed by this application to generate a hosts file.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">url_parser</span></code>: It converts a list of URLs separated by new lines and converts them into a list of host names separated by new lines.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">json_array</span></code>: It converts a string representing a JSON array of strings into a string that will contain each element of the array separated by new lines.</p></li>
+<li><p>Custom method (<strong>Method</strong>): The name of a custom function declared inside the <strong>UserData/profiles/&lt;profle_name&gt;/conf.py</strong> file that can manipulate the data from a source in any way necessary. It accepts two parameters; <code class="docutils literal notranslate"><span class="pre">source_data</span></code> (mandatory), the data that needs to be manipulated; and <code class="docutils literal notranslate"><span class="pre">logger</span></code> (optional), see <a class="reference internal" href="../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>. It should return a string that can be processed by this application.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">homeurl</span></code>, <code class="docutils literal notranslate"><span class="pre">issues</span></code> and <code class="docutils literal notranslate"><span class="pre">license</span></code> keys are merely informative. They aren’t used by this application in any way.</p>
+<ul class="simple">
+<li><p>Pre-processors can be chained to be able to modify the data from a source several times in different ways.</p></li>
+<li><p>Pre-processors are executed in the order that they are declared in the <code class="docutils literal notranslate"><span class="pre">pre_processors</span></code> key.</p></li>
+</ul>
+</div>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unzip_prog</span></code> (<strong>Mandatory for archives</strong>): The name of the command used to decompress the downloaded file. Needless to say, the command should be available on the system. Possible values: <code class="docutils literal notranslate"><span class="pre">unzip</span></code>, <code class="docutils literal notranslate"><span class="pre">gzip</span></code>, <code class="docutils literal notranslate"><span class="pre">7z</span></code> or <code class="docutils literal notranslate"><span class="pre">tar</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unzip_target</span></code> (<strong>Mandatory for archives</strong>): The name of the file to extract inside the compressed file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">untar_arg</span></code> (<strong>Default</strong>: empty (no decompression argument is passed to <code class="docutils literal notranslate"><span class="pre">tar</span></code>)): The decompress argument used by the <code class="docutils literal notranslate"><span class="pre">tar</span></code> program. Possible values are <strong>–xz</strong>, <strong>-J</strong>, <strong>–gzip</strong>, <strong>-z</strong>, <strong>–bzip2</strong> or <strong>-j</strong>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any other key that one dims to be necessary for informative purposes can be added (e.g., <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">homeurl</span></code>, <code class="docutils literal notranslate"><span class="pre">issues</span></code>, <code class="docutils literal notranslate"><span class="pre">license</span></code>, etc.). They will not be used by this application in any way.</p>
 </div>
 </div>
 </div>
@@ -465,7 +483,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../KnowledgeBase/index.html" class="btn btn-neutral float-right" title="Knowledge Base’s documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../JSONSchemaValidator/index.html" class="btn btn-neutral float-right" title="JSON Schema Validator’s documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../FilesCleaner/index.html" class="btn btn-neutral" title="Files Cleaner’s documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
