@@ -133,48 +133,48 @@ class CommandLineInterface(cli_utils.CommandLineInterfaceSuper):
         elif self.a["--manual"]:
             self.action = self.display_manual_page
         elif self.a["bump_app_version"]:
-            self.logger.info("Bumping applications' versions...")
+            self.logger.info("**Bumping applications' versions...**")
             self.action = self.bump_versions
         elif self.a["gen_base_app"]:
-            self.logger.info("New application generation...")
+            self.logger.info("**New application generation...**")
             self.action = self.generate_base_app
         elif self.a["gen_docs"] or self.a["gen_docs_no_api"]:
-            self.logger.info("Documentation generation...")
+            self.logger.info("**Documentation generation...**")
             self.action = self.generate_docs
         elif self.a["gen_man_pages"]:
-            self.logger.info("Generating manual pages...")
+            self.logger.info("**Generating manual pages...**")
             self.action = self.generate_man_pages
         elif self.a["gen_readmes"]:
-            self.logger.info("Generating READMEs...")
+            self.logger.info("**Generating READMEs...**")
             self.action = self.generate_readmes
         elif self.a["gen_sys_exec_all"]:
-            self.logger.info("System executable generation for all applications...")
+            self.logger.info("**System executable generation for all applications...**")
             self.action = self.system_executable_generation_all
         elif self.a["gen_sys_exec_self"]:
-            self.logger.info("System executable generation...")
+            self.logger.info("**System executable generation...**")
             self.action = self.system_executable_generation_self
         elif self.a["install_deps"]:
-            self.logger.info("Installing dependencies...")
+            self.logger.info("**Installing dependencies...**")
             self.action = self.install_dependencies
         elif self.a["run_cmd_on_app"]:
-            self.logger.info("Running command on selected applications...")
+            self.logger.info("**Running command on selected applications...**")
             self.action = self.run_cmd_on_apps
         elif self.a["repo"] or self.a["app_repos"]:
             self.repo_action = "init" if self.a["init"] else "update" if self.a["update"] else ""
 
             if self.a["submodules"]:
                 if self.a["app_repos"]:
-                    self.logger.info("Managing application repositories sub-modules...")
+                    self.logger.info("**Managing application repositories sub-modules...**")
                     self.action = self.manage_app_repos_submodules
                 elif self.a["repo"]:
-                    self.logger.info("Managing repository sub-modules...")
+                    self.logger.info("**Managing repository sub-modules...**")
                     self.action = self.manage_repo_submodules
             elif self.a["subtrees"]:
                 if self.a["app_repos"]:
-                    self.logger.info("Managing application repositories sub-trees...")
+                    self.logger.info("**Managing application repositories sub-trees...**")
                     self.action = self.manage_app_repos_subtrees
                 elif self.a["repo"]:
-                    self.logger.info("Managing repository sub-trees...")
+                    self.logger.info("**Managing repository sub-trees...**")
                     self.action = self.manage_repo_subtrees
 
     def run(self):
@@ -256,12 +256,12 @@ class CommandLineInterface(cli_utils.CommandLineInterfaceSuper):
     def manage_repo_subtrees(self):
         """See :any:`git_utils.manage_repo`
         """
-        self.logger.warning("Not using sub-trees in this application for now.")
+        self.logger.warning("**Not using sub-trees in this application for now.**")
 
     def manage_app_repos_submodules(self):
         """See :any:`git_utils.manage_repo`
         """
-        self.logger.warning("Not using sub-modules in applications for now.")
+        self.logger.warning("**Not using sub-modules in applications for now.**")
 
     def manage_app_repos_subtrees(self):
         """See :any:`git_utils.manage_repo`

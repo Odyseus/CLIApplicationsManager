@@ -118,7 +118,7 @@ def get_selected_apps(app_slugs=[], logger=None):
 
     for slug in app_slugs:
         if slug not in [a["slug"] for a in all_apps]:
-            logger.warning("%s slug doesn't belong to an existent application." % slug)
+            logger.warning("**%s slug doesn't belong to an existent application!**" % slug)
             continue
 
         for app in all_apps:
@@ -247,7 +247,7 @@ You might need to enter your password.
 
         if file_utils.is_real_file(req_file_path):
             print()
-            logger.warning("The following dependencies for %s will be installed." % app["slug"])
+            logger.warning("**The following dependencies for %s will be installed:**" % app["slug"])
 
             do_install = True
             cmd += ["--requirement", req_file_path]
@@ -260,10 +260,10 @@ You might need to enter your password.
                         logger.info(line, date=False)
         else:
             print()
-            logger.info("%s has no extra dependencies." % app["slug"])
+            logger.info("**%s has no extra dependencies.**" % app["slug"])
 
     print()
-    logger.warning("The following command will be executed:")
+    logger.warning("**The following command will be executed:**")
     logger.info(" ".join(cmd), date=False)
     print()
 
@@ -417,13 +417,13 @@ class BaseAppGenerator():
         if os.path.exists(self.new_app_destination):
             raise exceptions.ExistentLocation("New application cannot be created.")
 
-        self.logger.info("Copying files...")
+        self.logger.info("**Copying files...**")
         file_utils.custom_copytree(self.base_app_path, self.new_app_destination)
 
     def _do_substitutions(self):
         """Do substitutions.
         """
-        self.logger.info("Performing string substitutions...")
+        self.logger.info("**Performing string substitutions...**")
         for root, dirs, files in os.walk(self.new_app_destination, topdown=False):
             for fname in files:
                 file_path = os.path.join(root, fname)
@@ -494,7 +494,7 @@ def bump_app_version(app, logger):
     logger : object
         See <class :any:`LogSystem`>.
     """
-    logger.info("Bumping %s's version..." % app["slug"])
+    logger.info("**Bumping %s's version...**" % app["slug"])
     version_number = misc_utils.micro_to_milli(misc_utils.get_date_time())
     init_file_path = os.path.join(app["path"], "AppData",
                                   "%sApp" % app["slug"], "__init__.py")
@@ -508,7 +508,7 @@ def bump_app_version(app, logger):
     with open(init_file_path, "w", encoding="UTF-8") as new:
         new.write("%s\n" % new_lines)
 
-    logger.info("%s's version updated." % app["slug"])
+    logger.info("**%s's version updated.**" % app["slug"])
     print()
 
 
@@ -576,7 +576,7 @@ def generate_readmes(logger):
             app_docs_url=app_docs_url
         )
 
-        logger.info("Generating README for %s" % init_data["__appname__"])
+        logger.info("**Generating README for %s**" % init_data["__appname__"])
         with open(app_readme_file_path, "w", encoding="UTF-8") as app_readme_file:
             app_readme_file.write(app_readme_template.format(
                 app_name=init_data["__appname__"],
@@ -584,11 +584,11 @@ def generate_readmes(logger):
                 app_docs_url=app_docs_url
             ))
 
-    logger.info("Generating README for %s" % __appname__)
+    logger.info("**Generating README for %s**" % __appname__)
     with open(apps_manager_readme_path, "w", encoding="UTF-8") as main_readme_file:
         main_readme_file.write(apps_manager_readme_data + apps_table_data)
 
-    logger.info("READMEs generation finished")
+    logger.info("**READMEs generation finished**")
 
 
 def manage_app_repos_subtrees(action, app_slugs=[], dry_run=False, logger=None):
@@ -657,9 +657,9 @@ def run_cmd_on_apps(cmd, run_in_parallel=False, app_slugs=[], logger=None):
         })
 
         logger.info(shell_utils.get_cli_separator("-"), date=False)
-        logger.info("Command:")
+        logger.info("**Command:**")
         logger.info(cmd, date=False)
-        logger.info("Working directory:")
+        logger.info("**Working directory:**")
         logger.info(app["path"], date=False)
 
         t.start()
@@ -720,7 +720,7 @@ def generate_man_pages(app_slugs=[], logger=None):
     for data in man_pages_data:
         try:
             logger.info(shell_utils.get_cli_separator("-"), date=False)
-            logger.info("Generating manual page for %s." % data["app_name"])
+            logger.info("**Generating manual page for %s.**" % data["app_name"])
 
             with open(man_pages_data_json_path, "w",
                       encoding="UTF-8") as man_pages_data_json_file:
