@@ -98,7 +98,8 @@ run_cmd_on_app \
 
     case $cmd in
     "init"|"update")
-        COMPREPLY=( $(compgen -W "--dry-run" -- "${cur}") )
+        COMPREPLY=( $(compgen -W "--dry-run -a --app=" -- "${cur}") )
+        _decide_nospace_{current_date} ${COMPREPLY[0]}
         ;;
     esac
 
