@@ -158,7 +158,7 @@ def system_executable_generation_for_all_apps(logger):
     """
     from .python_utils import template_utils
 
-    print(Ansi.WARNING("""
+    print(Ansi.LIGHT_YELLOW("""**
 1. System executables will be created and bash completions will be installed \
 for all Python applications, including the master application.
 2. The executable names are pre-defined.
@@ -167,7 +167,7 @@ for all Python applications, including the master application.
 It will have to be done manually.
 5. There will be no prompts of any king, except to ask once for the location \
 where the executables will be stored.
-"""))
+**"""))
 
     if prompts.confirm(prompt="Proceed?", response=False):
         user_home = os.path.expanduser("~")
@@ -176,7 +176,7 @@ where the executables will be stored.
             "sys_exec_path": os.path.join(user_home, ".local", "bin")
         }
 
-        print(Ansi.PURPLE("Set path to store all generated executable files or press Enter to use default"))
+        print(Ansi.LIGHT_MAGENTA("**Set path to store all generated executable files or press Enter to use default**"))
         prompts.do_prompt(d, "sys_exec_path", "Enter path", d["sys_exec_path"])
 
         d["sys_exec_path"] = os.path.expanduser(d["sys_exec_path"])
@@ -233,20 +233,20 @@ def install_dependencies(app_slugs, logger):
     exceptions.KeyboardInterruption
         See <class :any:`exceptions.KeyboardInterruption`>.
     """
-    print(Ansi.PURPLE("""
+    print(Ansi.LIGHT_MAGENTA("""**
 The command "pip3" will be used to install dependencies.
 Installing dependencies requires administrative privileges.
 You might need to enter your password.
-"""))
+**"""))
 
     do_install = False
     cmd = ["/usr/bin/sudo", "--set-home", "pip3", "install"]
 
     for app in get_selected_apps(app_slugs, logger) if app_slugs else get_all_apps():
         req_file_path = os.path.join(app["path"], "requirements.txt")
+        print(shell_utils.get_cli_separator("-"))
 
         if file_utils.is_real_file(req_file_path):
-            print()
             logger.warning("**The following dependencies for %s will be installed:**" % app["slug"])
 
             do_install = True
@@ -259,7 +259,6 @@ You might need to enter your password.
                     if line:
                         logger.info(line, date=False)
         else:
-            print()
             logger.info("**%s has no extra dependencies.**" % app["slug"])
 
     print()
@@ -380,9 +379,9 @@ class BaseAppGenerator():
     def generate(self):
         """Generate.
         """
-        print(Ansi.PURPLE("""
-1. The application name should contain two or more words.
-2. All the words should be camel cased.
+        print(Ansi.LIGHT_MAGENTA("""
+**1. The application name should contain two or more words.
+2. All the words should be camel cased.**
 """))
 
         prompts.do_prompt(
