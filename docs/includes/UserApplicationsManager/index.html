@@ -403,7 +403,7 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code> (<strong>Mandatory</strong>): The URL where to download the application.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code> (<strong>Mandatory</strong>): The URL from where to download the application.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">destination</span></code> (<strong>Mandatory</strong>): The final destination for an application.</p>
 <blockquote>
 <div><ul class="simple">
@@ -441,7 +441,7 @@
 </div></blockquote>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">unzip_prog</span></code> (<strong>Mandatory</strong>): The name of the command used to unpack an archive. Key only used by applications of <code class="docutils literal notranslate"><span class="pre">type</span></code> <code class="docutils literal notranslate"><span class="pre">archive</span></code>. As of now, only the <code class="docutils literal notranslate"><span class="pre">tar</span></code> command is implemented.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">unzip_args</span></code> (<strong>Mandatory</strong>): Arguments passed to the command defined in <code class="docutils literal notranslate"><span class="pre">unzip_prog</span></code>. Key only used by applications of <code class="docutils literal notranslate"><span class="pre">type</span></code> <code class="docutils literal notranslate"><span class="pre">archive</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">untar_arg</span></code> (<strong>Default</strong>: empty (no decompression argument is passed to <code class="docutils literal notranslate"><span class="pre">tar</span></code>)): The decompress argument used by the <code class="docutils literal notranslate"><span class="pre">tar</span></code> program.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">unzip_targets</span></code> (<strong>Mandatory</strong> | <strong>List</strong>): A list of tuples. At index zero of each tuple should be defined the path to a file/folder inside a downloaded archive. At index one should be defined the path to the folder where the target should be extracted. Key only used by applications of <code class="docutils literal notranslate"><span class="pre">type</span></code> <code class="docutils literal notranslate"><span class="pre">archive</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">post_extraction_actions</span></code> (<strong>Dictionary</strong>): A list of actions to perform after an archive is extracted.</p>
 <blockquote>

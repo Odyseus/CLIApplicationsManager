@@ -13,4 +13,5 @@ Submodules
 
    UserApplicationsManagerApp.app_utils
    UserApplicationsManagerApp.cli
+   UserApplicationsManagerApp.schemas
 

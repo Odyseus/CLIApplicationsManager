@@ -318,7 +318,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">template_utils</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">WARNING</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_YELLOW</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;**</span>
 <span class="s2">1. System executables will be created and bash completions will be installed </span><span class="se">\</span>
 <span class="s2">for all Python applications, including the master application.</span>
 <span class="s2">2. The executable names are pre-defined.</span>
@@ -327,7 +327,7 @@
 <span class="s2">It will have to be done manually.</span>
 <span class="s2">5. There will be no prompts of any king, except to ask once for the location </span><span class="se">\</span>
 <span class="s2">where the executables will be stored.</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="p">))</span>
+<span class="s2">**&quot;&quot;&quot;</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">prompts</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Proceed?&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">user_home</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">)</span>
@@ -336,7 +336,7 @@
             <span class="s2">&quot;sys_exec_path&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">user_home</span><span class="p">,</span> <span class="s2">&quot;.local&quot;</span><span class="p">,</span> <span class="s2">&quot;bin&quot;</span><span class="p">)</span>
         <span class="p">}</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">PURPLE</span><span class="p">(</span><span class="s2">&quot;Set path to store all generated executable files or press Enter to use default&quot;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_MAGENTA</span><span class="p">(</span><span class="s2">&quot;**Set path to store all generated executable files or press Enter to use default**&quot;</span><span class="p">))</span>
         <span class="n">prompts</span><span class="o">.</span><span class="n">do_prompt</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;sys_exec_path&quot;</span><span class="p">,</span> <span class="s2">&quot;Enter path&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;sys_exec_path&quot;</span><span class="p">])</span>
 
         <span class="n">d</span><span class="p">[</span><span class="s2">&quot;sys_exec_path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;sys_exec_path&quot;</span><span class="p">])</span>
@@ -393,20 +393,20 @@
 <span class="sd">    exceptions.KeyboardInterruption</span>
 <span class="sd">        See &lt;class :any:`exceptions.KeyboardInterruption`&gt;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">PURPLE</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_MAGENTA</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;**</span>
 <span class="s2">The command &quot;pip3&quot; will be used to install dependencies.</span>
 <span class="s2">Installing dependencies requires administrative privileges.</span>
 <span class="s2">You might need to enter your password.</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="p">))</span>
+<span class="s2">**&quot;&quot;&quot;</span><span class="p">))</span>
 
     <span class="n">do_install</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;/usr/bin/sudo&quot;</span><span class="p">,</span> <span class="s2">&quot;--set-home&quot;</span><span class="p">,</span> <span class="s2">&quot;pip3&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">]</span>
 
     <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">get_selected_apps</span><span class="p">(</span><span class="n">app_slugs</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span> <span class="k">if</span> <span class="n">app_slugs</span> <span class="k">else</span> <span class="n">get_all_apps</span><span class="p">():</span>
         <span class="n">req_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">],</span> <span class="s2">&quot;requirements.txt&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_file</span><span class="p">(</span><span class="n">req_file_path</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">()</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;**The following dependencies for </span><span class="si">%s</span><span class="s2"> will be installed:**&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">])</span>
 
             <span class="n">do_install</span> <span class="o">=</span> <span class="kc">True</span>
@@ -419,7 +419,6 @@
                     <span class="k">if</span> <span class="n">line</span><span class="p">:</span>
                         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">()</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**</span><span class="si">%s</span><span class="s2"> has no extra dependencies.**&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">])</span>
 
     <span class="nb">print</span><span class="p">()</span>
@@ -540,9 +539,9 @@
 <div class="viewcode-block" id="BaseAppGenerator.generate"><a class="viewcode-back" href="../../modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.BaseAppGenerator.generate">[docs]</a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Generate.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">PURPLE</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">1. The application name should contain two or more words.</span>
-<span class="s2">2. All the words should be camel cased.</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">Ansi</span><span class="o">.</span><span class="n">LIGHT_MAGENTA</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">**1. The application name should contain two or more words.</span>
+<span class="s2">2. All the words should be camel cased.**</span>
 <span class="s2">&quot;&quot;&quot;</span><span class="p">))</span>
 
         <span class="n">prompts</span><span class="o">.</span><span class="n">do_prompt</span><span class="p">(</span>

@@ -175,12 +175,6 @@
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">urllib.request</span>
 
-<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cmd_utils</span>
-<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span>
-<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">file_utils</span>
-<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">hash_utils</span>
-<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">shell_utils</span>
-<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">tqdm_wget</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">timedelta</span>
 <span class="kn">from</span> <span class="nn">runpy</span> <span class="k">import</span> <span class="n">run_path</span>
@@ -188,20 +182,19 @@
 <span class="kn">from</span> <span class="nn">urllib.error</span> <span class="k">import</span> <span class="n">HTTPError</span>
 <span class="kn">from</span> <span class="nn">urllib.error</span> <span class="k">import</span> <span class="n">URLError</span>
 
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cmd_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">file_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">hash_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">shell_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">tqdm_wget</span>
+
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
 
 <span class="n">_paths_map</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;conf_file&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;conf.py&quot;</span><span class="p">),</span>
     <span class="s2">&quot;update_data_file&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;update-data.json&quot;</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="n">_base_app_keys</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">}</span>
-<span class="n">_base_app_keys_for</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;archives&quot;</span><span class="p">:</span> <span class="n">_base_app_keys</span><span class="o">.</span><span class="n">union</span><span class="p">(</span>
-        <span class="p">{</span><span class="s2">&quot;unzip_prog&quot;</span><span class="p">,</span> <span class="s2">&quot;post_extraction_actions&quot;</span><span class="p">,</span> <span class="s2">&quot;unzip_targets&quot;</span><span class="p">}),</span>
-    <span class="s2">&quot;files&quot;</span><span class="p">:</span> <span class="n">_base_app_keys</span><span class="o">.</span><span class="n">union</span><span class="p">({</span><span class="s2">&quot;destination&quot;</span><span class="p">}),</span>
-    <span class="s2">&quot;repos&quot;</span><span class="p">:</span> <span class="n">_base_app_keys</span><span class="o">.</span><span class="n">union</span><span class="p">({</span><span class="s2">&quot;destination&quot;</span><span class="p">})</span>
 <span class="p">}</span>
 
 
@@ -228,6 +221,8 @@
 <span class="sd">        See :any:`exceptions.MissingMandatoryField`.</span>
 <span class="sd">    exceptions.MissingRequiredFile</span>
 <span class="sd">        See :any:`exceptions.MissingRequiredFile`.</span>
+<span class="sd">    SystemExit</span>
+<span class="sd">        Halt execution.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">all_apps</span> <span class="o">=</span> <span class="n">run_path</span><span class="p">(</span><span class="n">_paths_map</span><span class="p">[</span><span class="s2">&quot;conf_file&quot;</span><span class="p">])[</span><span class="s2">&quot;applications&quot;</span><span class="p">]</span>
@@ -239,30 +234,35 @@
         <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingMandatoryField</span><span class="p">(</span>
             <span class="s2">&quot;The &lt;conf.py&gt; file should have the &lt;applications&gt; property defined.&quot;</span><span class="p">)</span>
 
-    <span class="n">missing_fields</span> <span class="o">=</span> <span class="p">[]</span>
-
     <span class="k">if</span> <span class="n">validate</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">app_id</span><span class="p">,</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">all_apps</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">app_type</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span>
+        <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">json_schema_utils</span>
+        <span class="kn">from</span> <span class="nn">.schemas</span> <span class="k">import</span> <span class="n">applications_schema_global</span>
+        <span class="kn">from</span> <span class="nn">.schemas</span> <span class="k">import</span> <span class="n">application_schema_archive_type</span>
 
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">app_type</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Application ID: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">app_id</span><span class="p">)</span>
-                <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingMandatoryField</span><span class="p">(</span><span class="s2">&quot;The &lt;type&gt; field is required.&quot;</span><span class="p">)</span>
+        <span class="n">validation_errors_count</span> <span class="o">=</span> <span class="mi">0</span>
 
-            <span class="k">if</span> <span class="n">app_type</span> <span class="o">==</span> <span class="s2">&quot;archive&quot;</span><span class="p">:</span>
-                <span class="n">validator_set</span> <span class="o">=</span> <span class="n">_base_app_keys_for</span><span class="p">[</span><span class="s2">&quot;archives&quot;</span><span class="p">]</span>
-            <span class="k">elif</span> <span class="n">app_type</span> <span class="o">==</span> <span class="s2">&quot;file&quot;</span><span class="p">:</span>
-                <span class="n">validator_set</span> <span class="o">=</span> <span class="n">_base_app_keys_for</span><span class="p">[</span><span class="s2">&quot;files&quot;</span><span class="p">]</span>
-            <span class="k">elif</span> <span class="n">app_type</span> <span class="o">==</span> <span class="s2">&quot;git_repo&quot;</span> <span class="ow">or</span> <span class="n">app_type</span> <span class="o">==</span> <span class="s2">&quot;hg_repo&quot;</span><span class="p">:</span>
-                <span class="n">validator_set</span> <span class="o">=</span> <span class="n">_base_app_keys_for</span><span class="p">[</span><span class="s2">&quot;repos&quot;</span><span class="p">]</span>
+        <span class="n">validation_errors_count</span> <span class="o">+=</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
+            <span class="n">all_apps</span><span class="p">,</span> <span class="n">applications_schema_global</span><span class="p">,</span>
+            <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="s2">&quot;**File:** </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">_paths_map</span><span class="p">[</span><span class="s2">&quot;conf_file&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;**Data key:** applications&quot;</span>
+            <span class="p">]),</span>
+            <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">validator_set</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
-                <span class="n">missing_fields</span> <span class="o">+=</span> <span class="p">[</span><span class="n">field</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">validator_set</span> <span class="k">if</span> <span class="n">field</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">app</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">all_apps</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;archive&quot;</span><span class="p">:</span>
+                <span class="n">validation_errors_count</span> <span class="o">+=</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
+                    <span class="n">app</span><span class="p">,</span> <span class="n">application_schema_archive_type</span><span class="p">,</span>
+                    <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                        <span class="s2">&quot;**File:** </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">_paths_map</span><span class="p">[</span><span class="s2">&quot;conf_file&quot;</span><span class="p">],</span>
+                        <span class="s2">&quot;**Data key:** applications&quot;</span>
+                    <span class="p">]),</span>
+                    <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="n">missing_fields</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Application ID: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">app_id</span><span class="p">)</span>
-                <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingMandatoryField</span><span class="p">(</span>
-                    <span class="s2">&quot;The &lt;</span><span class="si">%s</span><span class="s2">&gt; field/s is/are required.&quot;</span> <span class="o">%</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missing_fields</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">validation_errors_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">all_apps</span></div>
 
@@ -605,7 +605,8 @@
                             <span class="bp">self</span><span class="o">.</span><span class="n">_set_update_data</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="s2">&quot;update_date&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_date</span><span class="p">)</span>
 
                             <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;checkout_revision&quot;</span><span class="p">):</span>
-                                <span class="bp">self</span><span class="o">.</span><span class="n">_do_checkout</span><span class="p">(</span><span class="n">repo_type</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;checkout_revision&quot;</span><span class="p">))</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_do_checkout</span><span class="p">(</span><span class="n">repo_type</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">,</span>
+                                                  <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;checkout_revision&quot;</span><span class="p">))</span>
 
                             <span class="k">continue</span>
 
@@ -617,7 +618,8 @@
                             <span class="bp">self</span><span class="o">.</span><span class="n">_set_update_data</span><span class="p">(</span><span class="n">app_id</span><span class="p">,</span> <span class="s2">&quot;update_date&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_date</span><span class="p">)</span>
 
                             <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;checkout_revision&quot;</span><span class="p">):</span>
-                                <span class="bp">self</span><span class="o">.</span><span class="n">_do_checkout</span><span class="p">(</span><span class="n">repo_type</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;checkout_revision&quot;</span><span class="p">))</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_do_checkout</span><span class="p">(</span><span class="n">repo_type</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">,</span>
+                                                  <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;checkout_revision&quot;</span><span class="p">))</span>
                         <span class="k">else</span><span class="p">:</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Manual intervention required!&quot;</span><span class="p">)</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
@@ -729,13 +731,19 @@
             <span class="c1"># elif app[&quot;unzip_prog&quot;] == &quot;unzip&quot;:</span>
             <span class="c1">#     cmd += [&quot;unzip&quot;, &quot;-o&quot;, app[&quot;downloaded_filename&quot;]]</span>
             <span class="k">if</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;unzip_prog&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;tar&quot;</span><span class="p">:</span>
-                <span class="n">args</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unzip_args&quot;</span><span class="p">)</span>
+                <span class="n">untar_arg</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;untar_arg&quot;</span><span class="p">)</span>
+                <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;tar&quot;</span><span class="p">,</span> <span class="s2">&quot;--extract&quot;</span><span class="p">]</span>
 
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
-                    <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">app_id</span><span class="p">,</span> <span class="s2">&quot;Missing required &lt;unzip_args&gt; key.&quot;</span><span class="p">))</span>
-                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">untar_arg</span><span class="p">:</span>
+                    <span class="n">cmd</span> <span class="o">+=</span> <span class="p">[</span><span class="n">untar_arg</span><span class="p">]</span>
 
-                <span class="n">cmd</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;tar&quot;</span><span class="p">,</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;unzip_args&quot;</span><span class="p">],</span> <span class="n">archive</span><span class="p">,</span> <span class="s2">&quot;-C&quot;</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">unzip_target</span><span class="p">]</span>
+                <span class="n">cmd</span> <span class="o">+=</span> <span class="p">[</span>
+                    <span class="s2">&quot;--file&quot;</span><span class="p">,</span>
+                    <span class="n">archive</span><span class="p">,</span>
+                    <span class="s2">&quot;-C&quot;</span><span class="p">,</span>
+                    <span class="n">destination</span><span class="p">,</span>
+                    <span class="n">unzip_target</span>
+                <span class="p">]</span>
 
             <span class="k">if</span> <span class="n">cmd</span><span class="p">:</span>
                 <span class="k">try</span><span class="p">:</span>

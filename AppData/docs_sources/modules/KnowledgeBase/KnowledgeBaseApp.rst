@@ -16,4 +16,5 @@ Submodules
    KnowledgeBaseApp.archives_handler
    KnowledgeBaseApp.cli
    KnowledgeBaseApp.repositories_handler
+   KnowledgeBaseApp.schemas
 

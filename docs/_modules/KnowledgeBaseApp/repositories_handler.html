@@ -181,8 +181,10 @@
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cmd_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">file_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">json_schema_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">shell_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">string_utils</span>
+<span class="kn">from</span> <span class="nn">.schemas</span> <span class="k">import</span> <span class="n">repositories_schema</span>
 
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
@@ -217,10 +219,6 @@
 <span class="sd">    logger : object</span>
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">_common_mandatory_keys</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;repo_owner&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;repo_name&quot;</span>
-    <span class="p">}</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize.</span>
@@ -253,34 +251,14 @@
 <span class="sd">        InvalidRepositoryData</span>
 <span class="sd">            Invalid repository data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">invalid_repos</span> <span class="o">=</span> <span class="p">[]</span>
-
-        <span class="k">for</span> <span class="n">repo_data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_repositories_data</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_common_mandatory_keys</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">repo_data</span><span class="p">):</span>
-                <span class="n">invalid_repos</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">repo_data</span><span class="p">,</span>
-                                      <span class="s2">&quot;missing_fields&quot;</span><span class="p">,</span>
-                                      <span class="p">[</span><span class="n">field</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_common_mandatory_keys</span>
-                                       <span class="k">if</span> <span class="n">field</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">repo_data</span><span class="p">]))</span>
-
-            <span class="k">if</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_type&quot;</span><span class="p">,</span> <span class="s2">&quot;git&quot;</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_allowed_repo_types</span><span class="p">:</span>
-                <span class="n">invalid_repos</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">repo_data</span><span class="p">,</span>
-                                      <span class="s2">&quot;invalid_repo_type&quot;</span><span class="p">,</span>
-                                      <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;repo_type&quot;</span><span class="p">)))</span>
-
-        <span class="k">if</span> <span class="n">invalid_repos</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;The following repositories must be corrected:&quot;</span><span class="p">)</span>
-
-            <span class="k">for</span> <span class="n">repo_data</span><span class="p">,</span> <span class="n">error_type</span><span class="p">,</span> <span class="n">error_data</span> <span class="ow">in</span> <span class="n">invalid_repos</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Repository:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">repo_data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-                <span class="k">if</span> <span class="n">error_type</span> <span class="o">==</span> <span class="s2">&quot;missing_fields&quot;</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Missing fields: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">error_data</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-                <span class="k">elif</span> <span class="n">error_type</span> <span class="o">==</span> <span class="s2">&quot;invalid_repo_type&quot;</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Invalid repository type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">error_data</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Valid values are: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
-                                        <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">_allowed_repo_types</span><span class="p">)),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-            <span class="k">raise</span> <span class="n">InvalidRepositoryData</span><span class="p">(</span><span class="s2">&quot;Operation aborted!&quot;</span><span class="p">)</span></div>
+        <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_repositories_data</span><span class="p">,</span> <span class="n">repositories_schema</span><span class="p">,</span>
+            <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="s2">&quot;File: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;data_sources&quot;</span><span class="p">,</span>
+                                          <span class="s2">&quot;archives.py&quot;</span><span class="p">),</span>
+                <span class="s2">&quot;Data key: data&quot;</span>
+            <span class="p">]),</span>
+            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="RepositoriesHandler._generate_repositories_data_tables_json_file"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._generate_repositories_data_tables_json_file">[docs]</a>    <span class="k">def</span> <span class="nf">_generate_repositories_data_tables_json_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Generate the JSON file for the repository.</span>

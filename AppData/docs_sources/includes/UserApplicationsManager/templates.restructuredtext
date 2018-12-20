@@ -22,7 +22,7 @@ Data keys
     + ``file``: The application is a single file.
     + ``archive``: The application is an archive that needs to be unpacked.
 
-- ``url`` (**Mandatory**): The URL where to download the application.
+- ``url`` (**Mandatory**): The URL from where to download the application.
 - ``destination`` (**Mandatory**): The final destination for an application.
 
     + ``git_repo`` or ``hg_repo``: The ``destination`` should always be a path to a folder.
@@ -48,7 +48,7 @@ Data keys
     + ``hg_repo``: It can be a branch name or a tag name. The command executed will look like: ``hg update <checkout_revision>``
 
 - ``unzip_prog`` (**Mandatory**): The name of the command used to unpack an archive. Key only used by applications of ``type`` ``archive``. As of now, only the ``tar`` command is implemented.
-- ``unzip_args`` (**Mandatory**): Arguments passed to the command defined in ``unzip_prog``. Key only used by applications of ``type`` ``archive``.
+- ``untar_arg`` (**Default**: empty (no decompression argument is passed to ``tar``)): The decompress argument used by the ``tar`` program.
 - ``unzip_targets`` (**Mandatory** | **List**): A list of tuples. At index zero of each tuple should be defined the path to a file/folder inside a downloaded archive. At index one should be defined the path to the folder where the target should be extracted. Key only used by applications of ``type`` ``archive``.
 - ``post_extraction_actions`` (**Dictionary**): A list of actions to perform after an archive is extracted.
 

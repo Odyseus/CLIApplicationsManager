@@ -672,16 +672,25 @@
     <span class="p">)]</span>
 
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">categories_data_json</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">json_schema_utils</span>
+        <span class="kn">from</span> <span class="nn">.schemas</span> <span class="k">import</span> <span class="n">categories_data_schema</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">categories_data_json</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">categories_data_file</span><span class="p">:</span>
-                <span class="n">categories_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">((</span><span class="n">categories_data_file</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+                <span class="n">categories_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">categories_data_file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+            <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
+                <span class="n">categories_data</span><span class="p">,</span> <span class="n">categories_data_schema</span><span class="p">,</span>
+                <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                    <span class="s2">&quot;File: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">categories_data_json</span>
+                <span class="p">]),</span>
+                <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;UserData/categories_data/categories.json non existent.</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;This file is used to add custom icons to each category.</span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;Can be created with `./app.py run generate_categories_html` command.</span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;Or let categories use a generic icon.&quot;</span>
+        <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;Without this file, categories will use a generic icon.&quot;</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
     <span class="n">categories</span> <span class="o">=</span> <span class="p">{}</span>

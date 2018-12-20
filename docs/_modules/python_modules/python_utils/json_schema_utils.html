@@ -173,7 +173,8 @@
 
 
 <span class="n">_extra_types</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;custom_callable&quot;</span><span class="p">:</span> <span class="n">Callable</span>
+    <span class="s2">&quot;custom_callable&quot;</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+    <span class="s2">&quot;custom_tuple&quot;</span><span class="p">:</span> <span class="nb">tuple</span>
 <span class="p">}</span>
 
 
@@ -196,6 +197,7 @@
              <span class="n">raise_error</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
              <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
              <span class="n">error_header</span><span class="o">=</span><span class="s2">&quot;Data didn&#39;t pass validation!&quot;</span><span class="p">,</span>
+             <span class="n">extra_types</span><span class="o">=</span><span class="p">{},</span>
              <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Validate data using a JSON schema.</span>
 
@@ -205,10 +207,14 @@
 <span class="sd">        The data to validate.</span>
 <span class="sd">    schema : dict</span>
 <span class="sd">        The schema to use for validation.</span>
+<span class="sd">    raise_error : bool, optional</span>
+<span class="sd">        Whether or not to raise an exception.</span>
 <span class="sd">    error_message_extra_info : str, optional</span>
 <span class="sd">        Extra information to display wehn raising a :any:`SchemaValidationError` error.</span>
 <span class="sd">    error_header : str, optional</span>
 <span class="sd">        Text to be displayed as &quot;CLI header&quot;.</span>
+<span class="sd">    extra_types : dict, optional</span>
+<span class="sd">        Extra type checks.</span>
 <span class="sd">    logger : object</span>
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
 
@@ -216,6 +222,12 @@
 <span class="sd">    ------</span>
 <span class="sd">    SchemaValidationError</span>
 <span class="sd">        See :any:`SchemaValidationError`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    int</span>
+<span class="sd">        1 (one) if errors were found. 0 (zero) if no errors were found.</span>
+<span class="sd">        It only returns if raise_error is False.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Just in case, use a copy of instance to validate, not the original.</span>
     <span class="k">try</span><span class="p">:</span>
@@ -224,7 +236,9 @@
         <span class="n">instance_copy</span> <span class="o">=</span> <span class="n">instance</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
 
-    <span class="n">v</span> <span class="o">=</span> <span class="n">schema_validator</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="n">_extra_types</span><span class="p">,</span> <span class="n">format_checker</span><span class="o">=</span><span class="n">format_checker</span><span class="p">)</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">schema_validator</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span>
+                         <span class="n">types</span><span class="o">=</span><span class="p">{</span><span class="o">**</span><span class="n">extra_types</span><span class="p">,</span> <span class="o">**</span><span class="n">_extra_types</span><span class="p">},</span>
+                         <span class="n">format_checker</span><span class="o">=</span><span class="n">format_checker</span><span class="p">)</span>
     <span class="n">errors</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">iter_errors</span><span class="p">(</span><span class="n">instance_copy</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
@@ -252,7 +266,8 @@
 
                 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">extra_info_keys</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">error_schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-                        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**</span><span class="si">%s</span><span class="s2">:** </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span> <span class="n">error_schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**</span><span class="si">%s</span><span class="s2">:** </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                                    <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span> <span class="n">error_schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
