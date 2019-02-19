@@ -1,34 +1,32 @@
-/* sphinx_rtd_theme version 0.4.1 | MIT license */
-/* Built 20180727 10:07 */
-require = function n(e, i, t) {
-    function o(s, a) {
-        if (!i[s]) {
-            if (!e[s]) {
-                var l = "function" == typeof require && require;
-                if (!a && l) {
-                    return l(s, !0);
+/* sphinx_rtd_theme version 0.4.3 | MIT license */
+/* Built 20190212 16:02 */
+require = function r(s, a, l) {
+    function c(e, n) {
+        if (!a[e]) {
+            if (!s[e]) {
+                var i = "function" == typeof require && require;
+                if (!n && i) {
+                    return i(e, !0);
                 }
-                if (r) {
-                    return r(s, !0);
+                if (u) {
+                    return u(e, !0);
                 }
-                var c = new Error("Cannot find module '" + s + "'");
-                c.code = "MODULE_NOT_FOUND";
-                throw c.code;
+                var t = new Error("Cannot find module '" + e + "'");
+                throw t.code = "MODULE_NOT_FOUND", t
             }
-            var u = i[s] = {
+            var o = a[e] = {
                 exports: {}
             };
-            e[s][0].call(u.exports, function(n) {
-                var i = e[s][1][n];
-                return o(i || n);
-            }, u, u.exports, n, e, i, t);
+            s[e][0].call(o.exports, function(n) {
+                return c(s[e][1][n] || n);
+            }, o, o.exports, r, s, a, l);
         }
-        return i[s].exports;
+        return a[e].exports;
     }
-    for (var r = "function" == typeof require && require, s = 0; s < t.length; s++) {
-        o(t[s]);
+    for (var u = "function" == typeof require && require, n = 0; n < l.length; n++) {
+        c(l[n]);
     }
-    return o;
+    return c;
 }({
     "sphinx-rtd-theme": [function(n, e, i) {
         var jQuery = "undefined" != typeof window ? window.jQuery : n("jquery");
@@ -42,40 +40,38 @@ require = function n(e, i, t) {
                 winHeight: null,
                 docHeight: null,
                 isRunning: !1,
-                enable: function(n) {
-                    var e = this;
-                    void 0 === n && (n = !0), e.isRunning || (e.isRunning = !0, jQuery(function(i) {
-                        e.init(i), e.reset(), e.win.on("hashchange", e.reset), n && e.win.on("scroll", function() {
-                            e.linkScroll || e.winScroll || (e.winScroll = !0, requestAnimationFrame(function() {
-                                e.onScroll();
+                enable: function(e) {
+                    var i = this;
+                    void 0 === e && (e = !0), i.isRunning || (i.isRunning = !0, jQuery(function(n) {
+                        i.init(n), i.reset(), i.win.on("hashchange", i.reset), e && i.win.on("scroll", function() {
+                            i.linkScroll || i.winScroll || (i.winScroll = !0, requestAnimationFrame(function() {
+                                i.onScroll();
                             }));
-                        }), e.win.on("resize", function() {
-                            e.winResize || (e.winResize = !0, requestAnimationFrame(function() {
-                                e.onResize();
+                        }), i.win.on("resize", function() {
+                            i.winResize || (i.winResize = !0, requestAnimationFrame(function() {
+                                i.onResize();
                             }));
-                        }), e.onResize();
+                        }), i.onResize();
                     }));
                 },
                 enableSticky: function() {
                     this.enable(!0);
                 },
-                init: function(n) {
-                    n(document);
-                    var e = this;
-                    this.navBar = n("div.wy-side-scroll:first"), this.win = n(window), n(document).on("click", "[data-toggle='wy-nav-top']", function() {
-                        n("[data-toggle='wy-nav-shift']").toggleClass("shift"), n("[data-toggle='rst-versions']").toggleClass("shift");
+                init: function(i) {
+                    i(document);
+                    var t = this;
+                    this.navBar = i("div.wy-side-scroll:first"), this.win = i(window), i(document).on("click", "[data-toggle='wy-nav-top']", function() {
+                        i("[data-toggle='wy-nav-shift']").toggleClass("shift"), i("[data-toggle='rst-versions']").toggleClass("shift");
                     }).on("click", ".wy-menu-vertical .current ul li a", function() {
-                        var i = n(this);
-                        n("[data-toggle='wy-nav-shift']").removeClass("shift"), n("[data-toggle='rst-versions']").toggleClass("shift"), e.toggleCurrent(i), e.hashChange();
+                        var n = i(this);
+                        i("[data-toggle='wy-nav-shift']").removeClass("shift"), i("[data-toggle='rst-versions']").toggleClass("shift"), t.toggleCurrent(n), t.hashChange();
                     }).on("click", "[data-toggle='rst-current-version']", function() {
-                        n("[data-toggle='rst-versions']").toggleClass("shift-up");
-                    }), n("table.docutils:not(.field-list,.footnote,.citation)").wrap("<div class='wy-table-responsive'></div>"), n("table.docutils.footnote").wrap("<div class='wy-table-responsive footnote'></div>"), n("table.docutils.citation").wrap("<div class='wy-table-responsive citation'></div>"), n(".wy-menu-vertical ul").not(".simple").siblings("a").each(function() {
-                        var i = n(this);
-                        var expand = n('<span class="toctree-expand"></span>');
-                        expand.on("click", function(n) {
-                            return e.toggleCurrent(i), n.stopPropagation(), !1;
-                        });
-                        i.prepend(expand);
+                        i("[data-toggle='rst-versions']").toggleClass("shift-up");
+                    }), i("table.docutils:not(.field-list,.footnote,.citation)").wrap("<div class='wy-table-responsive'></div>"), i("table.docutils.footnote").wrap("<div class='wy-table-responsive footnote'></div>"), i("table.docutils.citation").wrap("<div class='wy-table-responsive citation'></div>"), i(".wy-menu-vertical ul").not(".simple").siblings("a").each(function() {
+                        var e = i(this);
+                        expand = i('<span class="toctree-expand"></span>'), expand.on("click", function(n) {
+                            return t.toggleCurrent(e), n.stopPropagation(), !1;
+                        }), e.prepend(expand);
                     });
                 },
                 reset: function() {
@@ -87,7 +83,7 @@ require = function n(e, i, t) {
                             var t = $('.document [id="' + n.substring(1) + '"]').closest("div.section");
                             0 === (i = e.find('[href="#' + t.attr("id") + '"]')).length && (i = e.find('[href="#"]'));
                         }
-                        i.length > 0 && ($(".wy-menu-vertical .current").removeClass("current"), i.addClass("current"), i.closest("li.toctree-l1").addClass("current"), i.closest("li.toctree-l1").parent().addClass("current"), i.closest("li.toctree-l1").addClass("current"), i.closest("li.toctree-l2").addClass("current"), i.closest("li.toctree-l3").addClass("current"), i.closest("li.toctree-l4").addClass("current"));
+                        0 < i.length && ($(".wy-menu-vertical .current").removeClass("current"), i.addClass("current"), i.closest("li.toctree-l1").addClass("current"), i.closest("li.toctree-l1").parent().addClass("current"), i.closest("li.toctree-l1").addClass("current"), i.closest("li.toctree-l2").addClass("current"), i.closest("li.toctree-l3").addClass("current"), i.closest("li.toctree-l4").addClass("current"), i[0].scrollIntoView());
                     } catch (o) {
                         console.log("Error expanding nav for anchor", o);
                     }
@@ -116,16 +112,16 @@ require = function n(e, i, t) {
                 StickyNav: e.exports.ThemeNav
             }),
             function() {
-                for (var n = 0, e = ["ms", "moz", "webkit", "o"], i = 0; i < e.length && !window.requestAnimationFrame; ++i) {
-                    window.requestAnimationFrame = window[e[i] + "RequestAnimationFrame"], window.cancelAnimationFrame = window[e[i] + "CancelAnimationFrame"] || window[e[i] + "CancelRequestAnimationFrame"];
+                for (var r = 0, n = ["ms", "moz", "webkit", "o"], e = 0; e < n.length && !window.requestAnimationFrame; ++e) {
+                    window.requestAnimationFrame = window[n[e] + "RequestAnimationFrame"], window.cancelAnimationFrame = window[n[e] + "CancelAnimationFrame"] || window[n[e] + "CancelRequestAnimationFrame"];
                 }
-                window.requestAnimationFrame || (window.requestAnimationFrame = function(e, i) {
-                    var t = (new Date()).getTime(),
-                        o = Math.max(0, 16 - (t - n)),
-                        r = window.setTimeout(function() {
-                            e(t + o);
-                        }, o);
-                    return n = t + o, r;
+                window.requestAnimationFrame || (window.requestAnimationFrame = function(n, e) {
+                    var i = (new Date).getTime(),
+                        t = Math.max(0, 16 - (i - r)),
+                        o = window.setTimeout(function() {
+                            n(i + t);
+                        }, t);
+                    return r = i + t, o;
                 }), window.cancelAnimationFrame || (window.cancelAnimationFrame = function(n) {
                     clearTimeout(n);
                 });

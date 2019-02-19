@@ -19,29 +19,32 @@
   
 
   
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.min.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search"  style="background: False" >
           
 
           
@@ -162,10 +165,7 @@
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;Custom initialization and overrides for the mistune module.</span>
 
-<span class="sd">Attributes</span>
-<span class="sd">----------</span>
-<span class="sd">md : object</span>
-<span class="sd">    Initialized ``mistune.Markdown`` instance.</span>
+<span class="sd">..note:</span>
 
 <span class="sd">    **Markdown parser additions/overrides**:</span>
 
@@ -274,7 +274,28 @@
 <span class="c1"># Enable new feature/s.</span>
 <span class="n">_mistune_inline_lexer</span><span class="o">.</span><span class="n">enable_kbd_tag</span><span class="p">()</span>
 
-<span class="n">md</span> <span class="o">=</span> <span class="n">Markdown</span><span class="p">(</span><span class="n">_mistune_renderer</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="n">_mistune_inline_lexer</span><span class="p">)</span>
+
+<div class="viewcode-block" id="md"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.mistune_utils.html#python_modules.python_utils.mistune_utils.md">[docs]</a><span class="k">def</span> <span class="nf">md</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">escape</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Render markdown formatted text to html.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : str</span>
+<span class="sd">        Markdown string to parse into HTML.</span>
+<span class="sd">    escape : bool, optional</span>
+<span class="sd">        If set to False, all HTML tags will not be escaped.</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Extra keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        HTML string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Markdown</span><span class="p">(</span><span class="n">renderer</span><span class="o">=</span><span class="n">_mistune_renderer</span><span class="p">,</span>
+                    <span class="n">inline</span><span class="o">=</span><span class="n">_mistune_inline_lexer</span><span class="p">,</span>
+                    <span class="n">escape</span><span class="o">=</span><span class="n">escape</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)(</span><span class="n">text</span><span class="p">)</span></div>
+
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="k">pass</span>
@@ -290,7 +311,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2018, Odyseus
+        &copy; Copyright 2016-2019, Odyseus
 
     </p>
   </div>
@@ -308,20 +329,6 @@
     </section>
 
   </div>
-
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.min.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {
