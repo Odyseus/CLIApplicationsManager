@@ -18,10 +18,10 @@
             "__app__/docs_sources/modules",
             "__app__/docs_sources/sphinx_rtd_theme_mod",
             "__app__/docs_sources/sphinx_extensions",
-            "docs",
             "__pycache__"
         ],
         "index_exclude_patterns": [
+            "docs",
             "UserData/**/UserData",
             "UserData/**/UserData/*",
             "UserData/**/UserData/**",
