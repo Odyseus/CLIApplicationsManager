@@ -60,7 +60,7 @@ Bootstrap JavaScript/CSS framework
     .. note::
 
         - ``\*.bundle.js`` files contain the Popper plugin.
-        - ``\*.css.map`` files are included to :abbr:`STFU (Shut The F*** Up)` browser console warnings. ¬¬
+        - ``\*.css.map`` files are included to |STFU| browser console warnings. ¬¬
         - Non-minified files are included in case I want to see the source.
 
 - Using my own `Boostrap 4 theme <https://gitlab.com/Odyseus/flatly_bootstrap_theme>`__ based on `Bootswatch's <https://bootswatch.com>`__'s `Flatly theme <https://bootswatch.com/flatly>`__.

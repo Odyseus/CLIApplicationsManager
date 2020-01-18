@@ -25,6 +25,7 @@
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -82,23 +83,23 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils’ documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/JSONSchemaValidator/index.html">JSON Schema Validator’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip’s documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase’s documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
 </ul>
 
@@ -199,7 +200,7 @@ without exceptions.</p>
 <p>Validate a list of settings passed as arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>raw_overrides</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a>) – The raw list of settings as passed to the CLI.</p>
+<dd class="field-odd"><p><strong>raw_overrides</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#list" title="(in Python v3.5)"><em>list</em></a>) -- The raw list of settings as passed to the CLI.</p>
 </dd>
 </dl>
 <dl class="method">
@@ -242,7 +243,7 @@ without exceptions.</p>
 <dd><p>Validate Boolean.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The key value to validate.</p>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) -- The key value to validate.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>If it is a valid value for a Boolean.</p>
@@ -259,7 +260,7 @@ without exceptions.</p>
 <dd><p>Get a Boolean.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The key value already validated.</p>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) -- The key value already validated.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The Boolean.</p>
@@ -291,17 +292,17 @@ without exceptions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>profile</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em>, </em><em>optional</em>) – The profile name.</p></li>
-<li><p><strong>dry_run</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Log an action without actually performing it.</p></li>
-<li><p><strong>settings_overrides</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a><em>, </em><em>optional</em>) – A list of settings to override the default ones or the defined in the profile’s
+<li><p><strong>profile</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em>, </em><em>optional</em>) -- The profile name.</p></li>
+<li><p><strong>dry_run</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) -- Log an action without actually performing it.</p></li>
+<li><p><strong>settings_overrides</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a><em>, </em><em>optional</em>) -- A list of settings to override the default ones or the defined in the profile's
 configuration file.</p></li>
-<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingConfigFileForProfile</span></code> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.MissingConfigFileForProfile" title="python_modules.python_utils.exceptions.MissingConfigFileForProfile"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingConfigFileForProfile</span></code></a>&gt;.</p></li>
-<li><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.NoProfileNameProvided</span></code> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.NoProfileNameProvided" title="python_modules.python_utils.exceptions.NoProfileNameProvided"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.NoProfileNameProvided</span></code></a>&gt;.</p></li>
+<li><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingConfigFileForProfile</span></code> -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.MissingConfigFileForProfile" title="python_modules.python_utils.exceptions.MissingConfigFileForProfile"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingConfigFileForProfile</span></code></a>&gt;.</p></li>
+<li><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.NoProfileNameProvided</span></code> -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.NoProfileNameProvided" title="python_modules.python_utils.exceptions.NoProfileNameProvided"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.NoProfileNameProvided</span></code></a>&gt;.</p></li>
 </ul>
 </dd>
 </dl>
@@ -311,7 +312,7 @@ configuration file.</p></li>
 <dd><p>Summary</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>char</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em>, </em><em>optional</em>) – Character used to generate the “CLI separator”.</p>
+<dd class="field-odd"><p><strong>char</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a><em>, </em><em>optional</em>) -- Character used to generate the &quot;CLI separator&quot;.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -323,8 +324,8 @@ configuration file.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.MalformedSources</span></code> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.MalformedSources" title="python_modules.python_utils.exceptions.MalformedSources"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.MalformedSources</span></code></a>&gt;.</p></li>
-<li><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingSourcesOnConfigFile</span></code> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.MissingSourcesOnConfigFile" title="python_modules.python_utils.exceptions.MissingSourcesOnConfigFile"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingSourcesOnConfigFile</span></code></a>&gt;.</p></li>
+<li><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.MalformedSources</span></code> -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.MalformedSources" title="python_modules.python_utils.exceptions.MalformedSources"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.MalformedSources</span></code></a>&gt;.</p></li>
+<li><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingSourcesOnConfigFile</span></code> -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.MissingSourcesOnConfigFile" title="python_modules.python_utils.exceptions.MissingSourcesOnConfigFile"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingSourcesOnConfigFile</span></code></a>&gt;.</p></li>
 </ul>
 </dd>
 </dl>
@@ -360,10 +361,10 @@ configuration file.</p></li>
 <dd><p>Update all host files, regardless of folder depth.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>&gt;.</p>
+<dd class="field-odd"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code> -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>&gt;.</p>
 </dd>
 <dt class="field-even">Parameters</dt>
-<dd class="field-even"><p><strong>force_update</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a>) – Ignore source update frequency and update its file/s anyway.</p>
+<dd class="field-even"><p><strong>force_update</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a>) -- Ignore source update frequency and update its file/s anyway.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -374,7 +375,7 @@ configuration file.</p></li>
 <dd><p>Check if source should be updated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>source</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – The source to check.</p>
+<dd class="field-odd"><p><strong>source</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) -- The source to check.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>If the source needs to be updated depending on its configured specified
@@ -398,10 +399,10 @@ update frequency.</p>
 <dd><p>Download the source files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>source</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) – The source data.</p>
+<dd class="field-odd"><p><strong>source</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) -- The source data.</p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>&gt;.</p>
+<dd class="field-even"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code> -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>&gt;.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -412,7 +413,7 @@ update frequency.</p>
 <dd><p>Handle the downloaded sources with compressed files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>&gt;.</p>
+<dd class="field-odd"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code> -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>&gt;.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -450,7 +451,7 @@ to artifacts and duplicates.</p>
 <dd><p>Populate exclusions list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>&gt;.</p>
+<dd class="field-odd"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code> -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>&gt;.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -464,7 +465,7 @@ to artifacts and duplicates.</p>
 have been explicitly excluded by the user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code> – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>&gt;.</p>
+<dd class="field-odd"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code> -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>&gt;.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -475,7 +476,7 @@ have been explicitly excluded by the user.</p>
 <dd><p>Standardize and format the rule string provided.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>line</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The line to be standardized.</p>
+<dd class="field-odd"><p><strong>line</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) -- The line to be standardized.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The rules elements.</p>
@@ -494,7 +495,7 @@ have been explicitly excluded by the user.</p>
 <dd><p>IDN compatible domain validation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>host</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The host name to check.</p>
+<dd class="field-odd"><p><strong>host</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) -- The host name to check.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Whether the host name is valid or not.</p>
@@ -515,7 +516,7 @@ have been explicitly excluded by the user.</p>
 <dd><p>Validate IP address (IPv4 or IPv6).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The IP address to validate.</p>
+<dd class="field-odd"><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) -- The IP address to validate.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>If it is a valid IP address or not.</p>
@@ -532,7 +533,7 @@ have been explicitly excluded by the user.</p>
 <dd><p>Validate integer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>integer</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) – The string to validate.</p>
+<dd class="field-odd"><p><strong>integer</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) -- The string to validate.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>If the value is a valid integer or not.</p>
@@ -550,8 +551,8 @@ have been explicitly excluded by the user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dry_run</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) – Log an action without actually performing it.</p></li>
-<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+<li><p><strong>dry_run</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a><em>, </em><em>optional</em>) -- Log an action without actually performing it.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
 </ul>
 </dd>
 </dl>
@@ -563,7 +564,7 @@ have been explicitly excluded by the user.</p>
 <dd><p>Generate a new profile.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) – See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+<dd class="field-odd"><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -590,7 +591,7 @@ have been explicitly excluded by the user.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2019, Odyseus
+        &copy; Copyright 2016-2020, Odyseus
 
     </p>
   </div>

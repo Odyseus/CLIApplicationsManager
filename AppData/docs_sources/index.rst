@@ -1,6 +1,3 @@
-.. Abbreviations
-
-.. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
 
 #########################################
 Python |CLI| Applications' documentations
@@ -60,6 +57,7 @@ Third-party module's documentations hosted by their authors
     coverage/python
     modules/BackupUtils/modules
     modules/ChrootHelper/modules
+    modules/CinnamonDocsGenerator/modules
     modules/FilesCleaner/modules
     modules/HostsManager/modules
     modules/JSONSchemaValidator/modules

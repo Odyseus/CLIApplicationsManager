@@ -63,7 +63,7 @@ for app in all_apps:
 # ##############################################################################
 
 # If your documentation needs a minimal Sphinx version, state it here.
-needs_sphinx = "1.6"
+needs_sphinx = "1.8.1"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -102,6 +102,14 @@ language = None
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
 exclude_patterns = []
+
+abbreviations_path = os.path.join(os.path.dirname(__file__),
+                                  "includes", "0-common",
+                                  "abbreviations.restructuredtext")
+
+with open(abbreviations_path, "r") as abbr_file:
+    rst_epilog = abbr_file.read()
+
 
 # ##############################################################################
 # ########################### Options for HTML output ##########################
@@ -204,7 +212,8 @@ custom_literalincludes = {
 for app in all_apps:
     slug_lower = app["slug"].lower()
     docopt_docstrings[slug_lower] = globals()["%s_docopt_doc" % slug_lower]
-    custom_literalincludes["%s-usage" % slug_lower] = extract_usage(globals()["%s_docopt_doc" % slug_lower])
+    custom_literalincludes["%s-usage" %
+                           slug_lower] = extract_usage(globals()["%s_docopt_doc" % slug_lower])
 
 # ##############################################################################
 # ########################## SMACK SOME FREAKING SENCE #########################

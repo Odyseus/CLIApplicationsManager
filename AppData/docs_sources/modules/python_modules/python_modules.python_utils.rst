@@ -34,6 +34,7 @@ Submodules
    python_modules.python_utils.multi_select
    python_modules.python_utils.prompts
    python_modules.python_utils.shell_utils
+   python_modules.python_utils.simple_validators
    python_modules.python_utils.sphinx_docs_utils
    python_modules.python_utils.string_utils
    python_modules.python_utils.template_utils

@@ -1,6 +1,3 @@
-.. Abbreviations
-
-.. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
 
 **************************************
 Make Cinnamon Xlet POT's documentation
