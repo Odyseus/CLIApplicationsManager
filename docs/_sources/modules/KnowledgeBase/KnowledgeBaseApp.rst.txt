@@ -2,9 +2,9 @@ KnowledgeBaseApp package
 ========================
 
 .. automodule:: KnowledgeBaseApp
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------
@@ -17,4 +17,3 @@ Submodules
    KnowledgeBaseApp.cli
    KnowledgeBaseApp.repositories_handler
    KnowledgeBaseApp.schemas
-

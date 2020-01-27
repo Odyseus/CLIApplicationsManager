@@ -183,47 +183,47 @@
 <p>Main command line application.</p>
 <dl class="attribute">
 <dt id="CinnamonDocsGeneratorApp.cli.docopt_doc">
-<code class="descclassname">CinnamonDocsGeneratorApp.cli.</code><code class="descname">docopt_doc</code><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.docopt_doc" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">CinnamonDocsGeneratorApp.cli.</code><code class="sig-name descname">docopt_doc</code><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.docopt_doc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to store/define the docstring that will be passed to docopt as the &quot;doc&quot; argument.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="CinnamonDocsGeneratorApp.cli.root_folder">
-<code class="descclassname">CinnamonDocsGeneratorApp.cli.</code><code class="descname">root_folder</code><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.root_folder" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">CinnamonDocsGeneratorApp.cli.</code><code class="sig-name descname">root_folder</code><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.root_folder" title="Permalink to this definition">¶</a></dt>
 <dd><p>The main folder containing the application. All commands must be executed from this location
 without exceptions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="class">
 <dt id="CinnamonDocsGeneratorApp.cli.CommandLineInterface">
-<em class="property">class </em><code class="descclassname">CinnamonDocsGeneratorApp.cli.</code><code class="descname">CommandLineInterface</code><span class="sig-paren">(</span><em>docopt_args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/CinnamonDocsGeneratorApp/cli.html#CommandLineInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.CommandLineInterface" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">CinnamonDocsGeneratorApp.cli.</code><code class="sig-name descname">CommandLineInterface</code><span class="sig-paren">(</span><em class="sig-param">docopt_args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/CinnamonDocsGeneratorApp/cli.html#CommandLineInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.CommandLineInterface" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CinnamonDocsGeneratorApp.python_utils.cli_utils.CommandLineInterfaceSuper</span></code></p>
 <p>Command line interface.</p>
 <p>It handles the arguments parsed by the docopt module.</p>
 <dl class="attribute">
 <dt id="CinnamonDocsGeneratorApp.cli.CommandLineInterface.a">
-<code class="descname">a</code><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.CommandLineInterface.a" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">a</code><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.CommandLineInterface.a" title="Permalink to this definition">¶</a></dt>
 <dd><p>Where docopt_args is stored.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)">dict</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="CinnamonDocsGeneratorApp.cli.CommandLineInterface.action">
-<code class="descname">action</code><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.CommandLineInterface.action" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">action</code><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.CommandLineInterface.action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the method that will be executed when calling CommandLineTool.run().</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -234,35 +234,35 @@ without exceptions.</p>
 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>docopt_args</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) -- The dictionary of arguments as returned by docopt parser.</p>
+<dd class="field-odd"><p><strong>docopt_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) -- The dictionary of arguments as returned by docopt parser.</p>
 </dd>
 </dl>
 <dl class="attribute">
 <dt>
-<code class="descname">action</code><em class="property"> = None</em></dt>
+<code class="sig-name descname">action</code><em class="property"> = None</em></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="CinnamonDocsGeneratorApp.cli.CommandLineInterface.run">
-<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/CinnamonDocsGeneratorApp/cli.html#CommandLineInterface.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.CommandLineInterface.run" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/CinnamonDocsGeneratorApp/cli.html#CommandLineInterface.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.CommandLineInterface.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute the assigned action stored in self.action if any.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CinnamonDocsGeneratorApp.cli.CommandLineInterface.generate_docs">
-<code class="descname">generate_docs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/CinnamonDocsGeneratorApp/cli.html#CommandLineInterface.generate_docs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.CommandLineInterface.generate_docs" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">generate_docs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/CinnamonDocsGeneratorApp/cli.html#CommandLineInterface.generate_docs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.CommandLineInterface.generate_docs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute the assigned action stored in self.action if any.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CinnamonDocsGeneratorApp.cli.CommandLineInterface.system_executable_generation">
-<code class="descname">system_executable_generation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/CinnamonDocsGeneratorApp/cli.html#CommandLineInterface.system_executable_generation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.CommandLineInterface.system_executable_generation" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">system_executable_generation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/CinnamonDocsGeneratorApp/cli.html#CommandLineInterface.system_executable_generation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.CommandLineInterface.system_executable_generation" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="../python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._system_executable_generation" title="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._system_executable_generation"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">cli_utils.CommandLineInterfaceSuper._system_executable_generation</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CinnamonDocsGeneratorApp.cli.CommandLineInterface.display_manual_page">
-<code class="descname">display_manual_page</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/CinnamonDocsGeneratorApp/cli.html#CommandLineInterface.display_manual_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.CommandLineInterface.display_manual_page" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">display_manual_page</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/CinnamonDocsGeneratorApp/cli.html#CommandLineInterface.display_manual_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.CommandLineInterface.display_manual_page" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="../python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._display_manual_page" title="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._display_manual_page"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">cli_utils.CommandLineInterfaceSuper._display_manual_page</span></code></a>.</p>
 </dd></dl>
 
@@ -270,7 +270,7 @@ without exceptions.</p>
 
 <dl class="function">
 <dt id="CinnamonDocsGeneratorApp.cli.main">
-<code class="descclassname">CinnamonDocsGeneratorApp.cli.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/CinnamonDocsGeneratorApp/cli.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.main" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">CinnamonDocsGeneratorApp.cli.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/CinnamonDocsGeneratorApp/cli.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#CinnamonDocsGeneratorApp.cli.main" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize command line interface.</p>
 </dd></dl>
 

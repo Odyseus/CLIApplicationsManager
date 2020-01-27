@@ -19,19 +19,10 @@ import os
 import sys
 
 from datetime import datetime
+from runpy import run_path
 
 root_folder = os.path.realpath(os.path.abspath(os.path.join(
     os.path.normpath(os.path.join(os.path.dirname(__file__), *([".."] * 2))))))
-
-# root_app_user_data = os.path.join(root_folder, "UserData")
-# app_dirs = os.listdir(root_app_user_data)
-
-# # Insert all the  applications to sys.path.
-# for dir in app_dirs:
-#     app_data_dir = os.path.join(root_app_user_data, dir, "AppData")
-
-#     if os.path.exists(app_data_dir):
-#         sys.path.insert(0, app_data_dir)
 
 # Insert the root application to sys.path.
 sys.path.insert(0, os.path.join(root_folder, "AppData"))
@@ -40,11 +31,15 @@ from python_modules.app_utils import get_all_apps
 
 all_apps = get_all_apps()
 
+# Insert all managed applications to sys.path.
 for app in all_apps:
     sys.path.insert(0, os.path.join(app["path"], "AppData"))
 
 # Insert Sphinx extensions to sys.path.
-sys.path.insert(0, os.path.abspath("."))
+extensions_path = os.path.abspath(".")
+sys.path.insert(0, extensions_path)
+
+intersphinx_mapping_file_path = os.path.join(extensions_path, "intersphinx_mapping.py")
 
 # I couldn't directly import this data from the extension code itself (freaking python's relative
 # imports nonsense!!!), so I import it here and pass the data to the extension as an option
@@ -100,7 +95,7 @@ language = None
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-# This patterns also effect to html_static_path and html_extra_path
+# This patterns also affects html_static_path and html_extra_path
 exclude_patterns = []
 
 abbreviations_path = os.path.join(os.path.dirname(__file__),
@@ -219,10 +214,7 @@ for app in all_apps:
 # ########################## SMACK SOME FREAKING SENCE #########################
 # ##############################################################################
 
-# Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {
-    "python": ("https://docs.python.org/3.5", "python.3.5.objects.inv")
-}
+intersphinx_mapping = run_path(intersphinx_mapping_file_path)["intersphinx_mapping"]
 
 # Python's docs don't change every week.
 intersphinx_cache_limit = 90  # days

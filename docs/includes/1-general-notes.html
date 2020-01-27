@@ -214,7 +214,7 @@
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>When an option is specified more than once inside the <em>Usage</em> section of <code class="docutils literal notranslate"><span class="pre">docopt_doc</span></code>, it might generate duplicated items.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Workaround `docopt issue &lt;https://github.com/docopt/docopt/issues/134&gt;`__:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Workaround `docopt issue &lt;https://github.com/docopt/docopt/issues/134&gt;`__:</span>
 <span class="c1"># Not perfect, but good enough for some of my particular usage cases.</span>
 <span class="n">deduplicated_options</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;--option&quot;</span><span class="p">]))</span>
 </pre></div>
@@ -223,7 +223,7 @@
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Fixed arguments order.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">order_reference</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">order_reference</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;First&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Second&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Third&quot;</span><span class="p">,</span>

@@ -264,11 +264,11 @@
 <h3><code class="docutils literal notranslate"><span class="pre">keyring</span></code> module<a class="headerlink" href="#keyring-module" title="Permalink to this headline">¶</a></h3>
 <p>This module is only used by the email system and it is used to retrieve a password stored in the system's default keyring. This module is optional because the mail system can be configured to ask for a password. This application will not store nor use passwords saved in plain text.</p>
 <p>The following command executed from a terminal will prompt for a password that will be stored into the system's keyring:</p>
-<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span>$ keyring set backup_secret_service_name backup_secret_user_name
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ keyring <span class="nb">set</span> backup_secret_service_name backup_secret_user_name
 </pre></div>
 </div>
 <p>Then the password is retrieved from the system's keyring by the application email system using the <code class="docutils literal notranslate"><span class="pre">secret_service_name</span></code> and <code class="docutils literal notranslate"><span class="pre">secret_user_name</span></code> keys specified in the <code class="docutils literal notranslate"><span class="pre">settings</span></code> property from a <strong>settings</strong> file or a <strong>tasks</strong> file like so:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">keyring</span><span class="o">.</span><span class="n">get_password</span><span class="p">(</span><span class="s2">&quot;backup_secret_service_name&quot;</span><span class="p">,</span> <span class="s2">&quot;backup_secret_user_name&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keyring</span><span class="o">.</span><span class="n">get_password</span><span class="p">(</span><span class="s2">&quot;backup_secret_service_name&quot;</span><span class="p">,</span> <span class="s2">&quot;backup_secret_user_name&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">backup_secret_service_name</span></code> and <code class="docutils literal notranslate"><span class="pre">backup_secret_user_name</span></code> can have any other names that one deems to give them. As an example, in Gnome keyring, the details tab for the generated <em>storage</em> will display the following:</p>
@@ -509,7 +509,7 @@
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">settings</span></code>: The settings object that was used when running the backup job.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dry_run</span></code>: Whether the <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> <abbr title="Command Line Interface">CLI</abbr> option was used.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">logger</span></code>: See &lt;class <a class="reference internal" href="../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">logger</span></code>: See <a class="reference internal" href="../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">**kwords**</span></code>: Some task types can pass extra arguments to the <code class="docutils literal notranslate"><span class="pre">post_hook</span></code> mothod. See <a class="reference internal" href="#backup-utils-task-types-reference"><span class="std std-ref">Task types</span></a>.</p></li>
 </ul>
 </div>
@@ -637,7 +637,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The final command that will be executed will look similar to the following:</p>
-<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">--</span><span class="n">create</span> <span class="p">[</span><span class="n">tar_func_args</span><span class="p">]</span> <span class="o">--</span><span class="n">file</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">destination</span><span class="o">/</span><span class="p">[</span><span class="n">destination_prefix</span><span class="p">]</span><span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span><span class="n">_05</span><span class="o">.</span><span class="mf">42.06</span><span class="o">.</span><span class="mf">846.</span><span class="n">tar</span><span class="p">[</span><span class="n">extension_depending_on_tar_func_args_passed</span><span class="p">]</span> <span class="o">--</span><span class="n">files</span><span class="o">-</span><span class="n">from</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">file</span><span class="o">/</span><span class="k">with</span><span class="o">/</span><span class="n">valid</span><span class="o">/</span><span class="n">generated</span><span class="o">/</span><span class="n">paths</span> <span class="p">[</span><span class="n">tar_opt_args</span><span class="p">]</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>tar --create <span class="o">[</span>tar_func_args<span class="o">]</span> --file /path/to/destination/<span class="o">[</span>destination_prefix<span class="o">]</span><span class="m">2018</span>-11-22_05.42.06.846.tar<span class="o">[</span>extension_depending_on_tar_func_args_passed<span class="o">]</span> --files-from<span class="o">=</span>/path/to/tmp/file/with/valid/generated/paths <span class="o">[</span>tar_opt_args<span class="o">]</span>
 </pre></div>
 </div>
 </div>
@@ -666,8 +666,8 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The final command that will be executed will look similar to the following:</p>
-<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># The --exclude arguments are dynamically added based on values defined in ignored_patterns settings.</span>
-<span class="n">rsync</span> <span class="p">[</span><span class="n">rsync_args</span><span class="p">]</span> <span class="o">--</span><span class="n">exclude</span><span class="o">=</span><span class="n">ptrn_1</span> <span class="o">--</span><span class="n">exclude</span><span class="o">=</span><span class="n">ptrn_n</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mirror</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mirror</span><span class="o">/</span><span class="n">destination</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># The --exclude arguments are dynamically added based on values defined in ignored_patterns settings.</span>
+rsync <span class="o">[</span>rsync_args<span class="o">]</span> --exclude<span class="o">=</span>ptrn_1 --exclude<span class="o">=</span>ptrn_n /path/to/folder/to/mirror /path/to/mirror/destination
 </pre></div>
 </div>
 </div>

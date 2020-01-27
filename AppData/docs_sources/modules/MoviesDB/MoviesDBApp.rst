@@ -2,9 +2,9 @@ MoviesDBApp package
 ===================
 
 .. automodule:: MoviesDBApp
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------
@@ -14,4 +14,3 @@ Submodules
    MoviesDBApp.MoviesDB_webapp
    MoviesDBApp.app_utils
    MoviesDBApp.cli
-

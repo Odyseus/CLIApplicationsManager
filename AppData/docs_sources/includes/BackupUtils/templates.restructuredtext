@@ -51,7 +51,7 @@ Data keys
 
         - ``settings``: The settings object that was used when running the backup job.
         - ``dry_run``: Whether the ``--dry-run`` |CLI| option was used.
-        - ``logger``: See <class :any:`LogSystem`>.
+        - ``logger``: See :any:`LogSystem`.
         - ``**kwords**``: Some task types can pass extra arguments to the ``post_hook`` mothod. See :ref:`backup-utils-task-types-reference`.
 
 

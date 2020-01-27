@@ -2,9 +2,9 @@ BackupUtilsApp package
 ======================
 
 .. automodule:: BackupUtilsApp
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------
@@ -16,4 +16,3 @@ Submodules
    BackupUtilsApp.cli
    BackupUtilsApp.schemas
    BackupUtilsApp.tasks
-

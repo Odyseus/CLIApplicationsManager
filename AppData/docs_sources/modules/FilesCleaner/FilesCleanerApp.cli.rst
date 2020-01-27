@@ -2,6 +2,6 @@ FilesCleanerApp.cli module
 ==========================
 
 .. automodule:: FilesCleanerApp.cli
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

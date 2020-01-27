@@ -200,28 +200,23 @@
 <h2>The <code class="docutils literal notranslate"><span class="pre">pofile</span></code> function<a class="headerlink" href="#the-pofile-function" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="polib.pofile">
-<code class="descclassname">polib.</code><code class="descname">pofile</code><span class="sig-paren">(</span><em>pofile</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#pofile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.pofile" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">polib.</code><code class="sig-name descname">pofile</code><span class="sig-paren">(</span><em class="sig-param">pofile</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#pofile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.pofile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience function that parses the po or pot file <code class="docutils literal notranslate"><span class="pre">pofile</span></code> and returns
 a <a class="reference internal" href="#polib.POFile" title="polib.POFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">POFile</span></code></a> instance.</p>
 <p>Arguments:</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">pofile</span></code></dt>
-<dd><p>string, full or relative path to the po/pot file or its content (data).</p>
+<dt><code class="docutils literal notranslate"><span class="pre">pofile</span></code></dt><dd><p>string, full or relative path to the po/pot file or its content (data).</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">wrapwidth</span></code></dt>
-<dd><p>integer, the wrap width, only useful when the <code class="docutils literal notranslate"><span class="pre">-w</span></code> option was passed
+<dt><code class="docutils literal notranslate"><span class="pre">wrapwidth</span></code></dt><dd><p>integer, the wrap width, only useful when the <code class="docutils literal notranslate"><span class="pre">-w</span></code> option was passed
 to xgettext (optional, default: <code class="docutils literal notranslate"><span class="pre">78</span></code>).</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">encoding</span></code></dt>
-<dd><p>string, the encoding to use (e.g. &quot;utf-8&quot;) (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>, the
+<dt><code class="docutils literal notranslate"><span class="pre">encoding</span></code></dt><dd><p>string, the encoding to use (e.g. &quot;utf-8&quot;) (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>, the
 encoding will be auto-detected).</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">check_for_duplicates</span></code></dt>
-<dd><p>whether to check for duplicate entries when adding entries to the
+<dt><code class="docutils literal notranslate"><span class="pre">check_for_duplicates</span></code></dt><dd><p>whether to check for duplicate entries when adding entries to the
 file (optional, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">klass</span></code></dt>
-<dd><p>class which is used to instantiate the return value (optional,
+<dt><code class="docutils literal notranslate"><span class="pre">klass</span></code></dt><dd><p>class which is used to instantiate the return value (optional,
 default: <code class="docutils literal notranslate"><span class="pre">None</span></code>, the return value with be a <a class="reference internal" href="#polib.POFile" title="polib.POFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">POFile</span></code></a>
 instance).</p>
 </dd>
@@ -233,29 +228,24 @@ instance).</p>
 <h2>The <code class="docutils literal notranslate"><span class="pre">mofile</span></code> function<a class="headerlink" href="#the-mofile-function" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="polib.mofile">
-<code class="descclassname">polib.</code><code class="descname">mofile</code><span class="sig-paren">(</span><em>mofile</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#mofile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.mofile" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">polib.</code><code class="sig-name descname">mofile</code><span class="sig-paren">(</span><em class="sig-param">mofile</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#mofile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.mofile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience function that parses the mo file <code class="docutils literal notranslate"><span class="pre">mofile</span></code> and returns a
 <a class="reference internal" href="#polib.MOFile" title="polib.MOFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">MOFile</span></code></a> instance.</p>
 <p>Arguments:</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">mofile</span></code></dt>
-<dd><p>string, full or relative path to the mo file or its content (data).</p>
+<dt><code class="docutils literal notranslate"><span class="pre">mofile</span></code></dt><dd><p>string, full or relative path to the mo file or its content (data).</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">wrapwidth</span></code></dt>
-<dd><p>integer, the wrap width, only useful when the <code class="docutils literal notranslate"><span class="pre">-w</span></code> option was passed
+<dt><code class="docutils literal notranslate"><span class="pre">wrapwidth</span></code></dt><dd><p>integer, the wrap width, only useful when the <code class="docutils literal notranslate"><span class="pre">-w</span></code> option was passed
 to xgettext to generate the po file that was used to format the mo file
 (optional, default: <code class="docutils literal notranslate"><span class="pre">78</span></code>).</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">encoding</span></code></dt>
-<dd><p>string, the encoding to use (e.g. &quot;utf-8&quot;) (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>, the
+<dt><code class="docutils literal notranslate"><span class="pre">encoding</span></code></dt><dd><p>string, the encoding to use (e.g. &quot;utf-8&quot;) (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>, the
 encoding will be auto-detected).</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">check_for_duplicates</span></code></dt>
-<dd><p>whether to check for duplicate entries when adding entries to the
+<dt><code class="docutils literal notranslate"><span class="pre">check_for_duplicates</span></code></dt><dd><p>whether to check for duplicate entries when adding entries to the
 file (optional, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">klass</span></code></dt>
-<dd><p>class which is used to instantiate the return value (optional,
+<dt><code class="docutils literal notranslate"><span class="pre">klass</span></code></dt><dd><p>class which is used to instantiate the return value (optional,
 default: <code class="docutils literal notranslate"><span class="pre">None</span></code>, the return value with be a <a class="reference internal" href="#polib.POFile" title="polib.POFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">POFile</span></code></a>
 instance).</p>
 </dd>
@@ -267,18 +257,16 @@ instance).</p>
 <h2>The <code class="docutils literal notranslate"><span class="pre">detect_encoding</span></code> function<a class="headerlink" href="#the-detect-encoding-function" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="polib.detect_encoding">
-<code class="descclassname">polib.</code><code class="descname">detect_encoding</code><span class="sig-paren">(</span><em>file</em>, <em>binary_mode=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#detect_encoding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.detect_encoding" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">polib.</code><code class="sig-name descname">detect_encoding</code><span class="sig-paren">(</span><em class="sig-param">file</em>, <em class="sig-param">binary_mode=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#detect_encoding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.detect_encoding" title="Permalink to this definition">¶</a></dt>
 <dd><p>Try to detect the encoding used by the <code class="docutils literal notranslate"><span class="pre">file</span></code>. The <code class="docutils literal notranslate"><span class="pre">file</span></code> argument can
 be a PO or MO file path or a string containing the contents of the file.
 If the encoding cannot be detected, the function will return the value of
 <code class="docutils literal notranslate"><span class="pre">default_encoding</span></code>.</p>
 <p>Arguments:</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">file</span></code></dt>
-<dd><p>string, full or relative path to the po/mo file or its content.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">file</span></code></dt><dd><p>string, full or relative path to the po/mo file or its content.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">binary_mode</span></code></dt>
-<dd><p>boolean, set this to True if <code class="docutils literal notranslate"><span class="pre">file</span></code> is a mo file.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">binary_mode</span></code></dt><dd><p>boolean, set this to True if <code class="docutils literal notranslate"><span class="pre">file</span></code> is a mo file.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -288,7 +276,7 @@ If the encoding cannot be detected, the function will return the value of
 <h2>The <code class="docutils literal notranslate"><span class="pre">escape</span></code> function<a class="headerlink" href="#the-escape-function" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="polib.escape">
-<code class="descclassname">polib.</code><code class="descname">escape</code><span class="sig-paren">(</span><em>st</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#escape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.escape" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">polib.</code><code class="sig-name descname">escape</code><span class="sig-paren">(</span><em class="sig-param">st</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#escape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.escape" title="Permalink to this definition">¶</a></dt>
 <dd><p>Escapes the characters <code class="docutils literal notranslate"><span class="pre">\\</span></code>, <code class="docutils literal notranslate"><span class="pre">\t</span></code>, <code class="docutils literal notranslate"><span class="pre">\n</span></code>, <code class="docutils literal notranslate"><span class="pre">\r</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> in
 the given string <code class="docutils literal notranslate"><span class="pre">st</span></code> and returns it.</p>
 </dd></dl>
@@ -298,7 +286,7 @@ the given string <code class="docutils literal notranslate"><span class="pre">st
 <h2>The <code class="docutils literal notranslate"><span class="pre">unescape</span></code> function<a class="headerlink" href="#the-unescape-function" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="polib.unescape">
-<code class="descclassname">polib.</code><code class="descname">unescape</code><span class="sig-paren">(</span><em>st</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#unescape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.unescape" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">polib.</code><code class="sig-name descname">unescape</code><span class="sig-paren">(</span><em class="sig-param">st</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#unescape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.unescape" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unescapes the characters <code class="docutils literal notranslate"><span class="pre">\\</span></code>, <code class="docutils literal notranslate"><span class="pre">\t</span></code>, <code class="docutils literal notranslate"><span class="pre">\n</span></code>, <code class="docutils literal notranslate"><span class="pre">\r</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> in
 the given string <code class="docutils literal notranslate"><span class="pre">st</span></code> and returns it.</p>
 </dd></dl>
@@ -308,80 +296,75 @@ the given string <code class="docutils literal notranslate"><span class="pre">st
 <h2>The <code class="docutils literal notranslate"><span class="pre">POFile</span></code> class<a class="headerlink" href="#the-pofile-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="polib.POFile">
-<em class="property">class </em><code class="descclassname">polib.</code><code class="descname">POFile</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">polib.</code><code class="sig-name descname">POFile</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Po (or Pot) file reader/writer.
 This class inherits the <code class="xref py py-class docutils literal notranslate"><span class="pre">_BaseFile</span></code> class and, by extension,
 the python <code class="docutils literal notranslate"><span class="pre">list</span></code> type.</p>
 <p>Constructor, accepts the following keyword arguments:</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">pofile</span></code></dt>
-<dd><p>string, the path to the po or mo file, or its content as a string.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">pofile</span></code></dt><dd><p>string, the path to the po or mo file, or its content as a string.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">wrapwidth</span></code></dt>
-<dd><p>integer, the wrap width, only useful when the <code class="docutils literal notranslate"><span class="pre">-w</span></code> option was
+<dt><code class="docutils literal notranslate"><span class="pre">wrapwidth</span></code></dt><dd><p>integer, the wrap width, only useful when the <code class="docutils literal notranslate"><span class="pre">-w</span></code> option was
 passed to xgettext (optional, default: <code class="docutils literal notranslate"><span class="pre">78</span></code>).</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">encoding</span></code></dt>
-<dd><p>string, the encoding to use, defaults to <code class="docutils literal notranslate"><span class="pre">default_encoding</span></code>
+<dt><code class="docutils literal notranslate"><span class="pre">encoding</span></code></dt><dd><p>string, the encoding to use, defaults to <code class="docutils literal notranslate"><span class="pre">default_encoding</span></code>
 global variable (optional).</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">check_for_duplicates</span></code></dt>
-<dd><p>whether to check for duplicate entries when adding entries to the
+<dt><code class="docutils literal notranslate"><span class="pre">check_for_duplicates</span></code></dt><dd><p>whether to check for duplicate entries when adding entries to the
 file, (optional, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
 </dd>
 </dl>
 <dl class="method">
 <dt id="polib.POFile.__unicode__">
-<code class="descname">__unicode__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.__unicode__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.__unicode__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__unicode__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.__unicode__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.__unicode__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the unicode representation of the po file.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.POFile.save_as_mofile">
-<code class="descname">save_as_mofile</code><span class="sig-paren">(</span><em>fpath</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.save_as_mofile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.save_as_mofile" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">save_as_mofile</code><span class="sig-paren">(</span><em class="sig-param">fpath</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.save_as_mofile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.save_as_mofile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saves the binary representation of the file to given <code class="docutils literal notranslate"><span class="pre">fpath</span></code>.</p>
 <p>Keyword argument:</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">fpath</span></code></dt>
-<dd><p>string, full or relative path to the mo file.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">fpath</span></code></dt><dd><p>string, full or relative path to the mo file.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.POFile.percent_translated">
-<code class="descname">percent_translated</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.percent_translated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.percent_translated" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">percent_translated</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.percent_translated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.percent_translated" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience method that returns the percentage of translated
 messages.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.POFile.translated_entries">
-<code class="descname">translated_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.translated_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.translated_entries" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">translated_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.translated_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.translated_entries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience method that returns the list of translated entries.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.POFile.untranslated_entries">
-<code class="descname">untranslated_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.untranslated_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.untranslated_entries" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">untranslated_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.untranslated_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.untranslated_entries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience method that returns the list of untranslated entries.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.POFile.fuzzy_entries">
-<code class="descname">fuzzy_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.fuzzy_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.fuzzy_entries" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fuzzy_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.fuzzy_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.fuzzy_entries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience method that returns the list of fuzzy entries.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.POFile.obsolete_entries">
-<code class="descname">obsolete_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.obsolete_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.obsolete_entries" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">obsolete_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.obsolete_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.obsolete_entries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience method that returns the list of obsolete entries.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.POFile.merge">
-<code class="descname">merge</code><span class="sig-paren">(</span><em>refpot</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.merge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.merge" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">merge</code><span class="sig-paren">(</span><em class="sig-param">refpot</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POFile.merge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POFile.merge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience method that merges the current pofile with the pot file
 provided. It behaves exactly as the gettext msgmerge utility:</p>
 <ul class="simple">
@@ -393,8 +376,7 @@ dot comments and file positions will be preserved;</p></li>
 </ul>
 <p>Keyword argument:</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">refpot</span></code></dt>
-<dd><p>object POFile, the reference catalog.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">refpot</span></code></dt><dd><p>object POFile, the reference catalog.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -406,7 +388,7 @@ dot comments and file positions will be preserved;</p></li>
 <h2>The <code class="docutils literal notranslate"><span class="pre">MOFile</span></code> class<a class="headerlink" href="#the-mofile-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="polib.MOFile">
-<em class="property">class </em><code class="descclassname">polib.</code><code class="descname">MOFile</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">polib.</code><code class="sig-name descname">MOFile</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mo file reader/writer.
 This class inherits the <code class="xref py py-class docutils literal notranslate"><span class="pre">_BaseFile</span></code> class and, by
 extension, the python <code class="docutils literal notranslate"><span class="pre">list</span></code> type.</p>
@@ -414,55 +396,53 @@ extension, the python <code class="docutils literal notranslate"><span class="pr
 <code class="xref py py-class docutils literal notranslate"><span class="pre">_BaseFile</span></code> class.</p>
 <dl class="method">
 <dt id="polib.MOFile.save_as_pofile">
-<code class="descname">save_as_pofile</code><span class="sig-paren">(</span><em>fpath</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile.save_as_pofile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile.save_as_pofile" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">save_as_pofile</code><span class="sig-paren">(</span><em class="sig-param">fpath</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile.save_as_pofile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile.save_as_pofile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saves the mofile as a pofile to <code class="docutils literal notranslate"><span class="pre">fpath</span></code>.</p>
 <p>Keyword argument:</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">fpath</span></code></dt>
-<dd><p>string, full or relative path to the file.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">fpath</span></code></dt><dd><p>string, full or relative path to the file.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.MOFile.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>fpath=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile.save" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">fpath=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saves the mofile to <code class="docutils literal notranslate"><span class="pre">fpath</span></code>.</p>
 <p>Keyword argument:</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">fpath</span></code></dt>
-<dd><p>string, full or relative path to the file.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">fpath</span></code></dt><dd><p>string, full or relative path to the file.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.MOFile.percent_translated">
-<code class="descname">percent_translated</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile.percent_translated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile.percent_translated" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">percent_translated</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile.percent_translated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile.percent_translated" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience method to keep the same interface with POFile instances.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.MOFile.translated_entries">
-<code class="descname">translated_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile.translated_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile.translated_entries" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">translated_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile.translated_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile.translated_entries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience method to keep the same interface with POFile instances.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.MOFile.untranslated_entries">
-<code class="descname">untranslated_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile.untranslated_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile.untranslated_entries" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">untranslated_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile.untranslated_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile.untranslated_entries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience method to keep the same interface with POFile instances.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.MOFile.fuzzy_entries">
-<code class="descname">fuzzy_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile.fuzzy_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile.fuzzy_entries" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fuzzy_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile.fuzzy_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile.fuzzy_entries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience method to keep the same interface with POFile instances.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.MOFile.obsolete_entries">
-<code class="descname">obsolete_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile.obsolete_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile.obsolete_entries" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">obsolete_entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOFile.obsolete_entries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOFile.obsolete_entries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience method to keep the same interface with POFile instances.</p>
 </dd></dl>
 
@@ -473,57 +453,49 @@ extension, the python <code class="docutils literal notranslate"><span class="pr
 <h2>The <code class="docutils literal notranslate"><span class="pre">POEntry</span></code> class<a class="headerlink" href="#the-poentry-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="polib.POEntry">
-<em class="property">class </em><code class="descclassname">polib.</code><code class="descname">POEntry</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POEntry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POEntry" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">polib.</code><code class="sig-name descname">POEntry</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POEntry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POEntry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents a po file entry.</p>
 <p>Constructor, accepts the following keyword arguments:</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">comment</span></code></dt>
-<dd><p>string, the entry comment.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">comment</span></code></dt><dd><p>string, the entry comment.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">tcomment</span></code></dt>
-<dd><p>string, the entry translator comment.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">tcomment</span></code></dt><dd><p>string, the entry translator comment.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">occurrences</span></code></dt>
-<dd><p>list, the entry occurrences.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">occurrences</span></code></dt><dd><p>list, the entry occurrences.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">flags</span></code></dt>
-<dd><p>list, the entry flags.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">flags</span></code></dt><dd><p>list, the entry flags.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">previous_msgctxt</span></code></dt>
-<dd><p>string, the entry previous context.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">previous_msgctxt</span></code></dt><dd><p>string, the entry previous context.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">previous_msgid</span></code></dt>
-<dd><p>string, the entry previous msgid.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">previous_msgid</span></code></dt><dd><p>string, the entry previous msgid.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">previous_msgid_plural</span></code></dt>
-<dd><p>string, the entry previous msgid_plural.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">previous_msgid_plural</span></code></dt><dd><p>string, the entry previous msgid_plural.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">linenum</span></code></dt>
-<dd><p>integer, the line number of the entry</p>
+<dt><code class="docutils literal notranslate"><span class="pre">linenum</span></code></dt><dd><p>integer, the line number of the entry</p>
 </dd>
 </dl>
 <dl class="method">
 <dt id="polib.POEntry.__unicode__">
-<code class="descname">__unicode__</code><span class="sig-paren">(</span><em>wrapwidth=78</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POEntry.__unicode__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POEntry.__unicode__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__unicode__</code><span class="sig-paren">(</span><em class="sig-param">wrapwidth=78</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POEntry.__unicode__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POEntry.__unicode__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the unicode representation of the entry.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.POEntry.__cmp__">
-<code class="descname">__cmp__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POEntry.__cmp__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POEntry.__cmp__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__cmp__</code><span class="sig-paren">(</span><em class="sig-param">other</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POEntry.__cmp__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POEntry.__cmp__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called by comparison operations if rich comparison is not defined.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.POEntry.translated">
-<code class="descname">translated</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POEntry.translated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POEntry.translated" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">translated</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POEntry.translated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POEntry.translated" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the entry has been translated or <code class="docutils literal notranslate"><span class="pre">False</span></code>
 otherwise.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="polib.POEntry.merge">
-<code class="descname">merge</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POEntry.merge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POEntry.merge" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">merge</code><span class="sig-paren">(</span><em class="sig-param">other</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#POEntry.merge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.POEntry.merge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merge the current entry with the given pot entry.</p>
 </dd></dl>
 
@@ -534,7 +506,7 @@ otherwise.</p>
 <h2>The <code class="docutils literal notranslate"><span class="pre">MOEntry</span></code> class<a class="headerlink" href="#the-moentry-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="polib.MOEntry">
-<em class="property">class </em><code class="descclassname">polib.</code><code class="descname">MOEntry</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOEntry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOEntry" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">polib.</code><code class="sig-name descname">MOEntry</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/polib.html#MOEntry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#polib.MOEntry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents a mo file entry.</p>
 <p>Constructor, accepts the following keyword arguments,
 for consistency with <a class="reference internal" href="#polib.POEntry" title="polib.POEntry"><code class="xref py py-class docutils literal notranslate"><span class="pre">POEntry</span></code></a>:</p>

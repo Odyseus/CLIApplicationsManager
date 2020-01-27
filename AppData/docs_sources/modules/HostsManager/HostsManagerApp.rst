@@ -2,9 +2,9 @@ HostsManagerApp package
 =======================
 
 .. automodule:: HostsManagerApp
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------
@@ -16,4 +16,3 @@ Submodules
    HostsManagerApp.cli
    HostsManagerApp.pre_processors
    HostsManagerApp.schemas
-

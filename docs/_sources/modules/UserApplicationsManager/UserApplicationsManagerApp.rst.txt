@@ -2,9 +2,9 @@ UserApplicationsManagerApp package
 ==================================
 
 .. automodule:: UserApplicationsManagerApp
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------
@@ -14,4 +14,3 @@ Submodules
    UserApplicationsManagerApp.app_utils
    UserApplicationsManagerApp.cli
    UserApplicationsManagerApp.schemas
-

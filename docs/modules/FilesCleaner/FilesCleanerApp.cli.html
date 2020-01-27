@@ -183,47 +183,47 @@
 <p>Main command line application.</p>
 <dl class="attribute">
 <dt id="FilesCleanerApp.cli.docopt_doc">
-<code class="descclassname">FilesCleanerApp.cli.</code><code class="descname">docopt_doc</code><a class="headerlink" href="#FilesCleanerApp.cli.docopt_doc" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">FilesCleanerApp.cli.</code><code class="sig-name descname">docopt_doc</code><a class="headerlink" href="#FilesCleanerApp.cli.docopt_doc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to store/define the docstring that will be passed to docopt as the &quot;doc&quot; argument.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FilesCleanerApp.cli.root_folder">
-<code class="descclassname">FilesCleanerApp.cli.</code><code class="descname">root_folder</code><a class="headerlink" href="#FilesCleanerApp.cli.root_folder" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">FilesCleanerApp.cli.</code><code class="sig-name descname">root_folder</code><a class="headerlink" href="#FilesCleanerApp.cli.root_folder" title="Permalink to this definition">¶</a></dt>
 <dd><p>The main folder containing the application. All commands must be executed from this location
 without exceptions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="class">
 <dt id="FilesCleanerApp.cli.CommandLineInterface">
-<em class="property">class </em><code class="descclassname">FilesCleanerApp.cli.</code><code class="descname">CommandLineInterface</code><span class="sig-paren">(</span><em>docopt_args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/cli.html#CommandLineInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">FilesCleanerApp.cli.</code><code class="sig-name descname">CommandLineInterface</code><span class="sig-paren">(</span><em class="sig-param">docopt_args</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/cli.html#CommandLineInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">FilesCleanerApp.python_utils.cli_utils.CommandLineInterfaceSuper</span></code></p>
 <p>Command line interface.</p>
 <p>It handles the arguments parsed by the docopt module.</p>
 <dl class="attribute">
 <dt id="FilesCleanerApp.cli.CommandLineInterface.a">
-<code class="descname">a</code><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.a" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">a</code><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.a" title="Permalink to this definition">¶</a></dt>
 <dd><p>Where docopt_args is stored.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)">dict</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FilesCleanerApp.cli.CommandLineInterface.action">
-<code class="descname">action</code><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.action" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">action</code><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the method that will be executed when calling CommandLineTool.run().</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -234,66 +234,66 @@ without exceptions.</p>
 
 <dl class="attribute">
 <dt id="FilesCleanerApp.cli.CommandLineInterface.cleaner">
-<code class="descname">cleaner</code><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.cleaner" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">cleaner</code><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.cleaner" title="Permalink to this definition">¶</a></dt>
 <dd><p>See &lt;class <a class="reference internal" href="FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner" title="FilesCleanerApp.app_utils.FilesCleaner"><code class="xref any py py-class docutils literal notranslate"><span class="pre">app_utils.FilesCleaner</span></code></a>&gt;.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)">object</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)">object</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FilesCleanerApp.cli.CommandLineInterface.glob_deletion">
-<code class="descname">glob_deletion</code><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.glob_deletion" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">glob_deletion</code><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.glob_deletion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether or not to interpret the passed patters as glob patterns.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/functions.html#bool" title="(in Python v3.5)">bool</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>docopt_args</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) -- The dictionary of arguments as returned by docopt parser.</p>
+<dd class="field-odd"><p><strong>docopt_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) -- The dictionary of arguments as returned by docopt parser.</p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><code class="xref py py-exc docutils literal notranslate"><span class="pre">exceptions.MissingArgument</span></code> -- Missing mandatory argument not passed.</p>
+<dd class="field-even"><p><strong>exceptions.MissingArgument</strong> -- Missing mandatory argument not passed.</p>
 </dd>
 </dl>
 <dl class="attribute">
 <dt>
-<code class="descname">action</code><em class="property"> = None</em></dt>
+<code class="sig-name descname">action</code><em class="property"> = None</em></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="FilesCleanerApp.cli.CommandLineInterface.run">
-<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/cli.html#CommandLineInterface.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.run" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/cli.html#CommandLineInterface.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute the assigned action stored in self.action if any.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="FilesCleanerApp.cli.CommandLineInterface.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/cli.html#CommandLineInterface.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.delete" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/cli.html#CommandLineInterface.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner._delete" title="FilesCleanerApp.app_utils.FilesCleaner._delete"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">app_utils.FilesCleaner._delete</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
 <dt id="FilesCleanerApp.cli.CommandLineInterface.edit">
-<code class="descname">edit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/cli.html#CommandLineInterface.edit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.edit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">edit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/cli.html#CommandLineInterface.edit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.edit" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner._clean_endings" title="FilesCleanerApp.app_utils.FilesCleaner._clean_endings"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">app_utils.FilesCleaner._clean_endings</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
 <dt id="FilesCleanerApp.cli.CommandLineInterface.system_executable_generation">
-<code class="descname">system_executable_generation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/cli.html#CommandLineInterface.system_executable_generation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.system_executable_generation" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">system_executable_generation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/cli.html#CommandLineInterface.system_executable_generation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.system_executable_generation" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="../python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._system_executable_generation" title="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._system_executable_generation"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">cli_utils.CommandLineInterfaceSuper._system_executable_generation</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="FilesCleanerApp.cli.CommandLineInterface.display_manual_page">
-<code class="descname">display_manual_page</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/cli.html#CommandLineInterface.display_manual_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.display_manual_page" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">display_manual_page</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/cli.html#CommandLineInterface.display_manual_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.cli.CommandLineInterface.display_manual_page" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="../python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._display_manual_page" title="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._display_manual_page"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">cli_utils.CommandLineInterfaceSuper._display_manual_page</span></code></a>.</p>
 </dd></dl>
 
@@ -301,7 +301,7 @@ without exceptions.</p>
 
 <dl class="function">
 <dt id="FilesCleanerApp.cli.main">
-<code class="descclassname">FilesCleanerApp.cli.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/cli.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.cli.main" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">FilesCleanerApp.cli.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/FilesCleanerApp/cli.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#FilesCleanerApp.cli.main" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize command line interface.</p>
 </dd></dl>
 

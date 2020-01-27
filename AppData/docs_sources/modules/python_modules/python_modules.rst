@@ -2,16 +2,16 @@ python\_modules package
 =======================
 
 .. automodule:: python_modules
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Subpackages
 -----------
 
 .. toctree::
 
-    python_modules.python_utils
+   python_modules.python_utils
 
 Submodules
 ----------
@@ -20,4 +20,3 @@ Submodules
 
    python_modules.app_utils
    python_modules.cli
-

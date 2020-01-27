@@ -2,9 +2,9 @@ FilesCleanerApp package
 =======================
 
 .. automodule:: FilesCleanerApp
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------
@@ -13,4 +13,3 @@ Submodules
 
    FilesCleanerApp.app_utils
    FilesCleanerApp.cli
-

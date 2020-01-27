@@ -186,22 +186,28 @@
 <p>Send email to an email list.</p>
 <dl class="exception">
 <dt id="python_modules.python_utils.mail_system.EmptyMailSubjectOrBody">
-<em class="property">exception </em><code class="descclassname">python_modules.python_utils.mail_system.</code><code class="descname">EmptyMailSubjectOrBody</code><a class="reference internal" href="../../_modules/python_modules/python_utils/mail_system.html#EmptyMailSubjectOrBody"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mail_system.EmptyMailSubjectOrBody" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="sig-prename descclassname">python_modules.python_utils.mail_system.</code><code class="sig-name descname">EmptyMailSubjectOrBody</code><a class="reference internal" href="../../_modules/python_modules/python_utils/mail_system.html#EmptyMailSubjectOrBody"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mail_system.EmptyMailSubjectOrBody" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack" title="python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack"><code class="xref py py-class docutils literal notranslate"><span class="pre">python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack</span></code></a></p>
+<p>Initialization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Message that the exception should display.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="class">
 <dt id="python_modules.python_utils.mail_system.MailSystem">
-<em class="property">class </em><code class="descclassname">python_modules.python_utils.mail_system.</code><code class="descname">MailSystem</code><span class="sig-paren">(</span><em>mail_settings={}</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/mail_system.html#MailSystem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">python_modules.python_utils.mail_system.</code><code class="sig-name descname">MailSystem</code><span class="sig-paren">(</span><em class="sig-param">mail_settings={}</em>, <em class="sig-param">logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/mail_system.html#MailSystem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Email system class.</p>
 <dl class="attribute">
 <dt id="python_modules.python_utils.mail_system.MailSystem.logger">
-<code class="descname">logger</code><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem.logger" title="Permalink to this definition">¶</a></dt>
-<dd><p>See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+<code class="sig-name descname">logger</code><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem.logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)">object</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)">object</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -210,40 +216,40 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mail_settings</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.5)"><em>dict</em></a>) -- Where all the data to send the email/s is stored.</p></li>
-<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><em>object</em></a>) -- See &lt;class <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+<li><p><strong>mail_settings</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) -- Where all the data to send the email/s is stored.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) -- See <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>.</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="method">
 <dt id="python_modules.python_utils.mail_system.MailSystem._validate_config">
-<code class="descname">_validate_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/mail_system.html#MailSystem._validate_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem._validate_config" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">_validate_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/mail_system.html#MailSystem._validate_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem._validate_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validate mail settings.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="python_modules.python_utils.mail_system.MailSystem._get_password">
-<code class="descname">_get_password</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/mail_system.html#MailSystem._get_password"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem._get_password" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">_get_password</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/mail_system.html#MailSystem._get_password"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem._get_password" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get password.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The sender's e-mail password.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)">str</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="python_modules.python_utils.mail_system.MailSystem.send">
-<code class="descname">send</code><span class="sig-paren">(</span><em>mail_subject</em>, <em>mail_body</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/mail_system.html#MailSystem.send"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem.send" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">send</code><span class="sig-paren">(</span><em class="sig-param">mail_subject</em>, <em class="sig-param">mail_body</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/mail_system.html#MailSystem.send"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mail_system.MailSystem.send" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send the email/s.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mail_subject</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) -- The e-mail subject.</p></li>
-<li><p><strong>mail_body</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.5)"><em>str</em></a>) -- The e-mail body.</p></li>
+<li><p><strong>mail_subject</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- The e-mail subject.</p></li>
+<li><p><strong>mail_body</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- The e-mail body.</p></li>
 </ul>
 </dd>
 </dl>

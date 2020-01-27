@@ -63,7 +63,7 @@ Command Line Usage
 
 Titlecase also provides a command line utility ``titlecase``:
 
-.. code:: python
+.. code:: shell
 
     $ titlecase make me a title
     Make Me a Title

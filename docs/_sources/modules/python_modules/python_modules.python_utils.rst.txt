@@ -2,16 +2,16 @@ python\_modules.python\_utils package
 =====================================
 
 .. automodule:: python_modules.python_utils
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Subpackages
 -----------
 
 .. toctree::
 
-    python_modules.python_utils.schemas
+   python_modules.python_utils.schemas
 
 Submodules
 ----------
@@ -38,4 +38,3 @@ Submodules
    python_modules.python_utils.sphinx_docs_utils
    python_modules.python_utils.string_utils
    python_modules.python_utils.template_utils
-

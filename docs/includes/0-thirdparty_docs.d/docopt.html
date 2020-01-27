@@ -232,7 +232,7 @@ This way you don't need to write this stupid repeatable parser-code,
 and instead can write only the help message--<em>the way you want it</em>.</p>
 <p><strong>docopt</strong> helps you create most beautiful command-line interfaces
 <em>easily</em>:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Naval Fate.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Naval Fate.</span>
 
 <span class="sd">Usage:</span>
 <span class="sd">  naval_fate.py ship new &lt;name&gt;...</span>
@@ -250,12 +250,12 @@ and instead can write only the help message--<em>the way you want it</em>.</p>
 <span class="sd">  --drifting    Drifting mine.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">docopt</span> <span class="k">import</span> <span class="n">docopt</span>
+<span class="kn">from</span> <span class="nn">docopt</span> <span class="kn">import</span> <span class="n">docopt</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">arguments</span> <span class="o">=</span> <span class="n">docopt</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;Naval Fate 2.0&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Beat that! The option parser is generated based on the docstring above
@@ -286,10 +286,10 @@ project--it is self-contained.</p>
 </div>
 <div class="section" id="api">
 <h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">docopt</span> <span class="k">import</span> <span class="n">docopt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">docopt</span> <span class="kn">import</span> <span class="n">docopt</span>
 </pre></div>
 </div>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docopt</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">argv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">options_first</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">docopt</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">argv</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">options_first</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">docopt</span></code> takes 1 required and 4 optional arguments:</p>
@@ -300,7 +300,7 @@ create the option parser.  The simple rules of how to write such a
 help message are given in next sections.  Here is a quick example of
 such a string:</p></li>
 </ul>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Usage: my_program.py [-hso FILE] [--quiet | --verbose] [INPUT ...]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Usage: my_program.py [-hso FILE] [--quiet | --verbose] [INPUT ...]</span>
 
 <span class="sd">-h --help    show this</span>
 <span class="sd">-s --sorted  sorted output</span>
@@ -350,13 +350,13 @@ top example as:</p>
 </pre></div>
 </div>
 <p>the return dictionary will be:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;--drifting&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>    <span class="s1">&#39;mine&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
- <span class="s1">&#39;--help&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>        <span class="s1">&#39;move&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
- <span class="s1">&#39;--moored&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>      <span class="s1">&#39;new&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
- <span class="s1">&#39;--speed&#39;</span><span class="p">:</span> <span class="s1">&#39;15&#39;</span><span class="p">,</span>        <span class="s1">&#39;remove&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
- <span class="s1">&#39;--version&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>     <span class="s1">&#39;set&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
- <span class="s1">&#39;&lt;name&gt;&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Guardian&#39;</span><span class="p">],</span> <span class="s1">&#39;ship&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
- <span class="s1">&#39;&lt;x&gt;&#39;</span><span class="p">:</span> <span class="s1">&#39;100&#39;</span><span class="p">,</span>           <span class="s1">&#39;shoot&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;--drifting&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>    <span class="s1">&#39;mine&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+ <span class="s1">&#39;--help&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>        <span class="s1">&#39;move&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+ <span class="s1">&#39;--moored&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>      <span class="s1">&#39;new&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+ <span class="s1">&#39;--speed&#39;</span><span class="p">:</span> <span class="s1">&#39;15&#39;</span><span class="p">,</span>        <span class="s1">&#39;remove&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+ <span class="s1">&#39;--version&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>     <span class="s1">&#39;set&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+ <span class="s1">&#39;&lt;name&gt;&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Guardian&#39;</span><span class="p">],</span> <span class="s1">&#39;ship&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+ <span class="s1">&#39;&lt;x&gt;&#39;</span><span class="p">:</span> <span class="s1">&#39;100&#39;</span><span class="p">,</span>           <span class="s1">&#39;shoot&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
  <span class="s1">&#39;&lt;y&gt;&#39;</span><span class="p">:</span> <span class="s1">&#39;150&#39;</span><span class="p">}</span>
 </pre></div>
 </div>
@@ -387,7 +387,7 @@ top example as:</p>
 <p><strong>Usage pattern</strong> is a substring of <code class="docutils literal notranslate"><span class="pre">doc</span></code> that starts with
 <code class="docutils literal notranslate"><span class="pre">usage:</span></code> (case <em>insensitive</em>) and ends with a <em>visibly</em> empty line.
 Minimum example:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Usage: my_program.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Usage: my_program.py</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
@@ -395,7 +395,7 @@ Minimum example:</p>
 <p>The first word after <code class="docutils literal notranslate"><span class="pre">usage:</span></code> is interpreted as your program's name.
 You can specify your program's name several times to signify several
 exclusive patterns:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Usage: my_program.py FILE</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Usage: my_program.py FILE</span>
 <span class="sd">          my_program.py COUNT FILE</span>
 
 <span class="sd">&quot;&quot;&quot;</span>

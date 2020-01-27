@@ -223,7 +223,7 @@
 and is an abbreviation for &quot;I love you so much&quot; in Spanish (te quiero demasiado).</p>
 <p>Instantly make your loops show a smart progress meter - just wrap any
 iterable with <code class="docutils literal notranslate"><span class="pre">tqdm(iterable)</span></code>, and you're done!</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">)):</span>
     <span class="o">...</span>
 </pre></div>
@@ -232,17 +232,16 @@ iterable with <code class="docutils literal notranslate"><span class="pre">tqdm(
 <p><code class="docutils literal notranslate"><span class="pre">trange(N)</span></code> can be also used as a convenient shortcut for
 <code class="docutils literal notranslate"><span class="pre">tqdm(xrange(N))</span></code>.</p>
 <dl class="simple">
-<dt><img alt="Screenshot" src="https://raw.githubusercontent.com/tqdm/tqdm/master/images/tqdm.gif" /></dt>
-<dd><p>REPL: <a class="reference external" href="https://github.com/jonathanslenders/ptpython">ptpython</a></p>
+<dt><img alt="Screenshot" src="https://raw.githubusercontent.com/tqdm/tqdm/master/images/tqdm.gif" /></dt><dd><p>REPL: <a class="reference external" href="https://github.com/jonathanslenders/ptpython">ptpython</a></p>
 </dd>
 </dl>
 <p>It can also be executed as a module with pipes:</p>
-<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span>$ seq 9999999 | tqdm --unit_scale | wc -l
-10.0Mit [00:02, 3.58Mit/s]
-9999999
-$ 7z a -bd -r backup.7z docs/ | grep Compressing | \
-    tqdm --total $(find docs/ -type f | wc -l) --unit files &gt;&gt; backup.log
-100%|███████████████████████████████▉| 8014/8014 [01:37&lt;00:00, 82.29files/s]
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ seq <span class="m">9999999</span> <span class="p">|</span> tqdm --unit_scale <span class="p">|</span> wc -l
+<span class="m">10</span>.0Mit <span class="o">[</span><span class="m">00</span>:02, <span class="m">3</span>.58Mit/s<span class="o">]</span>
+<span class="m">9999999</span>
+$ 7z a -bd -r backup.7z docs/ <span class="p">|</span> grep Compressing <span class="p">|</span> <span class="se">\</span>
+    tqdm --total <span class="k">$(</span>find docs/ -type f <span class="p">|</span> wc -l<span class="k">)</span> --unit files &gt;&gt; backup.log
+<span class="m">100</span>%<span class="p">|</span>███████████████████████████████▉<span class="p">|</span> <span class="m">8014</span>/8014 <span class="o">[</span><span class="m">01</span>:37&lt;<span class="m">00</span>:00, <span class="m">82</span>.29files/s<span class="o">]</span>
 </pre></div>
 </div>
 <p>Overhead is low -- about 60ns per iteration (80ns with <code class="docutils literal notranslate"><span class="pre">tqdm_gui</span></code>), and is
@@ -312,7 +311,7 @@ Python and an environment supporting <code class="docutils literal notranslate">
 <div class="section" id="latest-pypi-stable-release">
 <h3><a class="toc-backref" href="#table-of-contents">Latest PyPI stable release</a><a class="headerlink" href="#latest-pypi-stable-release" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://pypi.org/project/tqdm"><img alt="PyPI-Status" src="https://img.shields.io/pypi/v/tqdm.svg" /></a></p>
-<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">tqdm</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install tqdm
 </pre></div>
 </div>
 </div>
@@ -320,14 +319,14 @@ Python and an environment supporting <code class="docutils literal notranslate">
 <h3><a class="toc-backref" href="#table-of-contents">Latest development release on GitHub</a><a class="headerlink" href="#latest-development-release-on-github" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://github.com/tqdm/tqdm/releases"><img alt="GitHub-Status" src="https://img.shields.io/github/tag/tqdm/tqdm.svg?maxAge=86400" /></a> <a class="reference external" href="https://github.com/tqdm/tqdm/stargazers"><img alt="GitHub-Stars" src="https://img.shields.io/github/stars/tqdm/tqdm.svg" /></a> <a class="reference external" href="https://github.com/tqdm/tqdm/graphs/commit-activity"><img alt="GitHub-Commits" src="https://img.shields.io/github/commit-activity/y/tqdm/tqdm.svg" /></a> <a class="reference external" href="https://github.com/tqdm/tqdm/network"><img alt="GitHub-Forks" src="https://img.shields.io/github/forks/tqdm/tqdm.svg" /></a></p>
 <p>Pull and install in the current directory:</p>
-<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">tqdm</span><span class="o">/</span><span class="n">tqdm</span><span class="o">.</span><span class="n">git</span><span class="nd">@master</span><span class="c1">#egg=tqdm</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install -e git+https://github.com/tqdm/tqdm.git@master#egg<span class="o">=</span>tqdm
 </pre></div>
 </div>
 </div>
 <div class="section" id="latest-conda-release">
 <h3><a class="toc-backref" href="#table-of-contents">Latest Conda release</a><a class="headerlink" href="#latest-conda-release" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://anaconda.org/conda-forge/tqdm"><img alt="Conda-Forge-Status" src="https://anaconda.org/conda-forge/tqdm/badges/version.svg" /></a></p>
-<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">tqdm</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge tqdm
 </pre></div>
 </div>
 </div>
@@ -346,18 +345,18 @@ The three main ones are given below.</p>
 <div class="section" id="iterable-based">
 <h3><a class="toc-backref" href="#table-of-contents">Iterable-based</a><a class="headerlink" href="#iterable-based" title="Permalink to this headline">¶</a></h3>
 <p>Wrap <code class="docutils literal notranslate"><span class="pre">tqdm()</span></code> around any iterable:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">]):</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">text</span> <span class="o">+</span> <span class="n">char</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">trange(i)</span></code> is a special optimised instance of <code class="docutils literal notranslate"><span class="pre">tqdm(range(i))</span></code>:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 <p>Instantiation outside of the loop allows for manual control over <code class="docutils literal notranslate"><span class="pre">tqdm()</span></code>:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">pbar</span><span class="p">:</span>
     <span class="n">pbar</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="s2">&quot;Processing </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">char</span><span class="p">)</span>
 </pre></div>
@@ -366,7 +365,7 @@ The three main ones are given below.</p>
 <div class="section" id="manual">
 <h3><a class="toc-backref" href="#table-of-contents">Manual</a><a class="headerlink" href="#manual" title="Permalink to this headline">¶</a></h3>
 <p>Manual control on <code class="docutils literal notranslate"><span class="pre">tqdm()</span></code> updates by using a <code class="docutils literal notranslate"><span class="pre">with</span></code> statement:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="k">as</span> <span class="n">pbar</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="k">as</span> <span class="n">pbar</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
@@ -375,7 +374,7 @@ The three main ones are given below.</p>
 provided, predictive stats are displayed.</p>
 <p><code class="docutils literal notranslate"><span class="pre">with</span></code> is also optional (you can just assign <code class="docutils literal notranslate"><span class="pre">tqdm()</span></code> to a variable,
 but in this case don't forget to <code class="docutils literal notranslate"><span class="pre">del</span></code> or <code class="docutils literal notranslate"><span class="pre">close()</span></code> at the end:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">pbar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -389,16 +388,16 @@ line. Simply inserting <code class="docutils literal notranslate"><span class="p
 through all <code class="docutils literal notranslate"><span class="pre">stdin</span></code> to <code class="docutils literal notranslate"><span class="pre">stdout</span></code> while printing progress to <code class="docutils literal notranslate"><span class="pre">stderr</span></code>.</p>
 <p>The example below demonstrated counting the number of lines in all Python files
 in the current directory, with timing information included.</p>
-<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span>$ time find . -name &#39;*.py&#39; -exec cat \{} \; | wc -l
-857365
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">time</span> find . -name <span class="s1">&#39;*.py&#39;</span> -exec cat <span class="se">\{</span><span class="o">}</span> <span class="se">\;</span> <span class="p">|</span> wc -l
+<span class="m">857365</span>
 
 real    0m3.458s
 user    0m0.274s
 sys     0m3.325s
 
-$ time find . -name &#39;*.py&#39; -exec cat \{} \; | tqdm | wc -l
-857366it [00:03, 246471.31it/s]
-857365
+$ <span class="nb">time</span> find . -name <span class="s1">&#39;*.py&#39;</span> -exec cat <span class="se">\{</span><span class="o">}</span> <span class="se">\;</span> <span class="p">|</span> tqdm <span class="p">|</span> wc -l
+857366it <span class="o">[</span><span class="m">00</span>:03, <span class="m">246471</span>.31it/s<span class="o">]</span>
+<span class="m">857365</span>
 
 real    0m3.585s
 user    0m0.862s
@@ -406,15 +405,15 @@ sys     0m3.358s
 </pre></div>
 </div>
 <p>Note that the usual arguments for <code class="docutils literal notranslate"><span class="pre">tqdm</span></code> can also be specified.</p>
-<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span>$ find . -name &#39;*.py&#39; -exec cat \{} \; |
-    tqdm --unit loc --unit_scale --total 857366 &gt;&gt; /dev/null
-100%|███████████████████████████████████| 857K/857K [00:04&lt;00:00, 246Kloc/s]
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ find . -name <span class="s1">&#39;*.py&#39;</span> -exec cat <span class="se">\{</span><span class="o">}</span> <span class="se">\;</span> <span class="p">|</span>
+    tqdm --unit loc --unit_scale --total <span class="m">857366</span> &gt;&gt; /dev/null
+<span class="m">100</span>%<span class="p">|</span>███████████████████████████████████<span class="p">|</span> 857K/857K <span class="o">[</span><span class="m">00</span>:04&lt;<span class="m">00</span>:00, 246Kloc/s<span class="o">]</span>
 </pre></div>
 </div>
 <p>Backing up a large directory?</p>
-<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span>$ 7z a -bd -r backup.7z docs/ | grep Compressing |
-    tqdm --total $(find docs/ -type f | wc -l) --unit files &gt;&gt; backup.log
-100%|███████████████████████████████▉| 8014/8014 [01:37&lt;00:00, 82.29files/s]
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ 7z a -bd -r backup.7z docs/ <span class="p">|</span> grep Compressing <span class="p">|</span>
+    tqdm --total <span class="k">$(</span>find docs/ -type f <span class="p">|</span> wc -l<span class="k">)</span> --unit files &gt;&gt; backup.log
+<span class="m">100</span>%<span class="p">|</span>███████████████████████████████▉<span class="p">|</span> <span class="m">8014</span>/8014 <span class="o">[</span><span class="m">01</span>:37&lt;<span class="m">00</span>:00, <span class="m">82</span>.29files/s<span class="o">]</span>
 </pre></div>
 </div>
 </div>
@@ -427,8 +426,7 @@ of a neat one-line progress bar.</p>
 <ul class="simple">
 <li><p>Consoles in general: require support for carriage return (<code class="docutils literal notranslate"><span class="pre">CR</span></code>, <code class="docutils literal notranslate"><span class="pre">\r</span></code>).</p></li>
 <li><dl class="simple">
-<dt>Nested progress bars:</dt>
-<dd><ul>
+<dt>Nested progress bars:</dt><dd><ul>
 <li><p>Consoles in general: require support for moving cursors up to the
 previous line. For example,
 <a class="reference external" href="https://github.com/tqdm/tqdm/issues/191#issuecomment-230168030">IDLE</a>,
@@ -445,8 +443,7 @@ to ensure nested bars stay within their respective lines.</p></li>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>Unicode:</dt>
-<dd><ul>
+<dt>Unicode:</dt><dd><ul>
 <li><p>Environments which report that they support unicode will have solid smooth
 progressbars. The fallback is an <cite>ascii</cite>-only bar.</p></li>
 <li><p>Windows consoles often only partially support unicode and thus
@@ -471,40 +468,37 @@ This is because enumerate functions tend to hide the length of iterables.
 <div class="section" id="documentation">
 <h2><a class="toc-backref" href="#table-of-contents">Documentation</a><a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://pypi.org/project/tqdm"><img alt="PyPI-Versions" src="https://img.shields.io/pypi/pyversions/tqdm.svg" /></a> <a class="reference external" href="https://caspersci.uk.to/cgi-bin/hits.cgi?q=tqdm&amp;a=plot&amp;r=https://github.com/tqdm/tqdm&amp;l=https://caspersci.uk.to/images/tqdm.png&amp;f=https://raw.githubusercontent.com/tqdm/tqdm/master/images/logo.gif&amp;style=social"><img alt="README-Hits" src="https://caspersci.uk.to/cgi-bin/hits.cgi?q=tqdm&amp;style=social&amp;r=https://github.com/tqdm/tqdm&amp;l=https://caspersci.uk.to/images/tqdm.png&amp;f=https://raw.githubusercontent.com/tqdm/tqdm/master/images/logo.gif" /></a> (Since 19 May 2016)</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">tqdm</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">tqdm</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Decorate an iterable object, returning an iterator which acts exactly</span>
 <span class="sd">  like the original iterable, but prints a dynamically updating</span>
 <span class="sd">  progressbar every time a value is requested.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
 
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterable</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">leave</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-               <span class="n">file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mininterval</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-               <span class="n">maxinterval</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">miniters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ascii</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-               <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">unit_scale</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dynamic_ncols</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-               <span class="n">smoothing</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">bar_format</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-               <span class="n">postfix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">unit_divisor</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterable</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">leave</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+               <span class="nb">file</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">mininterval</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+               <span class="n">maxinterval</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">miniters</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ascii</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+               <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">unit_scale</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">dynamic_ncols</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+               <span class="n">smoothing</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">bar_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+               <span class="n">postfix</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">unit_divisor</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
 </pre></div>
 </div>
 <div class="section" id="parameters">
 <h3><a class="toc-backref" href="#table-of-contents">Parameters</a><a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><dl class="simple">
-<dt>iterable<span class="classifier">iterable, optional</span></dt>
-<dd><p>Iterable to decorate with a progressbar.
+<dt>iterable<span class="classifier">iterable, optional</span></dt><dd><p>Iterable to decorate with a progressbar.
 Leave blank to manually manage the updates.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>desc<span class="classifier">str, optional</span></dt>
-<dd><p>Prefix for the progressbar.</p>
+<dt>desc<span class="classifier">str, optional</span></dt><dd><p>Prefix for the progressbar.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>total<span class="classifier">int, optional</span></dt>
-<dd><p>The number of expected iterations. If unspecified,
+<dt>total<span class="classifier">int, optional</span></dt><dd><p>The number of expected iterations. If unspecified,
 len(iterable) is used if possible. As a last resort, only basic
 progress statistics are displayed (no ETA, no progressbar).
 If <code class="docutils literal notranslate"><span class="pre">gui</span></code> is True and this parameter needs subsequent updating,
@@ -514,23 +508,20 @@ e.g. int(9e9).</p>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>leave<span class="classifier">bool, optional</span></dt>
-<dd><p>If [default: True], keeps all traces of the progressbar
+<dt>leave<span class="classifier">bool, optional</span></dt><dd><p>If [default: True], keeps all traces of the progressbar
 upon termination of iteration.</p>
 </dd>
 </dl>
 </li>
 <li><dl>
-<dt>file<span class="classifier"><code class="docutils literal notranslate"><span class="pre">io.TextIOWrapper</span></code> or <code class="docutils literal notranslate"><span class="pre">io.StringIO</span></code>, optional</span></dt>
-<dd><p>Specifies where to output the progress messages
+<dt>file<span class="classifier"><code class="docutils literal notranslate"><span class="pre">io.TextIOWrapper</span></code> or <code class="docutils literal notranslate"><span class="pre">io.StringIO</span></code>, optional</span></dt><dd><p>Specifies where to output the progress messages
 (default: sys.stderr). Uses <code class="docutils literal notranslate"><span class="pre">file.write(str)</span></code> and <code class="docutils literal notranslate"><span class="pre">file.flush()</span></code>
 methods.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>ncols<span class="classifier">int, optional</span></dt>
-<dd><p>The width of the entire output message. If specified,
+<dt>ncols<span class="classifier">int, optional</span></dt><dd><p>The width of the entire output message. If specified,
 dynamically resizes the progressbar to stay within this bound.
 If unspecified, attempts to use environment width. The
 fallback is a meter width of 10 and no limit for the counter and
@@ -539,14 +530,12 @@ statistics. If 0, will not print any meter (only stats).</p>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>mininterval<span class="classifier">float, optional</span></dt>
-<dd><p>Minimum progress display update interval [default: 0.1] seconds.</p>
+<dt>mininterval<span class="classifier">float, optional</span></dt><dd><p>Minimum progress display update interval [default: 0.1] seconds.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>maxinterval<span class="classifier">float, optional</span></dt>
-<dd><p>Maximum progress display update interval [default: 10] seconds.
+<dt>maxinterval<span class="classifier">float, optional</span></dt><dd><p>Maximum progress display update interval [default: 10] seconds.
 Automatically adjusts <code class="docutils literal notranslate"><span class="pre">miniters</span></code> to correspond to <code class="docutils literal notranslate"><span class="pre">mininterval</span></code>
 after long display update lag. Only works if <code class="docutils literal notranslate"><span class="pre">dynamic_miniters</span></code>
 or monitor thread is enabled.</p>
@@ -554,8 +543,7 @@ or monitor thread is enabled.</p>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>miniters<span class="classifier">int, optional</span></dt>
-<dd><p>Minimum progress display update interval, in iterations.
+<dt>miniters<span class="classifier">int, optional</span></dt><dd><p>Minimum progress display update interval, in iterations.
 If 0 and <code class="docutils literal notranslate"><span class="pre">dynamic_miniters</span></code>, will automatically adjust to equal
 <code class="docutils literal notranslate"><span class="pre">mininterval</span></code> (more CPU efficient, good for tight loops).
 If &gt; 0, will skip display of specified number of iterations.
@@ -566,29 +554,25 @@ If your progress is erratic with both fast and slow iterations
 </dl>
 </li>
 <li><dl class="simple">
-<dt>ascii<span class="classifier">bool, optional</span></dt>
-<dd><p>If unspecified or False, use unicode (smooth blocks) to fill
+<dt>ascii<span class="classifier">bool, optional</span></dt><dd><p>If unspecified or False, use unicode (smooth blocks) to fill
 the meter. The fallback is to use ASCII characters <code class="docutils literal notranslate"><span class="pre">1-9</span> <span class="pre">#</span></code>.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>disable<span class="classifier">bool, optional</span></dt>
-<dd><p>Whether to disable the entire progressbar wrapper
+<dt>disable<span class="classifier">bool, optional</span></dt><dd><p>Whether to disable the entire progressbar wrapper
 [default: False]. If set to None, disable on non-TTY.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>unit<span class="classifier">str, optional</span></dt>
-<dd><p>String that will be used to define the unit of each iteration
+<dt>unit<span class="classifier">str, optional</span></dt><dd><p>String that will be used to define the unit of each iteration
 [default: it].</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>unit_scale<span class="classifier">bool or int or float, optional</span></dt>
-<dd><p>If 1 or True, the number of iterations will be reduced/scaled
+<dt>unit_scale<span class="classifier">bool or int or float, optional</span></dt><dd><p>If 1 or True, the number of iterations will be reduced/scaled
 automatically and a metric prefix following the
 International System of Units standard will be added
 (kilo, mega, etc.) [default: False]. If any other non-zero
@@ -597,23 +581,20 @@ number, will scale <cite>total</cite> and <cite>n</cite>.</p>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>dynamic_ncols<span class="classifier">bool, optional</span></dt>
-<dd><p>If set, constantly alters <code class="docutils literal notranslate"><span class="pre">ncols</span></code> to the environment (allowing
+<dt>dynamic_ncols<span class="classifier">bool, optional</span></dt><dd><p>If set, constantly alters <code class="docutils literal notranslate"><span class="pre">ncols</span></code> to the environment (allowing
 for window resizes) [default: False].</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>smoothing<span class="classifier">float, optional</span></dt>
-<dd><p>Exponential moving average smoothing factor for speed estimates
+<dt>smoothing<span class="classifier">float, optional</span></dt><dd><p>Exponential moving average smoothing factor for speed estimates
 (ignored in GUI mode). Ranges from 0 (average speed) to 1
 (current/instantaneous speed) [default: 0.3].</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>bar_format<span class="classifier">str, optional</span></dt>
-<dd><p>Specify a custom bar string formatting. May impact performance.
+<dt>bar_format<span class="classifier">str, optional</span></dt><dd><p>Specify a custom bar string formatting. May impact performance.
 [default: '{l_bar}{bar}{r_bar}'], where
 l_bar='{desc}: {percentage:3.0f}%|' and
 r_bar='| {n_fmt}/{total_fmt} [{elapsed}&lt;{remaining}, '
@@ -627,30 +608,26 @@ if the latter is empty.</p>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>initial<span class="classifier">int, optional</span></dt>
-<dd><p>The initial counter value. Useful when restarting a progress
+<dt>initial<span class="classifier">int, optional</span></dt><dd><p>The initial counter value. Useful when restarting a progress
 bar [default: 0].</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>position<span class="classifier">int, optional</span></dt>
-<dd><p>Specify the line offset to print this bar (starting from 0)
+<dt>position<span class="classifier">int, optional</span></dt><dd><p>Specify the line offset to print this bar (starting from 0)
 Automatic if unspecified.
 Useful to manage multiple bars at once (eg, from threads).</p>
 </dd>
 </dl>
 </li>
 <li><dl>
-<dt>postfix<span class="classifier">dict or <code class="docutils literal notranslate"><span class="pre">*</span></code>, optional</span></dt>
-<dd><p>Specify additional stats to display at the end of the bar.
+<dt>postfix<span class="classifier">dict or <code class="docutils literal notranslate"><span class="pre">*</span></code>, optional</span></dt><dd><p>Specify additional stats to display at the end of the bar.
 Calls <code class="docutils literal notranslate"><span class="pre">set_postfix(**postfix)</span></code> if possible (dict).</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>unit_divisor<span class="classifier">float, optional</span></dt>
-<dd><p>[default: 1000], ignored unless <cite>unit_scale</cite> is True.</p>
+<dt>unit_divisor<span class="classifier">float, optional</span></dt><dd><p>[default: 1000], ignored unless <cite>unit_scale</cite> is True.</p>
 </dd>
 </dl>
 </li>
@@ -660,22 +637,19 @@ Calls <code class="docutils literal notranslate"><span class="pre">set_postfix(*
 <h3><a class="toc-backref" href="#table-of-contents">Extra CLI Options</a><a class="headerlink" href="#extra-cli-options" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><dl class="simple">
-<dt>delim<span class="classifier">chr, optional</span></dt>
-<dd><p>Delimiting character [default: 'n']. Use '0' for null.
+<dt>delim<span class="classifier">chr, optional</span></dt><dd><p>Delimiting character [default: 'n']. Use '0' for null.
 N.B.: on Windows systems, Python converts 'n' to 'rn'.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>buf_size<span class="classifier">int, optional</span></dt>
-<dd><p>String buffer size in bytes [default: 256]
+<dt>buf_size<span class="classifier">int, optional</span></dt><dd><p>String buffer size in bytes [default: 256]
 used when <code class="docutils literal notranslate"><span class="pre">delim</span></code> is specified.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>bytes<span class="classifier">bool, optional</span></dt>
-<dd><p>If true, will count bytes and ignore <code class="docutils literal notranslate"><span class="pre">delim</span></code>.</p>
+<dt>bytes<span class="classifier">bool, optional</span></dt><dd><p>If true, will count bytes and ignore <code class="docutils literal notranslate"><span class="pre">delim</span></code>.</p>
 </dd>
 </dl>
 </li>
@@ -686,7 +660,7 @@ used when <code class="docutils literal notranslate"><span class="pre">delim</sp
 <ul class="simple">
 <li><p>out  : decorated iterator.</p></li>
 </ul>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
       <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      Manually update the progress bar, useful for streams</span>
 <span class="sd">      such as reading files.</span>
@@ -717,7 +691,7 @@ used when <code class="docutils literal notranslate"><span class="pre">delim</sp
 <span class="sd">      Restart tqdm timer from last print time.</span>
 <span class="sd">      &quot;&quot;&quot;</span>
 
-  <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nomove</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nomove</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
       <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      Clear current bar display</span>
 <span class="sd">      &quot;&quot;&quot;</span>
@@ -727,12 +701,12 @@ used when <code class="docutils literal notranslate"><span class="pre">delim</sp
 <span class="sd">      Force refresh the display of this bar</span>
 <span class="sd">      &quot;&quot;&quot;</span>
 
-  <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
       <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      Print a message via tqdm (without overlap with bars)</span>
 <span class="sd">      &quot;&quot;&quot;</span>
 
-  <span class="k">def</span> <span class="nf">set_description</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">set_description</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
       <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      Set/modify description of the progress bar.</span>
 
@@ -743,7 +717,7 @@ used when <code class="docutils literal notranslate"><span class="pre">delim</sp
 <span class="sd">          Forces refresh [default: True].</span>
 <span class="sd">      &quot;&quot;&quot;</span>
 
-  <span class="k">def</span> <span class="nf">set_postfix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ordered_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">set_postfix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ordered_dict</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
       <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      Set/modify postfix (additional stats)</span>
 <span class="sd">      with automatic formatting based on datatype.</span>
@@ -790,8 +764,7 @@ used when <code class="docutils literal notranslate"><span class="pre">delim</sp
 folder;</p></li>
 <li><p>import the module and run <code class="docutils literal notranslate"><span class="pre">help()</span></code>, or</p></li>
 <li><dl class="simple">
-<dt>consult the <a class="reference external" href="https://github.com/tqdm/tqdm/wiki">wiki</a>.</dt>
-<dd><ul>
+<dt>consult the <a class="reference external" href="https://github.com/tqdm/tqdm/wiki">wiki</a>.</dt><dd><ul>
 <li><p>this has an
 <a class="reference external" href="https://github.com/tqdm/tqdm/wiki/How-to-make-a-great-Progress-Bar">excellent article</a>
 on how to make a <strong>great</strong> progressbar.</p></li>
@@ -804,9 +777,9 @@ on how to make a <strong>great</strong> progressbar.</p></li>
 <h3><a class="toc-backref" href="#table-of-contents">Description and additional stats</a><a class="headerlink" href="#description-and-additional-stats" title="Permalink to this headline">¶</a></h3>
 <p>Custom information can be displayed and updated dynamically on <code class="docutils literal notranslate"><span class="pre">tqdm</span></code> bars
 with the <code class="docutils literal notranslate"><span class="pre">desc</span></code> and <code class="docutils literal notranslate"><span class="pre">postfix</span></code> arguments:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">trange</span>
-<span class="kn">from</span> <span class="nn">random</span> <span class="k">import</span> <span class="n">random</span><span class="p">,</span> <span class="n">randint</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">sleep</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">trange</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span><span class="p">,</span> <span class="n">randint</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="k">with</span> <span class="n">trange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">as</span> <span class="n">t</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
@@ -818,7 +791,7 @@ with the <code class="docutils literal notranslate"><span class="pre">desc</span
                       <span class="n">lst</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">bar_format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{postfix[0]}</span><span class="s2"> </span><span class="si">{postfix[1][value]:&gt;8.2g}</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="k">with</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">bar_format</span><span class="o">=</span><span class="s2">&quot;{postfix[0]} {postfix[1][value]:&gt;8.2g}&quot;</span><span class="p">,</span>
           <span class="n">postfix</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Batch&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">)])</span> <span class="k">as</span> <span class="n">t</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
@@ -838,11 +811,11 @@ where the key is not a string.</p></li>
 <div class="section" id="nested-progress-bars">
 <h3><a class="toc-backref" href="#table-of-contents">Nested progress bars</a><a class="headerlink" href="#nested-progress-bars" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">tqdm</span></code> supports nested progress bars. Here's an example:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">trange</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">sleep</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">trange</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;1st loop&#39;</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;2nd loop&#39;</span><span class="p">,</span> <span class="n">leave</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;2nd loop&#39;</span><span class="p">,</span> <span class="n">leave</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;3nd loop&#39;</span><span class="p">):</span>
             <span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
 </pre></div>
@@ -852,16 +825,16 @@ available to keep nested bars on their respective lines.</p>
 <p>For manual control over positioning (e.g. for multi-threaded use),
 you may specify <code class="docutils literal notranslate"><span class="pre">position=n</span></code> where <code class="docutils literal notranslate"><span class="pre">n=0</span></code> for the outermost bar,
 <code class="docutils literal notranslate"><span class="pre">n=1</span></code> for the next, and so on:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">sleep</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">trange</span><span class="p">,</span> <span class="n">tqdm</span>
-<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="k">import</span> <span class="n">Pool</span><span class="p">,</span> <span class="n">freeze_support</span><span class="p">,</span> <span class="n">RLock</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">trange</span><span class="p">,</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span><span class="p">,</span> <span class="n">freeze_support</span><span class="p">,</span> <span class="n">RLock</span>
 
 <span class="n">L</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>
 
 <span class="k">def</span> <span class="nf">progresser</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">interval</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mi">5000</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;#</span><span class="si">{}</span><span class="s2">, est. </span><span class="si">{:&lt;04.2}</span><span class="s2">s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">interval</span> <span class="o">*</span> <span class="n">total</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;#{}, est. {:&lt;04.2}s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">interval</span> <span class="o">*</span> <span class="n">total</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">n</span><span class="p">):</span>
         <span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
 
@@ -871,7 +844,7 @@ you may specify <code class="docutils literal notranslate"><span class="pre">pos
              <span class="c1"># again, for Windows support</span>
              <span class="n">initializer</span><span class="o">=</span><span class="n">tqdm</span><span class="o">.</span><span class="n">set_lock</span><span class="p">,</span> <span class="n">initargs</span><span class="o">=</span><span class="p">(</span><span class="n">RLock</span><span class="p">(),))</span>
     <span class="n">p</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">progresser</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -890,12 +863,12 @@ Here's an example with <code class="docutils literal notranslate"><span class="p
 <div class="line">[...]</div>
 </div>
 </div></blockquote>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib</span><span class="o">,</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib</span><span class="o">,</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="k">class</span> <span class="nc">TqdmUpTo</span><span class="p">(</span><span class="n">tqdm</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Provides `update_to(n)` which uses `tqdm.update(delta_n)`.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">update_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bsize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tsize</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">update_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bsize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tsize</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        b  : int, optional</span>
 <span class="sd">            Number of blocks transferred so far [default: 1].</span>
@@ -904,15 +877,15 @@ Here's an example with <code class="docutils literal notranslate"><span class="p
 <span class="sd">        tsize  : int, optional</span>
 <span class="sd">            Total size (in tqdm units). If [default: None] remains unchanged.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">tsize</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tsize</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">total</span> <span class="o">=</span> <span class="n">tsize</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">bsize</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>  <span class="c1"># will also set self.n = b * bsize</span>
 
 <span class="n">eg_link</span> <span class="o">=</span> <span class="s2">&quot;https://caspersci.uk.to/matryoshka.zip&quot;</span>
-<span class="k">with</span> <span class="n">TqdmUpTo</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">unit_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">miniters</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="k">with</span> <span class="n">TqdmUpTo</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">unit_scale</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">miniters</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
               <span class="n">desc</span><span class="o">=</span><span class="n">eg_link</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="k">as</span> <span class="n">t</span><span class="p">:</span>  <span class="c1"># all optional kwargs</span>
     <span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">eg_link</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">devnull</span><span class="p">,</span>
-                       <span class="n">reporthook</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">update_to</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+                       <span class="n">reporthook</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">update_to</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Inspired by <a class="reference external" href="https://github.com/pypa/twine/pull/242">twine#242</a>.
@@ -926,9 +899,9 @@ a patchy connection).</p>
 <h3><a class="toc-backref" href="#table-of-contents">Pandas Integration</a><a class="headerlink" href="#pandas-integration" title="Permalink to this headline">¶</a></h3>
 <p>Due to popular demand we've added support for <code class="docutils literal notranslate"><span class="pre">pandas</span></code> -- here's an example
 for <code class="docutils literal notranslate"><span class="pre">DataFrame.progress_apply</span></code> and <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy.progress_apply</span></code>:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">(</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">6</span><span class="p">)))</span>
 
@@ -951,11 +924,11 @@ folder or import the module and run <code class="docutils literal notranslate"><
 <div class="section" id="ipython-jupyter-integration">
 <h3><a class="toc-backref" href="#table-of-contents">IPython/Jupyter Integration</a><a class="headerlink" href="#ipython-jupyter-integration" title="Permalink to this headline">¶</a></h3>
 <p>IPython/Jupyter is supported via the <code class="docutils literal notranslate"><span class="pre">tqdm_notebook</span></code> submodule:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tnrange</span><span class="p">,</span> <span class="n">tqdm_notebook</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">sleep</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tnrange</span><span class="p">,</span> <span class="n">tqdm_notebook</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tnrange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;1st loop&#39;</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tqdm_notebook</span><span class="p">(</span><span class="n">xrange</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;2nd loop&#39;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tqdm_notebook</span><span class="p">(</span><span class="nb">xrange</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;2nd loop&#39;</span><span class="p">):</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -968,7 +941,7 @@ light blue: no ETA); as demonstrated below.</p>
 <img alt="Screenshot-Jupyter3" src="https://raw.githubusercontent.com/tqdm/tqdm/master/images/tqdm-jupyter-3.gif" /></p>
 <p>It is also possible to let <code class="docutils literal notranslate"><span class="pre">tqdm</span></code> automatically choose between
 console or notebook versions by using the <code class="docutils literal notranslate"><span class="pre">autonotebook</span></code> submodule:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm.autonotebook</span> <span class="k">import</span> <span class="n">tqdm</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm.autonotebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="n">tqdm</span><span class="o">.</span><span class="n">pandas</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -984,8 +957,8 @@ you should not write any message in the terminal using <code class="docutils lit
 a progressbar is open.</p>
 <p>To write messages in the terminal without any collision with <code class="docutils literal notranslate"><span class="pre">tqdm</span></code> bar
 display, a <code class="docutils literal notranslate"><span class="pre">.write()</span></code> method is provided:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span><span class="p">,</span> <span class="n">trange</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">sleep</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span><span class="p">,</span> <span class="n">trange</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="n">bar</span> <span class="o">=</span> <span class="n">trange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bar</span><span class="p">:</span>
@@ -1009,26 +982,26 @@ In that case, redirecting <code class="docutils literal notranslate"><span class
 any input string to <code class="docutils literal notranslate"><span class="pre">tqdm.write()</span></code>, and supply the arguments
 <code class="docutils literal notranslate"><span class="pre">file=sys.stdout,</span> <span class="pre">dynamic_ncols=True</span></code>.</p>
 <p>A reusable canonical example is given below:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">sleep</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="kn">import</span> <span class="nn">contextlib</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="k">class</span> <span class="nc">DummyTqdmFile</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Dummy file-like that will write to tqdm&quot;&quot;&quot;</span>
-    <span class="n">file</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">file</span>
+    <span class="nb">file</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="nb">file</span>
 
     <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="c1"># Avoid print() second call (useless \n)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">tqdm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">)</span>
+            <span class="n">tqdm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;flush&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="kc">None</span><span class="p">)()</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;flush&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="bp">None</span><span class="p">)()</span>
 
-<span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+<span class="nd">@contextlib.contextmanager</span>
 <span class="k">def</span> <span class="nf">std_out_err_redirect_tqdm</span><span class="p">():</span>
     <span class="n">orig_out_err</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span>
     <span class="k">try</span><span class="p">:</span>
@@ -1042,18 +1015,18 @@ any input string to <code class="docutils literal notranslate"><span class="pre"
         <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">orig_out_err</span>
 
 <span class="k">def</span> <span class="nf">some_fun</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fee, fi, fo,&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Fee, fi, fo,&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="n">i</span><span class="p">])</span>
 
 <span class="c1"># Redirect stdout to tqdm.write() (don&#39;t forget the `as save_stdout`)</span>
 <span class="k">with</span> <span class="n">std_out_err_redirect_tqdm</span><span class="p">()</span> <span class="k">as</span> <span class="n">orig_stdout</span><span class="p">:</span>
     <span class="c1"># tqdm needs the original stdout</span>
     <span class="c1"># and dynamic_ncols=True to autodetect console width</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">file</span><span class="o">=</span><span class="n">orig_stdout</span><span class="p">,</span> <span class="n">dynamic_ncols</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="nb">file</span><span class="o">=</span><span class="n">orig_stdout</span><span class="p">,</span> <span class="n">dynamic_ncols</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
         <span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
         <span class="n">some_fun</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
 <span class="c1"># After the `with`, printing is restored</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done!&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Done!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

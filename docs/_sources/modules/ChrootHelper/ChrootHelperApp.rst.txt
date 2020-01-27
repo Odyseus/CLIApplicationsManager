@@ -2,9 +2,9 @@ ChrootHelperApp package
 =======================
 
 .. automodule:: ChrootHelperApp
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------
@@ -13,4 +13,3 @@ Submodules
 
    ChrootHelperApp.app_utils
    ChrootHelperApp.cli
-

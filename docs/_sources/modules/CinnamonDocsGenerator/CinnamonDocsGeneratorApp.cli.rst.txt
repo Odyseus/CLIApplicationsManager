@@ -2,6 +2,6 @@ CinnamonDocsGeneratorApp.cli module
 ===================================
 
 .. automodule:: CinnamonDocsGeneratorApp.cli
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -2,9 +2,9 @@ CinnamonDocsGeneratorApp package
 ================================
 
 .. automodule:: CinnamonDocsGeneratorApp
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------
@@ -13,4 +13,3 @@ Submodules
 
    CinnamonDocsGeneratorApp.app_utils
    CinnamonDocsGeneratorApp.cli
-

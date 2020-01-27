@@ -2,9 +2,9 @@ PackageManagerApp package
 =========================
 
 .. automodule:: PackageManagerApp
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------
@@ -13,4 +13,3 @@ Submodules
 
    PackageManagerApp.cli
    PackageManagerApp.pkg_manager
-

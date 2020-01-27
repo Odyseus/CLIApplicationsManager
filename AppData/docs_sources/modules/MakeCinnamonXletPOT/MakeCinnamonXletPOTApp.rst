@@ -2,9 +2,9 @@ MakeCinnamonXletPOTApp package
 ==============================
 
 .. automodule:: MakeCinnamonXletPOTApp
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------
@@ -13,4 +13,3 @@ Submodules
 
    MakeCinnamonXletPOTApp.app_utils
    MakeCinnamonXletPOTApp.cli
-
