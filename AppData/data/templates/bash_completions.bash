@@ -43,6 +43,7 @@ _apps_manager_cli_{current_date}(){
     # Completion of commands and "first level options.
     if [[ $COMP_CWORD == 1 ]]; then
         COMPREPLY=( $(compgen -W "
+app_repos \
 bump_app_version \
 gen_base_app \
 gen_docs \
@@ -53,8 +54,9 @@ gen_sys_exec_all \
 gen_sys_exec_self \
 git_gui_apps \
 install_deps \
-repo app_repos \
+repo \
 run_cmd_on_app \
+spacefm_find_files \
 -h --help --manual --version" -- "${cur}") )
         return 0
     fi
