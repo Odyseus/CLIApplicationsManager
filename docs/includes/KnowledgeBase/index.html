@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="no-js" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -109,8 +108,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#datatables-javascript-library">DataTables JavaScript library</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#jquery-javascript-library">jQuery JavaScript library</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nerd-fonts-glyphs-icons">Nerd Fonts glyphs icons</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#markdown-it-javascript-library">Markdown-it JavaScript library</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#highlight-js-syntax-highlighter-javascript-library">Highlight.js syntax highlighter JavaScript library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mistune-python-module"><code class="docutils literal notranslate"><span class="pre">mistune</span></code> Python module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#todo">TODO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#done">DONE</a></li>
 </ul>
@@ -508,7 +507,7 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p>To keep it simple, and to avoid to check if I'm dealing with files or folders, the folders <strong>epub</strong>, <strong>html</strong>, <strong>md</strong> and <strong>pdf</strong> should always containg their files in two (2) levels sub-directories (Category Name/Sub-Category Name/File Name.ext). This is to simplify the function <a class="reference internal" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension" title="KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension</span></code></a>. The first level directories are always a category name and the second level directories are always sub-categories.</p></li>
+<li><p>To keep it simple, and to avoid to check if I'm dealing with files or folders, the folders <strong>epub</strong>, <strong>html</strong>, <strong>md</strong> and <strong>pdf</strong> should always contain their files in two (2) levels sub-directories (Category Name/Sub-Category Name/File Name.ext). This is to simplify the function <a class="reference internal" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension" title="KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension</span></code></a>. The first level directories are always a category name and the second level directories are always sub-categories.</p></li>
 </ul>
 <div class="section" id="html-to-markdown-conversion">
 <h3>HTML to Markdown conversion<a class="headerlink" href="#html-to-markdown-conversion" title="Permalink to this headline">¶</a></h3>
@@ -629,26 +628,10 @@
 </li>
 </ul>
 </div>
-<div class="section" id="markdown-it-javascript-library">
-<h3>Markdown-it JavaScript library<a class="headerlink" href="#markdown-it-javascript-library" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p>This is the library that I use to render in-line markdown files. Go to <a class="reference external" href="https://github.com/markdown-it/markdown-it">its repository</a> and download the files found inside the dist folder.</p></li>
-<li><p>Files used:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">markdown</span><span class="o">-</span><span class="n">it</span><span class="o">.</span><span class="n">js</span>
-<span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">markdown</span><span class="o">-</span><span class="n">it</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">js</span>
-</pre></div>
-</div>
-</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Non-minified files are included in case I want to see the source.</p>
-</div>
-</div>
 <div class="section" id="highlight-js-syntax-highlighter-javascript-library">
 <h3>Highlight.js syntax highlighter JavaScript library<a class="headerlink" href="#highlight-js-syntax-highlighter-javascript-library" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p>This is the library that I use to highlight the syntax of code blocks. Go to <a class="reference external" href="https://highlightjs.org/download/">its website</a>, check all supported languages and download the zipped file. This torture is infinitely less painful than using Node.js to build the library from source.</p></li>
+<li><p>This is the library that I use to highlight the syntax of code blocks. Go to <a class="reference external" href="https://highlightjs.org/download/">its website</a>, uncheck some of the languages selected by default, check some of the one unselected and download the zipped file. This torture is infinitely less painful than using Node.js to build the library from source.</p></li>
 <li><p>Files used:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">highlight</span><span class="o">.</span><span class="n">pack</span><span class="o">.</span><span class="n">js</span>
 <span class="o">/</span><span class="n">styles</span><span class="o">/</span><span class="n">xcode</span><span class="o">.</span><span class="n">css</span>
@@ -656,12 +639,24 @@
 </div>
 </li>
 </ul>
+<div class="admonition-warning warning admonition">
+<p class="admonition-title">Warning</p>
+<p>Do not select all supported languages or a great amount of them. It greatly slows down page load times when highlighting pages with a lot of <code class="docutils literal notranslate"><span class="pre">code</span></code> blocks.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">highlight.pack.js</span></code> file is already minified.</p></li>
 <li><p>Rename <code class="docutils literal notranslate"><span class="pre">xcode.css</span></code> to <code class="docutils literal notranslate"><span class="pre">highlight.css</span></code> and minify it.</p></li>
 </ul>
+</div>
+</div>
+<div class="section" id="mistune-python-module">
+<h3><code class="docutils literal notranslate"><span class="pre">mistune</span></code> Python module<a class="headerlink" href="#mistune-python-module" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://github.com/lepture/mistune/tree/v1">mistune</a> Python module is used to parse Markdown files on the server side. I switched to this module from <code class="docutils literal notranslate"><span class="pre">Markdown-it</span></code> JavaScript library because it renders Markdown a lot faster.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I'm using version <strong>0.8.4</strong> of this module. Version <strong>2</strong> is still in alpha. Consider switching to version <strong>2</strong> when stable because it seems that it is even faster than the previous version.</p>
 </div>
 </div>
 <div class="section" id="todo">
@@ -678,6 +673,22 @@
 </div></blockquote>
 </li>
 </ul>
+<div class="admonition-warning warning admonition">
+<p class="admonition-title">No longer used</p>
+<ul class="wy-text-strike">
+<li><p>This is the library that I use to render in-line markdown files. Go to <a class="reference external" href="https://github.com/markdown-it/markdown-it">its repository</a> and download the files found inside the dist folder.</p></li>
+<li><p>Files used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">markdown</span><span class="o">-</span><span class="n">it</span><span class="o">.</span><span class="n">js</span>
+<span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">markdown</span><span class="o">-</span><span class="n">it</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="wy-text-strike admonition note">
+<p class="admonition-title">Note</p>
+<p>Non-minified files are included in case I want to see the source.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -706,7 +717,8 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
 
 </footer>
 

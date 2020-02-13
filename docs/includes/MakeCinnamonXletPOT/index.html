@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="no-js" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -209,7 +208,7 @@
            [-k &lt;keyword&gt;... | --keyword=&lt;keyword&gt;...]
            [-g &lt;pattern&gt;... | --ignored-pattern=&lt;pattern&gt;...]
            [-x &lt;path&gt; | --xlet-dir=&lt;path&gt;]
-    app.py (-i | --install | -r | --remove)
+    app.py (-i | --install | -r | --remove | -t | --gen-stats)
            [-x &lt;path&gt; | --xlet-dir=&lt;path&gt;]
     app.py generate system_executable
 
@@ -273,7 +272,12 @@
 
 <span class="text-bold">-r, --remove</span>
     The opposite of install, removes translations from the system locale store.
-    Again, the xlet UUID will be used to find the correct files to remove.</pre>
+    Again, the xlet UUID will be used to find the correct files to remove.
+
+<span class="text-bold">-t, --gen-stats</span>
+    Generate language statistics. It generates a table in Markdown format
+    containg the number of untranslated strings for each .po file inside
+    an xlet&#x27;s po folder.</pre>
 </div></div>
 </div>
 <div class="section" id="mentions">
@@ -351,7 +355,8 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
 
 </footer>
 

@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="no-js" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -382,7 +381,7 @@
     <span class="k">return</span> <span class="kc">None</span></div>
 
 
-<div class="viewcode-block" id="run_cmd"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.run_cmd">[docs]</a><span class="k">def</span> <span class="nf">run_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">get_environment</span><span class="p">(),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="run_cmd"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.run_cmd">[docs]</a><span class="k">def</span> <span class="nf">run_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;See :any:`subprocess.run`.</span>
 
 <span class="sd">    Parameters</span>
@@ -403,6 +402,12 @@
 <span class="sd">    object</span>
 <span class="sd">        See :any:`subprocess.CompletedProcess`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># NOTE: This is a workaround to avoid putting the call to get_environment directly inside</span>
+    <span class="c1"># the function definition arguments. Otherwise, when generating the documentation with</span>
+    <span class="c1"># Sphinx, the entire environment is dumped into the generated documentation. ¬¬</span>
+    <span class="k">if</span> <span class="n">env</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="n">get_environment</span><span class="p">()</span>
+
     <span class="k">return</span> <span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">stderr</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
@@ -424,7 +429,8 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
 
 </footer>
 

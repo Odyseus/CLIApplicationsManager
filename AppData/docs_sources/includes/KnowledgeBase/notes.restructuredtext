@@ -21,7 +21,7 @@ General notes
     + There seems to exist only a handful of javaScript libraries (I found only two) and they either have limited rendering capabilities (`restructured <https://github.com/seikichi/restructured/>`_) or they are an absolute nightmare to build and use (`Est <https://github.com/frantic1048/Est/>`_). And the only thing that both have in common is that they are immensely bloated.
     + In light of this, either ignore ``.rst`` files, convert them to Markdown if they are simple and not too extensive or convert them to HTML if they are complex and too large. **Moving on...**
 
-- To keep it simple, and to avoid to check if I'm dealing with files or folders, the folders **epub**, **html**, **md** and **pdf** should always containg their files in two (2) levels sub-directories (Category Name/Sub-Category Name/File Name.ext). This is to simplify the function :any:`KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension`. The first level directories are always a category name and the second level directories are always sub-categories.
+- To keep it simple, and to avoid to check if I'm dealing with files or folders, the folders **epub**, **html**, **md** and **pdf** should always contain their files in two (2) levels sub-directories (Category Name/Sub-Category Name/File Name.ext). This is to simplify the function :any:`KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension`. The first level directories are always a category name and the second level directories are always sub-categories.
 
 HTML to Markdown conversion
 ---------------------------
@@ -112,32 +112,36 @@ Nerd Fonts glyphs icons
     + Then went to `their repository <https://github.com/ryanoasis/nerd-fonts/tree/master/css>`__ and downloaded the generated CSS files and renamed them to ``nerdicons.css`` and ``nerdicons.min.css``.
     + **Moving on...**
 
-Markdown-it JavaScript library
-------------------------------
-
-- This is the library that I use to render in-line markdown files. Go to `its repository <https://github.com/markdown-it/markdown-it>`__ and download the files found inside the dist folder.
-- Files used::
-
-    /dist/markdown-it.js
-    /dist/markdown-it.min.js
-
-.. note::
-
-    Non-minified files are included in case I want to see the source.
 
 Highlight.js syntax highlighter JavaScript library
 --------------------------------------------------
 
-- This is the library that I use to highlight the syntax of code blocks. Go to `its website <https://highlightjs.org/download/>`__, check all supported languages and download the zipped file. This torture is infinitely less painful than using Node.js to build the library from source.
+- This is the library that I use to highlight the syntax of code blocks. Go to `its website <https://highlightjs.org/download/>`__, uncheck some of the languages selected by default, check some of the one unselected and download the zipped file. This torture is infinitely less painful than using Node.js to build the library from source.
 - Files used::
 
     /highlight.pack.js
     /styles/xcode.css
 
+.. contextual-admonition::
+    :context: warning
+    :title: Warning
+
+    Do not select all supported languages or a great amount of them. It greatly slows down page load times when highlighting pages with a lot of ``code`` blocks.
+
 .. note::
 
     - ``highlight.pack.js`` file is already minified.
     - Rename ``xcode.css`` to ``highlight.css`` and minify it.
+
+
+``mistune`` Python module
+-------------------------
+
+The `mistune <https://github.com/lepture/mistune/tree/v1>`__ Python module is used to parse Markdown files on the server side. I switched to this module from ``Markdown-it`` JavaScript library because it renders Markdown a lot faster.
+
+.. note::
+
+    I'm using version **0.8.4** of this module. Version **2** is still in alpha. Consider switching to version **2** when stable because it seems that it is even faster than the previous version.
 
 TODO
 ----
@@ -148,3 +152,23 @@ DONE
 - Try to create a method to load in-line HTML pages that are too complex and/or too big to convert them to Markdown.
 
     - One way would be using jQuery's ``.load()`` function. Preliminary tests were positive.
+
+
+.. contextual-admonition::
+    :context: warning
+    :title: No longer used
+
+    .. rst-class:: wy-text-strike
+
+        Markdown-it JavaScript library
+        ------------------------------
+
+        - This is the library that I use to render in-line markdown files. Go to `its repository <https://github.com/markdown-it/markdown-it>`__ and download the files found inside the dist folder.
+        - Files used::
+
+            /dist/markdown-it.js
+            /dist/markdown-it.min.js
+
+        .. note::
+
+            Non-minified files are included in case I want to see the source.

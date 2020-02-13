@@ -306,7 +306,6 @@ small {
 }
 
 @media print {
-
     html,
     body,
     section {
@@ -429,7 +428,8 @@ textarea,
     -webkit-font-smoothing: antialiased;
 }
 
-.clearfix {}
+.clearfix {
+}
 
 .clearfix:before,
 .clearfix:after {
@@ -448,11 +448,7 @@ textarea,
 @font-face {
     font-family: "FontAwesome";
     src: url("../fonts/fontawesome-webfont.eot?v=4.7.0");
-    src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"),
-        url("../fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"),
-        url("../fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"),
-        url("../fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"),
-        url("../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+    src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("../fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("../fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
     font-weight: normal;
     font-style: normal;
 }
@@ -4302,7 +4298,7 @@ a .icon {
     height: 56px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width:768px) {
     .wy-tray-container {
         bottom: auto;
         top: 0;
@@ -4348,8 +4344,7 @@ button[disabled] {
     text-decoration: none;
     font-weight: normal;
     font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    box-shadow: 0 1px 2px -1px rgba(255, 255, 255, 0.5) inset,
-        0 -2px 0 0 rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 2px -1px rgba(255, 255, 255, 0.5) inset, 0 -2px 0 0 rgba(0, 0, 0, 0.1) inset;
     outline-none: false;
     vertical-align: middle;
     zoom: 1;
@@ -4379,8 +4374,7 @@ button[disabled] {
 }
 
 .btn:active {
-    box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.05) inset,
-        0 2px 0 0 rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.05) inset, 0 2px 0 0 rgba(0, 0, 0, 0.1) inset;
     padding: 8px 12px 6px 12px;
 }
 
@@ -5284,7 +5278,7 @@ input[type="checkbox"][disabled] {
     transform: scaleX(-1) rotate(270deg);
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width:480px) {
     .wy-form button[type="submit"] {
         margin: 0.7em 0 0;
     }
@@ -5348,13 +5342,13 @@ input[type="checkbox"][disabled] {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width:768px) {
     .tablet-hide {
         display: none;
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width:480px) {
     .mobile-hide {
         display: none;
     }
@@ -5799,7 +5793,8 @@ article ol li ul li {
     list-style: disc;
 }
 
-.wy-breadcrumbs {}
+.wy-breadcrumbs {
+}
 
 .wy-breadcrumbs:before,
 .wy-breadcrumbs:after {
@@ -5849,7 +5844,7 @@ article ol li ul li {
     display: inline-block;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width:480px) {
     .wy-breadcrumbs-extra {
         display: none;
     }
@@ -5878,7 +5873,8 @@ html {
     text-decoration: none;
 }
 
-.wy-menu-horiz {}
+.wy-menu-horiz {
+}
 
 .wy-menu-horiz:before,
 .wy-menu-horiz:after {
@@ -6084,8 +6080,7 @@ html {
 
 .wy-menu-vertical li ul li a {
     margin-bottom: 0;
-    /* Sidebar color override. */
-    color: #000;
+    color: #000; /* Sidebar color override. */
     font-weight: normal;
 }
 
@@ -6095,17 +6090,18 @@ html {
     display: block;
     position: relative;
     font-size: 90%;
-    /* Sidebar color override. */
-    color: #000;
+    color: #000;/* Sidebar color override. */
 }
 
 .wy-menu-vertical a:hover {
+
     /* Sidebar color override. */
     background-color: rgba(255, 255, 255, 0.3);
     cursor: pointer;
 }
 
 .wy-menu-vertical a:hover span.toctree-expand {
+
     /* Sidebar color override. */
     color: #000;
 }
@@ -6123,13 +6119,11 @@ html {
 .wy-side-nav-search {
     width: 300px;
     z-index: 200;
-    /* Sidebar color override. */
-    background-color: #000;
+    background-color: #000;/* Sidebar color override. */
     text-align: center;
     padding: 0.809em;
     display: block;
-    /* Sidebar color override. */
-    color: #fff;
+    color: #fff;/* Sidebar color override. */
     margin-bottom: 0.809em;
 }
 
@@ -6137,8 +6131,7 @@ html {
     width: 100%;
     border-radius: 50px;
     padding: 6px 12px;
-    /* Sidebar color override. */
-    border-color: #000;
+    border-color: #000;  /* Sidebar color override. */
 }
 
 .wy-side-nav-search img {
@@ -6249,8 +6242,7 @@ html {
     overflow-x: hidden;
     overflow-y: hidden;
     min-height: 100%;
-    /* Sidebar color override. */
-    color: #fff;
+    color: #fff;/* Sidebar color override. */
     background: #efefef;
     z-index: 200;
 }
@@ -6313,8 +6305,8 @@ html {
 
 .wy-nav-content {
     padding: 1.618em 3.236em;
-    height: 100%;
-    /* Do not limit the content width. */
+    height: 100%;    /* Do not limit the content width. */
+
     /* max-width: 800px; */
     margin: auto;
 }
@@ -6351,7 +6343,8 @@ footer span.commit .rst-content tt,
     color: gray;
 }
 
-.rst-footer-buttons {}
+.rst-footer-buttons {
+}
 
 .rst-footer-buttons:before,
 .rst-footer-buttons:after {
@@ -6408,7 +6401,7 @@ footer span.commit .rst-content tt,
     margin-left: 24px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width:768px) {
     .wy-body-for-nav {
         background: #fcfcfc;
     }
@@ -6456,7 +6449,7 @@ footer span.commit .rst-content tt,
     }
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width:1100px) {
     .wy-nav-content-wrap {
         background: rgba(0, 0, 0, 0.05);
     }
@@ -6468,7 +6461,6 @@ footer span.commit .rst-content tt,
 }
 
 @media print {
-
     .rst-versions,
     footer,
     .wy-nav-side {
@@ -6650,7 +6642,7 @@ footer span.commit .rst-content tt,
     text-align: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width:768px) {
     .rst-versions {
         width: 85%;
         display: none;
@@ -6773,7 +6765,6 @@ footer span.commit .rst-content tt,
 }
 
 @media print {
-
     .rst-content .codeblock,
     .rst-content div[class^="highlight"],
     .rst-content div[class^="highlight"] pre {
@@ -7002,8 +6993,8 @@ footer span.commit .rst-content tt,
     margin-bottom: 0;
 }
 
-.rst-content .wy-table-responsive.citation + :not(.citation),
-.rst-content .wy-table-responsive.footnote + :not(.footnote) {
+.rst-content .wy-table-responsive.citation +:not(.citation),
+.rst-content .wy-table-responsive.footnote +:not(.footnote) {
     margin-top: 24px;
 }
 
@@ -7017,7 +7008,7 @@ footer span.commit .rst-content tt,
 }
 
 .rst-content table.docutils td .last,
-.rst-content table.docutils td .last :last-child {
+.rst-content table.docutils td .last:last-child {
     margin-bottom: 0;
 }
 
@@ -7247,7 +7238,7 @@ a .rst-content code {
     font-style: italic;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width:480px) {
     .rst-content .sidebar {
         width: 100%;
     }
@@ -7262,7 +7253,6 @@ span[id*="MathJax-Span"] {
 }
 
 /* Custom styling classes. */
-
 .text-bold {
     font-weight: bold !important;
 }
@@ -7310,4 +7300,20 @@ span[id*="MathJax-Span"] {
 
 #to-top-of-page:hover {
     opacity: 0.4 !important;
+}
+
+/* A decent style for kbd HTML tags that IS NOT DARK.
+  Extracted from GitHub's own stylesheet. */
+kbd {
+    background-color: #fafbfc !important;
+    border: 1px solid #c6cbd1 !important;
+    border-bottom-color: #959da5 !important;
+    border-radius: 3px !important;
+    box-shadow: inset 0 -1px 0 #959da5 !important;
+    color: #444d56 !important;
+    display: inline-block !important;
+    font-size: 87.5% !important;
+    line-height: 87.5% !important;
+    padding: 3px 5px !important;
+    vertical-align: middle !important;
 }

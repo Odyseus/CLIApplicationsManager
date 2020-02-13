@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="no-js" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -190,6 +189,7 @@
 <span class="sd">        See :any:`LogSystem`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_cli_header_blacklist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">_print_log_blacklist</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app_name</span><span class="p">,</span> <span class="n">logs_storage_dir</span><span class="o">=</span><span class="s2">&quot;UserData/logs&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialization.</span>
@@ -220,11 +220,12 @@
 <div class="viewcode-block" id="CommandLineInterfaceSuper.print_log_file"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper.print_log_file">[docs]</a>    <span class="k">def</span> <span class="nf">print_log_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Print the path to the log file used by the current logger.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;**Log file location:**&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;**</span><span class="si">%s</span><span class="s2">**&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">get_log_file</span><span class="p">(),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print_log_blacklist</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_print_log_blacklist</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;**Log file location:**&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;**</span><span class="si">%s</span><span class="s2">**&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">get_log_file</span><span class="p">(),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CommandLineInterfaceSuper.run"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Execute the assigned action stored in self.action if any.</span>
@@ -314,7 +315,8 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
 
 </footer>
 
