@@ -375,12 +375,19 @@ from this location without exceptions.</p>
 
 <dl class="function">
 <dt id="MakeCinnamonXletPOTApp.app_utils._generate_trans_stats">
-<code class="sig-prename descclassname">MakeCinnamonXletPOTApp.app_utils.</code><code class="sig-name descname">_generate_trans_stats</code><span class="sig-paren">(</span><em class="sig-param">uuid</em>, <em class="sig-param">xlet_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/MakeCinnamonXletPOTApp/app_utils.html#_generate_trans_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#MakeCinnamonXletPOTApp.app_utils._generate_trans_stats" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">MakeCinnamonXletPOTApp.app_utils.</code><code class="sig-name descname">_generate_trans_stats</code><span class="sig-paren">(</span><em class="sig-param">uuid</em>, <em class="sig-param">xlet_dir</em>, <em class="sig-param">pot_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/MakeCinnamonXletPOTApp/app_utils.html#_generate_trans_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#MakeCinnamonXletPOTApp.app_utils._generate_trans_stats" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate translations statistics.</p>
 <p>Generates files that contain the amount of untranslated strings an xlet has.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#SystemExit" title="(in Python v3.8)"><strong>SystemExit</strong></a> -- Halt execution if the msgmerge command is not found.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- An xlet UUID.</p></li>
+<li><p><strong>xlet_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Path to an xlet folder.</p></li>
+<li><p><strong>pot_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Path to a POT file.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

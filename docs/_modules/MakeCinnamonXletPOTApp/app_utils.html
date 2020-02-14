@@ -185,8 +185,6 @@
 <span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">copy2</span>
 <span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">ignore_patterns</span>
 <span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">rmtree</span>
-<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">call</span>
-<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">run</span>
 
 
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__version__</span>
@@ -487,10 +485,12 @@
     <span class="n">files_installed</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">podir</span><span class="p">):</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;The &#39;po&#39; directory seems not to be present.</span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;This xlet might not have localizations that need to be installed.</span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;Or this tool has not been executed from inside the xlet folder.&quot;</span>
-        <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">WrongExecutionLocation</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;The &#39;po&#39; directory seems not to be present.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;This xlet might not have localizations that need to be installed.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Or this tool has not been executed from inside the xlet folder.&quot;</span>
+        <span class="p">]</span>
+        <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">WrongExecutionLocation</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
 
     <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">podir</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
@@ -498,8 +498,8 @@
             <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s2">&quot;.po&quot;</span><span class="p">:</span>
                 <span class="n">lang_locale_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">LOCALE_DIR</span><span class="p">,</span> <span class="n">locale_name</span><span class="p">,</span> <span class="s2">&quot;LC_MESSAGES&quot;</span><span class="p">)</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">lang_locale_dir</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mo">0o755</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                <span class="n">call</span><span class="p">([</span><span class="s2">&quot;msgfmt&quot;</span><span class="p">,</span> <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">),</span> <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
-                      <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lang_locale_dir</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.mo&quot;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">)])</span>
+                <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">([</span><span class="s2">&quot;msgfmt&quot;</span><span class="p">,</span> <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">),</span> <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+                                   <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lang_locale_dir</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.mo&quot;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">)])</span>
                 <span class="n">files_installed</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">if</span> <span class="n">files_installed</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -565,7 +565,7 @@
             <span class="s2">&quot;COPY_INITIAL_YEAR&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="s2">&quot;COPY_CURRENT_YEAR&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">year</span><span class="p">),</span>
             <span class="s2">&quot;PACKAGE&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">),</span>
-            <span class="s2">&quot;VERSION&quot;</span><span class="p">:</span> <span class="n">md</span><span class="p">[</span><span class="s2">&quot;version&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;version&quot;</span> <span class="ow">in</span> <span class="n">md</span> <span class="k">else</span> <span class="s2">&quot;VERSION&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;VERSION&quot;</span><span class="p">:</span> <span class="n">md</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;version&quot;</span><span class="p">,</span> <span class="s2">&quot;VERSION&quot;</span><span class="p">),</span>
             <span class="s2">&quot;SCRIPT_VERSION&quot;</span><span class="p">:</span> <span class="n">__version__</span><span class="p">,</span>
             <span class="s2">&quot;TIMESTAMP&quot;</span><span class="p">:</span> <span class="n">_get_timestamp</span><span class="p">(),</span>
         <span class="p">}</span>
@@ -620,7 +620,7 @@
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**POT header customization complete.**&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="_generate_trans_stats"><a class="viewcode-back" href="../../modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._generate_trans_stats">[docs]</a><span class="k">def</span> <span class="nf">_generate_trans_stats</span><span class="p">(</span><span class="n">uuid</span><span class="p">,</span> <span class="n">xlet_dir</span><span class="p">):</span>
+<div class="viewcode-block" id="_generate_trans_stats"><a class="viewcode-back" href="../../modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils._generate_trans_stats">[docs]</a><span class="k">def</span> <span class="nf">_generate_trans_stats</span><span class="p">(</span><span class="n">uuid</span><span class="p">,</span> <span class="n">xlet_dir</span><span class="p">,</span> <span class="n">pot_path</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate translations statistics.</span>
 
 <span class="sd">    Generates files that contain the amount of untranslated strings an xlet has.</span>
@@ -629,12 +629,21 @@
 <span class="sd">    ------</span>
 <span class="sd">    SystemExit</span>
 <span class="sd">        Halt execution if the msgmerge command is not found.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    uuid : str</span>
+<span class="sd">        An xlet UUID.</span>
+<span class="sd">    xlet_dir : str</span>
+<span class="sd">        Path to an xlet folder.</span>
+<span class="sd">    pot_path : str</span>
+<span class="sd">        Path to a POT file.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;msgmerge&quot;</span><span class="p">):</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;**MissingCommand:** msgmerge command not found!!!&quot;</span><span class="p">)</span>
         <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="n">markdown_content</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">markdown_content</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">po_tmp_storage</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">misc_utils</span><span class="o">.</span><span class="n">get_system_tempdir</span><span class="p">(),</span>
                                   <span class="s2">&quot;MakeCinnamonXletPOT-tmp&quot;</span><span class="p">,</span> <span class="n">uuid</span><span class="p">)</span>
     <span class="n">trans_stats_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">po_tmp_storage</span><span class="p">,</span> <span class="s2">&quot;po_files_untranslated_table.md&quot;</span><span class="p">)</span>
@@ -642,7 +651,6 @@
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">po_tmp_storage</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">xlet_po_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">,</span> <span class="s2">&quot;po&quot;</span><span class="p">)</span>
-    <span class="n">xlet_pot_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">xlet_po_dir</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.pot&quot;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">)</span>
     <span class="n">tmp_xlet_po_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">po_tmp_storage</span><span class="p">,</span> <span class="s2">&quot;po&quot;</span><span class="p">)</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">tmp_xlet_po_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -651,10 +659,12 @@
 
         <span class="k">if</span> <span class="n">xlet_po_list</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">uuid</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-            <span class="n">markdown_content</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">### </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uuid</span>
-            <span class="n">markdown_content</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-            <span class="n">markdown_content</span> <span class="o">+=</span> <span class="s2">&quot;|LANGUAGE|UNTRANSLATED|</span><span class="se">\n</span><span class="s2">&quot;</span>
-            <span class="n">markdown_content</span> <span class="o">+=</span> <span class="s2">&quot;|--------|------------|</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="n">markdown_content</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s2">&quot;### </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
+                <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;|LANGUAGE|UNTRANSLATED|&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;|--------|------------|&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
 
             <span class="k">for</span> <span class="n">po_file_path</span> <span class="ow">in</span> <span class="n">xlet_po_list</span><span class="p">:</span>
                 <span class="n">po_base_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">po_file_path</span><span class="p">)</span>
@@ -668,24 +678,26 @@
                             <span class="n">po_base_name</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                 <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">([</span>
                     <span class="s2">&quot;msgmerge&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;--silent&quot;</span><span class="p">,</span>             <span class="c1"># Shut the heck up.</span>
+                    <span class="s2">&quot;--no-wrap&quot;</span><span class="p">,</span>            <span class="c1"># Do not wrap long lines.</span>
                     <span class="s2">&quot;--no-fuzzy-matching&quot;</span><span class="p">,</span>  <span class="c1"># Do not use fuzzy matching.</span>
-                    <span class="s2">&quot;--previous&quot;</span><span class="p">,</span>           <span class="c1"># Keep previous msgids of translated messages.</span>
                     <span class="s2">&quot;--backup=off&quot;</span><span class="p">,</span>         <span class="c1"># Never make backups.</span>
                     <span class="s2">&quot;--update&quot;</span><span class="p">,</span>             <span class="c1"># Update .po file, do nothing if up to date.</span>
                     <span class="n">tmp_po_file_path</span><span class="p">,</span>       <span class="c1"># The .po file to update.</span>
-                    <span class="n">xlet_pot_file_path</span>       <span class="c1"># The template file to update from.</span>
+                    <span class="n">pot_path</span>                <span class="c1"># The template file to update from.</span>
                 <span class="p">],</span> <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Counting untranslated strings...**&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                 <span class="n">trans_count_cmd</span> <span class="o">=</span> <span class="s1">&#39;msggrep -v -T -e &quot;.&quot; &quot;</span><span class="si">%s</span><span class="s1">&quot; | grep -c ^msgstr&#39;</span>
                 <span class="n">trans_count_output</span> <span class="o">=</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">trans_count_cmd</span> <span class="o">%</span> <span class="n">tmp_po_file_path</span><span class="p">,</span>
                                                        <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">stdout</span>
-                <span class="n">trans_count</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">trans_count_output</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-                <span class="n">markdown_content</span> <span class="o">+=</span> <span class="s2">&quot;|</span><span class="si">%s</span><span class="s2">|</span><span class="si">%s</span><span class="s2">|</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">po_base_name</span><span class="p">,</span> <span class="n">trans_count</span><span class="p">)</span>
+                <span class="n">trans_count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">trans_count_output</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+                <span class="n">markdown_content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">%s</span><span class="s2">|</span><span class="si">%d</span><span class="s2">|&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                    <span class="n">po_base_name</span><span class="p">,</span> <span class="n">trans_count</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">trans_count</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">trans_count</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">markdown_content</span><span class="p">:</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">trans_stats_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">trans_file</span><span class="p">:</span>
-            <span class="n">trans_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">markdown_content</span><span class="p">)</span>
+            <span class="n">trans_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">markdown_content</span><span class="p">))</span>
 
         <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">([</span><span class="s2">&quot;xdg-open&quot;</span><span class="p">,</span> <span class="n">trans_stats_file</span><span class="p">])</span></div>
 
@@ -709,10 +721,13 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">logger</span>
     <span class="n">logger</span> <span class="o">=</span> <span class="n">app_logger</span>
-    <span class="n">keywords</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--keyword&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--keyword&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="p">[</span><span class="s2">&quot;_&quot;</span><span class="p">]</span>
-    <span class="n">ignored_patterns</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--ignored-pattern&quot;</span><span class="p">]</span>
-    <span class="n">additional_files</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--scan-additional-file&quot;</span><span class="p">]</span>
-    <span class="n">skip_keys</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--skip-key&quot;</span><span class="p">]</span>
+
+    <span class="c1"># NOTE: list(set()) is cast to workaround docopt bug that duplicates arguments.</span>
+    <span class="n">keywords</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;--keyword&quot;</span><span class="p">]))</span> <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--keyword&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="p">[</span><span class="s2">&quot;_&quot;</span><span class="p">]</span>
+    <span class="n">ignored_patterns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;--ignored-pattern&quot;</span><span class="p">]))</span>
+    <span class="n">additional_files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;--scan-additional-file&quot;</span><span class="p">]))</span>
+    <span class="n">skip_keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;--skip-key&quot;</span><span class="p">]))</span>
+
     <span class="n">xlet_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;--xlet-dir&quot;</span><span class="p">])</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">):</span>
@@ -722,22 +737,24 @@
 
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Xlet: </span><span class="si">%s</span><span class="s2">**&quot;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--gen-stats&quot;</span><span class="p">]:</span>
-        <span class="n">_generate_trans_stats</span><span class="p">(</span><span class="n">uuid</span><span class="p">,</span> <span class="n">xlet_dir</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">()</span>
-
-    <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--install&quot;</span><span class="p">]:</span>
-        <span class="n">_do_install</span><span class="p">(</span><span class="n">uuid</span><span class="p">,</span> <span class="n">xlet_dir</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">()</span>
-
-    <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--remove&quot;</span><span class="p">]:</span>
-        <span class="n">_do_remove</span><span class="p">(</span><span class="n">uuid</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">()</span>
-
     <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--output&quot;</span><span class="p">]:</span>
         <span class="n">pot_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;--output&quot;</span><span class="p">])</span>
+        <span class="n">pot_options_path</span> <span class="o">=</span> <span class="n">pot_path</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.json&quot;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">pot_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">,</span> <span class="s2">&quot;po&quot;</span><span class="p">,</span> <span class="n">uuid</span> <span class="o">+</span> <span class="s2">&quot;.pot&quot;</span><span class="p">)</span>
+        <span class="n">pot_options_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">,</span> <span class="s2">&quot;po&quot;</span><span class="p">,</span> <span class="n">uuid</span> <span class="o">+</span> <span class="s2">&quot;.json&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--gen-stats&quot;</span><span class="p">]:</span>
+        <span class="n">pot_path</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--pot-file&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--pot-file&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="n">pot_path</span>
+        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">_generate_trans_stats</span><span class="p">(</span><span class="n">uuid</span><span class="p">,</span> <span class="n">xlet_dir</span><span class="p">,</span> <span class="n">pot_path</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--install&quot;</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">_do_install</span><span class="p">(</span><span class="n">uuid</span><span class="p">,</span> <span class="n">xlet_dir</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--remove&quot;</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">_do_remove</span><span class="p">(</span><span class="n">uuid</span><span class="p">))</span>
+
+    <span class="c1"># NOTE: From this point down, all actions are to generate a new POT file.</span>
 
     <span class="c1"># Remove an existent POT file. This is to force `xgettext` to always create a new POT file.</span>
     <span class="c1"># `xgettext` doesn&#39;t remove obsolete strings from existent POT files and it doesn&#39;t update</span>
@@ -747,6 +764,18 @@
 
     <span class="n">pwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
     <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">)</span>
+
+    <span class="c1"># NOTE: To future me to avoid headaches and nightmares!!!</span>
+    <span class="c1">#</span>
+    <span class="c1"># 1. Create the po directory. Otherwise, the polib module will fail if there isn&#39;t an</span>
+    <span class="c1">#    existent POT file when calling its `potfile.save()` method.</span>
+    <span class="c1"># 2. Run xgettext commands (to scan JavaScript and Python files) BEFORE running the _scan_json</span>
+    <span class="c1">#    function using polib. Because:</span>
+    <span class="c1">#    - Running polib before xgettext will generate POT files with double headers. ¬¬</span>
+    <span class="c1">#    - Running polib before xgettext with --omit-header fixes the double headers problem, but</span>
+    <span class="c1">#      the absolutely retarded xgettext will f*ck up all unicode characters.</span>
+
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">pot_path</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="mo">0o755</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--skip-js&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--skip-python&quot;</span><span class="p">]:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;xgettext&quot;</span><span class="p">):</span>
@@ -761,17 +790,15 @@
             <span class="s2">&quot;--output=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">pot_path</span>
         <span class="p">]</span>
 
-    <span class="c1"># Create the po directory. Otherwise, the polib module will fail if there isn&#39;t an</span>
-    <span class="c1"># existent POT file when calling its `potfile.save()` method.</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">pot_path</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="mo">0o755</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
     <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--skip-js&quot;</span><span class="p">]:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Scanning JavaScript files...**&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
         <span class="n">js_files</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="k">if</span> <span class="n">additional_files</span><span class="p">:</span>
-            <span class="n">js_files</span> <span class="o">+=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">additional_files</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.js&quot;</span><span class="p">)]</span>
+            <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">additional_files</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">file</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;.js&quot;</span><span class="p">:</span>
+                    <span class="n">js_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">js_files</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Including the following additional JavaScript file/s...**&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -782,7 +809,9 @@
         <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">):</span>
             <span class="n">dirs</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
             <span class="n">rel_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-            <span class="n">js_files</span> <span class="o">+=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rel_root</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.js&quot;</span><span class="p">)]</span>
+            <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">file</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;.js&quot;</span><span class="p">:</span>
+                    <span class="n">js_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rel_root</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">js_files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**No JavaScript files found.**&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -792,7 +821,11 @@
                 <span class="n">js_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">js_files</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignored_js_files</span><span class="p">]</span>
 
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Found </span><span class="si">%i</span><span class="s2"> JavaScript file(s)**&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">js_files</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-            <span class="n">run</span><span class="p">(</span><span class="n">xgettext_command</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;--language=JavaScript&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">js_files</span><span class="p">))</span>
+
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pot_path</span><span class="p">):</span>
+                <span class="n">xgettext_command</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--join-existing&quot;</span><span class="p">)</span>
+
+            <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">xgettext_command</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;--language=JavaScript&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">js_files</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;--skip-python&quot;</span><span class="p">]:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Scanning Python files...**&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -800,7 +833,9 @@
         <span class="n">py_files</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="k">if</span> <span class="n">additional_files</span><span class="p">:</span>
-            <span class="n">py_files</span> <span class="o">+=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">additional_files</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.py&quot;</span><span class="p">)]</span>
+            <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">additional_files</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">file</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;.py&quot;</span><span class="p">:</span>
+                    <span class="n">py_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">py_files</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Including the following additional Python file/s...**&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -811,7 +846,9 @@
         <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">):</span>
             <span class="n">dirs</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
             <span class="n">rel_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-            <span class="n">py_files</span> <span class="o">+=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rel_root</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.py&quot;</span><span class="p">)]</span>
+            <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">file</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;.py&quot;</span><span class="p">:</span>
+                    <span class="n">py_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rel_root</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">py_files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**No Python files found.**&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -829,12 +866,11 @@
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pot_path</span><span class="p">):</span>
                 <span class="n">xgettext_command</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--join-existing&quot;</span><span class="p">)</span>
 
-            <span class="n">run</span><span class="p">(</span><span class="n">xgettext_command</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;--language=Python&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">py_files</span><span class="p">))</span>
+            <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">xgettext_command</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;--language=Python&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">py_files</span><span class="p">))</span>
 
     <span class="n">pot_settings_data</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">pot_options_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">xlet_dir</span><span class="p">,</span> <span class="s2">&quot;po&quot;</span><span class="p">,</span> <span class="n">uuid</span> <span class="o">+</span> <span class="s2">&quot;.json&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pot_options_path</span><span class="p">):</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pot_options_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pot_settings_file</span><span class="p">:</span>
                 <span class="n">raw_data</span> <span class="o">=</span> <span class="n">pot_settings_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
