@@ -500,13 +500,15 @@ def bump_app_version(app, logger):
                                   "%sApp" % app["slug"], "__init__.py")
 
     with open(init_file_path, "r", encoding="UTF-8") as old:
-        old_lines = old.readlines()
+        old_lines = old.read().splitlines()
 
-    new_lines = "".join(['__version__ = "%s"' % version_number if l.startswith(
-        "__version__") else l for l in old_lines])
+    for i, line in enumerate(old_lines):
+        if line.startswith("__version__"):
+            old_lines[i] = '__version__ = "%s"' % version_number
+            break
 
     with open(init_file_path, "w", encoding="UTF-8") as new:
-        new.write("%s\n" % new_lines)
+        new.write("\n".join(old_lines) + "\n")
 
     logger.info("**%s's version updated.**" % app["slug"])
     print()
