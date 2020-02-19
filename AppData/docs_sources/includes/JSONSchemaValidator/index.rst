@@ -28,6 +28,11 @@ This application uses the `jsonschema <https://github.com/Julian/jsonschema>`__ 
 Requirements
 ============
 
-No mayor requirements are needed to run this application other than Python 3.5+.
+.. contextual-admonition::
+    :context: warning
+    :title: Warning
+
+    - Python 3.5+.
+    - ``jsonschema`` module.
 
 .. include:: ./usage.restructuredtext

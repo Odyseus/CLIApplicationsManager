@@ -182,6 +182,7 @@
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__status__</span>
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__version__</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cli_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span>
 
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
@@ -272,6 +273,9 @@
 <div class="viewcode-block" id="CommandLineInterface.validate_schema"><a class="viewcode-back" href="../../modules/JSONSchemaValidator/JSONSchemaValidatorApp.cli.html#JSONSchemaValidatorApp.cli.CommandLineInterface.validate_schema">[docs]</a>    <span class="k">def</span> <span class="nf">validate_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Execute the assigned action stored in self.action if any.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">app_utils</span><span class="o">.</span><span class="n">json_schema_utils</span><span class="o">.</span><span class="n">JSONSCHEMA_INSTALLED</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingDependencyModule</span><span class="p">(</span><span class="s2">&quot;Missing &#39;jsonschema&#39; module.&quot;</span><span class="p">)</span>
+
         <span class="n">app_utils</span><span class="o">.</span><span class="n">validate_schema</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--data-file&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--schema-file&quot;</span><span class="p">],</span>
             <span class="n">data_prop</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--data-prop&quot;</span><span class="p">],</span>
@@ -323,7 +327,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

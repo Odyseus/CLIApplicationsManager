@@ -249,8 +249,8 @@
 <span class="sd">        Bash completions file.</span>
 <span class="sd">    do_completions : bool, optional</span>
 <span class="sd">        Perform the bash completions installation.</span>
-<span class="sd">    logger : object, optional</span>
-<span class="sd">        See :any:`LogSystem`.</span>
+<span class="sd">    logger : LogSystem, optional</span>
+<span class="sd">        The logger.</span>
 <span class="sd">    bash_comp_step_one : bool, optional</span>
 <span class="sd">        If True, continue with execution. If False, halt execution.</span>
 <span class="sd">    bash_comp_step_two : bool, optional</span>
@@ -393,8 +393,8 @@
 <span class="sd">        Full file path destination.</span>
 <span class="sd">    options : dict, optional</span>
 <span class="sd">        A dictionary of options.</span>
-<span class="sd">    logger : object</span>
-<span class="sd">        See :any:`LogSystem`.</span>
+<span class="sd">    logger : LogSystem</span>
+<span class="sd">        The logger.</span>
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
@@ -435,8 +435,8 @@
 <span class="sd">        - **set_executable**: A bool used to determine if the file created by \</span>
 <span class="sd">        :any:`do_template_copy` should be made executable.</span>
 
-<span class="sd">    logger : object</span>
-<span class="sd">        See :any:`LogSystem`.</span>
+<span class="sd">    logger : LogSystem</span>
+<span class="sd">        The logger.</span>
 <span class="sd">    confirm_overwrite : bool, optional</span>
 <span class="sd">        If True, ask to overwrite files. If False, proceed without confirmation.</span>
 
@@ -492,7 +492,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

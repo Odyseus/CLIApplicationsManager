@@ -23,7 +23,9 @@ Movies DB's documentation
 Requirements
 ============
 
-.. attention::
+.. contextual-admonition::
+    :context: warning
+    :title: Warning
 
     - Python 3.5+.
     - ``guessit>2`` module.

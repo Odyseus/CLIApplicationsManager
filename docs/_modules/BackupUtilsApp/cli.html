@@ -307,14 +307,15 @@
                                                         <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.py&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--global&quot;</span><span class="p">])</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">global_settings</span> <span class="o">=</span> <span class="n">run_path</span><span class="p">(</span><span class="n">global_settings_file</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;settings&quot;</span><span class="p">,</span> <span class="p">{})</span>
 
-                    <span class="n">validation_errors_count</span> <span class="o">+=</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">global_settings</span><span class="p">,</span> <span class="n">settings_schema</span><span class="p">,</span>
-                        <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-                            <span class="s2">&quot;**File:** </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">global_settings_file</span><span class="p">,</span>
-                            <span class="s2">&quot;**Data key:** settings&quot;</span>
-                        <span class="p">]),</span>
-                        <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">JSONSCHEMA_INSTALLED</span><span class="p">:</span>
+                        <span class="n">validation_errors_count</span> <span class="o">+=</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">global_settings</span><span class="p">,</span> <span class="n">settings_schema</span><span class="p">,</span>
+                            <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                            <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                                <span class="s2">&quot;**File:** </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">global_settings_file</span><span class="p">,</span>
+                                <span class="s2">&quot;**Data key:** settings&quot;</span>
+                            <span class="p">]),</span>
+                            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;**Failure reading global settings file!**&quot;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
@@ -333,24 +334,25 @@
                                                               <span class="n">tasks_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;settings&quot;</span><span class="p">,</span> <span class="p">{}),</span>
                                                               <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
 
-                        <span class="n">validation_errors_count</span> <span class="o">+=</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
-                            <span class="n">tasks_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tasks&quot;</span><span class="p">,</span> <span class="p">[]),</span> <span class="n">tasks_schema</span><span class="p">,</span>
-                            <span class="c1"># tasks_data.get(&quot;tasks&quot;, []), tasks_schema,</span>
-                            <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                            <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-                                <span class="s2">&quot;**File:** </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">tasks_file_path</span><span class="p">,</span>
-                                <span class="s2">&quot;**Data key:** tasks&quot;</span>
-                            <span class="p">]),</span>
-                            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">JSONSCHEMA_INSTALLED</span><span class="p">:</span>
+                            <span class="n">validation_errors_count</span> <span class="o">+=</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
+                                <span class="n">tasks_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tasks&quot;</span><span class="p">,</span> <span class="p">[]),</span> <span class="n">tasks_schema</span><span class="p">,</span>
+                                <span class="c1"># tasks_data.get(&quot;tasks&quot;, []), tasks_schema,</span>
+                                <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                                    <span class="s2">&quot;**File:** </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">tasks_file_path</span><span class="p">,</span>
+                                    <span class="s2">&quot;**Data key:** tasks&quot;</span>
+                                <span class="p">]),</span>
+                                <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
 
-                        <span class="n">validation_errors_count</span> <span class="o">+=</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
-                            <span class="n">task_settings</span><span class="p">,</span> <span class="n">settings_schema</span><span class="p">,</span>
-                            <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                            <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-                                <span class="s2">&quot;**File:** </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">tasks_file_path</span><span class="p">,</span>
-                                <span class="s2">&quot;**Data key:** settings&quot;</span>
-                            <span class="p">]),</span>
-                            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+                            <span class="n">validation_errors_count</span> <span class="o">+=</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
+                                <span class="n">task_settings</span><span class="p">,</span> <span class="n">settings_schema</span><span class="p">,</span>
+                                <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                                    <span class="s2">&quot;**File:** </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">tasks_file_path</span><span class="p">,</span>
+                                    <span class="s2">&quot;**Data key:** settings&quot;</span>
+                                <span class="p">]),</span>
+                                <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
 
                         <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tasks&quot;</span><span class="p">,</span> <span class="p">[]):</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">task</span><span class="p">,</span> <span class="n">task_settings</span><span class="p">))</span>
@@ -449,7 +451,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

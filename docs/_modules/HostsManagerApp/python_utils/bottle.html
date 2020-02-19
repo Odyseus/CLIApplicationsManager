@@ -163,31 +163,6 @@
   <h1>Source code for HostsManagerApp.python_utils.bottle</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="kn">import</span> <span class="nn">base64</span>
-<span class="kn">import</span> <span class="nn">cgi</span>
-<span class="kn">import</span> <span class="nn">email.utils</span>
-<span class="kn">import</span> <span class="nn">functools</span>
-<span class="kn">import</span> <span class="nn">hashlib</span>
-<span class="kn">import</span> <span class="nn">hmac</span>
-<span class="kn">import</span> <span class="nn">imp</span>
-<span class="kn">import</span> <span class="nn">itertools</span>
-<span class="kn">import</span> <span class="nn">mimetypes</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">tempfile</span>
-<span class="kn">import</span> <span class="nn">threading</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">import</span> <span class="nn">weakref</span>
-
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">date</span> <span class="k">as</span> <span class="n">datedate</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">timedelta</span>
-<span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">TemporaryFile</span>
-<span class="kn">from</span> <span class="nn">traceback</span> <span class="k">import</span> <span class="n">format_exc</span>
-<span class="kn">from</span> <span class="nn">traceback</span> <span class="k">import</span> <span class="n">print_exc</span>
-<span class="kn">from</span> <span class="nn">types</span> <span class="k">import</span> <span class="n">FunctionType</span>
-<span class="kn">from</span> <span class="nn">unicodedata</span> <span class="k">import</span> <span class="n">normalize</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Bottle is a fast and simple micro-framework for small web applications. It</span>
 <span class="sd">offers request dispatching (Routes) with URL parameter support, templates,</span>
@@ -200,7 +175,6 @@
 <span class="sd">Copyright (c) 2009-2018, Marcel Hellkamp.</span>
 <span class="sd">License: MIT (see LICENSE for details)</span>
 <span class="sd">&quot;&quot;&quot;</span>
-
 <span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Marcel Hellkamp&#39;</span>
@@ -256,6 +230,33 @@
 <span class="c1"># Imports and Python 2/3 unification ##########################################</span>
 <span class="c1">###############################################################################</span>
 
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">calendar</span>
+<span class="kn">import</span> <span class="nn">cgi</span>
+<span class="kn">import</span> <span class="nn">email.utils</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">hmac</span>
+<span class="kn">import</span> <span class="nn">imp</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">mimetypes</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">weakref</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">date</span> <span class="k">as</span> <span class="n">datedate</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">TemporaryFile</span>
+<span class="kn">from</span> <span class="nn">traceback</span> <span class="k">import</span> <span class="n">format_exc</span>
+<span class="kn">from</span> <span class="nn">traceback</span> <span class="k">import</span> <span class="n">print_exc</span>
+<span class="kn">from</span> <span class="nn">types</span> <span class="k">import</span> <span class="n">FunctionType</span>
+<span class="kn">from</span> <span class="nn">unicodedata</span> <span class="k">import</span> <span class="n">normalize</span>
+
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">ujson</span> <span class="k">import</span> <span class="n">dumps</span> <span class="k">as</span> <span class="n">json_dumps</span><span class="p">,</span> <span class="n">loads</span> <span class="k">as</span> <span class="n">json_lds</span>
@@ -291,7 +292,9 @@
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">inspect</span> <span class="k">import</span> <span class="n">getargspec</span>
 
-<span class="n">py3k</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">major</span> <span class="o">&gt;</span> <span class="mi">2</span>
+
+<span class="n">py</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span>
+<span class="n">py3k</span> <span class="o">=</span> <span class="n">py</span><span class="o">.</span><span class="n">major</span> <span class="o">&gt;</span> <span class="mi">2</span>
 
 
 <span class="c1"># Workaround for the &quot;print is a keyword/function&quot; Python 2/3 dilemma</span>
@@ -299,9 +302,11 @@
 <span class="k">try</span><span class="p">:</span>
     <span class="n">_stdout</span><span class="p">,</span> <span class="n">_stderr</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span>
 <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">_stdout</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_stdout</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_stderr</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_stderr</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="c1"># Lots of stdlib and builtin differences.</span>
 <span class="k">if</span> <span class="n">py3k</span><span class="p">:</span>
@@ -311,7 +316,7 @@
     <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="k">import</span> <span class="n">urlencode</span><span class="p">,</span> <span class="n">quote</span> <span class="k">as</span> <span class="n">urlquote</span><span class="p">,</span> <span class="n">unquote</span> <span class="k">as</span> <span class="n">urlunquote</span>
     <span class="n">urlunquote</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">urlunquote</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
     <span class="kn">from</span> <span class="nn">http.cookies</span> <span class="k">import</span> <span class="n">SimpleCookie</span><span class="p">,</span> <span class="n">Morsel</span><span class="p">,</span> <span class="n">CookieError</span>
-    <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">MutableMapping</span> <span class="k">as</span> <span class="n">DictMixin</span>
+    <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="k">import</span> <span class="n">MutableMapping</span> <span class="k">as</span> <span class="n">DictMixin</span>
     <span class="kn">import</span> <span class="nn">pickle</span>
     <span class="kn">from</span> <span class="nn">io</span> <span class="k">import</span> <span class="n">BytesIO</span>
     <span class="kn">import</span> <span class="nn">configparser</span>
@@ -319,9 +324,11 @@
     <span class="n">basestring</span> <span class="o">=</span> <span class="nb">str</span>
     <span class="n">unicode</span> <span class="o">=</span> <span class="nb">str</span>
 
-    <span class="k">def</span> <span class="nf">json_loads</span><span class="p">(</span><span class="n">s</span><span class="p">):</span> <span class="k">return</span> <span class="n">json_lds</span><span class="p">(</span><span class="n">touni</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+    <span class="k">def</span> <span class="nf">json_loads</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">json_lds</span><span class="p">(</span><span class="n">touni</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
 
-    <span class="k">def</span> <span class="nf">callable</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;__call__&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">callable</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;__call__&#39;</span><span class="p">)</span>
     <span class="n">imap</span> <span class="o">=</span> <span class="nb">map</span>
 
     <span class="k">def</span> <span class="nf">_raise</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">):</span>
@@ -537,7 +544,7 @@
     <span class="n">rule_syntax</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;(</span><span class="se">\\\\</span><span class="s1">*)&#39;</span>
                              <span class="s1">&#39;(?:(?::([a-zA-Z_][a-zA-Z_0-9]*)?()(?:#(.*?)#)?)&#39;</span>
                              <span class="s1">&#39;|(?:&lt;([a-zA-Z_][a-zA-Z_0-9]*)?(?::([a-zA-Z_]*)&#39;</span>
-                             <span class="s1">&#39;(?::((?:</span><span class="se">\\\\</span><span class="s1">.|[^</span><span class="se">\\\\</span><span class="s1">&gt;]+)+)?)?)?&gt;))&#39;</span><span class="p">)</span>
+                             <span class="s1">&#39;(?::((?:</span><span class="se">\\\\</span><span class="s1">.|[^</span><span class="se">\\\\</span><span class="s1">&gt;])+)?)?)?&gt;))&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_itertokens</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule</span><span class="p">):</span>
         <span class="n">offset</span><span class="p">,</span> <span class="n">prefix</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
@@ -703,7 +710,7 @@
 <span class="k">class</span> <span class="nc">Route</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This class wraps a route callback along with route specific metadata and</span>
 <span class="sd">        configuration and applies Plugins on demand. It is also responsible for</span>
-<span class="sd">        turing an URL path rule into a regular expression usable by the Router.</span>
+<span class="sd">        turning an URL path rule into a regular expression usable by the Router.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">rule</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span>
@@ -770,7 +777,7 @@
                     <span class="n">callback</span> <span class="o">=</span> <span class="n">plugin</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
             <span class="k">except</span> <span class="n">RouteReset</span><span class="p">:</span>  <span class="c1"># Try again with changed configuration.</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_callback</span><span class="p">()</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">callback</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">callback</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">:</span>
                 <span class="n">update_wrapper</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">callback</span>
 
@@ -925,6 +932,13 @@
                 <span class="k">def</span> <span class="nf">start_response</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">headerlist</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
                     <span class="k">if</span> <span class="n">exc_info</span><span class="p">:</span>
                         <span class="n">_raise</span><span class="p">(</span><span class="o">*</span><span class="n">exc_info</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">py3k</span><span class="p">:</span>
+                        <span class="c1"># Errors here mean that the mounted WSGI app did not</span>
+                        <span class="c1"># follow PEP-3333 (which requires latin1) or used a</span>
+                        <span class="c1"># pre-encoding other than utf8 :/</span>
+                        <span class="n">status</span> <span class="o">=</span> <span class="n">status</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+                        <span class="n">headerlist</span> <span class="o">=</span> <span class="p">[(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">))</span>
+                                      <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">headerlist</span><span class="p">]</span>
                     <span class="n">rs</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">status</span>
                     <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">headerlist</span><span class="p">:</span>
                         <span class="n">rs</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
@@ -1066,7 +1080,7 @@
         <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environ</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Search for a matching route and return a (:class:`Route` , urlargs)</span>
+        <span class="sd">&quot;&quot;&quot; Search for a matching route and return a (:class:`Route`, urlargs)</span>
 <span class="sd">            tuple. The second value is a dictionary with parameters extracted</span>
 <span class="sd">            from the URL. Raise :exc:`HTTPError` (404/405) on a non-match.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">router</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">environ</span><span class="p">)</span>
@@ -1298,7 +1312,8 @@
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
             <span class="n">new_iter</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">([</span><span class="n">first</span><span class="p">],</span> <span class="n">iout</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">unicode</span><span class="p">):</span>
-            <span class="k">def</span> <span class="nf">encoder</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">charset</span><span class="p">)</span>
+            <span class="k">def</span> <span class="nf">encoder</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">charset</span><span class="p">)</span>
             <span class="n">new_iter</span> <span class="o">=</span> <span class="n">imap</span><span class="p">(</span><span class="n">encoder</span><span class="p">,</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">([</span><span class="n">first</span><span class="p">],</span> <span class="n">iout</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Unsupported response type: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
@@ -1317,7 +1332,7 @@
                 <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">):</span>
                     <span class="n">out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
                 <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">start_response</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">_status_line</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">headerlist</span><span class="p">)</span>
+            <span class="n">start_response</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">_wsgi_status_line</span><span class="p">(),</span> <span class="n">response</span><span class="o">.</span><span class="n">headerlist</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">out</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">KeyboardInterrupt</span><span class="p">,</span> <span class="ne">SystemExit</span><span class="p">,</span> <span class="ne">MemoryError</span><span class="p">):</span>
             <span class="k">raise</span>
@@ -1460,6 +1475,7 @@
 <span class="sd">            :class:`FormsDict`. All keys and values are strings. File uploads</span>
 <span class="sd">            are stored separately in :attr:`files`. &quot;&quot;&quot;</span>
         <span class="n">forms</span> <span class="o">=</span> <span class="n">FormsDict</span><span class="p">()</span>
+        <span class="n">forms</span><span class="o">.</span><span class="n">recode_unicode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">recode_unicode</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">allitems</span><span class="p">():</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">FileUpload</span><span class="p">):</span>
                 <span class="n">forms</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
@@ -1483,6 +1499,7 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">files</span> <span class="o">=</span> <span class="n">FormsDict</span><span class="p">()</span>
+        <span class="n">files</span><span class="o">.</span><span class="n">recode_unicode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">recode_unicode</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">allitems</span><span class="p">():</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">FileUpload</span><span class="p">):</span>
                 <span class="n">files</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
@@ -1498,7 +1515,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ctype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;CONTENT_TYPE&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">ctype</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span> <span class="s1">&#39;application/json-rpc&#39;</span><span class="p">):</span>
-            <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_body_string</span><span class="p">()</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_body_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">MEMFILE_MAX</span><span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">b</span><span class="p">:</span>
                 <span class="k">return</span> <span class="kc">None</span>
             <span class="k">try</span><span class="p">:</span>
@@ -1569,16 +1586,13 @@
         <span class="n">body</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">body</span>
 
-    <span class="k">def</span> <span class="nf">_get_body_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; read body until content-length or MEMFILE_MAX into a string. Raise</span>
-<span class="sd">            HTTPError(413) on requests that are to large. &quot;&quot;&quot;</span>
-        <span class="n">clen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">content_length</span>
-        <span class="k">if</span> <span class="n">clen</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">MEMFILE_MAX</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_get_body_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maxread</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Read body into a string. Raise HTTPError(413) on requests that are</span>
+<span class="sd">            to large. &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">content_length</span> <span class="o">&gt;</span> <span class="n">maxread</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="mi">413</span><span class="p">,</span> <span class="s1">&#39;Request entity too large&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">clen</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">clen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MEMFILE_MAX</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">clen</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">MEMFILE_MAX</span><span class="p">:</span>  <span class="c1"># Fail fast</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">maxread</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">maxread</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="mi">413</span><span class="p">,</span> <span class="s1">&#39;Request entity too large&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">data</span>
 
@@ -1611,8 +1625,8 @@
         <span class="c1"># We default to application/x-www-form-urlencoded for everything that</span>
         <span class="c1"># is not multipart and take the fast path (also: 3.1 workaround)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">content_type</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;multipart/&#39;</span><span class="p">):</span>
-            <span class="n">pairs</span> <span class="o">=</span> <span class="n">_parse_qsl</span><span class="p">(</span><span class="n">tonat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_body_string</span><span class="p">(),</span> <span class="s1">&#39;latin1&#39;</span><span class="p">))</span>
-            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
+            <span class="n">body</span> <span class="o">=</span> <span class="n">tonat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_body_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">MEMFILE_MAX</span><span class="p">),</span> <span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">_parse_qsl</span><span class="p">(</span><span class="n">body</span><span class="p">):</span>
                 <span class="n">post</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
             <span class="k">return</span> <span class="n">post</span>
 
@@ -1624,6 +1638,7 @@
 
         <span class="k">if</span> <span class="n">py3k</span><span class="p">:</span>
             <span class="n">args</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;utf8&#39;</span>
+            <span class="n">post</span><span class="o">.</span><span class="n">recode_unicode</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">cgi</span><span class="o">.</span><span class="n">FieldStorage</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;_cgi.FieldStorage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>  <span class="c1"># http://bugs.python.org/issue18394</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">list</span> <span class="ow">or</span> <span class="p">[]</span>
@@ -1929,6 +1944,8 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="n">code</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">status</span><span class="p">,</span> <span class="n">_HTTP_STATUS_LINES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
         <span class="k">elif</span> <span class="s1">&#39; &#39;</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="ow">in</span> <span class="n">status</span> <span class="ow">or</span> <span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span> <span class="ow">in</span> <span class="n">status</span> <span class="ow">or</span> <span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Status line must not include control chars.&#39;</span><span class="p">)</span>
             <span class="n">status</span> <span class="o">=</span> <span class="n">status</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
             <span class="n">code</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1989,6 +2006,12 @@
 <span class="sd">            allowed with the current response status code. &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">headerlist</span>
 
+    <span class="k">def</span> <span class="nf">_wsgi_status_line</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; WSGI conform status line (latin1-encodeable) &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">py3k</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_status_line</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_status_line</span>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">headerlist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; WSGI conform list of (header, value) tuples. &quot;&quot;&quot;</span>
@@ -2008,7 +2031,7 @@
         <span class="k">return</span> <span class="n">out</span>
 
     <span class="n">content_type</span> <span class="o">=</span> <span class="n">HeaderProperty</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">)</span>
-    <span class="n">content_length</span> <span class="o">=</span> <span class="n">HeaderProperty</span><span class="p">(</span><span class="s1">&#39;Content-Length&#39;</span><span class="p">,</span> <span class="n">reader</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">content_length</span> <span class="o">=</span> <span class="n">HeaderProperty</span><span class="p">(</span><span class="s1">&#39;Content-Length&#39;</span><span class="p">,</span> <span class="n">reader</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">expires</span> <span class="o">=</span> <span class="n">HeaderProperty</span><span class="p">(</span>
         <span class="s1">&#39;Expires&#39;</span><span class="p">,</span>
         <span class="n">reader</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcfromtimestamp</span><span class="p">(</span><span class="n">parse_date</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>
@@ -2040,10 +2063,8 @@
 <span class="sd">            :param secure: limit the cookie to HTTPS connections (default: off).</span>
 <span class="sd">            :param httponly: prevents client-side javascript to read this cookie</span>
 <span class="sd">              (default: off, requires Python 2.6 or newer).</span>
-<span class="sd">            :param samesite: disables third-party use for a cookie.</span>
-<span class="sd">              Allowed attributes: `lax` and `strict`.</span>
-<span class="sd">              In strict mode the cookie will never be sent.</span>
-<span class="sd">              In lax mode the cookie is only sent with a top-level GET request.</span>
+<span class="sd">            :param samesite: Control or disable third-party use for this cookie.</span>
+<span class="sd">              Possible values: `lax`, `strict` or `none` (default).</span>
 
 <span class="sd">            If neither `expires` nor `maxage` is set (default), the cookie will</span>
 <span class="sd">            expire at the end of the browser session (as soon as the browser</span>
@@ -2055,7 +2076,7 @@
 
 <span class="sd">            Warning: Pickle is a potentially dangerous format. If an attacker</span>
 <span class="sd">            gains access to the secret key, he could forge cookies that execute</span>
-<span class="sd">            code on server side if unpickeld. Using pickle is discouraged and</span>
+<span class="sd">            code on server side if unpickled. Using pickle is discouraged and</span>
 <span class="sd">            support for it will be removed in later versions of bottle.</span>
 
 <span class="sd">            Warning: Signed cookies are not encrypted (the client can still see</span>
@@ -2068,7 +2089,8 @@
 
         <span class="c1"># Monkey-patch Cookie lib to support &#39;SameSite&#39; parameter</span>
         <span class="c1"># https://tools.ietf.org/html/draft-west-first-party-cookies-07#section-4.1</span>
-        <span class="n">Morsel</span><span class="o">.</span><span class="n">_reserved</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;samesite&#39;</span><span class="p">,</span> <span class="s1">&#39;SameSite&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">py</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">Morsel</span><span class="o">.</span><span class="n">_reserved</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;samesite&#39;</span><span class="p">,</span> <span class="s1">&#39;SameSite&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">secret</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">basestring</span><span class="p">):</span>
@@ -2094,16 +2116,11 @@
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">):</span>
                     <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">seconds</span> <span class="o">+</span> <span class="n">value</span><span class="o">.</span><span class="n">days</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">3600</span>
             <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;expires&#39;</span><span class="p">:</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="n">datedate</span><span class="p">,</span> <span class="n">datetime</span><span class="p">)):</span>
-                    <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">timetuple</span><span class="p">()</span>
-                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
-                    <span class="n">value</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-                <span class="n">value</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%a, </span><span class="si">%d</span><span class="s2"> %b %Y %H:%M:%S GMT&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">http_date</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;same_site&#39;</span><span class="p">,</span> <span class="s1">&#39;samesite&#39;</span><span class="p">):</span>  <span class="c1"># &#39;samesite&#39; variant added in 0.13</span>
-                <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;samesite&#39;</span>
-                <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;lax&#39;</span><span class="p">,</span> <span class="s1">&#39;strict&#39;</span><span class="p">):</span>
-                    <span class="k">raise</span> <span class="n">CookieError</span><span class="p">(</span>
-                        <span class="s2">&quot;Invalid value samesite=</span><span class="si">%r</span><span class="s2"> (expected &#39;lax&#39; or &#39;strict&#39;)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,))</span>
+                <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;samesite&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">value</span> <span class="ow">or</span> <span class="s2">&quot;none&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;lax&#39;</span><span class="p">,</span> <span class="s1">&#39;strict&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">CookieError</span><span class="p">(</span><span class="s2">&quot;Invalid value for SameSite&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;secure&#39;</span><span class="p">,</span> <span class="s1">&#39;httponly&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
                 <span class="k">continue</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
@@ -3071,7 +3088,8 @@
                 <span class="n">mimetype</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                 <span class="n">download</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                 <span class="n">charset</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
-                <span class="n">etag</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                <span class="n">etag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Open a file in a safe way and return an instance of :exc:`HTTPResponse`</span>
 <span class="sd">        that can be sent back to the client.</span>
 
@@ -3088,6 +3106,7 @@
 <span class="sd">            (default: UTF-8)</span>
 <span class="sd">        :param etag: Provide a pre-computed ETag header. If set to ``False``,</span>
 <span class="sd">            ETag handling is disabled. (default: auto-generate ETag header)</span>
+<span class="sd">        :param headers: Additional headers dict to add to the response.</span>
 
 <span class="sd">        While checking user input is always a good idea, this function provides</span>
 <span class="sd">        additional protection against malicious ``filename`` parameters from</span>
@@ -3105,7 +3124,7 @@
 
     <span class="n">root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">root</span><span class="p">),</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
     <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">filename</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;/</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)))</span>
-    <span class="n">headers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span> <span class="ow">or</span> <span class="p">{}</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">HTTPError</span><span class="p">(</span><span class="mi">403</span><span class="p">,</span> <span class="s2">&quot;Access denied.&quot;</span><span class="p">)</span>
@@ -3188,20 +3207,26 @@
 
 
 <span class="k">def</span> <span class="nf">http_date</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="n">datedate</span><span class="p">,</span> <span class="n">datetime</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">basestring</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+        <span class="c1"># aware datetime.datetime is converted to UTC time</span>
+        <span class="c1"># naive datetime.datetime is treated as UTC time</span>
         <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">utctimetuple</span><span class="p">()</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">basestring</span><span class="p">):</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%a, </span><span class="si">%d</span><span class="s2"> %b %Y %H:%M:%S GMT&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">value</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datedate</span><span class="p">):</span>
+        <span class="c1"># datetime.date is naive, and is treated as UTC time</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">timetuple</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+        <span class="c1"># convert struct_time in UTC to UNIX timestamp</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">.</span><span class="n">timegm</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">email</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">formatdate</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">usegmt</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">parse_date</span><span class="p">(</span><span class="n">ims</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Parse rfc1123, rfc850 and asctime timestamps and return UTC epoch. &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">ts</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">parsedate_tz</span><span class="p">(</span><span class="n">ims</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">ts</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">))</span> <span class="o">-</span> <span class="p">(</span><span class="n">ts</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">time</span><span class="o">.</span><span class="n">timezone</span>
+        <span class="k">return</span> <span class="n">calendar</span><span class="o">.</span><span class="n">timegm</span><span class="p">(</span><span class="n">ts</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">))</span> <span class="o">-</span> <span class="p">(</span><span class="n">ts</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span>
     <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">OverflowError</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">None</span>
 
@@ -3238,7 +3263,7 @@
 
 
 <span class="c1">#: Header tokenizer used by _parse_http_header()</span>
-<span class="n">_hsplit</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;(?:(?:&quot;((?:[^&quot;</span><span class="se">\\\\</span><span class="s1">]+|</span><span class="se">\\\\</span><span class="s1">.)*)&quot;)|([^;,=]+))([;,=]?)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">findall</span>
+<span class="n">_hsplit</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;(?:(?:&quot;((?:[^&quot;</span><span class="se">\\\\</span><span class="s1">]|</span><span class="se">\\\\</span><span class="s1">.)*)&quot;)|([^;,=]+))([;,=]?)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">findall</span>
 
 
 <span class="k">def</span> <span class="nf">_parse_http_header</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
@@ -3693,14 +3718,19 @@
     <span class="sd">&quot;&quot;&quot; Untested. See http://gunicorn.org/configure.html for options. &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handler</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">gunicorn.app.base</span> <span class="k">import</span> <span class="n">Application</span>
+        <span class="kn">from</span> <span class="nn">gunicorn.app.base</span> <span class="k">import</span> <span class="n">BaseApplication</span>
 
-        <span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bind&#39;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">))}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;unix:&quot;</span><span class="p">):</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bind&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bind&#39;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">)}</span>
+
         <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
 
-        <span class="k">class</span> <span class="nc">GunicornApplication</span><span class="p">(</span><span class="n">Application</span><span class="p">):</span>
-            <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">opts</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">config</span>
+        <span class="k">class</span> <span class="nc">GunicornApplication</span><span class="p">(</span><span class="n">BaseApplication</span><span class="p">):</span>
+            <span class="k">def</span> <span class="nf">load_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
             <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">handler</span>
@@ -3738,15 +3768,6 @@
             <span class="n">wsgi</span><span class="o">.</span><span class="n">server</span><span class="p">(</span><span class="n">listen</span><span class="p">(</span><span class="n">address</span><span class="p">),</span> <span class="n">handler</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">RocketServer</span><span class="p">(</span><span class="n">ServerAdapter</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Untested. &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handler</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">rocket</span> <span class="k">import</span> <span class="n">Rocket</span>
-        <span class="n">server</span> <span class="o">=</span> <span class="n">Rocket</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span> <span class="s1">&#39;wsgi&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;wsgi_app&#39;</span><span class="p">:</span> <span class="n">handler</span><span class="p">})</span>
-        <span class="n">server</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-
-
 <span class="k">class</span> <span class="nc">BjoernServer</span><span class="p">(</span><span class="n">ServerAdapter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Fast server written in C: https://github.com/jonashaag/bjoern &quot;&quot;&quot;</span>
 
@@ -3763,9 +3784,9 @@
 
 
 <span class="k">class</span> <span class="nc">AiohttpServer</span><span class="p">(</span><span class="n">AsyncioServerAdapter</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Untested.</span>
-<span class="sd">        aiohttp</span>
+    <span class="sd">&quot;&quot;&quot; Asynchronous HTTP client/server framework for asyncio</span>
 <span class="sd">        https://pypi.python.org/pypi/aiohttp/</span>
+<span class="sd">        https://pypi.org/project/aiohttp-wsgi/</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">get_event_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -3774,26 +3795,15 @@
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handler</span><span class="p">):</span>
         <span class="kn">import</span> <span class="nn">asyncio</span>
-        <span class="kn">from</span> <span class="nn">aiohttp.wsgi</span> <span class="k">import</span> <span class="n">WSGIServerHttpProtocol</span>
+        <span class="kn">from</span> <span class="nn">aiohttp_wsgi.wsgi</span> <span class="k">import</span> <span class="n">serve</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">loop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
         <span class="n">asyncio</span><span class="o">.</span><span class="n">set_event_loop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="p">)</span>
-
-        <span class="k">def</span> <span class="nf">protocol_factory</span><span class="p">():</span> <span class="k">return</span> <span class="n">WSGIServerHttpProtocol</span><span class="p">(</span>
-            <span class="n">handler</span><span class="p">,</span>
-            <span class="n">readpayload</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">debug</span><span class="o">=</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">quiet</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">create_server</span><span class="p">(</span><span class="n">protocol_factory</span><span class="p">,</span>
-                                                             <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span>
-                                                             <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="s1">&#39;BOTTLE_CHILD&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
             <span class="kn">import</span> <span class="nn">signal</span>
             <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGINT</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">stop</span><span class="p">())</span>
 
-        <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">run_forever</span><span class="p">()</span>
-        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="n">serve</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">AiohttpUVLoopServer</span><span class="p">(</span><span class="n">AiohttpServer</span><span class="p">):</span>
@@ -3836,7 +3846,6 @@
     <span class="s1">&#39;gunicorn&#39;</span><span class="p">:</span> <span class="n">GunicornServer</span><span class="p">,</span>
     <span class="s1">&#39;eventlet&#39;</span><span class="p">:</span> <span class="n">EventletServer</span><span class="p">,</span>
     <span class="s1">&#39;gevent&#39;</span><span class="p">:</span> <span class="n">GeventServer</span><span class="p">,</span>
-    <span class="s1">&#39;rocket&#39;</span><span class="p">:</span> <span class="n">RocketServer</span><span class="p">,</span>
     <span class="s1">&#39;bjoern&#39;</span><span class="p">:</span> <span class="n">BjoernServer</span><span class="p">,</span>
     <span class="s1">&#39;aiohttp&#39;</span><span class="p">:</span> <span class="n">AiohttpServer</span><span class="p">,</span>
     <span class="s1">&#39;uvloop&#39;</span><span class="p">:</span> <span class="n">AiohttpUVLoopServer</span><span class="p">,</span>
@@ -3973,8 +3982,11 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">server</span><span class="o">.</span><span class="n">quiet</span><span class="p">:</span>
             <span class="n">_stderr</span><span class="p">(</span><span class="s2">&quot;Bottle v</span><span class="si">%s</span><span class="s2"> server starting up (using </span><span class="si">%s</span><span class="s2">)...</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span>
                     <span class="p">(</span><span class="n">__version__</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">server</span><span class="p">)))</span>
-            <span class="n">_stderr</span><span class="p">(</span><span class="s2">&quot;Listening on http://</span><span class="si">%s</span><span class="s2">:</span><span class="si">%d</span><span class="s2">/</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span>
-                    <span class="p">(</span><span class="n">server</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">server</span><span class="o">.</span><span class="n">port</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">server</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;unix:&quot;</span><span class="p">):</span>
+                <span class="n">_stderr</span><span class="p">(</span><span class="s2">&quot;Listening on </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">server</span><span class="o">.</span><span class="n">host</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_stderr</span><span class="p">(</span><span class="s2">&quot;Listening on http://</span><span class="si">%s</span><span class="s2">:</span><span class="si">%d</span><span class="s2">/</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span>
+                        <span class="p">(</span><span class="n">server</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">server</span><span class="o">.</span><span class="n">port</span><span class="p">))</span>
             <span class="n">_stderr</span><span class="p">(</span><span class="s2">&quot;Hit Ctrl-C to quit.</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">reloader</span><span class="p">:</span>
@@ -3990,7 +4002,7 @@
         <span class="k">pass</span>
     <span class="k">except</span> <span class="p">(</span><span class="ne">SystemExit</span><span class="p">,</span> <span class="ne">MemoryError</span><span class="p">):</span>
         <span class="k">raise</span>
-    <span class="k">except</span><span class="p">:</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">reloader</span><span class="p">:</span>
             <span class="k">raise</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">&#39;quiet&#39;</span><span class="p">,</span> <span class="n">quiet</span><span class="p">):</span>
@@ -4013,11 +4025,12 @@
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span>
 
-        <span class="k">def</span> <span class="nf">mtime</span><span class="p">(</span><span class="n">p</span><span class="p">):</span> <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">st_mtime</span>
+        <span class="k">def</span> <span class="nf">mtime</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">st_mtime</span>
         <span class="n">files</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 
         <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
-            <span class="n">path</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="s1">&#39;__file__&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="s1">&#39;__file__&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
             <span class="k">if</span> <span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;.pyo&#39;</span><span class="p">,</span> <span class="s1">&#39;.pyc&#39;</span><span class="p">):</span>
                 <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">path</span> <span class="ow">and</span> <span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
@@ -4340,7 +4353,7 @@
     <span class="c1"># Match the start tokens of code areas in a template</span>
     <span class="n">_re_split</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&#39;&#39;(?m)^[ \t]*(\\?)((</span><span class="si">%(line_start)s</span><span class="s1">)|(</span><span class="si">%(block_start)s</span><span class="s1">))&#39;&#39;&#39;</span>
     <span class="c1"># Match inline statements (may contain python strings)</span>
-    <span class="n">_re_inl</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&#39;&#39;</span><span class="si">%%</span><span class="s1">(inline_start)s((?:</span><span class="si">%s</span><span class="s1">|[^&#39;&quot;\n]+?)*?)</span><span class="si">%%</span><span class="s1">(inline_end)s&#39;&#39;&#39;</span> <span class="o">%</span> <span class="n">_re_inl</span>
+    <span class="n">_re_inl</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&#39;&#39;</span><span class="si">%%</span><span class="s1">(inline_start)s((?:</span><span class="si">%s</span><span class="s1">|[^&#39;&quot;\n])*?)</span><span class="si">%%</span><span class="s1">(inline_end)s&#39;&#39;&#39;</span> <span class="o">%</span> <span class="n">_re_inl</span>
 
     <span class="c1"># add the flag in front of the regexp to avoid Deprecation warning (see Issue #949)</span>
     <span class="c1"># verbose and dot-matches-newline mode</span>
@@ -4386,8 +4399,8 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
                 <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># Escape syntax</span>
                     <span class="n">line</span><span class="p">,</span> <span class="n">sep</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">:]</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">text_buffer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">():</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
-                                            <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">line</span> <span class="o">+</span> <span class="n">sep</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">text_buffer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">():</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">line</span> <span class="o">+</span> <span class="n">sep</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="n">sep</span><span class="p">)</span>
                     <span class="k">continue</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">flush_text</span><span class="p">()</span>
@@ -4709,7 +4722,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

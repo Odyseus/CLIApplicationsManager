@@ -185,8 +185,8 @@
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    logger : object</span>
-<span class="sd">        See :any:`LogSystem`.</span>
+<span class="sd">    logger : LogSystem</span>
+<span class="sd">        The logger.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_cli_header_blacklist</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">_print_log_blacklist</span> <span class="o">=</span> <span class="p">[]</span>
@@ -265,12 +265,6 @@
 <div class="viewcode-block" id="run_cli"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.run_cli">[docs]</a><span class="k">def</span> <span class="nf">run_cli</span><span class="p">(</span><span class="n">flag_file</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">docopt_doc</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">app_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">app_version</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">app_status</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">cli_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Initialize main command line interface.</span>
 
-<span class="sd">    Raises</span>
-<span class="sd">    ------</span>
-<span class="sd">    exceptions.BadExecutionLocation</span>
-<span class="sd">        Do not allow to run any command if the &quot;flag&quot; file isn&#39;t found where it should be.</span>
-<span class="sd">        See :any:`exceptions.BadExecutionLocation`.</span>
-
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    flag_file : str</span>
@@ -283,8 +277,14 @@
 <span class="sd">        Application version.</span>
 <span class="sd">    app_status : str, optional</span>
 <span class="sd">        Application status.</span>
-<span class="sd">    cli_class : class</span>
-<span class="sd">        See :any:`CommandLineInterfaceSuper`.</span>
+<span class="sd">    cli_class : cli_utils.CommandLineInterfaceSuper</span>
+<span class="sd">        An instance of ``cli_utils.CommandLineInterfaceSuper``.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    exceptions.BadExecutionLocation</span>
+<span class="sd">        Do not allow to run any command if the *flag* file isn&#39;t found where it should be.</span>
+<span class="sd">        See :any:`exceptions.BadExecutionLocation`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">flag_file</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">BadExecutionLocation</span><span class="p">()</span>
@@ -311,7 +311,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

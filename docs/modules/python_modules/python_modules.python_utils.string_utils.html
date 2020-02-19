@@ -236,7 +236,7 @@
 <li><p><strong>dir_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Path to a directory where to perform string substitutions on.</p></li>
 <li><p><strong>replacement_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) -- Data used to perform string substitutions.</p></li>
 <li><p><strong>allowed_extensions</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a><em>, </em><em>optional</em>) -- A tuple of file extensions that are allowed to be modified.</p></li>
-<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) -- See <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><em>LogSystem</em></a>) -- The logger.</p></li>
 </ul>
 </dd>
 </dl>
@@ -303,13 +303,6 @@ filename.</p>
 <li><p>Converts any succesion of white spaces into a single underscore (configurable,     althogh it cannot be anything other than a dash, an underscore or a dot).</p></li>
 <li><p>Removes anything that is not an alphanumeric, dash, underscore, or dot.</p></li>
 </ul>
-<div class="admonition-example admonition">
-<p class="admonition-title">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_valid_filename</span><span class="p">(</span><span class="s2">&quot;john&#39;s portrait in 2004.jpg&quot;</span><span class="p">)</span>
-<span class="go">&quot;johns_portrait_in_2004.jpg&quot;</span>
-</pre></div>
-</div>
-</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -328,6 +321,13 @@ filename.</p>
 <p class="admonition-title">Note</p>
 <p>Based on: Utilities found in <a class="reference external" href="https://github.com/django/django">Django Web framework</a></p>
 </div>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_valid_filename</span><span class="p">(</span><span class="s2">&quot;john&#39;s portrait in 2004.jpg&quot;</span><span class="p">)</span>
+<span class="go">&quot;johns_portrait_in_2004.jpg&quot;</span>
+</pre></div>
+</div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -341,13 +341,6 @@ filename.</p>
 <li><p>Convert to lowercase.</p></li>
 <li><p>Strip leading and trailing whitespace.</p></li>
 </ul>
-<div class="admonition-example admonition">
-<p class="admonition-title">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">slugify</span><span class="p">(</span><span class="s2">&quot;john&#39;s portrait in 2004.jpg&quot;</span><span class="p">)</span>
-<span class="go">&quot;johns-portrait-in-2004jpg&quot;</span>
-</pre></div>
-</div>
-</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -365,6 +358,13 @@ filename.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Based on: Utilities found in <a class="reference external" href="https://github.com/django/django">Django Web framework</a></p>
+</div>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">slugify</span><span class="p">(</span><span class="s2">&quot;john&#39;s portrait in 2004.jpg&quot;</span><span class="p">)</span>
+<span class="go">&quot;johns-portrait-in-2004jpg&quot;</span>
+</pre></div>
+</div>
 </div>
 </dd></dl>
 
@@ -390,7 +390,7 @@ filename.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

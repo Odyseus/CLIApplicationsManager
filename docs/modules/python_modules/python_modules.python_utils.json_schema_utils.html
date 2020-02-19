@@ -207,18 +207,18 @@
 <li><p><strong>error_message_extra_info</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Extra information to display wehn raising a <a class="reference internal" href="#python_modules.python_utils.json_schema_utils.SchemaValidationError" title="python_modules.python_utils.json_schema_utils.SchemaValidationError"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">SchemaValidationError</span></code></a> error.</p></li>
 <li><p><strong>error_header</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Text to be displayed as &quot;CLI header&quot;.</p></li>
 <li><p><strong>extra_types</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a><em>, </em><em>optional</em>) -- Extra type checks.</p></li>
-<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) -- See <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><em>LogSystem</em></a>) -- The logger.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>1 (one) if errors were found. 0 (zero) if no errors were found.
+It only returns if raise_error is False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a></p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><p><a class="reference internal" href="#python_modules.python_utils.json_schema_utils.SchemaValidationError" title="python_modules.python_utils.json_schema_utils.SchemaValidationError"><strong>SchemaValidationError</strong></a> -- See <a class="reference internal" href="#python_modules.python_utils.json_schema_utils.SchemaValidationError" title="python_modules.python_utils.json_schema_utils.SchemaValidationError"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">SchemaValidationError</span></code></a>.</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>1 (one) if errors were found. 0 (zero) if no errors were found.
-It only returns if raise_error is False.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -245,7 +245,7 @@ It only returns if raise_error is False.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

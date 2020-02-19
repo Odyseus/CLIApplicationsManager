@@ -245,8 +245,8 @@
 <span class="sd">        Data used to perform string substitutions.</span>
 <span class="sd">    allowed_extensions : tuple, optional</span>
 <span class="sd">        A tuple of file extensions that are allowed to be modified.</span>
-<span class="sd">    logger : object</span>
-<span class="sd">        See :any:`LogSystem`.</span>
+<span class="sd">    logger : LogSystem</span>
+<span class="sd">        The logger.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Performing string substitutions...**&quot;</span><span class="p">)</span>
 
@@ -363,12 +363,6 @@
 <span class="sd">    althogh it cannot be anything other than a dash, an underscore or a dot).</span>
 <span class="sd">    - Removes anything that is not an alphanumeric, dash, underscore, or dot.</span>
 
-<span class="sd">    Example</span>
-<span class="sd">    -------</span>
-
-<span class="sd">    &gt;&gt;&gt; get_valid_filename(&quot;john&#39;s portrait in 2004.jpg&quot;)</span>
-<span class="sd">    &quot;johns_portrait_in_2004.jpg&quot;</span>
-
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    string : str</span>
@@ -384,6 +378,12 @@
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
 <span class="sd">    Based on: Utilities found in `Django Web framework &lt;https://github.com/django/django&gt;`__</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &gt;&gt;&gt; get_valid_filename(&quot;john&#39;s portrait in 2004.jpg&quot;)</span>
+<span class="sd">    &quot;johns_portrait_in_2004.jpg&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">string</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="n">separator</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?u)[^-\w.]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span></div>
@@ -397,12 +397,6 @@
 <span class="sd">    - Remove characters that aren&#39;t alphanumerics, underscores, or hyphens.</span>
 <span class="sd">    - Convert to lowercase.</span>
 <span class="sd">    - Strip leading and trailing whitespace.</span>
-
-<span class="sd">    Example</span>
-<span class="sd">    -------</span>
-
-<span class="sd">    &gt;&gt;&gt; slugify(&quot;john&#39;s portrait in 2004.jpg&quot;)</span>
-<span class="sd">    &quot;johns-portrait-in-2004jpg&quot;</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -419,6 +413,12 @@
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
 <span class="sd">    Based on: Utilities found in `Django Web framework &lt;https://github.com/django/django&gt;`__</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &gt;&gt;&gt; slugify(&quot;john&#39;s portrait in 2004.jpg&quot;)</span>
+<span class="sd">    &quot;johns-portrait-in-2004jpg&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
 
@@ -446,7 +446,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

@@ -6,7 +6,7 @@
 #
 # Note that not all possible configuration values are present in this
 # auto generated file.
-
+#
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
@@ -74,7 +74,7 @@ master_doc = "index"
 
 # General information about the project.
 project = "Python CLI Applications Documentations"
-copyright = "2016-%s, Odyseus" % datetime.today().year
+copyright = "2016-%s, Odyseus." % datetime.today().year
 author = "Odyseus"
 
 # The version info for the project you're documenting, acts as replacement for
@@ -99,11 +99,12 @@ language = None
 exclude_patterns = []
 
 abbreviations_path = os.path.join(os.path.dirname(__file__),
-                                  "includes", "0-common",
+                                  "common_rest_abbreviations",
                                   "abbreviations.restructuredtext")
 
-with open(abbreviations_path, "r") as abbr_file:
-    rst_epilog = abbr_file.read()
+if os.path.isfile(abbreviations_path):
+    with open(abbreviations_path, "r") as abbr_file:
+        rst_epilog = abbr_file.read()
 
 
 # ##############################################################################
@@ -146,16 +147,20 @@ html_static_path = ["_static"]
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
-    "sphinx.ext.napoleon",
-    "sphinx.ext.intersphinx",
     "sphinx.ext.coverage",
-    "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.todo",
+    "sphinx.ext.viewcode",
     # My Sphinx extensions
     "sphinx_extensions.contextual_admonition",
     "sphinx_extensions.custom_literalinclude",
     "sphinx_extensions.docopt_docstrings"
 ]
+
+# sphinx.ext.todo settings
+todo_include_todos = True
 
 # sphinx.ext.napoleon settings
 napoleon_google_docstring = False
@@ -175,7 +180,7 @@ napoleon_use_rtype = True
 coverage_ignore_modules = []
 
 
-# extensions.docopt_docstrings.
+# sphinx_extensions.docopt_docstrings.
 def extract_usage(doc_string):
     """Extract the Usage section from a docopt docstring.
 
@@ -198,7 +203,7 @@ docopt_docstrings = {
     "appmanager": appmanager_docopt_doc,
 }
 
-# extensions.custom_literalinclude.
+# sphinx_extensions.custom_literalinclude.
 custom_literalincludes = {
     "appmanager-usage": extract_usage(appmanager_docopt_doc),
 }
@@ -218,7 +223,7 @@ intersphinx_mapping = run_path(intersphinx_mapping_file_path)["intersphinx_mappi
 
 # Python's docs don't change every week.
 intersphinx_cache_limit = 90  # days
-
+intersphinx_timeout = 10  # seconds
 
 # include __init__ docstrings in class docstrings
 autoclass_content = "both"

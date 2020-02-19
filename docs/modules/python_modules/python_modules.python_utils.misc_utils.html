@@ -201,14 +201,14 @@
 <code class="sig-prename descclassname">python_modules.python_utils.misc_utils.</code><code class="sig-name descname">get_date_time</code><span class="sig-paren">(</span><em class="sig-param">type='date'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/misc_utils.html#get_date_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.misc_utils.get_date_time" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get date time.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The current time formatted by the &quot;type&quot; passed.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- The time &quot;type&quot; to return (Default: date).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The current time formatted by the &quot;type&quot; passed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -255,14 +255,14 @@
 <dt id="python_modules.python_utils.misc_utils.merge_dict">
 <code class="sig-prename descclassname">python_modules.python_utils.misc_utils.</code><code class="sig-name descname">merge_dict</code><span class="sig-paren">(</span><em class="sig-param">first</em>, <em class="sig-param">second</em>, <em class="sig-param">logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/misc_utils.html#merge_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.misc_utils.merge_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merges <strong>second</strong> dictionary into <strong>first</strong> dictionary and return merged result.</p>
-<p>It <em>deep merges</em> keys of type <a class="reference external" href="https://docs.python.org/3/reference/expressions.html#dict" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">Dictionary</span> <span class="pre">displays</span></code></a> and <a class="reference external" href="https://docs.python.org/3/glossary.html#term-list" title="(in Python v3.8)"><code class="xref any docutils literal notranslate"><span class="pre">list</span></code></a>.
+<p>It <em>deep merges</em> keys of type <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref any docutils literal notranslate"><span class="pre">dict</span></code></a> and <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref any docutils literal notranslate"><span class="pre">list</span></code></a>.
 Any other type is overwritten.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>first</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) -- A dictionary to which to merge a second dictinary.</p></li>
 <li><p><strong>second</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) -- A dictionary to merge into another dictionary.</p></li>
-<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) -- See <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><em>LogSystem</em></a>) -- The logger.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -296,7 +296,7 @@ Any other type is overwritten.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

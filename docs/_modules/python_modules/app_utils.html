@@ -663,13 +663,15 @@
                                   <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">App&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">],</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">)</span>
 
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">init_file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">old</span><span class="p">:</span>
-        <span class="n">old_lines</span> <span class="o">=</span> <span class="n">old</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="n">old_lines</span> <span class="o">=</span> <span class="n">old</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
 
-    <span class="n">new_lines</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;__version__ = &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">version_number</span> <span class="k">if</span> <span class="n">l</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span>
-        <span class="s2">&quot;__version__&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">l</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">old_lines</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">old_lines</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;__version__&quot;</span><span class="p">):</span>
+            <span class="n">old_lines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;__version__ = &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">version_number</span>
+            <span class="k">break</span>
 
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">init_file_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">new</span><span class="p">:</span>
-        <span class="n">new</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">new_lines</span><span class="p">)</span>
+        <span class="n">new</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">old_lines</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**</span><span class="si">%s</span><span class="s2">&#39;s version updated.**&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">()</span></div>
@@ -940,7 +942,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

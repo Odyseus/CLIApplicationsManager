@@ -203,17 +203,21 @@
 <span class="sd">        The amount of selected menu items.</span>
 <span class="sd">    selected : int</span>
 <span class="sd">        The index of the menu item on the current cursor position.</span>
-<span class="sd">    stdscr : object</span>
-<span class="sd">        See :any:`curses.initscr`.</span>
+<span class="sd">    stdscr : curses.initscr</span>
+<span class="sd">        Initialize the library.</span>
 <span class="sd">    title : str</span>
 <span class="sd">        A title to use on the menu.</span>
-<span class="sd">    win : object</span>
-<span class="sd">        See :any:`curses.newwin`.</span>
+<span class="sd">    win : curses.newwin</span>
+<span class="sd">        A new window object.</span>
 <span class="sd">    window_height : int</span>
 <span class="sd">        The height of the terminal window.</span>
 <span class="sd">    window_width : int</span>
 <span class="sd">        The width of the terminal window.</span>
 
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Based on: `picker Python module &lt;https://github.com/MSchuwalow/picker&gt;`__.</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
@@ -231,10 +235,6 @@
 <span class="sd">            print(&quot;Aborted!&quot;)</span>
 <span class="sd">        else:</span>
 <span class="sd">            print(opts)</span>
-
-<span class="sd">    Note</span>
-<span class="sd">    ----</span>
-<span class="sd">    Based on: `picker Python module &lt;https://github.com/MSchuwalow/picker&gt;`__.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">menu_items</span><span class="o">=</span><span class="p">[],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">arrow</span><span class="o">=</span><span class="s2">&quot;==&gt;&quot;</span><span class="p">,</span>
@@ -390,7 +390,7 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        stdscr : object</span>
-<span class="sd">            See :any:`curses.initscr`.</span>
+<span class="sd">            A curses window object.</span>
 
 <span class="sd">        Raises</span>
 <span class="sd">        ------</span>
@@ -443,7 +443,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

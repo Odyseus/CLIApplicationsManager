@@ -478,13 +478,14 @@
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MissingSourcesOnConfigFile</span><span class="p">(</span>
                 <span class="s2">&quot;The &#39;sources&#39; variable is not declared or it&#39;s empty.&quot;</span><span class="p">)</span>
 
-        <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">,</span> <span class="n">sources_schema</span><span class="p">,</span>
-            <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-                <span class="s2">&quot;File: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_profile_path</span><span class="p">,</span> <span class="s2">&quot;conf.py&quot;</span><span class="p">),</span>
-                <span class="s2">&quot;Data key: sources&quot;</span>
-            <span class="p">]),</span>
-            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">JSONSCHEMA_INSTALLED</span><span class="p">:</span>
+            <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">,</span> <span class="n">sources_schema</span><span class="p">,</span>
+                <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                    <span class="s2">&quot;File: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_profile_path</span><span class="p">,</span> <span class="s2">&quot;conf.py&quot;</span><span class="p">),</span>
+                    <span class="s2">&quot;Data key: sources&quot;</span>
+                <span class="p">]),</span>
+                <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
 
         <span class="n">names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1356,7 +1357,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

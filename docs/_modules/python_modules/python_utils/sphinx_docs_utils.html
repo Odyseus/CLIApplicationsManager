@@ -195,8 +195,8 @@
 <span class="sd">    docs_sources_path : str, optional</span>
 <span class="sd">        Path to the documentation source files that will be used to store the</span>
 <span class="sd">        downloaded inventories.</span>
-<span class="sd">    logger : object</span>
-<span class="sd">        See :any:`LogSystem`.</span>
+<span class="sd">    logger : LogSystem</span>
+<span class="sd">        The logger.</span>
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
@@ -217,6 +217,7 @@
             <span class="n">inv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">docs_sources_path</span><span class="p">,</span> <span class="n">inv</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">update_inventories</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">inv_path</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">inv_path</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Downloading inventory file...**&quot;</span><span class="p">)</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Download URL:**&quot;</span><span class="p">)</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">inv_url</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -275,8 +276,8 @@
 <span class="sd">        Remove destination and doctrees directories before building the documentation.</span>
 <span class="sd">    build_coverage : bool, optional</span>
 <span class="sd">        If True, build Sphinx coverage documents.</span>
-<span class="sd">    logger : object</span>
-<span class="sd">        See :any:`LogSystem`.</span>
+<span class="sd">    logger : LogSystem</span>
+<span class="sd">        The logger.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">doctree_temp_location</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_system_tempdir</span><span class="p">(),</span>
                                          <span class="n">doctree_temp_location_rel_to_sys_temp</span><span class="p">)</span>
@@ -348,8 +349,8 @@
 <span class="sd">    doctree_temp_location_rel_to_sys_temp : str, optional</span>
 <span class="sd">        Name of a temporary folder that will be used to create a path relative to the</span>
 <span class="sd">        system temporary folder.</span>
-<span class="sd">    logger : object</span>
-<span class="sd">        See :any:`LogSystem`.</span>
+<span class="sd">    logger : LogSystem</span>
+<span class="sd">        The logger.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Generating manual pages...**&quot;</span><span class="p">)</span>
@@ -379,7 +380,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

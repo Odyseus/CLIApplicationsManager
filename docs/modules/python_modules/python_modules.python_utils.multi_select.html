@@ -322,10 +322,10 @@
 <dl class="attribute">
 <dt id="python_modules.python_utils.multi_select.MultiSelect.stdscr">
 <code class="sig-name descname">stdscr</code><a class="headerlink" href="#python_modules.python_utils.multi_select.MultiSelect.stdscr" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.python.org/3/library/curses.html#curses.initscr" title="(in Python v3.8)"><code class="xref any docutils literal notranslate"><span class="pre">curses.initscr</span></code></a>.</p>
+<dd><p>Initialize the library.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)">object</a></p>
+<dd class="field-odd"><p>curses.initscr</p>
 </dd>
 </dl>
 </dd></dl>
@@ -344,10 +344,10 @@
 <dl class="attribute">
 <dt id="python_modules.python_utils.multi_select.MultiSelect.win">
 <code class="sig-name descname">win</code><a class="headerlink" href="#python_modules.python_utils.multi_select.MultiSelect.win" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.python.org/3/library/curses.html#curses.newwin" title="(in Python v3.8)"><code class="xref any docutils literal notranslate"><span class="pre">curses.newwin</span></code></a>.</p>
+<dd><p>A new window object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)">object</a></p>
+<dd class="field-odd"><p>curses.newwin</p>
 </dd>
 </dl>
 </dd></dl>
@@ -374,6 +374,10 @@
 </dl>
 </dd></dl>
 
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Based on: <a class="reference external" href="https://github.com/MSchuwalow/picker">picker Python module</a>.</p>
+</div>
 <div class="admonition-example admonition">
 <p class="admonition-title">Example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">opts</span> <span class="o">=</span> <span class="n">MultiSelect</span><span class="p">(</span>
@@ -390,10 +394,6 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Based on: <a class="reference external" href="https://github.com/MSchuwalow/picker">picker Python module</a>.</p>
 </div>
 <p>Initialization.</p>
 <dl class="field-list simple">
@@ -459,7 +459,7 @@
 <dd><p>Curses loop.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>stdscr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) -- See <a class="reference external" href="https://docs.python.org/3/library/curses.html#curses.initscr" title="(in Python v3.8)"><code class="xref any docutils literal notranslate"><span class="pre">curses.initscr</span></code></a>.</p>
+<dd class="field-odd"><p><strong>stdscr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) -- A curses window object.</p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><p><a class="reference internal" href="python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><strong>exceptions.KeyboardInterruption</strong></a> -- Halt execution on Ctrl + C press.</p>
@@ -491,7 +491,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

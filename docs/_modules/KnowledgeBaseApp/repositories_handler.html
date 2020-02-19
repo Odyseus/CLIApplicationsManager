@@ -254,6 +254,9 @@
 <span class="sd">        InvalidRepositoryData</span>
 <span class="sd">            Invalid repository data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">JSONSCHEMA_INSTALLED</span><span class="p">:</span>
+            <span class="k">return</span>
+
         <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_repositories_data</span><span class="p">,</span> <span class="n">repositories_schema</span><span class="p">,</span>
             <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
@@ -824,7 +827,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

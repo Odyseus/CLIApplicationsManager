@@ -161,7 +161,6 @@ DONE
     .. rst-class:: wy-text-strike
 
         Markdown-it JavaScript library
-        ------------------------------
 
         - This is the library that I use to render in-line markdown files. Go to `its repository <https://github.com/markdown-it/markdown-it>`__ and download the files found inside the dist folder.
         - Files used::

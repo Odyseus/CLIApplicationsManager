@@ -191,10 +191,10 @@
 <dl class="attribute">
 <dt id="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper.logger">
 <code class="sig-name descname">logger</code><a class="headerlink" href="#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper.logger" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>.</p>
+<dd><p>The logger.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)">object</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem">LogSystem</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -260,19 +260,19 @@
 <code class="sig-prename descclassname">python_modules.python_utils.cli_utils.</code><code class="sig-name descname">run_cli</code><span class="sig-paren">(</span><em class="sig-param">flag_file=''</em>, <em class="sig-param">docopt_doc=''</em>, <em class="sig-param">app_name=''</em>, <em class="sig-param">app_version=''</em>, <em class="sig-param">app_status=''</em>, <em class="sig-param">cli_class=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/cli_utils.html#run_cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.cli_utils.run_cli" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize main command line interface.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><a class="reference internal" href="python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.BadExecutionLocation" title="python_modules.python_utils.exceptions.BadExecutionLocation"><strong>exceptions.BadExecutionLocation</strong></a> -- Do not allow to run any command if the &quot;flag&quot; file isn't found where it should be.
-    See <a class="reference internal" href="python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.BadExecutionLocation" title="python_modules.python_utils.exceptions.BadExecutionLocation"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.BadExecutionLocation</span></code></a>.</p>
-</dd>
-<dt class="field-even">Parameters</dt>
-<dd class="field-even"><ul class="simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
 <li><p><strong>flag_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- The name of a &quot;flag&quot; file.</p></li>
 <li><p><strong>docopt_doc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- docopt docstring.</p></li>
 <li><p><strong>app_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Application name.</p></li>
 <li><p><strong>app_version</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Application version.</p></li>
 <li><p><strong>app_status</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Application status.</p></li>
-<li><p><strong>cli_class</strong> (<em>class</em>) -- See <a class="reference internal" href="#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper" title="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper"><code class="xref any py py-class docutils literal notranslate"><span class="pre">CommandLineInterfaceSuper</span></code></a>.</p></li>
+<li><p><strong>cli_class</strong> (<a class="reference internal" href="#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper" title="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper"><em>cli_utils.CommandLineInterfaceSuper</em></a>) -- An instance of <code class="docutils literal notranslate"><span class="pre">cli_utils.CommandLineInterfaceSuper</span></code>.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.BadExecutionLocation" title="python_modules.python_utils.exceptions.BadExecutionLocation"><strong>exceptions.BadExecutionLocation</strong></a> -- Do not allow to run any command if the <em>flag</em> file isn't found where it should be.
+    See <a class="reference internal" href="python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.BadExecutionLocation" title="python_modules.python_utils.exceptions.BadExecutionLocation"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.BadExecutionLocation</span></code></a>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -299,7 +299,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>

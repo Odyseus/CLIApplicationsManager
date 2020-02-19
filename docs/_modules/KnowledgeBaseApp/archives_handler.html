@@ -507,6 +507,8 @@
 <span class="sd">        exceptions.MalformedSources</span>
 <span class="sd">            See &lt;class :any:`exceptions.MalformedSources`&gt;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">JSONSCHEMA_INSTALLED</span><span class="p">:</span>
+            <span class="k">return</span>
 
         <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_archives_data</span><span class="p">,</span> <span class="n">archives_schema</span><span class="p">,</span>
@@ -592,7 +594,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus
+        &copy; Copyright 2016-2020, Odyseus.
 
     </p>
   </div>
