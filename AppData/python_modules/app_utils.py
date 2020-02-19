@@ -58,7 +58,7 @@ class InvalidApplicationName(exceptions.ExceptionWhitoutTraceBack):
         super().__init__(msg=msg)
 
 
-def get_all_apps():
+def get_all_apps(repo_only=True):
     """Get all applications directories and slugs.
 
     Returns
@@ -80,10 +80,14 @@ def get_all_apps():
         # that aren't actual applications.
         # It's a more complex procedure, but infinitely more accurate.
         if file_utils.is_real_file(app_flag_file_path):
-            apps.append({
-                "slug": dir_name,
-                "path": os.path.dirname(app_flag_file_path)
-            })
+            app_path = os.path.dirname(app_flag_file_path)
+            git_folder = os.path.join(app_path, ".git")
+
+            if not repo_only or (repo_only and file_utils.is_real_dir(git_folder)):
+                apps.append({
+                    "slug": dir_name,
+                    "path": app_path
+                })
 
     return sorted(apps, key=lambda k: k["slug"])
 
@@ -94,7 +98,7 @@ def print_all_apps():
     This method is called by the Bash completions script to auto-complete
     application slugs for the ``--app=`` and ``-a`` CLI options.
     """
-    for app in get_all_apps():
+    for app in get_all_apps(repo_only=False):
         print(app["slug"])
 
 
@@ -114,7 +118,7 @@ def get_selected_apps(app_slugs=[], logger=None):
         See <class :any:`LogSystem`>.
     """
     selected_apps = []
-    all_apps = get_all_apps()
+    all_apps = get_all_apps(repo_only=False)
 
     for slug in app_slugs:
         if slug not in [a["slug"] for a in all_apps]:
@@ -480,7 +484,7 @@ def bump_versions(app_slugs, logger):
     """
     print()
 
-    for app in get_selected_apps(app_slugs, logger) if app_slugs else get_all_apps():
+    for app in get_selected_apps(app_slugs, logger) if app_slugs else get_all_apps(repo_only=False):
         bump_app_version(app, logger)
 
 
