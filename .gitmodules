@@ -7,3 +7,6 @@
 [submodule "AppData/docs_sources/sphinx_rtd_theme_mod"]
     path = AppData/docs_sources/sphinx_rtd_theme_mod
     url = git@gitlab.com:Odyseus/sphinx_rtd_theme_mod.git
+[submodule "AppData/docs_sources/common_rest_abbreviations"]
+    path = AppData/docs_sources/common_rest_abbreviations
+    url = git@gitlab.com:Odyseus/common_rest_abbreviations.git
