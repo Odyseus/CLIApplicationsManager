@@ -7,6 +7,8 @@ conf.py template
 
 .. literalinclude:: ../../../../UserData/UserApplicationsManager/AppData/data/templates/conf.py
     :language: python
+    :prepend: # START conf.json
+    :append: # END conf.json
 
 .. note::
 

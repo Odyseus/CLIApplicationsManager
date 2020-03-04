@@ -82,6 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -221,7 +222,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_all_apps"><a class="viewcode-back" href="../../modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.get_all_apps">[docs]</a><span class="k">def</span> <span class="nf">get_all_apps</span><span class="p">():</span>
+<div class="viewcode-block" id="get_all_apps"><a class="viewcode-back" href="../../modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.get_all_apps">[docs]</a><span class="k">def</span> <span class="nf">get_all_apps</span><span class="p">(</span><span class="n">repo_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Get all applications directories and slugs.</span>
 
 <span class="sd">    Returns</span>
@@ -243,10 +244,14 @@
         <span class="c1"># that aren&#39;t actual applications.</span>
         <span class="c1"># It&#39;s a more complex procedure, but infinitely more accurate.</span>
         <span class="k">if</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_file</span><span class="p">(</span><span class="n">app_flag_file_path</span><span class="p">):</span>
-            <span class="n">apps</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s2">&quot;slug&quot;</span><span class="p">:</span> <span class="n">dir_name</span><span class="p">,</span>
-                <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">app_flag_file_path</span><span class="p">)</span>
-            <span class="p">})</span>
+            <span class="n">app_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">app_flag_file_path</span><span class="p">)</span>
+            <span class="n">git_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app_path</span><span class="p">,</span> <span class="s2">&quot;.git&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">repo_only</span> <span class="ow">or</span> <span class="p">(</span><span class="n">repo_only</span> <span class="ow">and</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_dir</span><span class="p">(</span><span class="n">git_folder</span><span class="p">)):</span>
+                <span class="n">apps</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                    <span class="s2">&quot;slug&quot;</span><span class="p">:</span> <span class="n">dir_name</span><span class="p">,</span>
+                    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="n">app_path</span>
+                <span class="p">})</span>
 
     <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">apps</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="n">k</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">])</span></div>
 
@@ -257,7 +262,7 @@
 <span class="sd">    This method is called by the Bash completions script to auto-complete</span>
 <span class="sd">    application slugs for the ``--app=`` and ``-a`` CLI options.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">get_all_apps</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">get_all_apps</span><span class="p">(</span><span class="n">repo_only</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">app</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">])</span></div>
 
 
@@ -277,7 +282,7 @@
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">selected_apps</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">all_apps</span> <span class="o">=</span> <span class="n">get_all_apps</span><span class="p">()</span>
+    <span class="n">all_apps</span> <span class="o">=</span> <span class="n">get_all_apps</span><span class="p">(</span><span class="n">repo_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">slug</span> <span class="ow">in</span> <span class="n">app_slugs</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">slug</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">all_apps</span><span class="p">]:</span>
@@ -643,7 +648,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">print</span><span class="p">()</span>
 
-    <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">get_selected_apps</span><span class="p">(</span><span class="n">app_slugs</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span> <span class="k">if</span> <span class="n">app_slugs</span> <span class="k">else</span> <span class="n">get_all_apps</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">get_selected_apps</span><span class="p">(</span><span class="n">app_slugs</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span> <span class="k">if</span> <span class="n">app_slugs</span> <span class="k">else</span> <span class="n">get_all_apps</span><span class="p">(</span><span class="n">repo_only</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">bump_app_version</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span></div>
 
 

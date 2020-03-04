@@ -82,6 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -181,6 +182,7 @@
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appname__</span>
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__status__</span>
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__version__</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">bottle_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cli_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span>
 
@@ -235,6 +237,11 @@
 <span class="s2">    Force the download of all archives, ignoring the frequency in which they</span>
 <span class="s2">    should be downloaded. Only used by the &quot;download_all_archives&quot; sub-command.</span>
 
+<span class="s2">--input-path-storage=&lt;path&gt;</span>
+<span class="s2">    Path to a folder containing **.epub** files. If not specified, the folder at</span>
+<span class="s2">    **UserData/data_storage/pandoc_convertions/epub_to_html** will be used.</span>
+<span class="s2">    Only used by the &quot;epub_to_html&quot; sub-command.</span>
+
 <span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">appname</span><span class="o">=</span><span class="n">__appname__</span><span class="p">,</span>
            <span class="n">appdescription</span><span class="o">=</span><span class="n">__appdescription__</span><span class="p">,</span>
            <span class="n">version</span><span class="o">=</span><span class="n">__version__</span><span class="p">,</span>
@@ -257,6 +264,8 @@
 <span class="sd">        in the order they were defined (passed as arguments).</span>
 <span class="sd">    run_args_order : list</span>
 <span class="sd">        List used as a gude to execute functions in the order they need to.</span>
+<span class="sd">    www_root : str</span>
+<span class="sd">        Path to the folder that will be served by the web server.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">run_args_order</span> <span class="o">=</span> <span class="p">[</span>
         <span class="s2">&quot;update_all_repositories&quot;</span><span class="p">,</span>
@@ -278,6 +287,7 @@
         <span class="s2">&quot;build_sphinx_docs&quot;</span>
     <span class="p">}</span>
     <span class="n">func_names</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">www_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;www&quot;</span><span class="p">)</span>
     <span class="n">_repositories_handler</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docopt_args</span><span class="p">):</span>
@@ -399,16 +409,19 @@
 <span class="sd">        action : str, optional</span>
 <span class="sd">            Any of the following: start/stop/restart.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">www_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;www&quot;</span><span class="p">)</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">www_root</span><span class="p">)</span>
-        <span class="n">cmd_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;python_scripts&quot;</span><span class="p">,</span> <span class="s2">&quot;http_server&quot;</span><span class="p">)</span>
+        <span class="n">app_slug</span> <span class="o">=</span> <span class="s2">&quot;KnowledgeBase&quot;</span>
+        <span class="n">web_app_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span>
+                                                    <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">App&quot;</span> <span class="o">%</span> <span class="n">app_slug</span><span class="p">,</span>
+                                                    <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_webapp.py&quot;</span> <span class="o">%</span> <span class="n">app_slug</span><span class="p">))</span>
 
-        <span class="c1"># Use of os.execv() so at the end only one process is left executing.</span>
-        <span class="c1"># The &quot;http_server&quot; executable also uses os.execv() to launch the real web application.</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">execv</span><span class="p">(</span><span class="n">cmd_path</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot; &quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">action</span><span class="p">,</span>
-                                    <span class="s2">&quot;KnowledgeBase&quot;</span><span class="p">,</span>
-                                    <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--host&quot;</span><span class="p">],</span>
-                                    <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--port&quot;</span><span class="p">]])</span></div>
+        <span class="n">bottle_utils</span><span class="o">.</span><span class="n">handle_server</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="n">action</span><span class="p">,</span>
+                                   <span class="n">server_args</span><span class="o">=</span><span class="p">{</span>
+                                       <span class="s2">&quot;www_root&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">www_root</span><span class="p">,</span>
+                                       <span class="s2">&quot;web_app_path&quot;</span><span class="p">:</span> <span class="n">web_app_path</span><span class="p">,</span>
+                                       <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--host&quot;</span><span class="p">],</span>
+                                       <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--port&quot;</span><span class="p">]</span>
+                                   <span class="p">},</span>
+                                   <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CommandLineInterface.http_server_start"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.http_server_start">[docs]</a>    <span class="k">def</span> <span class="nf">http_server_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Self explanatory.</span>
@@ -445,7 +458,11 @@
         <span class="sd">&quot;&quot;&quot;Self explanatory.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">import</span> <span class="nn">webbrowser</span>
-        <span class="n">webbrowser</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;http://0.0.0.0:8888&quot;</span><span class="p">,</span> <span class="n">new</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">autoraise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+        <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://</span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--host&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--port&quot;</span><span class="p">])</span>
+        <span class="n">webbrowser</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">new</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># NOTE: The server is restarted AFTER launching the website because executing the web</span>
+        <span class="c1"># application will replace the current process.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">http_server_restart</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="CommandLineInterface.build_sphinx_docs"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.build_sphinx_docs">[docs]</a>    <span class="k">def</span> <span class="nf">build_sphinx_docs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`RepositoriesHandler.build_sphinx_docs`</span>

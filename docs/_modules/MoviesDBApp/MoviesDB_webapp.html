@@ -82,6 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -163,14 +164,10 @@
   <h1>Source code for MoviesDBApp.MoviesDB_webapp</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;Summary</span>
+<span class="sd">&quot;&quot;&quot;Web application.</span>
 
 <span class="sd">Attributes</span>
 <span class="sd">----------</span>
-<span class="sd">bottle_app : object</span>
-<span class="sd">    Bottle application.</span>
-<span class="sd">dir_path : str</span>
-<span class="sd">    Extra path to look for modules to import.</span>
 <span class="sd">root_folder : str</span>
 <span class="sd">    The path to the folder that will be served by the web server.</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -179,45 +176,35 @@
 
 <span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">call</span>
 
+<span class="c1"># NOTE: Failsafe imports due to this file being used as a script (when launching the server)</span>
+<span class="c1"># and as a module (when generating documentation with Sphinx).</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">python_utils</span> <span class="k">import</span> <span class="n">bottle</span>
+    <span class="kn">from</span> <span class="nn">python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">bottle</span>
+    <span class="kn">from</span> <span class="nn">python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">bottle_app</span>
+    <span class="kn">from</span> <span class="nn">python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">WebApp</span>
 <span class="k">except</span> <span class="p">(</span><span class="ne">ImportError</span><span class="p">,</span> <span class="ne">SystemError</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">bottle</span>
+    <span class="kn">from</span> <span class="nn">.python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">bottle</span>
+    <span class="kn">from</span> <span class="nn">.python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">bottle_app</span>
+    <span class="kn">from</span> <span class="nn">.python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">WebApp</span>
 
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
 
-<span class="n">bottle_app</span> <span class="o">=</span> <span class="n">bottle</span><span class="o">.</span><span class="n">Bottle</span><span class="p">()</span>
 
-
-<div class="viewcode-block" id="MoviesDBWebapp"><a class="viewcode-back" href="../../modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp">[docs]</a><span class="k">class</span> <span class="nc">MoviesDBWebapp</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Movies Data Base web server.</span>
-
-<span class="sd">    Attributes</span>
-<span class="sd">    ----------</span>
-<span class="sd">    host : str</span>
-<span class="sd">        The host name used by the web server.</span>
-<span class="sd">    port : str</span>
-<span class="sd">        The port number used by the web server.</span>
+<div class="viewcode-block" id="MoviesDBWebapp"><a class="viewcode-back" href="../../modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp">[docs]</a><span class="k">class</span> <span class="nc">MoviesDBWebapp</span><span class="p">(</span><span class="n">WebApp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Web server.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialization.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        host : str</span>
-<span class="sd">            The host name used by the web server.</span>
-<span class="sd">        port : str</span>
-<span class="sd">            The port number used by the web server.</span>
+<span class="sd">        *args</span>
+<span class="sd">            Arguments.</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            Keyword arguments.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">host</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">port</span>
-
-<div class="viewcode-block" id="MoviesDBWebapp.run"><a class="viewcode-back" href="../../modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Run web application.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">bottle_app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <div class="viewcode-block" id="MoviesDBWebapp.server_static"><a class="viewcode-back" href="../../modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.server_static">[docs]</a>    <span class="nd">@bottle_app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/assets/&lt;filepath:path&gt;&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">server_static</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>

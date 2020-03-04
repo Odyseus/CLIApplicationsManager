@@ -19,6 +19,7 @@ Submodules
 .. toctree::
 
    python_modules.python_utils.ansi_colors
+   python_modules.python_utils.bottle_utils
    python_modules.python_utils.cli_utils
    python_modules.python_utils.cmd_utils
    python_modules.python_utils.exceptions

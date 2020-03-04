@@ -82,6 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -186,25 +187,51 @@
 
 
 <div class="viewcode-block" id="NonExistentFile"><a class="viewcode-back" href="../../modules/JSONSchemaValidator/JSONSchemaValidatorApp.app_utils.html#JSONSchemaValidatorApp.app_utils.NonExistentFile">[docs]</a><span class="k">class</span> <span class="nc">NonExistentFile</span><span class="p">(</span><span class="n">ExceptionWhitoutTraceBack</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;NonExistentFile&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;NonExistentFile</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialization.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        msg : str</span>
+<span class="sd">            Message.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="InvalidFile"><a class="viewcode-back" href="../../modules/JSONSchemaValidator/JSONSchemaValidatorApp.app_utils.html#JSONSchemaValidatorApp.app_utils.InvalidFile">[docs]</a><span class="k">class</span> <span class="nc">InvalidFile</span><span class="p">(</span><span class="n">ExceptionWhitoutTraceBack</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;InvalidFile&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;InvalidFile</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialization.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        file_path : str</span>
+<span class="sd">            File path.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Only Python and JSON files are allowed and they should be named with the proper extension.</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">msg</span> <span class="o">+=</span> <span class="n">file_path</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MissingRequiredParameter"><a class="viewcode-back" href="../../modules/JSONSchemaValidator/JSONSchemaValidatorApp.app_utils.html#JSONSchemaValidatorApp.app_utils.MissingRequiredParameter">[docs]</a><span class="k">class</span> <span class="nc">MissingRequiredParameter</span><span class="p">(</span><span class="n">ExceptionWhitoutTraceBack</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;MissingRequiredParameter&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;MissingRequiredParameter</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">missing_parameter</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialization.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        missing_parameter : str</span>
+<span class="sd">            Parameter.</span>
+<span class="sd">        file_path : str</span>
+<span class="sd">            File path.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;It is mandatory to specify a property to get data from a Python file.</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;**Missing parameter: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">**&quot;</span> <span class="o">%</span> <span class="n">missing_parameter</span>
         <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;**File were the property should exist:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">**&quot;</span> <span class="o">%</span> <span class="n">file_path</span>
@@ -212,6 +239,34 @@
 
 
 <div class="viewcode-block" id="get_value_from_object"><a class="viewcode-back" href="../../modules/JSONSchemaValidator/JSONSchemaValidatorApp.app_utils.html#JSONSchemaValidatorApp.app_utils.get_value_from_object">[docs]</a><span class="k">def</span> <span class="nf">get_value_from_object</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get value from object.</span>
+
+<span class="sd">    Recursively get from ``obj`` the value of a properties defined as string in ``props``. For</span>
+<span class="sd">    example, if ``props`` is equal to ``prop1.prop2.prop3``, the returned value will be the</span>
+<span class="sd">    value of ``prop3`` that&#39;s inside the object ``prop2`` that it&#39;s inside the object ``prop1``</span>
+<span class="sd">    that&#39;s inside the object ``obj``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    file_path : str</span>
+<span class="sd">        File path where the object ``obj`` is defined. Used for logging purposes.</span>
+<span class="sd">    obj : dict</span>
+<span class="sd">        The object from where to extract data.</span>
+<span class="sd">    props : str</span>
+<span class="sd">        The properties of ``obj`` defined as a string.</span>
+<span class="sd">    logger : LogSystem</span>
+<span class="sd">        The logger.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str, dict, list, int, float</span>
+<span class="sd">        The value of a property.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    SystemExit</span>
+<span class="sd">        Halt execution on error.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">props</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">props</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -235,6 +290,32 @@
                     <span class="n">data_prop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                     <span class="n">schema_prop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                     <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Validate JSON schema.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data_file : str</span>
+<span class="sd">        The path to the file from where to get the data to validate.</span>
+<span class="sd">    schema_file : str</span>
+<span class="sd">        The path to the file containing the JSON schema/s to alidate against.</span>
+<span class="sd">    data_prop : None, optional</span>
+<span class="sd">        A property name inside an object contained inside the ``data_file``.</span>
+<span class="sd">    schema_prop : None, optional</span>
+<span class="sd">        A property name inside an object contained inside the ``schema_file``.</span>
+<span class="sd">    logger : None, optional</span>
+<span class="sd">        See :any:`LogSystem`.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    InvalidFile</span>
+<span class="sd">        Files whose extensions are not .json or .py are invalid files.</span>
+<span class="sd">    MissingRequiredParameter</span>
+<span class="sd">        A Python ``data_file`` file requires to have the ``data_prop`` declared.</span>
+<span class="sd">    NonExistentFile</span>
+<span class="sd">        The file paths declared in ``data_file`` or ``schema_file`` do not exist.</span>
+<span class="sd">    SystemExit</span>
+<span class="sd">        Halt execution on error.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">storage</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;instance&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>

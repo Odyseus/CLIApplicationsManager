@@ -1,0 +1,575 @@
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Bootstrap Themes Generator&#39; documentation &mdash; Python CLI Applications Documentations  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chroot Helpers&#39;s documentation" href="../ChrootHelper/index.html" />
+    <link rel="prev" title="Backup Utils&#39; documentation" href="../BackupUtils/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: False" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bootstrap Themes Generator' documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cli-synopsis"><abbr title="Command Line Interface">CLI</abbr> Synopsis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#psutil-module"><code class="docutils literal notranslate"><span class="pre">psutil</span></code> module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#detailed-usage">Detailed usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cli-options"><abbr title="Command Line Interface">CLI</abbr> options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commands">Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#themes-creation">Themes creation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-folder-structure">Basic folder structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-theme-file-theme-scss">Example theme file (theme.scss)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-theme-configuration-file-conf-py">Example theme configuration file (conf.py)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HostsManager/index.html">Hosts Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KnowledgeBase/index.html">Knowledge Base's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MoviesDB/index.html">Movies DB's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PackageManager/index.html">Package Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Bootstrap Themes Generator' documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/includes/BootstrapThemesGenerator/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="../ChrootHelper/index.html" class="btn btn-neutral float-right" title="Chroot Helpers&#39;s documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../BackupUtils/index.html" class="btn btn-neutral float-left" title="Backup Utils&#39; documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bootstrap-themes-generator-documentation">
+<h1>Bootstrap Themes Generator' documentation<a class="headerlink" href="#bootstrap-themes-generator-documentation" title="Permalink to this headline">¶</a></h1>
+<p>A <abbr title="Command Line Interface">CLI</abbr> utility to assist in the creation of Bootstrap themes.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This Python application can generate a system executable with Bash completions support. See <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">generate</span></code>.</p>
+</div>
+<div class="section" id="cli-synopsis">
+<h2><abbr title="Command Line Interface">CLI</abbr> Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight">
+<pre><span class="text-bold">Bootstrap Themes Generator 2020-03-02 22:46:22.412 (Stable)</span>
+
+<span class="text-bold">CLI utility to assist in the creation of Bootstrap themes.</span>
+
+<span class="text-bold">Usage:</span>
+    app.py (-h | --help | --manual | --version)
+    app.py build [-t &lt;id&gt;... | --theme=&lt;id&gt;...]
+                 [-s &lt;args&gt; | --node-sass-args=&lt;args&gt;]
+                 [-p &lt;args&gt; | --postcss-args=&lt;args&gt;]
+    app.py node_modules (install | update)
+    app.py launch_preview [--host=&lt;host&gt;]
+                          [--port=&lt;port&gt;]
+    app.py server (start | stop | restart)
+                  [--host=&lt;host&gt;]
+                  [--port=&lt;port&gt;]
+    app.py generate system_executable
+    app.py print_theme_ids
+
+<span class="text-bold">Options:</span>
+
+<span class="text-bold">-h, --help</span>
+    Show this screen.
+
+<span class="text-bold">--manual</span>
+    Show this application manual page.
+
+<span class="text-bold">--version</span>
+    Show application version.
+
+<span class="text-bold">--host=&lt;host&gt;</span>
+    Host name. [Default: 0.0.0.0]
+
+<span class="text-bold">--port=&lt;port&gt;</span>
+    Port number. [Default: 8899]
+
+<span class="text-bold">-t &lt;id&gt;, --theme=&lt;id&gt;</span>
+    The ID of the theme that one wants to build. If no specified, all themes
+    found inside the <span class="text-bold">UserData/themes</span> folder will be built. The ID of a
+    theme is just the name of its folder.
+
+<span class="text-bold">-s &lt;args&gt;, --node-sass-args=&lt;args&gt;</span>
+    Extra arguments to pass to <span class="text-bold">node-sass</span> CLI.
+
+<span class="text-bold">-p &lt;args&gt;, --postcss-args=&lt;args&gt;</span>
+    Extra arguments to pass to <span class="text-bold">postcss</span> CLI. [Default: --no-map]</pre>
+</div></div>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-warning warning admonition">
+<p class="admonition-title">Dependencies</p>
+<ul class="simple">
+<li><p>Python 3.5+.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Node.js</span></code> installed on the system.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">psutil</span></code> Python module.</p></li>
+</ul>
+</div>
+<div class="section" id="psutil-module">
+<h3><code class="docutils literal notranslate"><span class="pre">psutil</span></code> module<a class="headerlink" href="#psutil-module" title="Permalink to this headline">¶</a></h3>
+<p>This module is only used to programmatically terminate the HTTP server used to host the themes preview page. Without this Python module, the server can only be stopped/restarted manually.</p>
+</div>
+</div>
+<div class="section" id="detailed-usage">
+<h2>Detailed usage<a class="headerlink" href="#detailed-usage" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-info info admonition">
+<p class="admonition-title">Highlights</p>
+<ul class="simple">
+<li><p>Themes are located in <strong>UserData/themes</strong>.</p></li>
+<li><p>Each folder inside the themes folder that doesn't start with a <code class="docutils literal notranslate"><span class="pre">_</span></code> and contains a file named <strong>theme.scss</strong> is considered a theme.</p></li>
+<li><p>Before being able to build themes, the <code class="docutils literal notranslate"><span class="pre">node_modules</span> <span class="pre">install</span></code> command needs to be executed to install all build requirements.</p></li>
+<li><p>Themes can be previewed using the <code class="docutils literal notranslate"><span class="pre">launch_preview</span></code> command which will start the server and open the themes preview web page in the default web browser.</p></li>
+</ul>
+</div>
+<div class="section" id="cli-options">
+<h3><abbr title="Command Line Interface">CLI</abbr> options<a class="headerlink" href="#cli-options" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code>: Display this application basic help screen.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--manual</span></code>: Display this application manual.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--version</span></code>: Show this application version.</p></li>
+</ul>
+</div>
+<div class="section" id="commands">
+<h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="app-py-build">
+<h4>app.py build<a class="headerlink" href="#app-py-build" title="Permalink to this headline">¶</a></h4>
+<p>The main command to build themes. The build process will generate a file called <strong>bootstrap.css</strong> with expanded <abbr title="Cascading Style Sheets">CSS</abbr> rules and a file called <strong>bootstrap.min.css</strong> with compressed <abbr title="Cascading Style Sheets">CSS</abbr> rules inside a folder called <strong>dist</strong> located inside a theme folder. Additionally, these two files will be copied into <strong>UserData/www/_assets/css/themes/&lt;theme_id&gt;</strong> to make them available for selection on the themes preview page (see <a class="reference internal" href="#launch-preview-command-reference"><span class="std std-ref">app.py launch_preview</span></a>).</p>
+<div class="section" id="options">
+<h5>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">&lt;id&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--theme=&lt;id&gt;</span></code>: The ID of the theme that one wants to build. If not specified, all themes found inside the <strong>UserData/themes</strong> folder will be built. The ID of a theme is just the name of its folder.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-s</span> <span class="pre">&lt;args&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--node-sass-args=&lt;args&gt;</span></code>: Extra arguments to pass to <strong>node-sass</strong> <abbr title="Command Line Interface">CLI</abbr>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">&lt;args&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--postcss-args=&lt;args&gt;</span></code>: Extra arguments to pass to <strong>postcss</strong> <abbr title="Command Line Interface">CLI</abbr>. Default: <code class="docutils literal notranslate"><span class="pre">--no-map</span></code>.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="app-py-node-modules">
+<h4>app.py node_modules<a class="headerlink" href="#app-py-node-modules" title="Permalink to this headline">¶</a></h4>
+<p>Convenience command to manage the <strong>Node.js</strong> modules used to build the themes.</p>
+<div class="section" id="sub-commands">
+<h5>Sub-commands<a class="headerlink" href="#sub-commands" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">install</span></code>: Executes <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span></code> inside the <strong>UserData/www</strong> folder.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">update</span></code>: Executes <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">update</span></code> inside the <strong>UserData/www</strong> folder.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="app-py-launch-preview">
+<span id="launch-preview-command-reference"></span><h4>app.py launch_preview<a class="headerlink" href="#app-py-launch-preview" title="Permalink to this headline">¶</a></h4>
+<p>Launch the web page used to preview generated themes. This command will also restart the web server used to host the page.</p>
+<div class="section" id="id1">
+<h5>Options<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--host=&lt;host&gt;</span></code> See <a class="reference internal" href="#server-command-reference-0"><span class="std std-ref">app.py server</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--port=&lt;port&gt;</span></code> See <a class="reference internal" href="#server-command-reference-0"><span class="std std-ref">app.py server</span></a>.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="app-py-server">
+<span id="server-command-reference-0"></span><h4>app.py server<a class="headerlink" href="#app-py-server" title="Permalink to this headline">¶</a></h4>
+<p>The HTTP server started will host the folder at <strong>UserData/www</strong>.</p>
+<div class="section" id="id2">
+<h5>Sub-commands<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code>: Start HTTP server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stop</span></code>: Stop HTTP server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">restart</span></code>: Restart HTTP server.</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h5>Options<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--host=&lt;host&gt;</span></code> Host name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--port=&lt;port&gt;</span></code> Port number.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="app-py-generate">
+<h4>app.py generate<a class="headerlink" href="#app-py-generate" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id4">
+<h5>Sub-commands<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h5>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">system_executable</span></code>: Create an executable for the <code class="docutils literal notranslate"><span class="pre">app.py</span></code> application on the system <code class="docutils literal notranslate"><span class="pre">PATH</span></code> to be able to run it from anywhere.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The system executable creation process will ask for an executable name and the absolute path to store the executable file (the default is <code class="docutils literal notranslate"><span class="pre">$HOME/.local/bin</span></code>).</p></li>
+<li><p>It will also ask for bash completions creation.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="themes-creation">
+<h2>Themes creation<a class="headerlink" href="#themes-creation" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-info info admonition">
+<p class="admonition-title">Theming Bootstrap</p>
+<p>Read <a class="reference external" href="https://getbootstrap.com/docs/">Bootstrap's documentation</a> (<strong>Theming</strong> section) to familiarize with Bootstrap's themes using <abbr title="Syntactically Awesome Style Sheets">Sass</abbr>.</p>
+</div>
+<div class="section" id="basic-folder-structure">
+<h3>Basic folder structure<a class="headerlink" href="#basic-folder-structure" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The <strong>_0_globals</strong> folder is a convenient location where to store files that can contain reusable styles or variable overrides common to more than one theme.</p></li>
+<li><p>The <strong>node_modules</strong> folder is inside <strong>UserData/www</strong> because the themes preview page uses assets from <strong>bootswatch</strong> to preview Bootswatch's themes.</p></li>
+</ul>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>UserData/
+├── themes/
+│   ├── _0_globals/
+│   │   ├── _variable_overrides.scss
+│   │   └── _new_rules.scss
+│   └── theme_1/
+│       ├── conf.py
+│       └── theme.scss
+│   └── theme_2/
+│       ├── conf.py
+│       └── theme.scss
+└── www/
+    └── node_modules/
+        ├── bootstrap
+        └── bootswatch
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-theme-file-theme-scss">
+<h3>Example theme file (theme.scss)<a class="headerlink" href="#example-theme-file-theme-scss" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-info info admonition">
+<p class="admonition-title">Relative imports</p>
+<p>Note that the following example file imports files that aren't directly available from the theme file's location. The <strong>bootstrap</strong> and <strong>bootswatch</strong> folders are inside <strong>UserData/www/node_modules</strong>. And the <strong>0_variable_overrides</strong>, <strong>1_new_rules</strong> and <strong>1_new_colors</strong> files are inside <strong>UserData/themes/_0_globals</strong>. This is because the <code class="docutils literal notranslate"><span class="pre">build</span></code> command from this application executes <code class="docutils literal notranslate"><span class="pre">node-sass</span></code> using its <code class="docutils literal notranslate"><span class="pre">--include-path</span></code> option specifying both locations to make imports simpler.</p>
+</div>
+<div class="highlight-scss notranslate"><div class="highlight"><pre><span></span><span class="c1">// START theme.scss</span>
+<span class="c1">// #########</span>
+<span class="c1">// Imports #</span>
+<span class="c1">// #########</span>
+
+<span class="k">@import</span> <span class="s2">&quot;bootswatch/dist/flatly/_variables&quot;</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">&quot;0_variable_overrides&quot;</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">&quot;bootstrap/scss/bootstrap&quot;</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">&quot;bootswatch/dist/flatly/_bootswatch&quot;</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">&quot;1_new_rules&quot;</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">&quot;1_new_colors&quot;</span><span class="p">;</span>
+
+<span class="c1">// ###############</span>
+<span class="c1">// Custom styles #</span>
+<span class="c1">// ###############</span>
+
+<span class="c1">// Various tweaks.</span>
+
+<span class="nt">div</span><span class="nc">.boxed</span> <span class="p">{</span>
+    <span class="nt">border</span><span class="nd">:</span> <span class="nn">#ecece7</span> <span class="nt">solid</span> <span class="nt">1px</span><span class="o">;</span>
+    <span class="nt">border-radius</span><span class="nd">:</span> <span class="nt">5px</span><span class="o">;</span>
+    <span class="nt">box-shadow</span><span class="nd">:</span> <span class="nt">2px</span> <span class="nt">2px</span> <span class="nt">0</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="nc">.1</span><span class="o">),</span> <span class="nt">2px</span> <span class="nt">2px</span> <span class="nt">0</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="nc">.1</span><span class="o">);</span>
+<span class="p">}</span>
+
+<span class="nc">.container.boxed</span> <span class="nt">h1</span><span class="o">,</span>
+<span class="nc">.container.boxed</span> <span class="nc">.h1</span><span class="o">,</span>
+<span class="nc">.container.boxed</span> <span class="nt">h2</span><span class="o">,</span>
+<span class="nc">.container.boxed</span> <span class="nc">.h2</span> <span class="p">{</span>
+    <span class="nt">border-bottom</span><span class="nd">:</span> <span class="nt">1px</span> <span class="nt">solid</span> <span class="nn">#e0e0dc</span><span class="o">;</span>
+<span class="p">}</span>
+
+<span class="c1">// pre tag tweaks.</span>
+
+<span class="nc">.container.boxed</span> <span class="nt">pre</span> <span class="p">{</span>
+    <span class="nt">white-space</span><span class="nd">:</span> <span class="nt">pre-wrap</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
+    <span class="nt">background-color</span><span class="nd">:</span> <span class="nn">#f8f8f8</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
+    <span class="nt">border-radius</span><span class="nd">:</span> <span class="nt">4px</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
+    <span class="nt">border</span><span class="nd">:</span> <span class="nt">1px</span> <span class="nt">solid</span> <span class="nn">#ccc</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
+    <span class="nt">padding-left</span><span class="nd">:</span> <span class="nt">15px</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
+    <span class="nt">padding-right</span><span class="nd">:</span> <span class="nt">15px</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
+<span class="p">}</span>
+
+<span class="c1">// END theme.scss</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-theme-configuration-file-conf-py">
+<h3>Example theme configuration file (conf.py)<a class="headerlink" href="#example-theme-configuration-file-conf-py" title="Permalink to this headline">¶</a></h3>
+<p>The theme configuration file stores data that will be used to identify the theme on the themes preview page. This file is completely optional and it isn't needed to build a theme nor to preview it.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">theme_name</span></code>: The name for the theme. If not provided, a name for the theme will be generated from the theme's folder name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">theme_description</span></code>: A string describing the theme. The strings is treated as Markdown markup and is going to be rendered as HTML.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extra_examples</span></code>: A path to an HTML file relative to the <strong>UserData/themes</strong> folder. This file can contain any HTML markup that exemplifies any new components/colors added by the generated themes that aren't already exemplified by the existent themes preview page.</p>
+<blockquote>
+<div><div class="admonition-info info admonition">
+<p class="admonition-title">Use of special CSS classes inside the file specified in <code class="docutils literal notranslate"><span class="pre">extra_examples</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bs-docs-section</span></code>: This class is used to add separation between sections.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bs-component</span></code>: This class is used to add HTML source code preview.</p></li>
+</ul>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># START conf.py</span>
+<span class="c1">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Optional theme configuration file.</span>
+
+<span class="sd">Attributes</span>
+<span class="sd">----------</span>
+<span class="sd">settings : dict</span>
+<span class="sd">    The variable containing all settings for a theme. All keys are optional.</span>
+
+<span class="sd">        - theme_name: The display name for a theme. It will be used as the theme preview page&#39;s</span>
+<span class="sd">        title and the page banner title.</span>
+<span class="sd">        - theme_description: A Markdown string that will be used to describe the theme in the page banner.</span>
+<span class="sd">        - extra_examples: A path to an HTML file relative to &quot;UserData/themes&quot;. This file can contain</span>
+<span class="sd">        any HTML that can illustrate new styles added by the generated theme.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">settings</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;theme_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Flatly mod&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;theme_description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#### Differences with the original theme</span>
+
+<span class="s2">##### Overrides</span>
+
+<span class="s2">- Overridden gigantic headings.</span>
+<span class="s2">- Annihilated web font imports.</span>
+<span class="s2">- Reduced inputs/buttons/badges focus border width.</span>
+<span class="s2">- Changed pagination styles to a less *flashy* style.</span>
+<span class="s2">- Overridden sans serif fonts (the default is now **Open Sans**) and monospace fonts (the default is now **DejaVu Sans Mono**).</span>
+
+<span class="s2">##### Added styles</span>
+
+<span class="s2">- Enabled gradients and shadows.</span>
+<span class="s2">- Text styling classes:</span>
+<span class="s2">    - **text-bold**</span>
+<span class="s2">    - **text-bolder**</span>
+<span class="s2">    - **text-italic**</span>
+<span class="s2">    - **text-oblique**</span>
+<span class="s2">    - **text-overline**</span>
+<span class="s2">    - **text-line-through**</span>
+<span class="s2">    - **text-underline**</span>
+<span class="s2">    - **text-font-size-small**</span>
+<span class="s2">    - **text-font-size-medium**</span>
+<span class="s2">    - **text-font-size-large**</span>
+<span class="s2">    - **text-font-size-x-large**</span>
+<span class="s2">    - **text-font-size-xx-large**</span>
+<span class="s2">- Class to center images horizontally:</span>
+<span class="s2">    - **img-centered-container**: This class should be set to a `&lt;div&gt;` containing an `&lt;img&gt;`.</span>
+<span class="s2">- Miscellaneous tweaks/classes:</span>
+<span class="s2">    - **div.boxed**: A class to &quot;frame&quot; an element with a border with radius and a shadow.</span>
+<span class="s2">    - Added a bottom border to `&lt;h1&gt;` and `&lt;h2&gt;` tags and to `h1` and `h2` classes inside `.container.boxed`.</span>
+<span class="s2">    - Tweaked `&lt;pre&gt;` to allow word wrapping. Also changed the background color and added a border with radius to add contrast against the page background.</span>
+<span class="s2">    - Expanded element classes generation (`btn-&lt;color&gt;`, `btn-outline-&lt;color&gt;`, `badge-&lt;color&gt;`, `bg-&lt;color&gt;`, `bg-gradient-&lt;color&gt;` and `border-&lt;color&gt;`) to include extra colors (`blue`, `indigo`, `purple`, `pink`, `red`, `orange`, `yellow`, `green`, `teal` and `cyan`).</span>
+
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;extra_examples&quot;</span><span class="p">:</span> <span class="s2">&quot;extra-examples-with-colors.html&quot;</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="c1"># END conf.py</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ChrootHelper/index.html" class="btn btn-neutral float-right" title="Chroot Helpers&#39;s documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../BackupUtils/index.html" class="btn btn-neutral float-left" title="Backup Utils&#39; documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2020, Odyseus.
+
+    </p>
+  </div>
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

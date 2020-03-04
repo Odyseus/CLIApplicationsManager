@@ -15,6 +15,7 @@ Table of Content
     includes/1-general-notes
     includes/CLIApplicationsManager/index
     includes/BackupUtils/index
+    includes/BootstrapThemesGenerator/index
     includes/ChrootHelper/index
     includes/FilesCleaner/index
     includes/HostsManager/index
@@ -56,8 +57,8 @@ Third-party module's documentations hosted by their authors
     coverage/c
     coverage/python
     modules/BackupUtils/modules
+    modules/BootstrapThemesGenerator/modules.rst
     modules/ChrootHelper/modules
-    modules/CinnamonDocsGenerator/modules
     modules/FilesCleaner/modules
     modules/HostsManager/modules
     modules/JSONSchemaValidator/modules
@@ -65,8 +66,8 @@ Third-party module's documentations hosted by their authors
     modules/MakeCinnamonXletPOT/modules
     modules/MoviesDB/modules
     modules/PackageManager/modules
-    modules/UserApplicationsManager/modules
     modules/python_modules/modules
+    modules/UserApplicationsManager/modules
 
 ##################
 Indices and tables

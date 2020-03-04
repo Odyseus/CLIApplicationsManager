@@ -7,6 +7,8 @@ conf.py template
 
 .. literalinclude:: ../../../../UserData/HostsManager/AppData/data/templates/conf.py
     :language: python
+    :prepend: # START conf.py
+    :append: # END conf.py
 
 .. note::
 

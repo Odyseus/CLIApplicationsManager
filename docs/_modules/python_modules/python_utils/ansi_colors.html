@@ -82,6 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -167,7 +168,7 @@
 
 <span class="sd">Attributes</span>
 <span class="sd">----------</span>
-<span class="sd">Ansi : ANSIColors</span>
+<span class="sd">Ansi : python_utils.ansi_colors.ANSIColors</span>
 <span class="sd">    An ``ANSIColors`` instance.</span>
 <span class="sd">color_table : dict</span>
 <span class="sd">    ANSI color table.</span>
@@ -211,8 +212,8 @@
     <span class="p">{</span><span class="s2">&quot;fg&quot;</span><span class="p">:</span> <span class="s2">&quot;97&quot;</span><span class="p">,</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;107&quot;</span><span class="p">},</span>
 <span class="p">}</span>
 
-
-<span class="n">_bold_markdown_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\*\*([^\*\*]*)\*\*&quot;</span><span class="p">)</span>
+<span class="c1"># NOTE: DO NOT TOUCH THIS! It works good enough. Do not ever try to tweak it again. NEEVER!!!</span>
+<span class="n">_bold_markdown_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\*</span><span class="si">{2}</span><span class="s2">([\s\S]+?)\*</span><span class="si">{2}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">_bold_placeholder</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\033[0m\033[1;49;</span><span class="si">{code}</span><span class="s2">m\1\033[0m\033[0;49;</span><span class="si">{code}</span><span class="s2">m&quot;</span>
 
 
@@ -258,6 +259,11 @@
 <span class="sd">        ----------</span>
 <span class="sd">        code : str</span>
 <span class="sd">            ANSI color code.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        method</span>
+<span class="sd">            A function that will be dynamically attached to ``self``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
             <span class="sd">&quot;&quot;&quot;Colorize text.</span>
@@ -269,8 +275,8 @@
 
 <span class="sd">            Returns</span>
 <span class="sd">            -------</span>
-<span class="sd">            str</span>
-<span class="sd">                ANSI formatted string.</span>
+<span class="sd">            method</span>
+<span class="sd">                The ``self._colorize`` function with a specific ANSI color code attached.</span>
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colorize</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
 

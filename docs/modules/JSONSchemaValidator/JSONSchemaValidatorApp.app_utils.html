@@ -84,6 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -199,7 +200,7 @@ from this location without exceptions.</p>
 <p>Initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Message that the exception should display.</p>
+<dd class="field-odd"><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Message.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -211,7 +212,7 @@ from this location without exceptions.</p>
 <p>Initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Message that the exception should display.</p>
+<dd class="field-odd"><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- File path.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -223,7 +224,10 @@ from this location without exceptions.</p>
 <p>Initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Message that the exception should display.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>missing_parameter</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Parameter.</p></li>
+<li><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- File path.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -231,12 +235,56 @@ from this location without exceptions.</p>
 <dl class="function">
 <dt id="JSONSchemaValidatorApp.app_utils.get_value_from_object">
 <code class="sig-prename descclassname">JSONSchemaValidatorApp.app_utils.</code><code class="sig-name descname">get_value_from_object</code><span class="sig-paren">(</span><em class="sig-param">file_path</em>, <em class="sig-param">obj</em>, <em class="sig-param">props</em>, <em class="sig-param">logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/JSONSchemaValidatorApp/app_utils.html#get_value_from_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#JSONSchemaValidatorApp.app_utils.get_value_from_object" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Get value from object.</p>
+<p>Recursively get from <code class="docutils literal notranslate"><span class="pre">obj</span></code> the value of a properties defined as string in <code class="docutils literal notranslate"><span class="pre">props</span></code>. For
+example, if <code class="docutils literal notranslate"><span class="pre">props</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">prop1.prop2.prop3</span></code>, the returned value will be the
+value of <code class="docutils literal notranslate"><span class="pre">prop3</span></code> that's inside the object <code class="docutils literal notranslate"><span class="pre">prop2</span></code> that it's inside the object <code class="docutils literal notranslate"><span class="pre">prop1</span></code>
+that's inside the object <code class="docutils literal notranslate"><span class="pre">obj</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- File path where the object <code class="docutils literal notranslate"><span class="pre">obj</span></code> is defined. Used for logging purposes.</p></li>
+<li><p><strong>obj</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) -- The object from where to extract data.</p></li>
+<li><p><strong>props</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- The properties of <code class="docutils literal notranslate"><span class="pre">obj</span></code> defined as a string.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><em>LogSystem</em></a>) -- The logger.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The value of a property.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#SystemExit" title="(in Python v3.8)"><strong>SystemExit</strong></a> -- Halt execution on error.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="function">
 <dt id="JSONSchemaValidatorApp.app_utils.validate_schema">
 <code class="sig-prename descclassname">JSONSchemaValidatorApp.app_utils.</code><code class="sig-name descname">validate_schema</code><span class="sig-paren">(</span><em class="sig-param">data_file</em>, <em class="sig-param">schema_file</em>, <em class="sig-param">data_prop=None</em>, <em class="sig-param">schema_prop=None</em>, <em class="sig-param">logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/JSONSchemaValidatorApp/app_utils.html#validate_schema"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#JSONSchemaValidatorApp.app_utils.validate_schema" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Validate JSON schema.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- The path to the file from where to get the data to validate.</p></li>
+<li><p><strong>schema_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- The path to the file containing the JSON schema/s to alidate against.</p></li>
+<li><p><strong>data_prop</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a><em>, </em><em>optional</em>) -- A property name inside an object contained inside the <code class="docutils literal notranslate"><span class="pre">data_file</span></code>.</p></li>
+<li><p><strong>schema_prop</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a><em>, </em><em>optional</em>) -- A property name inside an object contained inside the <code class="docutils literal notranslate"><span class="pre">schema_file</span></code>.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a><em>, </em><em>optional</em>) -- See <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#JSONSchemaValidatorApp.app_utils.InvalidFile" title="JSONSchemaValidatorApp.app_utils.InvalidFile"><strong>InvalidFile</strong></a> -- Files whose extensions are not .json or .py are invalid files.</p></li>
+<li><p><a class="reference internal" href="#JSONSchemaValidatorApp.app_utils.MissingRequiredParameter" title="JSONSchemaValidatorApp.app_utils.MissingRequiredParameter"><strong>MissingRequiredParameter</strong></a> -- A Python <code class="docutils literal notranslate"><span class="pre">data_file</span></code> file requires to have the <code class="docutils literal notranslate"><span class="pre">data_prop</span></code> declared.</p></li>
+<li><p><a class="reference internal" href="#JSONSchemaValidatorApp.app_utils.NonExistentFile" title="JSONSchemaValidatorApp.app_utils.NonExistentFile"><strong>NonExistentFile</strong></a> -- The file paths declared in <code class="docutils literal notranslate"><span class="pre">data_file</span></code> or <code class="docutils literal notranslate"><span class="pre">schema_file</span></code> do not exist.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#SystemExit" title="(in Python v3.8)"><strong>SystemExit</strong></a> -- Halt execution on error.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 

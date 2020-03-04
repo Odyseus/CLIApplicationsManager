@@ -13,6 +13,8 @@ A tasks file is a Python script containing at least a property called **tasks** 
 
 .. literalinclude:: ../../../../UserData/BackupUtils/AppData/data/templates/tasks_example.py
     :language: python
+    :prepend: # START tasks_example.py
+    :append: # END tasks_example.py
 
 Data keys
 ^^^^^^^^^
@@ -60,6 +62,8 @@ Settings example file
 
 .. literalinclude:: ../../../../UserData/BackupUtils/AppData/data/templates/settings_example.py
     :language: python
+    :prepend: # START settings_example.py
+    :append: # END settings_example.py
 
 Data keys
 ^^^^^^^^^

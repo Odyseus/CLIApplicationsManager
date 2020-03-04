@@ -84,6 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -181,6 +182,17 @@
 <span id="knowledgebaseapp-repositories-handler-module"></span><h1>KnowledgeBaseApp.repositories_handler module<a class="headerlink" href="#module-KnowledgeBaseApp.repositories_handler" title="Permalink to this headline">¶</a></h1>
 <p>Repositories handler utilities.</p>
 <dl class="attribute">
+<dt id="KnowledgeBaseApp.repositories_handler.global_repo_file_patterns_ignore">
+<code class="sig-prename descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="sig-name descname">global_repo_file_patterns_ignore</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.global_repo_file_patterns_ignore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Repositories globally ignored patterns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="KnowledgeBaseApp.repositories_handler.repo_service_url_map">
 <code class="sig-prename descclassname">KnowledgeBaseApp.repositories_handler.</code><code class="sig-name descname">repo_service_url_map</code><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.repo_service_url_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>List of repositories service URLs.</p>
@@ -256,8 +268,11 @@ from this location without exceptions.</p>
 <code class="sig-name descname">_validate_repo_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepositoriesHandler._validate_repo_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._validate_repo_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validate repository data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#KnowledgeBaseApp.repositories_handler.InvalidRepositoryData" title="KnowledgeBaseApp.repositories_handler.InvalidRepositoryData"><strong>InvalidRepositoryData</strong></a> -- Invalid repository data.</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Halt execution.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)">None</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -330,14 +345,14 @@ from this location without exceptions.</p>
 <code class="sig-name descname">_get_sphinx_generated_pages_storage</code><span class="sig-paren">(</span><em class="sig-param">repo_data</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepositoriesHandler._get_sphinx_generated_pages_storage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_sphinx_generated_pages_storage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get Sphinx generated pages storage.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The path to the Sphinx generated pages storage.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) -- Repository data.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The path to the Sphinx generated pages storage.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -347,14 +362,14 @@ from this location without exceptions.</p>
 <code class="sig-name descname">_get_folder_name</code><span class="sig-paren">(</span><em class="sig-param">repo_data</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepositoriesHandler._get_folder_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_folder_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the repository folder name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The repository folder name.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) -- Repository data.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The repository folder name.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -364,14 +379,14 @@ from this location without exceptions.</p>
 <code class="sig-name descname">_get_storage_path</code><span class="sig-paren">(</span><em class="sig-param">repo_data</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepositoriesHandler._get_storage_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_storage_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the storage path (were all the repositories are cloned into).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The storage path.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) -- Repository data.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The storage path.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -381,14 +396,14 @@ from this location without exceptions.</p>
 <code class="sig-name descname">_get_path</code><span class="sig-paren">(</span><em class="sig-param">repo_data</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepositoriesHandler._get_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the repository path.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The repository path.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) -- Repository data.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The repository path.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -398,14 +413,14 @@ from this location without exceptions.</p>
 <code class="sig-name descname">_get_repo_service_slug</code><span class="sig-paren">(</span><em class="sig-param">repo_data</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepositoriesHandler._get_repo_service_slug"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_repo_service_slug" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the repository service slug.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The repository path.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) -- Repository data.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The repository path.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -433,11 +448,14 @@ from this location without exceptions.</p>
 <code class="sig-name descname">_get_repo_url</code><span class="sig-paren">(</span><em class="sig-param">repo_data</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepositoriesHandler._get_repo_url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepositoriesHandler._get_repo_url" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get repository URL.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The repository URL.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) -- Repository data.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The repository URL.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -481,8 +499,12 @@ but are purposely handled (the Sphinx documentations built) separately in
 <code class="sig-name descname">update_all_repositories</code><span class="sig-paren">(</span><em class="sig-param">do_not_pull=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/repositories_handler.html#RepositoriesHandler.update_all_repositories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.repositories_handler.RepositoriesHandler.update_all_repositories" title="Permalink to this definition">¶</a></dt>
 <dd><p>Main function to update repositories.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><strong>exceptions.KeyboardInterruption</strong></a> -- Halt execution.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>do_not_pull</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) -- Just clone the repositories that where not handled before, do not pull from existent
+repositories.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><strong>exceptions.KeyboardInterruption</strong></a> -- Halt execution.</p>
 </dd>
 </dl>
 </dd></dl>

@@ -19,6 +19,8 @@ In this file is stored all the data to handle on-line archives. Its location sho
 
 .. literalinclude:: ../../../../UserData/KnowledgeBase/AppData/data/templates/archives.py
     :language: python
+    :prepend: # START archives.py
+    :append: # END archives.py
 
 Data keys
 ^^^^^^^^^
@@ -43,6 +45,8 @@ Data keys
 - ``unzip_prog``: The command to use to decompress archives. Possible values are **7z**, **unzip** and **tar**. The tar command can accept a decompression argument (See ``untar_arg``).
 - ``untar_arg`` (**Default**: empty (no decompression argument is passed to ``tar``)): The decompress argument used by the ``tar`` program. Possible values are **--xz**, **-J**, **--gzip**, **-z**, **--bzip2** or **-j**.
 
+.. _repositories-py-tempalte-reference:
+
 **repositories.py** template
 ----------------------------
 
@@ -57,6 +61,8 @@ In this file is stored all the data to handle on-line repositories. Its location
 
 .. literalinclude:: ../../../../UserData/KnowledgeBase/AppData/data/templates/repositories.py
     :language: python
+    :prepend: # START repositories.py
+    :append: # END repositories.py
 
 Data keys
 ^^^^^^^^^
@@ -92,3 +98,5 @@ This file is used to assign custom icons to the categories in the sidebar of the
 
 .. literalinclude:: ../../../../UserData/KnowledgeBase/AppData/data/templates/categories.json
     :language: python
+    :prepend: # START categories.json
+    :append: # END categories.json

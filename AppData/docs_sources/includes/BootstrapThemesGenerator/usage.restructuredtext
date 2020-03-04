@@ -1,0 +1,65 @@
+
+Detailed usage
+==============
+
+.. contextual-admonition::
+    :context: info
+    :title: Highlights
+
+    - Themes are located in **UserData/themes**.
+    - Each folder inside the themes folder that doesn't start with a ``_`` and contains a file named **theme.scss** is considered a theme.
+    - Before being able to build themes, the ``node_modules install`` command needs to be executed to install all build requirements.
+    - Themes can be previewed using the ``launch_preview`` command which will start the server and open the themes preview web page in the default web browser.
+
+.. include:: ../0-common/cli-options.restructuredtext
+
+Commands
+--------
+
+app.py build
+^^^^^^^^^^^^
+
+The main command to build themes. The build process will generate a file called **bootstrap.css** with expanded |CSS| rules and a file called **bootstrap.min.css** with compressed |CSS| rules inside a folder called **dist** located inside a theme folder. Additionally, these two files will be copied into **UserData/www/_assets/css/themes/<theme_id>** to make them available for selection on the themes preview page (see :ref:`launch-preview-command-reference`).
+
+Options
+~~~~~~~
+
+- ``-t <id>`` or ``--theme=<id>``: The ID of the theme that one wants to build. If not specified, all themes found inside the **UserData/themes** folder will be built. The ID of a theme is just the name of its folder.
+- ``-s <args>`` or ``--node-sass-args=<args>``: Extra arguments to pass to **node-sass** |CLI|.
+- ``-p <args>`` or ``--postcss-args=<args>``: Extra arguments to pass to **postcss** |CLI|. Default: ``--no-map``.
+
+app.py node_modules
+^^^^^^^^^^^^^^^^^^^
+
+Convenience command to manage the **Node.js** modules used to build the themes.
+
+Sub-commands
+~~~~~~~~~~~~
+
+- ``install``: Executes ``npm install`` inside the **UserData/www** folder.
+- ``update``: Executes ``npm update`` inside the **UserData/www** folder.
+
+.. _launch-preview-command-reference:
+
+app.py launch_preview
+^^^^^^^^^^^^^^^^^^^^^
+
+Launch the web page used to preview generated themes. This command will also restart the web server used to host the page.
+
+Options
+~~~~~~~
+
+- ``--host=<host>`` See :ref:`server-command-reference-0`.
+- ``--port=<port>`` See :ref:`server-command-reference-0`.
+
+.. _server-command-reference-0:
+
+app.py server
+^^^^^^^^^^^^^
+
+The HTTP server started will host the folder at **UserData/www**.
+
+.. include:: ../0-common/server-command.restructuredtext
+
+.. include:: ../0-common/generate-command.restructuredtext
+

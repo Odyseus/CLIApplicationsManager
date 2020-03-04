@@ -82,6 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -625,11 +626,6 @@
 
 <span class="sd">    Generates files that contain the amount of untranslated strings an xlet has.</span>
 
-<span class="sd">    Raises</span>
-<span class="sd">    ------</span>
-<span class="sd">    SystemExit</span>
-<span class="sd">        Halt execution if the msgmerge command is not found.</span>
-
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    uuid : str</span>
@@ -638,6 +634,11 @@
 <span class="sd">        Path to an xlet folder.</span>
 <span class="sd">    pot_path : str</span>
 <span class="sd">        Path to a POT file.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    SystemExit</span>
+<span class="sd">        Halt execution if the msgmerge command is not found.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;msgmerge&quot;</span><span class="p">):</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;**MissingCommand:** msgmerge command not found!!!&quot;</span><span class="p">)</span>
@@ -705,19 +706,19 @@
 <div class="viewcode-block" id="scan_xlet"><a class="viewcode-back" href="../../modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils.scan_xlet">[docs]</a><span class="k">def</span> <span class="nf">scan_xlet</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">app_logger</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Scan xlet.</span>
 
-<span class="sd">    Raises</span>
-<span class="sd">    ------</span>
-<span class="sd">    exceptions.MissingCommand</span>
-<span class="sd">        See &lt;class :any:`exceptions.MissingCommand`&gt;.</span>
-<span class="sd">    SystemExit</span>
-<span class="sd">        Quit program.</span>
-
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    args : list</span>
 <span class="sd">        The list of arguments passed by the CLI application.</span>
 <span class="sd">    app_logger : object</span>
 <span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    exceptions.MissingCommand</span>
+<span class="sd">        See &lt;class :any:`exceptions.MissingCommand`&gt;.</span>
+<span class="sd">    SystemExit</span>
+<span class="sd">        Quit program.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">logger</span>
     <span class="n">logger</span> <span class="o">=</span> <span class="n">app_logger</span>

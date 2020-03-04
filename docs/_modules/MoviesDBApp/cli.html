@@ -82,6 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -182,6 +183,7 @@
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appname__</span>
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__status__</span>
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__version__</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">bottle_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cli_utils</span>
 
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
@@ -250,8 +252,11 @@
 <span class="sd">        Where docopt_args is stored.</span>
 <span class="sd">    action : method</span>
 <span class="sd">        Set the method that will be executed when calling CommandLineTool.run().</span>
+<span class="sd">    www_root : str</span>
+<span class="sd">        Path to the folder that will be served by the web server.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">action</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">www_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;www&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docopt_args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -335,16 +340,19 @@
 <span class="sd">        action : str, optional</span>
 <span class="sd">            Any of the following: start/stop/restart.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">www_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;www&quot;</span><span class="p">)</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">www_root</span><span class="p">)</span>
-        <span class="n">cmd_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;python_scripts&quot;</span><span class="p">,</span> <span class="s2">&quot;http_server&quot;</span><span class="p">)</span>
+        <span class="n">app_slug</span> <span class="o">=</span> <span class="s2">&quot;MoviesDB&quot;</span>
+        <span class="n">web_app_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span>
+                                                    <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">App&quot;</span> <span class="o">%</span> <span class="n">app_slug</span><span class="p">,</span>
+                                                    <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_webapp.py&quot;</span> <span class="o">%</span> <span class="n">app_slug</span><span class="p">))</span>
 
-        <span class="c1"># Use of os.execv() so at the end only one process is left executing.</span>
-        <span class="c1"># The &quot;http_server&quot; executable also uses os.execv() to launch the real web application.</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">execv</span><span class="p">(</span><span class="n">cmd_path</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot; &quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">action</span><span class="p">,</span>
-                                    <span class="s2">&quot;MoviesDB&quot;</span><span class="p">,</span>
-                                    <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--host&quot;</span><span class="p">],</span>
-                                    <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--port&quot;</span><span class="p">]])</span></div>
+        <span class="n">bottle_utils</span><span class="o">.</span><span class="n">handle_server</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="n">action</span><span class="p">,</span>
+                                   <span class="n">server_args</span><span class="o">=</span><span class="p">{</span>
+                                       <span class="s2">&quot;www_root&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">www_root</span><span class="p">,</span>
+                                       <span class="s2">&quot;web_app_path&quot;</span><span class="p">:</span> <span class="n">web_app_path</span><span class="p">,</span>
+                                       <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--host&quot;</span><span class="p">],</span>
+                                       <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--port&quot;</span><span class="p">]</span>
+                                   <span class="p">},</span>
+                                   <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CommandLineInterface.http_server_start"><a class="viewcode-back" href="../../modules/MoviesDB/MoviesDBApp.cli.html#MoviesDBApp.cli.CommandLineInterface.http_server_start">[docs]</a>    <span class="k">def</span> <span class="nf">http_server_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Self explanatory.</span>

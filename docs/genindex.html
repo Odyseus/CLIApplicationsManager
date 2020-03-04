@@ -83,6 +83,7 @@
 <li class="toctree-l1"><a class="reference internal" href="includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -422,9 +423,9 @@
       <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.a">a (BackupUtilsApp.cli.CommandLineInterface attribute)</a>
 
       <ul>
-        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.a">(ChrootHelperApp.cli.CommandLineInterface attribute)</a>
+        <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.a">(BootstrapThemesGeneratorApp.cli.CommandLineInterface attribute)</a>
 </li>
-        <li><a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.cli.html#CinnamonDocsGeneratorApp.cli.CommandLineInterface.a">(CinnamonDocsGeneratorApp.cli.CommandLineInterface attribute)</a>
+        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.a">(ChrootHelperApp.cli.CommandLineInterface attribute)</a>
 </li>
         <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.a">(FilesCleanerApp.cli.CommandLineInterface attribute)</a>
 </li>
@@ -450,9 +451,9 @@
       <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.action">action (BackupUtilsApp.cli.CommandLineInterface attribute)</a>, <a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.action">[1]</a>
 
       <ul>
-        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.action">(ChrootHelperApp.cli.CommandLineInterface attribute)</a>, <a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.action">[1]</a>
+        <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.action">(BootstrapThemesGeneratorApp.cli.CommandLineInterface attribute)</a>, <a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.action">[1]</a>
 </li>
-        <li><a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.cli.html#CinnamonDocsGeneratorApp.cli.CommandLineInterface.action">(CinnamonDocsGeneratorApp.cli.CommandLineInterface attribute)</a>, <a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.cli.html#CinnamonDocsGeneratorApp.cli.CommandLineInterface.action">[1]</a>
+        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.action">(ChrootHelperApp.cli.CommandLineInterface attribute)</a>, <a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.action">[1]</a>
 </li>
         <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.action">(FilesCleanerApp.cli.CommandLineInterface attribute)</a>, <a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.action">[1]</a>
 </li>
@@ -471,12 +472,12 @@
         <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.cli.html#UserApplicationsManagerApp.cli.CommandLineInterface.action">(UserApplicationsManagerApp.cli.CommandLineInterface attribute)</a>, <a href="modules/UserApplicationsManager/UserApplicationsManagerApp.cli.html#UserApplicationsManagerApp.cli.CommandLineInterface.action">[1]</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner.actions">actions (FilesCleanerApp.app_utils.FilesCleaner attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.add_menu_item">add_menu_item() (python_modules.python_utils.menu.Menu method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager.all_apps">all_apps (UserApplicationsManagerApp.app_utils.ApplicationsManager attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.all_menu_items">all_menu_items (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
@@ -507,11 +508,17 @@
 </li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager.app_type">app_type (UserApplicationsManagerApp.app_utils.ApplicationsManager attribute)</a>
 </li>
+      <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.schemas.html#UserApplicationsManagerApp.schemas.application_schema_archive_type">application_schema_archive_type (in module UserApplicationsManagerApp.schemas)</a>
+</li>
+      <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.schemas.html#UserApplicationsManagerApp.schemas.applications_schema_global">applications_schema_global (in module UserApplicationsManagerApp.schemas)</a>
+</li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.ApplicationsManager">ApplicationsManager (class in UserApplicationsManagerApp.app_utils)</a>
 </li>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.cli.html#UserApplicationsManagerApp.cli.CommandLineInterface.apps_manager">apps_manager (UserApplicationsManagerApp.cli.CommandLineInterface attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.apps_manager_readme_template">apps_manager_readme_template (in module python_modules.app_utils)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.schemas.html#KnowledgeBaseApp.schemas.archives_schema">archives_schema (in module KnowledgeBaseApp.schemas)</a>
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler">ArchivesHandler (class in KnowledgeBaseApp.archives_handler)</a>
 </li>
@@ -555,22 +562,24 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.template_utils.html#python_modules.python_utils.template_utils.BASH_COMPLETION_LOADER_CONTENT">BASH_COMPLETION_LOADER_CONTENT (in module python_modules.python_utils.template_utils)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.template_utils.html#python_modules.python_utils.template_utils.bash_completions_step1">bash_completions_step1 (in module python_modules.python_utils.template_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.template_utils.html#python_modules.python_utils.template_utils.bash_completions_step2">bash_completions_step2 (in module python_modules.python_utils.template_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.mistune_utils.html#python_modules.python_utils.mistune_utils.MistuneCustomRenderer.block_quote">block_quote() (python_modules.python_utils.mistune_utils.MistuneCustomRenderer method)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.HostsManager_webapp.html#HostsManagerApp.HostsManager_webapp.bottle_app">bottle_app (in module HostsManagerApp.HostsManager_webapp)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.bottle_app">(in module KnowledgeBaseApp.KnowledgeBase_webapp)</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.html#module-BootstrapThemesGeneratorApp">BootstrapThemesGeneratorApp (module)</a>
 </li>
-        <li><a href="modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.bottle_app">(in module MoviesDBApp.MoviesDB_webapp)</a>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.app_utils.html#module-BootstrapThemesGeneratorApp.app_utils">BootstrapThemesGeneratorApp.app_utils (module)</a>
 </li>
-      </ul></li>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#module-BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp">BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp (module)</a>
+</li>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#module-BootstrapThemesGeneratorApp.cli">BootstrapThemesGeneratorApp.cli (module)</a>
+</li>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp">BootstrapThemesGeneratorWebapp (class in BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp)</a>
+</li>
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager.build_hosts_file">build_hosts_file() (HostsManagerApp.app_utils.HostsManager method)</a>
 
       <ul>
@@ -581,6 +590,14 @@
 
       <ul>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler.build_sphinx_docs">(KnowledgeBaseApp.repositories_handler.RepositoriesHandler method)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.build_theme_selector">build_theme_selector() (BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp method)</a>
+</li>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.build_themes">build_themes() (BootstrapThemesGeneratorApp.cli.CommandLineInterface method)</a>
+
+      <ul>
+        <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.app_utils.html#BootstrapThemesGeneratorApp.app_utils.build_themes">(in module BootstrapThemesGeneratorApp.app_utils)</a>
 </li>
       </ul></li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.bump_app_version">bump_app_version() (in module python_modules.app_utils)</a>
@@ -603,6 +620,8 @@
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.CAT_MENU_TEMPLATE">CAT_MENU_TEMPLATE (in module KnowledgeBaseApp.app_utils)</a>
 </li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.schemas.html#KnowledgeBaseApp.schemas.categories_data_schema">categories_data_schema (in module KnowledgeBaseApp.schemas)</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.char_empty">char_empty (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.char_selected">char_selected (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
@@ -623,12 +642,6 @@
 </li>
       <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#module-ChrootHelperApp.cli">ChrootHelperApp.cli (module)</a>
 </li>
-      <li><a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.html#module-CinnamonDocsGeneratorApp">CinnamonDocsGeneratorApp (module)</a>
-</li>
-      <li><a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.app_utils.html#module-CinnamonDocsGeneratorApp.app_utils">CinnamonDocsGeneratorApp.app_utils (module)</a>
-</li>
-      <li><a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.cli.html#module-CinnamonDocsGeneratorApp.cli">CinnamonDocsGeneratorApp.cli (module)</a>
-</li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.cleaner">cleaner (FilesCleanerApp.cli.CommandLineInterface attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.CLOSE">CLOSE() (python_modules.python_utils.menu.Menu method)</a>
@@ -640,9 +653,9 @@
       <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface">CommandLineInterface (class in BackupUtilsApp.cli)</a>
 
       <ul>
-        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface">(class in ChrootHelperApp.cli)</a>
+        <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface">(class in BootstrapThemesGeneratorApp.cli)</a>
 </li>
-        <li><a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.cli.html#CinnamonDocsGeneratorApp.cli.CommandLineInterface">(class in CinnamonDocsGeneratorApp.cli)</a>
+        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface">(class in ChrootHelperApp.cli)</a>
 </li>
         <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface">(class in FilesCleanerApp.cli)</a>
 </li>
@@ -666,6 +679,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper">CommandLineInterfaceSuper (class in python_modules.python_utils.cli_utils)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.schemas.html#KnowledgeBaseApp.schemas.common_keys">common_keys (in module KnowledgeBaseApp.schemas)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.prompts.html#python_modules.python_utils.prompts.confirm">confirm() (in module python_modules.python_utils.prompts)</a>
 </li>
@@ -723,16 +738,14 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.hash_utils.html#python_modules.python_utils.hash_utils.dir_hash">dir_hash() (in module python_modules.python_utils.hash_utils)</a>
 </li>
-      <li><a href="modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.dir_path">dir_path (in module MoviesDBApp.MoviesDB_webapp)</a>
-</li>
       <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.display_initial_report">display_initial_report() (PackageManagerApp.pkg_manager.PackageManager method)</a>
 </li>
       <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.display_manual_page">display_manual_page() (BackupUtilsApp.cli.CommandLineInterface method)</a>
 
       <ul>
-        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.display_manual_page">(ChrootHelperApp.cli.CommandLineInterface method)</a>
+        <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.display_manual_page">(BootstrapThemesGeneratorApp.cli.CommandLineInterface method)</a>
 </li>
-        <li><a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.cli.html#CinnamonDocsGeneratorApp.cli.CommandLineInterface.display_manual_page">(CinnamonDocsGeneratorApp.cli.CommandLineInterface method)</a>
+        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.display_manual_page">(ChrootHelperApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.display_manual_page">(FilesCleanerApp.cli.CommandLineInterface method)</a>
 </li>
@@ -766,9 +779,9 @@
       <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.docopt_doc">docopt_doc (in module BackupUtilsApp.cli)</a>
 
       <ul>
-        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.docopt_doc">(in module ChrootHelperApp.cli)</a>
+        <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.docopt_doc">(in module BootstrapThemesGeneratorApp.cli)</a>
 </li>
-        <li><a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.cli.html#CinnamonDocsGeneratorApp.cli.docopt_doc">(in module CinnamonDocsGeneratorApp.cli)</a>
+        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.docopt_doc">(in module ChrootHelperApp.cli)</a>
 </li>
         <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.docopt_doc">(in module FilesCleanerApp.cli)</a>
 </li>
@@ -815,10 +828,10 @@
 </li>
       <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.errors">errors (PackageManagerApp.pkg_manager.PackageManager attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.escape">escape() (in module polib)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.ExceptionWhitoutTraceBack">ExceptionWhitoutTraceBack</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.ExceptionWhitoutTraceBackWarning">ExceptionWhitoutTraceBackWarning</a>
@@ -832,6 +845,8 @@
       <li><a href="modules/python_modules/python_modules.python_utils.file_utils.html#python_modules.python_utils.file_utils.expand_path">expand_path() (in module python_modules.python_utils.file_utils)</a>
 </li>
       <li><a href="modules/MoviesDB/MoviesDBApp.app_utils.html#MoviesDBApp.app_utils.EXT">EXT (in module MoviesDBApp.app_utils)</a>
+</li>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.extra_examples">extra_examples() (BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -895,13 +910,9 @@
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.generate_categories_html">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.cli.html#CinnamonDocsGeneratorApp.cli.CommandLineInterface.generate_docs">generate_docs() (CinnamonDocsGeneratorApp.cli.CommandLineInterface method)</a>
+      <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.generate_docs">generate_docs() (in module python_modules.app_utils)</a>
 
       <ul>
-        <li><a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.app_utils.html#CinnamonDocsGeneratorApp.app_utils.generate_docs">(in module CinnamonDocsGeneratorApp.app_utils)</a>
-</li>
-        <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.generate_docs">(in module python_modules.app_utils)</a>
-</li>
         <li><a href="modules/python_modules/python_modules.python_utils.sphinx_docs_utils.html#python_modules.python_utils.sphinx_docs_utils.generate_docs">(in module python_modules.python_utils.sphinx_docs_utils)</a>
 </li>
         <li><a href="modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.generate_docs">(python_modules.cli.CommandLineInterface method)</a>
@@ -945,12 +956,12 @@
 </li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.get_app_slugyfied_name">get_app_slugyfied_name() (in module python_modules.app_utils)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.app_utils.html#UserApplicationsManagerApp.app_utils.get_applications">get_applications() (in module UserApplicationsManagerApp.app_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.shell_utils.html#python_modules.python_utils.shell_utils.get_cli_header">get_cli_header() (in module python_modules.python_utils.shell_utils)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.shell_utils.html#python_modules.python_utils.shell_utils.get_cli_separator">get_cli_separator() (in module python_modules.python_utils.shell_utils)</a>
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject.get_data_tables_obj">get_data_tables_obj() (KnowledgeBaseApp.app_utils.DataTablesObject method)</a>
@@ -983,6 +994,12 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.misc_utils.html#python_modules.python_utils.misc_utils.get_system_tempdir">get_system_tempdir() (in module python_modules.python_utils.misc_utils)</a>
 </li>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.app_utils.html#BootstrapThemesGeneratorApp.app_utils.get_themes_list">get_themes_list() (in module BootstrapThemesGeneratorApp.app_utils)</a>
+
+      <ul>
+        <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.get_themes_list">(in module BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp)</a>
+</li>
+      </ul></li>
       <li><a href="modules/python_modules/python_modules.python_utils.misc_utils.html#python_modules.python_utils.misc_utils.get_time_diff">get_time_diff() (in module python_modules.python_utils.misc_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.string_utils.html#python_modules.python_utils.string_utils.get_valid_filename">get_valid_filename() (in module python_modules.python_utils.string_utils)</a>
@@ -994,6 +1011,8 @@
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.getSelected">getSelected() (python_modules.python_utils.multi_select.MultiSelect method)</a>
 </li>
       <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.glob_deletion">glob_deletion (FilesCleanerApp.cli.CommandLineInterface attribute)</a>
+</li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.global_repo_file_patterns_ignore">global_repo_file_patterns_ignore (in module KnowledgeBaseApp.repositories_handler)</a>
 </li>
       <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.global_settings">global_settings (BackupUtilsApp.cli.CommandLineInterface attribute)</a>, <a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.global_settings">[1]</a>
 </li>
@@ -1013,18 +1032,14 @@
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp.handle_local_files">handle_local_files() (KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp method)</a>
 </li>
+      <li><a href="modules/python_modules/python_modules.python_utils.bottle_utils.html#python_modules.python_utils.bottle_utils.handle_server">handle_server() (in module python_modules.python_utils.bottle_utils)</a>
+</li>
       <li><a href="modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.handle_video_path">handle_video_path() (MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.hash_utils.html#python_modules.python_utils.hash_utils.HASH_FUNCS">HASH_FUNCS (in module python_modules.python_utils.hash_utils)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.HostsManager_webapp.html#HostsManagerApp.HostsManager_webapp.HostsManager.host">host (HostsManagerApp.HostsManager_webapp.HostsManager attribute)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp.host">(KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp attribute)</a>
+      <li><a href="modules/python_modules/python_modules.python_utils.bottle_utils.html#python_modules.python_utils.bottle_utils.WebApp.host">host (python_modules.python_utils.bottle_utils.WebApp attribute)</a>
 </li>
-        <li><a href="modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.host">(MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp attribute)</a>
-</li>
-      </ul></li>
       <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.hosts_manager">hosts_manager (HostsManagerApp.cli.CommandLineInterface attribute)</a>
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.app_utils.html#HostsManagerApp.app_utils.HostsManager">HostsManager (class in HostsManagerApp.app_utils)</a>
@@ -1041,43 +1056,51 @@
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.HostsManager_webapp.html#module-HostsManagerApp.HostsManager_webapp">HostsManagerApp.HostsManager_webapp (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/HostsManager/HostsManagerApp.pre_processors.html#module-HostsManagerApp.pre_processors">HostsManagerApp.pre_processors (module)</a>
 </li>
       <li><a href="modules/HostsManager/HostsManagerApp.schemas.html#module-HostsManagerApp.schemas">HostsManagerApp.schemas (module)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.html_to_markdown_clip">html_to_markdown_clip() (KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.html_to_markdown_files">html_to_markdown_files() (KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.http_server">http_server() (HostsManagerApp.cli.CommandLineInterface method)</a>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.http_server">http_server() (BootstrapThemesGeneratorApp.cli.CommandLineInterface method)</a>
 
       <ul>
+        <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.http_server">(HostsManagerApp.cli.CommandLineInterface method)</a>
+</li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.http_server">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/MoviesDB/MoviesDBApp.cli.html#MoviesDBApp.cli.CommandLineInterface.http_server">(MoviesDBApp.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.http_server_restart">http_server_restart() (HostsManagerApp.cli.CommandLineInterface method)</a>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.http_server_restart">http_server_restart() (BootstrapThemesGeneratorApp.cli.CommandLineInterface method)</a>
 
       <ul>
+        <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.http_server_restart">(HostsManagerApp.cli.CommandLineInterface method)</a>
+</li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.http_server_restart">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/MoviesDB/MoviesDBApp.cli.html#MoviesDBApp.cli.CommandLineInterface.http_server_restart">(MoviesDBApp.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.http_server_start">http_server_start() (HostsManagerApp.cli.CommandLineInterface method)</a>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.http_server_start">http_server_start() (BootstrapThemesGeneratorApp.cli.CommandLineInterface method)</a>
 
       <ul>
+        <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.http_server_start">(HostsManagerApp.cli.CommandLineInterface method)</a>
+</li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.http_server_start">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/MoviesDB/MoviesDBApp.cli.html#MoviesDBApp.cli.CommandLineInterface.http_server_start">(MoviesDBApp.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.http_server_stop">http_server_stop() (HostsManagerApp.cli.CommandLineInterface method)</a>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.http_server_stop">http_server_stop() (BootstrapThemesGeneratorApp.cli.CommandLineInterface method)</a>
 
       <ul>
+        <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.http_server_stop">(HostsManagerApp.cli.CommandLineInterface method)</a>
+</li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.http_server_stop">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/MoviesDB/MoviesDBApp.cli.html#MoviesDBApp.cli.CommandLineInterface.http_server_stop">(MoviesDBApp.cli.CommandLineInterface method)</a>
@@ -1089,9 +1112,11 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/HostsManager/HostsManagerApp.HostsManager_webapp.html#HostsManagerApp.HostsManager_webapp.HostsManager.index">index() (HostsManagerApp.HostsManager_webapp.HostsManager method)</a>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.index">index() (BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp method)</a>
 
       <ul>
+        <li><a href="modules/HostsManager/HostsManagerApp.HostsManager_webapp.html#HostsManagerApp.HostsManager_webapp.HostsManager.index">(HostsManagerApp.HostsManager_webapp.HostsManager method)</a>
+</li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp.index">(KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp method)</a>
 </li>
         <li><a href="modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.index">(MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp method)</a>
@@ -1127,10 +1152,10 @@
 </li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.InvalidApplicationName">InvalidApplicationName</a>
 </li>
-      <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.InvalidArgument">InvalidArgument</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.InvalidArgument">InvalidArgument</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.InvalidDestination">InvalidDestination</a>
 </li>
       <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.app_utils.html#JSONSchemaValidatorApp.app_utils.InvalidFile">InvalidFile</a>
@@ -1219,6 +1244,8 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.launch_preview">launch_preview() (BootstrapThemesGeneratorApp.cli.CommandLineInterface method)</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.length">length (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
       <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils.LOCALE_DIR">LOCALE_DIR (in module MakeCinnamonXletPOTApp.app_utils)</a>
@@ -1268,9 +1295,9 @@
       <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.main">main() (in module BackupUtilsApp.cli)</a>
 
       <ul>
-        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.main">(in module ChrootHelperApp.cli)</a>
+        <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.main">(in module BootstrapThemesGeneratorApp.cli)</a>
 </li>
-        <li><a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.cli.html#CinnamonDocsGeneratorApp.cli.main">(in module CinnamonDocsGeneratorApp.cli)</a>
+        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.main">(in module ChrootHelperApp.cli)</a>
 </li>
         <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.main">(in module FilesCleanerApp.cli)</a>
 </li>
@@ -1313,6 +1340,12 @@
         <li><a href="modules/UserApplicationsManager/UserApplicationsManagerApp.cli.html#UserApplicationsManagerApp.cli.CommandLineInterface.manage_apps">(UserApplicationsManagerApp.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.manage_node_modules">manage_node_modules() (BootstrapThemesGeneratorApp.cli.CommandLineInterface method)</a>
+
+      <ul>
+        <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.app_utils.html#BootstrapThemesGeneratorApp.app_utils.manage_node_modules">(in module BootstrapThemesGeneratorApp.app_utils)</a>
+</li>
+      </ul></li>
       <li><a href="modules/python_modules/python_modules.python_utils.git_utils.html#python_modules.python_utils.git_utils.manage_repo">manage_repo() (in module python_modules.python_utils.git_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.manage_repo_submodules">manage_repo_submodules() (python_modules.cli.CommandLineInterface method)</a>
@@ -1327,14 +1360,14 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.menu_items">menu_items (python_modules.python_utils.menu.Menu attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.POEntry.merge">merge() (polib.POEntry method)</a>
 
       <ul>
         <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.POFile.merge">(polib.POFile method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.misc_utils.html#python_modules.python_utils.misc_utils.merge_dict">merge_dict() (in module python_modules.python_utils.misc_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.message">message (python_modules.python_utils.menu.Menu attribute)</a>
@@ -1409,12 +1442,14 @@
       </ul></li>
       <li><a href="modules/python_modules/python_modules.python_utils.file_utils.html#python_modules.python_utils.file_utils.newer">newer() (in module python_modules.python_utils.file_utils)</a>
 </li>
-      <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.non_existent_pkgs">non_existent_pkgs (PackageManagerApp.pkg_manager.PackageManager attribute)</a>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.node_action">node_action (BootstrapThemesGeneratorApp.cli.CommandLineInterface attribute)</a>, <a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.node_action">[1]</a>
 </li>
-      <li><a href="modules/python_modules/python_modules.python_utils.prompts.html#python_modules.python_utils.prompts.nonempty">nonempty() (in module python_modules.python_utils.prompts)</a>
+      <li><a href="modules/PackageManager/PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.non_existent_pkgs">non_existent_pkgs (PackageManagerApp.pkg_manager.PackageManager attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/python_modules/python_modules.python_utils.prompts.html#python_modules.python_utils.prompts.nonempty">nonempty() (in module python_modules.python_utils.prompts)</a>
+</li>
       <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.app_utils.html#JSONSchemaValidatorApp.app_utils.NonExistentFile">NonExistentFile</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.NoProfileNameProvided">NoProfileNameProvided</a>
@@ -1477,6 +1512,8 @@
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.pandoc_inplace_convertion">pandoc_inplace_convertion() (in module KnowledgeBaseApp.app_utils)</a>
 </li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.parse_rst">parse_rst() (in module KnowledgeBaseApp.KnowledgeBase_webapp)</a>
+</li>
       <li><a href="includes/0-thirdparty_docs.d/polib/api.html#polib.MOFile.percent_translated">percent_translated() (polib.MOFile method)</a>
 
       <ul>
@@ -1495,15 +1532,11 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.popen">popen() (in module python_modules.python_utils.cmd_utils)</a>
 </li>
-      <li><a href="modules/HostsManager/HostsManagerApp.HostsManager_webapp.html#HostsManagerApp.HostsManager_webapp.HostsManager.port">port (HostsManagerApp.HostsManager_webapp.HostsManager attribute)</a>
-
-      <ul>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp.port">(KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp attribute)</a>
+      <li><a href="modules/python_modules/python_modules.python_utils.bottle_utils.html#python_modules.python_utils.bottle_utils.WebApp.port">port (python_modules.python_utils.bottle_utils.WebApp attribute)</a>
 </li>
-        <li><a href="modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.port">(MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp attribute)</a>
-</li>
-      </ul></li>
       <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.app_utils.html#MakeCinnamonXletPOTApp.app_utils.POT_HEADER">POT_HEADER (in module MakeCinnamonXletPOTApp.app_utils)</a>
+</li>
+      <li><a href="modules/HostsManager/HostsManagerApp.pre_processors.html#HostsManagerApp.pre_processors.pre_processors">pre_processors (in module HostsManagerApp.pre_processors)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.print_all_apps">print_all_apps() (in module python_modules.app_utils)</a>
 
@@ -1525,6 +1558,12 @@
 </li>
       <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.print_tasks">print_tasks() (BackupUtilsApp.cli.CommandLineInterface method)</a>
 </li>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.print_theme_ids">print_theme_ids() (BootstrapThemesGeneratorApp.cli.CommandLineInterface method)</a>
+
+      <ul>
+        <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.app_utils.html#BootstrapThemesGeneratorApp.app_utils.print_theme_ids">(in module BootstrapThemesGeneratorApp.app_utils)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.prompt">prompt (python_modules.python_utils.menu.Menu attribute)</a>
@@ -1538,6 +1577,8 @@
       <li><a href="modules/python_modules/python_modules.python_utils.html#module-python_modules.python_utils">python_modules.python_utils (module)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.ansi_colors.html#module-python_modules.python_utils.ansi_colors">python_modules.python_utils.ansi_colors (module)</a>
+</li>
+      <li><a href="modules/python_modules/python_modules.python_utils.bottle_utils.html#module-python_modules.python_utils.bottle_utils">python_modules.python_utils.bottle_utils (module)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.cli_utils.html#module-python_modules.python_utils.cli_utils">python_modules.python_utils.cli_utils (module)</a>
 </li>
@@ -1617,6 +1658,8 @@
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.repositories_data_tables_json_path">repositories_data_tables_json_path (in module KnowledgeBaseApp.repositories_handler)</a>
 </li>
+      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.schemas.html#KnowledgeBaseApp.schemas.repositories_schema">repositories_schema (in module KnowledgeBaseApp.schemas)</a>
+</li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler">RepositoriesHandler (class in KnowledgeBaseApp.repositories_handler)</a>
 </li>
       <li><a href="modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.root_folder">root_folder (in module BackupUtilsApp.app_utils)</a>
@@ -1624,13 +1667,15 @@
       <ul>
         <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.root_folder">(in module BackupUtilsApp.cli)</a>
 </li>
+        <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.app_utils.html#BootstrapThemesGeneratorApp.app_utils.root_folder">(in module BootstrapThemesGeneratorApp.app_utils)</a>
+</li>
+        <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.root_folder">(in module BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp)</a>
+</li>
+        <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.root_folder">(in module BootstrapThemesGeneratorApp.cli)</a>
+</li>
         <li><a href="modules/ChrootHelper/ChrootHelperApp.app_utils.html#ChrootHelperApp.app_utils.root_folder">(in module ChrootHelperApp.app_utils)</a>
 </li>
         <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.root_folder">(in module ChrootHelperApp.cli)</a>
-</li>
-        <li><a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.app_utils.html#CinnamonDocsGeneratorApp.app_utils.root_folder">(in module CinnamonDocsGeneratorApp.app_utils)</a>
-</li>
-        <li><a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.cli.html#CinnamonDocsGeneratorApp.cli.root_folder">(in module CinnamonDocsGeneratorApp.cli)</a>
 </li>
         <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.root_folder">(in module FilesCleanerApp.app_utils)</a>
 </li>
@@ -1694,9 +1739,9 @@
 </li>
         <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.TarLocalTask.run">(BackupUtilsApp.tasks.TarLocalTask method)</a>
 </li>
-        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.run">(ChrootHelperApp.cli.CommandLineInterface method)</a>
+        <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.run">(BootstrapThemesGeneratorApp.cli.CommandLineInterface method)</a>
 </li>
-        <li><a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.cli.html#CinnamonDocsGeneratorApp.cli.CommandLineInterface.run">(CinnamonDocsGeneratorApp.cli.CommandLineInterface method)</a>
+        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.run">(ChrootHelperApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/FilesCleaner/FilesCleanerApp.app_utils.html#FilesCleanerApp.app_utils.FilesCleaner.run">(FilesCleanerApp.app_utils.FilesCleaner method)</a>
 </li>
@@ -1704,23 +1749,19 @@
 </li>
         <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.run">(HostsManagerApp.cli.CommandLineInterface method)</a>
 </li>
-        <li><a href="modules/HostsManager/HostsManagerApp.HostsManager_webapp.html#HostsManagerApp.HostsManager_webapp.HostsManager.run">(HostsManagerApp.HostsManager_webapp.HostsManager method)</a>
-</li>
         <li><a href="modules/JSONSchemaValidator/JSONSchemaValidatorApp.cli.html#JSONSchemaValidatorApp.cli.CommandLineInterface.run">(JSONSchemaValidatorApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.run">(KnowledgeBaseApp.cli.CommandLineInterface method)</a>
-</li>
-        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp.run">(KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp method)</a>
 </li>
         <li><a href="modules/MakeCinnamonXletPOT/MakeCinnamonXletPOTApp.cli.html#MakeCinnamonXletPOTApp.cli.CommandLineInterface.run">(MakeCinnamonXletPOTApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/MoviesDB/MoviesDBApp.cli.html#MoviesDBApp.cli.CommandLineInterface.run">(MoviesDBApp.cli.CommandLineInterface method)</a>
 </li>
-        <li><a href="modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.run">(MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp method)</a>
-</li>
         <li><a href="modules/PackageManager/PackageManagerApp.cli.html#PackageManagerApp.cli.CommandLineInterface.run">(PackageManagerApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.run">(python_modules.cli.CommandLineInterface method)</a>
+</li>
+        <li><a href="modules/python_modules/python_modules.python_utils.bottle_utils.html#python_modules.python_utils.bottle_utils.WebApp.run">(python_modules.python_utils.bottle_utils.WebApp method)</a>
 </li>
         <li><a href="modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper.run">(python_modules.python_utils.cli_utils.CommandLineInterfaceSuper method)</a>
 </li>
@@ -1773,12 +1814,20 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.mail_system.html#python_modules.python_utils.mail_system.MailSystem.send">send() (python_modules.python_utils.mail_system.MailSystem method)</a>
 </li>
-      <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp.server_static">server_static() (KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp method)</a>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.server_static">server_static() (BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp method)</a>
 
       <ul>
+        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp.server_static">(KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp method)</a>
+</li>
         <li><a href="modules/MoviesDB/MoviesDBApp.MoviesDB_webapp.html#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.server_static">(MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.server_static_bootstrap">server_static_bootstrap() (BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp method)</a>
+</li>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.server_static_node_files">server_static_node_files() (BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp method)</a>
+</li>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.server_static_node_files_bootswatch">server_static_node_files_bootswatch() (BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp method)</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.set_menu_items">set_menu_items() (python_modules.python_utils.menu.Menu method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.set_message">set_message() (python_modules.python_utils.menu.Menu method)</a>
@@ -1793,9 +1842,19 @@
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.set_title_enabled">set_title_enabled() (python_modules.python_utils.menu.Menu method)</a>
 </li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.schemas.html#BackupUtilsApp.schemas.settings_schema">settings_schema (in module BackupUtilsApp.schemas)</a>
+
+      <ul>
+        <li><a href="modules/HostsManager/HostsManagerApp.schemas.html#HostsManagerApp.schemas.settings_schema">(in module HostsManagerApp.schemas)</a>
+</li>
+      </ul></li>
       <li><a href="modules/python_modules/python_modules.python_utils.menu.html#python_modules.python_utils.menu.Menu.show">show() (python_modules.python_utils.menu.Menu method)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.string_utils.html#python_modules.python_utils.string_utils.slugify">slugify() (in module python_modules.python_utils.string_utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/HostsManager/HostsManagerApp.schemas.html#HostsManagerApp.schemas.sources_schema">sources_schema (in module HostsManagerApp.schemas)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.app_utils.html#python_modules.app_utils.spacefm_find_files">spacefm_find_files() (in module python_modules.app_utils)</a>
 
@@ -1803,13 +1862,15 @@
         <li><a href="modules/python_modules/python_modules.cli.html#python_modules.cli.CommandLineInterface.spacefm_find_files">(python_modules.cli.CommandLineInterface method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.string_utils.html#python_modules.python_utils.string_utils.split_on_uppercase">split_on_uppercase() (in module python_modules.python_utils.string_utils)</a>
 </li>
       <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.BaseTask.start">start() (BackupUtilsApp.tasks.BaseTask method)</a>
 </li>
+      <li><a href="modules/python_modules/python_modules.python_utils.bottle_utils.html#python_modules.python_utils.bottle_utils.start_server">start_server() (in module python_modules.python_utils.bottle_utils)</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.stdscr">stdscr (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
+</li>
+      <li><a href="modules/python_modules/python_modules.python_utils.bottle_utils.html#python_modules.python_utils.bottle_utils.stop_server">stop_server() (in module python_modules.python_utils.bottle_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.STREAM_BOTH">STREAM_BOTH (in module python_modules.python_utils.cmd_utils)</a>
 </li>
@@ -1824,9 +1885,9 @@
       <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.system_executable_generation">system_executable_generation() (BackupUtilsApp.cli.CommandLineInterface method)</a>
 
       <ul>
-        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.system_executable_generation">(ChrootHelperApp.cli.CommandLineInterface method)</a>
+        <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.system_executable_generation">(BootstrapThemesGeneratorApp.cli.CommandLineInterface method)</a>
 </li>
-        <li><a href="modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.cli.html#CinnamonDocsGeneratorApp.cli.CommandLineInterface.system_executable_generation">(CinnamonDocsGeneratorApp.cli.CommandLineInterface method)</a>
+        <li><a href="modules/ChrootHelper/ChrootHelperApp.cli.html#ChrootHelperApp.cli.CommandLineInterface.system_executable_generation">(ChrootHelperApp.cli.CommandLineInterface method)</a>
 </li>
         <li><a href="modules/FilesCleaner/FilesCleanerApp.cli.html#FilesCleanerApp.cli.CommandLineInterface.system_executable_generation">(FilesCleanerApp.cli.CommandLineInterface method)</a>
 </li>
@@ -1866,6 +1927,8 @@
       <li><a href="modules/BackupUtils/BackupUtilsApp.tasks.html#BackupUtilsApp.tasks.TarLocalTask">TarLocalTask (class in BackupUtilsApp.tasks)</a>
 </li>
       <li><a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.tasks">tasks (BackupUtilsApp.cli.CommandLineInterface attribute)</a>, <a href="modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.tasks">[1]</a>
+</li>
+      <li><a href="modules/BackupUtils/BackupUtilsApp.schemas.html#BackupUtilsApp.schemas.tasks_schema">tasks_schema (in module BackupUtilsApp.schemas)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.prompts.html#python_modules.python_utils.prompts.term_decode">term_decode() (in module python_modules.python_utils.prompts)</a>
 </li>
@@ -1953,22 +2016,34 @@
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/python_modules/python_modules.python_utils.bottle_utils.html#python_modules.python_utils.bottle_utils.WebApp">WebApp (class in python_modules.python_utils.bottle_utils)</a>
+</li>
       <li><a href="modules/python_modules/python_modules.python_utils.cmd_utils.html#python_modules.python_utils.cmd_utils.which">which() (in module python_modules.python_utils.cmd_utils)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.win">win (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.window_height">window_height (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.multi_select.html#python_modules.python_utils.multi_select.MultiSelect.window_width">window_width (python_modules.python_utils.multi_select.MultiSelect attribute)</a>
 </li>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.WrongPythonVersion">WrongPythonVersion</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.WrongValueForOption">WrongValueForOption</a>
 </li>
       <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.WWW_BASE_PATH">WWW_BASE_PATH (in module KnowledgeBaseApp.app_utils)</a>
 </li>
+      <li><a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.www_root">www_root (BootstrapThemesGeneratorApp.cli.CommandLineInterface attribute)</a>, <a href="modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.www_root">[1]</a>
+
+      <ul>
+        <li><a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.www_root">(HostsManagerApp.cli.CommandLineInterface attribute)</a>, <a href="modules/HostsManager/HostsManagerApp.cli.html#HostsManagerApp.cli.CommandLineInterface.www_root">[1]</a>
+</li>
+        <li><a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.www_root">(KnowledgeBaseApp.cli.CommandLineInterface attribute)</a>, <a href="modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.www_root">[1]</a>
+</li>
+        <li><a href="modules/MoviesDB/MoviesDBApp.cli.html#MoviesDBApp.cli.CommandLineInterface.www_root">(MoviesDBApp.cli.CommandLineInterface attribute)</a>, <a href="modules/MoviesDB/MoviesDBApp.cli.html#MoviesDBApp.cli.CommandLineInterface.www_root">[1]</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 

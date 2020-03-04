@@ -84,6 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -181,17 +182,6 @@
 <span id="hostsmanagerapp-hostsmanager-webapp-module"></span><h1>HostsManagerApp.HostsManager_webapp module<a class="headerlink" href="#module-HostsManagerApp.HostsManager_webapp" title="Permalink to this headline">¶</a></h1>
 <p>Web application.</p>
 <dl class="attribute">
-<dt id="HostsManagerApp.HostsManager_webapp.bottle_app">
-<code class="sig-prename descclassname">HostsManagerApp.HostsManager_webapp.</code><code class="sig-name descname">bottle_app</code><a class="headerlink" href="#HostsManagerApp.HostsManager_webapp.bottle_app" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bottle application.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)">object</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
 <dt id="HostsManagerApp.HostsManager_webapp.root_folder">
 <code class="sig-prename descclassname">HostsManagerApp.HostsManager_webapp.</code><code class="sig-name descname">root_folder</code><a class="headerlink" href="#HostsManagerApp.HostsManager_webapp.root_folder" title="Permalink to this definition">¶</a></dt>
 <dd><p>The &quot;root of the website&quot;. The root of the folder were the website files are stored and
@@ -205,46 +195,18 @@ from were this web application is launched.</p>
 
 <dl class="class">
 <dt id="HostsManagerApp.HostsManager_webapp.HostsManager">
-<em class="property">class </em><code class="sig-prename descclassname">HostsManagerApp.HostsManager_webapp.</code><code class="sig-name descname">HostsManager</code><span class="sig-paren">(</span><em class="sig-param">host</em>, <em class="sig-param">port</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/HostsManager_webapp.html#HostsManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.HostsManager_webapp.HostsManager" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Hosts manager web application.</p>
-<dl class="attribute">
-<dt id="HostsManagerApp.HostsManager_webapp.HostsManager.host">
-<code class="sig-name descname">host</code><a class="headerlink" href="#HostsManagerApp.HostsManager_webapp.HostsManager.host" title="Permalink to this definition">¶</a></dt>
-<dd><p>Host name used by the web application.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="HostsManagerApp.HostsManager_webapp.HostsManager.port">
-<code class="sig-name descname">port</code><a class="headerlink" href="#HostsManagerApp.HostsManager_webapp.HostsManager.port" title="Permalink to this definition">¶</a></dt>
-<dd><p>Port number used by the web application.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<p>Initialize.</p>
+<em class="property">class </em><code class="sig-prename descclassname">HostsManagerApp.HostsManager_webapp.</code><code class="sig-name descname">HostsManager</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/HostsManager_webapp.html#HostsManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.HostsManager_webapp.HostsManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">HostsManagerApp.python_utils.bottle_utils.WebApp</span></code></p>
+<p>Web server.</p>
+<p>Initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>host</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Host name used by the web application.</p></li>
-<li><p><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) -- Port number used by the web application.</p></li>
+<li><p><strong>*args</strong> -- Arguments.</p></li>
+<li><p><strong>**kwargs</strong> -- Keyword arguments.</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="method">
-<dt id="HostsManagerApp.HostsManager_webapp.HostsManager.run">
-<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/HostsManager_webapp.html#HostsManager.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.HostsManager_webapp.HostsManager.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>Run.</p>
-</dd></dl>
-
 <dl class="method">
 <dt id="HostsManagerApp.HostsManager_webapp.HostsManager.index">
 <code class="sig-name descname">index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/HostsManager_webapp.html#HostsManager.index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.HostsManager_webapp.HostsManager.index" title="Permalink to this definition">¶</a></dt>

@@ -84,6 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -93,7 +94,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#detailed-usage">Detailed usage</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#cli-options"><abbr title="Command Line Interface">CLI</abbr> options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#commands">Commands</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#file-templates">File templates</a><ul>
@@ -210,7 +210,7 @@
 <div class="section" id="cli-synopsis">
 <h2><abbr title="Command Line Interface">CLI</abbr> Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight">
-<pre><span class="text-bold">Knowledge Base 2020-02-14 03:47:21.875 (Unstable)</span>
+<pre><span class="text-bold">Knowledge Base 2020-02-19 12:00:13.465 (Unstable)</span>
 
 <span class="text-bold">CLI utility to generate and manage a personal and self-hosted *Knowledge Base* on GNU/Linux.</span>
 
@@ -255,7 +255,12 @@
 
 <span class="text-bold">--force-download</span>
     Force the download of all archives, ignoring the frequency in which they
-    should be downloaded. Only used by the &quot;download_all_archives&quot; sub-command.</pre>
+    should be downloaded. Only used by the &quot;download_all_archives&quot; sub-command.
+
+<span class="text-bold">--input-path-storage=&lt;path&gt;</span>
+    Path to a folder containing <span class="text-bold">.epub</span> files. If not specified, the folder at
+    <span class="text-bold">UserData/data_storage/pandoc_convertions/epub_to_html</span> will be used.
+    Only used by the &quot;epub_to_html&quot; sub-command.</pre>
 </div></div>
 </div>
 <div class="section" id="requirements">
@@ -270,15 +275,50 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code>: Display this application basic help screen.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--manual</span></code>: Display this application manual.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--version</span></code>: Show this application version.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code> or <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code>: Do not perform file system changes. Only display messages informing of the actions that will be performed or commands that will be executed.</p></li>
+</ul>
+<div class="section" id="app-py-run">
+<h4>app.py run<a class="headerlink" href="#app-py-run" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="sub-commands">
+<h5>Sub-commands<a class="headerlink" href="#sub-commands" title="Permalink to this headline">¶</a></h5>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">update_all_repositories</span></code>: Pull from or clone all repositories defined in <strong>UserData/data_sources/repositories.py</strong>. See <a class="reference internal" href="#repositories-py-tempalte-reference"><span class="std std-ref">repositories.py template</span></a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Option <code class="docutils literal notranslate"><span class="pre">--do-not-pull</span></code>: Do not update repositories (do not pull), just initialize the ones that weren't cloned yet.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handle_all_repositories</span></code>: Handle the data defined in <strong>UserData/data_sources/repositories.py</strong>. See <a class="reference internal" href="../../modules/KnowledgeBase/KnowledgeBaseApp.repositories_handler.html#KnowledgeBaseApp.repositories_handler.RepositoriesHandler.handle_all_repositories" title="KnowledgeBaseApp.repositories_handler.RepositoriesHandler.handle_all_repositories"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">KnowledgeBaseApp.repositories_handler.RepositoriesHandler.handle_all_repositories</span></code></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download_all_archives</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Option <code class="docutils literal notranslate"><span class="pre">--force-download</span></code>: Force the download of all archives, ignoring the frequency in which they should be downloaded.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">create_main_json_file</span></code>:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html_to_markdown_files</span></code>:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html_to_markdown_clip</span></code>:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">epub_to_html</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Option <code class="docutils literal notranslate"><span class="pre">--input-path-storage=&lt;path&gt;</span></code>: Path to a folder containing <strong>.epub</strong> files. If no specified, the folder at <strong>UserData/data_storage/pandoc_convertions/epub_to_html</strong> will be used.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build_sphinx_docs</span></code>:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">generate_categories_html</span></code>:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">generate_index_html</span></code>:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">open_main_webpage</span></code>:</p></li>
 </ul>
 </div>
-<div class="section" id="commands">
-<h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h3>
+</div>
 <div class="section" id="app-py-server">
 <h4>app.py server<a class="headerlink" href="#app-py-server" title="Permalink to this headline">¶</a></h4>
 <p>The HTTP server started will host the folder at <strong>UserData/www</strong>.</p>
-<div class="section" id="sub-commands">
-<h5>Sub-commands<a class="headerlink" href="#sub-commands" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id1">
+<h5>Sub-commands<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">start</span></code>: Start HTTP server.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stop</span></code>: Stop HTTP server.</p></li>
@@ -295,8 +335,8 @@
 </div>
 <div class="section" id="app-py-generate">
 <h4>app.py generate<a class="headerlink" href="#app-py-generate" title="Permalink to this headline">¶</a></h4>
-<div class="section" id="id1">
-<h5>Sub-commands<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id2">
+<h5>Sub-commands<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h5>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">system_executable</span></code>: Create an executable for the <code class="docutils literal notranslate"><span class="pre">app.py</span></code> application on the system <code class="docutils literal notranslate"><span class="pre">PATH</span></code> to be able to run it from anywhere.</p>
 <blockquote>
@@ -325,7 +365,8 @@
 <li><p>Non-compressed/Non-tared files are directly downloaded into their final destination.</p></li>
 </ul>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># START archives.py</span>
+<span class="c1">#!/usr/bin/python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;Archives data practical example.</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -357,6 +398,7 @@
         <span class="s2">&quot;download_frequency&quot;</span><span class="p">:</span> <span class="s2">&quot;s&quot;</span>
     <span class="p">}</span>
 <span class="p">]</span>
+<span class="c1"># END archives.py</span>
 </pre></div>
 </div>
 <div class="section" id="data-keys">
@@ -388,7 +430,7 @@
 </div>
 </div>
 <div class="section" id="repositories-py-template">
-<h3><strong>repositories.py</strong> template<a class="headerlink" href="#repositories-py-template" title="Permalink to this headline">¶</a></h3>
+<span id="repositories-py-tempalte-reference"></span><h3><strong>repositories.py</strong> template<a class="headerlink" href="#repositories-py-template" title="Permalink to this headline">¶</a></h3>
 <p>In this file is stored all the data to handle on-line repositories. Its location should always be <strong>/UserData/KnowledgeBase/UserData/data_sources/repositories.py</strong>.</p>
 <div class="admonition-info info admonition">
 <p class="admonition-title">Highlights</p>
@@ -397,7 +439,8 @@
 <li><p>Repositories are cloned into a temporary location (<strong>UserData/data_storage/&lt;repo_service&gt;_repositories</strong>).</p></li>
 </ul>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># START repositories.py</span>
+<span class="c1">#!/usr/bin/python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;Repositories data practical example.</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -425,10 +468,11 @@
         <span class="s2">&quot;kb_title_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;Devhints cheatsheets - &quot;</span>
     <span class="p">}</span>
 <span class="p">]</span>
+<span class="c1"># END repositories.py</span>
 </pre></div>
 </div>
-<div class="section" id="id2">
-<h4>Data keys<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id3">
+<h4>Data keys<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>All data keys are of type string and are optional unless specified otherwise.</p>
@@ -462,7 +506,8 @@
 <div class="section" id="categories-json-template">
 <h3><strong>categories.json</strong> template<a class="headerlink" href="#categories-json-template" title="Permalink to this headline">¶</a></h3>
 <p>This file is used to assign custom icons to the categories in the sidebar of the web page index.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># START categories.json</span>
+<span class="p">{</span>
     <span class="s2">&quot;Bookmark&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;nf-oct-bookmark&quot;</span>
     <span class="p">},</span>
@@ -470,6 +515,7 @@
         <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;nf-dev-webplatform&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
+<span class="c1"># END categories.json</span>
 </pre></div>
 </div>
 </div>

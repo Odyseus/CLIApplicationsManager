@@ -82,6 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -260,7 +261,7 @@
                                       <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_filename&quot;</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)),</span>
                     <span class="c1"># Hard-coded icon name. No need to be specified in the data source since,</span>
                     <span class="c1"># at the moment, all archives contain HTML files.</span>
-                    <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="s2">&quot;html-external&quot;</span>
+                    <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="s2">&quot;ext&quot;</span>
                 <span class="p">})</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;kb_title&quot;</span><span class="p">])</span>
@@ -501,6 +502,11 @@
 
 <div class="viewcode-block" id="ArchivesHandler._validate_archives_data"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.archives_handler.html#KnowledgeBaseApp.archives_handler.ArchivesHandler._validate_archives_data">[docs]</a>    <span class="k">def</span> <span class="nf">_validate_archives_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Validate archives data.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">            Halt execution.</span>
 
 <span class="sd">        Raises</span>
 <span class="sd">        ------</span>

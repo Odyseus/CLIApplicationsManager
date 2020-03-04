@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CinnamonDocsGeneratorApp.app_utils &mdash; Python CLI Applications Documentations  documentation</title>
+  <title>BootstrapThemesGeneratorApp &mdash; Python CLI Applications Documentations  documentation</title>
   
 
   
@@ -34,7 +34,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BootstrapThemesGeneratorApp package" href="BootstrapThemesGeneratorApp.html" />
+    <link rel="prev" title="BackupUtilsApp.tasks module" href="../BackupUtils/BackupUtilsApp.tasks.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,6 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -143,74 +146,65 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-        
-      <li>CinnamonDocsGeneratorApp.app_utils</li>
+      <li>BootstrapThemesGeneratorApp</li>
     
     
       <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/modules/BootstrapThemesGenerator/modules.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
   </ul>
 
   
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="BootstrapThemesGeneratorApp.html" class="btn btn-neutral float-right" title="BootstrapThemesGeneratorApp package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../BackupUtils/BackupUtilsApp.tasks.html" class="btn btn-neutral float-left" title="BackupUtilsApp.tasks module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for CinnamonDocsGeneratorApp.app_utils</h1><div class="highlight"><pre>
-<span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;Module with utility functions and classes.</span>
+  <div class="section" id="bootstrapthemesgeneratorapp">
+<h1>BootstrapThemesGeneratorApp<a class="headerlink" href="#bootstrapthemesgeneratorapp" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="BootstrapThemesGeneratorApp.html">BootstrapThemesGeneratorApp package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="BootstrapThemesGeneratorApp.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html">BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="BootstrapThemesGeneratorApp.app_utils.html">BootstrapThemesGeneratorApp.app_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="BootstrapThemesGeneratorApp.cli.html">BootstrapThemesGeneratorApp.cli module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 
-<span class="sd">Attributes</span>
-<span class="sd">----------</span>
-<span class="sd">root_folder : str</span>
-<span class="sd">    The main folder containing the application. All commands must be executed</span>
-<span class="sd">    from this location without exceptions.</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
-
-
-<span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
-
-
-<div class="viewcode-block" id="generate_docs"><a class="viewcode-back" href="../../modules/CinnamonDocsGenerator/CinnamonDocsGeneratorApp.app_utils.html#CinnamonDocsGeneratorApp.app_utils.generate_docs">[docs]</a><span class="k">def</span> <span class="nf">generate_docs</span><span class="p">(</span><span class="n">force_clean_build</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                  <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;See :any:`sphinx_docs_utils.generate_docs`</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    force_clean_build : bool, optional</span>
-<span class="sd">        See :any:`sphinx_docs_utils.generate_docs`.</span>
-<span class="sd">    logger : None, optional</span>
-<span class="sd">        See :any:`LogSystem`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">sphinx_docs_utils</span>
-
-    <span class="n">sphinx_docs_utils</span><span class="o">.</span><span class="n">generate_docs</span><span class="p">(</span><span class="n">root_folder</span><span class="o">=</span><span class="n">root_folder</span><span class="p">,</span>
-                                    <span class="n">docs_src_path_rel_to_root</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                                        <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;doc_sources&quot;</span><span class="p">),</span>
-                                    <span class="n">docs_dest_path_rel_to_root</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                                        <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;www&quot;</span><span class="p">,</span> <span class="s2">&quot;public&quot;</span><span class="p">),</span>
-                                    <span class="n">doctree_temp_location_rel_to_sys_temp</span><span class="o">=</span><span class="s2">&quot;CinnamonDocsGenerator-doctrees&quot;</span><span class="p">,</span>
-                                    <span class="n">force_clean_build</span><span class="o">=</span><span class="n">force_clean_build</span><span class="p">,</span>
-                                    <span class="n">build_coverage</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                    <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span></div>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="k">pass</span>
-</pre></div>
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="BootstrapThemesGeneratorApp.html" class="btn btn-neutral float-right" title="BootstrapThemesGeneratorApp package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../BackupUtils/BackupUtilsApp.tasks.html" class="btn btn-neutral float-left" title="BackupUtilsApp.tasks module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

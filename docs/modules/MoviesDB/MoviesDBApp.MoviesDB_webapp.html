@@ -84,6 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -179,29 +180,7 @@
             
   <div class="section" id="module-MoviesDBApp.MoviesDB_webapp">
 <span id="moviesdbapp-moviesdb-webapp-module"></span><h1>MoviesDBApp.MoviesDB_webapp module<a class="headerlink" href="#module-MoviesDBApp.MoviesDB_webapp" title="Permalink to this headline">¶</a></h1>
-<p>Summary</p>
-<dl class="attribute">
-<dt id="MoviesDBApp.MoviesDB_webapp.bottle_app">
-<code class="sig-prename descclassname">MoviesDBApp.MoviesDB_webapp.</code><code class="sig-name descname">bottle_app</code><a class="headerlink" href="#MoviesDBApp.MoviesDB_webapp.bottle_app" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bottle application.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)">object</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="MoviesDBApp.MoviesDB_webapp.dir_path">
-<code class="sig-prename descclassname">MoviesDBApp.MoviesDB_webapp.</code><code class="sig-name descname">dir_path</code><a class="headerlink" href="#MoviesDBApp.MoviesDB_webapp.dir_path" title="Permalink to this definition">¶</a></dt>
-<dd><p>Extra path to look for modules to import.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
+<p>Web application.</p>
 <dl class="attribute">
 <dt id="MoviesDBApp.MoviesDB_webapp.root_folder">
 <code class="sig-prename descclassname">MoviesDBApp.MoviesDB_webapp.</code><code class="sig-name descname">root_folder</code><a class="headerlink" href="#MoviesDBApp.MoviesDB_webapp.root_folder" title="Permalink to this definition">¶</a></dt>
@@ -215,46 +194,18 @@
 
 <dl class="class">
 <dt id="MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp">
-<em class="property">class </em><code class="sig-prename descclassname">MoviesDBApp.MoviesDB_webapp.</code><code class="sig-name descname">MoviesDBWebapp</code><span class="sig-paren">(</span><em class="sig-param">host</em>, <em class="sig-param">port</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/MoviesDBApp/MoviesDB_webapp.html#MoviesDBWebapp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Movies Data Base web server.</p>
-<dl class="attribute">
-<dt id="MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.host">
-<code class="sig-name descname">host</code><a class="headerlink" href="#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.host" title="Permalink to this definition">¶</a></dt>
-<dd><p>The host name used by the web server.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.port">
-<code class="sig-name descname">port</code><a class="headerlink" href="#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.port" title="Permalink to this definition">¶</a></dt>
-<dd><p>The port number used by the web server.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
+<em class="property">class </em><code class="sig-prename descclassname">MoviesDBApp.MoviesDB_webapp.</code><code class="sig-name descname">MoviesDBWebapp</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/MoviesDBApp/MoviesDB_webapp.html#MoviesDBWebapp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MoviesDBApp.python_utils.bottle_utils.WebApp</span></code></p>
+<p>Web server.</p>
 <p>Initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>host</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- The host name used by the web server.</p></li>
-<li><p><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- The port number used by the web server.</p></li>
+<li><p><strong>*args</strong> -- Arguments.</p></li>
+<li><p><strong>**kwargs</strong> -- Keyword arguments.</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="method">
-<dt id="MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.run">
-<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/MoviesDBApp/MoviesDB_webapp.html#MoviesDBWebapp.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>Run web application.</p>
-</dd></dl>
-
 <dl class="method">
 <dt id="MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.server_static">
 <code class="sig-name descname">server_static</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/MoviesDBApp/MoviesDB_webapp.html#MoviesDBWebapp.server_static"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#MoviesDBApp.MoviesDB_webapp.MoviesDBWebapp.server_static" title="Permalink to this definition">¶</a></dt>

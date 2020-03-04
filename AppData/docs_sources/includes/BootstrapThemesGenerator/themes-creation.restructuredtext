@@ -1,0 +1,71 @@
+
+Themes creation
+===============
+
+.. contextual-admonition::
+    :context: info
+    :title: Theming Bootstrap
+
+    Read `Bootstrap's documentation <https://getbootstrap.com/docs/>`__ (**Theming** section) to familiarize with Bootstrap's themes using |Sass|.
+
+Basic folder structure
+----------------------
+
+.. note::
+
+    - The **_0_globals** folder is a convenient location where to store files that can contain reusable styles or variable overrides common to more than one theme.
+    - The **node_modules** folder is inside **UserData/www** because the themes preview page uses assets from **bootswatch** to preview Bootswatch's themes.
+
+.. code-block::
+
+    UserData/
+    ├── themes/
+    │   ├── _0_globals/
+    │   │   ├── _variable_overrides.scss
+    │   │   └── _new_rules.scss
+    │   └── theme_1/
+    │       ├── conf.py
+    │       └── theme.scss
+    │   └── theme_2/
+    │       ├── conf.py
+    │       └── theme.scss
+    └── www/
+        └── node_modules/
+            ├── bootstrap
+            └── bootswatch
+
+Example theme file (theme.scss)
+-------------------------------
+
+.. contextual-admonition::
+    :context: info
+    :title: Relative imports
+
+    Note that the following example file imports files that aren't directly available from the theme file's location. The **bootstrap** and **bootswatch** folders are inside **UserData/www/node_modules**. And the **0_variable_overrides**, **1_new_rules** and **1_new_colors** files are inside **UserData/themes/_0_globals**. This is because the ``build`` command from this application executes ``node-sass`` using its ``--include-path`` option specifying both locations to make imports simpler.
+
+.. literalinclude:: ../../../../UserData/BootstrapThemesGenerator/AppData/data/templates/themes/flatly_mod/theme.scss
+    :language: scss
+    :prepend: // START theme.scss
+    :append: // END theme.scss
+
+Example theme configuration file (conf.py)
+------------------------------------------
+
+The theme configuration file stores data that will be used to identify the theme on the themes preview page. This file is completely optional and it isn't needed to build a theme nor to preview it.
+
+- ``theme_name``: The name for the theme. If not provided, a name for the theme will be generated from the theme's folder name.
+- ``theme_description``: A string describing the theme. The strings is treated as Markdown markup and is going to be rendered as HTML.
+- ``extra_examples``: A path to an HTML file relative to the **UserData/themes** folder. This file can contain any HTML markup that exemplifies any new components/colors added by the generated themes that aren't already exemplified by the existent themes preview page.
+
+    .. contextual-admonition::
+        :context: info
+        :title: Use of special CSS classes inside the file specified in ``extra_examples``
+
+        - ``bs-docs-section``: This class is used to add separation between sections.
+        - ``bs-component``: This class is used to add HTML source code preview.
+
+
+.. literalinclude:: ../../../../UserData/BootstrapThemesGenerator/AppData/data/templates/themes/flatly_mod/conf.py
+    :language: python
+    :prepend: # START conf.py
+    :append: # END conf.py

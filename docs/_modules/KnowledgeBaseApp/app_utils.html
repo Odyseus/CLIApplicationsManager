@@ -82,6 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
@@ -201,16 +202,15 @@
 
 <span class="n">CAT_LIST_ITEM_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">{indent}</span><span class="s2">&lt;li class=&quot;nav-item&quot;&gt;</span>
 <span class="si">{indent}</span><span class="s2">    &lt;span class=&quot;btn-group&quot; role=&quot;group&quot;&gt;</span>
-<span class="si">{indent}</span><span class="s2">        &lt;a class=&quot;nav-link </span><span class="si">{cat_class}</span><span class="s2"> KB_cat-btn btn&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;KB_cat-icon nf </span><span class="si">{cat_icon}</span><span class="s2">&quot;&gt;&lt;/i&gt;</span><span class="si">{cat_title}</span><span class="s2">&lt;/a&gt;</span>
+<span class="si">{indent}</span><span class="s2">        &lt;button class=&quot;nav-link </span><span class="si">{cat_class}</span><span class="s2"> KB_cat-btn btn&quot; onauxclick=&quot;KB_Main.setActiveCategory(event, this);&quot; onclick=&quot;KB_Main.setActiveCategory(event, this);&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;KB_cat-icon nf </span><span class="si">{cat_icon}</span><span class="s2">&quot;&gt;&lt;/i&gt;</span><span class="si">{cat_title}</span><span class="s2">&lt;/button&gt;</span>
 <span class="si">{indent}</span><span class="s2">    &lt;/span&gt;</span>
 <span class="si">{indent}</span><span class="s2">&lt;/li&gt;&quot;&quot;&quot;</span>
 
-
 <span class="n">CAT_MENU_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;li class=&quot;nav-item&quot;&gt;</span>
 <span class="s2">    &lt;span class=&quot;btn-group&quot; role=&quot;group&quot;&gt;</span>
-<span class="s2">        &lt;a class=&quot;nav-link KB_cat-btn btn&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;KB_cat-icon nf </span><span class="si">{cat_icon}</span><span class="s2">&quot;&gt;</span><span class="se">\</span>
-<span class="s2">&lt;/i&gt;</span><span class="si">{cat_title}</span><span class="s2">&lt;/a&gt;</span>
-<span class="s2">        &lt;a class=&quot;KB_toggle-cat-btn btn&quot; href=&quot;#</span><span class="si">{cat_menu_id}</span><span class="s2">&quot; data-toggle=&quot;collapse&quot; aria-expanded=&quot;false&quot;&gt;&lt;/a&gt;</span>
+<span class="s2">        &lt;button class=&quot;nav-link KB_cat-btn btn&quot; onauxclick=&quot;KB_Main.setActiveCategory(event, this);&quot; onclick=&quot;KB_Main.setActiveCategory(event, this);&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;KB_cat-icon nf </span><span class="si">{cat_icon}</span><span class="s2">&quot;&gt;</span><span class="se">\</span>
+<span class="s2">&lt;/i&gt;</span><span class="si">{cat_title}</span><span class="s2">&lt;/button&gt;</span>
+<span class="s2">        &lt;button class=&quot;KB_toggle-cat-btn btn&quot; href=&quot;#</span><span class="si">{cat_menu_id}</span><span class="s2">&quot; data-toggle=&quot;collapse&quot; aria-expanded=&quot;false&quot;&gt;&lt;/button&gt;</span>
 <span class="s2">    &lt;/span&gt;</span>
 <span class="s2">    &lt;ul class=&quot;collapse list-unstyled KB_subcats&quot; id=&quot;</span><span class="si">{cat_menu_id}</span><span class="s2">&quot;&gt;</span>
 <span class="si">{sub_cat_items}</span><span class="s2"></span>
@@ -316,7 +316,7 @@
                                                 <span class="c1"># Full path to files from the www folder.</span>
                                                 <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">rel_epub</span><span class="p">,</span>
                                                 <span class="c1"># Icon name</span>
-                                                <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="s2">&quot;html-external&quot;</span>
+                                                <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="s2">&quot;ext&quot;</span>
                                             <span class="p">})</span>
                             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
@@ -342,7 +342,7 @@
                 <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">json_data</span><span class="p">:</span>
                     <span class="n">data</span><span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;html_pages/</span><span class="si">{title}</span><span class="s2">/</span><span class="si">{html_file}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">],</span>
                                                                         <span class="n">html_file</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">])</span>
-                    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;html-external&quot;</span>
+                    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ext&quot;</span>
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">data_tables_obj</span> <span class="o">+=</span> <span class="n">json_data</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
@@ -556,8 +556,10 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    logger : object</span>
-<span class="sd">        See &lt;class :any:`LogSystem`&gt;.</span>
+<span class="sd">    input_path_storage : None, optional</span>
+<span class="sd">        Path to where .epub files are stored.</span>
+<span class="sd">    logger : LogSystem</span>
+<span class="sd">        The logger.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">input_path</span> <span class="o">=</span> <span class="n">input_path_storage</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;data_storage&quot;</span><span class="p">,</span>
                                                     <span class="s2">&quot;pandoc_convertions&quot;</span><span class="p">,</span> <span class="s2">&quot;epub_to_html&quot;</span><span class="p">)</span>
@@ -797,6 +799,7 @@
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating index.html file...&quot;</span><span class="p">)</span>
     <span class="n">categories_html_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;categories.html&quot;</span><span class="p">)</span>
+    <span class="n">modals_html_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;modals.html&quot;</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">categories_html_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">html_file</span><span class="p">:</span>
@@ -805,11 +808,19 @@
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
         <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">modals_html_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">html_file</span><span class="p">:</span>
+            <span class="n">modals_data</span> <span class="o">=</span> <span class="n">html_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
     <span class="n">base_index_html_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;index-base.html&quot;</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">base_index_html_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">html_file</span><span class="p">:</span>
-            <span class="n">index_data</span> <span class="o">=</span> <span class="n">html_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&lt;!-- {{categories}} --&gt;&quot;</span><span class="p">,</span> <span class="n">categories_data</span><span class="p">)</span>
+            <span class="n">index_data</span> <span class="o">=</span> <span class="n">html_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&lt;!-- {{categories}} --&gt;&quot;</span><span class="p">,</span> <span class="n">categories_data</span>
+                                                  <span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&lt;!-- {{modals}} --&gt;&quot;</span><span class="p">,</span> <span class="n">modals_data</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
         <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
