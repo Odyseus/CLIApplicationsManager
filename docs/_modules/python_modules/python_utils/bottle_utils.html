@@ -222,7 +222,9 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">server_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;www_root&quot;</span><span class="p">))</span>
     <span class="n">os</span><span class="o">.</span><span class="n">execv</span><span class="p">(</span><span class="n">server_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;web_app_path&quot;</span><span class="p">),</span> <span class="p">[</span><span class="s2">&quot; &quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
-        <span class="n">server_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;host&quot;</span><span class="p">),</span> <span class="n">server_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;port&quot;</span><span class="p">)</span>
+        <span class="n">server_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;host&quot;</span><span class="p">),</span>
+        <span class="n">server_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;port&quot;</span><span class="p">),</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">server_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;web_app_path&quot;</span><span class="p">))</span>
     <span class="p">])</span></div>
 
 

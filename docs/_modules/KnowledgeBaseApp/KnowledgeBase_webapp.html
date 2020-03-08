@@ -168,34 +168,41 @@
 
 <span class="sd">Attributes</span>
 <span class="sd">----------</span>
-<span class="sd">root_folder : str</span>
+<span class="sd">www_root : str</span>
 <span class="sd">    The path to the folder that will be served by the web server.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">run</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="k">import</span> <span class="n">unquote</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">docutils</span> <span class="k">import</span> <span class="n">core</span> <span class="k">as</span> <span class="n">docutils_core</span>
 <span class="k">except</span> <span class="p">(</span><span class="ne">ImportError</span><span class="p">,</span> <span class="ne">SystemError</span><span class="p">):</span>
     <span class="n">docutils_core</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="c1"># NOTE: Failsafe imports due to this file being used as a script (when launching the server)</span>
-<span class="c1"># and as a module (when generating documentation with Sphinx).</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">bottle</span>
-    <span class="kn">from</span> <span class="nn">python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">bottle_app</span>
-    <span class="kn">from</span> <span class="nn">python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">WebApp</span>
-    <span class="kn">from</span> <span class="nn">python_utils.mistune_utils</span> <span class="k">import</span> <span class="n">md</span>
-<span class="k">except</span> <span class="p">(</span><span class="ne">ImportError</span><span class="p">,</span> <span class="ne">SystemError</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">.python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">bottle</span>
-    <span class="kn">from</span> <span class="nn">.python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">bottle_app</span>
-    <span class="kn">from</span> <span class="nn">.python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">WebApp</span>
-    <span class="kn">from</span> <span class="nn">.python_utils.mistune_utils</span> <span class="k">import</span> <span class="n">md</span>
+    <span class="c1"># If executed as a script to start the web server.</span>
+    <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">app_dir_path</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="c1"># If imported as a module by Sphinx.</span>
+    <span class="n">host</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+    <span class="n">app_dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)))))</span>
 
-<span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">app_dir_path</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">WebApp</span>
+<span class="kn">from</span> <span class="nn">python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">bottle</span>
+<span class="kn">from</span> <span class="nn">python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">bottle_app</span>
+<span class="kn">from</span> <span class="nn">python_utils.mistune_utils</span> <span class="k">import</span> <span class="n">md</span>
+
+<span class="n">www_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
+
+<span class="n">_title_template</span> <span class="o">=</span> <span class="s2">&quot;&lt;h1&gt;</span><span class="si">{page_title}</span><span class="s2">&lt;/h1&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="n">_source_template</span> <span class="o">=</span> <span class="s1">&#39;&lt;h3&gt;&lt;a href=&quot;</span><span class="si">{page_source}</span><span class="s1">&quot;&gt;Source&lt;/a&gt;&lt;/h3&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
 
 
 <div class="viewcode-block" id="parse_rst"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.parse_rst">[docs]</a><span class="k">def</span> <span class="nf">parse_rst</span><span class="p">(</span><span class="n">input_string</span><span class="p">):</span>
@@ -225,6 +232,7 @@
 <div class="viewcode-block" id="KnowledgeBaseWebapp"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp">[docs]</a><span class="k">class</span> <span class="nc">KnowledgeBaseWebapp</span><span class="p">(</span><span class="n">WebApp</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Web server.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialization.</span>
 
@@ -236,6 +244,21 @@
 <span class="sd">            Keyword arguments.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="KnowledgeBaseWebapp.bootstrap_css_static"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp.bootstrap_css_static">[docs]</a>    <span class="nd">@bottle_app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/_assets_bootstrap_css&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">bootstrap_css_static</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Serve the file found at ``UserData/www/assets/css/bootstrap.min.css``.</span>
+
+<span class="sd">        This allows me to use the Bootstrap CSS stylesheet from any HTML document located at any</span>
+<span class="sd">        directory depth. I can simply use ``&lt;link rel=&quot;stylesheet&quot; href=&quot;/_assets_bootstrap_css&quot; /&gt;``</span>
+<span class="sd">        and the desired stylesheet will be used.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        object</span>
+<span class="sd">            An instance of `bottle.HTTPResponse`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">bottle</span><span class="o">.</span><span class="n">static_file</span><span class="p">(</span><span class="s2">&quot;bootstrap.min.css&quot;</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">www_root</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;css&quot;</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="KnowledgeBaseWebapp.server_static"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp.server_static">[docs]</a>    <span class="nd">@bottle_app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&lt;filepath:path&gt;&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">server_static</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
@@ -251,7 +274,7 @@
 <span class="sd">        object</span>
 <span class="sd">            An instance of bottle.HTTPResponse.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">bottle</span><span class="o">.</span><span class="n">static_file</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">root_folder</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">bottle</span><span class="o">.</span><span class="n">static_file</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">www_root</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="KnowledgeBaseWebapp.handle_inline_content"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp.handle_inline_content">[docs]</a>    <span class="nd">@bottle_app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/handle_inline_content&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">handle_inline_content</span><span class="p">():</span>
@@ -262,24 +285,35 @@
 <span class="sd">        sre</span>
 <span class="sd">            The content for the landing page.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="n">bottle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;inlinePageURL&quot;</span><span class="p">]))</span>
+        <span class="n">html_data</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="n">unquote</span><span class="p">(</span><span class="n">bottle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;inlinePageHandler&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">www_root</span><span class="p">,</span> <span class="n">unquote</span><span class="p">(</span><span class="n">bottle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;inlinePageURL&quot;</span><span class="p">])))</span>
+
+        <span class="n">page_title</span> <span class="o">=</span> <span class="n">unquote</span><span class="p">(</span><span class="n">bottle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;inlinePageTitle&quot;</span><span class="p">])</span>
+        <span class="n">page_source</span> <span class="o">=</span> <span class="n">unquote</span><span class="p">(</span><span class="n">bottle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;inlinePageSource&quot;</span><span class="p">])</span>
+
+        <span class="n">page_title</span> <span class="o">=</span> <span class="n">_title_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">page_title</span><span class="o">=</span><span class="n">page_title</span><span class="p">)</span> <span class="k">if</span> <span class="n">page_title</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">page_source</span> <span class="o">=</span> <span class="n">_source_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">page_source</span><span class="o">=</span><span class="n">page_source</span><span class="p">)</span> <span class="k">if</span> <span class="n">page_source</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
 
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">raw_data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
         <span class="c1"># TODO: Using &quot;md&quot; for .rst because I couldn&#39;t find an RST icon between the thousands of</span>
-        <span class="c1"># icon in NerdFont. Some day I might stumble upon one. LOL</span>
-        <span class="k">if</span> <span class="n">bottle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;inlinePageType&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;md&quot;</span><span class="p">:</span>
+        <span class="c1"># icons in NerdFont. Some day I might stumble upon one. LOL</span>
+        <span class="k">if</span> <span class="n">handler</span> <span class="o">==</span> <span class="s2">&quot;md&quot;</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="c1"># NOTE: Try to parse reStructuredText and fallback to Markdown.</span>
                 <span class="k">if</span> <span class="n">file_path</span><span class="o">.</span><span class="n">lower</span><span class="p">()[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;.rst&quot;</span> <span class="ow">and</span> <span class="n">docutils_core</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="n">parse_rst</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
+                    <span class="n">html_data</span> <span class="o">=</span> <span class="n">parse_rst</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="n">md</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
+                    <span class="n">html_data</span> <span class="o">=</span> <span class="n">md</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">raw_data</span>
+                <span class="n">html_data</span> <span class="o">=</span> <span class="n">raw_data</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">raw_data</span></div>
+            <span class="n">html_data</span> <span class="o">=</span> <span class="n">raw_data</span>
+
+        <span class="k">return</span> <span class="n">page_title</span> <span class="o">+</span> <span class="n">page_source</span> <span class="o">+</span> <span class="n">html_data</span></div>
 
 <div class="viewcode-block" id="KnowledgeBaseWebapp.index"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.KnowledgeBase_webapp.html#KnowledgeBaseApp.KnowledgeBase_webapp.KnowledgeBaseWebapp.index">[docs]</a>    <span class="nd">@bottle_app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
@@ -290,7 +324,7 @@
 <span class="sd">        sre</span>
 <span class="sd">            The content for the landing page.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">index_file</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">www_root</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">index_file</span><span class="p">:</span>
             <span class="n">index_data</span> <span class="o">=</span> <span class="n">index_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="n">index_data</span><span class="p">:</span>
@@ -303,8 +337,8 @@
     <span class="k">def</span> <span class="nf">handle_local_files</span><span class="p">():</span>
         <span class="sd">&quot;&quot;&quot;Handle local files.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">action</span> <span class="o">=</span> <span class="n">bottle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span>
-        <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="n">bottle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;href&quot;</span><span class="p">]))</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">unquote</span><span class="p">(</span><span class="n">bottle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">])</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">www_root</span><span class="p">,</span> <span class="n">unquote</span><span class="p">(</span><span class="n">bottle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;href&quot;</span><span class="p">])))</span>
         <span class="n">file_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
         <span class="n">p</span> <span class="o">=</span> <span class="kc">None</span>
 
@@ -329,12 +363,9 @@
 <span class="c1"># FIXME: Convert this script into a module.</span>
 <span class="c1"># Just because it&#39;s the right thing to do.</span>
 <span class="c1"># As it is right now, everything works as &quot;it should&quot;.</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">app</span> <span class="o">=</span> <span class="n">KnowledgeBaseWebapp</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span> <span class="ow">and</span> <span class="n">host</span> <span class="ow">and</span> <span class="n">port</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">KnowledgeBaseWebapp</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 
            </div>

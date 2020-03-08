@@ -32,6 +32,14 @@ Data keys
 - ``kb_title`` (**Madatory**): The title that will be displayed in the web page index.
 - ``kb_category`` (**Madatory**): A category name to organize the web page index.
 - ``arch_url`` (**Madatory**): The url from which to download an archive.
+- ``kb_handler`` (**Default**: ``ext``): A *handler ID* used to decide how the web page will handle an entry. It also decides what image to use on an entry's action button. Possible values:
+
+    + ``epub``: epub file handler. These files are always opened externally by the program that can handle them.
+    + ``ext``: Standalone HTML pages. These pages will always be opened in a new tab.
+    + ``html``: Inline HTML pages. These pages are simply HTML markup (not an HTML document, just the content of the ``body`` tag) that are dimmed to big or to complex to be converted to Markdown. These pages are rendered inline.
+    + ``md``: Inline Markdown or reStructuredText documents.
+    + ``pdf``: PDF file handler. These files can be opened in a new browser tab or extenrnally by the program that can handle them. Whether they are opened in browser or externally can be configured from the page settings.
+
 - ``kb_rel_path`` (**Default**: empty): The path (relative to **UserData/www/html_pages_from_archives/<kb_title>**) to the a folder containing an HTML file (``kb_filename``) found inside the extracted content of an archive.
 - ``kb_filename`` (**Default**: **index.html**): The file name found inside the extracted content of an archive relative to ``kb_rel_path``.
 - ``kb_file_append`` (**List**): A list of tuples. Each tuple must contain a path to a file (relative to **UserData/www/html_pages_from_archives/<kb_title>**) at index 0 (zero) and a string at index 1 (one). The string will be appended at the end of the file defined at index zero.
@@ -86,6 +94,7 @@ Data keys
 - ``repo_file_patterns_ignore`` (**List**): A list of file patterns. This key complements the ``repo_file_patterns_include`` key functionality by ignoring the files that match the patterns defined in this key.
 - ``repo_sources_path`` (``sphinx_docs`` ``repo_handler`` only): A relative path to the desired Sphinx documentation sources. The path should be relative to a downloaded repository and point to a Sphinx documentation sources folder (e.g., if the documentation sources of a downloaded repository are at **UserData/data_storage/<repo_service>_repositories/<repo_owner>-<repo_name>/doc**, then the ``repo_sources_path`` key value should be **doc**).
 - ``kb_category`` (**Default**: **Uncategorized**):
+- ``kb_handler`` (**Default**: ``md``): A *handler ID* used to decide how the web page will handle an entry. It also decides what image to use on an entry's action button. See **archives.py** template > **data keys** > ``kb_handler`` for details.
 - ``kb_title_prefix``: If defined, this prefix will be used to generate a label that will be displayed in the web page index table. The final label will look like ``<kb_title_prefix><file_name>``. ``<file_name>`` being the name of the file or files defined either by the ``repo_file_names`` or the ``repo_file_patterns_include`` keys. This key is more suitable for use when more than one file is used in a repository.
 - ``kb_title``: If ``kb_title_prefix`` is not defined, this key will be used to display the label in the web page index table. This key is more suitable for use when only one file is used in a repository.
 - ``kb_index_filename`` (``sphinx_docs`` ``repo_handler`` only): The file name of the index file of the generated documentation. In the case that someone was malevolent enough to change the default one (LOL).

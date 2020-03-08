@@ -341,7 +341,7 @@
                 <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_sphinx_generated_pages_storage</span><span class="p">(</span><span class="n">repo_data</span><span class="p">),</span>
                                   <span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_index_filename&quot;</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)),</span>
                 <span class="c1"># Icon name</span>
-                <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_image&quot;</span><span class="p">,</span> <span class="s2">&quot;ext&quot;</span><span class="p">),</span>
+                <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_handler&quot;</span><span class="p">,</span> <span class="s2">&quot;ext&quot;</span><span class="p">),</span>
                 <span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_repo_url</span><span class="p">(</span><span class="n">repo_data</span><span class="p">)</span>
             <span class="p">})</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
@@ -412,7 +412,7 @@
                         <span class="c1"># Path to files relative to the www folder</span>
                         <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">www_path</span><span class="p">,</span>
                         <span class="c1"># Icon name</span>
-                        <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_image&quot;</span><span class="p">,</span> <span class="s2">&quot;md&quot;</span><span class="p">),</span>
+                        <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="n">repo_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_handler&quot;</span><span class="p">,</span> <span class="s2">&quot;md&quot;</span><span class="p">),</span>
                         <span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_repo_url</span><span class="p">(</span><span class="n">repo_data</span><span class="p">)</span>
                     <span class="p">})</span>
 

@@ -232,7 +232,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_archives_storage</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;data_storage&quot;</span><span class="p">,</span> <span class="s2">&quot;downloaded_archives&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_archives_destination</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="s2">&quot;html_pages_from_archives&quot;</span><span class="p">)</span>
+            <span class="n">app_utils</span><span class="o">.</span><span class="n">WWW_BASE_PATH</span><span class="p">,</span> <span class="s2">&quot;archives&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_archives_last_updated</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_archives_storage</span><span class="p">,</span> <span class="s2">&quot;last_updated.json&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_current_date</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%B </span><span class="si">%d</span><span class="s2"> %Y&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">())</span>  <span class="c1"># Format = January 1 2018</span>
 
@@ -251,17 +251,18 @@
 
         <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_archives_data</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
+                <span class="n">cat_path</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;kb_category&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
                 <span class="n">data_tables_obj</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
                     <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;kb_title&quot;</span><span class="p">],</span>
                     <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;kb_category&quot;</span><span class="p">],</span>
                     <span class="c1"># Path to files relative to the www folder</span>
-                    <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;html_pages_from_archives&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;archives&quot;</span><span class="p">,</span>
+                                      <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_handler&quot;</span><span class="p">,</span> <span class="s2">&quot;ext&quot;</span><span class="p">),</span>
+                                      <span class="n">cat_path</span><span class="p">,</span>
                                       <span class="n">data</span><span class="p">[</span><span class="s2">&quot;kb_title&quot;</span><span class="p">],</span>
                                       <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_rel_path&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
                                       <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_filename&quot;</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)),</span>
-                    <span class="c1"># Hard-coded icon name. No need to be specified in the data source since,</span>
-                    <span class="c1"># at the moment, all archives contain HTML files.</span>
-                    <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="s2">&quot;ext&quot;</span>
+                    <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_handler&quot;</span><span class="p">,</span> <span class="s2">&quot;ext&quot;</span><span class="p">)</span>
                 <span class="p">})</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;kb_title&quot;</span><span class="p">])</span>
@@ -562,11 +563,15 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_last_update_data</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_archives_data</span><span class="p">:</span>
+            <span class="n">cat_path</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;kb_category&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
+
             <span class="c1"># Generate and add &quot;slugified_name&quot;.</span>
             <span class="n">data</span><span class="p">[</span><span class="s2">&quot;slugified_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">string_utils</span><span class="o">.</span><span class="n">slugify</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;kb_title&quot;</span><span class="p">])</span>
 
             <span class="c1"># Generate and add the path to the extraction destination directory.</span>
             <span class="n">data</span><span class="p">[</span><span class="s2">&quot;extraction_destination&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_archives_destination</span><span class="p">,</span>
+                                                          <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_handler&quot;</span><span class="p">,</span> <span class="s2">&quot;ext&quot;</span><span class="p">),</span>
+                                                          <span class="n">cat_path</span><span class="p">,</span>
                                                           <span class="n">data</span><span class="p">[</span><span class="s2">&quot;kb_title&quot;</span><span class="p">])</span>
 
             <span class="c1"># Generate and add the path for the downloaded file.</span>
@@ -576,14 +581,14 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">_archives_storage</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;slugified_name&quot;</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>  <span class="c1"># If it&#39;s an HTML file, download it directly into its final destination.</span>
                 <span class="n">data</span><span class="p">[</span><span class="s2">&quot;downloaded_filename&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;extraction_destination&quot;</span><span class="p">],</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)</span>
+                    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;extraction_destination&quot;</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kb_filename&quot;</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">))</span>
 
             <span class="c1"># Insert the date in which the data was last updated.</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_update_data</span><span class="p">:</span>
                 <span class="n">data</span><span class="p">[</span><span class="s2">&quot;last_updated&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_update_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;slugified_name&quot;</span><span class="p">],</span> <span class="kc">None</span><span class="p">)</span>
 
         <span class="c1"># Lastly, sort dictionaries by data names.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_archives_data</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_archives_data</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">title</span><span class="p">:</span> <span class="n">title</span><span class="p">[</span><span class="s2">&quot;kb_title&quot;</span><span class="p">])</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_archives_data</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_archives_data</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">arch</span><span class="p">:</span> <span class="n">arch</span><span class="p">[</span><span class="s2">&quot;kb_title&quot;</span><span class="p">])</span></div></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
