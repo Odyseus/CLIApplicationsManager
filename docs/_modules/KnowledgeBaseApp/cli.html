@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -177,14 +177,14 @@
 
 <span class="kn">import</span> <span class="nn">os</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">app_utils</span>
-<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appdescription__</span>
-<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appname__</span>
-<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__status__</span>
-<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__version__</span>
-<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">bottle_utils</span>
-<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cli_utils</span>
-<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">exceptions</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">app_utils</span>
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">__appdescription__</span>
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">__appname__</span>
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">__status__</span>
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">__version__</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="kn">import</span> <span class="n">bottle_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="kn">import</span> <span class="n">cli_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="kn">import</span> <span class="n">exceptions</span>
 
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
@@ -204,6 +204,7 @@
 <span class="s2">                  [--host=&lt;host&gt;]</span>
 <span class="s2">                  [--port=&lt;port&gt;]</span>
 <span class="s2">    app.py generate system_executable</span>
+<span class="s2">    app.py repo subtrees (init | update) [-y | --dry-run]</span>
 
 <span class="s2">Options:</span>
 
@@ -281,6 +282,7 @@
         <span class="s2">&quot;open_main_webpage&quot;</span><span class="p">,</span>
     <span class="p">]</span>
     <span class="n">action</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">repo_action</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">args_to_init_repo_handler</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;update_all_repositories&quot;</span><span class="p">,</span>
         <span class="s2">&quot;handle_all_repositories&quot;</span><span class="p">,</span>
@@ -290,7 +292,7 @@
     <span class="n">www_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;www&quot;</span><span class="p">)</span>
     <span class="n">_repositories_handler</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docopt_args</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docopt_args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize.</span>
 
 <span class="sd">        Parameters</span>
@@ -339,7 +341,7 @@
                 <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">InvalidArgument</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">args_to_init_repo_handler</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;&lt;func_name&gt;&quot;</span><span class="p">]):</span>
-                <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">repositories_handler</span>
+                <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">repositories_handler</span>
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">_repositories_handler</span> <span class="o">=</span> <span class="n">repositories_handler</span><span class="o">.</span><span class="n">RepositoriesHandler</span><span class="p">(</span>
                     <span class="n">dry_run</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--dry-run&quot;</span><span class="p">],</span>
@@ -356,6 +358,12 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;system_executable&quot;</span><span class="p">]:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**System executable generation...**&quot;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_executable_generation</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;repo&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo_action</span> <span class="o">=</span> <span class="s2">&quot;init&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;init&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;update&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;update&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;subtrees&quot;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Managing repository sub-trees...**&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">manage_repo_subtrees</span>
 
 <div class="viewcode-block" id="CommandLineInterface.run"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Run tasks depending on the arguments passed.</span>
@@ -372,10 +380,28 @@
                 <span class="k">if</span> <span class="n">f</span><span class="p">:</span>
                     <span class="n">f</span><span class="p">()</span></div>
 
+<div class="viewcode-block" id="CommandLineInterface.manage_repo_subtrees"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.manage_repo_subtrees">[docs]</a>    <span class="k">def</span> <span class="nf">manage_repo_subtrees</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`git_utils.manage_repo`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="kn">import</span> <span class="n">git_utils</span>
+
+        <span class="n">subtrees</span> <span class="o">=</span> <span class="p">[{</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;git@gitlab.com:Odyseus/js_web_utils.git&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;UserData/www/assets/js/js_web_utils&quot;</span>
+        <span class="p">}]</span>
+        <span class="n">git_utils</span><span class="o">.</span><span class="n">manage_repo</span><span class="p">(</span>
+            <span class="s2">&quot;subtree&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo_action</span><span class="p">,</span>
+            <span class="n">cwd</span><span class="o">=</span><span class="n">root_folder</span><span class="p">,</span>
+            <span class="n">subtrees</span><span class="o">=</span><span class="n">subtrees</span><span class="p">,</span>
+            <span class="n">dry_run</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--dry-run&quot;</span><span class="p">],</span>
+            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
+        <span class="p">)</span></div>
+
 <div class="viewcode-block" id="CommandLineInterface.download_all_archives"><a class="viewcode-back" href="../../modules/KnowledgeBase/KnowledgeBaseApp.cli.html#KnowledgeBaseApp.cli.CommandLineInterface.download_all_archives">[docs]</a>    <span class="k">def</span> <span class="nf">download_all_archives</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`archives_handler.ArchivesHandler`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">archives_handler</span>
+        <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">archives_handler</span>
 
         <span class="n">handler</span> <span class="o">=</span> <span class="n">archives_handler</span><span class="o">.</span><span class="n">ArchivesHandler</span><span class="p">(</span>
             <span class="n">dry_run</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--dry-run&quot;</span><span class="p">],</span>

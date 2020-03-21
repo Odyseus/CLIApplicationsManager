@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -306,6 +306,16 @@ in the order they were defined (passed as arguments).</p>
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="KnowledgeBaseApp.cli.CommandLineInterface._repositories_handler">
+<code class="sig-name descname">_repositories_handler</code><em class="property"> = None</em><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface._repositories_handler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="KnowledgeBaseApp.cli.CommandLineInterface.repo_action">
+<code class="sig-name descname">repo_action</code><em class="property"> = None</em><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.repo_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt>
 <code class="sig-name descname">action</code><em class="property"> = None</em></dt>
 <dd></dd></dl>
@@ -316,6 +326,12 @@ in the order they were defined (passed as arguments).</p>
 <dd><p>Run tasks depending on the arguments passed.</p>
 <p>Do not worry about the threads join()ing. Both conditions can't be true
 at the same time because they are set by mutually exclusive arguments.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="KnowledgeBaseApp.cli.CommandLineInterface.manage_repo_subtrees">
+<code class="sig-name descname">manage_repo_subtrees</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/KnowledgeBaseApp/cli.html#CommandLineInterface.manage_repo_subtrees"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#KnowledgeBaseApp.cli.CommandLineInterface.manage_repo_subtrees" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="../python_modules/python_modules.python_utils.git_utils.html#python_modules.python_utils.git_utils.manage_repo" title="python_modules.python_utils.git_utils.manage_repo"><code class="xref any py py-func docutils literal notranslate"><span class="pre">git_utils.manage_repo</span></code></a></p>
 </dd></dl>
 
 <dl class="method">

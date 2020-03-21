@@ -1,0 +1,104 @@
+
+Index creation
+==============
+
+.. contextual-admonition::
+    :context: info
+    :title: Highlights
+
+    - The HTML file found at **UserData/www/index.html** is generated based on files found in **AppData/data/templates/index**.
+    - These files are obtained from the Bootstrap documentation built from source.
+
+.. contextual-admonition::
+    :context: info
+    :title: Why all this trouble?
+
+    - I wanted as a theme preview page a place where the entirety of Bootstrap's components and utilities are exemplified, not just the most frequently used. This is so I can caught any errors with any component/utility in a custom theme.
+    - I wanted **all** components and utilities loaded **at once** in **one single** document and not in individual files nor using ``iframe``s.
+
+Bootstrap documentation generation
+----------------------------------
+
+#. Clone Bootstrap repository.
+#. Run ``npm install`` inside the cloned repository.
+#. Run ``bundle install`` inside the cloned repository.
+#. Run ``npm run docs-production`` inside the cloned repository (built documentation will be at **_gh_pages**).
+
+Obtaining the needed files
+--------------------------
+
+#. Copy the folders **content**, **components** and **utilities** found at **_gh_pages/docs/VERSION_NUMBER/** into **UserData/www/sections**.
+#. Remove the **index.html** files found at the root of the **content**, **components** and **utilities** folders.
+#. Move the **index.html** files found inside each sub-folder and rename them as their containing folders prefixed with a three digits number.
+
+Modifying needed files
+----------------------
+
+#. Eradicate all HTML markup except for the ``main`` tag content.
+
+     - Start ``<!doctype html>(?s)(.*)role="main">``.
+     - End ``</main>(?s)(.*?)</html>``.
+
+#. Eradicate all code blocks. I directly use the rendered examples, not the examples represented inside code blocks. **Be careful with the figures.html file**.
+
+     - ``<figure(?s)(.*?)</figure>``.
+
+#. Obliterate all ``script`` tags. Check that the removed tags are not part of an example. In which case the ``script`` should be implemented inside the **functions-index.js** file.
+
+     - ``<script(?s)(.*?)</script>``.
+
+#. Eradicate the following CSS classes:
+
+     - ``highlighter-rouge``
+     - ``language-scss``
+     - ``bd-lead``
+     - ``bd-title``
+
+#. Eradicate IDs from all headings. There are a couple of headings whose IDs are needed inside the **scrollspy.html** file.
+
+     - Search for ``h([1|2|3|4|5|6])\s+id=".*?"`` and replace with ``h\1``.
+
+#. Rename all classes suffixed with **bd-** to be suffixed with **bstg-**.
+
+    - First rename classes starting with **bd-example** to **bstg-example**.
+    - Then rename classes **bd-section** to **bstg-section**.
+    - Then rename classes **bd-callout** to **bstg-callout**.
+    - Then rename classes **bd-placeholder-img** to **bstg-placeholder-img**.
+    - Do a final search for the string **bd-** and see if it's safe to make a mass rename to **bstg-**.
+
+#. Remove all references to internal Bootstrap's documentation links.
+
+     - Replace ``/docs/4.4/assets/brand/bootstrap-solid.svg`` to ``_assets/ìmg/bootstrap-solid.svg``.
+     - Prefix the rest of them with ``https://getbootstrap.com``.
+     - Search for ``href="#[\w]+"`` and carefully remove internal references.
+
+#. Break some of the joined tags so they look better when viewing the source code.
+
+     - Replace ``><svg`` with ``>\n<svg``.
+     - Replace ``</svg></div>`` with ``</svg>\n</div>``.
+
+#. Duplicated element IDs are bound to happen since I'm using individual HTML documents merged together into one document. The built index page has a loading script that will report all duplicated IDs to the console.
+
+Specific modifications
+^^^^^^^^^^^^^^^^^^^^^^
+
+#. **components/embeds.html**:
+
+    - Obliterate YouTube example and replace with:
+
+        .. code-block:: html
+
+            <div class="bstg-example">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <video controls>
+                        <source src="_assets/video/flower.webm" type="video/webm">
+                        <source src="_assets/video/flower.mp4" type="video/mp4">
+                        Sorry, your browser doesn't support embedded videos.
+                    </video>
+                </div>
+            </div>
+
+#. **content/code.html**:
+
+   - Add class ``nohighlight`` to the code tag to avoid seeing the highlight markup in the code example.
+

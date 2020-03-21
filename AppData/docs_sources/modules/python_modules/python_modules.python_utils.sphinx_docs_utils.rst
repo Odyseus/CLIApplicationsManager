@@ -5,3 +5,4 @@ python\_modules.python\_utils.sphinx\_docs\_utils module
    :members:
    :undoc-members:
    :show-inheritance:
+   :private-members:

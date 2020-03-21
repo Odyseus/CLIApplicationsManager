@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -280,18 +280,18 @@
 <dd class="field-odd"><p>The content for the landing page.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>sre</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
-<dt id="BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.build_theme_selector">
-<code class="sig-name descname">build_theme_selector</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BootstrapThemesGeneratorApp/BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorWebapp.build_theme_selector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.build_theme_selector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Build the custom themes selector menu.</p>
+<dt id="BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.build_custom_theme_selectors">
+<code class="sig-name descname">build_custom_theme_selectors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BootstrapThemesGeneratorApp/BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorWebapp.build_custom_theme_selectors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.build_custom_theme_selectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the custom themes selector menu items.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The HTML markup for the menu.</p>
+<dd class="field-odd"><p>The HTML markup for the menu items.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
@@ -306,6 +306,20 @@
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The content of the extra HTML file to be inserted into the index.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.populate_tabpanel">
+<code class="sig-name descname">populate_tabpanel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/BootstrapThemesGeneratorApp/BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorWebapp.populate_tabpanel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.populate_tabpanel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Populate tabpanel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Tabpanel content read from a file.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>

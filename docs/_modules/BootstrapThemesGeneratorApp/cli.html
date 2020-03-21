@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -176,13 +176,13 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">app_utils</span>
-<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appdescription__</span>
-<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__appname__</span>
-<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__status__</span>
-<span class="kn">from</span> <span class="nn">.__init__</span> <span class="k">import</span> <span class="n">__version__</span>
-<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">bottle_utils</span>
-<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="k">import</span> <span class="n">cli_utils</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">app_utils</span>
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">__appdescription__</span>
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">__appname__</span>
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">__status__</span>
+<span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">__version__</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="kn">import</span> <span class="n">bottle_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="kn">import</span> <span class="n">cli_utils</span>
 
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
@@ -196,6 +196,7 @@
 <span class="s2">    app.py build [-t &lt;id&gt;... | --theme=&lt;id&gt;...]</span>
 <span class="s2">                 [-s &lt;args&gt; | --node-sass-args=&lt;args&gt;]</span>
 <span class="s2">                 [-p &lt;args&gt; | --postcss-args=&lt;args&gt;]</span>
+<span class="s2">    app.py build_index_file</span>
 <span class="s2">    app.py node_modules (install | update)</span>
 <span class="s2">    app.py launch_preview [--host=&lt;host&gt;]</span>
 <span class="s2">                          [--port=&lt;port&gt;]</span>
@@ -204,6 +205,7 @@
 <span class="s2">                  [--port=&lt;port&gt;]</span>
 <span class="s2">    app.py generate system_executable</span>
 <span class="s2">    app.py print_theme_ids</span>
+<span class="s2">    app.py repo subtrees (init | update) [-y | --dry-run]</span>
 
 <span class="s2">Options:</span>
 
@@ -233,6 +235,12 @@
 <span class="s2">-p &lt;args&gt;, --postcss-args=&lt;args&gt;</span>
 <span class="s2">    Extra arguments to pass to **postcss** CLI. [Default: --no-map]</span>
 
+<span class="s2">-y, --dry-run</span>
+<span class="s2">    Do not perform file system changes. Only display messages informing of the</span>
+<span class="s2">    actions that will be performed or commands that will be executed.</span>
+<span class="s2">    WARNING! Some file system changes will be performed (e.g. temporary files</span>
+<span class="s2">    creation).</span>
+
 <span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">appname</span><span class="o">=</span><span class="n">__appname__</span><span class="p">,</span>
            <span class="n">appdescription</span><span class="o">=</span><span class="n">__appdescription__</span><span class="p">,</span>
            <span class="n">version</span><span class="o">=</span><span class="n">__version__</span><span class="p">,</span>
@@ -257,9 +265,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">action</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">node_action</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">repo_action</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">www_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;www&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docopt_args</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docopt_args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -276,6 +285,9 @@
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--manual&quot;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">display_manual_page</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;build_index_file&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Building index.html file**&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_index_file</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;launch_preview&quot;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Launching themes preview page**&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">launch_preview</span>
@@ -306,6 +318,12 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;system_executable&quot;</span><span class="p">]:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**System executable generation...**&quot;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_executable_generation</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;repo&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo_action</span> <span class="o">=</span> <span class="s2">&quot;init&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;init&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;update&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;update&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;subtrees&quot;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Managing repository sub-trees...**&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">manage_repo_subtrees</span>
 
 <div class="viewcode-block" id="CommandLineInterface.run"><a class="viewcode-back" href="../../modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Execute the assigned action stored in self.action if any.</span>
@@ -336,12 +354,35 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">app_utils</span><span class="o">.</span><span class="n">print_theme_ids</span><span class="p">()</span></div>
 
+<div class="viewcode-block" id="CommandLineInterface.build_index_file"><a class="viewcode-back" href="../../modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.build_index_file">[docs]</a>    <span class="k">def</span> <span class="nf">build_index_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`app_utils.build_index_file`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">build_index_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="CommandLineInterface.manage_node_modules"><a class="viewcode-back" href="../../modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.manage_node_modules">[docs]</a>    <span class="k">def</span> <span class="nf">manage_node_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`app_utils.manage_node_modules`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">app_utils</span><span class="o">.</span><span class="n">manage_node_modules</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node_action</span><span class="p">,</span>
                                       <span class="n">cwd</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">www_root</span><span class="p">,</span>
                                       <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandLineInterface.manage_repo_subtrees"><a class="viewcode-back" href="../../modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.manage_repo_subtrees">[docs]</a>    <span class="k">def</span> <span class="nf">manage_repo_subtrees</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`git_utils.manage_repo`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="kn">import</span> <span class="n">git_utils</span>
+
+        <span class="n">subtrees</span> <span class="o">=</span> <span class="p">[{</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;git@gitlab.com:Odyseus/js_web_utils.git&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;UserData/www/_assets/js/js_web_utils&quot;</span>
+        <span class="p">}]</span>
+        <span class="n">git_utils</span><span class="o">.</span><span class="n">manage_repo</span><span class="p">(</span>
+            <span class="s2">&quot;subtree&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo_action</span><span class="p">,</span>
+            <span class="n">cwd</span><span class="o">=</span><span class="n">app_utils</span><span class="o">.</span><span class="n">root_folder</span><span class="p">,</span>
+            <span class="n">subtrees</span><span class="o">=</span><span class="n">subtrees</span><span class="p">,</span>
+            <span class="n">dry_run</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--dry-run&quot;</span><span class="p">],</span>
+            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="CommandLineInterface.launch_preview"><a class="viewcode-back" href="../../modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.cli.html#BootstrapThemesGeneratorApp.cli.CommandLineInterface.launch_preview">[docs]</a>    <span class="k">def</span> <span class="nf">launch_preview</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`app_utils.print_theme_ids`.</span>

@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -202,7 +202,7 @@
 <div class="section" id="cli-synopsis">
 <h2><abbr title="Command Line Interface">CLI</abbr> Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight">
-<pre><span class="text-bold">Bootstrap Themes Generator 2020-03-02 22:46:22.412 (Stable)</span>
+<pre><span class="text-bold">Bootstrap Themes Generator 2020-03-08 09:10:52.454 (Stable)</span>
 
 <span class="text-bold">CLI utility to assist in the creation of Bootstrap themes.</span>
 
@@ -211,6 +211,7 @@
     app.py build [-t &lt;id&gt;... | --theme=&lt;id&gt;...]
                  [-s &lt;args&gt; | --node-sass-args=&lt;args&gt;]
                  [-p &lt;args&gt; | --postcss-args=&lt;args&gt;]
+    app.py build_index_file
     app.py node_modules (install | update)
     app.py launch_preview [--host=&lt;host&gt;]
                           [--port=&lt;port&gt;]
@@ -219,6 +220,7 @@
                   [--port=&lt;port&gt;]
     app.py generate system_executable
     app.py print_theme_ids
+    app.py repo subtrees (init | update) [-y | --dry-run]
 
 <span class="text-bold">Options:</span>
 
@@ -246,7 +248,13 @@
     Extra arguments to pass to <span class="text-bold">node-sass</span> CLI.
 
 <span class="text-bold">-p &lt;args&gt;, --postcss-args=&lt;args&gt;</span>
-    Extra arguments to pass to <span class="text-bold">postcss</span> CLI. [Default: --no-map]</pre>
+    Extra arguments to pass to <span class="text-bold">postcss</span> CLI. [Default: --no-map]
+
+<span class="text-bold">-y, --dry-run</span>
+    Do not perform file system changes. Only display messages informing of the
+    actions that will be performed or commands that will be executed.
+    WARNING! Some file system changes will be performed (e.g. temporary files
+    creation).</pre>
 </div></div>
 </div>
 <div class="section" id="requirements">
@@ -384,8 +392,10 @@
 │       └── theme.scss
 └── www/
     └── node_modules/
+        ├── a_trillion_modules
         ├── bootstrap
-        └── bootswatch
+        ├── bootswatch
+        └── another_trillion_modules
 </pre></div>
 </div>
 </div>
@@ -393,41 +403,50 @@
 <h3>Example theme file (theme.scss)<a class="headerlink" href="#example-theme-file-theme-scss" title="Permalink to this headline">¶</a></h3>
 <div class="admonition-info info admonition">
 <p class="admonition-title">Relative imports</p>
-<p>Note that the following example file imports files that aren't directly available from the theme file's location. The <strong>bootstrap</strong> and <strong>bootswatch</strong> folders are inside <strong>UserData/www/node_modules</strong>. And the <strong>0_variable_overrides</strong>, <strong>1_new_rules</strong> and <strong>1_new_colors</strong> files are inside <strong>UserData/themes/_0_globals</strong>. This is because the <code class="docutils literal notranslate"><span class="pre">build</span></code> command from this application executes <code class="docutils literal notranslate"><span class="pre">node-sass</span></code> using its <code class="docutils literal notranslate"><span class="pre">--include-path</span></code> option specifying both locations to make imports simpler.</p>
+<p>Note that the following example file imports files that aren't directly available from the theme file's location. The <strong>bootstrap</strong> and <strong>bootswatch</strong> folders are inside <strong>UserData/www/node_modules</strong>. And the <strong>global_variable_overrides</strong>, <strong>global_new_rules</strong> and <strong>global_new_colors</strong> files are inside <strong>UserData/themes/_0_globals</strong>. This is because the <code class="docutils literal notranslate"><span class="pre">build</span></code> command from this application executes <code class="docutils literal notranslate"><span class="pre">node-sass</span></code> using its <code class="docutils literal notranslate"><span class="pre">--include-path</span></code> option specifying both locations to make imports simpler.</p>
 </div>
 <div class="highlight-scss notranslate"><div class="highlight"><pre><span></span><span class="c1">// START theme.scss</span>
 <span class="c1">// #########</span>
 <span class="c1">// Imports #</span>
 <span class="c1">// #########</span>
-
 <span class="k">@import</span> <span class="s2">&quot;bootswatch/dist/flatly/_variables&quot;</span><span class="p">;</span>
-<span class="k">@import</span> <span class="s2">&quot;0_variable_overrides&quot;</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">&quot;global_variable_overrides&quot;</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">&quot;bootstrap/scss/bootstrap&quot;</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">&quot;bootswatch/dist/flatly/_bootswatch&quot;</span><span class="p">;</span>
-<span class="k">@import</span> <span class="s2">&quot;1_new_rules&quot;</span><span class="p">;</span>
-<span class="k">@import</span> <span class="s2">&quot;1_new_colors&quot;</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">&quot;global_new_rules&quot;</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">&quot;global_new_colors&quot;</span><span class="p">;</span>
 
 <span class="c1">// ###############</span>
 <span class="c1">// Custom styles #</span>
 <span class="c1">// ###############</span>
 
-<span class="c1">// Various tweaks.</span>
+<span class="c1">// The parent theme (Flatly) uses white close buttons.</span>
+<span class="c1">// Toasts have white background headers.</span>
+<span class="nc">.toast</span> <span class="nc">.close</span> <span class="p">{</span>
+    <span class="nt">color</span><span class="nd">:</span> <span class="nn">#000</span><span class="o">;</span>
 
+    <span class="k">&amp;</span><span class="nd">:not</span><span class="o">(</span><span class="nd">:disabled</span><span class="o">)</span><span class="nd">:not</span><span class="o">(</span><span class="nc">.disabled</span><span class="o">)</span><span class="nd">:hover</span><span class="o">,</span>
+    <span class="k">&amp;</span><span class="nd">:not</span><span class="o">(</span><span class="nd">:disabled</span><span class="o">)</span><span class="nd">:not</span><span class="o">(</span><span class="nc">.disabled</span><span class="o">)</span><span class="nd">:focus</span> <span class="p">{</span>
+        <span class="nt">color</span><span class="nd">:</span> <span class="nn">#000</span><span class="o">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Various tweaks.</span>
 <span class="nt">div</span><span class="nc">.boxed</span> <span class="p">{</span>
     <span class="nt">border</span><span class="nd">:</span> <span class="nn">#ecece7</span> <span class="nt">solid</span> <span class="nt">1px</span><span class="o">;</span>
     <span class="nt">border-radius</span><span class="nd">:</span> <span class="nt">5px</span><span class="o">;</span>
     <span class="nt">box-shadow</span><span class="nd">:</span> <span class="nt">2px</span> <span class="nt">2px</span> <span class="nt">0</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="nc">.1</span><span class="o">),</span> <span class="nt">2px</span> <span class="nt">2px</span> <span class="nt">0</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="nc">.1</span><span class="o">);</span>
 <span class="p">}</span>
 
-<span class="nc">.container.boxed</span> <span class="nt">h1</span><span class="o">,</span>
-<span class="nc">.container.boxed</span> <span class="nc">.h1</span><span class="o">,</span>
-<span class="nc">.container.boxed</span> <span class="nt">h2</span><span class="o">,</span>
-<span class="nc">.container.boxed</span> <span class="nc">.h2</span> <span class="p">{</span>
+<span class="c1">// Add underline to only the headings directly inside a boxed section, not anywhere else.</span>
+<span class="nc">.container.boxed</span> <span class="o">&gt;</span> <span class="nt">h1</span><span class="o">,</span>
+<span class="nc">.container.boxed</span> <span class="o">&gt;</span> <span class="nc">.h1</span><span class="o">,</span>
+<span class="nc">.container.boxed</span> <span class="o">&gt;</span> <span class="nt">h2</span><span class="o">,</span>
+<span class="nc">.container.boxed</span> <span class="o">&gt;</span> <span class="nc">.h2</span> <span class="p">{</span>
     <span class="nt">border-bottom</span><span class="nd">:</span> <span class="nt">1px</span> <span class="nt">solid</span> <span class="nn">#e0e0dc</span><span class="o">;</span>
 <span class="p">}</span>
 
 <span class="c1">// pre tag tweaks.</span>
-
 <span class="nc">.container.boxed</span> <span class="nt">pre</span> <span class="p">{</span>
     <span class="nt">white-space</span><span class="nd">:</span> <span class="nt">pre-wrap</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
     <span class="nt">background-color</span><span class="nd">:</span> <span class="nn">#f8f8f8</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
@@ -436,47 +455,240 @@
     <span class="nt">padding-left</span><span class="nd">:</span> <span class="nt">15px</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
     <span class="nt">padding-right</span><span class="nd">:</span> <span class="nt">15px</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
 <span class="p">}</span>
-
 <span class="c1">// END theme.scss</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="example-theme-configuration-file-conf-py">
 <h3>Example theme configuration file (conf.py)<a class="headerlink" href="#example-theme-configuration-file-conf-py" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These options are only read on the server side of the page preview page. There is no need to restart the server when changing the content of the <strong>conf.py</strong> file since the file is read through Ajax calls from the JavaScript side of the theme preview page.</p>
+</div>
 <p>The theme configuration file stores data that will be used to identify the theme on the themes preview page. This file is completely optional and it isn't needed to build a theme nor to preview it.</p>
 <ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">settings</span></code>: This key is the only key on this file that will be read. It can contain any of the following optional keys.</p>
+<blockquote>
+<div><ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">theme_name</span></code>: The name for the theme. If not provided, a name for the theme will be generated from the theme's folder name.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">theme_description</span></code>: A string describing the theme. The strings is treated as Markdown markup and is going to be rendered as HTML.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">extra_examples</span></code>: A path to an HTML file relative to the <strong>UserData/themes</strong> folder. This file can contain any HTML markup that exemplifies any new components/colors added by the generated themes that aren't already exemplified by the existent themes preview page.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">extra_examples_file</span></code>: A path to an HTML file relative to the <strong>UserData/themes</strong> folder. This file can contain any HTML markup that exemplifies any new components/colors added by the generated themes that aren't already exemplified by the existent themes preview page.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extra_examples_html</span></code>: HTML markup that exemplifies any new components/colors added by the generated themes that aren't already exemplified by the existent themes preview page. It has the advantage that it can be dynamically generated. So, instead of writing a trillion lines of HTML, one can write a couple dozens lines of Python code to generate the same markup.</p>
 <blockquote>
 <div><div class="admonition-info info admonition">
-<p class="admonition-title">Use of special CSS classes inside the file specified in <code class="docutils literal notranslate"><span class="pre">extra_examples</span></code></p>
+<p class="admonition-title">Special CSS class used in markup specified in <code class="docutils literal notranslate"><span class="pre">extra_examples_file</span></code> and <code class="docutils literal notranslate"><span class="pre">extra_examples_html</span></code></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">bs-docs-section</span></code>: This class is used to add separation between sections.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bs-component</span></code>: This class is used to add HTML source code preview.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bstg-example</span></code>: This class is used to add HTML source code preview. An example wrapped with a <code class="docutils literal notranslate"><span class="pre">div</span></code> with this class will be rendered <em>boxed</em> and with a button on the top right corner that, when clicked, will display the example's source code.</p></li>
 </ul>
 </div>
+</div></blockquote>
+</li>
+</ul>
 </div></blockquote>
 </li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># START conf.py</span>
 <span class="c1">#!/usr/bin/python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;Optional theme configuration file.</span>
+<span class="n">_colors</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cyan&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;danger&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dark&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;gray&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;gray-dark&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;green&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;indigo&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;info&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;light&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pink&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;primary&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;purple&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;secondary&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;teal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;warning&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;white&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;yellow&quot;</span>
+<span class="p">]</span>
 
-<span class="sd">Attributes</span>
-<span class="sd">----------</span>
-<span class="sd">settings : dict</span>
-<span class="sd">    The variable containing all settings for a theme. All keys are optional.</span>
+<span class="n">_bg_classes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-blue&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;secondary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-cyan&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-danger&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-dark&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-gray&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-gray-dark&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-green&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-indigo&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;secondary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-info&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-light&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-orange&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-pink&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;purple&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-primary&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;secondary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-purple&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-red&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-secondary&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-success&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-teal&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-warning&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-white&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;bg-gradient-yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">)</span>
+<span class="p">]</span>
 
-<span class="sd">        - theme_name: The display name for a theme. It will be used as the theme preview page&#39;s</span>
-<span class="sd">        title and the page banner title.</span>
-<span class="sd">        - theme_description: A Markdown string that will be used to describe the theme in the page banner.</span>
-<span class="sd">        - extra_examples: A path to an HTML file relative to &quot;UserData/themes&quot;. This file can contain</span>
-<span class="sd">        any HTML that can illustrate new styles added by the generated theme.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">_badge_template</span> <span class="o">=</span> <span class="s1">&#39;&lt;span class=&quot;text-font-size-large badge badge-</span><span class="si">{color}</span><span class="s1">&quot;&gt;</span><span class="si">{color_name}</span><span class="s1">&lt;/span&gt;&#39;</span>
+<span class="n">_badge_pill_template</span> <span class="o">=</span> <span class="s1">&#39;&lt;span class=&quot;text-font-size-large badge badge-pill badge-</span><span class="si">{color}</span><span class="s1">&quot;&gt;</span><span class="si">{color_name}</span><span class="s1">&lt;/span&gt;&#39;</span>
+<span class="n">_button_template</span> <span class="o">=</span> <span class="s1">&#39;&lt;button type=&quot;button&quot; class=&quot;btn btn-</span><span class="si">{color}</span><span class="s1">&quot;&gt;</span><span class="si">{color_name}</span><span class="s1">&lt;/button&gt;&#39;</span>
+<span class="n">_button_disabled_template</span> <span class="o">=</span> <span class="s1">&#39;&lt;button type=&quot;button&quot; class=&quot;btn btn-</span><span class="si">{color}</span><span class="s1">&quot; disabled&gt;</span><span class="si">{color_name}</span><span class="s1">&lt;/button&gt;&#39;</span>
+<span class="n">_button_outline_template</span> <span class="o">=</span> <span class="s1">&#39;&lt;button type=&quot;button&quot; class=&quot;btn btn-outline-</span><span class="si">{color}</span><span class="s1">&quot;&gt;</span><span class="si">{color_name}</span><span class="s1">&lt;/button&gt;&#39;</span>
+<span class="n">_text_color_template</span> <span class="o">=</span> <span class="s1">&#39;&lt;p class=&quot;text-</span><span class="si">{color}</span><span class="s1">&quot;&gt;</span><span class="si">{color_name}</span><span class="s1"> id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt;&#39;</span>
+
+<span class="n">_navbar_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;div class=&quot;bstg-example&quot;&gt;</span>
+<span class="s2">    &lt;nav class=&quot;navbar navbar-expand-lg navbar-</span><span class="si">{navbar_color}</span><span class="s2"> </span><span class="si">{bg_color}</span><span class="s2">&quot;&gt;</span>
+<span class="s2">        &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Navbar&lt;/a&gt;</span>
+<span class="s2">        &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#</span><span class="si">{navbar_id}</span><span class="s2">&quot; aria-controls=&quot;</span><span class="si">{navbar_id}</span><span class="s2">&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;</span>
+<span class="s2">            &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;</span>
+<span class="s2">        &lt;/button&gt;</span>
+<span class="s2">        &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;</span><span class="si">{navbar_id}</span><span class="s2">&quot;&gt;</span>
+<span class="s2">            &lt;ul class=&quot;navbar-nav mr-auto&quot;&gt;</span>
+<span class="s2">                &lt;li class=&quot;nav-item active&quot;&gt;</span>
+<span class="s2">                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Home &lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;</span>
+<span class="s2">                &lt;/li&gt;</span>
+<span class="s2">                &lt;li class=&quot;nav-item&quot;&gt;</span>
+<span class="s2">                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Features&lt;/a&gt;</span>
+<span class="s2">                &lt;/li&gt;</span>
+<span class="s2">                &lt;li class=&quot;nav-item&quot;&gt;</span>
+<span class="s2">                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Pricing&lt;/a&gt;</span>
+<span class="s2">                &lt;/li&gt;</span>
+<span class="s2">                &lt;li class=&quot;nav-item&quot;&gt;</span>
+<span class="s2">                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;About&lt;/a&gt;</span>
+<span class="s2">                &lt;/li&gt;</span>
+<span class="s2">            &lt;/ul&gt;</span>
+<span class="s2">            &lt;form class=&quot;form-inline&quot;&gt;</span>
+<span class="s2">                &lt;input class=&quot;form-control mr-sm-2&quot; placeholder=&quot;Search&quot; aria-label=&quot;Search&quot; type=&quot;search&quot;&gt;</span>
+<span class="s2">                &lt;button class=&quot;btn btn-</span><span class="si">{btn_color}</span><span class="s2"> my-2 my-sm-0&quot; type=&quot;submit&quot;&gt;Search&lt;/button&gt;</span>
+<span class="s2">            &lt;/form&gt;</span>
+<span class="s2">        &lt;/div&gt;</span>
+<span class="s2">    &lt;/nav&gt;</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">get_badges</span><span class="p">():</span>
+    <span class="n">badges</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;&lt;h2&gt;Badges all colors&lt;/h2&gt;&quot;</span><span class="p">,</span>
+        <span class="s1">&#39;&lt;div class=&quot;bstg-example&quot;&gt;&#39;</span>
+    <span class="p">]</span>
+
+    <span class="n">pills</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;&lt;h2&gt;Pills all colors&lt;/h2&gt;&quot;</span><span class="p">,</span>
+        <span class="s1">&#39;&lt;div class=&quot;bstg-example&quot;&gt;&#39;</span>
+    <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">_colors</span><span class="p">:</span>
+        <span class="n">c_name</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+        <span class="n">badges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_badge_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span>
+            <span class="n">color_name</span><span class="o">=</span><span class="n">c_name</span>
+        <span class="p">))</span>
+        <span class="n">pills</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_badge_pill_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span>
+            <span class="n">color_name</span><span class="o">=</span><span class="n">c_name</span>
+        <span class="p">))</span>
+
+    <span class="n">badges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;/div&gt;&quot;</span><span class="p">)</span>
+    <span class="n">pills</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;/div&gt;&quot;</span><span class="p">)</span>
+    <span class="n">badges</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">pills</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">badges</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_buttons</span><span class="p">():</span>
+    <span class="n">btns</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;&lt;h2&gt;Buttons all colors&lt;/h2&gt;&quot;</span><span class="p">,</span>
+        <span class="s1">&#39;&lt;div class=&quot;bstg-example&quot;&gt;&#39;</span>
+    <span class="p">]</span>
+
+    <span class="n">btns_dis</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;&lt;h2&gt;Buttons disabled all colors&lt;/h2&gt;&quot;</span><span class="p">,</span>
+        <span class="s1">&#39;&lt;div class=&quot;bstg-example&quot;&gt;&#39;</span>
+    <span class="p">]</span>
+
+    <span class="n">btns_out</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;&lt;h2&gt;Buttons outline all colors&lt;/h2&gt;&quot;</span><span class="p">,</span>
+        <span class="s1">&#39;&lt;div class=&quot;bstg-example&quot;&gt;&#39;</span>
+    <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">_colors</span><span class="p">:</span>
+        <span class="n">c_name</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+        <span class="n">btns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_button_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span>
+            <span class="n">color_name</span><span class="o">=</span><span class="n">c_name</span>
+        <span class="p">))</span>
+        <span class="n">btns_dis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_button_disabled_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span>
+            <span class="n">color_name</span><span class="o">=</span><span class="n">c_name</span>
+        <span class="p">))</span>
+        <span class="n">btns_out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_button_outline_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span>
+            <span class="n">color_name</span><span class="o">=</span><span class="n">c_name</span>
+        <span class="p">))</span>
+
+    <span class="n">btns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;/div&gt;&quot;</span><span class="p">)</span>
+    <span class="n">btns_dis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;/div&gt;&quot;</span><span class="p">)</span>
+    <span class="n">btns_out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;/div&gt;&quot;</span><span class="p">)</span>
+    <span class="n">btns</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">btns_dis</span><span class="p">)</span>
+    <span class="n">btns</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">btns_out</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">btns</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_text</span><span class="p">():</span>
+    <span class="n">txt</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;&lt;h2&gt;Text emphasis all colors&lt;/h2&gt;&quot;</span><span class="p">,</span>
+        <span class="s1">&#39;&lt;div class=&quot;bstg-example&quot;&gt;&#39;</span>
+    <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">_colors</span><span class="p">:</span>
+        <span class="n">c_name</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+        <span class="n">txt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_text_color_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span>
+            <span class="n">color_name</span><span class="o">=</span><span class="n">c_name</span>
+        <span class="p">))</span>
+
+    <span class="n">txt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;/div&gt;&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_navbars</span><span class="p">():</span>
+    <span class="n">navbars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&lt;h2&gt;Navbars all gradient colors&lt;/h2&gt;&quot;</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">bg_color</span><span class="p">,</span> <span class="n">navbar_color</span><span class="p">,</span> <span class="n">btn_color</span> <span class="ow">in</span> <span class="n">_bg_classes</span><span class="p">:</span>
+        <span class="n">navbars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_navbar_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">bg_color</span><span class="o">=</span><span class="n">bg_color</span><span class="p">,</span>
+            <span class="n">navbar_id</span><span class="o">=</span><span class="n">bg_color</span> <span class="o">+</span> <span class="s2">&quot;-example-navbar&quot;</span><span class="p">,</span>
+            <span class="n">navbar_color</span><span class="o">=</span><span class="n">navbar_color</span><span class="p">,</span>
+            <span class="n">btn_color</span><span class="o">=</span><span class="n">btn_color</span>
+        <span class="p">))</span>
+
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">navbars</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_html</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+        <span class="n">get_badges</span><span class="p">(),</span>
+        <span class="n">get_buttons</span><span class="p">(),</span>
+        <span class="n">get_navbars</span><span class="p">(),</span>
+        <span class="n">get_text</span><span class="p">()</span>
+    <span class="p">])</span>
+
+
 <span class="n">settings</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;theme_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Flatly mod&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;theme_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Flatly (new colors)&quot;</span><span class="p">,</span>
     <span class="s2">&quot;theme_description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">#### Differences with the original theme</span>
 
@@ -504,8 +716,6 @@
 <span class="s2">    - **text-font-size-large**</span>
 <span class="s2">    - **text-font-size-x-large**</span>
 <span class="s2">    - **text-font-size-xx-large**</span>
-<span class="s2">- Class to center images horizontally:</span>
-<span class="s2">    - **img-centered-container**: This class should be set to a `&lt;div&gt;` containing an `&lt;img&gt;`.</span>
 <span class="s2">- Miscellaneous tweaks/classes:</span>
 <span class="s2">    - **div.boxed**: A class to &quot;frame&quot; an element with a border with radius and a shadow.</span>
 <span class="s2">    - Added a bottom border to `&lt;h1&gt;` and `&lt;h2&gt;` tags and to `h1` and `h2` classes inside `.container.boxed`.</span>
@@ -513,7 +723,7 @@
 <span class="s2">    - Expanded element classes generation (`btn-&lt;color&gt;`, `btn-outline-&lt;color&gt;`, `badge-&lt;color&gt;`, `bg-&lt;color&gt;`, `bg-gradient-&lt;color&gt;` and `border-&lt;color&gt;`) to include extra colors (`blue`, `indigo`, `purple`, `pink`, `red`, `orange`, `yellow`, `green`, `teal` and `cyan`).</span>
 
 <span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;extra_examples&quot;</span><span class="p">:</span> <span class="s2">&quot;extra-examples-with-colors.html&quot;</span>
+    <span class="s2">&quot;extra_examples_html&quot;</span><span class="p">:</span> <span class="n">get_html</span><span class="p">(),</span>
 <span class="p">}</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>

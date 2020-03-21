@@ -5,3 +5,4 @@ MoviesDBApp.MoviesDB\_webapp module
    :members:
    :undoc-members:
    :show-inheritance:
+   :private-members:

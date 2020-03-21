@@ -5,3 +5,4 @@ python\_modules.python\_utils.bottle\_utils module
    :members:
    :undoc-members:
    :show-inheritance:
+   :private-members:

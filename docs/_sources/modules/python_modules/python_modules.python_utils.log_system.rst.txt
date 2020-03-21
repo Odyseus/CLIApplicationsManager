@@ -5,3 +5,4 @@ python\_modules.python\_utils.log\_system module
    :members:
    :undoc-members:
    :show-inheritance:
+   :private-members:

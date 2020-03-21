@@ -5,3 +5,4 @@ python\_modules.python\_utils.menu module
    :members:
    :undoc-members:
    :show-inheritance:
+   :private-members:

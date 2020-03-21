@@ -5,3 +5,4 @@ PackageManagerApp.pkg\_manager module
    :members:
    :undoc-members:
    :show-inheritance:
+   :private-members:

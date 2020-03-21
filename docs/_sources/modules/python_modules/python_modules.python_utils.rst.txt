@@ -5,6 +5,7 @@ python\_modules.python\_utils package
    :members:
    :undoc-members:
    :show-inheritance:
+   :private-members:
 
 Subpackages
 -----------

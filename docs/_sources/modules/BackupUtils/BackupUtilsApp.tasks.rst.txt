@@ -5,3 +5,4 @@ BackupUtilsApp.tasks module
    :members:
    :undoc-members:
    :show-inheritance:
+   :private-members:

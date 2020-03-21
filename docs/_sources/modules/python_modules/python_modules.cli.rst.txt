@@ -5,3 +5,4 @@ python\_modules.cli module
    :members:
    :undoc-members:
    :show-inheritance:
+   :private-members:

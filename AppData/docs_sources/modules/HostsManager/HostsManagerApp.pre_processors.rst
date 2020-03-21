@@ -5,3 +5,4 @@ HostsManagerApp.pre\_processors module
    :members:
    :undoc-members:
    :show-inheritance:
+   :private-members:

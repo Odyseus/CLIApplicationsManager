@@ -5,3 +5,4 @@ KnowledgeBaseApp.KnowledgeBase\_webapp module
    :members:
    :undoc-members:
    :show-inheritance:
+   :private-members:

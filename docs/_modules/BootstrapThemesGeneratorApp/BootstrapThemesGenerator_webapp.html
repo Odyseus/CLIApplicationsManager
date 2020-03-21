@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -174,8 +174,8 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">html</span> <span class="k">import</span> <span class="n">escape</span>
-<span class="kn">from</span> <span class="nn">runpy</span> <span class="k">import</span> <span class="n">run_path</span>
+<span class="kn">from</span> <span class="nn">html</span> <span class="kn">import</span> <span class="n">escape</span>
+<span class="kn">from</span> <span class="nn">runpy</span> <span class="kn">import</span> <span class="n">run_path</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="c1"># If executed as a script to start the web server.</span>
@@ -188,11 +188,11 @@
 
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">app_dir_path</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">python_utils</span> <span class="k">import</span> <span class="n">file_utils</span>
-<span class="kn">from</span> <span class="nn">python_utils</span> <span class="k">import</span> <span class="n">mistune_utils</span>
-<span class="kn">from</span> <span class="nn">python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">WebApp</span>
-<span class="kn">from</span> <span class="nn">python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">bottle</span>
-<span class="kn">from</span> <span class="nn">python_utils.bottle_utils</span> <span class="k">import</span> <span class="n">bottle_app</span>
+<span class="kn">from</span> <span class="nn">python_utils</span> <span class="kn">import</span> <span class="n">file_utils</span>
+<span class="kn">from</span> <span class="nn">python_utils</span> <span class="kn">import</span> <span class="n">mistune_utils</span>
+<span class="kn">from</span> <span class="nn">python_utils.bottle_utils</span> <span class="kn">import</span> <span class="n">WebApp</span>
+<span class="kn">from</span> <span class="nn">python_utils.bottle_utils</span> <span class="kn">import</span> <span class="n">bottle</span>
+<span class="kn">from</span> <span class="nn">python_utils.bottle_utils</span> <span class="kn">import</span> <span class="n">bottle_app</span>
 
 
 <span class="n">www_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
@@ -205,16 +205,17 @@
 <span class="n">_bootstrap_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_node_modules_folder</span><span class="p">,</span> <span class="s2">&quot;bootstrap&quot;</span><span class="p">,</span> <span class="s2">&quot;dist&quot;</span><span class="p">)</span>
 <span class="n">_bootswatch_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_node_modules_folder</span><span class="p">,</span> <span class="s2">&quot;bootswatch&quot;</span><span class="p">,</span> <span class="s2">&quot;dist&quot;</span><span class="p">)</span>
 
-<span class="n">_menu_item_bootstrap</span> <span class="o">=</span> <span class="s1">&#39;&lt;a class=&quot;dropdown-item&quot; href=&quot;_static_bootstrap/css/bootstrap.min.css&quot; data-description=&quot;Bootstrap</span><span class="se">\&#39;</span><span class="s1">s default theme&quot;&gt;Bootstrap</span><span class="se">\&#39;</span><span class="s1">s default&lt;/a&gt;&#39;</span>
-<span class="n">_menu_item_separator</span> <span class="o">=</span> <span class="s1">&#39;&lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;&#39;</span>
 <span class="n">_menu_item_template</span> <span class="o">=</span> <span class="s1">&#39;&lt;a class=&quot;dropdown-item&quot; data-description=&quot;</span><span class="si">{theme_description}</span><span class="s1">&quot; href=&quot;_assets/css/themes/</span><span class="si">{theme_id}</span><span class="s1">/bootstrap.min.css&quot;&gt;</span><span class="si">{theme_name}</span><span class="s1">&lt;/a&gt;&#39;</span>
+<span class="n">_section_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;div class=&quot;bstg-section&quot;&gt;</span>
+<span class="si">{tabpanel_content}</span><span class="s2"></span>
+<span class="s2">&lt;/div&gt;&quot;&quot;&quot;</span>
 
 
 <div class="viewcode-block" id="BootstrapThemesGeneratorWebapp"><a class="viewcode-back" href="../../modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp">[docs]</a><span class="k">class</span> <span class="nc">BootstrapThemesGeneratorWebapp</span><span class="p">(</span><span class="n">WebApp</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Web server.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialization.</span>
 
 <span class="sd">        Parameters</span>
@@ -291,7 +292,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        sre</span>
+<span class="sd">        str</span>
 <span class="sd">            The content for the landing page.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">www_root</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">index_file</span><span class="p">:</span>
@@ -302,14 +303,14 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="s2">&quot;Something went horribly wrong!!!&quot;</span></div>
 
-<div class="viewcode-block" id="BootstrapThemesGeneratorWebapp.build_theme_selector"><a class="viewcode-back" href="../../modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.build_theme_selector">[docs]</a>    <span class="nd">@bottle_app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/build_theme_selector&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">build_theme_selector</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;Build the custom themes selector menu.</span>
+<div class="viewcode-block" id="BootstrapThemesGeneratorWebapp.build_custom_theme_selectors"><a class="viewcode-back" href="../../modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.build_custom_theme_selectors">[docs]</a>    <span class="nd">@bottle_app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/build_custom_theme_selectors&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">build_custom_theme_selectors</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Build the custom themes selector menu items.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        str</span>
-<span class="sd">            The HTML markup for the menu.</span>
+<span class="sd">            The HTML markup for the menu items.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">theme_menu_items</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -321,8 +322,6 @@
             <span class="p">))</span>
 
         <span class="n">theme_menu_items</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-        <span class="n">theme_menu_items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">_menu_item_bootstrap</span><span class="p">)</span>
-        <span class="n">theme_menu_items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">_menu_item_separator</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">theme_menu_items</span><span class="p">)</span></div>
 
@@ -342,14 +341,49 @@
 
         <span class="k">for</span> <span class="n">theme</span> <span class="ow">in</span> <span class="n">get_themes_list</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">theme</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">theme_id</span><span class="p">:</span>
-                <span class="n">examples_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">themes_src_path</span><span class="p">,</span> <span class="n">theme</span><span class="p">[</span><span class="s2">&quot;extra_examples&quot;</span><span class="p">])</span>
+                <span class="n">examples_data</span> <span class="o">+=</span> <span class="n">theme</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;extra_examples_html&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="s2">&quot;extra_examples_file&quot;</span> <span class="ow">in</span> <span class="n">theme</span><span class="p">:</span>
+                    <span class="n">examples_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">themes_src_path</span><span class="p">,</span> <span class="n">theme</span><span class="p">[</span><span class="s2">&quot;extra_examples_file&quot;</span><span class="p">])</span>
+
+                <span class="k">if</span> <span class="n">examples_path</span> <span class="ow">and</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_file</span><span class="p">(</span><span class="n">examples_path</span><span class="p">):</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">examples_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">examples_file</span><span class="p">:</span>
+                        <span class="n">examples_data</span> <span class="o">+=</span> <span class="n">examples_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
                 <span class="k">break</span>
 
-        <span class="k">if</span> <span class="n">examples_path</span> <span class="ow">and</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_file</span><span class="p">(</span><span class="n">examples_path</span><span class="p">):</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">examples_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">examples_file</span><span class="p">:</span>
-                <span class="n">examples_data</span> <span class="o">=</span> <span class="n">examples_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">examples_data</span></div>
 
-        <span class="k">return</span> <span class="n">examples_data</span></div></div>
+<div class="viewcode-block" id="BootstrapThemesGeneratorWebapp.populate_tabpanel"><a class="viewcode-back" href="../../modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.BootstrapThemesGeneratorWebapp.populate_tabpanel">[docs]</a>    <span class="nd">@bottle_app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/populate_tabpanel&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">populate_tabpanel</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Populate tabpanel.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            Tabpanel content read from a file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># NOTE: The tab ID is used to &quot;devine&quot; the file name.</span>
+        <span class="c1"># Index 0: &quot;bstg&quot; prefix.</span>
+        <span class="c1"># Index 1: Section name (components/utilities/extras). Which is also the name of the folder</span>
+        <span class="c1">#   inside the sections folder.</span>
+        <span class="c1"># Last index: the &quot;tab&quot; suffix.</span>
+        <span class="c1"># All other parts are going to compose the file name.</span>
+        <span class="n">tab_id_parts</span> <span class="o">=</span> <span class="n">bottle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;tab_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+        <span class="n">use_section_template</span> <span class="o">=</span> <span class="n">bottle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;use_section_template&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span>
+        <span class="n">section_name</span> <span class="o">=</span> <span class="n">tab_id_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tab_id_parts</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;.html&quot;</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">www_root</span><span class="p">,</span> <span class="s2">&quot;sections&quot;</span><span class="p">,</span> <span class="n">section_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+        <span class="n">file_content</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">html_file</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">use_section_template</span><span class="p">:</span>
+                    <span class="n">file_content</span> <span class="o">=</span> <span class="n">_section_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tabpanel_content</span><span class="o">=</span><span class="n">html_file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">file_content</span> <span class="o">=</span> <span class="n">html_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">file_content</span></div></div>
 
 
 <div class="viewcode-block" id="get_themes_list"><a class="viewcode-back" href="../../modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.html#BootstrapThemesGeneratorApp.BootstrapThemesGenerator_webapp.get_themes_list">[docs]</a><span class="k">def</span> <span class="nf">get_themes_list</span><span class="p">():</span>
@@ -369,7 +403,10 @@
                 <span class="n">entry</span><span class="o">.</span><span class="n">name</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;_&quot;</span> <span class="ow">and</span> \
                 <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_file</span><span class="p">(</span><span class="n">css_path</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_file</span><span class="p">(</span><span class="n">conf_path</span><span class="p">):</span>
-                <span class="n">conf_data</span> <span class="o">=</span> <span class="n">run_path</span><span class="p">(</span><span class="n">conf_path</span><span class="p">)[</span><span class="s2">&quot;settings&quot;</span><span class="p">]</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">conf_data</span> <span class="o">=</span> <span class="n">run_path</span><span class="p">(</span><span class="n">conf_path</span><span class="p">)[</span><span class="s2">&quot;settings&quot;</span><span class="p">]</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                    <span class="n">conf_data</span> <span class="o">=</span> <span class="p">{}</span>
 
             <span class="k">yield</span> <span class="p">{</span>
                 <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
@@ -377,7 +414,8 @@
                     <span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)),</span>
                 <span class="c1"># NOTE: Escaped to safely use it as the value of an HTML attribute.</span>
                 <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="n">escape</span><span class="p">(</span><span class="n">mistune_utils</span><span class="o">.</span><span class="n">md</span><span class="p">(</span><span class="n">conf_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;theme_description&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))),</span>
-                <span class="s2">&quot;extra_examples&quot;</span><span class="p">:</span> <span class="n">conf_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;extra_examples&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="s2">&quot;extra_examples_file&quot;</span><span class="p">:</span> <span class="n">conf_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;extra_examples_file&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+                <span class="s2">&quot;extra_examples_html&quot;</span><span class="p">:</span> <span class="n">conf_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;extra_examples_html&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
             <span class="p">}</span></div>
 
 

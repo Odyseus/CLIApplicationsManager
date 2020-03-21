@@ -5,3 +5,4 @@ UserApplicationsManagerApp.app\_utils module
    :members:
    :undoc-members:
    :show-inheritance:
+   :private-members:

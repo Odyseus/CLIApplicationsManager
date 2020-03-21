@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -255,7 +255,7 @@ and instead can write only the help message--<em>the way you want it</em>.</p>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">arguments</span> <span class="o">=</span> <span class="n">docopt</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;Naval Fate 2.0&#39;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Beat that! The option parser is generated based on the docstring above
@@ -289,7 +289,7 @@ project--it is self-contained.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">docopt</span> <span class="kn">import</span> <span class="n">docopt</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">docopt</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">argv</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">options_first</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">docopt</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">argv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">options_first</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">docopt</span></code> takes 1 required and 4 optional arguments:</p>
@@ -350,13 +350,13 @@ top example as:</p>
 </pre></div>
 </div>
 <p>the return dictionary will be:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;--drifting&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>    <span class="s1">&#39;mine&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
- <span class="s1">&#39;--help&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>        <span class="s1">&#39;move&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
- <span class="s1">&#39;--moored&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>      <span class="s1">&#39;new&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
- <span class="s1">&#39;--speed&#39;</span><span class="p">:</span> <span class="s1">&#39;15&#39;</span><span class="p">,</span>        <span class="s1">&#39;remove&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
- <span class="s1">&#39;--version&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>     <span class="s1">&#39;set&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
- <span class="s1">&#39;&lt;name&gt;&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Guardian&#39;</span><span class="p">],</span> <span class="s1">&#39;ship&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
- <span class="s1">&#39;&lt;x&gt;&#39;</span><span class="p">:</span> <span class="s1">&#39;100&#39;</span><span class="p">,</span>           <span class="s1">&#39;shoot&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;--drifting&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>    <span class="s1">&#39;mine&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;--help&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>        <span class="s1">&#39;move&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;--moored&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>      <span class="s1">&#39;new&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;--speed&#39;</span><span class="p">:</span> <span class="s1">&#39;15&#39;</span><span class="p">,</span>        <span class="s1">&#39;remove&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;--version&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>     <span class="s1">&#39;set&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;&lt;name&gt;&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Guardian&#39;</span><span class="p">],</span> <span class="s1">&#39;ship&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;&lt;x&gt;&#39;</span><span class="p">:</span> <span class="s1">&#39;100&#39;</span><span class="p">,</span>           <span class="s1">&#39;shoot&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
  <span class="s1">&#39;&lt;y&gt;&#39;</span><span class="p">:</span> <span class="s1">&#39;150&#39;</span><span class="p">}</span>
 </pre></div>
 </div>
