@@ -20,16 +20,28 @@
             "__app__/docs_sources/sphinx_extensions",
             "__pycache__"
         ],
+        "binary_file_patterns": [
+            "docs",
+            "UserData/**/UserData",
+            "UserData/**/UserData/*",
+            "UserData/**/UserData/**",
+            "UserData/**/UserData/**/**",
+            "UserData/**/AppData/**/python_utils/**",
+            "UserData/**/AppData/**/python_utils/**/**"
+        ],
         "index_exclude_patterns": [
             "docs",
             "UserData/**/UserData",
             "UserData/**/UserData/*",
             "UserData/**/UserData/**",
-            "UserData/**/AppData/**/python_utils"
+            "UserData/**/UserData/**/**",
+            "UserData/**/AppData/**/python_utils/**",
+            "UserData/**/AppData/**/python_utils/**/**"
         ],
         "path": ".."
     }],
     "settings": {
+        "index_files": false,
         "python_fiximports": {
             "autofix_on_save": true
         }
