@@ -4,7 +4,7 @@ import os
 
 # The root_folder is three (3) levels up from were the argos script is located.
 root_folder = os.path.realpath(os.path.abspath(os.path.join(
-    os.path.normpath(os.path.join(os.getcwd(), *([".."] * 3))))))
+    os.path.normpath(os.path.join(os.getcwd(), *([os.pardir] * 3))))))
 
 print("""---
 Bump all apps versions | iconName=add \

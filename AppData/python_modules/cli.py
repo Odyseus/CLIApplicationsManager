@@ -22,7 +22,7 @@ from .__init__ import __version__
 from .python_utils import cli_utils
 
 root_folder = os.path.realpath(os.path.abspath(os.path.join(
-    os.path.normpath(os.path.join(os.path.dirname(__file__), *([".."] * 2))))))
+    os.path.normpath(os.path.join(os.path.dirname(__file__), *([os.pardir] * 2))))))
 
 docopt_doc = """{appname} {version} ({status})
 

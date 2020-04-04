@@ -22,7 +22,7 @@ from datetime import datetime
 from runpy import run_path
 
 root_folder = os.path.realpath(os.path.abspath(os.path.join(
-    os.path.normpath(os.path.join(os.path.dirname(__file__), *([".."] * 2))))))
+    os.path.normpath(os.path.join(os.path.dirname(__file__), *([os.pardir] * 2))))))
 
 # Insert the root application to sys.path.
 sys.path.insert(0, os.path.join(root_folder, "AppData"))

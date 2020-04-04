@@ -33,7 +33,7 @@ from .python_utils import string_utils
 from .python_utils.ansi_colors import Ansi
 
 root_folder = os.path.realpath(os.path.abspath(os.path.join(
-    os.path.normpath(os.path.join(os.path.dirname(__file__), *([".."] * 2))))))
+    os.path.normpath(os.path.join(os.path.dirname(__file__), *([os.pardir] * 2))))))
 
 app_man_user_data_path = os.path.join(root_folder, "UserData")
 app_man_user_data_backlist = [
