@@ -30,6 +30,17 @@ Requirements
 
 No mayor requirements are needed to run this application other than Python 3.5+.
 
+.. contextual-admonition::
+    :context: info
+    :title: Optional dependencies
+
+    - ``jsonschema>3`` Python module.
+
+``jsonschema`` module
+---------------------
+
+The ``jsonschema`` module is used to validate all data used by this |CLI| application. If not installed, the data will simply not be validated.
+
 .. include:: ./usage.restructuredtext
 
 .. include:: ./templates.restructuredtext

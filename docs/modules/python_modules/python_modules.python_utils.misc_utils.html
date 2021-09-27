@@ -192,7 +192,7 @@
 <dd class="field-odd"><p>Path to system's temporary directory.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -203,13 +203,13 @@
 <dd><p>Get date time.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- The time &quot;type&quot; to return (Default: date).</p>
+<dd class="field-odd"><p><strong>type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- The time &quot;type&quot; to return (Default: date).</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The current time formatted by the &quot;type&quot; passed.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -221,13 +221,13 @@
 <p>Convert a date string from using microseconds to use milliseconds.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- The date string to convert.</p>
+<dd class="field-odd"><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- The date string to convert.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The date string converted.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -239,38 +239,40 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Start date.</p></li>
-<li><p><strong>e</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- End date.</p></li>
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- Start date.</p></li>
+<li><p><strong>e</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- End date.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The difference in hours, minutes, seconds, and milliseconds between two dates.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="python_modules.python_utils.misc_utils.merge_dict">
-<code class="sig-prename descclassname">python_modules.python_utils.misc_utils.</code><code class="sig-name descname">merge_dict</code><span class="sig-paren">(</span><em class="sig-param">first</em>, <em class="sig-param">second</em>, <em class="sig-param">logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/misc_utils.html#merge_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.misc_utils.merge_dict" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">python_modules.python_utils.misc_utils.</code><code class="sig-name descname">merge_dict</code><span class="sig-paren">(</span><em class="sig-param">first</em>, <em class="sig-param">second</em>, <em class="sig-param">logger=None</em>, <em class="sig-param">extend_lists=True</em>, <em class="sig-param">append_to_lists=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/misc_utils.html#merge_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.misc_utils.merge_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merges <strong>second</strong> dictionary into <strong>first</strong> dictionary and return merged result.</p>
-<p>It <em>deep merges</em> keys of type <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref any docutils literal notranslate"><span class="pre">dict</span></code></a> and <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref any docutils literal notranslate"><span class="pre">list</span></code></a>.
+<p>It <em>deep merges</em> keys of type <a class="reference external" href="https://docs.python.org/3/reference/expressions.html#dict" title="(in Python v3.9)"><code class="docutils literal notranslate"><span class="pre">Dictionary</span> <span class="pre">displays</span></code></a> and <a class="reference external" href="https://docs.python.org/3/glossary.html#term-list" title="(in Python v3.9)"><code class="xref any docutils literal notranslate"><span class="pre">list</span></code></a>.
 Any other type is overwritten.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>first</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) -- A dictionary to which to merge a second dictinary.</p></li>
-<li><p><strong>second</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) -- A dictionary to merge into another dictionary.</p></li>
+<li><p><strong>first</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) -- A dictionary to which to merge a second dictinary.</p></li>
+<li><p><strong>second</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) -- A dictionary to merge into another dictionary.</p></li>
 <li><p><strong>logger</strong> (<a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><em>LogSystem</em></a>) -- The logger.</p></li>
+<li><p><strong>extend_lists</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- When dealing with lists, extend the <code class="docutils literal notranslate"><span class="pre">first</span></code> list one with the <code class="docutils literal notranslate"><span class="pre">second</span></code> one.</p></li>
+<li><p><strong>append_to_lists</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- If <code class="docutils literal notranslate"><span class="pre">first</span></code> is a list and <code class="docutils literal notranslate"><span class="pre">second</span></code> isn't, append <code class="docutils literal notranslate"><span class="pre">second</span></code> to <code class="docutils literal notranslate"><span class="pre">first</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>A merged dictionary.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -297,7 +299,7 @@ Any other type is overwritten.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

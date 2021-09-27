@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>BackupUtilsApp.schemas module &mdash; Python CLI Applications Documentations  documentation</title>
+  <title>python_modules.python_utils.css_props_case_correction package &mdash; Python CLI Applications Documentations  documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="BackupUtilsApp.tasks module" href="BackupUtilsApp.tasks.html" />
-    <link rel="prev" title="BackupUtilsApp.cli module" href="BackupUtilsApp.cli.html" /> 
+    <link rel="next" title="python_modules.python_utils.schemas package" href="python_modules.python_utils.schemas.html" />
+    <link rel="prev" title="python_modules.python_utils.case_conversion package" href="python_modules.python_utils.case_conversion.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -146,17 +146,19 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="modules.html">BackupUtilsApp</a> &raquo;</li>
+          <li><a href="modules.html">python_modules</a> &raquo;</li>
         
-          <li><a href="BackupUtilsApp.html">BackupUtilsApp package</a> &raquo;</li>
+          <li><a href="python_modules.html">python_modules package</a> &raquo;</li>
         
-      <li>BackupUtilsApp.schemas module</li>
+          <li><a href="python_modules.python_utils.html">python_modules.python_utils package</a> &raquo;</li>
+        
+      <li>python_modules.python_utils.css_props_case_correction package</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/modules/BackupUtils/BackupUtilsApp.schemas.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/modules/python_modules/python_modules.python_utils.css_props_case_correction.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -166,10 +168,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="BackupUtilsApp.tasks.html" class="btn btn-neutral float-right" title="BackupUtilsApp.tasks module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="python_modules.python_utils.schemas.html" class="btn btn-neutral float-right" title="python_modules.python_utils.schemas package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="BackupUtilsApp.cli.html" class="btn btn-neutral float-left" title="BackupUtilsApp.cli module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="python_modules.python_utils.case_conversion.html" class="btn btn-neutral float-left" title="python_modules.python_utils.case_conversion package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -178,27 +180,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-BackupUtilsApp.schemas">
-<span id="backuputilsapp-schemas-module"></span><h1>BackupUtilsApp.schemas module<a class="headerlink" href="#module-BackupUtilsApp.schemas" title="Permalink to this headline">¶</a></h1>
-<p>Schemas for JSON data validation.</p>
-<dl class="attribute">
-<dt id="BackupUtilsApp.schemas.settings_schema">
-<code class="sig-prename descclassname">BackupUtilsApp.schemas.</code><code class="sig-name descname">settings_schema</code><a class="headerlink" href="#BackupUtilsApp.schemas.settings_schema" title="Permalink to this definition">¶</a></dt>
-<dd><p>JSON schema.</p>
+  <div class="section" id="module-python_modules.python_utils.css_props_case_correction">
+<span id="python-modules-python-utils-css-props-case-correction-package"></span><h1>python_modules.python_utils.css_props_case_correction package<a class="headerlink" href="#module-python_modules.python_utils.css_props_case_correction" title="Permalink to this headline">¶</a></h1>
+<p>Countermessure for mediocre web technologies (forgive the redundancy).</p>
+<dl class="function">
+<dt id="python_modules.python_utils.css_props_case_correction.correct_property_case">
+<code class="sig-prename descclassname">python_modules.python_utils.css_props_case_correction.</code><code class="sig-name descname">correct_property_case</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/css_props_case_correction.html#correct_property_case"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.css_props_case_correction.correct_property_case" title="Permalink to this definition">¶</a></dt>
+<dd><p>Correct property names case.</p>
+<p>Yes, this is the same function found in the string_utils.py module. I re-define it here
+to avoid doing complex relative imports.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- Data to modify.</p>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="BackupUtilsApp.schemas.tasks_schema">
-<code class="sig-prename descclassname">BackupUtilsApp.schemas.</code><code class="sig-name descname">tasks_schema</code><a class="headerlink" href="#BackupUtilsApp.schemas.tasks_schema" title="Permalink to this definition">¶</a></dt>
-<dd><p>JSON schema.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Modified data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -213,10 +212,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="BackupUtilsApp.tasks.html" class="btn btn-neutral float-right" title="BackupUtilsApp.tasks module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="python_modules.python_utils.schemas.html" class="btn btn-neutral float-right" title="python_modules.python_utils.schemas package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="BackupUtilsApp.cli.html" class="btn btn-neutral float-left" title="BackupUtilsApp.cli module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="python_modules.python_utils.case_conversion.html" class="btn btn-neutral float-left" title="python_modules.python_utils.case_conversion package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -225,7 +224,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

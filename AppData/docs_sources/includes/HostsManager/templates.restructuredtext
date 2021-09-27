@@ -2,13 +2,13 @@
 File templates
 ==============
 
-conf.py template
-----------------
+config.yaml template
+--------------------
 
-.. literalinclude:: ../../../../UserData/HostsManager/AppData/data/templates/conf.py
-    :language: python
-    :prepend: # START conf.py
-    :append: # END conf.py
+.. literalinclude:: ../../../../UserData/HostsManager/AppData/data/templates/config.yaml
+    :language: yaml
+    :prepend: # START config.yaml
+    :append: # END config.yaml
 
 .. note::
 
@@ -46,7 +46,7 @@ Data keys for the ``sources`` property
 
     + ``url_parser``: It converts a list of URLs separated by new lines and converts them into a list of host names separated by new lines.
     + ``json_array``: It converts a string representing a JSON array of strings into a string that will contain each element of the array separated by new lines.
-    + Custom method (**Method**): The name of a custom function declared inside the **UserData/profiles/<profle_name>/conf.py** file that can manipulate the data from a source in any way necessary. It accepts two parameters; ``source_data`` (mandatory), the data that needs to be manipulated; and ``logger`` (optional), see :any:`LogSystem`. It should return a string that can be processed by this application.
+    + Custom method (**Method**): The name of a custom function declared inside the **UserData/profiles/<profle_name>/config.yaml** file that can manipulate the data from a source in any way necessary. It accepts two parameters; ``source_data`` (mandatory), the data that needs to be manipulated; and ``logger`` (optional), see :any:`LogSystem`. It should return a string that can be processed by this application.
 
     .. note::
 

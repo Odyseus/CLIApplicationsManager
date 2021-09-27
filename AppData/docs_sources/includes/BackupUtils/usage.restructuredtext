@@ -10,8 +10,9 @@ Detailed usage
     :context: info
     :title: Highlights
 
-    - Backup tasks are read from configuration files located in **UserData/tasks/*.py**.
-    - Global settings are read from configuration files located in **UserData/settings/*.py**.
+    - Backup tasks are read from configuration files located in **UserData/tasks/*.yaml**.
+    - Global settings are read from configuration files located in **UserData/settings/*.yaml**.
+    - Pre/Post hooks are executed from Python scripts located in **UserData/hooks/*.py**. See :ref:`pre_hook and post_hook definitions <backup-utils-hook-parameters-reference>`.
     - Each tasks file can have defined their own settings and contain one or more backup tasks of any type.
 
 .. include:: ../0-common/cli-options.restructuredtext
@@ -27,8 +28,8 @@ The main command to perform backup tasks.
 Options
 ~~~~~~~
 
-- ``-t <name>`` or ``--task=<name>``: File name of the file containing the backup tasks. Should be the name of a file stored in **UserData/tasks/<name>.py**. Extension omitted.
-- ``-g <name>`` or ``--global=<name>``: File name of the file containing the global settings that all the backup tasks will use. Should be the name of a file stored in **UserData/settings/<name>.py**. Extension omitted.
+- ``-t <name>`` or ``--task=<name>``: File name of the file containing the backup tasks. Should be the name of a file stored in **UserData/tasks/<name>.yaml**. Extension omitted.
+- ``-g <name>`` or ``--global=<name>``: File name of the file containing the global settings that all the backup tasks will use. Should be the name of a file stored in **UserData/settings/<name>.yaml**. Extension omitted.
 - ``-d`` or ``--dry-run``: Do not perform file system changes. Only display messages informing of the actions that will be performed or commands that will be executed.
 
     .. warning::

@@ -193,9 +193,9 @@ automatically, I simply cut to the chase and did it myself.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>update_inventories</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) -- Whether to force the update of the inventory files. Inventory files will be updated
+<li><p><strong>update_inventories</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a>) -- Whether to force the update of the inventory files. Inventory files will be updated
 anyway f they don't exist.</p></li>
-<li><p><strong>docs_sources_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Path to the documentation source files that will be used to store the
+<li><p><strong>docs_sources_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- Path to the documentation source files that will be used to store the
 downloaded inventories.</p></li>
 <li><p><strong>logger</strong> (<a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><em>LogSystem</em></a>) -- The logger.</p></li>
 </ul>
@@ -213,22 +213,22 @@ downloaded inventories.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>root_folder</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Path to the main folder that most paths should be relative to.</p></li>
-<li><p><strong>docs_src_path_rel_to_root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Docs sources path relative to root_folder.</p></li>
-<li><p><strong>docs_dest_path_rel_to_root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Built docs destination path relative to root_folder.</p></li>
-<li><p><strong>apidoc_paths_rel_to_root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em>, </em><em>optional</em>) -- A list of tuples. Each tuple of length two contains the path to the Python modules
+<li><p><strong>root_folder</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- Path to the main folder that most paths should be relative to.</p></li>
+<li><p><strong>docs_src_path_rel_to_root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- Docs sources path relative to root_folder.</p></li>
+<li><p><strong>docs_dest_path_rel_to_root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- Built docs destination path relative to root_folder.</p></li>
+<li><p><strong>apidoc_paths_rel_to_root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- A list of tuples. Each tuple of length two contains the path to the Python modules
 folder at index zero from which to extract docstrings and the path to where to store
 the generated rst files at index one.</p></li>
-<li><p><strong>doctree_temp_location_rel_to_sys_temp</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Name of a temporary folder that will be used to create a path relative to the
+<li><p><strong>doctree_temp_location_rel_to_sys_temp</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- Name of a temporary folder that will be used to create a path relative to the
 system temporary folder.</p></li>
-<li><p><strong>ignored_modules</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em>, </em><em>optional</em>) -- A list of paths to Python modules relative to the root_folder. These are ignored
+<li><p><strong>ignored_modules</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- A list of paths to Python modules relative to the root_folder. These are ignored
 modules whose docstrings are a mess and/or are incomplete. Because such docstrings
 will produce hundred of annoying Sphinx warnings.</p></li>
-<li><p><strong>generate_api_docs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) -- If False, do not extract docstrings from Python modules.</p></li>
-<li><p><strong>update_inventories</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) -- Whether to force the update of the inventory files. Inventory files will be updated
+<li><p><strong>generate_api_docs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a>) -- If False, do not extract docstrings from Python modules.</p></li>
+<li><p><strong>update_inventories</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Whether to force the update of the inventory files. Inventory files will be updated
 anyway f they don't exist.</p></li>
-<li><p><strong>force_clean_build</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) -- Remove destination and doctrees directories before building the documentation.</p></li>
-<li><p><strong>build_coverage</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) -- If True, build Sphinx coverage documents.</p></li>
+<li><p><strong>force_clean_build</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Remove destination and doctrees directories before building the documentation.</p></li>
+<li><p><strong>build_coverage</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- If True, build Sphinx coverage documents.</p></li>
 <li><p><strong>logger</strong> (<a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><em>LogSystem</em></a>) -- The logger.</p></li>
 </ul>
 </dd>
@@ -242,10 +242,10 @@ anyway f they don't exist.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>root_folder</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Path to the main folder that most paths should be relative to.</p></li>
-<li><p><strong>docs_src_path_rel_to_root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Docs sources path relative to root_folder.</p></li>
-<li><p><strong>docs_dest_path_rel_to_root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Built docs destination path relative to root_folder.</p></li>
-<li><p><strong>doctree_temp_location_rel_to_sys_temp</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Name of a temporary folder that will be used to create a path relative to the
+<li><p><strong>root_folder</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- Path to the main folder that most paths should be relative to.</p></li>
+<li><p><strong>docs_src_path_rel_to_root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- Docs sources path relative to root_folder.</p></li>
+<li><p><strong>docs_dest_path_rel_to_root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- Built docs destination path relative to root_folder.</p></li>
+<li><p><strong>doctree_temp_location_rel_to_sys_temp</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- Name of a temporary folder that will be used to create a path relative to the
 system temporary folder.</p></li>
 <li><p><strong>logger</strong> (<a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><em>LogSystem</em></a>) -- The logger.</p></li>
 </ul>
@@ -275,7 +275,7 @@ system temporary folder.</p></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

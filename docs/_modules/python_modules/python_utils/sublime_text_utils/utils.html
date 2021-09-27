@@ -1,0 +1,676 @@
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>python_modules.python_utils.sublime_text_utils.utils &mdash; Python CLI Applications Documentations  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: False" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Python CLI Applications Documentations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/KnowledgeBase/index.html">Knowledge Base's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/MoviesDB/index.html">Movies DB's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/PackageManager/index.html">Package Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Python CLI Applications Documentations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>python_modules.python_utils.sublime_text_utils.utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for python_modules.python_utils.sublime_text_utils.utils</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Various utilities.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">ChainMap</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Mapping</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Sequence</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="c1"># NOTE: try/except block needed for Sphinx.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sublime</span>
+    <span class="kn">import</span> <span class="nn">sublime_plugin</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">cmd_utils</span>
+
+
+<div class="viewcode-block" id="has_right_syntax"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils.has_right_syntax">[docs]</a><span class="k">def</span> <span class="nf">has_right_syntax</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">view_syntaxes</span><span class="o">=</span><span class="p">[],</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Has right syntax.</span>
+
+<span class="sd">    Check if the view is of the desired syntax listed in ``view_syntaxes``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    view : object</span>
+<span class="sd">        A Sublime Text view.</span>
+<span class="sd">    view_syntaxes : list, string, optional</span>
+<span class="sd">        List of syntaxes to check against.</span>
+<span class="sd">    strict : bool, optional</span>
+<span class="sd">        Perform equality checks instead of membership checks.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        If the view has the right syntax.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">syntax</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">settings</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;syntax&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">view_syntaxes</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">any</span><span class="p">([(</span><span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">syntax</span> <span class="k">if</span> <span class="n">strict</span> <span class="k">else</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">syntax</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">view_syntaxes</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">view_syntaxes</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">view_syntaxes</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">syntax</span> <span class="k">if</span> <span class="n">strict</span> <span class="k">else</span> <span class="n">view_syntaxes</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">syntax</span>
+
+    <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="has_right_extension"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils.has_right_extension">[docs]</a><span class="k">def</span> <span class="nf">has_right_extension</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">file_extensions</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Has the right file extension.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    view : object</span>
+<span class="sd">        A Sublime Text view.</span>
+<span class="sd">    file_extensions : list, optional</span>
+<span class="sd">        The list of file extensions to check against.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        Whether if file is of the right syntax.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Borrowed from JSFormat.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="n">get_file_path</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
+    <span class="n">ext</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">file_name</span><span class="p">:</span>  <span class="c1"># file exists, pull syntax type from extension</span>
+        <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file_name</span><span class="p">)[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
+
+    <span class="k">if</span> <span class="n">ext</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ext</span> <span class="ow">in</span> <span class="n">file_extensions</span>
+
+    <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="remove_bad_chars"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils.remove_bad_chars">[docs]</a><span class="k">def</span> <span class="nf">remove_bad_chars</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">bad_chars</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Remove bad characters from selection.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : str</span>
+<span class="sd">        The string to clean.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        String with bad characters removed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">bad_chars</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bad_chars</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">bad_chars</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">text</span></div>
+
+
+<div class="viewcode-block" id="get_selections"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils.get_selections">[docs]</a><span class="k">def</span> <span class="nf">get_selections</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">extract_words</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bad_chars</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Get all selections.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    view : object</span>
+<span class="sd">        A Sublime Text view.</span>
+<span class="sd">    extract_words : bool, optional</span>
+<span class="sd">        If no selection is found at region&#39;s coordinates, extract words from regions.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        A list of strings.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">selections</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">view</span><span class="o">.</span><span class="n">sel</span><span class="p">():</span>
+        <span class="n">sel</span> <span class="o">=</span> <span class="n">remove_bad_chars</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">substr</span><span class="p">(</span><span class="n">region</span><span class="p">),</span> <span class="n">bad_chars</span><span class="o">=</span><span class="n">bad_chars</span><span class="p">)</span> <span class="ow">or</span> \
+            <span class="p">(</span><span class="n">remove_bad_chars</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">substr</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">word</span><span class="p">(</span><span class="n">region</span><span class="p">)),</span>
+                              <span class="n">bad_chars</span><span class="o">=</span><span class="n">bad_chars</span><span class="p">)</span> <span class="k">if</span> <span class="n">extract_words</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">sel</span><span class="p">:</span>
+            <span class="n">selections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">selections</span> <span class="k">if</span> <span class="n">selections</span> <span class="k">else</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="get_executable_from_settings"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils.get_executable_from_settings">[docs]</a><span class="k">def</span> <span class="nf">get_executable_from_settings</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">settings</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get executable.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    view : object</span>
+<span class="sd">        A Sublime Text view.</span>
+<span class="sd">    settings : list</span>
+<span class="sd">        The list of executable names and/or paths to check.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        The path or name to an existent program.</span>
+<span class="sd">    None</span>
+<span class="sd">        No program found.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">settings</span> <span class="o">=</span> <span class="n">substitute_variables</span><span class="p">(</span><span class="n">get_view_context</span><span class="p">(</span><span class="n">view</span><span class="p">),</span> <span class="n">settings</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">exec</span> <span class="ow">in</span> <span class="n">settings</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">exec</span> <span class="ow">and</span> <span class="p">(</span><span class="n">cmd_utils</span><span class="o">.</span><span class="n">can_exec</span><span class="p">(</span><span class="n">exec</span><span class="p">)</span> <span class="ow">or</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="n">exec</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="n">exec</span>
+
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="substitute_variables"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils.substitute_variables">[docs]</a><span class="k">def</span> <span class="nf">substitute_variables</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Substitute variables.</span>
+
+<span class="sd">    Utilizes Sublime Text&#39;s `expand_variables` API, which uses the `${varname}` syntax and</span>
+<span class="sd">    supports placeholders (`${varname:placeholder}`).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    variables : dict</span>
+<span class="sd">        A dictionary containing variables as keys mapped to values to replace those variables.</span>
+<span class="sd">    value : str, list, dict</span>
+<span class="sd">        The str/list/dict containing the data where to perform substitutions.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">    dict</span>
+<span class="sd">    str</span>
+<span class="sd">        The modified data.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Borrowed from SublimeLinter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="c1"># Workaround https://github.com/SublimeTextIssues/Core/issues/1878</span>
+        <span class="c1"># (E.g. UNC paths on Windows start with double backslashes.)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\\\</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">pardir</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="n">value</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">sublime</span><span class="o">.</span><span class="n">expand_variables</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">substitute_variables</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">substitute_variables</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="guess_project_root_of_view"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils.guess_project_root_of_view">[docs]</a><span class="k">def</span> <span class="nf">guess_project_root_of_view</span><span class="p">(</span><span class="n">view</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Guess project root folder from view.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    view : object</span>
+<span class="sd">        A Sublime Text view.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    None</span>
+<span class="sd">        No project root folder could be ascertained.</span>
+<span class="sd">    str</span>
+<span class="sd">        The project root folder.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Borrowed from SublimeLinter. I &lt;3 these guys!</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">window</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">window</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">folders</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">folders</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">folders</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">get_file_path</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">folders</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folders</span><span class="p">:</span>
+        <span class="c1"># Take the first one; should we take the deepest one? The shortest?</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">commonprefix</span><span class="p">([</span><span class="n">folder</span><span class="p">,</span> <span class="n">filename</span><span class="p">])</span> <span class="o">==</span> <span class="n">folder</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">folder</span>
+
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="get_file_path"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils.get_file_path">[docs]</a><span class="k">def</span> <span class="nf">get_file_path</span><span class="p">(</span><span class="n">view</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get file from view.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    view : object</span>
+<span class="sd">        A Sublime Text view.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        The view&#39;s file path.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">file_name</span><span class="p">())</span> <span class="k">if</span> <span class="n">view</span> <span class="ow">and</span> <span class="n">view</span><span class="o">.</span><span class="n">file_name</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="get_filename"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils.get_filename">[docs]</a><span class="k">def</span> <span class="nf">get_filename</span><span class="p">(</span><span class="n">view</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get view&#39;s file name.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    view : object</span>
+<span class="sd">        A Sublime Text view.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        File name.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Borrowed from SublimeLinter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">view</span><span class="o">.</span><span class="n">file_name</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;&lt;untitled </span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">buffer_id</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="_extract_window_variables"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils._extract_window_variables">[docs]</a><span class="k">def</span> <span class="nf">_extract_window_variables</span><span class="p">(</span><span class="n">window</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Extract window variables.</span>
+
+<span class="sd">    We explicitly want to compute all variables around the current file on our own.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    window : object</span>
+<span class="sd">        A sublime.Window object.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Window variables.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">variables</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">extract_variables</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="s2">&quot;file_path&quot;</span><span class="p">,</span> <span class="s2">&quot;file_name&quot;</span><span class="p">,</span> <span class="s2">&quot;file_base_name&quot;</span><span class="p">,</span> <span class="s2">&quot;file_extension&quot;</span><span class="p">):</span>
+        <span class="n">variables</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">variables</span></div>
+
+
+<div class="viewcode-block" id="get_view_context"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils.get_view_context">[docs]</a><span class="k">def</span> <span class="nf">get_view_context</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">additional_context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get view context.</span>
+
+<span class="sd">    Note that we ship a enhanced version for ``folder`` if you have multiple</span>
+<span class="sd">    folders open in a window. See ``guess_project_root_of_view``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    view : object</span>
+<span class="sd">        A Sublime Text view.</span>
+<span class="sd">    additional_context : None, optional</span>
+<span class="sd">        Additional context.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    collections.ChainMap</span>
+<span class="sd">        Extended window variables with environment variables and more &quot;persistent&quot;</span>
+<span class="sd">        files/folders names/paths.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">view</span> <span class="o">=</span> <span class="n">view</span> <span class="ow">or</span> <span class="n">sublime</span><span class="o">.</span><span class="n">active_window</span><span class="p">()</span><span class="o">.</span><span class="n">active_view</span><span class="p">()</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">window</span><span class="p">()</span> <span class="k">if</span> <span class="n">view</span> <span class="k">else</span> <span class="n">sublime</span><span class="o">.</span><span class="n">active_window</span><span class="p">()</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">ChainMap</span><span class="p">({},</span> <span class="n">_extract_window_variables</span><span class="p">(</span><span class="n">window</span><span class="p">)</span> <span class="k">if</span> <span class="n">window</span> <span class="k">else</span> <span class="p">{},</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">)</span>
+
+    <span class="n">project_folder</span> <span class="o">=</span> <span class="n">guess_project_root_of_view</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">project_folder</span><span class="p">:</span>
+        <span class="n">context</span><span class="p">[</span><span class="s2">&quot;folder&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">project_folder</span>
+
+    <span class="c1"># ``window.extract_variables`` actually resembles data from the</span>
+    <span class="c1"># ``active_view``, so we need to pass in all the relevant data around</span>
+    <span class="c1"># the filename manually in case the user switches to a different</span>
+    <span class="c1"># view, before we&#39;re done here.</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">get_file_path</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">filename</span><span class="p">:</span>
+        <span class="n">basename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="n">file_base_name</span><span class="p">,</span> <span class="n">file_extension</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">basename</span><span class="p">)</span>
+
+        <span class="n">context</span><span class="p">[</span><span class="s2">&quot;file&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
+        <span class="n">context</span><span class="p">[</span><span class="s2">&quot;file_path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="n">context</span><span class="p">[</span><span class="s2">&quot;file_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">basename</span>
+        <span class="n">context</span><span class="p">[</span><span class="s2">&quot;file_base_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">file_base_name</span>
+        <span class="n">context</span><span class="p">[</span><span class="s2">&quot;file_extension&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">file_extension</span>
+
+    <span class="n">context</span><span class="p">[</span><span class="s2">&quot;canonical_filename&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_filename</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">additional_context</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">additional_context</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">context</span></div>
+
+
+<div class="viewcode-block" id="distinct_until_buffer_changed"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils.distinct_until_buffer_changed">[docs]</a><span class="k">def</span> <span class="nf">distinct_until_buffer_changed</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
+    <span class="c1"># Sublime has problems to hold the distinction between buffers and views.</span>
+    <span class="c1"># It usually emits multiple identical events if you have multiple views</span>
+    <span class="c1"># into the same buffer.</span>
+    <span class="n">last_call</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">last_call</span>
+
+        <span class="n">this_call</span> <span class="o">=</span> <span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">buffer_id</span><span class="p">(),</span> <span class="n">view</span><span class="o">.</span><span class="n">change_count</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">this_call</span> <span class="o">==</span> <span class="n">last_call</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">last_call</span> <span class="o">=</span> <span class="n">this_call</span>
+        <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">wrapper</span></div>
+
+
+<div class="viewcode-block" id="reload_plugins"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils.reload_plugins">[docs]</a><span class="k">def</span> <span class="nf">reload_plugins</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reload Sublime &#39;plugins&#39; using official API.&quot;&quot;&quot;</span>
+    <span class="n">toplevel</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+            <span class="n">depth</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">depth</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">toplevel</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">toplevel</span><span class="p">):</span>
+        <span class="n">sublime_plugin</span><span class="o">.</span><span class="n">reload_plugin</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
+
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">NOTE: This classes won&#39;t work anymore in Sublime Text 4.</span>
+<span class="sd">In Sublime Text 3 I was able to declare it here and sub-class it in a top-level plugin.</span>
+<span class="sd">In Sublime Text 4 I&#39;m forced to declare it in a top-level plugin.</span>
+
+<span class="sd">class ProjectSettingsController():</span>
+<span class="sd">    @distinct_until_buffer_changed</span>
+<span class="sd">    def on_post_save_async(self, view):</span>
+<span class="sd">        # NOTE: Monitor this. I smell disaster!!! LOL</span>
+<span class="sd">        # It works good enough for now.</span>
+<span class="sd">        # Also keep an eye on settings.py &gt; Settings &gt; project_settings.</span>
+<span class="sd">        window = view.window()</span>
+<span class="sd">        filename = view.file_name()</span>
+<span class="sd">        if window and filename and window.project_file_name() == filename:</span>
+<span class="sd">            for window in sublime.windows():</span>
+<span class="sd">                if window.project_file_name() == filename:</span>
+<span class="sd">                    self._on_post_save_async_callback()</span>
+<span class="sd">            return</span>
+
+<span class="sd">    def _on_post_save_async_callback(self):</span>
+<span class="sd">        pass</span>
+
+
+<span class="sd">class SublimeConsoleController():</span>
+<span class="sd">    &quot;&quot;&quot;Keep Sublime Text console always open on debug mode.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="sd">    def on_activated_async(self, view):</span>
+<span class="sd">        self._ody_display_console(view)</span>
+
+<span class="sd">    def on_new_async(self, view):</span>
+<span class="sd">        self._ody_display_console(view)</span>
+
+<span class="sd">    def _ody_display_console(self, view):</span>
+<span class="sd">        if view and view.is_valid() and \</span>
+<span class="sd">                not view.settings().get(&quot;is_widget&quot;) and \</span>
+<span class="sd">                not view.settings().get(&quot;edit_settings_view&quot;) and \</span>
+<span class="sd">                view.window() and view.window().active_panel() != &quot;console&quot;:</span>
+<span class="sd">            view.window().run_command(&quot;show_panel&quot;, {&quot;panel&quot;: &quot;console&quot;})</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+
+<div class="viewcode-block" id="CompletionsSuperClass"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils.CompletionsSuperClass">[docs]</a><span class="k">class</span> <span class="nc">CompletionsSuperClass</span><span class="p">():</span>
+    <span class="n">_completions_scope</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">_completions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">_settings</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_logger</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">__enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;view&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_completions</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">sublime</span><span class="o">.</span><span class="n">active_window</span><span class="p">()</span><span class="o">.</span><span class="n">active_view</span><span class="p">()</span><span class="o">.</span><span class="n">id</span><span class="p">()</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">id</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">match_selector</span><span class="p">(</span><span class="n">location</span><span class="p">,</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;completions_scope&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_completions_scope</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="CompletionsSuperClass.on_query_completions"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils.CompletionsSuperClass.on_query_completions">[docs]</a>    <span class="k">def</span> <span class="nf">on_query_completions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">locations</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enabled</span><span class="p">(</span><span class="n">locations</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_completions</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;completions_ignore_content&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="o">*</span>
+                <span class="n">sublime</span><span class="o">.</span><span class="n">INHIBIT_WORD_COMPLETIONS</span> <span class="o">|</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;completions_ignore_files&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="o">*</span>
+                <span class="n">sublime</span><span class="o">.</span><span class="n">INHIBIT_EXPLICIT_COMPLETIONS</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="CompletionsSuperClass.update_completions"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.utils.html#python_modules.python_utils.sublime_text_utils.utils.CompletionsSuperClass.update_completions">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">update_completions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_completions</span> <span class="o">=</span> <span class="p">[[</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;trigger&quot;</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="s2">&quot;contents&quot;</span><span class="p">]]</span>
+                                 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;completions&quot;</span><span class="p">,</span> <span class="p">[])]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">sublime</span><span class="o">.</span><span class="n">status_message</span><span class="p">(</span><span class="s2">&quot;Error updating completions&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_completions</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;Completions must be a list of dictionaries with only two keys (&#39;trigger&#39; and &#39;contents&#39;).&quot;</span>
+            <span class="p">)</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2021, Odyseus.
+
+    </p>
+  </div>
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

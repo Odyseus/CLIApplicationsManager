@@ -335,7 +335,7 @@
 <span class="sd">            The content of the extra HTML file to be inserted into the index.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">theme_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">bottle</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;theme_href&quot;</span><span class="p">]))</span>
-        <span class="n">themes_src_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;themes&quot;</span><span class="p">)</span>
+        <span class="n">themes_src_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">pardir</span><span class="p">,</span> <span class="s2">&quot;themes&quot;</span><span class="p">)</span>
         <span class="n">examples_path</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="n">examples_data</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
@@ -437,7 +437,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

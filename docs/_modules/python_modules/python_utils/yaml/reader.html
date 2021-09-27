@@ -1,0 +1,391 @@
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>python_modules.python_utils.yaml.reader &mdash; Python CLI Applications Documentations  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: False" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Python CLI Applications Documentations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/KnowledgeBase/index.html">Knowledge Base's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/MoviesDB/index.html">Movies DB's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/PackageManager/index.html">Package Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Python CLI Applications Documentations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../yaml.html">python_modules.python_utils.yaml</a> &raquo;</li>
+        
+      <li>python_modules.python_utils.yaml.reader</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for python_modules.python_utils.yaml.reader</h1><div class="highlight"><pre>
+<span></span><span class="c1"># This module contains abstractions for the input stream. You don&#39;t have to</span>
+<span class="c1"># looks further, there are no pretty code.</span>
+<span class="c1">#</span>
+<span class="c1"># We define two classes here.</span>
+<span class="c1">#</span>
+<span class="c1">#   Mark(source, line, column)</span>
+<span class="c1"># It&#39;s just a record and its only use is producing nice error messages.</span>
+<span class="c1"># Parser does not use it for any other purposes.</span>
+<span class="c1">#</span>
+<span class="c1">#   Reader(source, data)</span>
+<span class="c1"># Reader determines the encoding of `data` and converts it to unicode.</span>
+<span class="c1"># Reader provides the following methods and attributes:</span>
+<span class="c1">#   reader.peek(length=1) - return the next `length` characters</span>
+<span class="c1">#   reader.forward(length=1) - move the current position to `length` characters.</span>
+<span class="c1">#   reader.index - the number of the current character.</span>
+<span class="c1">#   reader.line, stream.column - the line and the column of the current character.</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Reader&#39;</span><span class="p">,</span> <span class="s1">&#39;ReaderError&#39;</span><span class="p">]</span>
+
+<span class="kn">from</span> <span class="nn">.error</span> <span class="kn">import</span> <span class="n">YAMLError</span><span class="p">,</span> <span class="n">Mark</span>
+
+<span class="kn">import</span> <span class="nn">codecs</span><span class="o">,</span> <span class="nn">re</span>
+
+<div class="viewcode-block" id="ReaderError"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.yaml.reader.html#python_modules.python_utils.yaml.reader.ReaderError">[docs]</a><span class="k">class</span> <span class="nc">ReaderError</span><span class="p">(</span><span class="n">YAMLError</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">character</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">reason</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">character</span> <span class="o">=</span> <span class="n">character</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reason</span> <span class="o">=</span> <span class="n">reason</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">character</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;&#39;</span><span class="si">%s</span><span class="s2">&#39; codec can&#39;t decode byte #x</span><span class="si">%02x</span><span class="s2">: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span>  \
+                    <span class="s2">&quot;  in </span><span class="se">\&quot;</span><span class="si">%s</span><span class="se">\&quot;</span><span class="s2">, position </span><span class="si">%d</span><span class="s2">&quot;</span>    \
+                    <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span> <span class="nb">ord</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">character</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;unacceptable character #x</span><span class="si">%04x</span><span class="s2">: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span>    \
+                    <span class="s2">&quot;  in </span><span class="se">\&quot;</span><span class="si">%s</span><span class="se">\&quot;</span><span class="s2">, position </span><span class="si">%d</span><span class="s2">&quot;</span>    \
+                    <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">character</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Reader"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.yaml.reader.html#python_modules.python_utils.yaml.reader.Reader">[docs]</a><span class="k">class</span> <span class="nc">Reader</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="c1"># Reader:</span>
+    <span class="c1"># - determines the data encoding and converts it to a unicode string,</span>
+    <span class="c1"># - checks if characters are in allowed range,</span>
+    <span class="c1"># - adds &#39;\0&#39; to the end.</span>
+
+    <span class="c1"># Reader accepts</span>
+    <span class="c1">#  - a `bytes` object,</span>
+    <span class="c1">#  - a `str` object,</span>
+    <span class="c1">#  - a file-like object with its `read` method returning `str`,</span>
+    <span class="c1">#  - a file-like object with its `read` method returning `unicode`.</span>
+
+    <span class="c1"># Yeah, it&#39;s ugly and slow.</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream_pointer</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eof</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&lt;unicode string&gt;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">check_printable</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="n">stream</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&lt;byte string&gt;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span> <span class="o">=</span> <span class="n">stream</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">determine_encoding</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;file&gt;&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">eof</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">determine_encoding</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Reader.peek"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.yaml.reader.html#python_modules.python_utils.yaml.reader.Reader.peek">[docs]</a>    <span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pointer</span><span class="o">+</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pointer</span><span class="o">+</span><span class="n">index</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Reader.prefix"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.yaml.reader.html#python_modules.python_utils.yaml.reader.Reader.prefix">[docs]</a>    <span class="k">def</span> <span class="nf">prefix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span><span class="o">+</span><span class="n">length</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pointer</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">pointer</span><span class="o">+</span><span class="n">length</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Reader.forward"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.yaml.reader.html#python_modules.python_utils.yaml.reader.Reader.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span><span class="o">+</span><span class="n">length</span><span class="o">+</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">length</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">length</span><span class="p">:</span>
+            <span class="n">ch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pointer</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">ch</span> <span class="ow">in</span> <span class="s1">&#39;</span><span class="se">\n\x85\u2028\u2029</span><span class="s1">&#39;</span>  \
+                    <span class="ow">or</span> <span class="p">(</span><span class="n">ch</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pointer</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">line</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">elif</span> <span class="n">ch</span> <span class="o">!=</span> <span class="s1">&#39;</span><span class="se">\uFEFF</span><span class="s1">&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">length</span> <span class="o">-=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="Reader.get_mark"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.yaml.reader.html#python_modules.python_utils.yaml.reader.Reader.get_mark">[docs]</a>    <span class="k">def</span> <span class="nf">get_mark</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Mark</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Mark</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">,</span>
+                    <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Reader.determine_encoding"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.yaml.reader.html#python_modules.python_utils.yaml.reader.Reader.determine_encoding">[docs]</a>    <span class="k">def</span> <span class="nf">determine_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">eof</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_raw</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">codecs</span><span class="o">.</span><span class="n">BOM_UTF16_LE</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">utf_16_le_decode</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-16-le&#39;</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">codecs</span><span class="o">.</span><span class="n">BOM_UTF16_BE</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">utf_16_be_decode</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-16-be&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">utf_8_decode</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></div>
+
+    <span class="n">NON_PRINTABLE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[^</span><span class="se">\x09\x0A\x0D\x20</span><span class="s1">-</span><span class="se">\x7E\x85\xA0</span><span class="s1">-</span><span class="se">\uD7FF\uE000</span><span class="s1">-</span><span class="se">\uFFFD\U00010000</span><span class="s1">-</span><span class="se">\U0010ffff</span><span class="s1">]&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="Reader.check_printable"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.yaml.reader.html#python_modules.python_utils.yaml.reader.Reader.check_printable">[docs]</a>    <span class="k">def</span> <span class="nf">check_printable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">NON_PRINTABLE</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+            <span class="n">character</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+            <span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="o">+</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">)</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">pointer</span><span class="p">)</span><span class="o">+</span><span class="n">match</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="n">ReaderError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="nb">ord</span><span class="p">(</span><span class="n">character</span><span class="p">),</span>
+                    <span class="s1">&#39;unicode&#39;</span><span class="p">,</span> <span class="s2">&quot;special characters are not allowed&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Reader.update"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.yaml.reader.html#python_modules.python_utils.yaml.reader.Reader.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pointer</span><span class="p">:]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">eof</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">update_raw</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">data</span><span class="p">,</span> <span class="n">converted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span><span class="p">,</span>
+                            <span class="s1">&#39;strict&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eof</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">UnicodeDecodeError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                    <span class="n">character</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span><span class="p">[</span><span class="n">exc</span><span class="o">.</span><span class="n">start</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream_pointer</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span><span class="p">)</span><span class="o">+</span><span class="n">exc</span><span class="o">.</span><span class="n">start</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">position</span> <span class="o">=</span> <span class="n">exc</span><span class="o">.</span><span class="n">start</span>
+                    <span class="k">raise</span> <span class="n">ReaderError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">character</span><span class="p">,</span>
+                            <span class="n">exc</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span> <span class="n">exc</span><span class="o">.</span><span class="n">reason</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span>
+                <span class="n">converted</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">check_printable</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span> <span class="o">+=</span> <span class="n">data</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span><span class="p">[</span><span class="n">converted</span><span class="p">:]</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">eof</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">break</span></div>
+
+<div class="viewcode-block" id="Reader.update_raw"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.yaml.reader.html#python_modules.python_utils.yaml.reader.Reader.update_raw">[docs]</a>    <span class="k">def</span> <span class="nf">update_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4096</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw_buffer</span> <span class="o">+=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream_pointer</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">eof</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2021, Odyseus.
+
+    </p>
+  </div>
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

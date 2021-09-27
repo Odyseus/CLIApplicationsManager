@@ -191,6 +191,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_cli_header_blacklist</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">_print_log_blacklist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">_inhibit_logger_list</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app_name</span><span class="p">,</span> <span class="n">logs_storage_dir</span><span class="o">=</span><span class="s2">&quot;UserData/logs&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialization.</span>
@@ -203,25 +204,28 @@
 <span class="sd">            Log files storage location.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_app_name</span> <span class="o">=</span> <span class="n">app_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="kc">None</span>
 
-        <span class="n">log_file</span> <span class="o">=</span> <span class="n">log_system</span><span class="o">.</span><span class="n">generate_log_path</span><span class="p">(</span><span class="n">storage_dir</span><span class="o">=</span><span class="n">logs_storage_dir</span><span class="p">,</span>
-                                                <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;CLI&quot;</span><span class="p">)</span>
-        <span class="n">file_utils</span><span class="o">.</span><span class="n">remove_surplus_files</span><span class="p">(</span><span class="n">logs_storage_dir</span><span class="p">,</span> <span class="s2">&quot;CLI*&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">log_system</span><span class="o">.</span><span class="n">LogSystem</span><span class="p">(</span><span class="n">log_file</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inhibit_logger_list</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inhibit_logger_list</span><span class="p">):</span>
+            <span class="n">log_file</span> <span class="o">=</span> <span class="n">log_system</span><span class="o">.</span><span class="n">generate_log_path</span><span class="p">(</span><span class="n">storage_dir</span><span class="o">=</span><span class="n">logs_storage_dir</span><span class="p">,</span>
+                                                    <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;CLI&quot;</span><span class="p">)</span>
+            <span class="n">file_utils</span><span class="o">.</span><span class="n">remove_surplus_files</span><span class="p">(</span><span class="n">logs_storage_dir</span><span class="p">,</span> <span class="s2">&quot;CLI*&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">log_system</span><span class="o">.</span><span class="n">LogSystem</span><span class="p">(</span><span class="n">log_file</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_display_cli_header</span><span class="p">()</span>
 
 <div class="viewcode-block" id="CommandLineInterfaceSuper._display_cli_header"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._display_cli_header">[docs]</a>    <span class="k">def</span> <span class="nf">_display_cli_header</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Display CLI header.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cli_header_blacklist</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cli_header_blacklist</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**</span><span class="si">%s</span><span class="s2">**&quot;</span> <span class="o">%</span> <span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_header</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app_name</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cli_header_blacklist</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cli_header_blacklist</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**</span><span class="si">%s</span><span class="s2">**&quot;</span> <span class="o">%</span> <span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_header</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app_name</span><span class="p">),</span>
+                             <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CommandLineInterfaceSuper.print_log_file"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper.print_log_file">[docs]</a>    <span class="k">def</span> <span class="nf">print_log_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Print the path to the log file used by the current logger.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print_log_blacklist</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_print_log_blacklist</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print_log_blacklist</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_print_log_blacklist</span><span class="p">)):</span>
             <span class="nb">print</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;**Log file location:**&quot;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -263,7 +267,8 @@
         <span class="n">run</span><span class="p">([</span><span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="n">man_page_path</span><span class="p">])</span></div></div>
 
 
-<div class="viewcode-block" id="run_cli"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.run_cli">[docs]</a><span class="k">def</span> <span class="nf">run_cli</span><span class="p">(</span><span class="n">flag_file</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">docopt_doc</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">app_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">app_version</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">app_status</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">cli_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="run_cli"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.cli_utils.html#python_modules.python_utils.cli_utils.run_cli">[docs]</a><span class="k">def</span> <span class="nf">run_cli</span><span class="p">(</span><span class="n">flag_file</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">docopt_doc</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">app_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">app_version</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">app_status</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">cli_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Initialize main command line interface.</span>
 
 <span class="sd">    Parameters</span>
@@ -312,7 +317,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

@@ -12,5 +12,6 @@ Submodules
 
 .. toctree::
 
+   PackageManagerApp.app_utils
    PackageManagerApp.cli
-   PackageManagerApp.pkg_manager
+   PackageManagerApp.schemas

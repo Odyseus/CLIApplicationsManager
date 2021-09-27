@@ -414,7 +414,8 @@
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="copy_create_symlink"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.file_utils.html#python_modules.python_utils.file_utils.copy_create_symlink">[docs]</a><span class="k">def</span> <span class="nf">copy_create_symlink</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">source_is_symlink</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">follow_symlinks</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="copy_create_symlink"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.file_utils.html#python_modules.python_utils.file_utils.copy_create_symlink">[docs]</a><span class="k">def</span> <span class="nf">copy_create_symlink</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">source_is_symlink</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">follow_symlinks</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Copy symlinks avoiding at all cost throwing errors.</span>
 
 <span class="sd">    This function is always triggered when &quot;source&quot; is a symlink. It will create the symlink only</span>
@@ -634,7 +635,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

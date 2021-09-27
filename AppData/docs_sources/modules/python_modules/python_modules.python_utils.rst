@@ -12,6 +12,8 @@ Subpackages
 
 .. toctree::
 
+   python_modules.python_utils.case_conversion
+   python_modules.python_utils.css_props_case_correction
    python_modules.python_utils.schemas
 
 Submodules
@@ -25,6 +27,7 @@ Submodules
    python_modules.python_utils.cmd_utils
    python_modules.python_utils.exceptions
    python_modules.python_utils.file_utils
+   python_modules.python_utils.fix_imports
    python_modules.python_utils.git_utils
    python_modules.python_utils.hash_utils
    python_modules.python_utils.json_schema_utils
@@ -40,3 +43,4 @@ Submodules
    python_modules.python_utils.sphinx_docs_utils
    python_modules.python_utils.string_utils
    python_modules.python_utils.template_utils
+   python_modules.python_utils.yaml_utils

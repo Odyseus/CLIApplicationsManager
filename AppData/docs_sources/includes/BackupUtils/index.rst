@@ -36,7 +36,8 @@ No mayor requirements are needed to run this application other than Python 3.5+.
     :context: info
     :title: Mail system optional requirement
 
-    - ``keyring`` module.
+    - ``keyring`` Python module.
+    - ``jsonschema>3`` Python module.
 
 ``keyring`` module
 ------------------
@@ -45,23 +46,30 @@ This module is only used by the email system and it is used to retrieve a passwo
 
 The following command executed from a terminal will prompt for a password that will be stored into the system's keyring:
 
-.. code:: shell
+.. code-block:: shell
 
     $ keyring set backup_secret_service_name backup_secret_user_name
 
 Then the password is retrieved from the system's keyring by the application email system using the ``secret_service_name`` and ``secret_user_name`` keys specified in the ``settings`` property from a **settings** file or a **tasks** file like so:
 
-.. code:: python
+.. code-block:: python
 
     keyring.get_password("backup_secret_service_name", "backup_secret_user_name")
 
 ``backup_secret_service_name`` and ``backup_secret_user_name`` can have any other names that one deems to give them. As an example, in Gnome keyring, the details tab for the generated *storage* will display the following:
 
-::
+.. code-block::
 
+    source
     username: backup_secret_user_name
     application: python-keyring
     service: backup_secret_service_name
+
+``jsonschema`` module
+---------------------
+
+The ``jsonschema`` module is used to validate all data used by this |CLI| application. If not installed, the data will simply not be validated.
+
 
 .. include:: ./usage.restructuredtext
 

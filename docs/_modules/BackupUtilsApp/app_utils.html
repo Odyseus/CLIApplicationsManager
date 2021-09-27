@@ -285,14 +285,15 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># FUTURE:</span>
     <span class="c1"># Use context manager with os.scandir().</span>
-    <span class="n">list_of_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">entry</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">scandir</span><span class="p">(</span><span class="n">_paths_map</span><span class="p">[</span><span class="n">file_type</span><span class="p">])</span> <span class="k">if</span>
-                     <span class="n">entry</span><span class="o">.</span><span class="n">is_file</span><span class="p">(</span><span class="n">follow_symlinks</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+    <span class="n">list_of_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">entry</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">scandir</span><span class="p">(</span><span class="n">_paths_map</span><span class="p">[</span><span class="n">file_type</span><span class="p">])</span> <span class="k">if</span>
+                            <span class="nb">all</span><span class="p">((</span><span class="n">entry</span><span class="o">.</span><span class="n">is_file</span><span class="p">(</span><span class="n">follow_symlinks</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+                                 <span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.yaml&quot;</span><span class="p">)</span> <span class="ow">or</span>
+                                <span class="n">entry</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.yml&quot;</span><span class="p">))</span>
+                                 <span class="p">))])</span>
 
     <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">list_of_files</span><span class="p">:</span>
         <span class="n">name</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s2">&quot;.py&quot;</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
+        <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="FilteredFilesList"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.app_utils.html#BackupUtilsApp.app_utils.FilteredFilesList">[docs]</a><span class="k">class</span> <span class="nc">FilteredFilesList</span><span class="p">():</span>
@@ -392,7 +393,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

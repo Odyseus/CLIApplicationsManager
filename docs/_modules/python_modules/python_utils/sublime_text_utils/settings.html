@@ -1,0 +1,497 @@
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>python_modules.python_utils.sublime_text_utils.settings &mdash; Python CLI Applications Documentations  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: False" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Python CLI Applications Documentations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/KnowledgeBase/index.html">Knowledge Base's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/MoviesDB/index.html">Movies DB's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/PackageManager/index.html">Package Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Python CLI Applications Documentations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>python_modules.python_utils.sublime_text_utils.settings</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for python_modules.python_utils.sublime_text_utils.settings</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Settings.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sublime</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">events</span>
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">misc_utils</span>
+
+
+<div class="viewcode-block" id="Settings"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.Settings">[docs]</a><span class="k">class</span> <span class="nc">Settings</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;This class provides global access to and management of plugin settings.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    logger : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name_space</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name_space : str, optional</span>
+<span class="sd">            Description</span>
+<span class="sd">        logger : None, optional</span>
+<span class="sd">            Description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name_space</span> <span class="o">=</span> <span class="n">name_space</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reload_key</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">-reload-settings&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name_space</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_previous_state</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_state</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__project_settings</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__settings</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_change_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<div class="viewcode-block" id="Settings.load"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.Settings.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Load the plugin settings.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on_update</span><span class="p">()</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__settings</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__settings</span> <span class="o">=</span> <span class="n">sublime</span><span class="o">.</span><span class="n">load_settings</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.sublime-settings&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name_space</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">project_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># NOTE: Monitor this. I smell disaster!!! LOL</span>
+        <span class="c1"># It works good enough for now.</span>
+        <span class="c1"># Also keep an eye on utils.py &gt; ProjectSettingsController.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">sublime</span><span class="o">.</span><span class="n">active_window</span><span class="p">()</span><span class="o">.</span><span class="n">project_data</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;settings&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name_space</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">return</span> <span class="n">s</span>
+
+<div class="viewcode-block" id="Settings.has"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.Settings.has">[docs]</a>    <span class="k">def</span> <span class="nf">has</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return whether the given setting exists.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : TYPE</span>
+<span class="sd">            Description</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">has</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Settings.get"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.Settings.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a plugin setting, defaulting to default if not found.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        default : None, optional</span>
+<span class="sd">            Description</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_state</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">global_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+            <span class="n">project_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">global_value</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_current_state</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_value</span> <span class="o">=</span> <span class="n">misc_utils</span><span class="o">.</span><span class="n">merge_dict</span><span class="p">(</span>
+                <span class="n">global_value</span><span class="p">,</span> <span class="n">project_value</span><span class="p">,</span>
+                <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">extend_lists</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">append_to_lists</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">current_value</span></div>
+
+<div class="viewcode-block" id="Settings.set"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.Settings.set">[docs]</a>    <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        value : TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__settings</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="n">sublime</span><span class="o">.</span><span class="n">save_settings</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.sublime-settings&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name_space</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Settings.has_changed"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.Settings.has_changed">[docs]</a>    <span class="k">def</span> <span class="nf">has_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : TYPE</span>
+<span class="sd">            Description</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">old_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_previous_state</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">old_value</span> <span class="o">!=</span> <span class="n">current_value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Settings.change_count"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.Settings.change_count">[docs]</a>    <span class="k">def</span> <span class="nf">change_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_change_count</span></div>
+
+<div class="viewcode-block" id="Settings.observe"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.Settings.observe">[docs]</a>    <span class="k">def</span> <span class="nf">observe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Observe changes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">clear_on_change</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_reload_key</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">add_on_change</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_reload_key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_update</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Settings.unobserve"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.Settings.unobserve">[docs]</a>    <span class="k">def</span> <span class="nf">unobserve</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">clear_on_change</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_reload_key</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Settings.on_update"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.Settings.on_update">[docs]</a>    <span class="k">def</span> <span class="nf">on_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update state when the user settings change.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_previous_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_state</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_state</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_change_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">events</span><span class="o">.</span><span class="n">broadcast</span><span class="p">(</span><span class="s2">&quot;settings_changed&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="p">})</span></div></div>
+
+
+<div class="viewcode-block" id="SettingsToggleBoolean"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.SettingsToggleBoolean">[docs]</a><span class="k">class</span> <span class="nc">SettingsToggleBoolean</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Summary</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_ody_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">_ody_settings</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_ody_is_checkbox</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">_ody_description</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span>
+    <span class="n">_ody_true_label</span> <span class="o">=</span> <span class="s2">&quot;Enabled&quot;</span>
+    <span class="n">_ody_false_label</span> <span class="o">=</span> <span class="s2">&quot;Disabled&quot;</span>
+
+<div class="viewcode-block" id="SettingsToggleBoolean.run"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.SettingsToggleBoolean.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">new_val</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ody_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ody_key</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ody_settings</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ody_key</span><span class="p">,</span> <span class="n">new_val</span><span class="p">)</span>
+            <span class="n">sublime</span><span class="o">.</span><span class="n">status_message</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> changed to </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ody_key</span><span class="p">,</span> <span class="n">new_val</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SettingsToggleBoolean.is_checked"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.SettingsToggleBoolean.is_checked">[docs]</a>    <span class="k">def</span> <span class="nf">is_checked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ody_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ody_key</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SettingsToggleBoolean.description"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.SettingsToggleBoolean.description">[docs]</a>    <span class="k">def</span> <span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ody_description</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ody_true_label</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_checked</span><span class="p">()</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ody_false_label</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ody_description</span></div></div>
+
+
+<div class="viewcode-block" id="SettingsToggleList"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.SettingsToggleList">[docs]</a><span class="k">class</span> <span class="nc">SettingsToggleList</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Summary</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_ody_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">_ody_settings</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_ody_description</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span>
+    <span class="n">_ody_values_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="SettingsToggleList.run"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.SettingsToggleList.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">old_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ody_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ody_key</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">new_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ody_get_new_value</span><span class="p">(</span><span class="n">old_val</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ody_settings</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ody_key</span><span class="p">,</span> <span class="n">new_val</span><span class="p">)</span>
+            <span class="n">sublime</span><span class="o">.</span><span class="n">status_message</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> changed to </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ody_key</span><span class="p">,</span> <span class="n">new_val</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SettingsToggleList._ody_get_new_value"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.SettingsToggleList._ody_get_new_value">[docs]</a>    <span class="k">def</span> <span class="nf">_ody_get_new_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old_val</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        old_val : TYPE</span>
+<span class="sd">            Description</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Get index of value that&#39;s after current value.</span>
+            <span class="n">val_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ody_values_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">old_val</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="c1"># Fallback to index 0.</span>
+            <span class="n">val_idx</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ody_values_list</span><span class="p">[</span><span class="n">val_idx</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ody_values_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="SettingsToggleList.description"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.settings.html#python_modules.python_utils.sublime_text_utils.settings.SettingsToggleList.description">[docs]</a>    <span class="k">def</span> <span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Summary</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        TYPE</span>
+<span class="sd">            Description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ody_description</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ody_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ody_key</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ody_description</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2021, Odyseus.
+
+    </p>
+  </div>
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

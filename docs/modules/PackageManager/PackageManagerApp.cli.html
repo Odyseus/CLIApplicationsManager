@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="PackageManagerApp.pkg_manager module" href="PackageManagerApp.pkg_manager.html" />
-    <link rel="prev" title="PackageManagerApp package" href="PackageManagerApp.html" /> 
+    <link rel="next" title="PackageManagerApp.schemas module" href="PackageManagerApp.schemas.html" />
+    <link rel="prev" title="PackageManagerApp.app_utils module" href="PackageManagerApp.app_utils.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -166,10 +166,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="PackageManagerApp.pkg_manager.html" class="btn btn-neutral float-right" title="PackageManagerApp.pkg_manager module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="PackageManagerApp.schemas.html" class="btn btn-neutral float-right" title="PackageManagerApp.schemas module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PackageManagerApp.html" class="btn btn-neutral float-left" title="PackageManagerApp package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PackageManagerApp.app_utils.html" class="btn btn-neutral float-left" title="PackageManagerApp.app_utils module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -187,7 +187,7 @@
 <dd><p>Used to store/define the docstring that will be passed to docopt as the &quot;doc&quot; argument.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -199,7 +199,7 @@
 without exceptions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -216,7 +216,7 @@ without exceptions.</p>
 <dd><p>Where docopt_args is stored.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -235,7 +235,7 @@ without exceptions.</p>
 <dl class="attribute">
 <dt id="PackageManagerApp.cli.CommandLineInterface.package_manager">
 <code class="sig-name descname">package_manager</code><a class="headerlink" href="#PackageManagerApp.cli.CommandLineInterface.package_manager" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference internal" href="PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager" title="PackageManagerApp.pkg_manager.PackageManager"><code class="xref any py py-class docutils literal notranslate"><span class="pre">pkg_manager.PackageManager</span></code></a>.</p>
+<dd><p>See <a class="reference internal" href="PackageManagerApp.app_utils.html#PackageManagerApp.app_utils.PackageManager" title="PackageManagerApp.app_utils.PackageManager"><code class="xref any py py-class docutils literal notranslate"><span class="pre">app_utils.PackageManager</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>class</p>
@@ -245,7 +245,7 @@ without exceptions.</p>
 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>docopt_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) -- The dictionary of arguments as returned by docopt parser.</p>
+<dd class="field-odd"><p><strong>docopt_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) -- The dictionary of arguments as returned by docopt parser.</p>
 </dd>
 </dl>
 <dl class="attribute">
@@ -265,15 +265,21 @@ without exceptions.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="PackageManagerApp.cli.CommandLineInterface.install_packages">
-<code class="sig-name descname">install_packages</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/PackageManagerApp/cli.html#CommandLineInterface.install_packages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PackageManagerApp.cli.CommandLineInterface.install_packages" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference internal" href="PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.install_packages" title="PackageManagerApp.pkg_manager.PackageManager.install_packages"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">pkg_manager.PackageManager.install_packages</span></code></a>.</p>
+<dt id="PackageManagerApp.cli.CommandLineInterface.print_packages_lists">
+<code class="sig-name descname">print_packages_lists</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/PackageManagerApp/cli.html#CommandLineInterface.print_packages_lists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PackageManagerApp.cli.CommandLineInterface.print_packages_lists" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="PackageManagerApp.app_utils.html#PackageManagerApp.app_utils.print_config_files_list" title="PackageManagerApp.app_utils.print_config_files_list"><code class="xref any py py-func docutils literal notranslate"><span class="pre">PackageManagerApp.app_utils.print_config_files_list</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="PackageManagerApp.cli.CommandLineInterface.remove_packages">
-<code class="sig-name descname">remove_packages</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/PackageManagerApp/cli.html#CommandLineInterface.remove_packages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PackageManagerApp.cli.CommandLineInterface.remove_packages" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference internal" href="PackageManagerApp.pkg_manager.html#PackageManagerApp.pkg_manager.PackageManager.remove_packages" title="PackageManagerApp.pkg_manager.PackageManager.remove_packages"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">pkg_manager.PackageManager.remove_packages</span></code></a>.</p>
+<dt id="PackageManagerApp.cli.CommandLineInterface.print_interfaces">
+<code class="sig-name descname">print_interfaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/PackageManagerApp/cli.html#CommandLineInterface.print_interfaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PackageManagerApp.cli.CommandLineInterface.print_interfaces" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="PackageManagerApp.app_utils.html#PackageManagerApp.app_utils.print_config_files_list" title="PackageManagerApp.app_utils.print_config_files_list"><code class="xref any py py-func docutils literal notranslate"><span class="pre">PackageManagerApp.app_utils.print_config_files_list</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PackageManagerApp.cli.CommandLineInterface.manage_packages">
+<code class="sig-name descname">manage_packages</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/PackageManagerApp/cli.html#CommandLineInterface.manage_packages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PackageManagerApp.cli.CommandLineInterface.manage_packages" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="PackageManagerApp.app_utils.html#PackageManagerApp.app_utils.PackageManager.manage_packages" title="PackageManagerApp.app_utils.PackageManager.manage_packages"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">app_utils.PackageManager.manage_packages</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -306,10 +312,10 @@ without exceptions.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="PackageManagerApp.pkg_manager.html" class="btn btn-neutral float-right" title="PackageManagerApp.pkg_manager module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="PackageManagerApp.schemas.html" class="btn btn-neutral float-right" title="PackageManagerApp.schemas module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PackageManagerApp.html" class="btn btn-neutral float-left" title="PackageManagerApp package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PackageManagerApp.app_utils.html" class="btn btn-neutral float-left" title="PackageManagerApp.app_utils module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -318,7 +324,7 @@ without exceptions.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

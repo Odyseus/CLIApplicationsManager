@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>python_modules.python_utils.sublime_text_utils.merge_utils &mdash; Python CLI Applications Documentations  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: False" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Python CLI Applications Documentations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/KnowledgeBase/index.html">Knowledge Base's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/MoviesDB/index.html">Movies DB's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/PackageManager/index.html">Package Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Python CLI Applications Documentations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>python_modules.python_utils.sublime_text_utils.merge_utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for python_modules.python_utils.sublime_text_utils.merge_utils</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Borrowed from GoSublime</span>
+
+<span class="sd">Copyright (c) 2012 The GoSublime Authors</span>
+
+<span class="sd">Permission is hereby granted, free of charge, to any person obtaining a copy of</span>
+<span class="sd">this software and associated documentation files (the &quot;Software&quot;), to deal in</span>
+<span class="sd">the Software without restriction, including without limitation the rights to</span>
+<span class="sd">use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies</span>
+<span class="sd">of the Software, and to permit persons to whom the Software is furnished to do</span>
+<span class="sd">so, subject to the following conditions:</span>
+
+<span class="sd">The above copyright notice and this permission notice shall be included in all</span>
+<span class="sd">copies or substantial portions of the Software.</span>
+
+<span class="sd">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="sd">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="sd">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="sd">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="sd">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="sd">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="sd">SOFTWARE.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># NOTE: try/except block needed for Sphinx.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sublime</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="kn">from</span> <span class="nn">..diff_match_patch</span> <span class="kn">import</span> <span class="n">diff_match_patch</span>
+
+
+<div class="viewcode-block" id="MergeException"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.merge_utils.html#python_modules.python_utils.sublime_text_utils.merge_utils.MergeException">[docs]</a><span class="k">class</span> <span class="nc">MergeException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;MergeException.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="_merge_code"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.merge_utils.html#python_modules.python_utils.sublime_text_utils.merge_utils._merge_code">[docs]</a><span class="k">def</span> <span class="nf">_merge_code</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">edit</span><span class="p">,</span> <span class="n">original</span><span class="p">,</span> <span class="n">modified</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Merge code.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    view : object</span>
+<span class="sd">        A Sublime Text view object.</span>
+<span class="sd">    edit : object</span>
+<span class="sd">        A Sublime Text edit object.</span>
+<span class="sd">    original : str</span>
+<span class="sd">        Original string.</span>
+<span class="sd">    modified : str</span>
+<span class="sd">        Modified string.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        Is view dirty.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    MergeException</span>
+<span class="sd">        Error merging.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dmp</span> <span class="o">=</span> <span class="n">diff_match_patch</span><span class="p">()</span>
+    <span class="n">diffs</span> <span class="o">=</span> <span class="n">dmp</span><span class="o">.</span><span class="n">diff_main</span><span class="p">(</span><span class="n">original</span><span class="p">,</span> <span class="n">modified</span><span class="p">)</span>
+    <span class="n">dmp</span><span class="o">.</span><span class="n">diff_cleanupEfficiency</span><span class="p">(</span><span class="n">diffs</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">dirty</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">diffs</span><span class="p">:</span>
+        <span class="n">ln</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># match</span>
+            <span class="n">ln</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">view</span><span class="o">.</span><span class="n">substr</span><span class="p">(</span><span class="n">sublime</span><span class="o">.</span><span class="n">Region</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">ln</span><span class="p">))</span> <span class="o">!=</span> <span class="n">s</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">MergeException</span><span class="p">(</span><span class="s2">&quot;mismatch&quot;</span><span class="p">,</span> <span class="n">dirty</span><span class="p">)</span>
+
+            <span class="n">i</span> <span class="o">+=</span> <span class="n">ln</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dirty</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># insert</span>
+                <span class="n">view</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">edit</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="n">ln</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># delete</span>
+                <span class="k">if</span> <span class="n">view</span><span class="o">.</span><span class="n">substr</span><span class="p">(</span><span class="n">sublime</span><span class="o">.</span><span class="n">Region</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">ln</span><span class="p">))</span> <span class="o">!=</span> <span class="n">s</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">MergeException</span><span class="p">(</span><span class="s2">&quot;mismatch&quot;</span><span class="p">,</span> <span class="n">dirty</span><span class="p">)</span>
+
+                <span class="n">view</span><span class="o">.</span><span class="n">erase</span><span class="p">(</span><span class="n">edit</span><span class="p">,</span> <span class="n">sublime</span><span class="o">.</span><span class="n">Region</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">ln</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">dirty</span></div>
+
+
+<div class="viewcode-block" id="merge_code"><a class="viewcode-back" href="../../../../modules/python_modules/python_modules.python_utils.sublime_text_utils.merge_utils.html#python_modules.python_utils.sublime_text_utils.merge_utils.merge_code">[docs]</a><span class="k">def</span> <span class="nf">merge_code</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">edit</span><span class="p">,</span> <span class="n">original</span><span class="p">,</span> <span class="n">modified</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Merge code.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    view : object</span>
+<span class="sd">        A Sublime Text view object.</span>
+<span class="sd">    edit : object</span>
+<span class="sd">        A Sublime Text edit object.</span>
+<span class="sd">    original : str</span>
+<span class="sd">        Original string.</span>
+<span class="sd">    modified : str</span>
+<span class="sd">        Modified string.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple</span>
+<span class="sd">        View state and error.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vs</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">settings</span><span class="p">()</span>
+    <span class="n">ttts</span> <span class="o">=</span> <span class="n">vs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;translate_tabs_to_spaces&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">original</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">vs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;translate_tabs_to_spaces&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">dirty</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">dirty</span> <span class="o">=</span> <span class="n">_merge_code</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">edit</span><span class="p">,</span> <span class="n">original</span><span class="p">,</span> <span class="n">modified</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">MergeException</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="n">dirty</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="s2">&quot;Could not merge changes into the buffer, edit aborted: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">exc</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">edit</span><span class="p">,</span> <span class="n">sublime</span><span class="o">.</span><span class="n">Region</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">view</span><span class="o">.</span><span class="n">size</span><span class="p">()),</span> <span class="n">original</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="s2">&quot;Unknown exception: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ex</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">vs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;translate_tabs_to_spaces&quot;</span><span class="p">,</span> <span class="n">ttts</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">dirty</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2021, Odyseus.
+
+    </p>
+  </div>
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

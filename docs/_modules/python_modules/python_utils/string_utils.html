@@ -171,7 +171,22 @@
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">unicodedata</span>
 
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">UserDict</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Mapping</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Sequence</span>
+
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">file_utils</span>
+
+
+<div class="viewcode-block" id="__DictClone"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.string_utils.html#python_modules.python_utils.string_utils.__DictClone">[docs]</a><span class="k">class</span> <span class="nc">__DictClone</span><span class="p">(</span><span class="n">UserDict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;__DictClone</span>
+
+<span class="sd">    Handle missing keys in a dictionary used by str.format_map(). It will just clear</span>
+<span class="sd">    non-defined variables out of the formatted string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__missing__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="split_on_uppercase"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.string_utils.html#python_modules.python_utils.string_utils.split_on_uppercase">[docs]</a><span class="k">def</span> <span class="nf">split_on_uppercase</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">keep_contiguous</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -228,13 +243,14 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">template</span><span class="p">,</span> <span class="n">replacement</span> <span class="ow">in</span> <span class="n">replacement_data</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">template</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">replacement</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">template</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">replacement</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">data</span></div>
 
 
 <div class="viewcode-block" id="do_string_substitutions"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.string_utils.html#python_modules.python_utils.string_utils.do_string_substitutions">[docs]</a><span class="k">def</span> <span class="nf">do_string_substitutions</span><span class="p">(</span><span class="n">dir_path</span><span class="p">,</span> <span class="n">replacement_data</span><span class="p">,</span>
                             <span class="n">allowed_extensions</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;.py&quot;</span><span class="p">,</span> <span class="s2">&quot;.bash&quot;</span><span class="p">,</span> <span class="s2">&quot;.js&quot;</span><span class="p">,</span> <span class="s2">&quot;.json&quot;</span><span class="p">,</span> <span class="s2">&quot;.xml&quot;</span><span class="p">),</span>
+                            <span class="n">handle_file_names</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                             <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Do substitutions.</span>
 
@@ -265,9 +281,11 @@
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
                 <span class="n">file_data</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
                 <span class="n">file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-                <span class="n">file_data</span> <span class="o">=</span> <span class="n">do_replacements</span><span class="p">(</span><span class="n">file_data</span><span class="p">,</span> <span class="n">replacement_data</span><span class="p">)</span>
-                <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_data</span><span class="p">)</span>
-                <span class="n">file</span><span class="o">.</span><span class="n">truncate</span><span class="p">()</span>
+                <span class="n">new_file_data</span> <span class="o">=</span> <span class="n">do_replacements</span><span class="p">(</span><span class="n">file_data</span><span class="p">,</span> <span class="n">replacement_data</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">new_file_data</span> <span class="o">!=</span> <span class="n">file_data</span><span class="p">:</span>
+                    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">new_file_data</span><span class="p">)</span>
+                    <span class="n">file</span><span class="o">.</span><span class="n">truncate</span><span class="p">()</span>
 
             <span class="c1"># Check and set execution permissions for Bash and Python scripts.</span>
             <span class="c1"># FIXME: Should I hard-code the file names that should be set as executable?</span>
@@ -278,10 +296,11 @@
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_exec</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
                     <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="mo">0o755</span><span class="p">)</span>
 
-            <span class="n">fname_renamed</span> <span class="o">=</span> <span class="n">do_replacements</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">replacement_data</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">handle_file_names</span><span class="p">:</span>
+                <span class="n">fname_renamed</span> <span class="o">=</span> <span class="n">do_replacements</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">replacement_data</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="n">fname</span> <span class="o">!=</span> <span class="n">fname_renamed</span><span class="p">:</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">file_path</span><span class="p">),</span> <span class="n">fname_renamed</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">fname</span> <span class="o">!=</span> <span class="n">fname_renamed</span><span class="p">:</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">file_path</span><span class="p">),</span> <span class="n">fname_renamed</span><span class="p">))</span>
 
         <span class="k">for</span> <span class="n">dname</span> <span class="ow">in</span> <span class="n">dirs</span><span class="p">:</span>
             <span class="n">dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">dname</span><span class="p">)</span>
@@ -289,10 +308,11 @@
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">dir_path</span><span class="p">):</span>
                 <span class="k">continue</span>
 
-            <span class="n">dname_renamed</span> <span class="o">=</span> <span class="n">do_replacements</span><span class="p">(</span><span class="n">dname</span><span class="p">,</span> <span class="n">replacement_data</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">handle_file_names</span><span class="p">:</span>
+                <span class="n">dname_renamed</span> <span class="o">=</span> <span class="n">do_replacements</span><span class="p">(</span><span class="n">dname</span><span class="p">,</span> <span class="n">replacement_data</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="n">dname</span> <span class="o">!=</span> <span class="n">dname_renamed</span><span class="p">:</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">dir_path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">dir_path</span><span class="p">),</span> <span class="n">dname_renamed</span><span class="p">))</span></div>
+                <span class="k">if</span> <span class="n">dname</span> <span class="o">!=</span> <span class="n">dname_renamed</span><span class="p">:</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">dir_path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">dir_path</span><span class="p">),</span> <span class="n">dname_renamed</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="super_filter"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.string_utils.html#python_modules.python_utils.string_utils.super_filter">[docs]</a><span class="k">def</span> <span class="nf">super_filter</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">inclusion_patterns</span><span class="o">=</span><span class="p">[],</span> <span class="n">exclusion_patterns</span><span class="o">=</span><span class="p">[]):</span>
@@ -433,6 +453,50 @@
     <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[-\s]+&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="substitute_variables"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.string_utils.html#python_modules.python_utils.string_utils.substitute_variables">[docs]</a><span class="k">def</span> <span class="nf">substitute_variables</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Substitute variables.</span>
+
+<span class="sd">    This is a crude attempt to replicate the functionality of the function with the same name</span>
+<span class="sd">    that uses a function called ``expand_variables`` provided by Sublime Text&#39;s API. It uses</span>
+<span class="sd">    ``str.format_map()`` to replace variables found in a string.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    variables : dict</span>
+<span class="sd">        A dictionary containing variables as keys mapped to values to replace those variables.</span>
+<span class="sd">    value : str, list, dict</span>
+<span class="sd">        The str/list/dict containing the data where to perform substitutions.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">    dict</span>
+<span class="sd">    str</span>
+<span class="sd">        The modified data.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Borrowed from SublimeLinter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="c1"># Workaround https://github.com/SublimeTextIssues/Core/issues/1878</span>
+        <span class="c1"># (E.g. UNC paths on Windows start with double backslashes.)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\\\</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">pardir</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="n">value</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">format_map</span><span class="p">(</span><span class="n">__DictClone</span><span class="p">(</span><span class="n">variables</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">substitute_variables</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">substitute_variables</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">value</span></div>
+
+
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="k">pass</span>
 </pre></div>
@@ -447,7 +511,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

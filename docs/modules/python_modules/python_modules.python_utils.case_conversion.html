@@ -1,0 +1,675 @@
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>python_modules.python_utils.case_conversion package &mdash; Python CLI Applications Documentations  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="python_modules.python_utils.css_props_case_correction package" href="python_modules.python_utils.css_props_case_correction.html" />
+    <link rel="prev" title="python_modules.python_utils package" href="python_modules.python_utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: False" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/KnowledgeBase/index.html">Knowledge Base's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/MoviesDB/index.html">Movies DB's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/PackageManager/index.html">Package Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python CLI Applications Documentations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">python_modules</a> &raquo;</li>
+        
+          <li><a href="python_modules.html">python_modules package</a> &raquo;</li>
+        
+          <li><a href="python_modules.python_utils.html">python_modules.python_utils package</a> &raquo;</li>
+        
+      <li>python_modules.python_utils.case_conversion package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/modules/python_modules/python_modules.python_utils.case_conversion.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="python_modules.python_utils.css_props_case_correction.html" class="btn btn-neutral float-right" title="python_modules.python_utils.css_props_case_correction package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="python_modules.python_utils.html" class="btn btn-neutral float-left" title="python_modules.python_utils package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-python_modules.python_utils.case_conversion">
+<span id="python-modules-python-utils-case-conversion-package"></span><h1>python_modules.python_utils.case_conversion package<a class="headerlink" href="#module-python_modules.python_utils.case_conversion" title="Permalink to this headline">¶</a></h1>
+<p>Based on <a class="reference external" href="https://github.com/AlejandroFrias/case-conversion">case-conversion</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Removed dependency on <code class="docutils literal notranslate"><span class="pre">regex</span></code> Python module. I don't care for Unicode compatibility. If and
+when this functionality is added to the standard library in an LTS Python version, I might
+start to consider implementing it.</p>
+</div>
+<dl class="function">
+<dt id="python_modules.python_utils.case_conversion.parse_case">
+<code class="sig-prename descclassname">python_modules.python_utils.case_conversion.</code><code class="sig-name descname">parse_case</code><span class="sig-paren">(</span><em class="sig-param">var</em>, <em class="sig-param">detect_acronyms=True</em>, <em class="sig-param">acronyms=[]</em>, <em class="sig-param">preserve_case=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/case_conversion.html#parse_case"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.case_conversion.parse_case" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a variable into a list of words.
+Also returns the case type, which can be one of the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>upper: All words are upper-case.</p></li>
+<li><p>lower: All words are lower-case.</p></li>
+<li><dl class="simple">
+<dt>pascal: All words are title-case or upper-case. Note that the</dt><dd><p>variable may still have separators.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>camel: First word is lower-case, the rest are title-case or</dt><dd><p>upper-case. Variable may still have separators.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>mixed: Any other mixing of word casing. Never occurs if there are</dt><dd><p>no separators.</p>
+</dd>
+</dl>
+</li>
+<li><p>unknown: Variable contains no words.</p></li>
+</ul>
+</div></blockquote>
+<p>Also returns the first separator character, or False if there isn't one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>var</strong> (<em>TYPE</em>) -- Description</p></li>
+<li><p><strong>detect_acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>preserve_case</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Description</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TYPE</p>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Include unicode characters.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.case_conversion.camelcase">
+<code class="sig-prename descclassname">python_modules.python_utils.case_conversion.</code><code class="sig-name descname">camelcase</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">detect_acronyms=False</em>, <em class="sig-param">acronyms=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/case_conversion.html#camelcase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.case_conversion.camelcase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return text in camelCase style.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>TYPE</em>) -- Description</p></li>
+<li><p><strong>detect_acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-examples admonition">
+<p class="admonition-title">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">camelcase</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<span class="go">&quot;helloWorld&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">camelcase</span><span class="p">(</span><span class="s2">&quot;HELLO_HTML_WORLD&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;HTML&quot;</span><span class="p">])</span>
+<span class="go">&quot;helloHTMLWorld&quot;</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Description</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.case_conversion.pascalcase">
+<code class="sig-prename descclassname">python_modules.python_utils.case_conversion.</code><code class="sig-name descname">pascalcase</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">detect_acronyms=False</em>, <em class="sig-param">acronyms=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/case_conversion.html#pascalcase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.case_conversion.pascalcase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return text in PascalCase style (aka MixedCase).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>TYPE</em>) -- Description</p></li>
+<li><p><strong>detect_acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-examples admonition">
+<p class="admonition-title">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pascalcase</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<span class="go">&quot;HelloWorld&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pascalcase</span><span class="p">(</span><span class="s2">&quot;HELLO_HTML_WORLD&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;HTML&quot;</span><span class="p">])</span>
+<span class="go">&quot;HelloHTMLWorld&quot;</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Description</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.case_conversion.snakecase">
+<code class="sig-prename descclassname">python_modules.python_utils.case_conversion.</code><code class="sig-name descname">snakecase</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">detect_acronyms=False</em>, <em class="sig-param">acronyms=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/case_conversion.html#snakecase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.case_conversion.snakecase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return text in snake_case style.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>TYPE</em>) -- Description</p></li>
+<li><p><strong>detect_acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-examples admonition">
+<p class="admonition-title">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">snakecase</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<span class="go">&quot;hello_world&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">snakecase</span><span class="p">(</span><span class="s2">&quot;HelloHTMLWorld&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;HTML&quot;</span><span class="p">])</span>
+<span class="go">&quot;hello_html_world&quot;</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Description</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.case_conversion.dashcase">
+<code class="sig-prename descclassname">python_modules.python_utils.case_conversion.</code><code class="sig-name descname">dashcase</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">detect_acronyms=False</em>, <em class="sig-param">acronyms=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/case_conversion.html#dashcase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.case_conversion.dashcase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return text in dash-case style (aka kebab-case, spinal-case).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>TYPE</em>) -- Description</p></li>
+<li><p><strong>detect_acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-examples admonition">
+<p class="admonition-title">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dashcase</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<span class="go">&quot;hello-world&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dashcase</span><span class="p">(</span><span class="s2">&quot;HelloHTMLWorld&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;HTML&quot;</span><span class="p">])</span>
+<span class="go">&quot;hello-html-world&quot;</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Description</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.case_conversion.kebabcase">
+<code class="sig-prename descclassname">python_modules.python_utils.case_conversion.</code><code class="sig-name descname">kebabcase</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">detect_acronyms=False</em>, <em class="sig-param">acronyms=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/case_conversion.html#kebabcase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.case_conversion.kebabcase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return text in kebab-case style (aka snake-case, spinal-case).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>TYPE</em>) -- Description</p></li>
+<li><p><strong>detect_acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-examples admonition">
+<p class="admonition-title">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kebabcase</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<span class="go">&quot;hello-world&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kebabcase</span><span class="p">(</span><span class="s2">&quot;HelloHTMLWorld&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;HTML&quot;</span><span class="p">])</span>
+<span class="go">&quot;hello-html-world&quot;</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Description</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.case_conversion.spinalcase">
+<code class="sig-prename descclassname">python_modules.python_utils.case_conversion.</code><code class="sig-name descname">spinalcase</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">detect_acronyms=False</em>, <em class="sig-param">acronyms=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/case_conversion.html#spinalcase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.case_conversion.spinalcase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return text in spinal-case style (aka snake-case, kebab-case).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>TYPE</em>) -- Description</p></li>
+<li><p><strong>detect_acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-examples admonition">
+<p class="admonition-title">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spinalcase</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<span class="go">&quot;hello-world&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spinalcase</span><span class="p">(</span><span class="s2">&quot;HELLO_HTML_WORLD&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;HTML&quot;</span><span class="p">])</span>
+<span class="go">&quot;hello-html-world&quot;</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Description</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.case_conversion.constcase">
+<code class="sig-prename descclassname">python_modules.python_utils.case_conversion.</code><code class="sig-name descname">constcase</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">detect_acronyms=False</em>, <em class="sig-param">acronyms=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/case_conversion.html#constcase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.case_conversion.constcase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return text in CONST_CASE style (aka SCREAMING_SNAKE_CASE).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>TYPE</em>) -- Description</p></li>
+<li><p><strong>detect_acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-examples admonition">
+<p class="admonition-title">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">constcase</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<span class="go">&quot;HELLO_WORLD&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">constcase</span><span class="p">(</span><span class="s2">&quot;helloHTMLWorld&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;HTML&quot;</span><span class="p">])</span>
+<span class="go">&quot;HELLO_HTML_WORLD&quot;</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Description</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.case_conversion.screaming_snakecase">
+<code class="sig-prename descclassname">python_modules.python_utils.case_conversion.</code><code class="sig-name descname">screaming_snakecase</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">detect_acronyms=False</em>, <em class="sig-param">acronyms=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/case_conversion.html#screaming_snakecase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.case_conversion.screaming_snakecase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return text in SCREAMING_SNAKE_CASE style (aka CONST_CASE).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>TYPE</em>) -- Description</p></li>
+<li><p><strong>detect_acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-examples admonition">
+<p class="admonition-title">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">screaming_snakecase</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<span class="go">&quot;HELLO_WORLD&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">screaming_snakecase</span><span class="p">(</span><span class="s2">&quot;helloHTMLWorld&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;HTML&quot;</span><span class="p">])</span>
+<span class="go">&quot;HELLO_HTML_WORLD&quot;</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Description</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.case_conversion.dotcase">
+<code class="sig-prename descclassname">python_modules.python_utils.case_conversion.</code><code class="sig-name descname">dotcase</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">detect_acronyms=False</em>, <em class="sig-param">acronyms=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/case_conversion.html#dotcase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.case_conversion.dotcase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return text in dot.case style.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>TYPE</em>) -- Description</p></li>
+<li><p><strong>detect_acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-examples admonition">
+<p class="admonition-title">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dotcase</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<span class="go">&quot;hello.world&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dotcase</span><span class="p">(</span><span class="s2">&quot;helloHTMLWorld&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;HTML&quot;</span><span class="p">])</span>
+<span class="go">&quot;hello.html.world&quot;</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Description</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.case_conversion.separate_words">
+<code class="sig-prename descclassname">python_modules.python_utils.case_conversion.</code><code class="sig-name descname">separate_words</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">detect_acronyms=False</em>, <em class="sig-param">acronyms=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/case_conversion.html#separate_words"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.case_conversion.separate_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return text in &quot;seperate words&quot; style.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>TYPE</em>) -- Description</p></li>
+<li><p><strong>detect_acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-examples admonition">
+<p class="admonition-title">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">separate_words</span><span class="p">(</span><span class="s2">&quot;HELLO_WORLD&quot;</span><span class="p">)</span>
+<span class="go">&quot;HELLO WORLD&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">separate_words</span><span class="p">(</span><span class="s2">&quot;helloHTMLWorld&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;HTML&quot;</span><span class="p">])</span>
+<span class="go">&quot;hello HTML World&quot;</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Description</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.case_conversion.slashcase">
+<code class="sig-prename descclassname">python_modules.python_utils.case_conversion.</code><code class="sig-name descname">slashcase</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">detect_acronyms=False</em>, <em class="sig-param">acronyms=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/case_conversion.html#slashcase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.case_conversion.slashcase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return text in slash/case style.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>TYPE</em>) -- Description</p></li>
+<li><p><strong>detect_acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-examples admonition">
+<p class="admonition-title">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">slashcase</span><span class="p">(</span><span class="s2">&quot;HELLO_WORLD&quot;</span><span class="p">)</span>
+<span class="go">&quot;HELLO/WORLD&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">slashcase</span><span class="p">(</span><span class="s2">&quot;helloHTMLWorld&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;HTML&quot;</span><span class="p">])</span>
+<span class="go">&quot;hello/HTML/World&quot;</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Description</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.case_conversion.backslashcase">
+<code class="sig-prename descclassname">python_modules.python_utils.case_conversion.</code><code class="sig-name descname">backslashcase</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">detect_acronyms=False</em>, <em class="sig-param">acronyms=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/case_conversion.html#backslashcase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.case_conversion.backslashcase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return text in backslashcase style.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>TYPE</em>) -- Description</p></li>
+<li><p><strong>detect_acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>acronyms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-examples admonition">
+<p class="admonition-title">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">backslashcase</span><span class="p">(</span><span class="s2">&quot;HELLO_WORLD&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="sa">r</span><span class="s2">&quot;HELLO\WORLD&quot;</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">backslashcase</span><span class="p">(</span><span class="s2">&quot;helloHTMLWorld&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;HTML&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="sa">r</span><span class="s2">&quot;hello\HTML\World&quot;</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Description</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="python_modules.python_utils.css_props_case_correction.html" class="btn btn-neutral float-right" title="python_modules.python_utils.css_props_case_correction package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="python_modules.python_utils.html" class="btn btn-neutral float-left" title="python_modules.python_utils package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2021, Odyseus.
+
+    </p>
+  </div>
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

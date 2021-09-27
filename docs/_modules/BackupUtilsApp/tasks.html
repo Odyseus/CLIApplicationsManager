@@ -168,6 +168,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
 
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Callable</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
@@ -325,23 +326,39 @@
 <span class="sd">        SystemExit</span>
 <span class="sd">            Halt execution if an exception is thrown when executing a hook.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">hook</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_hook&quot;</span> <span class="o">%</span> <span class="n">hook_type</span><span class="p">)</span>
+        <span class="n">hook_definition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_hook&quot;</span> <span class="o">%</span> <span class="n">hook_type</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hook</span><span class="p">,</span> <span class="n">Callable</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">hook_definition</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">hook_module_name</span><span class="p">,</span> <span class="n">hook_method</span> <span class="o">=</span> <span class="n">hook_definition</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+        <span class="n">hook_module_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app_utils</span><span class="o">.</span><span class="n">root_folder</span><span class="p">,</span>
+                                        <span class="s2">&quot;UserData&quot;</span><span class="p">,</span>
+                                        <span class="s2">&quot;hooks&quot;</span><span class="p">,</span>
+                                        <span class="n">hook_module_name</span> <span class="o">+</span> <span class="s2">&quot;.py&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">hook_module_path</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Attempting to run </span><span class="si">%s</span><span class="s2">-hook...**&quot;</span> <span class="o">%</span> <span class="n">hook_type</span><span class="p">)</span>
 
-            <span class="n">task_copy</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="p">)</span>
+            <span class="n">spec</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">spec_from_file_location</span><span class="p">(</span><span class="n">hook_module_name</span><span class="p">,</span> <span class="n">hook_module_path</span><span class="p">)</span>
+            <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">module_from_spec</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+            <span class="n">spec</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">exec_module</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
 
-            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;pre_hook&quot;</span><span class="p">,</span> <span class="s2">&quot;post_hook&quot;</span><span class="p">]:</span>
-                <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">task_copy</span><span class="p">:</span>
-                    <span class="k">del</span> <span class="n">task_copy</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="n">hook</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">hook_method</span><span class="p">)</span>
 
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">hook</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task_copy</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">,</span>
-                     <span class="n">dry_run</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-                <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hook</span><span class="p">,</span> <span class="n">Callable</span><span class="p">):</span>
+                <span class="n">task_copy</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;pre_hook&quot;</span><span class="p">,</span> <span class="s2">&quot;post_hook&quot;</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">task_copy</span><span class="p">:</span>
+                        <span class="k">del</span> <span class="n">task_copy</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">hook</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task_copy</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">,</span>
+                         <span class="n">dry_run</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**</span><span class="si">%s</span><span class="s2">-hook not configured.**&quot;</span> <span class="o">%</span> <span class="n">hook_type</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span></div>
 
@@ -384,7 +401,9 @@
         <span class="n">cmd</span> <span class="o">+=</span> <span class="n">exclude_patterns</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;**Destination folder will be created:**</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">root_destination</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span>
+                <span class="s2">&quot;**Destination folder will be created:**</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                <span class="n">root_destination</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">root_destination</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -489,7 +508,9 @@
                                     <span class="n">archive_file_name</span> <span class="o">+</span> <span class="n">archive_file_ext</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span><span class="s2">&quot;**Destination folder will be created:**</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">archive_destination</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_dry_run</span><span class="p">(</span>
+                <span class="s2">&quot;**Destination folder will be created:**</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                <span class="n">archive_destination</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">archive_destination</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -561,7 +582,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

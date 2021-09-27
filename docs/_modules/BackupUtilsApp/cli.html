@@ -178,7 +178,6 @@
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
-<span class="kn">from</span> <span class="nn">runpy</span> <span class="kn">import</span> <span class="n">run_path</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">app_utils</span>
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">__appdescription__</span>
@@ -190,6 +189,7 @@
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="kn">import</span> <span class="n">exceptions</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="kn">import</span> <span class="n">misc_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="kn">import</span> <span class="n">shell_utils</span>
+<span class="kn">from</span> <span class="nn">.python_utils</span> <span class="kn">import</span> <span class="n">yaml_utils</span>
 
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
@@ -220,12 +220,12 @@
 
 <span class="s2">-t &lt;name&gt;, --task=&lt;name&gt;</span>
 <span class="s2">    File name of the file containing backup tasks. Should be the name of a</span>
-<span class="s2">    file stored in UserData/tasks/&lt;name&gt;.py. Extension omitted.</span>
+<span class="s2">    file stored in UserData/tasks/&lt;name&gt;.yaml. Extension omitted.</span>
 
 <span class="s2">-g &lt;name&gt;, --global=&lt;name&gt;</span>
 <span class="s2">    File name of a file containing global settings that all the backup tasks</span>
 <span class="s2">    will use. Should be the name of a file stored in</span>
-<span class="s2">    UserData/settings/&lt;name&gt;.py. Extension omitted.</span>
+<span class="s2">    UserData/settings/&lt;name&gt;.yaml. Extension omitted.</span>
 
 <span class="s2">-d, --dry-run</span>
 <span class="s2">    Do not perform file system changes. Only display messages informing of the</span>
@@ -293,20 +293,30 @@
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;backup&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--task&quot;</span><span class="p">]):</span>
             <span class="c1"># NOTE: All data should be validated BEFORE attempting to execute tasks.</span>
             <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="kn">import</span> <span class="n">json_schema_utils</span>
-            <span class="kn">from</span> <span class="nn">.schemas</span> <span class="kn">import</span> <span class="n">settings_schema</span>
-            <span class="kn">from</span> <span class="nn">.schemas</span> <span class="kn">import</span> <span class="n">tasks_schema</span>
+            <span class="n">settings_schema</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span>
+                                           <span class="s2">&quot;AppData&quot;</span><span class="p">,</span>
+                                           <span class="s2">&quot;data&quot;</span><span class="p">,</span>
+                                           <span class="s2">&quot;schemas&quot;</span><span class="p">,</span>
+                                           <span class="s2">&quot;settings_schema.yaml&quot;</span><span class="p">)</span>
+            <span class="n">tasks_schema</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span>
+                                        <span class="s2">&quot;AppData&quot;</span><span class="p">,</span>
+                                        <span class="s2">&quot;data&quot;</span><span class="p">,</span>
+                                        <span class="s2">&quot;schemas&quot;</span><span class="p">,</span>
+                                        <span class="s2">&quot;tasks_schema.yaml&quot;</span><span class="p">)</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_tasks</span>
 
             <span class="n">validation_errors_count</span> <span class="o">=</span> <span class="mi">0</span>
 
             <span class="k">try</span><span class="p">:</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;--global&quot;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--global&quot;</span><span class="p">]:</span>
                     <span class="n">global_settings_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span>
                                                         <span class="s2">&quot;UserData&quot;</span><span class="p">,</span>
                                                         <span class="s2">&quot;settings&quot;</span><span class="p">,</span>
-                                                        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.py&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--global&quot;</span><span class="p">])</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">global_settings</span> <span class="o">=</span> <span class="n">run_path</span><span class="p">(</span><span class="n">global_settings_file</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;settings&quot;</span><span class="p">,</span> <span class="p">{})</span>
+                                                        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.yaml&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--global&quot;</span><span class="p">])</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">global_settings_file</span><span class="p">)</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">global_settings_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">yaml_file</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">global_settings</span> <span class="o">=</span> <span class="n">yaml_utils</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">yaml_file</span><span class="p">)</span>
 
                     <span class="k">if</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">JSONSCHEMA_INSTALLED</span><span class="p">:</span>
                         <span class="n">validation_errors_count</span> <span class="o">+=</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
@@ -324,11 +334,12 @@
 
             <span class="k">for</span> <span class="n">tasks_file</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">OrderedDict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--task&quot;</span><span class="p">])):</span>
                 <span class="n">tasks_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span>
-                                               <span class="s2">&quot;tasks&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.py&quot;</span> <span class="o">%</span> <span class="n">tasks_file</span><span class="p">)</span>
+                                               <span class="s2">&quot;tasks&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.yaml&quot;</span> <span class="o">%</span> <span class="n">tasks_file</span><span class="p">)</span>
                 <span class="n">tasks_data</span> <span class="o">=</span> <span class="kc">None</span>
 
                 <span class="k">try</span><span class="p">:</span>
-                    <span class="n">tasks_data</span> <span class="o">=</span> <span class="n">run_path</span><span class="p">(</span><span class="n">tasks_file_path</span><span class="p">)</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tasks_file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">yaml_file</span><span class="p">:</span>
+                        <span class="n">tasks_data</span> <span class="o">=</span> <span class="n">yaml_utils</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">yaml_file</span><span class="p">)</span>
 
                     <span class="k">if</span> <span class="n">tasks_data</span><span class="p">:</span>
                         <span class="n">task_settings</span> <span class="o">=</span> <span class="n">misc_utils</span><span class="o">.</span><span class="n">merge_dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">global_settings</span><span class="p">,</span>
@@ -338,7 +349,6 @@
                         <span class="k">if</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">JSONSCHEMA_INSTALLED</span><span class="p">:</span>
                             <span class="n">validation_errors_count</span> <span class="o">+=</span> <span class="n">json_schema_utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
                                 <span class="n">tasks_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tasks&quot;</span><span class="p">,</span> <span class="p">[]),</span> <span class="n">tasks_schema</span><span class="p">,</span>
-                                <span class="c1"># tasks_data.get(&quot;tasks&quot;, []), tasks_schema,</span>
                                 <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                                 <span class="n">error_message_extra_info</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
                                     <span class="s2">&quot;**File:** </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">tasks_file_path</span><span class="p">,</span>
@@ -417,12 +427,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_display_manual_page</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;app.py.1&quot;</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="CommandLineInterface.print_tasks"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.print_tasks">[docs]</a>    <span class="k">def</span> <span class="nf">print_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;See :any:`app_utils.print_config_files_list`.</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`BackupUtilsApp.app_utils.print_config_files_list`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">app_utils</span><span class="o">.</span><span class="n">print_config_files_list</span><span class="p">(</span><span class="s2">&quot;tasks&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CommandLineInterface.print_settings"><a class="viewcode-back" href="../../modules/BackupUtils/BackupUtilsApp.cli.html#BackupUtilsApp.cli.CommandLineInterface.print_settings">[docs]</a>    <span class="k">def</span> <span class="nf">print_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;See :any:`app_utils.print_config_files_list`.</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`BackupUtilsApp.app_utils.print_config_files_list`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">app_utils</span><span class="o">.</span><span class="n">print_config_files_list</span><span class="p">(</span><span class="s2">&quot;settings&quot;</span><span class="p">)</span></div></div>
 
@@ -452,7 +462,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

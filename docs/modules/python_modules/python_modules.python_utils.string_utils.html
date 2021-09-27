@@ -183,6 +183,34 @@
   <div class="section" id="module-python_modules.python_utils.string_utils">
 <span id="python-modules-python-utils-string-utils-module"></span><h1>python_modules.python_utils.string_utils module<a class="headerlink" href="#module-python_modules.python_utils.string_utils" title="Permalink to this headline">¶</a></h1>
 <p>Common utilities to perform string manipulation operations.</p>
+<dl class="class">
+<dt id="python_modules.python_utils.string_utils.__DictClone">
+<em class="property">class </em><code class="sig-prename descclassname">python_modules.python_utils.string_utils.</code><code class="sig-name descname">__DictClone</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/string_utils.html#__DictClone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.string_utils.__DictClone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.UserDict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.UserDict</span></code></a></p>
+<p>Handle missing keys in a dictionary used by str.format_map(). It will just clear
+non-defined variables out of the formatted string.</p>
+<dl class="attribute">
+<dt id="python_modules.python_utils.string_utils.__DictClone._abc_cache">
+<code class="sig-name descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="headerlink" href="#python_modules.python_utils.string_utils.__DictClone._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="python_modules.python_utils.string_utils.__DictClone._abc_negative_cache">
+<code class="sig-name descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="headerlink" href="#python_modules.python_utils.string_utils.__DictClone._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="python_modules.python_utils.string_utils.__DictClone._abc_negative_cache_version">
+<code class="sig-name descname">_abc_negative_cache_version</code><em class="property"> = 88</em><a class="headerlink" href="#python_modules.python_utils.string_utils.__DictClone._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="python_modules.python_utils.string_utils.__DictClone._abc_registry">
+<code class="sig-name descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="headerlink" href="#python_modules.python_utils.string_utils.__DictClone._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="function">
 <dt id="python_modules.python_utils.string_utils.split_on_uppercase">
 <code class="sig-prename descclassname">python_modules.python_utils.string_utils.</code><code class="sig-name descname">split_on_uppercase</code><span class="sig-paren">(</span><em class="sig-param">string</em>, <em class="sig-param">keep_contiguous=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/string_utils.html#split_on_uppercase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.string_utils.split_on_uppercase" title="Permalink to this definition">¶</a></dt>
@@ -190,15 +218,15 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- The string to split by its uppercase characters.</p></li>
-<li><p><strong>keep_contiguous</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) -- Option to indicate we want to keep contiguous uppercase characters together.</p></li>
+<li><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- The string to split by its uppercase characters.</p></li>
+<li><p><strong>keep_contiguous</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a>) -- Option to indicate we want to keep contiguous uppercase characters together.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The parts of the passed string.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)">list</a></p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -214,29 +242,29 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Data to modify.</p></li>
-<li><p><strong>replacement_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) -- List of tuples containing (template, replacement) data.</p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- Data to modify.</p></li>
+<li><p><strong>replacement_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) -- List of tuples containing (template, replacement) data.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Modified data.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="python_modules.python_utils.string_utils.do_string_substitutions">
-<code class="sig-prename descclassname">python_modules.python_utils.string_utils.</code><code class="sig-name descname">do_string_substitutions</code><span class="sig-paren">(</span><em class="sig-param">dir_path</em>, <em class="sig-param">replacement_data</em>, <em class="sig-param">allowed_extensions=('.py'</em>, <em class="sig-param">'.bash'</em>, <em class="sig-param">'.js'</em>, <em class="sig-param">'.json'</em>, <em class="sig-param">'.xml')</em>, <em class="sig-param">logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/string_utils.html#do_string_substitutions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.string_utils.do_string_substitutions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">python_modules.python_utils.string_utils.</code><code class="sig-name descname">do_string_substitutions</code><span class="sig-paren">(</span><em class="sig-param">dir_path</em>, <em class="sig-param">replacement_data</em>, <em class="sig-param">allowed_extensions=('.py'</em>, <em class="sig-param">'.bash'</em>, <em class="sig-param">'.js'</em>, <em class="sig-param">'.json'</em>, <em class="sig-param">'.xml')</em>, <em class="sig-param">handle_file_names=True</em>, <em class="sig-param">logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/string_utils.html#do_string_substitutions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.string_utils.do_string_substitutions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do substitutions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dir_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Path to a directory where to perform string substitutions on.</p></li>
-<li><p><strong>replacement_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) -- Data used to perform string substitutions.</p></li>
-<li><p><strong>allowed_extensions</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a><em>, </em><em>optional</em>) -- A tuple of file extensions that are allowed to be modified.</p></li>
+<li><p><strong>dir_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- Path to a directory where to perform string substitutions on.</p></li>
+<li><p><strong>replacement_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) -- Data used to perform string substitutions.</p></li>
+<li><p><strong>allowed_extensions</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.9)"><em>tuple</em></a><em>, </em><em>optional</em>) -- A tuple of file extensions that are allowed to be modified.</p></li>
 <li><p><strong>logger</strong> (<a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><em>LogSystem</em></a>) -- The logger.</p></li>
 </ul>
 </dd>
@@ -257,16 +285,16 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) -- A list of strings to filter.</p></li>
-<li><p><strong>inclusion_patterns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em>, </em><em>optional</em>) -- A list of patterns to keep in names.</p></li>
-<li><p><strong>exclusion_patterns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em>, </em><em>optional</em>) -- A list of patterns to exclude from names.</p></li>
+<li><p><strong>names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) -- A list of strings to filter.</p></li>
+<li><p><strong>inclusion_patterns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- A list of patterns to keep in names.</p></li>
+<li><p><strong>exclusion_patterns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- A list of patterns to exclude from names.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>A filtered list of strings.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)">list</a></p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -283,8 +311,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) -- A list of strings to filter.</p></li>
-<li><p><strong>patterns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) -- A list of patterns to match in names.</p></li>
+<li><p><strong>names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) -- A list of strings to filter.</p></li>
+<li><p><strong>patterns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) -- A list of patterns to match in names.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Yields</dt>
@@ -307,15 +335,15 @@ filename.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- The string to validate.</p></li>
-<li><p><strong>separator</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Which character to use to replace white spaces.</p></li>
+<li><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- The string to validate.</p></li>
+<li><p><strong>separator</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- Which character to use to replace white spaces.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>A <em>safe to use</em> string for file names.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -345,15 +373,15 @@ filename.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- The string to slugify.</p></li>
-<li><p><strong>allow_unicode</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) -- Whether or not to allow unicode characters in the slugified string.</p></li>
+<li><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- The string to slugify.</p></li>
+<li><p><strong>allow_unicode</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Whether or not to allow unicode characters in the slugified string.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>A slugified string.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -366,6 +394,35 @@ filename.</p>
 <span class="go">&quot;johns-portrait-in-2004jpg&quot;</span>
 </pre></div>
 </div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="python_modules.python_utils.string_utils.substitute_variables">
+<code class="sig-prename descclassname">python_modules.python_utils.string_utils.</code><code class="sig-name descname">substitute_variables</code><span class="sig-paren">(</span><em class="sig-param">variables</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/string_utils.html#substitute_variables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.string_utils.substitute_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Substitute variables.</p>
+<p>This is a crude attempt to replicate the functionality of the function with the same name
+that uses a function called <code class="docutils literal notranslate"><span class="pre">expand_variables</span></code> provided by Sublime Text's API. It uses
+<code class="docutils literal notranslate"><span class="pre">str.format_map()</span></code> to replace variables found in a string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variables</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) -- A dictionary containing variables as keys mapped to values to replace those variables.</p></li>
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) -- The str/list/dict containing the data where to perform substitutions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>list</em></p></li>
+<li><p><em>dict</em></p></li>
+<li><p><em>str</em> -- The modified data.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Borrowed from SublimeLinter.</p>
 </div>
 </dd></dl>
 
@@ -391,7 +448,7 @@ filename.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

@@ -90,14 +90,17 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Hosts Manager's documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#cli-synopsis"><abbr title="Command Line Interface">CLI</abbr> Synopsis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mentions">Mentions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#jsonschema-module"><code class="docutils literal notranslate"><span class="pre">jsonschema</span></code> module</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#detailed-usage">Detailed usage</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#cli-options"><abbr title="Command Line Interface">CLI</abbr> options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#commands">Commands</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#file-templates">File templates</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#conf-py-template">conf.py template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config-yaml-template">config.yaml template</a></li>
 </ul>
 </li>
 </ul>
@@ -198,7 +201,7 @@
 <div class="section" id="cli-synopsis">
 <h2><abbr title="Command Line Interface">CLI</abbr> Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight">
-<pre><span class="text-bold">Hosts Manager 2020-03-08 09:10:52.455 (Stable)</span>
+<pre><span class="text-bold">Hosts Manager 2020-03-20 21:47:57.127 (Stable)</span>
 
 <span class="text-bold">CLI utility to manage hosts files on GNU/Linux.</span>
 
@@ -232,7 +235,7 @@
 
 <span class="text-bold">-o &lt;key=value&gt;, --override=&lt;key=value&gt;</span>
     One or more sets of &lt;key=value&gt; that will override the configuration
-    options set in the conf.py file.
+    options set in the config.yaml file.
 
 <span class="text-bold">-f, --flush-dns-cache</span>
     Attempt to flush DNS cache for the new hosts file to take effect.
@@ -261,6 +264,16 @@
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <p>No mayor requirements are needed to run this application other than Python 3.5+.</p>
+<div class="admonition-info info admonition">
+<p class="admonition-title">Optional dependencies</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">jsonschema&gt;3</span></code> Python module.</p></li>
+</ul>
+</div>
+<div class="section" id="jsonschema-module">
+<h3><code class="docutils literal notranslate"><span class="pre">jsonschema</span></code> module<a class="headerlink" href="#jsonschema-module" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">jsonschema</span></code> module is used to validate all data used by this <abbr title="Command Line Interface">CLI</abbr> application. If not installed, the data will simply not be validated.</p>
+</div>
 </div>
 <div class="section" id="detailed-usage">
 <h2>Detailed usage<a class="headerlink" href="#detailed-usage" title="Permalink to this headline">¶</a></h2>
@@ -268,12 +281,12 @@
 <p class="admonition-title">Highlights</p>
 <ul class="simple">
 <li><p>This application works with <em>profiles</em> stored in <strong>UserData/profiles</strong>.</p></li>
-<li><p>A profile is just a folder that contains a configuration file (<strong>UserData/profiles/&lt;profle_name&gt;/conf.py</strong>) and where all downloaded sources are stored and processed to generate a hosts file.</p></li>
+<li><p>A profile is just a folder that contains a configuration file (<strong>UserData/profiles/&lt;profle_name&gt;/config.yaml</strong>) and where all downloaded sources are stored and processed to generate a hosts file.</p></li>
 <li><p>Each profile can have files named <strong>whitelist</strong> and <strong>blacklist</strong> which contain a host name per line without inline comments.</p></li>
 <li><p>Files named <strong>global_blacklist</strong> and <strong>global_whitelist</strong> inside <strong>UserData</strong> will be used by all profiles.</p></li>
 <li><p>A <strong>whitelist</strong> file contains a list of host names that <strong>will NEVER be added</strong> to the final hosts file.</p></li>
 <li><p>A <strong>blacklist</strong> file contains a list of host names that <strong>will ALWAYS be added</strong> to the final hosts file.</p></li>
-<li><p>The <strong>conf.py</strong> file should contain at least a property named <strong>sources</strong> (mandatory - a list of dictionaries) and another property named <strong>settings</strong> (optional - a dictionary).</p></li>
+<li><p>The <strong>config.yaml</strong> file should contain at least a property named <strong>sources</strong> (mandatory - a list of dictionaries) and another property named <strong>settings</strong> (optional - a dictionary).</p></li>
 <li><p>This application can process text files formatted as a hosts file (<strong>0.0.0.0 hostname.com</strong> one rule per line), text files formatted as a list of host names (<strong>hostname.com</strong> one domain per line) and archives (7Zip files, Zip files and compressed and non-compressed Tar files) containing any of the aforementioned text files.</p></li>
 <li><p>If one wants to use data from sources in any other format, the data can be <em>pre-processed</em>. See <a class="reference internal" href="#hosts-manager-pre-processors-reference"><span class="std std-ref">pre_processors data key</span></a>.</p></li>
 </ul>
@@ -303,7 +316,7 @@
 <div class="section" id="sub-commands">
 <h5>Sub-commands<a class="headerlink" href="#sub-commands" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">update</span></code>: Update all sources defined inside the <strong>conf.py</strong> file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">update</span></code>: Update all sources defined inside the <strong>config.yaml</strong> file.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">build</span></code>: Build a hosts file based on the downloaded sources.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">install</span></code>: Install a generated hosts file into the system.</p></li>
 </ul>
@@ -312,7 +325,7 @@
 <h5>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">&lt;name&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--profile=&lt;name&gt;</span></code>: The profile name to work with. This is actually the name of a folder inside the <strong>UserData/profiles</strong> folder.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">&lt;key=value&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--override=&lt;key=value&gt;</span></code>: One or more sets of <strong>&lt;key=value&gt;</strong> that will override the configuration options set inside a profile's <strong>conf.py</strong> file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">&lt;key=value&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--override=&lt;key=value&gt;</span></code>: One or more sets of <strong>&lt;key=value&gt;</strong> that will override the configuration options set inside a profile's <strong>config.yaml</strong> file.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-u</span></code> or <code class="docutils literal notranslate"><span class="pre">--force-update</span></code>: Force the update of all sources, ignoring the frequency in which they should be updated.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-f</span></code> or <code class="docutils literal notranslate"><span class="pre">--flush-dns-cache</span></code>: Attempt to flush DNS cache for the new hosts file to take effect.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code> or <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code>: Do not perform file system changes. Only display messages informing of the actions that will be performed or commands that will be executed.</p></li>
@@ -367,54 +380,36 @@
 </div>
 <div class="section" id="file-templates">
 <h2>File templates<a class="headerlink" href="#file-templates" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="conf-py-template">
-<h3>conf.py template<a class="headerlink" href="#conf-py-template" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># START conf.py</span>
-<span class="c1">#!/usr/bin/python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;Practical example configuration file.</span>
-
-<span class="sd">Attributes</span>
-<span class="sd">----------</span>
-<span class="sd">settings : dict, optional</span>
-<span class="sd">    See documentation/manual for details.</span>
-<span class="sd">sources : list, mandatory</span>
-<span class="sd">    See documentation/manual for details.</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
-<span class="n">settings</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;target_ip&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;keep_domain_comments&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="s2">&quot;skip_static_hosts&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="s2">&quot;backup_old_generated_hosts&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="s2">&quot;backup_system_hosts&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="s2">&quot;max_backups_to_keep&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="n">sources</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MVPS hosts file&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://winhelp2002.mvps.org/hosts.txt&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;frequency&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The purpose of this site is to provide the user with a high quality custom HOSTS file.&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;homeurl&quot;</span><span class="p">:</span> <span class="s2">&quot;http://winhelp2002.mvps.org/&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;issues&quot;</span><span class="p">:</span> <span class="s2">&quot;mailto:winhelp2002@gmail.com&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;CC BY-NC-SA 4.0&quot;</span>
-    <span class="p">},</span> <span class="p">{</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Malwarebytes hpHosts&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://hosts-file.net/download/hosts.zip&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;unzip_prog&quot;</span><span class="p">:</span> <span class="s2">&quot;unzip&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;unzip_target&quot;</span><span class="p">:</span> <span class="s2">&quot;hosts.txt&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;frequency&quot;</span><span class="p">:</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;hpHosts is a community managed and maintained hosts file that allows an additional layer of protection against access to ad, tracking and malicious websites.&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;homeurl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hosts-file.net&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;Freeware&quot;</span>
-    <span class="p">}</span>
-<span class="p">]</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="k">pass</span>
-<span class="c1"># END conf.py</span>
+<div class="section" id="config-yaml-template">
+<h3>config.yaml template<a class="headerlink" href="#config-yaml-template" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># START config.yaml</span>
+<span class="nt">settings</span><span class="p">:</span>
+    <span class="nt">backup_old_generated_hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">backup_system_hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">keep_domain_comments</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">max_backups_to_keep</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+    <span class="nt">skip_static_hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">target_ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span>
+<span class="nt">sources</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">The purpose of this site is to provide the user with a high quality</span>
+          <span class="l l-Scalar l-Scalar-Plain">custom HOSTS file.</span>
+      <span class="nt">frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">m</span>
+      <span class="nt">homeurl</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://winhelp2002.mvps.org/</span>
+      <span class="nt">issues</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mailto:winhelp2002@gmail.com</span>
+      <span class="nt">license</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CC BY-NC-SA 4.0</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MVPS hosts file</span>
+      <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://winhelp2002.mvps.org/hosts.txt</span>
+    <span class="p p-Indicator">-</span> <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hpHosts is a community managed and maintained hosts file that allows</span>
+          <span class="l l-Scalar l-Scalar-Plain">an additional layer of protection against access to ad, tracking and malicious</span>
+          <span class="l l-Scalar l-Scalar-Plain">websites.</span>
+      <span class="nt">frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s</span>
+      <span class="nt">homeurl</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://hosts-file.net</span>
+      <span class="nt">license</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Freeware</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Malwarebytes hpHosts</span>
+      <span class="nt">unzip_prog</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unzip</span>
+      <span class="nt">unzip_target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hosts.txt</span>
+      <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://hosts-file.net/download/hosts.zip</span>
+<span class="c1"># END config.yaml</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -457,7 +452,7 @@
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">url_parser</span></code>: It converts a list of URLs separated by new lines and converts them into a list of host names separated by new lines.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">json_array</span></code>: It converts a string representing a JSON array of strings into a string that will contain each element of the array separated by new lines.</p></li>
-<li><p>Custom method (<strong>Method</strong>): The name of a custom function declared inside the <strong>UserData/profiles/&lt;profle_name&gt;/conf.py</strong> file that can manipulate the data from a source in any way necessary. It accepts two parameters; <code class="docutils literal notranslate"><span class="pre">source_data</span></code> (mandatory), the data that needs to be manipulated; and <code class="docutils literal notranslate"><span class="pre">logger</span></code> (optional), see <a class="reference internal" href="../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>. It should return a string that can be processed by this application.</p></li>
+<li><p>Custom method (<strong>Method</strong>): The name of a custom function declared inside the <strong>UserData/profiles/&lt;profle_name&gt;/config.yaml</strong> file that can manipulate the data from a source in any way necessary. It accepts two parameters; <code class="docutils literal notranslate"><span class="pre">source_data</span></code> (mandatory), the data that needs to be manipulated; and <code class="docutils literal notranslate"><span class="pre">logger</span></code> (optional), see <a class="reference internal" href="../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>. It should return a string that can be processed by this application.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -501,7 +496,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

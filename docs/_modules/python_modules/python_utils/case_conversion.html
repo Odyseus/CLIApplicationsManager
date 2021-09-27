@@ -1,0 +1,837 @@
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>python_modules.python_utils.case_conversion &mdash; Python CLI Applications Documentations  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: False" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Python CLI Applications Documentations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/KnowledgeBase/index.html">Knowledge Base's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/MoviesDB/index.html">Movies DB's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/PackageManager/index.html">Package Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Python CLI Applications Documentations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>python_modules.python_utils.case_conversion</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for python_modules.python_utils.case_conversion</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Based on `case-conversion &lt;https://github.com/AlejandroFrias/case-conversion&gt;`__.</span>
+
+<span class="sd">Note</span>
+<span class="sd">----</span>
+<span class="sd">Removed dependency on ``regex`` Python module. I don&#39;t care for Unicode compatibility. If and</span>
+<span class="sd">when this functionality is added to the standard library in an LTS Python version, I might</span>
+<span class="sd">start to consider implementing it.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;camelcase&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pascalcase&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;snakecase&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dashcase&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kebabcase&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;spinalcase&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;constcase&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;screaming_snakecase&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dotcase&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;separate_words&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;slashcase&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;backslashcase&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;parse_case&quot;</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="parse_case"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.case_conversion.html#python_modules.python_utils.case_conversion.parse_case">[docs]</a><span class="k">def</span> <span class="nf">parse_case</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">acronyms</span><span class="o">=</span><span class="p">[],</span> <span class="n">preserve_case</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parses a variable into a list of words.</span>
+<span class="sd">    Also returns the case type, which can be one of the following:</span>
+
+<span class="sd">        - upper: All words are upper-case.</span>
+<span class="sd">        - lower: All words are lower-case.</span>
+<span class="sd">        - pascal: All words are title-case or upper-case. Note that the</span>
+<span class="sd">                  variable may still have separators.</span>
+<span class="sd">        - camel: First word is lower-case, the rest are title-case or</span>
+<span class="sd">                 upper-case. Variable may still have separators.</span>
+<span class="sd">        - mixed: Any other mixing of word casing. Never occurs if there are</span>
+<span class="sd">                 no separators.</span>
+<span class="sd">        - unknown: Variable contains no words.</span>
+
+<span class="sd">    Also returns the first separator character, or False if there isn&#39;t one.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    var : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    detect_acronyms : bool, optional</span>
+<span class="sd">        Description</span>
+<span class="sd">    acronyms : list, optional</span>
+<span class="sd">        Description</span>
+<span class="sd">    preserve_case : bool, optional</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TYPE</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    TODO</span>
+<span class="sd">    ----</span>
+<span class="sd">    Include unicode characters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">upper</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;^[A-Z]$&quot;</span><span class="p">)</span>
+    <span class="n">sep</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;^[^a-zA-Z0-9]$&quot;</span><span class="p">)</span>
+    <span class="n">notsep</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;^[a-zA-Z0-9]$&quot;</span><span class="p">)</span>
+
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">has_sep</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># Index of current character. Initially 1 because we don&#39;t want to check</span>
+    <span class="c1"># if the 0th character is a boundary.</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1"># Index of first character in a sequence</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># Previous character.</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">var</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># Treat an all-caps variable as lower-case, so that every letter isn&#39;t</span>
+    <span class="c1"># counted as a boundary.</span>
+    <span class="n">was_upper</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
+        <span class="n">var</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">was_upper</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Iterate over each character, checking for boundaries, or places where</span>
+    <span class="c1"># the variable should divided.</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">split</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+            <span class="c1"># Detect upper-case letter as boundary.</span>
+            <span class="k">if</span> <span class="n">upper</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+                <span class="n">split</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="c1"># Detect transition from separator to not separator.</span>
+            <span class="k">elif</span> <span class="n">notsep</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="ow">and</span> <span class="n">sep</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+                <span class="n">split</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="c1"># Detect transition not separator to separator.</span>
+            <span class="k">elif</span> <span class="n">sep</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="ow">and</span> <span class="n">notsep</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+                <span class="n">split</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># The loop goes one extra iteration so that it can handle the</span>
+            <span class="c1"># remaining text after the last boundary.</span>
+            <span class="n">split</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">split</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">notsep</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+                <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">var</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">i</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Variable contains at least one separator.</span>
+                <span class="c1"># Use the first one as the variable&#39;s primary separator.</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">has_sep</span><span class="p">:</span>
+                    <span class="n">has_sep</span> <span class="o">=</span> <span class="n">var</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+                <span class="c1"># Use None to indicate a separator in the word list.</span>
+                <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+                <span class="c1"># If separators weren&#39;t included in the list, then breaks</span>
+                <span class="c1"># between upper-case sequences (&quot;AAA_BBB&quot;) would be</span>
+                <span class="c1"># disregarded; the letter-run detector would count them as one</span>
+                <span class="c1"># sequence (&quot;AAABBB&quot;).</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">i</span>
+
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">c</span>
+
+    <span class="k">if</span> <span class="n">detect_acronyms</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">acronyms</span><span class="p">:</span>
+            <span class="c1"># Use advanced acronym detection with list</span>
+
+            <span class="c1"># Sanitize acronyms list by discarding invalid acronyms and</span>
+            <span class="c1"># normalizing valid ones to upper-case.</span>
+            <span class="n">valid_acronym</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;^[a-zA-Z0-9]+$&quot;</span><span class="p">)</span>
+            <span class="n">unsafe_acronyms</span> <span class="o">=</span> <span class="n">acronyms</span>
+            <span class="n">acronyms</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">unsafe_acronyms</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">valid_acronym</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+                    <span class="n">acronyms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Case Conversion: acronym &#39;</span><span class="si">%s</span><span class="s2">&#39; was discarded for being invalid&quot;</span> <span class="o">%</span> <span class="n">a</span><span class="p">)</span>
+
+            <span class="c1"># Check a run of words represented by the range [s, i]. Should</span>
+            <span class="c1"># return last index of new word groups.</span>
+            <span class="k">def</span> <span class="nf">check_acronym</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+                <span class="c1"># Combine each letter into single string.</span>
+                <span class="n">acstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">i</span><span class="p">])</span>
+
+                <span class="c1"># List of ranges representing found acronyms.</span>
+                <span class="n">range_list</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="c1"># Set of remaining letters.</span>
+                <span class="n">not_range</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">acstr</span><span class="p">)))</span>
+
+                <span class="c1"># Search for each acronym in acstr.</span>
+                <span class="k">for</span> <span class="n">acronym</span> <span class="ow">in</span> <span class="n">acronyms</span><span class="p">:</span>
+                    <span class="c1"># TODO: Sanitize acronyms to include only letters.</span>
+                    <span class="n">rac</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">acronym</span><span class="p">))</span>
+
+                    <span class="c1"># Loop so that all instances of the acronym are found,</span>
+                    <span class="c1"># instead of just the first.</span>
+                    <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                        <span class="n">m</span> <span class="o">=</span> <span class="n">rac</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">acstr</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">m</span><span class="p">:</span>
+                            <span class="k">break</span>
+
+                        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">(),</span> <span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+                        <span class="n">n</span> <span class="o">=</span> <span class="n">b</span>
+
+                        <span class="c1"># Make sure found acronym doesn&#39;t overlap with others.</span>
+                        <span class="n">ok</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">range_list</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                                <span class="n">ok</span> <span class="o">=</span> <span class="kc">False</span>
+                                <span class="k">break</span>
+
+                        <span class="k">if</span> <span class="n">ok</span><span class="p">:</span>
+                            <span class="n">range_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+                            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+                                <span class="n">not_range</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+
+                <span class="c1"># Add remaining letters as ranges.</span>
+                <span class="k">for</span> <span class="n">nr</span> <span class="ow">in</span> <span class="n">not_range</span><span class="p">:</span>
+                    <span class="n">range_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">nr</span><span class="p">,</span> <span class="n">nr</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+                <span class="c1"># No ranges will overlap, so it&#39;s safe to sort by lower bound,</span>
+                <span class="c1"># which sort() will do by default.</span>
+                <span class="n">range_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+                <span class="c1"># Remove original letters in word list.</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+                    <span class="k">del</span> <span class="n">words</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+
+                <span class="c1"># Replace them with new word grouping.</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">range_list</span><span class="p">)):</span>
+                    <span class="n">r</span> <span class="o">=</span> <span class="n">range_list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                    <span class="n">words</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="n">j</span><span class="p">,</span> <span class="n">acstr</span><span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+
+                <span class="k">return</span> <span class="n">s</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">range_list</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Fallback to simple acronym detection.</span>
+            <span class="k">def</span> <span class="nf">check_acronym</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+                <span class="c1"># Combine each letter into a single string.</span>
+                <span class="n">acronym</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">i</span><span class="p">])</span>
+
+                <span class="c1"># Remove original letters in word list.</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+                    <span class="k">del</span> <span class="n">words</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+
+                <span class="c1"># Replace them with new word grouping.</span>
+                <span class="n">words</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">acronym</span><span class="p">))</span>
+
+                <span class="k">return</span> <span class="n">s</span>
+
+        <span class="c1"># Letter-run detector</span>
+
+        <span class="c1"># Index of current word.</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># Index of first letter in run.</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Find runs of single upper-case letters.</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">word</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">upper</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">s</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="k">elif</span> <span class="n">s</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">check_acronym</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">s</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">check_acronym</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+    <span class="c1"># Separators are no longer needed, so they can be removed. They *should*</span>
+    <span class="c1"># be removed, since it&#39;s supposed to be a *word* list.</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">w</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+
+    <span class="c1"># Determine case type.</span>
+    <span class="n">case_type</span> <span class="o">=</span> <span class="s2">&quot;unknown&quot;</span>
+    <span class="k">if</span> <span class="n">was_upper</span><span class="p">:</span>
+        <span class="n">case_type</span> <span class="o">=</span> <span class="s2">&quot;upper&quot;</span>
+    <span class="k">elif</span> <span class="n">var</span><span class="o">.</span><span class="n">islower</span><span class="p">():</span>
+        <span class="n">case_type</span> <span class="o">=</span> <span class="s2">&quot;lower&quot;</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">camel_case</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">islower</span><span class="p">()</span>
+        <span class="n">pascal_case</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">istitle</span><span class="p">()</span> <span class="ow">or</span> <span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">camel_case</span> <span class="ow">or</span> <span class="n">pascal_case</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">istitle</span><span class="p">()</span> <span class="ow">or</span> <span class="n">word</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span>
+                <span class="n">camel_case</span> <span class="o">&amp;=</span> <span class="n">c</span>
+                <span class="n">pascal_case</span> <span class="o">&amp;=</span> <span class="n">c</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">c</span><span class="p">:</span>
+                    <span class="k">break</span>
+
+        <span class="k">if</span> <span class="n">camel_case</span><span class="p">:</span>
+            <span class="n">case_type</span> <span class="o">=</span> <span class="s2">&quot;camel&quot;</span>
+        <span class="k">elif</span> <span class="n">pascal_case</span><span class="p">:</span>
+            <span class="n">case_type</span> <span class="o">=</span> <span class="s2">&quot;pascal&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">case_type</span> <span class="o">=</span> <span class="s2">&quot;mixed&quot;</span>
+
+    <span class="k">if</span> <span class="n">preserve_case</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">was_upper</span><span class="p">:</span>
+            <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Normalize case of each word to PascalCase. From there, other cases</span>
+        <span class="c1"># can be worked out easily.</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">detect_acronyms</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">acronyms</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="ow">in</span> <span class="n">acronyms</span><span class="p">:</span>
+                        <span class="c1"># Convert known acronyms to upper-case.</span>
+                        <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># Capitalize everything else.</span>
+                        <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Fallback behavior: Preserve case on upper-case words.</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
+                        <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">words</span><span class="p">,</span> <span class="n">case_type</span><span class="p">,</span> <span class="n">has_sep</span></div>
+
+
+<div class="viewcode-block" id="camelcase"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.case_conversion.html#python_modules.python_utils.case_conversion.camelcase">[docs]</a><span class="k">def</span> <span class="nf">camelcase</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">acronyms</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Return text in camelCase style.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    detect_acronyms : bool, optional</span>
+<span class="sd">        Description</span>
+<span class="sd">    acronyms : list, optional</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; camelcase(&quot;hello world&quot;)</span>
+<span class="sd">    &quot;helloWorld&quot;</span>
+<span class="sd">    &gt;&gt;&gt; camelcase(&quot;HELLO_HTML_WORLD&quot;, True, [&quot;HTML&quot;])</span>
+<span class="sd">    &quot;helloHTMLWorld&quot;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">words</span><span class="p">,</span> <span class="n">case</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="n">parse_case</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="p">,</span> <span class="n">acronyms</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">words</span><span class="p">:</span>
+        <span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="pascalcase"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.case_conversion.html#python_modules.python_utils.case_conversion.pascalcase">[docs]</a><span class="k">def</span> <span class="nf">pascalcase</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">acronyms</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Return text in PascalCase style (aka MixedCase).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    detect_acronyms : bool, optional</span>
+<span class="sd">        Description</span>
+<span class="sd">    acronyms : list, optional</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; pascalcase(&quot;hello world&quot;)</span>
+<span class="sd">    &quot;HelloWorld&quot;</span>
+<span class="sd">    &gt;&gt;&gt; pascalcase(&quot;HELLO_HTML_WORLD&quot;, True, [&quot;HTML&quot;])</span>
+<span class="sd">    &quot;HelloHTMLWorld&quot;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">words</span><span class="p">,</span> <span class="n">case</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="n">parse_case</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="p">,</span> <span class="n">acronyms</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="snakecase"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.case_conversion.html#python_modules.python_utils.case_conversion.snakecase">[docs]</a><span class="k">def</span> <span class="nf">snakecase</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">acronyms</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Return text in snake_case style.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    detect_acronyms : bool, optional</span>
+<span class="sd">        Description</span>
+<span class="sd">    acronyms : list, optional</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; snakecase(&quot;hello world&quot;)</span>
+<span class="sd">    &quot;hello_world&quot;</span>
+<span class="sd">    &gt;&gt;&gt; snakecase(&quot;HelloHTMLWorld&quot;, True, [&quot;HTML&quot;])</span>
+<span class="sd">    &quot;hello_html_world&quot;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">words</span><span class="p">,</span> <span class="n">case</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="n">parse_case</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="p">,</span> <span class="n">acronyms</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;_&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="dashcase"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.case_conversion.html#python_modules.python_utils.case_conversion.dashcase">[docs]</a><span class="k">def</span> <span class="nf">dashcase</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">acronyms</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Return text in dash-case style (aka kebab-case, spinal-case).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    detect_acronyms : bool, optional</span>
+<span class="sd">        Description</span>
+<span class="sd">    acronyms : list, optional</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; dashcase(&quot;hello world&quot;)</span>
+<span class="sd">    &quot;hello-world&quot;</span>
+<span class="sd">    &gt;&gt;&gt; dashcase(&quot;HelloHTMLWorld&quot;, True, [&quot;HTML&quot;])</span>
+<span class="sd">    &quot;hello-html-world&quot;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">words</span><span class="p">,</span> <span class="n">case</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="n">parse_case</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="p">,</span> <span class="n">acronyms</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="kebabcase"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.case_conversion.html#python_modules.python_utils.case_conversion.kebabcase">[docs]</a><span class="k">def</span> <span class="nf">kebabcase</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">acronyms</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Return text in kebab-case style (aka snake-case, spinal-case).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    detect_acronyms : bool, optional</span>
+<span class="sd">        Description</span>
+<span class="sd">    acronyms : list, optional</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; kebabcase(&quot;hello world&quot;)</span>
+<span class="sd">    &quot;hello-world&quot;</span>
+<span class="sd">    &gt;&gt;&gt; kebabcase(&quot;HelloHTMLWorld&quot;, True, [&quot;HTML&quot;])</span>
+<span class="sd">    &quot;hello-html-world&quot;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dashcase</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="p">,</span> <span class="n">acronyms</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="spinalcase"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.case_conversion.html#python_modules.python_utils.case_conversion.spinalcase">[docs]</a><span class="k">def</span> <span class="nf">spinalcase</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">acronyms</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Return text in spinal-case style (aka snake-case, kebab-case).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    detect_acronyms : bool, optional</span>
+<span class="sd">        Description</span>
+<span class="sd">    acronyms : list, optional</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; spinalcase(&quot;hello world&quot;)</span>
+<span class="sd">    &quot;hello-world&quot;</span>
+<span class="sd">    &gt;&gt;&gt; spinalcase(&quot;HELLO_HTML_WORLD&quot;, True, [&quot;HTML&quot;])</span>
+<span class="sd">    &quot;hello-html-world&quot;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dashcase</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="p">,</span> <span class="n">acronyms</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="constcase"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.case_conversion.html#python_modules.python_utils.case_conversion.constcase">[docs]</a><span class="k">def</span> <span class="nf">constcase</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">acronyms</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Return text in CONST_CASE style (aka SCREAMING_SNAKE_CASE).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    detect_acronyms : bool, optional</span>
+<span class="sd">        Description</span>
+<span class="sd">    acronyms : list, optional</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; constcase(&quot;hello world&quot;)</span>
+<span class="sd">    &quot;HELLO_WORLD&quot;</span>
+<span class="sd">    &gt;&gt;&gt; constcase(&quot;helloHTMLWorld&quot;, True, [&quot;HTML&quot;])</span>
+<span class="sd">    &quot;HELLO_HTML_WORLD&quot;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">words</span><span class="p">,</span> <span class="n">case</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="n">parse_case</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="p">,</span> <span class="n">acronyms</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;_&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="screaming_snakecase"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.case_conversion.html#python_modules.python_utils.case_conversion.screaming_snakecase">[docs]</a><span class="k">def</span> <span class="nf">screaming_snakecase</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">acronyms</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Return text in SCREAMING_SNAKE_CASE style (aka CONST_CASE).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    detect_acronyms : bool, optional</span>
+<span class="sd">        Description</span>
+<span class="sd">    acronyms : list, optional</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; screaming_snakecase(&quot;hello world&quot;)</span>
+<span class="sd">    &quot;HELLO_WORLD&quot;</span>
+<span class="sd">    &gt;&gt;&gt; screaming_snakecase(&quot;helloHTMLWorld&quot;, True, [&quot;HTML&quot;])</span>
+<span class="sd">    &quot;HELLO_HTML_WORLD&quot;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">constcase</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="p">,</span> <span class="n">acronyms</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="dotcase"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.case_conversion.html#python_modules.python_utils.case_conversion.dotcase">[docs]</a><span class="k">def</span> <span class="nf">dotcase</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">acronyms</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Return text in dot.case style.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    detect_acronyms : bool, optional</span>
+<span class="sd">        Description</span>
+<span class="sd">    acronyms : list, optional</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; dotcase(&quot;hello world&quot;)</span>
+<span class="sd">    &quot;hello.world&quot;</span>
+<span class="sd">    &gt;&gt;&gt; dotcase(&quot;helloHTMLWorld&quot;, True, [&quot;HTML&quot;])</span>
+<span class="sd">    &quot;hello.html.world&quot;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">words</span><span class="p">,</span> <span class="n">case</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="n">parse_case</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="p">,</span> <span class="n">acronyms</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="separate_words"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.case_conversion.html#python_modules.python_utils.case_conversion.separate_words">[docs]</a><span class="k">def</span> <span class="nf">separate_words</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">acronyms</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Return text in &quot;seperate words&quot; style.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    detect_acronyms : bool, optional</span>
+<span class="sd">        Description</span>
+<span class="sd">    acronyms : list, optional</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; separate_words(&quot;HELLO_WORLD&quot;)</span>
+<span class="sd">    &quot;HELLO WORLD&quot;</span>
+<span class="sd">    &gt;&gt;&gt; separate_words(&quot;helloHTMLWorld&quot;, True, [&quot;HTML&quot;])</span>
+<span class="sd">    &quot;hello HTML World&quot;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">words</span><span class="p">,</span> <span class="n">case</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="n">parse_case</span><span class="p">(</span>
+        <span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="p">,</span> <span class="n">acronyms</span><span class="p">,</span> <span class="n">preserve_case</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="slashcase"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.case_conversion.html#python_modules.python_utils.case_conversion.slashcase">[docs]</a><span class="k">def</span> <span class="nf">slashcase</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">acronyms</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;Return text in slash/case style.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    detect_acronyms : bool, optional</span>
+<span class="sd">        Description</span>
+<span class="sd">    acronyms : list, optional</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; slashcase(&quot;HELLO_WORLD&quot;)</span>
+<span class="sd">    &quot;HELLO/WORLD&quot;</span>
+<span class="sd">    &gt;&gt;&gt; slashcase(&quot;helloHTMLWorld&quot;, True, [&quot;HTML&quot;])</span>
+<span class="sd">    &quot;hello/HTML/World&quot;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">words</span><span class="p">,</span> <span class="n">case</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="n">parse_case</span><span class="p">(</span>
+        <span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="p">,</span> <span class="n">acronyms</span><span class="p">,</span> <span class="n">preserve_case</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="backslashcase"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.case_conversion.html#python_modules.python_utils.case_conversion.backslashcase">[docs]</a><span class="k">def</span> <span class="nf">backslashcase</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">acronyms</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return text in backslash\case style.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    detect_acronyms : bool, optional</span>
+<span class="sd">        Description</span>
+<span class="sd">    acronyms : list, optional</span>
+<span class="sd">        Description</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; backslashcase(&quot;HELLO_WORLD&quot;) == r&quot;HELLO\WORLD&quot;</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; backslashcase(&quot;helloHTMLWorld&quot;, True, [&quot;HTML&quot;]) == r&quot;hello\HTML\World&quot;</span>
+<span class="sd">    True</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TYPE</span>
+<span class="sd">        Description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">words</span><span class="p">,</span> <span class="n">case</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="n">parse_case</span><span class="p">(</span>
+        <span class="n">text</span><span class="p">,</span> <span class="n">detect_acronyms</span><span class="p">,</span> <span class="n">acronyms</span><span class="p">,</span> <span class="n">preserve_case</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2021, Odyseus.
+
+    </p>
+  </div>
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

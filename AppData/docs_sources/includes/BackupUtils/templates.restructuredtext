@@ -9,12 +9,12 @@ File templates
 Task example file
 -----------------
 
-A tasks file is a Python script containing at least a property called **tasks** (mandatory). The **tasks** property must be a list of dictionaries, each dictionary representing a backup task.
+A tasks file is a |YAML| file containing at least a property called **tasks** (mandatory). The **tasks** property must be a list of dictionaries, each dictionary representing a backup task.
 
-.. literalinclude:: ../../../../UserData/BackupUtils/AppData/data/templates/tasks_example.py
-    :language: python
-    :prepend: # START tasks_example.py
-    :append: # END tasks_example.py
+.. literalinclude:: ../../../../UserData/BackupUtils/AppData/data/templates/tasks_example.yaml
+    :language: yaml
+    :prepend: # START tasks_example.yaml
+    :append: # END tasks_example.yaml
 
 Data keys
 ^^^^^^^^^
@@ -44,7 +44,11 @@ Data keys
     .. _backup-utils-hook-parameters-reference:
     .. contextual-admonition::
         :context: info
-        :title: ``pre_hook`` and ``post_hook`` methods passed arguments
+        :title: ``pre_hook`` and ``post_hook`` definitions
+
+        The ``pre_hook`` and ``post_hook`` methods have to be defined like so **module_name.method_name**. **module_name** shoud be a file located at **UserData/hooks/module_name.py**. **method_name** should be a function defined inside the **UserData/hooks/module_name.py** file.
+
+        Arguments passed:
 
         - ``task``: A modified copy of the task object that was used to run the backup job. Modifications:
 
@@ -60,10 +64,10 @@ Data keys
 Settings example file
 ---------------------
 
-.. literalinclude:: ../../../../UserData/BackupUtils/AppData/data/templates/settings_example.py
-    :language: python
-    :prepend: # START settings_example.py
-    :append: # END settings_example.py
+.. literalinclude:: ../../../../UserData/BackupUtils/AppData/data/templates/settings_example.yaml
+    :language: yaml
+    :prepend: # START settings_example.yaml
+    :append: # END settings_example.yaml
 
 Data keys
 ^^^^^^^^^

@@ -189,7 +189,7 @@
 <dd><p>3</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -200,7 +200,7 @@
 <dd><p>2</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -211,24 +211,29 @@
 <dd><p>1</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="function">
+<dt id="python_modules.python_utils.cmd_utils.get_startup_info">
+<code class="sig-prename descclassname">python_modules.python_utils.cmd_utils.</code><code class="sig-name descname">get_startup_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/cmd_utils.html#get_startup_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.cmd_utils.get_startup_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
 <dt id="python_modules.python_utils.cmd_utils.popen">
-<code class="sig-prename descclassname">python_modules.python_utils.cmd_utils.</code><code class="sig-name descname">popen</code><span class="sig-paren">(</span><em class="sig-param">cmd</em>, <em class="sig-param">stdout=None</em>, <em class="sig-param">stderr=None</em>, <em class="sig-param">output_stream=3</em>, <em class="sig-param">env=None</em>, <em class="sig-param">cwd=None</em>, <em class="sig-param">logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/cmd_utils.html#popen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.cmd_utils.popen" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">python_modules.python_utils.cmd_utils.</code><code class="sig-name descname">popen</code><span class="sig-paren">(</span><em class="sig-param">cmd</em>, <em class="sig-param">stdout=None</em>, <em class="sig-param">stderr=None</em>, <em class="sig-param">output_stream=3</em>, <em class="sig-param">env=None</em>, <em class="sig-param">cwd=None</em>, <em class="sig-param">logger=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/cmd_utils.html#popen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.cmd_utils.popen" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open a pipe to an external process and return a Popen object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cmd</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) -- The command to run.</p></li>
-<li><p><strong>stdout</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a><em>, </em><em>optional</em>) -- Pipe to be connected to the standard output stream.</p></li>
-<li><p><strong>stderr</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a><em>, </em><em>optional</em>) -- Pipe to be connected to the standard error stream.</p></li>
-<li><p><strong>output_stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>optional</em>) -- Which output streams should be used (stdout, stderr or both).</p></li>
-<li><p><strong>env</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a><em>, </em><em>optional</em>) -- A mapping object representing the string environment.</p></li>
-<li><p><strong>cwd</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a><em>, </em><em>optional</em>) -- Path to working directory.</p></li>
+<li><p><strong>cmd</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) -- The command to run.</p></li>
+<li><p><strong>stdout</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><em>None</em></a><em>, </em><em>optional</em>) -- Pipe to be connected to the standard output stream.</p></li>
+<li><p><strong>stderr</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><em>None</em></a><em>, </em><em>optional</em>) -- Pipe to be connected to the standard error stream.</p></li>
+<li><p><strong>output_stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><em>optional</em>) -- Which output streams should be used (stdout, stderr or both).</p></li>
+<li><p><strong>env</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><em>None</em></a><em>, </em><em>optional</em>) -- A mapping object representing the string environment.</p></li>
+<li><p><strong>cwd</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><em>None</em></a><em>, </em><em>optional</em>) -- Path to working directory.</p></li>
 <li><p><strong>logger</strong> (<a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><em>LogSystem</em></a>) -- The logger.</p></li>
 </ul>
 </dd>
@@ -236,7 +241,7 @@
 <dd class="field-even"><p>Popen object.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.Popen" title="(in Python v3.8)">subprocess.Popen</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.Popen" title="(in Python v3.9)">subprocess.Popen</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -249,10 +254,10 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cmd</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- The command to run.</p></li>
-<li><p><strong>cwd</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Working directory used by the command.</p></li>
-<li><p><strong>do_wait</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) -- Call or not the Popen wait() method. (default: {True})</p></li>
-<li><p><strong>do_log</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) -- Log or not the command output. (default: {True})</p></li>
+<li><p><strong>cmd</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- The command to run.</p></li>
+<li><p><strong>cwd</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- Working directory used by the command.</p></li>
+<li><p><strong>do_wait</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Call or not the Popen wait() method. (default: {True})</p></li>
+<li><p><strong>do_log</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Log or not the command output. (default: {True})</p></li>
 <li><p><strong>logger</strong> (<a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><em>LogSystem</em></a>) -- The logger.</p></li>
 </ul>
 </dd>
@@ -266,15 +271,15 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>set_vars</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a><em>, </em><em>optional</em>) -- A dictinary used to add or override keys in the default environment variables.</p></li>
-<li><p><strong>unset_vars</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em>, </em><em>optional</em>) -- A list of keys to remove from the default environment variables.</p></li>
+<li><p><strong>set_vars</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a><em>, </em><em>optional</em>) -- A dictinary used to add or override keys in the default environment variables.</p></li>
+<li><p><strong>unset_vars</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- A list of keys to remove from the default environment variables.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>A copy of the system environment.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -285,13 +290,13 @@
 <dd><p>Return whether the given path is a file and is executable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Path to a file.</p>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- Path to a file.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>If the file is executable.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -302,7 +307,7 @@
 <dd><p>Return the full path to an executable searching PATH.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>cmd</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Command to search for in PATH.</p>
+<dd class="field-odd"><p><strong>cmd</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- Command to search for in PATH.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The path to the executable.</p>
@@ -319,7 +324,7 @@
 <dd><p>Yield full paths to given executable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>executable</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Executable to find in PATH.</p>
+<dd class="field-odd"><p><strong>executable</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- Executable to find in PATH.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Path to executable.</p>
@@ -333,22 +338,22 @@
 <dl class="function">
 <dt id="python_modules.python_utils.cmd_utils.run_cmd">
 <code class="sig-prename descclassname">python_modules.python_utils.cmd_utils.</code><code class="sig-name descname">run_cmd</code><span class="sig-paren">(</span><em class="sig-param">cmd</em>, <em class="sig-param">stdout=-1</em>, <em class="sig-param">stderr=-1</em>, <em class="sig-param">env=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/cmd_utils.html#run_cmd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.cmd_utils.run_cmd" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run" title="(in Python v3.8)"><code class="xref any docutils literal notranslate"><span class="pre">subprocess.run</span></code></a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run" title="(in Python v3.9)"><code class="xref any docutils literal notranslate"><span class="pre">subprocess.run</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cmd</strong> (<em>list|str</em>) -- See <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run" title="(in Python v3.8)"><code class="xref any docutils literal notranslate"><span class="pre">subprocess.run</span></code></a>.</p></li>
-<li><p><strong>stdout</strong> (<em>None|int|file object</em><em>, </em><em>optional</em>) -- See <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run" title="(in Python v3.8)"><code class="xref any docutils literal notranslate"><span class="pre">subprocess.run</span></code></a>.</p></li>
-<li><p><strong>stderr</strong> (<em>None|int|file object</em><em>, </em><em>optional</em>) -- See <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run" title="(in Python v3.8)"><code class="xref any docutils literal notranslate"><span class="pre">subprocess.run</span></code></a>.</p></li>
-<li><p><strong>env</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a><em>, </em><em>optional</em>) -- See <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run" title="(in Python v3.8)"><code class="xref any docutils literal notranslate"><span class="pre">subprocess.run</span></code></a>.</p></li>
-<li><p><strong>**kwargs</strong> -- See <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run" title="(in Python v3.8)"><code class="xref any docutils literal notranslate"><span class="pre">subprocess.run</span></code></a>.</p></li>
+<li><p><strong>cmd</strong> (<em>list|str</em>) -- See <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run" title="(in Python v3.9)"><code class="xref any docutils literal notranslate"><span class="pre">subprocess.run</span></code></a>.</p></li>
+<li><p><strong>stdout</strong> (<em>None|int|file object</em><em>, </em><em>optional</em>) -- See <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run" title="(in Python v3.9)"><code class="xref any docutils literal notranslate"><span class="pre">subprocess.run</span></code></a>.</p></li>
+<li><p><strong>stderr</strong> (<em>None|int|file object</em><em>, </em><em>optional</em>) -- See <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run" title="(in Python v3.9)"><code class="xref any docutils literal notranslate"><span class="pre">subprocess.run</span></code></a>.</p></li>
+<li><p><strong>env</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><em>object</em></a><em>, </em><em>optional</em>) -- See <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run" title="(in Python v3.9)"><code class="xref any docutils literal notranslate"><span class="pre">subprocess.run</span></code></a>.</p></li>
+<li><p><strong>**kwargs</strong> -- See <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run" title="(in Python v3.9)"><code class="xref any docutils literal notranslate"><span class="pre">subprocess.run</span></code></a>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">subprocess.CompletedProcess</span></code> instance.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.CompletedProcess" title="(in Python v3.8)">subprocess.CompletedProcess</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.CompletedProcess" title="(in Python v3.9)">subprocess.CompletedProcess</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -359,7 +364,7 @@
 <dd><p>Launch file with default application.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- File path.</p>
+<dd class="field-odd"><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- File path.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -386,7 +391,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

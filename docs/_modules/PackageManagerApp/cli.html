@@ -178,6 +178,7 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">app_utils</span>
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">__appdescription__</span>
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">__appname__</span>
 <span class="kn">from</span> <span class="nn">.__init__</span> <span class="kn">import</span> <span class="n">__status__</span>
@@ -193,15 +194,16 @@
 
 <span class="s2">Usage:</span>
 <span class="s2">    app.py (-h | --help | --manual | --version)</span>
-<span class="s2">    app.py (install | remove) (-i &lt;file&gt; | --interface=&lt;file&gt;)</span>
+<span class="s2">    app.py (install | remove)</span>
+<span class="s2">           (-i &lt;file&gt; | --interface=&lt;file&gt;)</span>
 <span class="s2">           (-l &lt;file&gt;... | --list-relative=&lt;file&gt;...</span>
 <span class="s2">           | -L &lt;path&gt;... | --list-absolute=&lt;path&gt;...)</span>
 <span class="s2">           [-l &lt;file&gt;... | --list-relative=&lt;file&gt;...</span>
 <span class="s2">           | -L &lt;path&gt;... | --list-absolute=&lt;path&gt;...]</span>
-<span class="s2">           [--ignore-exists-filter]</span>
-<span class="s2">           [--ignore-installed-filter]</span>
-<span class="s2">           [-r | --report]</span>
+<span class="s2">           [--ignore-exists-check]</span>
+<span class="s2">           [--ignore-installed-check]</span>
 <span class="s2">    app.py generate system_executable</span>
+<span class="s2">    app.py (print_packages_lists | print_interfaces)</span>
 
 <span class="s2">Options:</span>
 
@@ -216,30 +218,23 @@
 
 <span class="s2">-i &lt;file&gt;, --interface=&lt;file&gt;</span>
 <span class="s2">    File name (no extension) of an existent file in</span>
-<span class="s2">    UserData/interfaces/&lt;file&gt;.py that contains the commads that will actually</span>
-<span class="s2">    be used to handle packages.</span>
+<span class="s2">    **UserData/interfaces/&lt;file&gt;.py** that contains the commands that will</span>
+<span class="s2">    actually be used to handle packages.</span>
 
 <span class="s2">-l &lt;file&gt;, --list-relative=&lt;file&gt;</span>
 <span class="s2">    File name (no extension) of an existent file in</span>
-<span class="s2">    UserData/packages_lists/&lt;file&gt;.py that contains a list of packages and that</span>
-<span class="s2">    will be used with the install/remove commands.</span>
+<span class="s2">    **UserData/packages_lists/&lt;file&gt;.py** that contains a list of packages and</span>
+<span class="s2">    that will be used with the **install**/**remove** commands.</span>
 
 <span class="s2">-L &lt;path&gt;, --list-absolute=&lt;path&gt;</span>
 <span class="s2">    Full path to a file containing the list of packages that will be used</span>
-<span class="s2">    with the install/remove commands.</span>
+<span class="s2">    with the **install**/**remove** commands.</span>
 
-<span class="s2">--ignore-exists-filter</span>
+<span class="s2">--ignore-exists-check</span>
 <span class="s2">    Ignore the check for package existence.</span>
 
-<span class="s2">--ignore-installed-filter</span>
+<span class="s2">--ignore-installed-check</span>
 <span class="s2">    Ignore the check for package installed.</span>
-
-<span class="s2">-r, --report</span>
-<span class="s2">    Just show an initial report, do not start the install/remove process.</span>
-
-<span class="s2">Sub-commands for the `generate` command:</span>
-<span class="s2">    system_executable    Create an executable for this application on the system</span>
-<span class="s2">                         PATH to be able to run it from anywhere.</span>
 
 <span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">appname</span><span class="o">=</span><span class="n">__appname__</span><span class="p">,</span>
            <span class="n">appdescription</span><span class="o">=</span><span class="n">__appdescription__</span><span class="p">,</span>
@@ -259,7 +254,7 @@
 <span class="sd">    action : method</span>
 <span class="sd">        Set the method that will be executed when calling CommandLineTool.run().</span>
 <span class="sd">    package_manager : class</span>
-<span class="sd">        See :any:`pkg_manager.PackageManager`.</span>
+<span class="sd">        See :any:`app_utils.PackageManager`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">action</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">package_manager</span> <span class="o">=</span> <span class="kc">None</span>
@@ -272,74 +267,63 @@
 <span class="sd">            The dictionary of arguments as returned by docopt parser.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">docopt_args</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_cli_header_blacklist</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--manual&quot;</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cli_header_blacklist</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--manual&quot;</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;print_packages_lists&quot;</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;print_interfaces&quot;</span><span class="p">]</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inhibit_logger_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cli_header_blacklist</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">__appname__</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--manual&quot;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">display_manual_page</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;print_packages_lists&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_packages_lists</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;print_interfaces&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_interfaces</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;generate&quot;</span><span class="p">]:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;system_executable&quot;</span><span class="p">]:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**System executable generation...**&quot;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_executable_generation</span>
         <span class="k">elif</span> <span class="nb">any</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;install&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;remove&quot;</span><span class="p">]]):</span>
-            <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">pkg_manager</span>
-
-            <span class="bp">self</span><span class="o">.</span><span class="n">package_manager</span> <span class="o">=</span> <span class="n">pkg_manager</span><span class="o">.</span><span class="n">PackageManager</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">package_manager</span> <span class="o">=</span> <span class="n">app_utils</span><span class="o">.</span><span class="n">PackageManager</span><span class="p">(</span>
                 <span class="n">interface</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--interface&quot;</span><span class="p">],</span>
-                <span class="n">pkgs_list_relative</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--list-relative&quot;</span><span class="p">],</span>
-                <span class="n">pkgs_list_absolute</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--list-absolute&quot;</span><span class="p">],</span>
+                <span class="c1"># De-duplication. docopt workaround.</span>
+                <span class="n">pkgs_list_relative</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--list-relative&quot;</span><span class="p">])),</span>
+                <span class="c1"># De-duplication. docopt workaround.</span>
+                <span class="n">pkgs_list_absolute</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--list-absolute&quot;</span><span class="p">])),</span>
+                <span class="n">ignore_exists_check</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--ignore-exists-check&quot;</span><span class="p">],</span>
+                <span class="n">ignore_installed_check</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;--ignore-installed-check&quot;</span><span class="p">],</span>
                 <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
             <span class="p">)</span>
 
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;install&quot;</span><span class="p">]:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">install_packages</span>
-            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;remove&quot;</span><span class="p">]:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">remove_packages</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">manage_packages</span>
 
 <div class="viewcode-block" id="CommandLineInterface.run"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.cli.html#PackageManagerApp.cli.CommandLineInterface.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Execute the assigned action stored in self.action if any.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">print_log_file</span><span class="p">()</span>
             <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CommandLineInterface.install_packages"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.cli.html#PackageManagerApp.cli.CommandLineInterface.install_packages">[docs]</a>    <span class="k">def</span> <span class="nf">install_packages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;See :any:`pkg_manager.PackageManager.install_packages`.</span>
+<div class="viewcode-block" id="CommandLineInterface.print_packages_lists"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.cli.html#PackageManagerApp.cli.CommandLineInterface.print_packages_lists">[docs]</a>    <span class="k">def</span> <span class="nf">print_packages_lists</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`PackageManagerApp.app_utils.print_config_files_list`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">package_manager</span><span class="o">.</span><span class="n">install_packages</span><span class="p">()</span></div>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">print_config_files_list</span><span class="p">(</span><span class="s2">&quot;packages_lists&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CommandLineInterface.remove_packages"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.cli.html#PackageManagerApp.cli.CommandLineInterface.remove_packages">[docs]</a>    <span class="k">def</span> <span class="nf">remove_packages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;See :any:`pkg_manager.PackageManager.remove_packages`.</span>
+<div class="viewcode-block" id="CommandLineInterface.print_interfaces"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.cli.html#PackageManagerApp.cli.CommandLineInterface.print_interfaces">[docs]</a>    <span class="k">def</span> <span class="nf">print_interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`PackageManagerApp.app_utils.print_config_files_list`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">package_manager</span><span class="o">.</span><span class="n">remove_packages</span><span class="p">()</span></div>
+        <span class="n">app_utils</span><span class="o">.</span><span class="n">print_config_files_list</span><span class="p">(</span><span class="s2">&quot;interfaces&quot;</span><span class="p">)</span></div>
 
-    <span class="c1"># def manage_pkgs(self):</span>
-    <span class="c1">#     &quot;&quot;&quot;Perform package removal/installation.</span>
-
-    <span class="c1">#     Raises</span>
-    <span class="c1">#     ------</span>
-    <span class="c1">#     SystemExit</span>
-    <span class="c1">#         Description</span>
-    <span class="c1">#     &quot;&quot;&quot;</span>
-    <span class="c1">#     # Deduplicate packages list.</span>
-    <span class="c1">#     self.pkgs_list = list(set(self.pkgs_list))</span>
-
-    <span class="c1">#     if not self.pkgs_list:</span>
-    <span class="c1">#         self.logger.warning(&quot;Package list non existent!&quot;)</span>
-    <span class="c1">#         raise SystemExit()</span>
-
-    <span class="c1">#     print(self.pkgs_list)</span>
-
-    <span class="c1">#     from . import pkg_manager</span>
-
-    <span class="c1">#     pkg_mngr = pkg_manager.PackageManager(**self.data,</span>
-    <span class="c1">#                                           logger=self.logger)</span>
-    <span class="c1">#     # pkg_mngr = pkg_manager.PackageManager(self.pkgs_list,</span>
-    <span class="c1">#     #                                       self.interface,</span>
-    <span class="c1">#     #                                       action,</span>
-    <span class="c1">#     #                                       logger=self.logger)</span>
-    <span class="c1">#     # pkg_mngr.display_initial_report()</span>
+<div class="viewcode-block" id="CommandLineInterface.manage_packages"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.cli.html#PackageManagerApp.cli.CommandLineInterface.manage_packages">[docs]</a>    <span class="k">def</span> <span class="nf">manage_packages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;See :any:`app_utils.PackageManager.manage_packages`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">package_manager</span><span class="o">.</span><span class="n">manage_packages</span><span class="p">(</span>
+            <span class="s2">&quot;install&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;install&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;remove&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;remove&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="CommandLineInterface.system_executable_generation"><a class="viewcode-back" href="../../modules/PackageManager/PackageManagerApp.cli.html#PackageManagerApp.cli.CommandLineInterface.system_executable_generation">[docs]</a>    <span class="k">def</span> <span class="nf">system_executable_generation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;See :any:`cli_utils.CommandLineInterfaceSuper._system_executable_generation`.</span>
@@ -385,7 +369,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

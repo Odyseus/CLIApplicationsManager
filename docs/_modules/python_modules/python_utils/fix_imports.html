@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>python_modules.python_utils.fix_imports &mdash; Python CLI Applications Documentations  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/python-logo.svg"/>
+  
+  
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: False" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Python CLI Applications Documentations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/1-general-notes.html">General development notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/KnowledgeBase/index.html">Knowledge Base's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/MakeCinnamonXletPOT/index.html">Make Cinnamon Xlet POT's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/MoviesDB/index.html">Movies DB's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/PackageManager/index.html">Package Manager's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Python CLI Applications Documentations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>python_modules.python_utils.fix_imports</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for python_modules.python_utils.fix_imports</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Check and sort import statement from a python file &quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+
+<div class="viewcode-block" id="FixImports"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.fix_imports.html#python_modules.python_utils.fix_imports.FixImports">[docs]</a><span class="k">class</span> <span class="nc">FixImports</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    I can be used to check and sort import statement of a python file</span>
+<span class="sd">    Please use sortImportGroups() method</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_regexImport</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^import\s+(.*)&quot;</span><span class="p">)</span>
+    <span class="n">_regexFromImport</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^from\s+([a-zA-Z0-9\._]+)\s+import\s+(.*)$&quot;</span><span class="p">)</span>
+    <span class="n">_regexFromFutureImport</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^from\s+__future__\s+import\s+(.*)$&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FixImports.printErrorMsg"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.fix_imports.html#python_modules.python_utils.fix_imports.FixImports.printErrorMsg">[docs]</a>    <span class="k">def</span> <span class="nf">printErrorMsg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">lineNb</span><span class="p">,</span> <span class="n">errorMessage</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; I print the error message following pylint convention&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%(filename)s</span><span class="s2">:</span><span class="si">%(line_nb)s</span><span class="s2">: </span><span class="si">%(error_msg)s</span><span class="s2">&quot;</span> <span class="o">%</span>
+              <span class="nb">dict</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+                   <span class="n">line_nb</span><span class="o">=</span><span class="n">lineNb</span><span class="p">,</span>
+                   <span class="n">error_msg</span><span class="o">=</span><span class="n">errorMessage</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="FixImports.isImportLine"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.fix_imports.html#python_modules.python_utils.fix_imports.FixImports.isImportLine">[docs]</a>    <span class="k">def</span> <span class="nf">isImportLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;I return True is the given line is an import statement, False otherwize&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regexImport</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regexFromImport</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FixImports.isBadLineFixable"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.fix_imports.html#python_modules.python_utils.fix_imports.FixImports.isBadLineFixable">[docs]</a>    <span class="k">def</span> <span class="nf">isBadLineFixable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;I return True is the given line is an import line than I know how to split&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isImportLine</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;(&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="FixImports.analyzeLine"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.fix_imports.html#python_modules.python_utils.fix_imports.FixImports.analyzeLine">[docs]</a>    <span class="k">def</span> <span class="nf">analyzeLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">lineNb</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;I look at the line and print all error I find&quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isImportLine</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;,&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">printErrorMsg</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">lineNb</span><span class="p">,</span>
+                                   <span class="s2">&quot;multiple modules imported on one line - will fix&quot;</span><span class="p">)</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">printErrorMsg</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">lineNb</span><span class="p">,</span>
+                                   <span class="s2">&quot;line-continuation character found - will fix.&quot;</span><span class="p">)</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="c1"># these two don&#39;t occur in the Buildbot codebase, so we don&#39;t try to</span>
+            <span class="c1"># fix them</span>
+            <span class="k">if</span> <span class="s1">&#39;;&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">printErrorMsg</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">lineNb</span><span class="p">,</span>
+                                   <span class="s2">&quot;multiple import statement on one line. &quot;</span>
+                                   <span class="s2">&quot;Put each import on its own line.&quot;</span><span class="p">)</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="s1">&#39;(&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">printErrorMsg</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">lineNb</span><span class="p">,</span>
+                                   <span class="s2">&quot;parenthesis character found. &quot;</span>
+                                   <span class="s2">&quot;Please import each module on a single line&quot;</span><span class="p">)</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="n">res</span></div>
+
+<div class="viewcode-block" id="FixImports.importOrder"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.fix_imports.html#python_modules.python_utils.fix_imports.FixImports.importOrder">[docs]</a>    <span class="k">def</span> <span class="nf">importOrder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        I define how import lines should be sorted</span>
+<span class="sd">        return a tuple of order criterias sorted be importance</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;__future__&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">line</span><span class="p">,</span>  <span class="c1"># always put __future__ import first</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">_regexFromImport</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># import before from import</span>
+               <span class="n">line</span><span class="p">,</span>  <span class="c1"># then lexicographic order</span>
+               <span class="p">)</span>
+        <span class="k">return</span> <span class="n">ret</span></div>
+
+<div class="viewcode-block" id="FixImports.sortImportGroups"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.fix_imports.html#python_modules.python_utils.fix_imports.FixImports.sortImportGroups">[docs]</a>    <span class="k">def</span> <span class="nf">sortImportGroups</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                         <span class="n">splitImportStatements</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                         <span class="n">sortImportStatements</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        I perform the analysis of the given file, print the error I find and try to split and</span>
+<span class="sd">        sort the import statement</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">cur_line_nb</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">analyzeLine</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">cur_line_nb</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">isBadLineFixable</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+                    <span class="n">res</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">res</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="n">data</span>
+
+        <span class="c1"># First split the import we can split</span>
+        <span class="n">newlines</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">groups</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">group_start</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">def</span> <span class="nf">maybeEndGroup</span><span class="p">():</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_start</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">group_start</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">newlines</span><span class="p">)))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">group_start</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="nb">iter</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="fm">__iter__</span><span class="p">()</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="nb">iter</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isImportLine</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+                <span class="c1"># join any continuation lines (\\)</span>
+                <span class="k">while</span> <span class="n">line</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">:</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nb">iter</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">group_start</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">newlines</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isBadLineFixable</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+                    <span class="n">match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regexFromImport</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+                        <span class="n">module</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                        <span class="n">imports</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)])</span>
+                        <span class="k">if</span> <span class="n">splitImportStatements</span><span class="p">:</span>
+                            <span class="k">for</span> <span class="n">imp</span> <span class="ow">in</span> <span class="n">imports</span><span class="p">:</span>
+                                <span class="n">newlines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;from </span><span class="si">%s</span><span class="s2"> import </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">imp</span><span class="p">))</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">newlines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;from </span><span class="si">%s</span><span class="s2"> import </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">imports</span><span class="p">)))</span>
+                        <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">maybeEndGroup</span><span class="p">()</span>
+            <span class="n">newlines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+        <span class="n">maybeEndGroup</span><span class="p">()</span>
+
+        <span class="c1"># sort each group</span>
+        <span class="k">if</span> <span class="n">sortImportStatements</span><span class="p">:</span>
+            <span class="n">lines</span> <span class="o">=</span> <span class="n">newlines</span>
+            <span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">groups</span><span class="p">:</span>
+                <span class="n">lines</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">importOrder</span><span class="p">)</span>
+
+        <span class="c1"># reiterate line by line to split mixed groups</span>
+        <span class="n">prev_import_line_type</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">splitted_groups_lines</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">isImportLine</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+                <span class="n">splitted_groups_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                <span class="n">prev_import_line_type</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">import_match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regexImport</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                <span class="n">from_match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regexFromImport</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                <span class="n">current_line_type</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">if</span> <span class="n">import_match</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">module</span> <span class="o">=</span> <span class="n">import_match</span>
+                    <span class="n">current_line_type</span> <span class="o">=</span> <span class="s2">&quot;import&quot;</span>
+                <span class="k">elif</span> <span class="n">from_match</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">module</span> <span class="o">=</span> <span class="n">from_match</span>
+                    <span class="n">current_line_type</span> <span class="o">=</span> <span class="s2">&quot;from&quot;</span>
+                <span class="k">assert</span><span class="p">(</span><span class="n">current_line_type</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">prev_import_line_type</span> <span class="ow">and</span> <span class="n">current_line_type</span> <span class="o">!=</span> <span class="n">prev_import_line_type</span><span class="p">:</span>
+                    <span class="n">splitted_groups_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="n">prev_import_line_type</span> <span class="o">=</span> <span class="n">current_line_type</span>
+                <span class="n">splitted_groups_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splitted_groups_lines</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../modules/python_modules/python_modules.python_utils.fix_imports.html#python_modules.python_utils.fix_imports.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;I am the main method&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;usage: </span><span class="si">%s</span><span class="s2"> &lt;python file&gt;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">filedesc</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">filedesc</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">res</span><span class="p">,</span> <span class="n">content</span> <span class="o">=</span> <span class="n">FixImports</span><span class="p">()</span><span class="o">.</span><span class="n">sortImportGroups</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">res</span><span class="p">:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">filedesc</span><span class="p">:</span>
+        <span class="n">filedesc</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">data</span> <span class="o">!=</span> <span class="n">content</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;import successfully reordered for file: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2021, Odyseus.
+
+    </p>
+  </div>
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+      <a id="to-top-of-page" href="#top">
+        <i class="fa fa-chevron-circle-up"></i>
+      </a>
+
+    </section>
+
+  </div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

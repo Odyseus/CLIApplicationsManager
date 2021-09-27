@@ -28,7 +28,7 @@ Requirements
     :title: Warning
 
     - Python 3.5+.
-    - ``guessit>2`` module.
-    - ``requests`` module.
+    - ``guessit>2`` Python module.
+    - ``requests`` Python module.
 
 .. include:: ./usage.restructuredtext

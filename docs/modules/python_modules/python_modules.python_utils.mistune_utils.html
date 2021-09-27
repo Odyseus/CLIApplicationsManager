@@ -195,7 +195,7 @@
 <dl class="class">
 <dt id="python_modules.python_utils.mistune_utils.MistuneCustomRenderer">
 <em class="property">class </em><code class="sig-prename descclassname">python_modules.python_utils.mistune_utils.</code><code class="sig-name descname">MistuneCustomRenderer</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/mistune_utils.html#MistuneCustomRenderer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mistune_utils.MistuneCustomRenderer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">mistune.Renderer</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">python_modules.python_utils.mistune.Renderer</span></code></p>
 <p>Mistune custom renderer.</p>
 <dl class="method">
 <dt id="python_modules.python_utils.mistune_utils.MistuneCustomRenderer.kbd_tag">
@@ -203,13 +203,13 @@
 <dd><p>&lt;kbd&gt; HTML tag.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- &lt;kbd&gt; HTML tag content.</p>
+<dd class="field-odd"><p><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- &lt;kbd&gt; HTML tag content.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>HTML text.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -221,13 +221,13 @@
 <p>Override <code class="docutils literal notranslate"><span class="pre">mistune.Renderer.block_quote</span></code> to add the <strong>blockquote</strong> Bootstrap class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- &lt;blockquote&gt; HTML tag content.</p>
+<dd class="field-odd"><p><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- &lt;blockquote&gt; HTML tag content.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>HTML text.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -241,15 +241,15 @@ Bootstrap classes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>header</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- &lt;thead&gt; HTML tag content.</p></li>
-<li><p><strong>body</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- &lt;tbody&gt; HTML tag content.</p></li>
+<li><p><strong>header</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- &lt;thead&gt; HTML tag content.</p></li>
+<li><p><strong>body</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- &lt;tbody&gt; HTML tag content.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>HTML text.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -259,7 +259,7 @@ Bootstrap classes.</p>
 <dl class="class">
 <dt id="python_modules.python_utils.mistune_utils.MistuneCustomInlineLexer">
 <em class="property">class </em><code class="sig-prename descclassname">python_modules.python_utils.mistune_utils.</code><code class="sig-name descname">MistuneCustomInlineLexer</code><span class="sig-paren">(</span><em class="sig-param">renderer</em>, <em class="sig-param">rules=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/mistune_utils.html#MistuneCustomInlineLexer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.mistune_utils.MistuneCustomInlineLexer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">mistune.InlineLexer</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">python_modules.python_utils.mistune.InlineLexer</span></code></p>
 <p>Mistune custom inline lexer.</p>
 <dl class="method">
 <dt id="python_modules.python_utils.mistune_utils.MistuneCustomInlineLexer.enable_kbd_tag">
@@ -273,13 +273,13 @@ Bootstrap classes.</p>
 <dd><p>Generate &lt;kbd&gt; HTML tag output.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>m</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) -- Match object.</p>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><em>object</em></a>) -- Match object.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Parsed HTML string.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -293,8 +293,8 @@ Bootstrap classes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Markdown string to parse into HTML.</p></li>
-<li><p><strong>escape</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) -- If set to False, all HTML tags will not be escaped.</p></li>
+<li><p><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- Markdown string to parse into HTML.</p></li>
+<li><p><strong>escape</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- If set to False, all HTML tags will not be escaped.</p></li>
 <li><p><strong>**kwargs</strong> -- Extra keyword arguments.</p></li>
 </ul>
 </dd>
@@ -302,7 +302,7 @@ Bootstrap classes.</p>
 <dd class="field-even"><p>HTML string.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -329,7 +329,7 @@ Bootstrap classes.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

@@ -762,7 +762,7 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;The following path doesn&#39;t seem to be a repository:&quot;</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">repo_path</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">err</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">))</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">err</span><span class="p">,</span> <span class="n">repo_data</span><span class="p">))</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">repo_path</span><span class="p">)</span>
                 <span class="k">continue</span>
@@ -852,7 +852,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

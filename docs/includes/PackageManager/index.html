@@ -193,21 +193,22 @@
 <div class="section" id="cli-synopsis">
 <h2><abbr title="Command Line Interface">CLI</abbr> Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight">
-<pre><span class="text-bold">Package Manager 2020-03-08 09:10:52.474 (Unstable)</span>
+<pre><span class="text-bold">Package Manager 2020-04-11 06:23:52.164 (Unstable)</span>
 
 <span class="text-bold">CLI utility to manage system packages on GNU/Linux. It basically installs and/or eliminates packages in bulk using the system&#x27;s package manager.</span>
 
 <span class="text-bold">Usage:</span>
     app.py (-h | --help | --manual | --version)
-    app.py (install | remove) (-i &lt;file&gt; | --interface=&lt;file&gt;)
+    app.py (install | remove)
+           (-i &lt;file&gt; | --interface=&lt;file&gt;)
            (-l &lt;file&gt;... | --list-relative=&lt;file&gt;...
            | -L &lt;path&gt;... | --list-absolute=&lt;path&gt;...)
            [-l &lt;file&gt;... | --list-relative=&lt;file&gt;...
            | -L &lt;path&gt;... | --list-absolute=&lt;path&gt;...]
-           [--ignore-exists-filter]
-           [--ignore-installed-filter]
-           [-r | --report]
+           [--ignore-exists-check]
+           [--ignore-installed-check]
     app.py generate system_executable
+    app.py (print_packages_lists | print_interfaces)
 
 <span class="text-bold">Options:</span>
 
@@ -222,30 +223,23 @@
 
 <span class="text-bold">-i &lt;file&gt;, --interface=&lt;file&gt;</span>
     File name (no extension) of an existent file in
-    UserData/interfaces/&lt;file&gt;.py that contains the commads that will actually
-    be used to handle packages.
+    <span class="text-bold">UserData/interfaces/&lt;file&gt;.py</span> that contains the commands that will
+    actually be used to handle packages.
 
 <span class="text-bold">-l &lt;file&gt;, --list-relative=&lt;file&gt;</span>
     File name (no extension) of an existent file in
-    UserData/packages_lists/&lt;file&gt;.py that contains a list of packages and that
-    will be used with the install/remove commands.
+    <span class="text-bold">UserData/packages_lists/&lt;file&gt;.py</span> that contains a list of packages and
+    that will be used with the <span class="text-bold">install</span>/<span class="text-bold">remove</span> commands.
 
 <span class="text-bold">-L &lt;path&gt;, --list-absolute=&lt;path&gt;</span>
     Full path to a file containing the list of packages that will be used
-    with the install/remove commands.
+    with the <span class="text-bold">install</span>/<span class="text-bold">remove</span> commands.
 
-<span class="text-bold">--ignore-exists-filter</span>
+<span class="text-bold">--ignore-exists-check</span>
     Ignore the check for package existence.
 
-<span class="text-bold">--ignore-installed-filter</span>
-    Ignore the check for package installed.
-
-<span class="text-bold">-r, --report</span>
-    Just show an initial report, do not start the install/remove process.
-
-<span class="text-bold">Sub-commands for the `generate` command:</span>
-    system_executable    Create an executable for this application on the system
-                         PATH to be able to run it from anywhere.</pre>
+<span class="text-bold">--ignore-installed-check</span>
+    Ignore the check for package installed.</pre>
 </div></div>
 </div>
 <div class="section" id="requirements">
@@ -304,7 +298,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

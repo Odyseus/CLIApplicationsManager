@@ -22,7 +22,7 @@ This task uses the ``tar`` command available on a system to create an archive wi
 
     - This task can backup files and folders.
     - Only local file system paths are allowed.
-    - It passes an extra keyword parameter to the **post_hook** method called ``archive_path``, which is the path to the generated tar file. See :ref:`pre_hook and post_hook methods passed arguments <backup-utils-hook-parameters-reference>`.
+    - It passes an extra keyword parameter to the **post_hook** method called ``archive_path``, which is the path to the generated tar file. See :ref:`pre_hook and post_hook definitions <backup-utils-hook-parameters-reference>`.
 
 Data keys specific to this task type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -186,7 +186,7 @@
 <dl class="class">
 <dt id="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper">
 <em class="property">class </em><code class="sig-prename descclassname">python_modules.python_utils.cli_utils.</code><code class="sig-name descname">CommandLineInterfaceSuper</code><span class="sig-paren">(</span><em class="sig-param">app_name</em>, <em class="sig-param">logs_storage_dir='UserData/logs'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/cli_utils.html#CommandLineInterfaceSuper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Command line interface super class.</p>
 <p>It handles the arguments parsed by the docopt module.</p>
 <dl class="attribute">
@@ -204,8 +204,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>app_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Application name.</p></li>
-<li><p><strong>logs_storage_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Log files storage location.</p></li>
+<li><p><strong>app_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- Application name.</p></li>
+<li><p><strong>logs_storage_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- Log files storage location.</p></li>
 </ul>
 </dd>
 </dl>
@@ -217,6 +217,11 @@
 <dl class="attribute">
 <dt id="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._print_log_blacklist">
 <code class="sig-name descname">_print_log_blacklist</code><em class="property"> = []</em><a class="headerlink" href="#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._print_log_blacklist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._inhibit_logger_list">
+<code class="sig-name descname">_inhibit_logger_list</code><em class="property"> = []</em><a class="headerlink" href="#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper._inhibit_logger_list" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -259,7 +264,7 @@
 <dd><p>Display manual page.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>man_page_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- The absolute path to the manual page.</p>
+<dd class="field-odd"><p><strong>man_page_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- The absolute path to the manual page.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -273,11 +278,11 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>flag_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- The name of a &quot;flag&quot; file.</p></li>
-<li><p><strong>docopt_doc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- docopt docstring.</p></li>
-<li><p><strong>app_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Application name.</p></li>
-<li><p><strong>app_version</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Application version.</p></li>
-<li><p><strong>app_status</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) -- Application status.</p></li>
+<li><p><strong>flag_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- The name of a &quot;flag&quot; file.</p></li>
+<li><p><strong>docopt_doc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- docopt docstring.</p></li>
+<li><p><strong>app_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- Application name.</p></li>
+<li><p><strong>app_version</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- Application version.</p></li>
+<li><p><strong>app_status</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- Application status.</p></li>
 <li><p><strong>cli_class</strong> (<a class="reference internal" href="#python_modules.python_utils.cli_utils.CommandLineInterfaceSuper" title="python_modules.python_utils.cli_utils.CommandLineInterfaceSuper"><em>cli_utils.CommandLineInterfaceSuper</em></a>) -- An instance of <code class="docutils literal notranslate"><span class="pre">cli_utils.CommandLineInterfaceSuper</span></code>.</p></li>
 </ul>
 </dd>
@@ -310,7 +315,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

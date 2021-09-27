@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="python_modules.python_utils.hash_utils module" href="python_modules.python_utils.hash_utils.html" />
-    <link rel="prev" title="python_modules.python_utils.file_utils module" href="python_modules.python_utils.file_utils.html" /> 
+    <link rel="prev" title="python_modules.python_utils.fix_imports module" href="python_modules.python_utils.fix_imports.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -171,7 +171,7 @@
         <a href="python_modules.python_utils.hash_utils.html" class="btn btn-neutral float-right" title="python_modules.python_utils.hash_utils module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="python_modules.python_utils.file_utils.html" class="btn btn-neutral float-left" title="python_modules.python_utils.file_utils module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="python_modules.python_utils.fix_imports.html" class="btn btn-neutral float-left" title="python_modules.python_utils.fix_imports module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -191,18 +191,18 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mechanism</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Which &quot;mechanism&quot; to work with (&quot;submodule&quot; or &quot;subtree&quot;).</p></li>
-<li><p><strong>action</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) -- Which action to perform (&quot;init&quot; or &quot;update&quot;).</p></li>
-<li><p><strong>subtrees</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em>, </em><em>optional</em>) -- <p>A list of dictionaries representing sub-tree options.</p>
+<li><p><strong>mechanism</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- Which &quot;mechanism&quot; to work with (&quot;submodule&quot; or &quot;subtree&quot;).</p></li>
+<li><p><strong>action</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- Which action to perform (&quot;init&quot; or &quot;update&quot;).</p></li>
+<li><p><strong>subtrees</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a><em>, </em><em>optional</em>) -- <p>A list of dictionaries representing sub-tree options.</p>
 <ul>
 <li><p><strong>url</strong>: The sub-tree repository URL.</p></li>
 <li><p><strong>path</strong>: Path inside the parent repository where the sub-tree will be stored.</p></li>
 <li><p><strong>ref</strong>: The sub-tree repository remote reference (Default: master).</p></li>
 </ul>
 </p></li>
-<li><p><strong>do_not_confirm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) -- Do not ask for confirmation before executing commands.</p></li>
-<li><p><strong>cwd</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a><em>, </em><em>optional</em>) -- Path to working directory. It should be a folder that belongs to a Git repository.</p></li>
-<li><p><strong>dry_run</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) -- Do not execute the final commads, just log them.</p></li>
+<li><p><strong>do_not_confirm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Do not ask for confirmation before executing commands.</p></li>
+<li><p><strong>cwd</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><em>None</em></a><em>, </em><em>optional</em>) -- Path to working directory. It should be a folder that belongs to a Git repository.</p></li>
+<li><p><strong>dry_run</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Do not execute the final commads, just log them.</p></li>
 <li><p><strong>logger</strong> (<a class="reference internal" href="python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><em>LogSystem</em></a>) -- The logger.</p></li>
 </ul>
 </dd>
@@ -227,7 +227,7 @@ initialized or updated with one command per sub-tree repository.</p>
         <a href="python_modules.python_utils.hash_utils.html" class="btn btn-neutral float-right" title="python_modules.python_utils.hash_utils module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="python_modules.python_utils.file_utils.html" class="btn btn-neutral float-left" title="python_modules.python_utils.file_utils module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="python_modules.python_utils.fix_imports.html" class="btn btn-neutral float-left" title="python_modules.python_utils.fix_imports module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -236,7 +236,7 @@ initialized or updated with one command per sub-tree repository.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2020, Odyseus.
+        &copy; Copyright 2016-2021, Odyseus.
 
     </p>
   </div>

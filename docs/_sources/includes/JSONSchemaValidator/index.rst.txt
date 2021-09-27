@@ -33,6 +33,6 @@ Requirements
     :title: Warning
 
     - Python 3.5+.
-    - ``jsonschema`` module.
+    - ``jsonschema>3`` Python module.
 
 .. include:: ./usage.restructuredtext
