@@ -11,14 +11,22 @@
         ],
         "folder_exclude_patterns": [
             "*/icons",
-            "UserData/0_manager",
+            "*/__000__",
             "__app__/docs_sources/_static",
             "__app__/docs_sources/coverage",
             "__app__/docs_sources/images",
             "__app__/docs_sources/modules",
-            "__app__/docs_sources/sphinx_rtd_theme_mod",
             "__app__/docs_sources/sphinx_extensions",
-            "__pycache__"
+            "__app__/docs_sources/sphinx_rtd_theme_mod",
+            "__pycache__",
+            "UserData/0_manager",
+            "UserData/KnowledgeBase/data_storage",
+            "UserData/KnowledgeBase/UserData/www/archives",
+            "UserData/KnowledgeBase/UserData/www/epub",
+            "UserData/KnowledgeBase/UserData/www/github_repositories",
+            "UserData/KnowledgeBase/UserData/www/gitlab_repositories",
+            "UserData/KnowledgeBase/UserData/www/pdf",
+            "UserData/KnowledgeBase/UserData/www/sphinx_generated_pages"
         ],
         "binary_file_patterns": [
             "docs",
@@ -41,9 +49,6 @@
         "path": ".."
     }],
     "settings": {
-        "index_files": false,
-        "python_fiximports": {
-            "autofix_on_save": true
-        }
+        "index_files": false
     }
 }
