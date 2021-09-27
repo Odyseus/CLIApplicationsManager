@@ -304,12 +304,17 @@ def generate_docs(generate_api_docs=False,
 
     ignored_apidoc_modules = [
         os.path.join("AppData", "python_modules", "python_utils", "bottle.py"),
+        os.path.join("AppData", "python_modules", "python_utils", "colour"),
+        os.path.join("AppData", "python_modules", "python_utils", "diff_match_patch"),
         os.path.join("AppData", "python_modules", "python_utils", "docopt.py"),
         os.path.join("AppData", "python_modules", "python_utils", "mistune.py"),
         os.path.join("AppData", "python_modules", "python_utils", "polib.py"),
         os.path.join("AppData", "python_modules", "python_utils", "pyperclip"),
+        os.path.join("AppData", "python_modules", "python_utils", "sublime_text_utils"),
+        os.path.join("AppData", "python_modules", "python_utils", "svgelements"),
         os.path.join("AppData", "python_modules", "python_utils", "titlecase.py"),
         os.path.join("AppData", "python_modules", "python_utils", "tqdm"),
+        os.path.join("AppData", "python_modules", "python_utils", "yaml"),
         # The following module has perfectly valid docstrings, but Sphinx is being a
         # b*tch and throws a million warnings for no reason.
         # Ignore it until Sphinx gets its sh*t together.
