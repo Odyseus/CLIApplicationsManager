@@ -531,7 +531,6 @@ apps_manager_readme_template = """
 
 [GitLab]: https://i.imgur.com/Z4XcUKe.png "GitLab"
 [GitHub]: https://i.imgur.com/J015ugC.png "GitHub"
-[BitBucket]: https://i.imgur.com/igK1F8b.png "BitBucket"
 
 | App. name | Status | Description | Repositories | Docs |
 | --------- | :----: | ----------- | :----------: | :--: |
@@ -540,7 +539,6 @@ apps_manager_readme_template = """
 app_table_row_template = """| **{app_name}** | {app_status} | {app_description} | \
 [![GitLab][GitLab]]({app_repo_url}) \
 [![GitHub][GitHub]](https://github.com/Odyseus/{app_slug}) \
-[![BitBucket][BitBucket]](https://bitbucket.org/Odyseus/{app_slug}) \
 | [Docs]({app_docs_url}) |
 """
 
