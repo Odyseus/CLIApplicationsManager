@@ -3,7 +3,6 @@ PackageManagerApp package
 
 .. automodule:: PackageManagerApp
    :members:
-   :undoc-members:
    :show-inheritance:
    :private-members:
 

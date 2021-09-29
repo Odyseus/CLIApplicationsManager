@@ -20,6 +20,7 @@ import sys
 
 from datetime import datetime
 from runpy import run_path
+from sphinx import version_info as sphinx_version
 
 root_folder = os.path.realpath(os.path.abspath(os.path.join(
     os.path.normpath(os.path.join(os.path.dirname(__file__), *([os.pardir] * 2))))))
@@ -74,7 +75,7 @@ master_doc = "index"
 
 # General information about the project.
 project = "Python CLI Applications Documentations"
-copyright = "2016-%s, Odyseus." % datetime.today().year
+copyright = "2016-%s, Odyseus" % datetime.today().year
 author = "Odyseus"
 
 # The version info for the project you're documenting, acts as replacement for
@@ -121,7 +122,11 @@ html_favicon = "images/python-logo.svg"
 
 html_experimental_html5_writer = True
 
-html_add_permalinks = "¶"
+if sphinx_version >= (3, 5, 0):
+    html_permalinks = True
+    html_permalinks_icon = "\uf0c1"
+else:
+    html_add_permalinks = "\uf0c1"
 
 html_copy_source = True
 

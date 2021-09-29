@@ -3,7 +3,6 @@ ChrootHelperApp package
 
 .. automodule:: ChrootHelperApp
    :members:
-   :undoc-members:
    :show-inheritance:
    :private-members:
 

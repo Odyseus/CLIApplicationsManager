@@ -3,7 +3,6 @@ FilesCleanerApp package
 
 .. automodule:: FilesCleanerApp
    :members:
-   :undoc-members:
    :show-inheritance:
    :private-members:
 

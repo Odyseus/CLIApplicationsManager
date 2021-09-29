@@ -3,7 +3,6 @@ BootstrapThemesGeneratorApp package
 
 .. automodule:: BootstrapThemesGeneratorApp
    :members:
-   :undoc-members:
    :show-inheritance:
    :private-members:
 

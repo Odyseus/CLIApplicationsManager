@@ -3,7 +3,6 @@ HostsManagerApp package
 
 .. automodule:: HostsManagerApp
    :members:
-   :undoc-members:
    :show-inheritance:
    :private-members:
 

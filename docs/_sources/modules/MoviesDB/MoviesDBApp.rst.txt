@@ -3,7 +3,6 @@ MoviesDBApp package
 
 .. automodule:: MoviesDBApp
    :members:
-   :undoc-members:
    :show-inheritance:
    :private-members:
 

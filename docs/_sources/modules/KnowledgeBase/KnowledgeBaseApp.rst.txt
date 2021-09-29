@@ -3,7 +3,6 @@ KnowledgeBaseApp package
 
 .. automodule:: KnowledgeBaseApp
    :members:
-   :undoc-members:
    :show-inheritance:
    :private-members:
 

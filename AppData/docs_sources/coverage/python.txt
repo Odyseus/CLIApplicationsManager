@@ -1,2 +1,13 @@
 Undocumented Python objects
 ===========================
+python_modules.python_utils.cmd_utils
+-------------------------------------
+Functions:
+ * get_startup_info
+
+python_modules.python_utils.yaml_utils
+--------------------------------------
+Functions:
+ * ordered_dump
+ * ordered_load
+

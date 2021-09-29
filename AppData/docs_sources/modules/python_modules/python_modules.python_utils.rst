@@ -3,7 +3,6 @@ python\_modules.python\_utils package
 
 .. automodule:: python_modules.python_utils
    :members:
-   :undoc-members:
    :show-inheritance:
    :private-members:
 
