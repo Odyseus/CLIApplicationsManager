@@ -52,7 +52,6 @@ gen_man_pages \
 gen_readmes \
 gen_sys_exec_all \
 gen_sys_exec_self \
-git_gui_apps \
 install_deps \
 repo \
 run_cmd_on_app \

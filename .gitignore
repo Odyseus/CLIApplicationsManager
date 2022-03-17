@@ -2,6 +2,9 @@
 # Project specific ignores #
 ############################
 
+# The Python virtual environment.
+/.venv
+
 # The "temp" folder at the root of the repository.
 /tmp
 
