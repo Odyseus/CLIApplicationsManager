@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """Module with utility functions and classes.
 
@@ -222,7 +221,7 @@ where the executables will be stored.
             template_utils.system_executable_generation(**kwargs)
 
 
-def install_dependencies(app_slugs, logger):
+def install_dependencies(app_slugs, pip_exec=None, logger=None):
     """Install dependencies for all Python applications.
 
     Parameters
@@ -237,14 +236,24 @@ def install_dependencies(app_slugs, logger):
     exceptions.KeyboardInterruption
         See <class :any:`exceptions.KeyboardInterruption`>.
     """
-    print(Ansi.LIGHT_MAGENTA("""**
-The command "pip3" will be used to install dependencies.
-Installing dependencies requires administrative privileges.
-You might need to enter your password.
+    print(Ansi.LIGHT_YELLOW("""**
+This command should only be executed if absolutelly all applications are
+executed under the exact same Python environment.
+Otherwise, use the "requirements.txt" file for each application and install
+using the proper Python environment.
 **"""))
 
+    if not prompts.confirm(prompt="Proceed?", response=False):
+        return
+
     do_install = False
-    cmd = ["/usr/bin/sudo", "--set-home", "pip3", "install"]
+    cmd_str = cmd_utils.which(pip_exec) or cmd_utils.which("pip")
+
+    if not cmd_str:
+        logger.warning("**pip command couldn't be found.**")
+        raise SystemExit(1)
+
+    cmd = [cmd_str, "install"]
 
     for app in get_selected_apps(app_slugs, logger) if app_slugs else get_all_apps():
         req_file_path = os.path.join(app["path"], "requirements.txt")
@@ -270,7 +279,7 @@ You might need to enter your password.
     logger.info(" ".join(cmd), date=False)
     print()
 
-    if do_install and prompts.confirm(prompt="Proceed?", response=False):
+    if do_install and prompts.confirm(prompt="Proceed with the installation of modules?", response=False):
         from subprocess import check_call, CalledProcessError
 
         try:
@@ -674,7 +683,7 @@ def run_cmd_on_apps(cmd, run_in_parallel=False, app_slugs=[], logger=None):
         threads.append(t)
 
         for thread in threads:
-            if thread is not None and thread.isAlive():
+            if thread is not None and thread.is_alive():
                 thread.join()
 
 

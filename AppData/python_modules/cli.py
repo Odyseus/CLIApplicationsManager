@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """Main command line application.
 
@@ -42,6 +41,7 @@ Usage:
     app.py gen_sys_exec_all
     app.py gen_sys_exec_self
     app.py install_deps [-a <name>... | --app=<name>...]
+                        [-e <pip_exec> | --pip-exec=<pip_exec>]
     app.py print_all_apps
     app.py repo (submodules | subtrees) (init | update) [--dry-run]
     app.py run_cmd_on_app (-c <command> | --command=<command>)
@@ -71,6 +71,10 @@ Options:
 --dry-run
     Do not perform file system changes. Only display messages informing of the
     actions that will be performed or commands that will be executed.
+
+-e <pip_exec>, --pip-exec=<pip_exec>
+    For use with the **install_deps** command. Path or name of the **pip**
+    command to use to install dependencies.
 
 -f, --force-clean-build
     Clear doctree cache and destination folder when building the documentation.
@@ -207,6 +211,7 @@ class CommandLineInterface(cli_utils.CommandLineInterfaceSuper):
         """See :any:`app_utils.install_dependencies`
         """
         app_utils.install_dependencies(app_slugs=self.app_slugs,
+                                       pip_exec=self.a["--pip-exec"],
                                        logger=self.logger)
 
     def generate_readmes(self):
