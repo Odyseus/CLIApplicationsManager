@@ -10,6 +10,7 @@ Submodules
 ----------
 
 .. toctree::
+   :maxdepth: 4
 
    MoviesDBApp.MoviesDB_webapp
    MoviesDBApp.app_utils

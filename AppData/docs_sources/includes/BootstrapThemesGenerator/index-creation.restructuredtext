@@ -11,8 +11,9 @@ Index creation
 
 .. contextual-admonition::
     :context: info
-    :title: Why all this trouble?
+    :title: Why go to all this trouble and not just use the Bootstrap documentation sources?
 
+    - Because the documentation sources are written in yet another template language created solely to overcome the incompetence of not wanting to learn an existent one. So, I prefer to eat a trillion lines of raw HTML before wasting time learning an umpteenth template language.
     - I wanted as a theme preview page a place where the entirety of Bootstrap's components and utilities are exemplified, not just the most frequently used. This is so I can caught any errors with any component/utility in a custom theme.
     - I wanted **all** components and utilities loaded **at once** in **one single** document and not in individual files nor using ``iframe``s.
 
@@ -20,15 +21,20 @@ Bootstrap documentation generation
 ----------------------------------
 
 #. Clone Bootstrap repository.
-#. Run ``npm install`` inside the cloned repository.
-#. Run ``bundle install`` inside the cloned repository.
-#. Run ``npm run docs-production`` inside the cloned repository (built documentation will be at **_gh_pages**).
+#. Run ``npm install`` inside the cloned repository to install all Node.js modules.
+#. Run ``npm run docs-build`` inside the cloned repository to build the documentation. The built documentation will be at **_site**.
 
 Obtaining the needed files
 --------------------------
 
-#. Copy the folders **content**, **components** and **utilities** found at **_gh_pages/docs/VERSION_NUMBER/** into **UserData/www/sections**.
-#. Remove the **index.html** files found at the root of the **content**, **components** and **utilities** folders.
+#. Copy the following folders found at **_site/docs/VERSION_NUMBER/** into **UserData/www/sections**:
+
+    + **content**
+    + **components**
+    + **forms**
+    + **utilities**
+
+#. Remove the **index.html** files found at the root of the previous folders.
 #. Move the **index.html** files found inside each sub-folder and rename them as their containing folders prefixed with a three digits number.
 
 Modifying needed files
@@ -36,23 +42,26 @@ Modifying needed files
 
 #. Eradicate all HTML markup except for the ``main`` tag content.
 
-     - Start ``<!doctype html>(?s)(.*)role="main">``.
-     - End ``</main>(?s)(.*?)</html>``.
+    - Start ``<!doctype html>(?s)(.*)<main(.*?)>``.
+    - End ``</main>(?s)(.*?)</html>``.
 
-#. Eradicate all code blocks. I directly use the rendered examples, not the examples represented inside code blocks. **Be careful with the figures.html file**.
+#. Remove the block with the ``bd-toc`` class.
+#. Eradicate all code blocks. I directly use the rendered examples, not the examples represented inside code blocks.
 
-     - ``<figure(?s)(.*?)</figure>``.
+    - ``<div\ class="highlight">(?s)(.*?)</div>``: This will eliminate all the code blocks, eve the blocks that aren't examples. I can live with this for now; in a future update I might invest time in doing a selective clean up.
+    - **Be careful with the figures.html file**: ``<figure(?s)(.*?)</figure>``. I don't remember why should I be careful. LOL
 
-#. Obliterate all ``script`` tags. Check that the removed tags are not part of an example. In which case the ``script`` should be implemented inside the **functions-index.js** file.
+#. Obliterate all ``script`` tags. Check that the removed tags are not part of an example. In which case the ``script`` should be implemented inside the **main.js** file. It seems that all scripts were moved into **/assets/js/application.js**, so it is easier to get them all from one place.
 
-     - ``<script(?s)(.*?)</script>``.
+    - ``<script(?s)(.*?)</script>``.
 
 #. Eradicate the following CSS classes:
 
-     - ``highlighter-rouge``
-     - ``language-scss``
-     - ``bd-lead``
-     - ``bd-title``
+    - ``highlighter-rouge``
+    - ``language-scss``
+    - ``bd-lead``
+    - ``bd-title``
+    - ``class=""``: Clean up empty classes.
 
 #. Eradicate IDs from all headings. There are a couple of headings whose IDs are needed inside the **scrollspy.html** file.
 
@@ -68,7 +77,7 @@ Modifying needed files
 
 #. Remove all references to internal Bootstrap's documentation links.
 
-     - Replace ``/docs/4.4/assets/brand/bootstrap-solid.svg`` to ``_assets/ìmg/bootstrap-solid.svg``.
+     - Replace ``/docs/<VERSION>/assets/brand/bootstrap-solid.svg`` to ``_assets/img/bootstrap-solid.svg``. These are used by the navbar examples.
      - Prefix the rest of them with ``https://getbootstrap.com``.
      - Search for ``href="#[\w]+"`` and carefully remove internal references.
 
@@ -77,6 +86,7 @@ Modifying needed files
      - Replace ``><svg`` with ``>\n<svg``.
      - Replace ``</svg></div>`` with ``</svg>\n</div>``.
 
+#. Remove the Sass sections from all pages. Since I removed all code blocks, these sections remain almost empty.
 #. Duplicated element IDs are bound to happen since I'm using individual HTML documents merged together into one document. The built index page has a loading script that will report all duplicated IDs to the console.
 
 Specific modifications

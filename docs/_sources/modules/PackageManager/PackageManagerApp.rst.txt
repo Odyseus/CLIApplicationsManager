@@ -10,6 +10,7 @@ Submodules
 ----------
 
 .. toctree::
+   :maxdepth: 4
 
    PackageManagerApp.app_utils
    PackageManagerApp.cli

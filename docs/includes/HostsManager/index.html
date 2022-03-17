@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hosts Manager&#39;s documentation &mdash; Python CLI Applications Documentations  documentation</title><link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/python-logo.svg"/>
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  <title>Hosts Manager&#39;s documentation &mdash; Python CLI Applications Documentations  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -21,7 +24,7 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: False" >
             <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           </a>
 <div role="search">
@@ -37,7 +40,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BackupUtils/index.html">Backup Utils' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Hosts Manager's documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#cli-synopsis"><abbr title="Command Line Interface">CLI</abbr> Synopsis</a></li>
@@ -65,18 +67,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/index.html">Self hosted third-party module's documentations</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: False" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Python CLI Applications Documentations</a>
       </nav>
@@ -99,21 +97,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="hosts-manager-s-documentation">
+  <section id="hosts-manager-s-documentation">
 <h1>Hosts Manager's documentation<a class="headerlink" href="#hosts-manager-s-documentation" title="Permalink to this headline"></a></h1>
 <p>A <abbr title="Command Line Interface">CLI</abbr> utility written in Python 3 to manage hosts files on GNU/Linux.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>This Python application can generate a system executable with Bash completions support. See <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">generate</span></code>.</p>
 </div>
-<div class="section" id="cli-synopsis">
+<section id="cli-synopsis">
 <h2><abbr title="Command Line Interface">CLI</abbr> Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight">
-<pre><span class="text-bold">Hosts Manager 2021-09-27 08:34:09.311 (Stable)</span>
+<pre><strong>Hosts Manager 2021-09-27 08:34:09.311 (Stable)</strong>
 
-<span class="text-bold">CLI utility to manage hosts files on GNU/Linux.</span>
+<strong>CLI utility to manage hosts files on GNU/Linux.</strong>
 
-<span class="text-bold">Usage:</span>
+<strong>Usage:</strong>
     app.py (-h | --help | --manual | --version)
     app.py (-f | --flush-dns-cache) [-d | --dry-run]
     app.py run (update | build | install) [update] [build] [install]
@@ -127,49 +125,49 @@
                   [--port=&lt;port&gt;]
     app.py generate (system_executable | new_profile)
 
-<span class="text-bold">Options:</span>
+<strong>Options:</strong>
 
-<span class="text-bold">-h, --help</span>
+<strong>-h, --help</strong>
     Show this screen.
 
-<span class="text-bold">--manual</span>
+<strong>--manual</strong>
     Show this application manual page.
 
-<span class="text-bold">--version</span>
+<strong>--version</strong>
     Show application version.
 
-<span class="text-bold">-p &lt;name&gt;, --profile=&lt;name&gt;</span>
+<strong>-p &lt;name&gt;, --profile=&lt;name&gt;</strong>
     The profile name to work with.
 
-<span class="text-bold">-o &lt;key=value&gt;, --override=&lt;key=value&gt;</span>
+<strong>-o &lt;key=value&gt;, --override=&lt;key=value&gt;</strong>
     One or more sets of &lt;key=value&gt; that will override the configuration
     options set in the config.yaml file.
 
-<span class="text-bold">-f, --flush-dns-cache</span>
+<strong>-f, --flush-dns-cache</strong>
     Attempt to flush DNS cache for the new hosts file to take effect.
 
-<span class="text-bold">-u, --force-update</span>
+<strong>-u, --force-update</strong>
     Force the update of all sources, ignoring the frequency in which they
     should be updated. All previously downloaded sources will be removed.
 
-<span class="text-bold">-d, --dry-run</span>
+<strong>-d, --dry-run</strong>
     Do not perform file system changes. Only display messages informing of the
     actions that will be performed or commands that will be executed.
     WARNING! Some file system changes will be performed (e.g., temporary files
     creation).
 
-<span class="text-bold">--host=&lt;host&gt;</span>
+<strong>--host=&lt;host&gt;</strong>
     Host name. [Default: 0.0.0.0]
 
-<span class="text-bold">--port=&lt;port&gt;</span>
+<strong>--port=&lt;port&gt;</strong>
     Port number. [Default: 80]</pre>
 </div></div>
-</div>
-<div class="section" id="mentions">
+</section>
+<section id="mentions">
 <h2>Mentions<a class="headerlink" href="#mentions" title="Permalink to this headline"></a></h2>
 <p>Application inspired and heavily based on the <code class="docutils literal notranslate"><span class="pre">updateHostsFile.py</span></code> Python script found on <a class="reference external" href="https://github.com/StevenBlack/hosts">StevenBlack's repository</a>.</p>
-</div>
-<div class="section" id="requirements">
+</section>
+<section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h2>
 <p>No mayor requirements are needed to run this application other than Python 3.5+.</p>
 <div class="admonition-info info admonition">
@@ -178,12 +176,12 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">jsonschema&gt;3</span></code> Python module.</p></li>
 </ul>
 </div>
-<div class="section" id="jsonschema-module">
+<section id="jsonschema-module">
 <h3><code class="docutils literal notranslate"><span class="pre">jsonschema</span></code> module<a class="headerlink" href="#jsonschema-module" title="Permalink to this headline"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">jsonschema</span></code> module is used to validate all data used by this <abbr title="Command Line Interface">CLI</abbr> application. If not installed, the data will simply not be validated.</p>
-</div>
-</div>
-<div class="section" id="detailed-usage">
+</section>
+</section>
+<section id="detailed-usage">
 <h2>Detailed usage<a class="headerlink" href="#detailed-usage" title="Permalink to this headline"></a></h2>
 <div class="admonition-info info admonition">
 <p class="admonition-title">Highlights</p>
@@ -199,7 +197,7 @@
 <li><p>If one wants to use data from sources in any other format, the data can be <em>pre-processed</em>. See <a class="reference internal" href="#hosts-manager-pre-processors-reference"><span class="std std-ref">pre_processors data key</span></a>.</p></li>
 </ul>
 </div>
-<div class="section" id="cli-options">
+<section id="cli-options">
 <h3><abbr title="Command Line Interface">CLI</abbr> options<a class="headerlink" href="#cli-options" title="Permalink to this headline"></a></h3>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code>: Display this application basic help screen.</p></li>
@@ -215,21 +213,21 @@
 </div></blockquote>
 </li>
 </ul>
-</div>
-<div class="section" id="commands">
+</section>
+<section id="commands">
 <h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline"></a></h3>
-<div class="section" id="app-py-run">
+<section id="app-py-run">
 <h4>app.py run<a class="headerlink" href="#app-py-run" title="Permalink to this headline"></a></h4>
 <p>The main command to <code class="docutils literal notranslate"><span class="pre">update</span></code>, <code class="docutils literal notranslate"><span class="pre">build</span></code> and <code class="docutils literal notranslate"><span class="pre">install</span></code> a hosts file.</p>
-<div class="section" id="sub-commands">
+<section id="sub-commands">
 <h5>Sub-commands<a class="headerlink" href="#sub-commands" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">update</span></code>: Update all sources defined inside the <strong>config.yaml</strong> file.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">build</span></code>: Build a hosts file based on the downloaded sources.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">install</span></code>: Install a generated hosts file into the system.</p></li>
 </ul>
-</div>
-<div class="section" id="options">
+</section>
+<section id="options">
 <h5>Options<a class="headerlink" href="#options" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">&lt;name&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--profile=&lt;name&gt;</span></code>: The profile name to work with. This is actually the name of a folder inside the <strong>UserData/profiles</strong> folder.</p></li>
@@ -238,9 +236,9 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">-f</span></code> or <code class="docutils literal notranslate"><span class="pre">--flush-dns-cache</span></code>: Attempt to flush DNS cache for the new hosts file to take effect.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code> or <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code>: Do not perform file system changes. Only display messages informing of the actions that will be performed or commands that will be executed.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="app-py-server">
+</section>
+</section>
+<section id="app-py-server">
 <h4>app.py server<a class="headerlink" href="#app-py-server" title="Permalink to this headline"></a></h4>
 <p>The HTTP server started will host the folder at <strong>UserData/block_page</strong>. This web page will be displayed when an attempt to contact a blocked host name is performed.</p>
 <div class="admonition warning">
@@ -252,25 +250,25 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id1">
+<section id="id1">
 <h5>Sub-commands<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">start</span></code>: Start HTTP server.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stop</span></code>: Stop HTTP server.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">restart</span></code>: Restart HTTP server.</p></li>
 </ul>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h5>Options<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--host=&lt;host&gt;</span></code> Host name.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--port=&lt;port&gt;</span></code> Port number.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="app-py-generate">
+</section>
+</section>
+<section id="app-py-generate">
 <h4>app.py generate<a class="headerlink" href="#app-py-generate" title="Permalink to this headline"></a></h4>
-<div class="section" id="id3">
+<section id="id3">
 <h5>Sub-commands<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h5>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">system_executable</span></code>: Create an executable for the <code class="docutils literal notranslate"><span class="pre">app.py</span></code> application on the system <code class="docutils literal notranslate"><span class="pre">PATH</span></code> to be able to run it from anywhere.</p>
@@ -282,49 +280,49 @@
 </div></blockquote>
 </li>
 </ul>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="file-templates">
+</section>
+</section>
+</section>
+</section>
+<section id="file-templates">
 <h2>File templates<a class="headerlink" href="#file-templates" title="Permalink to this headline"></a></h2>
-<div class="section" id="config-yaml-template">
+<section id="config-yaml-template">
 <h3>config.yaml template<a class="headerlink" href="#config-yaml-template" title="Permalink to this headline"></a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># START config.yaml</span>
-<span class="nt">settings</span><span class="p">:</span>
-    <span class="nt">backup_old_generated_hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">backup_system_hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">keep_domain_comments</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">max_backups_to_keep</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
-    <span class="nt">skip_static_hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">target_ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span>
-<span class="nt">sources</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">The purpose of this site is to provide the user with a high quality</span>
-          <span class="l l-Scalar l-Scalar-Plain">custom HOSTS file.</span>
-      <span class="nt">frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">m</span>
-      <span class="nt">homeurl</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://winhelp2002.mvps.org/</span>
-      <span class="nt">issues</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mailto:winhelp2002@gmail.com</span>
-      <span class="nt">license</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CC BY-NC-SA 4.0</span>
-      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MVPS hosts file</span>
-      <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://winhelp2002.mvps.org/hosts.txt</span>
-    <span class="p p-Indicator">-</span> <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hpHosts is a community managed and maintained hosts file that allows</span>
-          <span class="l l-Scalar l-Scalar-Plain">an additional layer of protection against access to ad, tracking and malicious</span>
-          <span class="l l-Scalar l-Scalar-Plain">websites.</span>
-      <span class="nt">frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s</span>
-      <span class="nt">homeurl</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://hosts-file.net</span>
-      <span class="nt">license</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Freeware</span>
-      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Malwarebytes hpHosts</span>
-      <span class="nt">unzip_prog</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unzip</span>
-      <span class="nt">unzip_target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hosts.txt</span>
-      <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://hosts-file.net/download/hosts.zip</span>
-<span class="c1"># END config.yaml</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># START config.yaml</span><span class="w"></span>
+<span class="nt">settings</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">backup_old_generated_hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">backup_system_hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">keep_domain_comments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">max_backups_to_keep</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
+<span class="w">    </span><span class="nt">skip_static_hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">target_ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span><span class="w"></span>
+<span class="nt">sources</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The purpose of this site is to provide the user with a high quality</span><span class="w"></span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">custom HOSTS file.</span><span class="w"></span>
+<span class="w">      </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m</span><span class="w"></span>
+<span class="w">      </span><span class="nt">homeurl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://winhelp2002.mvps.org/</span><span class="w"></span>
+<span class="w">      </span><span class="nt">issues</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mailto:winhelp2002@gmail.com</span><span class="w"></span>
+<span class="w">      </span><span class="nt">license</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CC BY-NC-SA 4.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MVPS hosts file</span><span class="w"></span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://winhelp2002.mvps.org/hosts.txt</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hpHosts is a community managed and maintained hosts file that allows</span><span class="w"></span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">an additional layer of protection against access to ad, tracking and malicious</span><span class="w"></span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">websites.</span><span class="w"></span>
+<span class="w">      </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s</span><span class="w"></span>
+<span class="w">      </span><span class="nt">homeurl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://hosts-file.net</span><span class="w"></span>
+<span class="w">      </span><span class="nt">license</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Freeware</span><span class="w"></span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Malwarebytes hpHosts</span><span class="w"></span>
+<span class="w">      </span><span class="nt">unzip_prog</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unzip</span><span class="w"></span>
+<span class="w">      </span><span class="nt">unzip_target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hosts.txt</span><span class="w"></span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://hosts-file.net/download/hosts.zip</span><span class="w"></span>
+<span class="c1"># END config.yaml</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>All data keys are of type string and are optional unless specified otherwise.</p>
 </div>
-<div class="section" id="data-keys-for-the-settings-property">
+<section id="data-keys-for-the-settings-property">
 <h4>Data keys for the <code class="docutils literal notranslate"><span class="pre">settings</span></code> property<a class="headerlink" href="#data-keys-for-the-settings-property" title="Permalink to this headline"></a></h4>
 <p>In case that the <code class="docutils literal notranslate"><span class="pre">settings</span></code> property is not defined or any of its keys are not specified, the default values will be used. All these settings can be overridden with the <code class="docutils literal notranslate"><span class="pre">--override=&lt;key=value&gt;</span></code> <abbr title="Command Line Interface">CLI</abbr> option.</p>
 <ul class="simple">
@@ -336,8 +334,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">backup_system_hosts</span></code> (<strong>Boolean</strong>) (<strong>Default</strong>: True): Backup or not the currently in use hosts file before replacing it.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">max_backups_to_keep</span></code> (<strong>Integer</strong>) (<strong>Default</strong>: 10): How many backed up hosts files (system's and generated) to keep. Older backup files will be automatically deleted.</p></li>
 </ul>
-</div>
-<div class="section" id="data-keys-for-the-sources-property">
+</section>
+<section id="data-keys-for-the-sources-property">
 <h4>Data keys for the <code class="docutils literal notranslate"><span class="pre">sources</span></code> property<a class="headerlink" href="#data-keys-for-the-sources-property" title="Permalink to this headline"></a></h4>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (<strong>Mandatory</strong>): A <strong>unique</strong> name that identifies the source. Since this <em>name</em> is used to generate the name of the downloaded file, and the downloaded files are all stored inside the same folder, this <em>name</em> <strong>must be unique</strong>.</p></li>
@@ -379,10 +377,10 @@
 <p class="admonition-title">Note</p>
 <p>Any other key that one dims to be necessary for informative purposes can be added (e.g., <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">homeurl</span></code>, <code class="docutils literal notranslate"><span class="pre">issues</span></code>, <code class="docutils literal notranslate"><span class="pre">license</span></code>, etc.). They will not be used by this application in any way.</p>
 </div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -395,10 +393,13 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2021, Odyseus.</p>
+    <p>&#169; Copyright 2016-2022, Odyseus.</p>
   </div>
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://gitlab.com/Odyseus/sphinx_rtd_theme_mod">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
 
@@ -416,7 +417,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
+  </script> 
 
 </body>
 </html>

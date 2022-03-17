@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Backup Utils&#39; documentation &mdash; Python CLI Applications Documentations  documentation</title><link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/python-logo.svg"/>
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  <title>Backup Utils&#39; documentation &mdash; Python CLI Applications Documentations  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -21,7 +24,7 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: False" >
             <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           </a>
 <div role="search">
@@ -51,6 +54,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#file-templates">File templates</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#task-example-file">Task example file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#settings-example-file">Settings example file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pre-post-hook-example-file">Pre/Post hook example file</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#task-types">Task types</a><ul>
@@ -61,7 +65,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../HostsManager/index.html">Hosts Manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
@@ -72,18 +75,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/index.html">Self hosted third-party module's documentations</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: False" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Python CLI Applications Documentations</a>
       </nav>
@@ -106,21 +105,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="backup-utils-documentation">
+  <section id="backup-utils-documentation">
 <h1>Backup Utils' documentation<a class="headerlink" href="#backup-utils-documentation" title="Permalink to this headline"></a></h1>
 <p>A <abbr title="Command Line Interface">CLI</abbr> utility to backup files on GNU/Linux.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>This Python application can generate a system executable with Bash completions support. See <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">generate</span></code>.</p>
 </div>
-<div class="section" id="cli-synopsis">
+<section id="cli-synopsis">
 <h2><abbr title="Command Line Interface">CLI</abbr> Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight">
-<pre><span class="text-bold">Backup Utils 2021-09-27 08:34:09.279 (Stable)</span>
+<pre><strong>Backup Utils 2021-09-27 08:34:09.279 (Stable)</strong>
 
-<span class="text-bold">CLI utility to backup files on GNU/Linux.</span>
+<strong>CLI utility to backup files on GNU/Linux.</strong>
 
-<span class="text-bold">Usage:</span>
+<strong>Usage:</strong>
     app.py (-h | --help | --manual | --version)
     app.py backup (-t &lt;name&gt; | --task=&lt;name&gt;)
                   [-t &lt;name&gt;... | --task=&lt;name&gt;...]
@@ -129,38 +128,38 @@
     app.py (print_tasks | print_settings)
     app.py generate system_executable
 
-<span class="text-bold">Options:</span>
+<strong>Options:</strong>
 
-<span class="text-bold">-h, --help</span>
+<strong>-h, --help</strong>
     Show this screen.
 
-<span class="text-bold">--manual</span>
+<strong>--manual</strong>
     Show this application manual page.
 
-<span class="text-bold">--version</span>
+<strong>--version</strong>
     Show application version.
 
-<span class="text-bold">-t &lt;name&gt;, --task=&lt;name&gt;</span>
+<strong>-t &lt;name&gt;, --task=&lt;name&gt;</strong>
     File name of the file containing backup tasks. Should be the name of a
     file stored in UserData/tasks/&lt;name&gt;.yaml. Extension omitted.
 
-<span class="text-bold">-g &lt;name&gt;, --global=&lt;name&gt;</span>
+<strong>-g &lt;name&gt;, --global=&lt;name&gt;</strong>
     File name of a file containing global settings that all the backup tasks
     will use. Should be the name of a file stored in
     UserData/settings/&lt;name&gt;.yaml. Extension omitted.
 
-<span class="text-bold">-d, --dry-run</span>
+<strong>-d, --dry-run</strong>
     Do not perform file system changes. Only display messages informing of the
     actions that will be performed or commands that will be executed.
     WARNING! Some file system changes will be performed (e.g., temporary files
     creation).</pre>
 </div></div>
-</div>
-<div class="section" id="mentions">
+</section>
+<section id="mentions">
 <h2>Mentions<a class="headerlink" href="#mentions" title="Permalink to this headline"></a></h2>
 <p>Application inspired by the <a class="reference external" href="https://gitlab.com/Oprax/backup-utils">backup-utils</a> Python module.</p>
-</div>
-<div class="section" id="requirements">
+</section>
+<section id="requirements">
 <span id="backup-utils-requirements-reference"></span><h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h2>
 <p>No mayor requirements are needed to run this application other than Python 3.5+.</p>
 <div class="admonition-info info admonition">
@@ -170,7 +169,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">jsonschema&gt;3</span></code> Python module.</p></li>
 </ul>
 </div>
-<div class="section" id="keyring-module">
+<section id="keyring-module">
 <h3><code class="docutils literal notranslate"><span class="pre">keyring</span></code> module<a class="headerlink" href="#keyring-module" title="Permalink to this headline"></a></h3>
 <p>This module is only used by the email system and it is used to retrieve a password stored in the system's default keyring. This module is optional because the mail system can be configured to ask for a password. This application will not store nor use passwords saved in plain text.</p>
 <p>The following command executed from a terminal will prompt for a password that will be stored into the system's keyring:</p>
@@ -188,13 +187,13 @@
 <span class="n">service</span><span class="p">:</span> <span class="n">backup_secret_service_name</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="jsonschema-module">
+</section>
+<section id="jsonschema-module">
 <h3><code class="docutils literal notranslate"><span class="pre">jsonschema</span></code> module<a class="headerlink" href="#jsonschema-module" title="Permalink to this headline"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">jsonschema</span></code> module is used to validate all data used by this <abbr title="Command Line Interface">CLI</abbr> application. If not installed, the data will simply not be validated.</p>
-</div>
-</div>
-<div class="section" id="detailed-usage">
+</section>
+</section>
+<section id="detailed-usage">
 <h2>Detailed usage<a class="headerlink" href="#detailed-usage" title="Permalink to this headline"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -209,20 +208,20 @@
 <li><p>Each tasks file can have defined their own settings and contain one or more backup tasks of any type.</p></li>
 </ul>
 </div>
-<div class="section" id="cli-options">
+<section id="cli-options">
 <h3><abbr title="Command Line Interface">CLI</abbr> options<a class="headerlink" href="#cli-options" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code>: Display this application basic help screen.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--manual</span></code>: Display this application manual.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--version</span></code>: Show this application version.</p></li>
 </ul>
-</div>
-<div class="section" id="commands">
+</section>
+<section id="commands">
 <h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline"></a></h3>
-<div class="section" id="app-py-backup">
+<section id="app-py-backup">
 <h4>app.py backup<a class="headerlink" href="#app-py-backup" title="Permalink to this headline"></a></h4>
 <p>The main command to perform backup tasks.</p>
-<div class="section" id="options">
+<section id="options">
 <h5>Options<a class="headerlink" href="#options" title="Permalink to this headline"></a></h5>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">&lt;name&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--task=&lt;name&gt;</span></code>: File name of the file containing the backup tasks. Should be the name of a file stored in <strong>UserData/tasks/&lt;name&gt;.yaml</strong>. Extension omitted.</p></li>
@@ -236,19 +235,19 @@
 </div></blockquote>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="app-py-print-tasks">
+</section>
+</section>
+<section id="app-py-print-tasks">
 <h4>app.py print_tasks<a class="headerlink" href="#app-py-print-tasks" title="Permalink to this headline"></a></h4>
 <p>Command only used by the Bash completions script to assist in the auto-completion of the <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">&lt;name&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--task=&lt;name&gt;</span></code> <abbr title="Command Line Interface">CLI</abbr> options.</p>
-</div>
-<div class="section" id="app-py-print-settings">
+</section>
+<section id="app-py-print-settings">
 <h4>app.py print_settings<a class="headerlink" href="#app-py-print-settings" title="Permalink to this headline"></a></h4>
 <p>Command only used by the Bash completions script to assist in the auto-completion of the <code class="docutils literal notranslate"><span class="pre">-g</span> <span class="pre">&lt;name&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--global=&lt;name&gt;</span></code> <abbr title="Command Line Interface">CLI</abbr> options.</p>
-</div>
-<div class="section" id="app-py-generate">
+</section>
+<section id="app-py-generate">
 <h4>app.py generate<a class="headerlink" href="#app-py-generate" title="Permalink to this headline"></a></h4>
-<div class="section" id="sub-commands">
+<section id="sub-commands">
 <h5>Sub-commands<a class="headerlink" href="#sub-commands" title="Permalink to this headline"></a></h5>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">system_executable</span></code>: Create an executable for the <code class="docutils literal notranslate"><span class="pre">app.py</span></code> application on the system <code class="docutils literal notranslate"><span class="pre">PATH</span></code> to be able to run it from anywhere.</p>
@@ -260,73 +259,73 @@
 </div></blockquote>
 </li>
 </ul>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="file-templates">
+</section>
+</section>
+</section>
+</section>
+<section id="file-templates">
 <h2>File templates<a class="headerlink" href="#file-templates" title="Permalink to this headline"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Always use the <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> <abbr title="Command Line Interface">CLI</abbr> option to see the exact command/s that will be executed.</p>
 </div>
-<div class="section" id="task-example-file">
+<section id="task-example-file">
 <h3>Task example file<a class="headerlink" href="#task-example-file" title="Permalink to this headline"></a></h3>
 <p>A tasks file is a <abbr title="YAML Ain’t Markup Language">YAML</abbr> file containing at least a property called <strong>tasks</strong> (mandatory). The <strong>tasks</strong> property must be a list of dictionaries, each dictionary representing a backup task.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># START tasks_example.yaml</span>
-<span class="nt">settings</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
-<span class="c1">##########################################################</span>
-<span class="c1"># See settings_example.yaml file.                        #</span>
-<span class="c1"># If a global settings file is used in the command line, #</span>
-<span class="c1"># the settings defined inside this tasks file will       #</span>
-<span class="c1"># override the global settings.                          #</span>
-<span class="c1"># See documentation/manual for details.                  #</span>
-<span class="c1"># ########################################################</span>
-<span class="nt">tasks</span><span class="p">:</span>
-    <span class="c1"># #################################</span>
-    <span class="c1"># Tar task for local file systems #</span>
-    <span class="c1"># #################################</span>
-    <span class="p p-Indicator">-</span> <span class="nt">destination</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/path/to/a/folder</span>
-      <span class="nt">destination_prefix</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MyHome-</span>
-      <span class="nt">items</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/absolute/path/to/a/folder</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/absolute/path/to/a/file</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">~/relative/path/to/a/folder/inside/user/home</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">~/relative/path/to/a/file/inside/user/home</span>
-      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Descriptive name for this task</span>
-      <span class="nt">post_hook</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hooks_example.post_hook</span>
-      <span class="nt">pre_hook</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hooks_example.pre_hook</span>
-      <span class="nt">tar_compression_level</span><span class="p">:</span> <span class="s">&quot;-7&quot;</span>
-      <span class="nt">tar_func_args</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">--xz</span>
-      <span class="nt">tar_opt_args</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">--totals</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">--record-size=1M</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">--checkpoint=50</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">--checkpoint-action=echo=&quot;%T&quot;</span>
-      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tar_local</span>
-    <span class="c1"># ###################################</span>
-    <span class="c1"># Rsync task for local file systems #</span>
-    <span class="c1"># ###################################</span>
-    <span class="p p-Indicator">-</span> <span class="nt">destination</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/path/to/a/folder</span>
-      <span class="nt">items</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/absolute/path/to/a/folder</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">~/relative/path/to/a/folder/inside/user/home</span>
-      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Descriptive name for this task</span>
-      <span class="nt">post_hook</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hooks_example.post_hook</span>
-      <span class="nt">pre_hook</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hooks_example.pre_hook</span>
-      <span class="nt">rsync_args</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">--archive</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">--delete</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">--keep-dirlinks</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">--delete-excluded</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">--delete-delay</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">--info=progress2</span>
-      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rsync_local</span>
-<span class="c1"># END tasks_example.yaml</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># START tasks_example.yaml</span><span class="w"></span>
+<span class="nt">settings</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"></span>
+<span class="c1">##########################################################</span><span class="w"></span>
+<span class="c1"># See settings_example.yaml file.                        #</span><span class="w"></span>
+<span class="c1"># If a global settings file is used in the command line, #</span><span class="w"></span>
+<span class="c1"># the settings defined inside this tasks file will       #</span><span class="w"></span>
+<span class="c1"># override the global settings.                          #</span><span class="w"></span>
+<span class="c1"># See documentation/manual for details.                  #</span><span class="w"></span>
+<span class="c1"># ########################################################</span><span class="w"></span>
+<span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># #################################</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Tar task for local file systems #</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># #################################</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/a/folder</span><span class="w"></span>
+<span class="w">      </span><span class="nt">destination_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MyHome-</span><span class="w"></span>
+<span class="w">      </span><span class="nt">items</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/absolute/path/to/a/folder</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/absolute/path/to/a/file</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/relative/path/to/a/folder/inside/user/home</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/relative/path/to/a/file/inside/user/home</span><span class="w"></span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Descriptive name for this task</span><span class="w"></span>
+<span class="w">      </span><span class="nt">post_hook</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hooks_example.post_hook</span><span class="w"></span>
+<span class="w">      </span><span class="nt">pre_hook</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hooks_example.pre_hook</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tar_compression_level</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;-7&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tar_func_args</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--xz</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tar_opt_args</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--totals</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--record-size=1M</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--checkpoint=50</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--checkpoint-action=echo=&quot;%T&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tar_local</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># ###################################</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Rsync task for local file systems #</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># ###################################</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/a/folder</span><span class="w"></span>
+<span class="w">      </span><span class="nt">items</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/absolute/path/to/a/folder</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/relative/path/to/a/folder/inside/user/home</span><span class="w"></span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Descriptive name for this task</span><span class="w"></span>
+<span class="w">      </span><span class="nt">post_hook</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hooks_example.post_hook</span><span class="w"></span>
+<span class="w">      </span><span class="nt">pre_hook</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hooks_example.pre_hook</span><span class="w"></span>
+<span class="w">      </span><span class="nt">rsync_args</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--archive</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--delete</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--keep-dirlinks</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--delete-excluded</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--delete-delay</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--info=progress2</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rsync_local</span><span class="w"></span>
+<span class="c1"># END tasks_example.yaml</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="section" id="data-keys">
+<section id="data-keys">
 <h4>Data keys<a class="headerlink" href="#data-keys" title="Permalink to this headline"></a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -336,12 +335,12 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> (<strong>Mandatory</strong>): Task type. See <a class="reference internal" href="#backup-utils-task-types-reference"><span class="std std-ref">Task types</span></a>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (<strong>Mandatory</strong>): Task name.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">destination</span></code> (<strong>Mandatory</strong>): Absolute path to where the backup files or folders will be stored.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">items</span></code> (<strong>Mandatory</strong> | <strong>List</strong>): The list of paths to backup. Depending on the task type, path can be files or folders of both. See <a class="reference internal" href="#backup-utils-task-types-reference"><span class="std std-ref">Task types</span></a>.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">items</span></code> <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> (<strong>Mandatory</strong>): The list of paths to backup. Depending on the task type, path can be files or folders of both. See <a class="reference internal" href="#backup-utils-task-types-reference"><span class="std std-ref">Task types</span></a>.</p>
 <blockquote>
 <div><div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>Paths defined here that have as initial component the character <strong>~</strong> will be replaced with the user’s home directory (e.g., <code class="docutils literal notranslate"><span class="pre">~/.config</span></code> will be expanded to <code class="docutils literal notranslate"><span class="pre">/home/user_name/.config</span></code>).</p></li>
+<li><p>Paths defined here that have as initial component the character <strong>~</strong> will be replaced with the user's home directory (e.g., <code class="docutils literal notranslate"><span class="pre">~/.config</span></code> will be expanded to <code class="docutils literal notranslate"><span class="pre">/home/user_name/.config</span></code>).</p></li>
 <li><p>Environment variables will also be expanded (e.g., <code class="docutils literal notranslate"><span class="pre">/home/$USER/.config</span></code> will be expanded to <code class="docutils literal notranslate"><span class="pre">/home/user_name/.config</span></code>).</p></li>
 </ul>
 </div>
@@ -349,15 +348,15 @@
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">destination_prefix</span></code>: A string that will be added to the backed up files/folders. Its usage depends on the type of task. See <a class="reference internal" href="#backup-utils-task-types-reference"><span class="std std-ref">Task types</span></a>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tar_compression_level</span></code> (<strong>tar_local</strong> only): See <a class="reference internal" href="#backup-utils-tar-local-type-reference"><span class="std std-ref">tar_local</span></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tar_func_args</span></code> (<strong>List</strong> | <strong>tar_local</strong> only): See <a class="reference internal" href="#backup-utils-tar-local-type-reference"><span class="std std-ref">tar_local</span></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tar_opt_args</span></code> (<strong>List</strong> | <strong>tar_local</strong> only): See <a class="reference internal" href="#backup-utils-tar-local-type-reference"><span class="std std-ref">tar_local</span></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rsync_args</span></code> (<strong>List</strong> | <strong>rsync_local</strong> only): See <a class="reference internal" href="#backup-utils-rsync-type-reference"><span class="std std-ref">rsync_local</span></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pre_hook</span></code> (<strong>Method</strong>): A Python function to be executed <strong>BEFORE</strong> a backup job is performed.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">post_hook</span></code> (<strong>Method</strong>): A Python function to be executed <strong>AFTER</strong> a backup job is performed.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">tar_func_args</span></code> <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> (<strong>tar_local</strong> only): See <a class="reference internal" href="#backup-utils-tar-local-type-reference"><span class="std std-ref">tar_local</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tar_opt_args</span></code> <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> (<strong>tar_local</strong> only): See <a class="reference internal" href="#backup-utils-tar-local-type-reference"><span class="std std-ref">tar_local</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rsync_args</span></code> <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> (<strong>rsync_local</strong> only): See <a class="reference internal" href="#backup-utils-rsync-type-reference"><span class="std std-ref">rsync_local</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pre_hook</span></code> <code class="xref py py-class docutils literal notranslate"><span class="pre">method</span></code>: A Python function to be executed <strong>BEFORE</strong> a backup job is performed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">post_hook</span></code> <code class="xref py py-class docutils literal notranslate"><span class="pre">function</span></code>: A Python function to be executed <strong>AFTER</strong> a backup job is performed.</p>
 <blockquote>
 <div><div class="admonition-info info admonition" id="backup-utils-hook-parameters-reference">
 <p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">pre_hook</span></code> and <code class="docutils literal notranslate"><span class="pre">post_hook</span></code> definitions</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">pre_hook</span></code> and <code class="docutils literal notranslate"><span class="pre">post_hook</span></code> methods have to be defined like so <strong>module_name.method_name</strong>. <strong>module_name</strong> shoud be a file located at <strong>UserData/hooks/module_name.py</strong>. <strong>method_name</strong> should be a function defined inside the <strong>UserData/hooks/module_name.py</strong> file.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pre_hook</span></code> and <code class="docutils literal notranslate"><span class="pre">post_hook</span></code> methods have to be defined like so <strong>module_name.method_name</strong>. <strong>module_name</strong> should be a file located at <strong>UserData/hooks/module_name.py</strong>. <strong>method_name</strong> should be a function defined inside the <strong>UserData/hooks/module_name.py</strong> file.</p>
 <p>Arguments passed:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>: A modified copy of the task object that was used to run the backup job. Modifications:</p>
@@ -371,50 +370,50 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">settings</span></code>: The settings object that was used when running the backup job.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dry_run</span></code>: Whether the <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> <abbr title="Command Line Interface">CLI</abbr> option was used.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">logger</span></code>: See <a class="reference internal" href="../../modules/python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">**kwords**</span></code>: Some task types can pass extra arguments to the <code class="docutils literal notranslate"><span class="pre">post_hook</span></code> mothod. See <a class="reference internal" href="#backup-utils-task-types-reference"><span class="std std-ref">Task types</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">**kwords**</span></code>: Some task types can pass extra arguments to the <code class="docutils literal notranslate"><span class="pre">post_hook</span></code> method. See <a class="reference internal" href="#backup-utils-task-types-reference"><span class="std std-ref">Task types</span></a>.</p></li>
 </ul>
 </div>
 </div></blockquote>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="settings-example-file">
+</section>
+</section>
+<section id="settings-example-file">
 <h3>Settings example file<a class="headerlink" href="#settings-example-file" title="Permalink to this headline"></a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># START settings_example.yaml</span>
-<span class="nt">desktop_notification</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">ignored_patterns</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">.git</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">__000__</span>
-    <span class="p p-Indicator">-</span> <span class="s">&quot;*-lock&quot;</span>
-    <span class="p p-Indicator">-</span> <span class="s">&quot;*.bak&quot;</span>
-    <span class="p p-Indicator">-</span> <span class="s">&quot;*.log&quot;</span>
-    <span class="p p-Indicator">-</span> <span class="s">&quot;*.pyc&quot;</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">.parentlock</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lock</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">__pycache__</span>
-    <span class="p p-Indicator">-</span> <span class="s">&quot;*.sublime-workspace&quot;</span>
-<span class="nt">mail_notification</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">mail_settings</span><span class="p">:</span>
-    <span class="nt">ask_for_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">mail_body</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
-    <span class="nt">mail_subject</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Backup Utils report</span>
-    <span class="nt">mailing_list</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user_name1@gmail.com</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user_name2@yahoo.com</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user_name3@example.com</span>
-    <span class="nt">secret_service_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">secret_service_name</span>
-    <span class="nt">secret_user_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">secret_user_name</span>
-    <span class="nt">sender_address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">user_name@gmail.com</span>
-    <span class="nt">sender_username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">user_name@gmail.com</span>
-    <span class="nt">smtp_port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">587</span>
-    <span class="nt">smtp_server</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">smtp.gmail.com</span>
-    <span class="nt">use_tls</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">sound_notification</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="c1"># END settings_example.yaml</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># START settings_example.yaml</span><span class="w"></span>
+<span class="nt">desktop_notification</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="nt">ignored_patterns</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.git</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__000__</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*-lock&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*.bak&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*.log&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*.pyc&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.parentlock</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lock</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__pycache__</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*.sublime-workspace&quot;</span><span class="w"></span>
+<span class="nt">mail_notification</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="nt">mail_settings</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ask_for_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mail_body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mail_subject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Backup Utils report</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mailing_list</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user_name1@gmail.com</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user_name2@yahoo.com</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user_name3@example.com</span><span class="w"></span>
+<span class="w">    </span><span class="nt">secret_service_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret_service_name</span><span class="w"></span>
+<span class="w">    </span><span class="nt">secret_user_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret_user_name</span><span class="w"></span>
+<span class="w">    </span><span class="nt">sender_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user_name@gmail.com</span><span class="w"></span>
+<span class="w">    </span><span class="nt">sender_username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user_name@gmail.com</span><span class="w"></span>
+<span class="w">    </span><span class="nt">smtp_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">587</span><span class="w"></span>
+<span class="w">    </span><span class="nt">smtp_server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">smtp.gmail.com</span><span class="w"></span>
+<span class="w">    </span><span class="nt">use_tls</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="nt">sound_notification</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="c1"># END settings_example.yaml</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="section" id="id1">
+<section id="id1">
 <h4>Data keys<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -447,16 +446,59 @@
 </div></blockquote>
 </li>
 </ul>
+</section>
+</section>
+<section id="pre-post-hook-example-file">
+<h3>Pre/Post hook example file<a class="headerlink" href="#pre-post-hook-example-file" title="Permalink to this headline"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># START hooks_example.py</span>
+<span class="c1">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Hooks example file.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">pre_hook</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Pre-task hook.</span>
+
+<span class="sd">    Function that will be executed BEFORE a backup task is performed.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Keyword arguments passed. See documentation/manual for details.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">key</span> <span class="o">+</span> <span class="s2">&quot; = &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">post_hook</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Post-task hook.</span>
+
+<span class="sd">    Function that will be executed AFTER a backup task is performed.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Keyword arguments passed. See documentation/manual for details.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">key</span> <span class="o">+</span> <span class="s2">&quot; = &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="c1"># END hooks_example.py</span>
+</pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="task-types">
+</section>
+</section>
+<section id="task-types">
 <span id="backup-utils-task-types-reference"></span><h2>Task types<a class="headerlink" href="#task-types" title="Permalink to this headline"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Always use the <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> <abbr title="Command Line Interface">CLI</abbr> option to see the exact command/s that will be executed.</p>
 </div>
-<div class="section" id="tar-local">
+<section id="tar-local">
 <span id="backup-utils-tar-local-type-reference"></span><h3>tar_local<a class="headerlink" href="#tar-local" title="Permalink to this headline"></a></h3>
 <p>This task uses the <code class="docutils literal notranslate"><span class="pre">tar</span></code> command available on a system to create an archive with the content of all the <code class="docutils literal notranslate"><span class="pre">items</span></code> (files and folders) defined in a task object.</p>
 <div class="admonition-info info admonition">
@@ -467,7 +509,7 @@
 <li><p>It passes an extra keyword parameter to the <strong>post_hook</strong> method called <code class="docutils literal notranslate"><span class="pre">archive_path</span></code>, which is the path to the generated tar file. See <a class="reference internal" href="#backup-utils-hook-parameters-reference"><span class="std std-ref">pre_hook and post_hook definitions</span></a>.</p></li>
 </ul>
 </div>
-<div class="section" id="data-keys-specific-to-this-task-type">
+<section id="data-keys-specific-to-this-task-type">
 <h4>Data keys specific to this task type<a class="headerlink" href="#data-keys-specific-to-this-task-type" title="Permalink to this headline"></a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -475,8 +517,8 @@
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">tar_compression_level</span></code> (<strong>Default</strong>: -7): A value between -1 and -9. This value is used to set environment variables used by <code class="docutils literal notranslate"><span class="pre">tar</span></code> (XZ_OPT, GZIP_OPT or BZIP2) to set a compression level. If no compression argument is defined in <code class="docutils literal notranslate"><span class="pre">tar_func_args</span></code>, the environment variables will not be set and <code class="docutils literal notranslate"><span class="pre">tar_compression_level</span></code> will not be used.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tar_func_args</span></code> (<strong>List</strong>) (<strong>Default</strong>: empty (no extra function arguments are passed to <code class="docutils literal notranslate"><span class="pre">tar</span></code>)): A list of extra function arguments passed to the <code class="docutils literal notranslate"><span class="pre">tar</span></code> program. Possible values for the compression arguments are <strong>--xz</strong>, <strong>-J</strong>, <strong>--gzip</strong>, <strong>-z</strong>, <strong>--bzip2</strong> or <strong>-j</strong>. Do not use <em>old option style</em>, either use short options (e.g., <code class="docutils literal notranslate"><span class="pre">-J</span></code>) or long options (e.g., <code class="docutils literal notranslate"><span class="pre">--xz</span></code>). See <a class="reference external" href="https://www.gnu.org/software/tar/manual/tar.html">GNU tar manual</a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tar_opt_args</span></code> (<strong>List</strong>) (<strong>Default</strong>: empty (no extra option arguments are passed to <code class="docutils literal notranslate"><span class="pre">tar</span></code>)): Extra option arguments passed to the <code class="docutils literal notranslate"><span class="pre">tar</span></code> program.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tar_func_args</span></code> <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> (<strong>Default</strong>: empty (no extra function arguments are passed to <code class="docutils literal notranslate"><span class="pre">tar</span></code>)): A list of extra function arguments passed to the <code class="docutils literal notranslate"><span class="pre">tar</span></code> program. Possible values for the compression arguments are <strong>--xz</strong>, <strong>-J</strong>, <strong>--gzip</strong>, <strong>-z</strong>, <strong>--bzip2</strong> or <strong>-j</strong>. Do not use <em>old option style</em>, either use short options (e.g., <code class="docutils literal notranslate"><span class="pre">-J</span></code>) or long options (e.g., <code class="docutils literal notranslate"><span class="pre">--xz</span></code>). See <a class="reference external" href="https://www.gnu.org/software/tar/manual/tar.html">GNU tar manual</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tar_opt_args</span></code> <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> (<strong>Default</strong>: empty (no extra option arguments are passed to <code class="docutils literal notranslate"><span class="pre">tar</span></code>)): Extra option arguments passed to the <code class="docutils literal notranslate"><span class="pre">tar</span></code> program.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -485,9 +527,9 @@
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="rsync-local">
+</section>
+</section>
+<section id="rsync-local">
 <span id="backup-utils-rsync-type-reference"></span><h3>rsync_local<a class="headerlink" href="#rsync-local" title="Permalink to this headline"></a></h3>
 <p>This task uses the <code class="docutils literal notranslate"><span class="pre">rsync</span></code> command available on a system to create a mirror of each folder (<code class="docutils literal notranslate"><span class="pre">items</span></code> key) defined in a task object.</p>
 <div class="admonition-info info admonition">
@@ -498,14 +540,14 @@
 <li><p>It doesn't pass an extra keyword parameter to the <strong>post_hook</strong> method.</p></li>
 </ul>
 </div>
-<div class="section" id="id2">
+<section id="id2">
 <h4>Data keys specific to this task type<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>All data keys are of type string and are optional unless specified otherwise.</p>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">rsync_args</span></code> (<strong>List</strong>): Extra arguments passed to the <code class="docutils literal notranslate"><span class="pre">rsync</span></code> command.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rsync_args</span></code> <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>: Extra arguments passed to the <code class="docutils literal notranslate"><span class="pre">rsync</span></code> command.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -515,10 +557,10 @@ rsync <span class="o">[</span>rsync_args<span class="o">]</span> --exclude<span 
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -531,10 +573,13 @@ rsync <span class="o">[</span>rsync_args<span class="o">]</span> --exclude<span 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2021, Odyseus.</p>
+    <p>&#169; Copyright 2016-2022, Odyseus.</p>
   </div>
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://gitlab.com/Odyseus/sphinx_rtd_theme_mod">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
 
@@ -552,7 +597,7 @@ rsync <span class="o">[</span>rsync_args<span class="o">]</span> --exclude<span 
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
+  </script> 
 
 </body>
 </html>

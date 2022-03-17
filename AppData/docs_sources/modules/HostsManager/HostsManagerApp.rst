@@ -10,6 +10,7 @@ Submodules
 ----------
 
 .. toctree::
+   :maxdepth: 4
 
    HostsManagerApp.HostsManager_webapp
    HostsManagerApp.app_utils

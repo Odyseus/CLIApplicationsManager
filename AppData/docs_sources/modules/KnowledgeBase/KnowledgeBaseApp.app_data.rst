@@ -1,7 +1,7 @@
-ChrootHelperApp.app\_utils module
+KnowledgeBaseApp.app\_data module
 =================================
 
-.. automodule:: ChrootHelperApp.app_utils
+.. automodule:: KnowledgeBaseApp.app_data
    :members:
    :show-inheritance:
    :private-members:

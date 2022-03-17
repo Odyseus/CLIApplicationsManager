@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>python_modules.python_utils.yaml_utils module &mdash; Python CLI Applications Documentations  documentation</title><link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/python-logo.svg"/>
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  <title>python_modules.python_utils.yaml_utils module &mdash; Python CLI Applications Documentations  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -21,7 +24,7 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: False" >
             <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           </a>
 <div role="search">
@@ -37,7 +40,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
@@ -48,18 +50,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/index.html">Self hosted third-party module's documentations</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: False" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Python CLI Applications Documentations</a>
       </nav>
@@ -85,47 +83,163 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="module-python_modules.python_utils.yaml_utils">
+  <section id="module-python_modules.python_utils.yaml_utils">
 <span id="python-modules-python-utils-yaml-utils-module"></span><h1>python_modules.python_utils.yaml_utils module<a class="headerlink" href="#module-python_modules.python_utils.yaml_utils" title="Permalink to this headline"></a></h1>
-<dl class="function">
-<dt id="python_modules.python_utils.yaml_utils.load">
-<code class="sig-prename descclassname">python_modules.python_utils.yaml_utils.</code><code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">stream</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/yaml_utils.html#load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.yaml_utils.load" title="Permalink to this definition"></a></dt>
-<dd><p>Summary</p>
+<p>YAML utils.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The PyYaml module has not one single docstring anywhere! A total and absolute wasteful use of
+the only programing language in existence that has native documentation capabilities! And its
+manually written documentation (¬¬) is perfect for explaining absolutely nothing with a trillion
+words! Since I don't have a f*cking magic ball to divine what the f*ck each thing is or does, the
+incomplete docstrings on this module can stay as they are.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I created the ordered load/dump methods because the default sorting capabilities suck (the &quot;a&quot; and &quot;A&quot;
+characters are in the EXACT SAME PLACE ALPHABETICALLY). So, I sort my data my way before dumping
+it to a YAML document.</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="python_modules.python_utils.yaml_utils.load">
+<span class="sig-prename descclassname"><span class="pre">python_modules.python_utils.yaml_utils.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/yaml_utils.html#load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#python_modules.python_utils.yaml_utils.load" title="Permalink to this definition"></a></dt>
+<dd><p>Parse the first YAML document in a stream and produce the corresponding Python object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>byte</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><em>object</em></a>) -- The YAML data to parse into a Python object. It could be a string,
-bytes or a file object.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>byte</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><em>object</em></a>) -- The YAML data to parse into a Python object. It could be a string,
+bytes or a file object.</p></li>
+<li><p><strong>**kwargs</strong> -- Extra keyword arguments to pass to <code class="docutils literal notranslate"><span class="pre">yaml.load</span></code>.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>A Python object.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)">object</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)">object</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="python_modules.python_utils.yaml_utils.dump">
-<code class="sig-prename descclassname">python_modules.python_utils.yaml_utils.</code><code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">stream=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/yaml_utils.html#dump"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#python_modules.python_utils.yaml_utils.dump" title="Permalink to this definition"></a></dt>
-<dd><p>Summary</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="python_modules.python_utils.yaml_utils.dump">
+<span class="sig-prename descclassname"><span class="pre">python_modules.python_utils.yaml_utils.</span></span><span class="sig-name descname"><span class="pre">dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/yaml_utils.html#dump"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#python_modules.python_utils.yaml_utils.dump" title="Permalink to this definition"></a></dt>
+<dd><p>Serialize a Python object into a YAML stream.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><em>object</em></a>) -- Description</p></li>
-<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><em>object</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><em>None</em></a><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><em>object</em></a>) -- Description</p></li>
+<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><em>object</em></a><em>, </em><em>None</em><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>**kwargs</strong> -- Extra keyword arguments to pass to <code class="docutils literal notranslate"><span class="pre">yaml.dump</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The serialized data if <code class="docutils literal notranslate"><span class="pre">stream</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a>, byte, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a>, byte, None</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="python_modules.python_utils.yaml_utils.OrderedLoader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">python_modules.python_utils.yaml_utils.</span></span><span class="sig-name descname"><span class="pre">OrderedLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/yaml_utils.html#OrderedLoader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#python_modules.python_utils.yaml_utils.OrderedLoader" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">python_modules.python_utils.yaml.loader.SafeLoader</span></code></p>
+<p>Ordered YAML loader.</p>
+<p>Initialize the scanner.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="python_modules.python_utils.yaml_utils._construct_mapping">
+<span class="sig-prename descclassname"><span class="pre">python_modules.python_utils.yaml_utils.</span></span><span class="sig-name descname"><span class="pre">_construct_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/yaml_utils.html#_construct_mapping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#python_modules.python_utils.yaml_utils._construct_mapping" title="Permalink to this definition"></a></dt>
+<dd><p>Construct mapping.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>loader</strong> (<em>TYPE</em>) -- Description</p></li>
+<li><p><strong>node</strong> (<em>TYPE</em>) -- Description</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Description</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>OrderedDict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="python_modules.python_utils.yaml_utils.OrderedDumper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">python_modules.python_utils.yaml_utils.</span></span><span class="sig-name descname"><span class="pre">OrderedDumper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_flow_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">canonical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_unicode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_break</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explicit_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explicit_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/yaml_utils.html#OrderedDumper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#python_modules.python_utils.yaml_utils.OrderedDumper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">python_modules.python_utils.yaml.dumper.SafeDumper</span></code></p>
+<p>Ordered YAML dumper.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="python_modules.python_utils.yaml_utils._dict_representer">
+<span class="sig-prename descclassname"><span class="pre">python_modules.python_utils.yaml_utils.</span></span><span class="sig-name descname"><span class="pre">_dict_representer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dumper</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/yaml_utils.html#_dict_representer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#python_modules.python_utils.yaml_utils._dict_representer" title="Permalink to this definition"></a></dt>
+<dd><p>Dict representer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dumper</strong> (<em>TYPE</em>) -- Description</p></li>
+<li><p><strong>data</strong> (<em>TYPE</em>) -- Description</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Description</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="python_modules.python_utils.yaml_utils.ordered_load">
+<span class="sig-prename descclassname"><span class="pre">python_modules.python_utils.yaml_utils.</span></span><span class="sig-name descname"><span class="pre">ordered_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/yaml_utils.html#ordered_load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#python_modules.python_utils.yaml_utils.ordered_load" title="Permalink to this definition"></a></dt>
+<dd><p>Same as <a class="reference internal" href="#python_modules.python_utils.yaml_utils.load" title="python_modules.python_utils.yaml_utils.load"><code class="xref any py py-func docutils literal notranslate"><span class="pre">yaml_utils.load</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>byte</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><em>object</em></a>) -- The YAML data to parse into a Python object. It could be a string,
+bytes or a file object.</p></li>
+<li><p><strong>**kwargs</strong> -- Extra keyword arguments to pass to <code class="docutils literal notranslate"><span class="pre">yaml.load</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A Python object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="python_modules.python_utils.yaml_utils.ordered_dump">
+<span class="sig-prename descclassname"><span class="pre">python_modules.python_utils.yaml_utils.</span></span><span class="sig-name descname"><span class="pre">ordered_dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/python_modules/python_utils/yaml_utils.html#ordered_dump"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#python_modules.python_utils.yaml_utils.ordered_dump" title="Permalink to this definition"></a></dt>
+<dd><p>Same as <a class="reference internal" href="#python_modules.python_utils.yaml_utils.dump" title="python_modules.python_utils.yaml_utils.dump"><code class="xref any py py-func docutils literal notranslate"><span class="pre">yaml_utils.dump</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><em>object</em></a>) -- Description</p></li>
+<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><em>object</em></a><em>, </em><em>None</em><em>, </em><em>optional</em>) -- Description</p></li>
+<li><p><strong>**kwargs</strong> -- Extra keyword arguments to pass to <code class="docutils literal notranslate"><span class="pre">yaml.dump</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The serialized data if <code class="docutils literal notranslate"><span class="pre">stream</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a>, byte, None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 
 
            </div>
@@ -138,10 +252,13 @@ bytes or a file object.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2021, Odyseus.</p>
+    <p>&#169; Copyright 2016-2022, Odyseus.</p>
   </div>
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://gitlab.com/Odyseus/sphinx_rtd_theme_mod">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
 
@@ -159,7 +276,7 @@ bytes or a file object.</p>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
+  </script> 
 
 </body>
 </html>

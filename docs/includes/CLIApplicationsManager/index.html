@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CLI applications manager&#39;s documentation &mdash; Python CLI Applications Documentations  documentation</title><link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/python-logo.svg"/>
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  <title>CLI applications manager&#39;s documentation &mdash; Python CLI Applications Documentations  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -21,7 +24,7 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: False" >
             <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           </a>
 <div role="search">
@@ -46,7 +49,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../BackupUtils/index.html">Backup Utils' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../HostsManager/index.html">Hosts Manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
@@ -57,18 +59,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/index.html">Self hosted third-party module's documentations</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: False" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Python CLI Applications Documentations</a>
       </nav>
@@ -91,21 +89,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="cli-applications-manager-s-documentation">
+  <section id="cli-applications-manager-s-documentation">
 <h1><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation<a class="headerlink" href="#cli-applications-manager-s-documentation" title="Permalink to this headline"></a></h1>
 <p>A <abbr title="Command Line Interface">CLI</abbr> utility to manage/develop other <abbr title="Command Line Interface">CLI</abbr> utilities.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>This Python application can generate a system executable with Bash completions support for itself and for all applications it manages. See <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">gen_sys_exec_self</span></code> and <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">gen_sys_exec_all</span></code>.</p>
 </div>
-<div class="section" id="cli-synopsis">
+<section id="cli-synopsis">
 <h2><abbr title="Command Line Interface">CLI</abbr> Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight">
-<pre><span class="text-bold">CLI Applications Manager Ω (Perpetually evolving)</span>
+<pre><strong>CLI Applications Manager Ω (Perpetually evolving)</strong>
 
-<span class="text-bold">CLI utility to manage/develop other CLI utilities.</span>
+<strong>CLI utility to manage/develop other CLI utilities.</strong>
 
-<span class="text-bold">Usage:</span>
+<strong>Usage:</strong>
     app.py (-h | --help | --manual | --version)
     app.py app_repos (submodules | subtrees) (init | update)
                      [-a &lt;name&gt;... | --app=&lt;name&gt;...]
@@ -119,6 +117,7 @@
     app.py gen_sys_exec_all
     app.py gen_sys_exec_self
     app.py install_deps [-a &lt;name&gt;... | --app=&lt;name&gt;...]
+                        [-e &lt;pip_exec&gt; | --pip-exec=&lt;pip_exec&gt;]
     app.py print_all_apps
     app.py repo (submodules | subtrees) (init | update) [--dry-run]
     app.py run_cmd_on_app (-c &lt;command&gt; | --command=&lt;command&gt;)
@@ -126,42 +125,46 @@
                           [-a &lt;name&gt;... | --app=&lt;name&gt;...]
     app.py spacefm_find_files
 
-<span class="text-bold">Options:</span>
+<strong>Options:</strong>
 
-<span class="text-bold">-h, --help</span>
+<strong>-h, --help</strong>
     Show this application basic help.
 
-<span class="text-bold">--manual</span>
+<strong>--manual</strong>
     Show this application manual page.
 
-<span class="text-bold">--version</span>
+<strong>--version</strong>
     Show application version.
 
-<span class="text-bold">-a, --app=&lt;name&gt;</span>
+<strong>-a, --app=&lt;name&gt;</strong>
     Specify one or more application name to work with. If this option isn&#x27;t
     specified on the commands that make use of it, the command will work with
     all available applications.
 
-<span class="text-bold">-c &lt;command&gt;, --command=&lt;command&gt;</span>
+<strong>-c &lt;command&gt;, --command=&lt;command&gt;</strong>
     Command to execute inside a managed application folder.
 
-<span class="text-bold">--dry-run</span>
+<strong>--dry-run</strong>
     Do not perform file system changes. Only display messages informing of the
     actions that will be performed or commands that will be executed.
 
-<span class="text-bold">-f, --force-clean-build</span>
+<strong>-e &lt;pip_exec&gt;, --pip-exec=&lt;pip_exec&gt;</strong>
+    For use with the <strong>install_deps</strong> command. Path or name of the <strong>pip</strong>
+    command to use to install dependencies.
+
+<strong>-f, --force-clean-build</strong>
     Clear doctree cache and destination folder when building the documentation.
 
-<span class="text-bold">-p, --parallel</span>
+<strong>-p, --parallel</strong>
     Run command in parallel instead of after finishing each command execution.
 
-<span class="text-bold">-u, --update-inventories</span>
+<strong>-u, --update-inventories</strong>
     Update inventory files from their on-line resources when building the
     documentation. Inventory files will be updated automatically if they don&#x27;t
     already exist.</pre>
 </div></div>
-</div>
-<div class="section" id="requirements">
+</section>
+<section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h2>
 <p>No mayor requirements are needed to execute this application other than Python 3.5+.</p>
 <div class="admonition-warning warning admonition">
@@ -170,10 +173,10 @@
 <li><p><strong>sphinx&gt;=1.6.5</strong>: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">sphinx</span></code></p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="detailed-usage">
+</section>
+<section id="detailed-usage">
 <h2>Detailed Usage<a class="headerlink" href="#detailed-usage" title="Permalink to this headline"></a></h2>
-<div class="section" id="cli-options">
+<section id="cli-options">
 <h3><abbr title="Command Line Interface">CLI</abbr> options<a class="headerlink" href="#cli-options" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code>: Display this application basic help screen.</p></li>
@@ -181,56 +184,56 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">--version</span></code>: Show this application version.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-a</span></code> or <code class="docutils literal notranslate"><span class="pre">--app=&lt;name&gt;</span></code>:  Specify one or more application names to work with. If this option isn't specified on the commands that make use of it, the command will work with all available applications.</p></li>
 </ul>
-</div>
-<div class="section" id="commands">
+</section>
+<section id="commands">
 <h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline"></a></h3>
-<div class="section" id="app-py-app-repos">
+<section id="app-py-app-repos">
 <h4>app.py app_repos<a class="headerlink" href="#app-py-app-repos" title="Permalink to this headline"></a></h4>
 <p>Perform tasks on the applications repositories managed by this application. See <code class="docutils literal notranslate"><span class="pre">repo</span></code> command for sub-commands.</p>
-</div>
-<div class="section" id="app-py-bump-app-version">
+</section>
+<section id="app-py-bump-app-version">
 <h4>app.py bump_app_version<a class="headerlink" href="#app-py-bump-app-version" title="Permalink to this headline"></a></h4>
 <p>Bump all applications or only the specified applications versions. See <code class="docutils literal notranslate"><span class="pre">--app</span></code> option.</p>
-</div>
-<div class="section" id="app-py-gen-base-app">
+</section>
+<section id="app-py-gen-base-app">
 <h4>app.py gen_base_app<a class="headerlink" href="#app-py-gen-base-app" title="Permalink to this headline"></a></h4>
 <p>Generate a new base (<em>empty</em>) application from a template.</p>
-</div>
-<div class="section" id="app-py-gen-docs">
+</section>
+<section id="app-py-gen-docs">
 <h4>app.py gen_docs<a class="headerlink" href="#app-py-gen-docs" title="Permalink to this headline"></a></h4>
 <p>Generate documentation page.</p>
-<div class="section" id="options">
+<section id="options">
 <h5>Options<a class="headerlink" href="#options" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-f</span></code> or <code class="docutils literal notranslate"><span class="pre">--force-clean-build</span></code>: Clear doctree cache and destination folder when building the documentation.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-u</span></code> or <code class="docutils literal notranslate"><span class="pre">--update-inventories</span></code>: Update inventory files from their on-line resources when building the documentation. Inventory files will be updated automatically if they don't already exist.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="app-py-gen-docs-no-api">
+</section>
+</section>
+<section id="app-py-gen-docs-no-api">
 <h4>app.py gen_docs_no_api<a class="headerlink" href="#app-py-gen-docs-no-api" title="Permalink to this headline"></a></h4>
 <p>Same as <code class="docutils literal notranslate"><span class="pre">gen_docs</span></code> command, but without extracting Python modules docstrings. Same options apply.</p>
-</div>
-<div class="section" id="app-py-gen-readmes">
+</section>
+<section id="app-py-gen-readmes">
 <h4>app.py gen_readmes<a class="headerlink" href="#app-py-gen-readmes" title="Permalink to this headline"></a></h4>
 <p>Generate README files for all managed applications, including the applications manager.</p>
-</div>
-<div class="section" id="app-py-gen-sys-exec-all">
+</section>
+<section id="app-py-gen-sys-exec-all">
 <h4>app.py gen_sys_exec_all<a class="headerlink" href="#app-py-gen-sys-exec-all" title="Permalink to this headline"></a></h4>
 <p>Create an executable for all managed applications on the system PATH to be able to run them from anywhere. For creating an executable for an individual application, each one of the applications has a system executable generation mechanism.</p>
-</div>
-<div class="section" id="app-py-gen-sys-exec-self">
+</section>
+<section id="app-py-gen-sys-exec-self">
 <h4>app.py gen_sys_exec_self<a class="headerlink" href="#app-py-gen-sys-exec-self" title="Permalink to this headline"></a></h4>
 <p>Create an executable for this application on the system PATH to be able to run it from anywhere.</p>
-</div>
-<div class="section" id="app-py-install-deps">
+</section>
+<section id="app-py-install-deps">
 <h4>app.py install_deps<a class="headerlink" href="#app-py-install-deps" title="Permalink to this headline"></a></h4>
 <p>Install the dependencies for all managed applications of just for the specified ones. See <code class="docutils literal notranslate"><span class="pre">--app</span></code> option.</p>
-</div>
-<div class="section" id="app-py-repo">
+</section>
+<section id="app-py-repo">
 <h4>app.py repo<a class="headerlink" href="#app-py-repo" title="Permalink to this headline"></a></h4>
 <p>Perform tasks on this application repository.</p>
-<div class="section" id="sub-commands">
+<section id="sub-commands">
 <h5>Sub-commands<a class="headerlink" href="#sub-commands" title="Permalink to this headline"></a></h5>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">submodules</span></code>: Manage repository's sub-modules.</p>
@@ -250,22 +253,22 @@
 </div></blockquote>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="app-py-run-cmd-on-app">
+</section>
+</section>
+<section id="app-py-run-cmd-on-app">
 <h4>app.py run_cmd_on_app<a class="headerlink" href="#app-py-run-cmd-on-app" title="Permalink to this headline"></a></h4>
 <p>Run a command on all managed applications or only on the specified ones. See <code class="docutils literal notranslate"><span class="pre">--parallel</span></code> and <code class="docutils literal notranslate"><span class="pre">--command</span></code> options.</p>
-<div class="section" id="id1">
+<section id="id1">
 <h5>Options<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">&lt;command&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--command=&lt;command&gt;</span></code>: Command to execute inside a managed application folder.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-p</span></code> or <code class="docutils literal notranslate"><span class="pre">--parallel</span></code>: Run command in parallel instead of after finishing each command execution.</p></li>
 </ul>
-</div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -278,10 +281,13 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2021, Odyseus.</p>
+    <p>&#169; Copyright 2016-2022, Odyseus.</p>
   </div>
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://gitlab.com/Odyseus/sphinx_rtd_theme_mod">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
 
@@ -299,7 +305,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
+  </script> 
 
 </body>
 </html>

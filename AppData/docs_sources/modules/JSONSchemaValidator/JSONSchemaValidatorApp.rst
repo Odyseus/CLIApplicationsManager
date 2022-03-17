@@ -10,6 +10,7 @@ Submodules
 ----------
 
 .. toctree::
+   :maxdepth: 4
 
    JSONSchemaValidatorApp.app_utils
    JSONSchemaValidatorApp.cli

@@ -16,7 +16,6 @@ Table of Content
     includes/CLIApplicationsManager/index
     includes/BackupUtils/index
     includes/BootstrapThemesGenerator/index
-    includes/ChrootHelper/index
     includes/FilesCleaner/index
     includes/HostsManager/index
     includes/JSONSchemaValidator/index
@@ -26,21 +25,16 @@ Table of Content
     includes/PackageManager/index
     includes/UserApplicationsManager/index
 
-###############################################
-Self hosted third-party module's documentations
-###############################################
+###################################
+Third-party module's documentations
+###################################
 
 .. Self host only third-party documentations with a simple structure.
 
 .. toctree::
     :maxdepth: 1
 
-    includes/0-thirdparty_docs.d/docopt
-    includes/0-thirdparty_docs.d/polib/index
-    includes/0-thirdparty_docs.d/pyperclip/index
-    includes/0-thirdparty_docs.d/titlecase
-    includes/0-thirdparty_docs.d/tqdm
-
+    includes/0-thirdparty_docs.d/index
 
 ###########################################################
 Third-party module's documentations hosted by their authors
@@ -58,7 +52,6 @@ Third-party module's documentations hosted by their authors
     coverage/python
     modules/BackupUtils/modules
     modules/BootstrapThemesGenerator/modules.rst
-    modules/ChrootHelper/modules
     modules/FilesCleaner/modules
     modules/HostsManager/modules
     modules/JSONSchemaValidator/modules

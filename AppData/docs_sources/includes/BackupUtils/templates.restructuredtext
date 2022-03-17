@@ -26,27 +26,27 @@ Data keys
 - ``type`` (**Mandatory**): Task type. See :ref:`backup-utils-task-types-reference`.
 - ``name`` (**Mandatory**): Task name.
 - ``destination`` (**Mandatory**): Absolute path to where the backup files or folders will be stored.
-- ``items`` (**Mandatory** | **List**): The list of paths to backup. Depending on the task type, path can be files or folders of both. See :ref:`backup-utils-task-types-reference`.
+- ``items`` :py:class:`list` (**Mandatory**): The list of paths to backup. Depending on the task type, path can be files or folders of both. See :ref:`backup-utils-task-types-reference`.
 
     .. note::
 
-        - Paths defined here that have as initial component the character **~** will be replaced with the user’s home directory (e.g., ``~/.config`` will be expanded to ``/home/user_name/.config``).
+        - Paths defined here that have as initial component the character **~** will be replaced with the user's home directory (e.g., ``~/.config`` will be expanded to ``/home/user_name/.config``).
         - Environment variables will also be expanded (e.g., ``/home/$USER/.config`` will be expanded to ``/home/user_name/.config``).
 
 - ``destination_prefix``: A string that will be added to the backed up files/folders. Its usage depends on the type of task. See :ref:`backup-utils-task-types-reference`.
 - ``tar_compression_level`` (**tar_local** only): See :ref:`backup-utils-tar-local-type-reference`.
-- ``tar_func_args`` (**List** | **tar_local** only): See :ref:`backup-utils-tar-local-type-reference`.
-- ``tar_opt_args`` (**List** | **tar_local** only): See :ref:`backup-utils-tar-local-type-reference`.
-- ``rsync_args`` (**List** | **rsync_local** only): See :ref:`backup-utils-rsync-type-reference`.
-- ``pre_hook`` (**Method**): A Python function to be executed **BEFORE** a backup job is performed.
-- ``post_hook`` (**Method**): A Python function to be executed **AFTER** a backup job is performed.
+- ``tar_func_args`` :py:class:`list` (**tar_local** only): See :ref:`backup-utils-tar-local-type-reference`.
+- ``tar_opt_args`` :py:class:`list` (**tar_local** only): See :ref:`backup-utils-tar-local-type-reference`.
+- ``rsync_args`` :py:class:`list` (**rsync_local** only): See :ref:`backup-utils-rsync-type-reference`.
+- ``pre_hook`` :py:class:`method`: A Python function to be executed **BEFORE** a backup job is performed.
+- ``post_hook`` :py:class:`function`: A Python function to be executed **AFTER** a backup job is performed.
 
     .. _backup-utils-hook-parameters-reference:
     .. contextual-admonition::
         :context: info
         :title: ``pre_hook`` and ``post_hook`` definitions
 
-        The ``pre_hook`` and ``post_hook`` methods have to be defined like so **module_name.method_name**. **module_name** shoud be a file located at **UserData/hooks/module_name.py**. **method_name** should be a function defined inside the **UserData/hooks/module_name.py** file.
+        The ``pre_hook`` and ``post_hook`` methods have to be defined like so **module_name.method_name**. **module_name** should be a file located at **UserData/hooks/module_name.py**. **method_name** should be a function defined inside the **UserData/hooks/module_name.py** file.
 
         Arguments passed:
 
@@ -58,7 +58,7 @@ Data keys
         - ``settings``: The settings object that was used when running the backup job.
         - ``dry_run``: Whether the ``--dry-run`` |CLI| option was used.
         - ``logger``: See :any:`LogSystem`.
-        - ``**kwords**``: Some task types can pass extra arguments to the ``post_hook`` mothod. See :ref:`backup-utils-task-types-reference`.
+        - ``**kwords**``: Some task types can pass extra arguments to the ``post_hook`` method. See :ref:`backup-utils-task-types-reference`.
 
 
 Settings example file
@@ -97,3 +97,11 @@ Data keys
     .. note::
 
         All ``mail_settings`` keys are mandatory.
+
+Pre/Post hook example file
+--------------------------
+
+.. literalinclude:: ../../../../UserData/BackupUtils/AppData/data/templates/hooks_example.py
+    :language: python
+    :prepend: # START hooks_example.py
+    :append: # END hooks_example.py

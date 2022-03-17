@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BootstrapThemesGeneratorApp.app_utils &mdash; Python CLI Applications Documentations  documentation</title><link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/python-logo.svg"/>
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  <title>BootstrapThemesGeneratorApp.app_utils &mdash; Python CLI Applications Documentations  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -19,7 +21,7 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: False" >
             <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           </a>
 <div role="search">
@@ -35,7 +37,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
@@ -46,18 +47,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/index.html">Self hosted third-party module's documentations</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: False" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Python CLI Applications Documentations</a>
       </nav>
@@ -78,8 +75,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for BootstrapThemesGeneratorApp.app_utils</h1><div class="highlight"><pre>
-<span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;Module with utility functions and classes.</span>
 
 <span class="sd">Attributes</span>
@@ -97,6 +93,8 @@
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="kn">import</span> <span class="n">file_utils</span>
 <span class="kn">from</span> <span class="nn">.python_utils</span> <span class="kn">import</span> <span class="n">shell_utils</span>
 
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">app_data</span>
+
 <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))))</span>
 
@@ -105,8 +103,7 @@
     <span class="s2">&quot;themes_globals&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;themes&quot;</span><span class="p">,</span> <span class="s2">&quot;_0_globals&quot;</span><span class="p">),</span>
     <span class="s2">&quot;themes_dist&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;themes&quot;</span><span class="p">,</span> <span class="s2">&quot;dist&quot;</span><span class="p">),</span>
     <span class="s2">&quot;preview_assets&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;www&quot;</span><span class="p">,</span> <span class="s2">&quot;_assets&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;node_sass&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;www&quot;</span><span class="p">,</span> <span class="s2">&quot;node_modules&quot;</span><span class="p">,</span> <span class="s2">&quot;node-sass&quot;</span><span class="p">,</span> <span class="s2">&quot;bin&quot;</span><span class="p">,</span> <span class="s2">&quot;node-sass&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;postcss&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;www&quot;</span><span class="p">,</span> <span class="s2">&quot;node_modules&quot;</span><span class="p">,</span> <span class="s2">&quot;postcss-cli&quot;</span><span class="p">,</span> <span class="s2">&quot;bin&quot;</span><span class="p">,</span> <span class="s2">&quot;postcss&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;postcss&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;www&quot;</span><span class="p">,</span> <span class="s2">&quot;node_modules&quot;</span><span class="p">,</span> <span class="s2">&quot;.bin&quot;</span><span class="p">,</span> <span class="s2">&quot;postcss&quot;</span><span class="p">),</span>
     <span class="s2">&quot;node_modules&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;www&quot;</span><span class="p">,</span> <span class="s2">&quot;node_modules&quot;</span><span class="p">),</span>
     <span class="s2">&quot;index_template&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;templates&quot;</span><span class="p">,</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">),</span>
     <span class="s2">&quot;modals&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;AppData&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;templates&quot;</span><span class="p">,</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;modals.html&quot;</span><span class="p">),</span>
@@ -114,20 +111,10 @@
     <span class="s2">&quot;index_root&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_folder</span><span class="p">,</span> <span class="s2">&quot;UserData&quot;</span><span class="p">,</span> <span class="s2">&quot;www&quot;</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="n">_node_sass_includes</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;--include-path&quot;</span><span class="p">,</span> <span class="n">_paths_map</span><span class="p">[</span><span class="s2">&quot;node_modules&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;--include-path&quot;</span><span class="p">,</span> <span class="n">_paths_map</span><span class="p">[</span><span class="s2">&quot;themes_globals&quot;</span><span class="p">]</span>
+<span class="n">_dart_sass_includes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;--load-path=&quot;</span> <span class="o">+</span> <span class="n">_paths_map</span><span class="p">[</span><span class="s2">&quot;node_modules&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;--load-path=&quot;</span> <span class="o">+</span> <span class="n">_paths_map</span><span class="p">[</span><span class="s2">&quot;themes_globals&quot;</span><span class="p">]</span>
 <span class="p">]</span>
-
-<span class="n">_bootstrap_content</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;content&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;components&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;utilities&quot;</span>
-<span class="p">]</span>
-
-<span class="n">_tab</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;a class=&quot;nav-link </span><span class="si">{tab_active}</span><span class="s2">&quot; id=&quot;</span><span class="si">{tab_id}</span><span class="s2">&quot; data-toggle=&quot;pill&quot; href=&quot;#</span><span class="si">{tabpanel_id}</span><span class="s2">&quot; role=&quot;tab&quot; aria-controls=&quot;</span><span class="si">{tabpanel_id}</span><span class="s2">&quot; aria-selected=&quot;false&quot;&gt;</span><span class="si">{tab_label}</span><span class="s2">&lt;/a&gt;&quot;&quot;&quot;</span>
-<span class="n">_tabpanel</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;div class=&quot;tab-pane fade </span><span class="si">{tabpanel_active}</span><span class="s2">&quot; id=&quot;</span><span class="si">{tabpanel_id}</span><span class="s2">&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;</span><span class="si">{tab_id}</span><span class="s2">&quot;&gt;</span>
-<span class="s2">&lt;/div&gt;&quot;&quot;&quot;</span>
 
 
 <div class="viewcode-block" id="build_index_file"><a class="viewcode-back" href="../../modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.app_utils.html#BootstrapThemesGeneratorApp.app_utils.build_index_file">[docs]</a><span class="k">def</span> <span class="nf">build_index_file</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
@@ -139,29 +126,23 @@
 <span class="sd">        The logger.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ids</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">tabs</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="s2">&quot;components&quot;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="s2">&quot;utilities&quot;</span><span class="p">:</span> <span class="p">[]</span>
-    <span class="p">}</span>
-    <span class="n">tabpanels</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="s2">&quot;components&quot;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="s2">&quot;utilities&quot;</span><span class="p">:</span> <span class="p">[]</span>
-    <span class="p">}</span>
+    <span class="n">sections_tabs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">sections_tabpanels</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">subsections_tabs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">subsections_tabpanels</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">index_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="n">modals_data</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
-    <span class="k">for</span> <span class="n">cnt</span> <span class="ow">in</span> <span class="n">_bootstrap_content</span><span class="p">:</span>
-        <span class="n">section_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">entry</span><span class="o">.</span><span class="n">path</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">scandir</span><span class="p">(</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_paths_map</span><span class="p">[</span><span class="s2">&quot;index_sections&quot;</span><span class="p">],</span> <span class="n">cnt</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">section</span> <span class="ow">in</span> <span class="n">app_data</span><span class="o">.</span><span class="n">SECTIONS</span><span class="p">:</span>
+        <span class="n">subsection_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">entry</span><span class="o">.</span><span class="n">path</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">scandir</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_paths_map</span><span class="p">[</span><span class="s2">&quot;index_sections&quot;</span><span class="p">],</span> <span class="n">section</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">is_file</span><span class="p">(</span><span class="n">follow_symlinks</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="ow">and</span> <span class="n">entry</span><span class="o">.</span><span class="n">name</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;.html&quot;</span><span class="p">]</span>
 
-        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">section_path</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">section_files</span><span class="p">)):</span>
-            <span class="n">base_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">section_path</span><span class="p">)[:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span>
-            <span class="n">tab_label</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_id</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
-            <span class="n">tab_id</span> <span class="o">=</span> <span class="s2">&quot;bstg-</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">-tab&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">cnt</span><span class="p">,</span> <span class="n">base_id</span><span class="p">)</span>
-            <span class="n">tabpanel_id</span> <span class="o">=</span> <span class="s2">&quot;bstg-</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">-tabpanel&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">cnt</span><span class="p">,</span> <span class="n">base_id</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">subsection_path</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">subsection_files</span><span class="p">)):</span>
+            <span class="n">subsection_base_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">subsection_path</span><span class="p">)[:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+            <span class="n">subsection_tab_label</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subsection_base_id</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+            <span class="n">tab_id</span> <span class="o">=</span> <span class="s2">&quot;bstg-</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">-tab&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">subsection_base_id</span><span class="p">)</span>
+            <span class="n">tabpanel_id</span> <span class="o">=</span> <span class="s2">&quot;bstg-</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">-tabpanel&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">subsection_base_id</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">tab_id</span> <span class="ow">in</span> <span class="n">ids</span> <span class="ow">or</span> <span class="n">tabpanel_id</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="n">tab_id</span><span class="p">)</span>
@@ -170,19 +151,37 @@
             <span class="n">ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tab_id</span><span class="p">)</span>
             <span class="n">ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tabpanel_id</span><span class="p">)</span>
 
-            <span class="n">tabs</span><span class="p">[</span><span class="n">cnt</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_tab</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="k">if</span> <span class="n">section</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subsections_tabs</span><span class="p">:</span>
+                <span class="n">subsections_tabs</span><span class="p">[</span><span class="n">section</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">if</span> <span class="n">section</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subsections_tabpanels</span><span class="p">:</span>
+                <span class="n">subsections_tabpanels</span><span class="p">[</span><span class="n">section</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="n">subsections_tabs</span><span class="p">[</span><span class="n">section</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">app_data</span><span class="o">.</span><span class="n">SUBSECTION_TAB</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">tab_active</span><span class="o">=</span><span class="s2">&quot;active&quot;</span> <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
                 <span class="n">tabpanel_id</span><span class="o">=</span><span class="n">tabpanel_id</span><span class="p">,</span>
                 <span class="n">tab_id</span><span class="o">=</span><span class="n">tab_id</span><span class="p">,</span>
-                <span class="n">tab_label</span><span class="o">=</span><span class="n">tab_label</span>
+                <span class="n">tab_label</span><span class="o">=</span><span class="n">subsection_tab_label</span>
             <span class="p">))</span>
 
-            <span class="n">tabpanels</span><span class="p">[</span><span class="n">cnt</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_tabpanel</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">tabpanel_active</span><span class="o">=</span><span class="s2">&quot;show active&quot;</span> <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">subsections_tabpanels</span><span class="p">[</span><span class="n">section</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">app_data</span><span class="o">.</span><span class="n">SUBSECTION_TABPANEL</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">tabpanel_active</span><span class="o">=</span><span class="s2">&quot; show active&quot;</span> <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
                 <span class="n">tabpanel_id</span><span class="o">=</span><span class="n">tabpanel_id</span><span class="p">,</span>
                 <span class="n">tab_id</span><span class="o">=</span><span class="n">tab_id</span><span class="p">,</span>
                 <span class="n">tabpanel_content</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
             <span class="p">))</span>
+
+        <span class="n">sections_tabs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">app_data</span><span class="o">.</span><span class="n">SECTION_TAB</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">section_name</span><span class="o">=</span><span class="n">section</span><span class="p">,</span>
+            <span class="n">section_name_capital</span><span class="o">=</span><span class="n">section</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+        <span class="p">))</span>
+        <span class="n">section_tabpanel</span> <span class="o">=</span> <span class="n">app_data</span><span class="o">.</span><span class="n">SECTION_TABPANEL</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">section_name</span><span class="o">=</span><span class="n">section</span><span class="p">,</span>
+            <span class="n">section_name_capital</span><span class="o">=</span><span class="n">section</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="n">sections_tabpanels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">section_tabpanel</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+            <span class="s2">&quot;&lt;!-- {{</span><span class="si">%s</span><span class="s2">-tabpanels}} --&gt;&quot;</span> <span class="o">%</span> <span class="n">section</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subsections_tabpanels</span><span class="p">[</span><span class="n">section</span><span class="p">]))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+            <span class="s2">&quot;&lt;!-- {{</span><span class="si">%s</span><span class="s2">-tabs}} --&gt;&quot;</span> <span class="o">%</span> <span class="n">section</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subsections_tabs</span><span class="p">[</span><span class="n">section</span><span class="p">])))</span>
 
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">_paths_map</span><span class="p">[</span><span class="s2">&quot;index_template&quot;</span><span class="p">],</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">index_template_file</span><span class="p">:</span>
         <span class="n">index_template</span> <span class="o">=</span> <span class="n">index_template_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
@@ -190,35 +189,50 @@
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">_paths_map</span><span class="p">[</span><span class="s2">&quot;modals&quot;</span><span class="p">],</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">modals_file</span><span class="p">:</span>
         <span class="n">modals_data</span> <span class="o">=</span> <span class="n">modals_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
+    <span class="nb">print</span><span class="p">()</span>
+
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">_paths_map</span><span class="p">[</span><span class="s2">&quot;index_root&quot;</span><span class="p">],</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">index_root_file</span><span class="p">:</span>
         <span class="n">index_root_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
             <span class="n">index_template</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                <span class="s2">&quot;&lt;!-- {{utilities-tabpanels}} --&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tabpanels</span><span class="p">[</span><span class="s2">&quot;utilities&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                <span class="s2">&quot;&lt;!-- {{components-tabpanels}} --&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tabpanels</span><span class="p">[</span><span class="s2">&quot;components&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                <span class="s2">&quot;&lt;!-- {{content-tabpanels}} --&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tabpanels</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                <span class="s2">&quot;&lt;!-- {{utilities-tabs}} --&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tabs</span><span class="p">[</span><span class="s2">&quot;utilities&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                <span class="s2">&quot;&lt;!-- {{components-tabs}} --&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tabs</span><span class="p">[</span><span class="s2">&quot;components&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                <span class="s2">&quot;&lt;!-- {{content-tabs}} --&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tabs</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                <span class="s2">&quot;&lt;!-- {{sections-tabs}} --&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sections_tabs</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                <span class="s2">&quot;&lt;!-- {{sections-tabpanels}} --&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sections_tabpanels</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
                 <span class="s2">&quot;&lt;!-- {{modals}} --&gt;&quot;</span><span class="p">,</span> <span class="n">modals_data</span><span class="p">)</span>
         <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="build_themes"><a class="viewcode-back" href="../../modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.app_utils.html#BootstrapThemesGeneratorApp.app_utils.build_themes">[docs]</a><span class="k">def</span> <span class="nf">build_themes</span><span class="p">(</span><span class="n">themes</span><span class="o">=</span><span class="p">[],</span> <span class="n">node_sass_args</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">postcss_args</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="build_themes"><a class="viewcode-back" href="../../modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.app_utils.html#BootstrapThemesGeneratorApp.app_utils.build_themes">[docs]</a><span class="k">def</span> <span class="nf">build_themes</span><span class="p">(</span><span class="n">themes</span><span class="o">=</span><span class="p">[],</span> <span class="n">sass_parser</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dart_sass_args</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">postcss_args</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Build themes.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    themes : list, optional</span>
 <span class="sd">        Themes specified in CLI.</span>
-<span class="sd">    node_sass_args : str, optional</span>
-<span class="sd">        Extra arguments to pass to ``node-sass``.</span>
+<span class="sd">    dart_sass_args : str, optional</span>
+<span class="sd">        Extra arguments to pass to ``sass``.</span>
 <span class="sd">    postcss_args : str, optional</span>
 <span class="sd">        Extra arguments to pass to ``postcss-cli``.</span>
 <span class="sd">    logger : None, optional</span>
 <span class="sd">        See :any:`LogSystem`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cmd_str</span> <span class="o">=</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="n">sass_parser</span><span class="p">)</span> <span class="k">if</span> <span class="n">sass_parser</span> <span class="k">else</span> <span class="n">cmd_utils</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;sass&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">cmd_str</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Invalid or not found Sass parser.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">sass_parser</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Parser passed: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cmd_str</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Parser detected: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cmd_str</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Read documentation for requirements.&quot;</span><span class="p">)</span>
+
+        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;**Parser used: </span><span class="si">%s</span><span class="s2">**&quot;</span> <span class="o">%</span> <span class="n">cmd_str</span><span class="p">)</span>
+
     <span class="k">for</span> <span class="n">theme</span> <span class="ow">in</span> <span class="p">(</span><span class="n">themes</span> <span class="ow">or</span> <span class="n">get_themes_list</span><span class="p">()):</span>
         <span class="n">theme_src_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_paths_map</span><span class="p">[</span><span class="s2">&quot;themes_src&quot;</span><span class="p">],</span> <span class="n">theme</span><span class="p">,</span> <span class="s2">&quot;theme.scss&quot;</span><span class="p">)</span>
+        <span class="n">theme_src_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">theme_src_path</span><span class="p">)</span>
         <span class="n">theme_dist_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">theme_src_path</span><span class="p">),</span> <span class="s2">&quot;dist&quot;</span><span class="p">)</span>
         <span class="n">theme_dist_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">theme_dist_dir</span><span class="p">,</span> <span class="s2">&quot;bootstrap.css&quot;</span><span class="p">)</span>
         <span class="n">theme_dist_min_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">theme_dist_dir</span><span class="p">,</span> <span class="s2">&quot;bootstrap.min.css&quot;</span><span class="p">)</span>
@@ -226,32 +240,34 @@
 
         <span class="k">if</span> <span class="n">file_utils</span><span class="o">.</span><span class="n">is_real_file</span><span class="p">(</span><span class="n">theme_src_path</span><span class="p">):</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">shell_utils</span><span class="o">.</span><span class="n">get_cli_separator</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="n">date</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-            <span class="n">base_cmd</span> <span class="o">=</span> <span class="p">[</span><span class="n">_paths_map</span><span class="p">[</span><span class="s2">&quot;node_sass&quot;</span><span class="p">],</span> <span class="n">theme_src_path</span><span class="p">]</span>
-            <span class="n">cmd_1</span> <span class="o">=</span> <span class="n">base_cmd</span> <span class="o">+</span> <span class="p">[</span><span class="n">theme_dist_path</span><span class="p">,</span> <span class="s2">&quot;--output-style&quot;</span><span class="p">,</span> <span class="s2">&quot;expanded&quot;</span><span class="p">]</span>
-            <span class="n">cmd_2</span> <span class="o">=</span> <span class="n">base_cmd</span> <span class="o">+</span> <span class="p">[</span><span class="n">theme_dist_min_path</span><span class="p">,</span> <span class="s2">&quot;--output-style&quot;</span><span class="p">,</span> <span class="s2">&quot;compressed&quot;</span><span class="p">]</span>
-            <span class="n">cmd_1</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_node_sass_includes</span><span class="p">)</span>
-            <span class="n">cmd_2</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_node_sass_includes</span><span class="p">)</span>
+            <span class="n">base_cmd</span> <span class="o">=</span> <span class="p">[</span><span class="n">cmd_str</span><span class="p">]</span>
+            <span class="n">cmd_1</span> <span class="o">=</span> <span class="n">base_cmd</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">theme_src_path</span><span class="p">,</span> <span class="n">theme_dist_path</span><span class="p">),</span>
+                                <span class="s2">&quot;--style&quot;</span><span class="p">,</span> <span class="s2">&quot;expanded&quot;</span><span class="p">]</span>
+            <span class="n">cmd_2</span> <span class="o">=</span> <span class="n">base_cmd</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">theme_src_path</span><span class="p">,</span> <span class="n">theme_dist_min_path</span><span class="p">),</span>
+                                <span class="s2">&quot;--style&quot;</span><span class="p">,</span> <span class="s2">&quot;compressed&quot;</span><span class="p">]</span>
+            <span class="n">cmd_1</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_dart_sass_includes</span><span class="p">)</span>
+            <span class="n">cmd_2</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_dart_sass_includes</span><span class="p">)</span>
             <span class="n">cmd_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">_paths_map</span><span class="p">[</span><span class="s2">&quot;postcss&quot;</span><span class="p">],</span> <span class="s2">&quot;--use&quot;</span><span class="p">,</span> <span class="s2">&quot;autoprefixer&quot;</span><span class="p">,</span>
                      <span class="s2">&quot;--replace&quot;</span><span class="p">,</span> <span class="n">theme_dist_dir</span> <span class="o">+</span> <span class="s2">&quot;/*.css&quot;</span><span class="p">]</span>
 
-            <span class="n">cmd_1</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">node_sass_args</span><span class="p">)</span> <span class="k">if</span> <span class="n">node_sass_args</span> <span class="k">else</span> <span class="p">[])</span>
-            <span class="n">cmd_2</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">node_sass_args</span><span class="p">)</span> <span class="k">if</span> <span class="n">node_sass_args</span> <span class="k">else</span> <span class="p">[])</span>
+            <span class="n">cmd_1</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">dart_sass_args</span><span class="p">)</span> <span class="k">if</span> <span class="n">dart_sass_args</span> <span class="k">else</span> <span class="p">[])</span>
+            <span class="n">cmd_2</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">dart_sass_args</span><span class="p">)</span> <span class="k">if</span> <span class="n">dart_sass_args</span> <span class="k">else</span> <span class="p">[])</span>
             <span class="n">cmd_3</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">postcss_args</span><span class="p">)</span> <span class="k">if</span> <span class="n">postcss_args</span> <span class="k">else</span> <span class="p">[])</span>
 
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">theme_dist_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Building expanded stylesheet for **</span><span class="si">%s</span><span class="s2">**&quot;</span> <span class="o">%</span> <span class="n">theme</span><span class="p">)</span>
-            <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">cmd_1</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">theme_src_path</span><span class="p">))</span>
+            <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">cmd_1</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">theme_src_dir</span><span class="p">)</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Building compressed stylesheet for **</span><span class="si">%s</span><span class="s2">**&quot;</span> <span class="o">%</span> <span class="n">theme</span><span class="p">)</span>
-            <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">cmd_2</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">theme_src_path</span><span class="p">))</span>
+            <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">cmd_2</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">theme_src_dir</span><span class="p">)</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Auto-prefixing generated CSS files&quot;</span><span class="p">)</span>
-            <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">cmd_3</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">theme_src_path</span><span class="p">))</span>
+            <span class="n">cmd_utils</span><span class="o">.</span><span class="n">run_cmd</span><span class="p">(</span><span class="n">cmd_3</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">theme_src_dir</span><span class="p">)</span>
 
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Copying files to live preview&#39;s assets folder&quot;</span><span class="p">)</span>
             <span class="n">file_utils</span><span class="o">.</span><span class="n">custom_copytree</span><span class="p">(</span><span class="n">theme_dist_dir</span><span class="p">,</span> <span class="n">theme_preview_css</span><span class="p">,</span> <span class="n">symlinks</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                                        <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span> <span class="n">log_copied_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Theme &#39;</span><span class="si">%s</span><span class="s2">&#39; isn&#39;t a valid theme.&quot;</span><span class="p">)</span></div>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Theme &#39;</span><span class="si">%s</span><span class="s2">&#39; isn&#39;t a valid theme.&quot;</span> <span class="o">%</span> <span class="n">theme</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="manage_node_modules"><a class="viewcode-back" href="../../modules/BootstrapThemesGenerator/BootstrapThemesGeneratorApp.app_utils.html#BootstrapThemesGeneratorApp.app_utils.manage_node_modules">[docs]</a><span class="k">def</span> <span class="nf">manage_node_modules</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -310,10 +326,13 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2021, Odyseus.</p>
+    <p>&#169; Copyright 2016-2022, Odyseus.</p>
   </div>
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://gitlab.com/Odyseus/sphinx_rtd_theme_mod">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
 
@@ -331,7 +350,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
+  </script> 
 
 </body>
 </html>

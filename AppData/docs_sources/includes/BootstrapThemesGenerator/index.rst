@@ -28,6 +28,7 @@ Requirements
     :title: Dependencies
 
     - Python 3.5+.
+    - ``Dart Sass`` `Download the appropiate release <https://github.com/sass/dart-sass/releases>`__ and `see installation instructions <https://github.com/sass/dart-sass#standalone>`__.
     - ``Node.js`` installed on the system.
     - ``psutil`` Python module.
 

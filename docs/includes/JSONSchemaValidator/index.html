@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JSON Schema Validator&#39;s documentation &mdash; Python CLI Applications Documentations  documentation</title><link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/python-logo.svg"/>
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  <title>JSON Schema Validator&#39;s documentation &mdash; Python CLI Applications Documentations  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -21,7 +24,7 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: False" >
             <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           </a>
 <div role="search">
@@ -37,7 +40,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BackupUtils/index.html">Backup Utils' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../HostsManager/index.html">Hosts Manager's documentation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">JSON Schema Validator's documentation</a><ul>
@@ -58,18 +60,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/index.html">Self hosted third-party module's documentations</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: False" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Python CLI Applications Documentations</a>
       </nav>
@@ -92,58 +90,58 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="json-schema-validator-s-documentation">
+  <section id="json-schema-validator-s-documentation">
 <h1>JSON Schema Validator's documentation<a class="headerlink" href="#json-schema-validator-s-documentation" title="Permalink to this headline"></a></h1>
 <p>A <abbr title="Command Line Interface">CLI</abbr> utility written in Python 3 to validate data from JSON schemas on GNU/Linux.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>This Python application can generate a system executable with Bash completions support. See <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">generate</span></code>.</p>
 </div>
-<div class="section" id="cli-synopsis">
+<section id="cli-synopsis">
 <h2><abbr title="Command Line Interface">CLI</abbr> Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight">
-<pre><span class="text-bold">JSON Schema Validator 2021-09-27 08:34:09.369 (Unstable)</span>
+<pre><strong>JSON Schema Validator 2021-09-27 08:34:09.369 (Unstable)</strong>
 
-<span class="text-bold">Utility to validate data from JSON schemas.</span>
+<strong>Utility to validate data from JSON schemas.</strong>
 
-<span class="text-bold">Usage:</span>
+<strong>Usage:</strong>
     app.py (-h | --help | --manual | --version)
     app.py validate (-d &lt;path&gt; | --data-file=&lt;path&gt;)
                     (-s &lt;path&gt; | --schema-file=&lt;path&gt;)
                     [--data-prop=&lt;name&gt;] [--schema-prop=&lt;name&gt;]
     app.py generate system_executable
 
-<span class="text-bold">Options:</span>
+<strong>Options:</strong>
 
-<span class="text-bold">-h, --help</span>
+<strong>-h, --help</strong>
     Show this screen.
 
-<span class="text-bold">--manual</span>
+<strong>--manual</strong>
     Show this application manual page.
 
-<span class="text-bold">--version</span>
+<strong>--version</strong>
     Show application version.
 
-<span class="text-bold">-d &lt;path&gt;, --data-file=&lt;path&gt;</span>
+<strong>-d &lt;path&gt;, --data-file=&lt;path&gt;</strong>
     Path to a Python or JSON file containing the data to validate
     against a JSON schema.
 
-<span class="text-bold">-s &lt;path&gt;, --schema-file=&lt;path&gt;</span>
+<strong>-s &lt;path&gt;, --schema-file=&lt;path&gt;</strong>
     Path to a Python or JSON file containing the JSON schema to validate
     the data against.
 
-<span class="text-bold">--data-prop=&lt;name&gt;</span>
-    Name of a property found inside the file specified in <span class="text-bold">--data-file</span>.
+<strong>--data-prop=&lt;name&gt;</strong>
+    Name of a property found inside the file specified in <strong>--data-file</strong>.
 
-<span class="text-bold">--schema-prop=&lt;name&gt;</span>
-    Name of a property found inside the file specified in <span class="text-bold">--schema-file</span>.</pre>
+<strong>--schema-prop=&lt;name&gt;</strong>
+    Name of a property found inside the file specified in <strong>--schema-file</strong>.</pre>
 </div></div>
-</div>
-<div class="section" id="mentions">
+</section>
+<section id="mentions">
 <h2>Mentions<a class="headerlink" href="#mentions" title="Permalink to this headline"></a></h2>
 <p>This application uses the <a class="reference external" href="https://github.com/Julian/jsonschema">jsonschema</a> Python module to validate data.</p>
-</div>
-<div class="section" id="requirements">
+</section>
+<section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h2>
 <div class="admonition-warning warning admonition">
 <p class="admonition-title">Warning</p>
@@ -152,23 +150,23 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">jsonschema&gt;3</span></code> Python module.</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="detailed-usage">
+</section>
+<section id="detailed-usage">
 <h2>Detailed usage<a class="headerlink" href="#detailed-usage" title="Permalink to this headline"></a></h2>
-<div class="section" id="cli-options">
+<section id="cli-options">
 <h3><abbr title="Command Line Interface">CLI</abbr> options<a class="headerlink" href="#cli-options" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code>: Display this application basic help screen.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--manual</span></code>: Display this application manual.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--version</span></code>: Show this application version.</p></li>
 </ul>
-</div>
-<div class="section" id="commands">
+</section>
+<section id="commands">
 <h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline"></a></h3>
-<div class="section" id="app-py-validate">
+<section id="app-py-validate">
 <h4>app.py validate<a class="headerlink" href="#app-py-validate" title="Permalink to this headline"></a></h4>
 <p>Validate data found inside the file specified by the <code class="docutils literal notranslate"><span class="pre">--data-file</span></code> <abbr title="Command Line Interface">CLI</abbr> option against a JSON schema found inside the file specified by the <code class="docutils literal notranslate"><span class="pre">--schema-file</span></code> <abbr title="Command Line Interface">CLI</abbr> option.</p>
-<div class="section" id="options">
+<section id="options">
 <h5>Options<a class="headerlink" href="#options" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">&lt;path&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--data-file=&lt;path&gt;</span></code>: Path to a Python or JSON file containing the data to validate against a JSON schema.</p></li>
@@ -184,11 +182,11 @@
 <li><p>Only JSON files with the <strong>.json</strong> file extension and Python files with the <strong>.py</strong> file extension are supported.</p></li>
 </ul>
 </div>
-</div>
-</div>
-<div class="section" id="app-py-generate">
+</section>
+</section>
+<section id="app-py-generate">
 <h4>app.py generate<a class="headerlink" href="#app-py-generate" title="Permalink to this headline"></a></h4>
-<div class="section" id="sub-commands">
+<section id="sub-commands">
 <h5>Sub-commands<a class="headerlink" href="#sub-commands" title="Permalink to this headline"></a></h5>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">system_executable</span></code>: Create an executable for the <code class="docutils literal notranslate"><span class="pre">app.py</span></code> application on the system <code class="docutils literal notranslate"><span class="pre">PATH</span></code> to be able to run it from anywhere.</p>
@@ -200,11 +198,11 @@
 </div></blockquote>
 </li>
 </ul>
-</div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -217,10 +215,13 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2021, Odyseus.</p>
+    <p>&#169; Copyright 2016-2022, Odyseus.</p>
   </div>
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://gitlab.com/Odyseus/sphinx_rtd_theme_mod">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
 
@@ -238,7 +239,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
+  </script> 
 
 </body>
 </html>

@@ -14,7 +14,7 @@ Basic folder structure
 .. note::
 
     - The **_0_globals** folder is a convenient location where to store files that can contain reusable styles or variable overrides common to more than one theme.
-    - The **node_modules** folder is inside **UserData/www** because the themes preview page uses assets from **bootswatch** to preview Bootswatch's themes.
+    - The **node_modules** folder is inside **UserData/www** because the themes preview page uses assets from the **bootswatch** and **bootstrap** modules to preview themes.
 
 .. code-block::
 

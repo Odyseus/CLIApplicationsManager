@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bootstrap Themes Generator&#39; documentation &mdash; Python CLI Applications Documentations  documentation</title><link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/python-logo.svg"/>
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  <title>Bootstrap Themes Generator&#39; documentation &mdash; Python CLI Applications Documentations  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Chroot Helpers&#39;s documentation" href="../ChrootHelper/index.html" />
+    <link rel="next" title="Files Cleaner&#39;s documentation" href="../FilesCleaner/index.html" />
     <link rel="prev" title="Backup Utils&#39; documentation" href="../BackupUtils/index.html" /> 
 </head>
 
@@ -21,7 +24,7 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: False" >
             <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           </a>
 <div role="search">
@@ -55,7 +58,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../HostsManager/index.html">Hosts Manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
@@ -66,18 +68,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/index.html">Self hosted third-party module's documentations</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: False" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Python CLI Applications Documentations</a>
       </nav>
@@ -93,31 +91,32 @@
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
         <a href="../BackupUtils/index.html" class="btn btn-neutral float-left" title="Backup Utils&#39; documentation" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../ChrootHelper/index.html" class="btn btn-neutral float-right" title="Chroot Helpers&#39;s documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../FilesCleaner/index.html" class="btn btn-neutral float-right" title="Files Cleaner&#39;s documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="bootstrap-themes-generator-documentation">
+  <section id="bootstrap-themes-generator-documentation">
 <h1>Bootstrap Themes Generator' documentation<a class="headerlink" href="#bootstrap-themes-generator-documentation" title="Permalink to this headline"></a></h1>
 <p>A <abbr title="Command Line Interface">CLI</abbr> utility to assist in the creation of Bootstrap themes.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>This Python application can generate a system executable with Bash completions support. See <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">generate</span></code>.</p>
 </div>
-<div class="section" id="cli-synopsis">
+<section id="cli-synopsis">
 <h2><abbr title="Command Line Interface">CLI</abbr> Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight">
-<pre><span class="text-bold">Bootstrap Themes Generator 2021-09-27 08:34:09.279 (Stable)</span>
+<pre><strong>Bootstrap Themes Generator 2021-09-27 08:34:09.279 (Stable)</strong>
 
-<span class="text-bold">CLI utility to assist in the creation of Bootstrap themes.</span>
+<strong>CLI utility to assist in the creation of Bootstrap themes.</strong>
 
-<span class="text-bold">Usage:</span>
+<strong>Usage:</strong>
     app.py (-h | --help | --manual | --version)
     app.py build [-t &lt;id&gt;... | --theme=&lt;id&gt;...]
-                 [-s &lt;args&gt; | --node-sass-args=&lt;args&gt;]
+                 [-s &lt;exec&gt; | --sass-parser=&lt;exec&gt;]
+                 [-d &lt;args&gt; | --dart-sass-args=&lt;args&gt;]
                  [-p &lt;args&gt; | --postcss-args=&lt;args&gt;]
     app.py build_index_file
     app.py node_modules (install | update)
@@ -130,57 +129,62 @@
     app.py print_theme_ids
     app.py repo subtrees (init | update) [-y | --dry-run]
 
-<span class="text-bold">Options:</span>
+<strong>Options:</strong>
 
-<span class="text-bold">-h, --help</span>
+<strong>-h, --help</strong>
     Show this screen.
 
-<span class="text-bold">--manual</span>
+<strong>--manual</strong>
     Show this application manual page.
 
-<span class="text-bold">--version</span>
+<strong>--version</strong>
     Show application version.
 
-<span class="text-bold">--host=&lt;host&gt;</span>
+<strong>--host=&lt;host&gt;</strong>
     Host name. [Default: 0.0.0.0]
 
-<span class="text-bold">--port=&lt;port&gt;</span>
+<strong>--port=&lt;port&gt;</strong>
     Port number. [Default: 8899]
 
-<span class="text-bold">-t &lt;id&gt;, --theme=&lt;id&gt;</span>
+<strong>-d &lt;args&gt;, --dart-sass-args=&lt;args&gt;</strong>
+    Extra arguments to pass to <strong>sass</strong> CLI.
+
+<strong>-p &lt;args&gt;, --postcss-args=&lt;args&gt;</strong>
+    Extra arguments to pass to <strong>postcss</strong> CLI. [Default: --no-map]
+
+<strong>-s &lt;exec&gt;, --sass-parser=&lt;exec&gt;</strong>
+    Name or absolute path to Dart Sass executable. This may be needed only if
+    Dart Sass isn&#x27;t available in a system&#x27;s PATH.
+
+<strong>-t &lt;id&gt;, --theme=&lt;id&gt;</strong>
     The ID of the theme that one wants to build. If no specified, all themes
-    found inside the <span class="text-bold">UserData/themes</span> folder will be built. The ID of a
+    found inside the <strong>UserData/themes</strong> folder will be built. The ID of a
     theme is just the name of its folder.
 
-<span class="text-bold">-s &lt;args&gt;, --node-sass-args=&lt;args&gt;</span>
-    Extra arguments to pass to <span class="text-bold">node-sass</span> CLI.
-
-<span class="text-bold">-p &lt;args&gt;, --postcss-args=&lt;args&gt;</span>
-    Extra arguments to pass to <span class="text-bold">postcss</span> CLI. [Default: --no-map]
-
-<span class="text-bold">-y, --dry-run</span>
+<strong>-y, --dry-run</strong>
     Do not perform file system changes. Only display messages informing of the
     actions that will be performed or commands that will be executed.
     WARNING! Some file system changes will be performed (e.g. temporary files
     creation).</pre>
 </div></div>
-</div>
-<div class="section" id="requirements">
+</section>
+<section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h2>
 <div class="admonition-warning warning admonition">
 <p class="admonition-title">Dependencies</p>
 <ul class="simple">
 <li><p>Python 3.5+.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Dart</span> <span class="pre">Sass</span></code> <a class="reference external" href="https://github.com/sass/dart-sass/releases">Download the appropiate release</a> and <a class="reference external" href="https://github.com/sass/dart-sass#standalone">see installation instructions</a>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Node.js</span></code> installed on the system.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">psutil</span></code> Python module.</p></li>
 </ul>
 </div>
-<div class="section" id="psutil-module">
+<section id="psutil-module">
 <h3><code class="docutils literal notranslate"><span class="pre">psutil</span></code> module<a class="headerlink" href="#psutil-module" title="Permalink to this headline"></a></h3>
 <p>This module is only used to programmatically terminate the HTTP server used to host the themes preview page. Without this Python module, the server can only be stopped/restarted manually.</p>
-</div>
-</div>
-<div class="section" id="detailed-usage">
+</section>
+</section>
+<section id="detailed-usage">
 <h2>Detailed usage<a class="headerlink" href="#detailed-usage" title="Permalink to this headline"></a></h2>
 <div class="admonition-info info admonition">
 <p class="admonition-title">Highlights</p>
@@ -191,72 +195,72 @@
 <li><p>Themes can be previewed using the <code class="docutils literal notranslate"><span class="pre">launch_preview</span></code> command which will start the server and open the themes preview web page in the default web browser.</p></li>
 </ul>
 </div>
-<div class="section" id="cli-options">
+<section id="cli-options">
 <h3><abbr title="Command Line Interface">CLI</abbr> options<a class="headerlink" href="#cli-options" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code>: Display this application basic help screen.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--manual</span></code>: Display this application manual.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--version</span></code>: Show this application version.</p></li>
 </ul>
-</div>
-<div class="section" id="commands">
+</section>
+<section id="commands">
 <h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline"></a></h3>
-<div class="section" id="app-py-build">
+<section id="app-py-build">
 <h4>app.py build<a class="headerlink" href="#app-py-build" title="Permalink to this headline"></a></h4>
 <p>The main command to build themes. The build process will generate a file called <strong>bootstrap.css</strong> with expanded <abbr title="Cascading Style Sheets">CSS</abbr> rules and a file called <strong>bootstrap.min.css</strong> with compressed <abbr title="Cascading Style Sheets">CSS</abbr> rules inside a folder called <strong>dist</strong> located inside a theme folder. Additionally, these two files will be copied into <strong>UserData/www/_assets/css/themes/&lt;theme_id&gt;</strong> to make them available for selection on the themes preview page (see <a class="reference internal" href="#launch-preview-command-reference"><span class="std std-ref">app.py launch_preview</span></a>).</p>
-<div class="section" id="options">
+<section id="options">
 <h5>Options<a class="headerlink" href="#options" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">&lt;id&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--theme=&lt;id&gt;</span></code>: The ID of the theme that one wants to build. If not specified, all themes found inside the <strong>UserData/themes</strong> folder will be built. The ID of a theme is just the name of its folder.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-s</span> <span class="pre">&lt;args&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--node-sass-args=&lt;args&gt;</span></code>: Extra arguments to pass to <strong>node-sass</strong> <abbr title="Command Line Interface">CLI</abbr>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">&lt;args&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--postcss-args=&lt;args&gt;</span></code>: Extra arguments to pass to <strong>postcss</strong> <abbr title="Command Line Interface">CLI</abbr>. Default: <code class="docutils literal notranslate"><span class="pre">--no-map</span></code>.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="app-py-node-modules">
+</section>
+</section>
+<section id="app-py-node-modules">
 <h4>app.py node_modules<a class="headerlink" href="#app-py-node-modules" title="Permalink to this headline"></a></h4>
 <p>Convenience command to manage the <strong>Node.js</strong> modules used to build the themes.</p>
-<div class="section" id="sub-commands">
+<section id="sub-commands">
 <h5>Sub-commands<a class="headerlink" href="#sub-commands" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">install</span></code>: Executes <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span></code> inside the <strong>UserData/www</strong> folder.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">update</span></code>: Executes <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">update</span></code> inside the <strong>UserData/www</strong> folder.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="app-py-launch-preview">
+</section>
+</section>
+<section id="app-py-launch-preview">
 <span id="launch-preview-command-reference"></span><h4>app.py launch_preview<a class="headerlink" href="#app-py-launch-preview" title="Permalink to this headline"></a></h4>
 <p>Launch the web page used to preview generated themes. This command will also restart the web server used to host the page.</p>
-<div class="section" id="id1">
+<section id="id1">
 <h5>Options<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--host=&lt;host&gt;</span></code> See <a class="reference internal" href="#server-command-reference-0"><span class="std std-ref">app.py server</span></a>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--port=&lt;port&gt;</span></code> See <a class="reference internal" href="#server-command-reference-0"><span class="std std-ref">app.py server</span></a>.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="app-py-server">
+</section>
+</section>
+<section id="app-py-server">
 <span id="server-command-reference-0"></span><h4>app.py server<a class="headerlink" href="#app-py-server" title="Permalink to this headline"></a></h4>
 <p>The HTTP server started will host the folder at <strong>UserData/www</strong>.</p>
-<div class="section" id="id2">
+<section id="id2">
 <h5>Sub-commands<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">start</span></code>: Start HTTP server.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stop</span></code>: Stop HTTP server.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">restart</span></code>: Restart HTTP server.</p></li>
 </ul>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h5>Options<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--host=&lt;host&gt;</span></code> Host name.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--port=&lt;port&gt;</span></code> Port number.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="app-py-generate">
+</section>
+</section>
+<section id="app-py-generate">
 <h4>app.py generate<a class="headerlink" href="#app-py-generate" title="Permalink to this headline"></a></h4>
-<div class="section" id="id4">
+<section id="id4">
 <h5>Sub-commands<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h5>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">system_executable</span></code>: Create an executable for the <code class="docutils literal notranslate"><span class="pre">app.py</span></code> application on the system <code class="docutils literal notranslate"><span class="pre">PATH</span></code> to be able to run it from anywhere.</p>
@@ -268,23 +272,23 @@
 </div></blockquote>
 </li>
 </ul>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="themes-creation">
+</section>
+</section>
+</section>
+</section>
+<section id="themes-creation">
 <h2>Themes creation<a class="headerlink" href="#themes-creation" title="Permalink to this headline"></a></h2>
 <div class="admonition-info info admonition">
 <p class="admonition-title">Theming Bootstrap</p>
 <p>Read <a class="reference external" href="https://getbootstrap.com/docs/">Bootstrap's documentation</a> (<strong>Theming</strong> section) to familiarize with Bootstrap's themes using <abbr title="Syntactically Awesome Style Sheets">Sass</abbr>.</p>
 </div>
-<div class="section" id="basic-folder-structure">
+<section id="basic-folder-structure">
 <h3>Basic folder structure<a class="headerlink" href="#basic-folder-structure" title="Permalink to this headline"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
 <li><p>The <strong>_0_globals</strong> folder is a convenient location where to store files that can contain reusable styles or variable overrides common to more than one theme.</p></li>
-<li><p>The <strong>node_modules</strong> folder is inside <strong>UserData/www</strong> because the themes preview page uses assets from <strong>bootswatch</strong> to preview Bootswatch's themes.</p></li>
+<li><p>The <strong>node_modules</strong> folder is inside <strong>UserData/www</strong> because the themes preview page uses assets from the <strong>bootswatch</strong> and <strong>bootstrap</strong> modules to preview themes.</p></li>
 </ul>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>UserData/
@@ -306,68 +310,398 @@
         └── another_trillion_modules
 </pre></div>
 </div>
-</div>
-<div class="section" id="example-theme-file-theme-scss">
+</section>
+<section id="example-theme-file-theme-scss">
 <h3>Example theme file (theme.scss)<a class="headerlink" href="#example-theme-file-theme-scss" title="Permalink to this headline"></a></h3>
 <div class="admonition-info info admonition">
 <p class="admonition-title">Relative imports</p>
 <p>Note that the following example file imports files that aren't directly available from the theme file's location. The <strong>bootstrap</strong> and <strong>bootswatch</strong> folders are inside <strong>UserData/www/node_modules</strong>. And the <strong>global_variable_overrides</strong>, <strong>global_new_rules</strong> and <strong>global_new_colors</strong> files are inside <strong>UserData/themes/_0_globals</strong>. This is because the <code class="docutils literal notranslate"><span class="pre">build</span></code> command from this application executes <code class="docutils literal notranslate"><span class="pre">node-sass</span></code> using its <code class="docutils literal notranslate"><span class="pre">--include-path</span></code> option specifying both locations to make imports simpler.</p>
 </div>
-<div class="highlight-scss notranslate"><div class="highlight"><pre><span></span><span class="c1">// START theme.scss</span>
-<span class="c1">// #########</span>
-<span class="c1">// Imports #</span>
-<span class="c1">// #########</span>
-<span class="k">@import</span> <span class="s2">&quot;bootswatch/dist/flatly/_variables&quot;</span><span class="p">;</span>
-<span class="k">@import</span> <span class="s2">&quot;global_variable_overrides&quot;</span><span class="p">;</span>
-<span class="k">@import</span> <span class="s2">&quot;bootstrap/scss/bootstrap&quot;</span><span class="p">;</span>
-<span class="k">@import</span> <span class="s2">&quot;bootswatch/dist/flatly/_bootswatch&quot;</span><span class="p">;</span>
-<span class="k">@import</span> <span class="s2">&quot;global_new_rules&quot;</span><span class="p">;</span>
-<span class="k">@import</span> <span class="s2">&quot;global_new_colors&quot;</span><span class="p">;</span>
+<div class="highlight-scss notranslate"><div class="highlight"><pre><span></span>// START theme.scss
+/*!
+ * Bootstrap v5.1.3 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ *
+ * Bootswatch v5.1.3
+ * Homepage: https://bootswatch.com
+ * Copyright 2012-2021 Thomas Park
+ * Licensed under MIT
+ * Based on Bootstrap
+*/
+// #########
+// Imports #
+// #########
 
-<span class="c1">// ###############</span>
-<span class="c1">// Custom styles #</span>
-<span class="c1">// ###############</span>
+// NOTE: Someone somewhere should add some f*cking sense to this nonsense.
+// Sass variable overrides is an aberration and Bootstrap documentation about Sass is a mess.
+// So, IGNORE Bootstrap docs. and NEVER use variables inside variables overrides.
 
-<span class="c1">// The parent theme (Flatly) uses white close buttons.</span>
-<span class="c1">// Toasts have white background headers.</span>
-<span class="nc">.toast</span> <span class="nc">.close</span> <span class="p">{</span>
-    <span class="nt">color</span><span class="nd">:</span> <span class="nn">#000</span><span class="o">;</span>
+// Configuration
+@import &quot;bootstrap/scss/functions&quot;;
 
-    <span class="k">&amp;</span><span class="nd">:not</span><span class="o">(</span><span class="nd">:disabled</span><span class="o">)</span><span class="nd">:not</span><span class="o">(</span><span class="nc">.disabled</span><span class="o">)</span><span class="nd">:hover</span><span class="o">,</span>
-    <span class="k">&amp;</span><span class="nd">:not</span><span class="o">(</span><span class="nd">:disabled</span><span class="o">)</span><span class="nd">:not</span><span class="o">(</span><span class="nc">.disabled</span><span class="o">)</span><span class="nd">:focus</span> <span class="p">{</span>
-        <span class="nt">color</span><span class="nd">:</span> <span class="nn">#000</span><span class="o">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+// Color system
 
-<span class="c1">// Various tweaks.</span>
-<span class="nt">div</span><span class="nc">.boxed</span> <span class="p">{</span>
-    <span class="nt">border</span><span class="nd">:</span> <span class="nn">#ecece7</span> <span class="nt">solid</span> <span class="nt">1px</span><span class="o">;</span>
-    <span class="nt">border-radius</span><span class="nd">:</span> <span class="nt">5px</span><span class="o">;</span>
-    <span class="nt">box-shadow</span><span class="nd">:</span> <span class="nt">2px</span> <span class="nt">2px</span> <span class="nt">0</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="nc">.1</span><span class="o">),</span> <span class="nt">2px</span> <span class="nt">2px</span> <span class="nt">0</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="nc">.1</span><span class="o">);</span>
-<span class="p">}</span>
+// Flatly grays
 
-<span class="c1">// Add underline to only the headings directly inside a boxed section, not anywhere else.</span>
-<span class="nc">.container.boxed</span> <span class="o">&gt;</span> <span class="nt">h1</span><span class="o">,</span>
-<span class="nc">.container.boxed</span> <span class="o">&gt;</span> <span class="nc">.h1</span><span class="o">,</span>
-<span class="nc">.container.boxed</span> <span class="o">&gt;</span> <span class="nt">h2</span><span class="o">,</span>
-<span class="nc">.container.boxed</span> <span class="o">&gt;</span> <span class="nc">.h2</span> <span class="p">{</span>
-    <span class="nt">border-bottom</span><span class="nd">:</span> <span class="nt">1px</span> <span class="nt">solid</span> <span class="nn">#e0e0dc</span><span class="o">;</span>
-<span class="p">}</span>
+$white: #f8f8f8;
+$gray-100: #f8f9fa;
+$gray-200: #ecf0f1;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #b4bcc2;
+$gray-600: #95a5a6;
+$gray-700: #7b8a8b;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
 
-<span class="c1">// pre tag tweaks.</span>
-<span class="nc">.container.boxed</span> <span class="nt">pre</span> <span class="p">{</span>
-    <span class="nt">white-space</span><span class="nd">:</span> <span class="nt">pre-wrap</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
-    <span class="nt">background-color</span><span class="nd">:</span> <span class="nn">#f8f8f8</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
-    <span class="nt">border-radius</span><span class="nd">:</span> <span class="nt">4px</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
-    <span class="nt">border</span><span class="nd">:</span> <span class="nt">1px</span> <span class="nt">solid</span> <span class="nn">#ccc</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
-    <span class="nt">padding-left</span><span class="nd">:</span> <span class="nt">15px</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
-    <span class="nt">padding-right</span><span class="nd">:</span> <span class="nt">15px</span> <span class="o">!</span><span class="nt">important</span><span class="o">;</span>
-<span class="p">}</span>
-<span class="c1">// END theme.scss</span>
+// Flatly
+// $blue: #2c3e50;
+// $indigo: #6610f2;
+// $purple: #6f42c1;
+// $pink: #e83e8c;
+// $red: #e74c3c;
+// $orange: #fd7e14;
+// $yellow: #f39c12;
+// $green: #18bc9c;
+// $teal: #20c997;
+// $cyan: #3498db;
+
+// Bootstrap
+// $blue:    #0d6efd;
+// $indigo:  #6610f2;
+// $purple:  #6f42c1;
+// $pink:    #d63384;
+// $red:     #dc3545;
+// $orange:  #fd7e14;
+// $yellow:  #ffc107;
+// $green:   #198754;
+// $teal:    #20c997;
+// $cyan:    #0dcaf0;
+
+// NOTE: I changed almost all colors for various reasons:
+// - $primary was $blue on Flatly, but $blue was more black than blue.
+// - Flatly&#39;s $success and $green were identical, which were also similar to $teal.
+// - Flatly&#39;s $warning and $yellow were identical, which were also similar to $orange.
+// So, I use some of Bootstrap&#39;s named colors and use Flatly&#39;s context colors.
+$blue: #398ee7;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #198754;
+$teal: #20c997;
+$cyan: #0dcaf0;
+
+$primary: $gray-800;
+$secondary: $gray-600;
+$success: #18bc9c;
+$info: #3498db;
+$warning: #f39c12;
+$danger: #e74c3c;
+$light: $gray-200;
+$dark: $gray-700;
+
+// NOTE: Bootstrap&#39;s value makes almost all text black.
+// Bootstrap: 4.5
+$min-contrast-ratio: 2.05;
+
+// Links
+
+// Bootstrap: $primary
+$link-color: $success;
+
+// Toasts
+
+// NOTE: Murder the f*cking opacity!!! Keep the header opacity.
+// Bootstrap: rgba($white, .85)
+$toast-background-color: $white;
+
+// Fonts
+
+// Override fonts.
+// Bootstrap: system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;,
+// &quot;Liberation Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;
+$font-family-sans-serif: &quot;Open Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto,
+    &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;;
+// Bootstrap: SFMono-Regular, Menlo, Monaco, Consolas, &quot;Liberation Mono&quot;, &quot;Courier New&quot;, monospace
+$font-family-monospace: &quot;DejaVu Sans Mono&quot;, SFMono-Regular, Menlo, Monaco, Consolas,
+    &quot;Liberation Mono&quot;, &quot;Courier New&quot;, monospace;
+
+// Disabled in Bootstrap and Bootswatch.
+$enable-gradients: true;
+$enable-shadows: true;
+$enable-deprecation-messages: true;
+
+// Alerts
+
+// NOTE: Murder pastel colors.
+// Bootstrap: -80%
+$alert-bg-scale: 0;
+// Bootstrap: -70%
+$alert-border-scale: 0;
+// Bootstrap: 40%
+$alert-color-scale: 0;
+
+// Tables
+
+// NOTE: Murder pastel colors.
+// Bootstrap: -80%
+$table-bg-scale: 0;
+
+// Dropdowns
+
+// NOTE: A little darker for a better contrast.
+// Bootstrap: $gray-200
+$dropdown-link-hover-bg: $gray-300;
+
+// Navs
+
+// NOTE: A little darker for a better contrast.
+// Bootstrap: $gray-700
+$nav-tabs-link-active-color: $gray-800;
+
+// Navbar
+
+// NOTE: Remove some of the opacity for better contrast.
+// Bootstrap: rgba($white, 0.55)
+$navbar-dark-color: rgba($white, 0.8);
+// Bootstrap: rgba($white, 0.75)
+$navbar-dark-hover-color: $white;
+// NOTE: Disabled colors have too little contrast.
+// Bootstrap: rgba($white, 0.25)
+$navbar-dark-disabled-color: rgba($white, 0.5);
+// Bootstrap: rgba($black, 0.3)
+$navbar-light-disabled-color: rgba($black, 0.4);
+
+// List group
+
+// NOTE: Since I darkened $white, $gray-100 is too close to $white. So, darken a little
+// $list-group-hover-bg to make it noticeable.
+// Bootstrap: $gray-100
+$list-group-hover-bg: $gray-200;
+// NOTE: Murder pastel colors.
+// Bootstrap: -80%
+$list-group-item-bg-scale: 0;
+// Bootstrap: 40%
+$list-group-item-color-scale: 0;
+
+// NOTE: Override immense focus effects from inputs/buttons/badges.
+// Bootstrap: 0.2rem
+$input-btn-focus-width: 0.1rem;
+
+// Add more colors to $theme-colors.
+// NOTE: $white would be useful only on dark themes and this is a light theme.
+// $gray is identical to $secondary.
+// $gray-dark is almost identical to $dark.
+// So, remove these colors to not create styles unnecessarily.
+// Furthermore, extending $theme-colors creates duplicated variables in :root
+// (and who knows where else), because Sass is THAT dumb.
+$theme-colors: (
+    &quot;primary&quot;: $primary,
+    &quot;secondary&quot;: $secondary,
+    &quot;success&quot;: $success,
+    &quot;info&quot;: $info,
+    &quot;warning&quot;: $warning,
+    &quot;danger&quot;: $danger,
+    &quot;light&quot;: $light,
+    &quot;dark&quot;: $dark,
+    &quot;blue&quot;: $blue,
+    &quot;indigo&quot;: $indigo,
+    &quot;purple&quot;: $purple,
+    &quot;pink&quot;: $pink,
+    &quot;red&quot;: $red,
+    &quot;orange&quot;: $orange,
+    &quot;yellow&quot;: $yellow,
+    &quot;green&quot;: $green,
+    &quot;teal&quot;: $teal,
+    &quot;cyan&quot;: $cyan
+);
+
+@import &quot;bootstrap/scss/variables&quot;;
+@import &quot;bootstrap/scss/mixins&quot;;
+@import &quot;bootstrap/scss/utilities&quot;;
+
+// NOTE: Add more font size utilities.
+$utilities: map-merge(
+    $utilities,
+    (
+        &quot;font-size&quot;: (
+            rfs: true,
+            property: font-size,
+            class: fs,
+            values:
+                map-merge(
+                    $font-sizes,
+                    (
+                        &quot;small&quot;: 80%,
+                        &quot;medium&quot;: 90%,
+                        &quot;large&quot;: 110%,
+                        &quot;x-large&quot;: 120%,
+                        &quot;xx-large&quot;: 130%
+                    )
+                )
+        )
+    )
+);
+
+// Layout &amp; components
+@import &quot;bootstrap/scss/root&quot;;
+@import &quot;bootstrap/scss/reboot&quot;;
+@import &quot;bootstrap/scss/type&quot;;
+@import &quot;bootstrap/scss/images&quot;;
+@import &quot;bootstrap/scss/containers&quot;;
+@import &quot;bootstrap/scss/grid&quot;;
+@import &quot;bootstrap/scss/tables&quot;;
+@import &quot;bootstrap/scss/forms&quot;;
+@import &quot;bootstrap/scss/buttons&quot;;
+@import &quot;bootstrap/scss/transitions&quot;;
+@import &quot;bootstrap/scss/dropdown&quot;;
+@import &quot;bootstrap/scss/button-group&quot;;
+@import &quot;bootstrap/scss/nav&quot;;
+
+.nav-pills {
+    .nav-link.active,
+    .show &gt; .nav-link {
+        text-shadow: 0 0 0 $nav-pills-link-active-color;
+    }
+}
+
+@import &quot;bootstrap/scss/navbar&quot;;
+
+// NOTE: Since I can&#39;t set active navbar items bold and setting different opacities between
+// active and inactive isn&#39;t enough to differentiate them, I add some shadow to the text.
+.navbar-dark {
+    .navbar-nav {
+        .show &gt; .nav-link,
+        .nav-link.active {
+            text-shadow: 0 0 0 $navbar-dark-active-color;
+        }
+    }
+
+    .navbar-text {
+        a,
+        a:hover,
+        a:focus {
+            text-shadow: 0 0 0 $navbar-dark-active-color;
+        }
+    }
+}
+
+.navbar-light {
+    .navbar-nav {
+        .show &gt; .nav-link,
+        .nav-link.active {
+            text-shadow: 0 0 0 $navbar-light-active-color;
+        }
+    }
+
+    .navbar-text {
+        a,
+        a:hover,
+        a:focus {
+            text-shadow: 0 0 0 $navbar-light-active-color;
+        }
+    }
+}
+
+@import &quot;bootstrap/scss/card&quot;;
+@import &quot;bootstrap/scss/accordion&quot;;
+@import &quot;bootstrap/scss/breadcrumb&quot;;
+@import &quot;bootstrap/scss/pagination&quot;;
+@import &quot;bootstrap/scss/badge&quot;;
+@import &quot;bootstrap/scss/alert&quot;;
+
+// NOTE: I have to replicate this just to set the color of links inside alerts because the color
+// set by Bootstrap is too shaded and Bootswatch&#39;s is white which is too contrasting.
+@each $state, $value in $theme-colors {
+    $alert-background: shift-color($value, $alert-bg-scale);
+    $alert-color: shift-color($value, $alert-color-scale);
+
+    @if (contrast-ratio($alert-background, $alert-color) &lt; $min-contrast-ratio) {
+        $alert-color: mix($value, color-contrast($alert-background), abs($alert-color-scale));
+    }
+
+    .alert-#{$state} {
+        a,
+        .alert-link {
+            color: shade-color($alert-color, 5%);
+        }
+    }
+}
+
+@import &quot;bootstrap/scss/progress&quot;;
+@import &quot;bootstrap/scss/list-group&quot;;
+@import &quot;bootstrap/scss/close&quot;;
+@import &quot;bootstrap/scss/toasts&quot;;
+@import &quot;bootstrap/scss/modal&quot;;
+@import &quot;bootstrap/scss/tooltip&quot;;
+@import &quot;bootstrap/scss/popover&quot;;
+@import &quot;bootstrap/scss/carousel&quot;;
+
+// NOTE: And the f*cking mania of differentiating active from inactive with ONLY opacity continues. FFS!!!
+.carousel-indicators {
+    .active {
+        background-color: $success !important;
+    }
+}
+
+@import &quot;bootstrap/scss/spinners&quot;;
+@import &quot;bootstrap/scss/offcanvas&quot;;
+@import &quot;bootstrap/scss/placeholders&quot;;
+
+// Helpers
+@import &quot;bootstrap/scss/helpers&quot;;
+
+// Utilities
+@import &quot;bootstrap/scss/utilities/api&quot;;
+
+// ###############
+// Custom styles #
+// ###############
+
+.img-centered-container {
+    text-align: center;
+}
+
+.img-centered-container img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// Various tweaks.
+div.boxed {
+    border: #ecece7 solid 1px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1), 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+// Add underline to only the headings directly inside a boxed section, not anywhere else.
+// NOTE: I don&#39;t know why this thing generates duplicated selectors. ¬¬
+.container.boxed &gt; h1,
+.container.boxed &gt; .h1,
+.container.boxed &gt; h2,
+.container.boxed &gt; .h2 {
+    border-bottom: 1px solid #e0e0dc;
+}
+
+// pre tag tweaks.
+.container.boxed pre {
+    white-space: pre-wrap !important;
+    background-color: #f8f8f8 !important;
+    border-radius: 4px !important;
+    border: 1px solid #ccc !important;
+}
+// END theme.scss
 </pre></div>
 </div>
-</div>
-<div class="section" id="example-theme-configuration-file-conf-py">
+</section>
+<section id="example-theme-configuration-file-conf-py">
 <h3>Example theme configuration file (conf.py)<a class="headerlink" href="#example-theme-configuration-file-conf-py" title="Permalink to this headline"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -403,8 +737,6 @@
     <span class="s2">&quot;cyan&quot;</span><span class="p">,</span>
     <span class="s2">&quot;danger&quot;</span><span class="p">,</span>
     <span class="s2">&quot;dark&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;gray&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;gray-dark&quot;</span><span class="p">,</span>
     <span class="s2">&quot;green&quot;</span><span class="p">,</span>
     <span class="s2">&quot;indigo&quot;</span><span class="p">,</span>
     <span class="s2">&quot;info&quot;</span><span class="p">,</span>
@@ -418,69 +750,112 @@
     <span class="s2">&quot;success&quot;</span><span class="p">,</span>
     <span class="s2">&quot;teal&quot;</span><span class="p">,</span>
     <span class="s2">&quot;warning&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;white&quot;</span><span class="p">,</span>
     <span class="s2">&quot;yellow&quot;</span>
 <span class="p">]</span>
 
-<span class="n">_bg_classes</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-blue&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;secondary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-cyan&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-danger&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-dark&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-gray&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-gray-dark&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-green&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-indigo&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;secondary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-info&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-light&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-orange&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-pink&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;purple&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-primary&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;secondary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-purple&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-red&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-secondary&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-success&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-teal&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-warning&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-white&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;bg-gradient-yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">)</span>
+<span class="n">navbar_colors_combinations</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;blue&quot;</span><span class="p">,</span>         <span class="c1"># Navbar background color class. bg-&lt;color&gt;</span>
+        <span class="s2">&quot;dark&quot;</span><span class="p">,</span>         <span class="c1"># Navbar foreground color class. navbar-&lt;color&gt;</span>
+        <span class="s2">&quot;secondary&quot;</span>     <span class="c1"># Button color class. btn-&lt;color&gt;</span>
+    <span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;danger&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;indigo&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;secondary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;info&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;pink&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;purple&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;primary&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;secondary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;secondary&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;success&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;teal&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;warning&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">)</span>
 <span class="p">]</span>
 
-<span class="n">_badge_template</span> <span class="o">=</span> <span class="s1">&#39;&lt;span class=&quot;text-font-size-large badge badge-</span><span class="si">{color}</span><span class="s1">&quot;&gt;</span><span class="si">{color_name}</span><span class="s1">&lt;/span&gt;&#39;</span>
-<span class="n">_badge_pill_template</span> <span class="o">=</span> <span class="s1">&#39;&lt;span class=&quot;text-font-size-large badge badge-pill badge-</span><span class="si">{color}</span><span class="s1">&quot;&gt;</span><span class="si">{color_name}</span><span class="s1">&lt;/span&gt;&#39;</span>
-<span class="n">_button_template</span> <span class="o">=</span> <span class="s1">&#39;&lt;button type=&quot;button&quot; class=&quot;btn btn-</span><span class="si">{color}</span><span class="s1">&quot;&gt;</span><span class="si">{color_name}</span><span class="s1">&lt;/button&gt;&#39;</span>
-<span class="n">_button_disabled_template</span> <span class="o">=</span> <span class="s1">&#39;&lt;button type=&quot;button&quot; class=&quot;btn btn-</span><span class="si">{color}</span><span class="s1">&quot; disabled&gt;</span><span class="si">{color_name}</span><span class="s1">&lt;/button&gt;&#39;</span>
-<span class="n">_button_outline_template</span> <span class="o">=</span> <span class="s1">&#39;&lt;button type=&quot;button&quot; class=&quot;btn btn-outline-</span><span class="si">{color}</span><span class="s1">&quot;&gt;</span><span class="si">{color_name}</span><span class="s1">&lt;/button&gt;&#39;</span>
-<span class="n">_text_color_template</span> <span class="o">=</span> <span class="s1">&#39;&lt;p class=&quot;text-</span><span class="si">{color}</span><span class="s1">&quot;&gt;</span><span class="si">{color_name}</span><span class="s1"> id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt;&#39;</span>
+<span class="n">badge_colors_combinations</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;blue&quot;</span><span class="p">,</span>  <span class="c1"># Badge background color class. bg-&lt;color&gt;</span>
+        <span class="s2">&quot;light&quot;</span>  <span class="c1"># Badge text color class. text-&lt;color&gt;</span>
+    <span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;danger&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;dark&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;indigo&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;info&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;pink&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;primary&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;secondary&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;success&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;teal&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;warning&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+
+
+<span class="n">_badge_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;span class=&quot;text-font-size-large badge bg-</span><span class="si">{bg_color}</span><span class="s2"> text-</span><span class="si">{text_color}</span><span class="s2"> </span><span class="si">{pill_class}</span><span class="s2">&quot;&gt;</span>
+<span class="si">{color_name}</span><span class="s2"></span>
+<span class="s2">&lt;/span&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">_button_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;button type=&quot;button&quot; class=&quot;btn btn-</span><span class="si">{outline}{color}</span><span class="s2"> </span><span class="si">{disabled}</span><span class="s2">&quot;&gt;</span>
+<span class="si">{color_name}</span><span class="s2"></span>
+<span class="s2">&lt;/button&gt;&quot;&quot;&quot;</span>
+<span class="n">_text_color_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;p class=&quot;text-</span><span class="si">{color}</span><span class="s2">&quot;&gt;</span><span class="si">{color_name}</span><span class="s2"> id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
 
 <span class="n">_navbar_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">&lt;div class=&quot;bstg-example&quot;&gt;</span>
-<span class="s2">    &lt;nav class=&quot;navbar navbar-expand-lg navbar-</span><span class="si">{navbar_color}</span><span class="s2"> </span><span class="si">{bg_color}</span><span class="s2">&quot;&gt;</span>
-<span class="s2">        &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Navbar&lt;/a&gt;</span>
-<span class="s2">        &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#</span><span class="si">{navbar_id}</span><span class="s2">&quot; aria-controls=&quot;</span><span class="si">{navbar_id}</span><span class="s2">&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;</span>
+<span class="s2">&lt;nav class=&quot;navbar navbar-expand-lg navbar-</span><span class="si">{fg_color}</span><span class="s2"> bg-</span><span class="si">{bg_color}</span><span class="s2">&quot;&gt;</span>
+<span class="s2">    &lt;div class=&quot;container-fluid&quot;&gt;</span>
+<span class="s2">        &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;</span><span class="si">{brand}</span><span class="s2">&lt;/a&gt;</span>
+<span class="s2">        &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#</span><span class="si">{navbar_id}</span><span class="s2">&quot; aria-controls=&quot;</span><span class="si">{navbar_id}</span><span class="s2">&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;</span>
 <span class="s2">            &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;</span>
 <span class="s2">        &lt;/button&gt;</span>
 <span class="s2">        &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;</span><span class="si">{navbar_id}</span><span class="s2">&quot;&gt;</span>
-<span class="s2">            &lt;ul class=&quot;navbar-nav mr-auto&quot;&gt;</span>
-<span class="s2">                &lt;li class=&quot;nav-item active&quot;&gt;</span>
-<span class="s2">                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Home &lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;</span>
+<span class="s2">            &lt;ul class=&quot;navbar-nav me-auto mb-2 mb-lg-0&quot;&gt;</span>
+<span class="s2">                &lt;li class=&quot;nav-item&quot;&gt;</span>
+<span class="s2">                    &lt;a class=&quot;nav-link active&quot; aria-current=&quot;page&quot; href=&quot;#&quot;&gt;Home&lt;/a&gt;</span>
 <span class="s2">                &lt;/li&gt;</span>
 <span class="s2">                &lt;li class=&quot;nav-item&quot;&gt;</span>
-<span class="s2">                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Features&lt;/a&gt;</span>
+<span class="s2">                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;</span>
+<span class="s2">                &lt;/li&gt;</span>
+<span class="s2">                &lt;li class=&quot;nav-item dropdown&quot;&gt;</span>
+<span class="s2">                    &lt;a class=&quot;nav-link dropdown-toggle&quot; href=&quot;#&quot; id=&quot;</span><span class="si">{navbar_id}</span><span class="s2">-dropdown&quot; role=&quot;button&quot; data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;</span>
+<span class="s2">                        Dropdown</span>
+<span class="s2">                    &lt;/a&gt;</span>
+<span class="s2">                    &lt;ul class=&quot;dropdown-menu&quot; aria-labelledby=&quot;</span><span class="si">{navbar_id}</span><span class="s2">-dropdown&quot;&gt;</span>
+<span class="s2">                        &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;</span>
+<span class="s2">                        &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;</span>
+<span class="s2">                        &lt;li&gt;</span>
+<span class="s2">                            &lt;hr class=&quot;dropdown-divider&quot;&gt;</span>
+<span class="s2">                        &lt;/li&gt;</span>
+<span class="s2">                        &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;</span>
+<span class="s2">                    &lt;/ul&gt;</span>
 <span class="s2">                &lt;/li&gt;</span>
 <span class="s2">                &lt;li class=&quot;nav-item&quot;&gt;</span>
-<span class="s2">                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Pricing&lt;/a&gt;</span>
-<span class="s2">                &lt;/li&gt;</span>
-<span class="s2">                &lt;li class=&quot;nav-item&quot;&gt;</span>
-<span class="s2">                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;About&lt;/a&gt;</span>
+<span class="s2">                    &lt;a class=&quot;nav-link disabled&quot; href=&quot;#&quot; tabindex=&quot;-1&quot; aria-disabled=&quot;true&quot;&gt;Disabled&lt;/a&gt;</span>
 <span class="s2">                &lt;/li&gt;</span>
 <span class="s2">            &lt;/ul&gt;</span>
-<span class="s2">            &lt;form class=&quot;form-inline&quot;&gt;</span>
-<span class="s2">                &lt;input class=&quot;form-control mr-sm-2&quot; placeholder=&quot;Search&quot; aria-label=&quot;Search&quot; type=&quot;search&quot;&gt;</span>
-<span class="s2">                &lt;button class=&quot;btn btn-</span><span class="si">{btn_color}</span><span class="s2"> my-2 my-sm-0&quot; type=&quot;submit&quot;&gt;Search&lt;/button&gt;</span>
+<span class="s2">            &lt;form class=&quot;d-flex&quot;&gt;</span>
+<span class="s2">                &lt;input class=&quot;form-control me-2&quot; type=&quot;search&quot; placeholder=&quot;Search&quot; aria-label=&quot;Search&quot;&gt;</span>
+<span class="s2">                &lt;button class=&quot;btn btn-</span><span class="si">{btn_color}</span><span class="s2">&quot; type=&quot;submit&quot;&gt;Search&lt;/button&gt;</span>
 <span class="s2">            &lt;/form&gt;</span>
 <span class="s2">        &lt;/div&gt;</span>
-<span class="s2">    &lt;/nav&gt;</span>
+<span class="s2">    &lt;/div&gt;</span>
+<span class="s2">&lt;/nav&gt;</span>
 <span class="s2">&lt;/div&gt;</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
@@ -496,15 +871,19 @@
         <span class="s1">&#39;&lt;div class=&quot;bstg-example&quot;&gt;&#39;</span>
     <span class="p">]</span>
 
-    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">_colors</span><span class="p">:</span>
-        <span class="n">c_name</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">bg_color</span><span class="p">,</span> <span class="n">text_color</span> <span class="ow">in</span> <span class="n">badge_colors_combinations</span><span class="p">:</span>
+        <span class="n">color_name</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">bg_color</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
         <span class="n">badges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_badge_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span>
-            <span class="n">color_name</span><span class="o">=</span><span class="n">c_name</span>
+            <span class="n">bg_color</span><span class="o">=</span><span class="n">bg_color</span><span class="p">,</span>
+            <span class="n">text_color</span><span class="o">=</span><span class="n">text_color</span><span class="p">,</span>
+            <span class="n">color_name</span><span class="o">=</span><span class="n">color_name</span><span class="p">,</span>
+            <span class="n">pill_class</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
         <span class="p">))</span>
-        <span class="n">pills</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_badge_pill_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span>
-            <span class="n">color_name</span><span class="o">=</span><span class="n">c_name</span>
+        <span class="n">pills</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_badge_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">bg_color</span><span class="o">=</span><span class="n">bg_color</span><span class="p">,</span>
+            <span class="n">text_color</span><span class="o">=</span><span class="n">text_color</span><span class="p">,</span>
+            <span class="n">color_name</span><span class="o">=</span><span class="n">color_name</span><span class="p">,</span>
+            <span class="n">pill_class</span><span class="o">=</span><span class="s2">&quot;rounded-pill&quot;</span>
         <span class="p">))</span>
 
     <span class="n">badges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;/div&gt;&quot;</span><span class="p">)</span>
@@ -531,18 +910,24 @@
     <span class="p">]</span>
 
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">_colors</span><span class="p">:</span>
-        <span class="n">c_name</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+        <span class="n">color_name</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
         <span class="n">btns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_button_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span>
-            <span class="n">color_name</span><span class="o">=</span><span class="n">c_name</span>
+            <span class="n">color_name</span><span class="o">=</span><span class="n">color_name</span><span class="p">,</span>
+            <span class="n">outline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">disabled</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
         <span class="p">))</span>
-        <span class="n">btns_dis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_button_disabled_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">btns_dis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_button_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span>
-            <span class="n">color_name</span><span class="o">=</span><span class="n">c_name</span>
+            <span class="n">color_name</span><span class="o">=</span><span class="n">color_name</span><span class="p">,</span>
+            <span class="n">outline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">disabled</span><span class="o">=</span><span class="s2">&quot;disabled&quot;</span>
         <span class="p">))</span>
-        <span class="n">btns_out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_button_outline_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">btns_out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_button_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span>
-            <span class="n">color_name</span><span class="o">=</span><span class="n">c_name</span>
+            <span class="n">color_name</span><span class="o">=</span><span class="n">color_name</span><span class="p">,</span>
+            <span class="n">outline</span><span class="o">=</span><span class="s2">&quot;outline-&quot;</span><span class="p">,</span>
+            <span class="n">disabled</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
         <span class="p">))</span>
 
     <span class="n">btns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;/div&gt;&quot;</span><span class="p">)</span>
@@ -575,11 +960,12 @@
 <span class="k">def</span> <span class="nf">get_navbars</span><span class="p">():</span>
     <span class="n">navbars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&lt;h2&gt;Navbars all gradient colors&lt;/h2&gt;&quot;</span><span class="p">]</span>
 
-    <span class="k">for</span> <span class="n">bg_color</span><span class="p">,</span> <span class="n">navbar_color</span><span class="p">,</span> <span class="n">btn_color</span> <span class="ow">in</span> <span class="n">_bg_classes</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">bg_color</span><span class="p">,</span> <span class="n">fg_color</span><span class="p">,</span> <span class="n">btn_color</span> <span class="ow">in</span> <span class="n">navbar_colors_combinations</span><span class="p">:</span>
         <span class="n">navbars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_navbar_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">brand</span><span class="o">=</span><span class="n">bg_color</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
             <span class="n">bg_color</span><span class="o">=</span><span class="n">bg_color</span><span class="p">,</span>
+            <span class="n">fg_color</span><span class="o">=</span><span class="n">fg_color</span><span class="p">,</span>
             <span class="n">navbar_id</span><span class="o">=</span><span class="n">bg_color</span> <span class="o">+</span> <span class="s2">&quot;-example-navbar&quot;</span><span class="p">,</span>
-            <span class="n">navbar_color</span><span class="o">=</span><span class="n">navbar_color</span><span class="p">,</span>
             <span class="n">btn_color</span><span class="o">=</span><span class="n">btn_color</span>
         <span class="p">))</span>
 
@@ -596,42 +982,39 @@
 
 
 <span class="n">settings</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;theme_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Flatly (new colors)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;theme_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Flatly mod (new colors)&quot;</span><span class="p">,</span>
     <span class="s2">&quot;theme_description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">#### Differences with the original theme</span>
+<span class="s2">This is basically Bootswatch&#39;s Flatly theme but instead of inheriting from Flatly I replicate its style by inheriting only from Bootstrap. I did this because some of Flatly&#39;s overrides aren&#39;t needed/wanted and Sass variable overrides is a f*cking mess. This way, I only have to deal with one nightmare scenario instead of two.</span>
 
-<span class="s2">##### Overrides</span>
+<span class="s2">## Differences with the original Flatly theme</span>
 
-<span class="s2">- Overridden gigantic headings.</span>
-<span class="s2">- Annihilated web font imports.</span>
+<span class="s2">### Overrides</span>
+
 <span class="s2">- Reduced inputs/buttons/badges focus border width.</span>
 <span class="s2">- Changed pagination styles to a less *flashy* style.</span>
 <span class="s2">- Overridden sans serif fonts (the default is now **Open Sans**) and monospace fonts (the default is now **DejaVu Sans Mono**).</span>
 
-<span class="s2">##### Added styles</span>
+<span class="s2">### Added styles</span>
 
 <span class="s2">- Enabled gradients and shadows.</span>
-<span class="s2">- Text styling classes:</span>
-<span class="s2">    - **text-bold**</span>
-<span class="s2">    - **text-bolder**</span>
-<span class="s2">    - **text-italic**</span>
-<span class="s2">    - **text-oblique**</span>
-<span class="s2">    - **text-overline**</span>
-<span class="s2">    - **text-line-through**</span>
-<span class="s2">    - **text-underline**</span>
-<span class="s2">    - **text-font-size-small**</span>
-<span class="s2">    - **text-font-size-medium**</span>
-<span class="s2">    - **text-font-size-large**</span>
-<span class="s2">    - **text-font-size-x-large**</span>
-<span class="s2">    - **text-font-size-xx-large**</span>
+<span class="s2">- Added text styling classes using Bootstrap utilities API:</span>
+<span class="s2">    - **fs-small**</span>
+<span class="s2">    - **fs-medium**</span>
+<span class="s2">    - **fs-large**</span>
+<span class="s2">    - **fs-x-large**</span>
+<span class="s2">    - **fs-xx-large**</span>
 <span class="s2">- Miscellaneous tweaks/classes:</span>
 <span class="s2">    - **div.boxed**: A class to &quot;frame&quot; an element with a border with radius and a shadow.</span>
 <span class="s2">    - Added a bottom border to `&lt;h1&gt;` and `&lt;h2&gt;` tags and to `h1` and `h2` classes inside `.container.boxed`.</span>
 <span class="s2">    - Tweaked `&lt;pre&gt;` to allow word wrapping. Also changed the background color and added a border with radius to add contrast against the page background.</span>
-<span class="s2">    - Expanded element classes generation (`btn-&lt;color&gt;`, `btn-outline-&lt;color&gt;`, `badge-&lt;color&gt;`, `bg-&lt;color&gt;`, `bg-gradient-&lt;color&gt;` and `border-&lt;color&gt;`) to include extra colors (`blue`, `indigo`, `purple`, `pink`, `red`, `orange`, `yellow`, `green`, `teal` and `cyan`).</span>
 
+<span class="s2">### Removed styles</span>
+
+<span class="s2">- Murdered web fonts.</span>
+<span class="s2">- Removed pagination styles.</span>
+<span class="s2">- Removed most of the padding added to elements. Flatly added too much paddings to navbars and nav-tabs and unnecessary padding to breadcrumbs.</span>
 <span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;extra_examples_html&quot;</span><span class="p">:</span> <span class="n">get_html</span><span class="p">(),</span>
+    <span class="s2">&quot;extra_examples_html&quot;</span><span class="p">:</span> <span class="n">get_html</span><span class="p">()</span>
 <span class="p">}</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
@@ -639,25 +1022,28 @@
 <span class="c1"># END conf.py</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../BackupUtils/index.html" class="btn btn-neutral float-left" title="Backup Utils&#39; documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../ChrootHelper/index.html" class="btn btn-neutral float-right" title="Chroot Helpers&#39;s documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../FilesCleaner/index.html" class="btn btn-neutral float-right" title="Files Cleaner&#39;s documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2021, Odyseus.</p>
+    <p>&#169; Copyright 2016-2022, Odyseus.</p>
   </div>
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://gitlab.com/Odyseus/sphinx_rtd_theme_mod">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
 
@@ -675,7 +1061,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
+  </script> 
 
 </body>
 </html>

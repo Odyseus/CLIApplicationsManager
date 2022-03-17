@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HostsManagerApp.app_utils module &mdash; Python CLI Applications Documentations  documentation</title><link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/python-logo.svg"/>
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  <title>HostsManagerApp.app_utils module &mdash; Python CLI Applications Documentations  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -21,7 +24,7 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: False" >
             <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           </a>
 <div role="search">
@@ -37,7 +40,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../includes/JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
@@ -48,18 +50,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../includes/UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../includes/0-thirdparty_docs.d/index.html">Self hosted third-party module's documentations</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: False" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Python CLI Applications Documentations</a>
       </nav>
@@ -84,113 +82,113 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="module-HostsManagerApp.app_utils">
+  <section id="module-HostsManagerApp.app_utils">
 <span id="hostsmanagerapp-app-utils-module"></span><h1>HostsManagerApp.app_utils module<a class="headerlink" href="#module-HostsManagerApp.app_utils" title="Permalink to this headline"></a></h1>
 <p>Module with utility functions and classes.</p>
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.root_folder">
-<code class="sig-prename descclassname">HostsManagerApp.app_utils.</code><code class="sig-name descname">root_folder</code><a class="headerlink" href="#HostsManagerApp.app_utils.root_folder" title="Permalink to this definition"></a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.root_folder">
+<span class="sig-prename descclassname"><span class="pre">HostsManagerApp.app_utils.</span></span><span class="sig-name descname"><span class="pre">root_folder</span></span><a class="headerlink" href="#HostsManagerApp.app_utils.root_folder" title="Permalink to this definition"></a></dt>
 <dd><p>The main folder containing the application. All commands must be executed from this location
 without exceptions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="class">
-<dt id="HostsManagerApp.app_utils.OverridesValidator">
-<em class="property">class </em><code class="sig-prename descclassname">HostsManagerApp.app_utils.</code><code class="sig-name descname">OverridesValidator</code><span class="sig-paren">(</span><em class="sig-param">raw_overrides</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.OverridesValidator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">HostsManagerApp.app_utils.</span></span><span class="sig-name descname"><span class="pre">OverridesValidator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_overrides</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Validate a list of settings passed as arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>raw_overrides</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) -- The raw list of settings as passed to the CLI.</p>
+<dd class="field-odd"><p><strong>raw_overrides</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) -- The raw list of settings as passed to the CLI.</p>
 </dd>
 </dl>
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.OverridesValidator.get_valid_overrides">
-<code class="sig-name descname">get_valid_overrides</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator.get_valid_overrides"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator.get_valid_overrides" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.OverridesValidator.get_valid_overrides">
+<span class="sig-name descname"><span class="pre">get_valid_overrides</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator.get_valid_overrides"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator.get_valid_overrides" title="Permalink to this definition"></a></dt>
 <dd><p>Get valid overrides.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The final list of settings validated.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.OverridesValidator.get_errors">
-<code class="sig-name descname">get_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator.get_errors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator.get_errors" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.OverridesValidator.get_errors">
+<span class="sig-name descname"><span class="pre">get_errors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator.get_errors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator.get_errors" title="Permalink to this definition"></a></dt>
 <dd><p>Get validation errors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>A list of validation errors to be displayed.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)">list</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.OverridesValidator._validate_overrides">
-<code class="sig-name descname">_validate_overrides</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator._validate_overrides"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator._validate_overrides" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.OverridesValidator._validate_overrides">
+<span class="sig-name descname"><span class="pre">_validate_overrides</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator._validate_overrides"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator._validate_overrides" title="Permalink to this definition"></a></dt>
 <dd><p>Validate the raw overrides.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.OverridesValidator._validate_bool">
-<code class="sig-name descname">_validate_bool</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator._validate_bool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator._validate_bool" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.OverridesValidator._validate_bool">
+<span class="sig-name descname"><span class="pre">_validate_bool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator._validate_bool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator._validate_bool" title="Permalink to this definition"></a></dt>
 <dd><p>Validate Boolean.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- The key value to validate.</p>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) -- The key value to validate.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>If it is a valid value for a Boolean.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.OverridesValidator._get_bool">
-<code class="sig-name descname">_get_bool</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator._get_bool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator._get_bool" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.OverridesValidator._get_bool">
+<span class="sig-name descname"><span class="pre">_get_bool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#OverridesValidator._get_bool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.OverridesValidator._get_bool" title="Permalink to this definition"></a></dt>
 <dd><p>Get a Boolean.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- The key value already validated.</p>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) -- The key value already validated.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The Boolean.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="HostsManagerApp.app_utils.HostsManager">
-<em class="property">class </em><code class="sig-prename descclassname">HostsManagerApp.app_utils.</code><code class="sig-name descname">HostsManager</code><span class="sig-paren">(</span><em class="sig-param">profile=''</em>, <em class="sig-param">dry_run=False</em>, <em class="sig-param">settings_overrides={}</em>, <em class="sig-param">logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">HostsManagerApp.app_utils.</span></span><span class="sig-name descname"><span class="pre">HostsManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dry_run</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings_overrides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>HostsManager class.</p>
-<dl class="attribute">
-<dt id="HostsManagerApp.app_utils.HostsManager.logger">
-<code class="sig-name descname">logger</code><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.logger" title="Permalink to this definition"></a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager.logger">
+<span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.logger" title="Permalink to this definition"></a></dt>
 <dd><p>See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)">object</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)">object</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -198,11 +196,11 @@ without exceptions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>profile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- The profile name.</p></li>
-<li><p><strong>dry_run</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Log an action without actually performing it.</p></li>
-<li><p><strong>settings_overrides</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a><em>, </em><em>optional</em>) -- A list of settings to override the default ones or the defined in the profile's
+<li><p><strong>profile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) -- The profile name.</p></li>
+<li><p><strong>dry_run</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) -- Log an action without actually performing it.</p></li>
+<li><p><strong>settings_overrides</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><em>dict</em></a><em>, </em><em>optional</em>) -- A list of settings to override the default ones or the defined in the profile's
 configuration file.</p></li>
-<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><em>object</em></a>) -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><em>object</em></a>) -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
@@ -212,20 +210,20 @@ configuration file.</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._log_shell_separator">
-<code class="sig-name descname">_log_shell_separator</code><span class="sig-paren">(</span><em class="sig-param">char='-'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._log_shell_separator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._log_shell_separator" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager._log_shell_separator">
+<span class="sig-name descname"><span class="pre">_log_shell_separator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">char</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._log_shell_separator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._log_shell_separator" title="Permalink to this definition"></a></dt>
 <dd><p>Summary</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>char</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) -- Character used to generate the &quot;CLI separator&quot;.</p>
+<dd class="field-odd"><p><strong>char</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) -- Character used to generate the &quot;CLI separator&quot;.</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._validate_sources">
-<code class="sig-name descname">_validate_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._validate_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._validate_sources" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager._validate_sources">
+<span class="sig-name descname"><span class="pre">_validate_sources</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._validate_sources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._validate_sources" title="Permalink to this definition"></a></dt>
 <dd><p>Validate sources.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -237,37 +235,37 @@ configuration file.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._expand_local_sources_data">
-<code class="sig-name descname">_expand_local_sources_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._expand_local_sources_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._expand_local_sources_data" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager._expand_local_sources_data">
+<span class="sig-name descname"><span class="pre">_expand_local_sources_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._expand_local_sources_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._expand_local_sources_data" title="Permalink to this definition"></a></dt>
 <dd><p>Add additional data to the sources.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._validate_option_keys">
-<code class="sig-name descname">_validate_option_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._validate_option_keys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._validate_option_keys" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager._validate_option_keys">
+<span class="sig-name descname"><span class="pre">_validate_option_keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._validate_option_keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._validate_option_keys" title="Permalink to this definition"></a></dt>
 <dd><p>Validate keys.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager.install_hosts_file">
-<code class="sig-name descname">install_hosts_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager.install_hosts_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.install_hosts_file" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager.install_hosts_file">
+<span class="sig-name descname"><span class="pre">install_hosts_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager.install_hosts_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.install_hosts_file" title="Permalink to this definition"></a></dt>
 <dd><p>Install the generated hosts file.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager.build_hosts_file">
-<code class="sig-name descname">build_hosts_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager.build_hosts_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.build_hosts_file" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager.build_hosts_file">
+<span class="sig-name descname"><span class="pre">build_hosts_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager.build_hosts_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.build_hosts_file" title="Permalink to this definition"></a></dt>
 <dd><p>Build the hosts file from the local sources.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager.update_all_sources">
-<code class="sig-name descname">update_all_sources</code><span class="sig-paren">(</span><em class="sig-param">force_update</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager.update_all_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.update_all_sources" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager.update_all_sources">
+<span class="sig-name descname"><span class="pre">update_all_sources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force_update</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager.update_all_sources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager.update_all_sources" title="Permalink to this definition"></a></dt>
 <dd><p>Update all host files, regardless of folder depth.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>force_update</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a>) -- Ignore source update frequency and update its file/s anyway.</p>
+<dd class="field-odd"><p><strong>force_update</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) -- Ignore source update frequency and update its file/s anyway.</p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><p><a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><strong>exceptions.KeyboardInterruption</strong></a> -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>&gt;.</p>
@@ -275,37 +273,37 @@ configuration file.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._should_update_source">
-<code class="sig-name descname">_should_update_source</code><span class="sig-paren">(</span><em class="sig-param">source</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._should_update_source"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._should_update_source" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager._should_update_source">
+<span class="sig-name descname"><span class="pre">_should_update_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._should_update_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._should_update_source" title="Permalink to this definition"></a></dt>
 <dd><p>Check if source should be updated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>source</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) -- The source to check.</p>
+<dd class="field-odd"><p><strong>source</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><em>dict</em></a>) -- The source to check.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>If the source needs to be updated depending on its configured specified
 update frequency.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._install_hosts_file">
-<code class="sig-name descname">_install_hosts_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._install_hosts_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._install_hosts_file" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager._install_hosts_file">
+<span class="sig-name descname"><span class="pre">_install_hosts_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._install_hosts_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._install_hosts_file" title="Permalink to this definition"></a></dt>
 <dd><p>Copy the newly-created hosts file into its correct location on the OS.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._download_source">
-<code class="sig-name descname">_download_source</code><span class="sig-paren">(</span><em class="sig-param">source</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._download_source"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._download_source" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager._download_source">
+<span class="sig-name descname"><span class="pre">_download_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._download_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._download_source" title="Permalink to this definition"></a></dt>
 <dd><p>Download the source files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>source</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) -- The source data.</p>
+<dd class="field-odd"><p><strong>source</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><em>dict</em></a>) -- The source data.</p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><p><a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><strong>exceptions.KeyboardInterruption</strong></a> -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.exceptions.html#python_modules.python_utils.exceptions.KeyboardInterruption" title="python_modules.python_utils.exceptions.KeyboardInterruption"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">exceptions.KeyboardInterruption</span></code></a>&gt;.</p>
@@ -313,9 +311,9 @@ update frequency.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._handle_compressed_sources">
-<code class="sig-name descname">_handle_compressed_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._handle_compressed_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._handle_compressed_sources" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager._handle_compressed_sources">
+<span class="sig-name descname"><span class="pre">_handle_compressed_sources</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._handle_compressed_sources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._handle_compressed_sources" title="Permalink to this definition"></a></dt>
 <dd><p>Handle the downloaded sources with compressed files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -324,36 +322,36 @@ update frequency.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._write_opening_header">
-<code class="sig-name descname">_write_opening_header</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._write_opening_header"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._write_opening_header" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager._write_opening_header">
+<span class="sig-name descname"><span class="pre">_write_opening_header</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._write_opening_header"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._write_opening_header" title="Permalink to this definition"></a></dt>
 <dd><p>Write the header information into the newly-created hosts file.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._remove_old_hosts_file">
-<code class="sig-name descname">_remove_old_hosts_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._remove_old_hosts_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._remove_old_hosts_file" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager._remove_old_hosts_file">
+<span class="sig-name descname"><span class="pre">_remove_old_hosts_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._remove_old_hosts_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._remove_old_hosts_file" title="Permalink to this definition"></a></dt>
 <dd><p>Remove the old generated hosts file.</p>
 <p>This is a hotfix because merging with an already existing hosts file leads
 to artifacts and duplicates.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._ensure_paths">
-<code class="sig-name descname">_ensure_paths</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._ensure_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._ensure_paths" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager._ensure_paths">
+<span class="sig-name descname"><span class="pre">_ensure_paths</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._ensure_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._ensure_paths" title="Permalink to this definition"></a></dt>
 <dd><p>Ensure the existence of some folders inside the profile folder.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._create_temporary_files">
-<code class="sig-name descname">_create_temporary_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._create_temporary_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._create_temporary_files" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager._create_temporary_files">
+<span class="sig-name descname"><span class="pre">_create_temporary_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._create_temporary_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._create_temporary_files" title="Permalink to this definition"></a></dt>
 <dd><p>Create temporary files.</p>
 <p>Initialize the files in which all source files will be merged for later pruning.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._populate_exclusions_list">
-<code class="sig-name descname">_populate_exclusions_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._populate_exclusions_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._populate_exclusions_list" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager._populate_exclusions_list">
+<span class="sig-name descname"><span class="pre">_populate_exclusions_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._populate_exclusions_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._populate_exclusions_list" title="Permalink to this definition"></a></dt>
 <dd><p>Populate exclusions list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -362,9 +360,9 @@ to artifacts and duplicates.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._populate_final_file">
-<code class="sig-name descname">_populate_final_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._populate_final_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._populate_final_file" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager._populate_final_file">
+<span class="sig-name descname"><span class="pre">_populate_final_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._populate_final_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._populate_final_file" title="Permalink to this definition"></a></dt>
 <dd><p>Populate the final hosts file.</p>
 <p>Remove duplicates and remove hosts that we are excluding.</p>
 <p>We check for duplicate host names as well as remove any host names that
@@ -376,38 +374,38 @@ have been explicitly excluded by the user.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="HostsManagerApp.app_utils.HostsManager._normalize_rule">
-<code class="sig-name descname">_normalize_rule</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._normalize_rule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._normalize_rule" title="Permalink to this definition"></a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.HostsManager._normalize_rule">
+<span class="sig-name descname"><span class="pre">_normalize_rule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#HostsManager._normalize_rule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.HostsManager._normalize_rule" title="Permalink to this definition"></a></dt>
 <dd><p>Standardize and format the rule string provided.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>line</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- The line to be standardized.</p>
+<dd class="field-odd"><p><strong>line</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) -- The line to be standardized.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The rules elements.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.9)">tuple</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)">tuple</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="function">
-<dt id="HostsManagerApp.app_utils.is_valid_host">
-<code class="sig-prename descclassname">HostsManagerApp.app_utils.</code><code class="sig-name descname">is_valid_host</code><span class="sig-paren">(</span><em class="sig-param">host</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#is_valid_host"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.is_valid_host" title="Permalink to this definition"></a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.is_valid_host">
+<span class="sig-prename descclassname"><span class="pre">HostsManagerApp.app_utils.</span></span><span class="sig-name descname"><span class="pre">is_valid_host</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#is_valid_host"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.is_valid_host" title="Permalink to this definition"></a></dt>
 <dd><p>IDN compatible domain validation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>host</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- The host name to check.</p>
+<dd class="field-odd"><p><strong>host</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) -- The host name to check.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Whether the host name is valid or not.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">bool</a></p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -416,66 +414,66 @@ have been explicitly excluded by the user.</p>
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="HostsManagerApp.app_utils.is_valid_ip">
-<code class="sig-prename descclassname">HostsManagerApp.app_utils.</code><code class="sig-name descname">is_valid_ip</code><span class="sig-paren">(</span><em class="sig-param">address</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#is_valid_ip"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.is_valid_ip" title="Permalink to this definition"></a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.is_valid_ip">
+<span class="sig-prename descclassname"><span class="pre">HostsManagerApp.app_utils.</span></span><span class="sig-name descname"><span class="pre">is_valid_ip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#is_valid_ip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.is_valid_ip" title="Permalink to this definition"></a></dt>
 <dd><p>Validate IP address (IPv4 or IPv6).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- The IP address to validate.</p>
+<dd class="field-odd"><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) -- The IP address to validate.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>If it is a valid IP address or not.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="HostsManagerApp.app_utils.is_valid_integer">
-<code class="sig-prename descclassname">HostsManagerApp.app_utils.</code><code class="sig-name descname">is_valid_integer</code><span class="sig-paren">(</span><em class="sig-param">integer</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#is_valid_integer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.is_valid_integer" title="Permalink to this definition"></a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.is_valid_integer">
+<span class="sig-prename descclassname"><span class="pre">HostsManagerApp.app_utils.</span></span><span class="sig-name descname"><span class="pre">is_valid_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">integer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#is_valid_integer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.is_valid_integer" title="Permalink to this definition"></a></dt>
 <dd><p>Validate integer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>integer</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) -- The string to validate.</p>
+<dd class="field-odd"><p><strong>integer</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) -- The string to validate.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>If the value is a valid integer or not.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="HostsManagerApp.app_utils.flush_dns_cache">
-<code class="sig-prename descclassname">HostsManagerApp.app_utils.</code><code class="sig-name descname">flush_dns_cache</code><span class="sig-paren">(</span><em class="sig-param">dry_run=False</em>, <em class="sig-param">logger=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#flush_dns_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.flush_dns_cache" title="Permalink to this definition"></a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.flush_dns_cache">
+<span class="sig-prename descclassname"><span class="pre">HostsManagerApp.app_utils.</span></span><span class="sig-name descname"><span class="pre">flush_dns_cache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dry_run</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#flush_dns_cache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.flush_dns_cache" title="Permalink to this definition"></a></dt>
 <dd><p>Flush the DNS cache.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dry_run</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>optional</em>) -- Log an action without actually performing it.</p></li>
-<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><em>object</em></a>) -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
+<li><p><strong>dry_run</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) -- Log an action without actually performing it.</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><em>object</em></a>) -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="HostsManagerApp.app_utils.new_profile_generation">
-<code class="sig-prename descclassname">HostsManagerApp.app_utils.</code><code class="sig-name descname">new_profile_generation</code><span class="sig-paren">(</span><em class="sig-param">logger</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#new_profile_generation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HostsManagerApp.app_utils.new_profile_generation" title="Permalink to this definition"></a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="HostsManagerApp.app_utils.new_profile_generation">
+<span class="sig-prename descclassname"><span class="pre">HostsManagerApp.app_utils.</span></span><span class="sig-name descname"><span class="pre">new_profile_generation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/HostsManagerApp/app_utils.html#new_profile_generation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HostsManagerApp.app_utils.new_profile_generation" title="Permalink to this definition"></a></dt>
 <dd><p>Generate a new profile.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><em>object</em></a>) -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
+<dd class="field-odd"><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><em>object</em></a>) -- See &lt;class <a class="reference internal" href="../python_modules/python_modules.python_utils.log_system.html#python_modules.python_utils.log_system.LogSystem" title="python_modules.python_utils.log_system.LogSystem"><code class="xref any py py-class docutils literal notranslate"><span class="pre">LogSystem</span></code></a>&gt;.</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -488,10 +486,13 @@ have been explicitly excluded by the user.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2021, Odyseus.</p>
+    <p>&#169; Copyright 2016-2022, Odyseus.</p>
   </div>
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://gitlab.com/Odyseus/sphinx_rtd_theme_mod">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
 
@@ -509,7 +510,7 @@ have been explicitly excluded by the user.</p>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
+  </script> 
 
 </body>
 </html>

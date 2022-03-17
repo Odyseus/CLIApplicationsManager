@@ -20,13 +20,18 @@ import sys
 
 from datetime import datetime
 from runpy import run_path
-from sphinx import version_info as sphinx_version
 
 root_folder = os.path.realpath(os.path.abspath(os.path.join(
     os.path.normpath(os.path.join(os.path.dirname(__file__), *([os.pardir] * 2))))))
 
 # Insert the root application to sys.path.
 sys.path.insert(0, os.path.join(root_folder, "AppData"))
+# NOTE: Up to Sphinx 1.8.x, I didn't need to add this to sys.path.
+# Using Sphinx 4.4.0 without this, the file at
+# AppData/docs_sources/includes/0-thirdparty_docs.d/polib/api.rst will not be
+# rendered because it Sphinx can't find the polib modules, which is right f*cking there
+# inside the python_utils folder!!!
+sys.path.insert(0, os.path.join(root_folder, "AppData", "python_modules", "python_utils"))
 
 from python_modules.app_utils import get_all_apps
 
@@ -107,7 +112,6 @@ if os.path.isfile(abbreviations_path):
     with open(abbreviations_path, "r") as abbr_file:
         rst_epilog = abbr_file.read()
 
-
 # ##############################################################################
 # ########################### Options for HTML output ##########################
 # ##############################################################################
@@ -122,11 +126,8 @@ html_favicon = "images/python-logo.svg"
 
 html_experimental_html5_writer = True
 
-if sphinx_version >= (3, 5, 0):
-    html_permalinks = True
-    html_permalinks_icon = "\uf0c1"
-else:
-    html_add_permalinks = "\uf0c1"
+html_permalinks = True
+html_permalinks_icon = "\uf0c1"
 
 html_copy_source = True
 

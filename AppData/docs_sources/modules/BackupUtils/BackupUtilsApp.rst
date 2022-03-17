@@ -10,6 +10,7 @@ Submodules
 ----------
 
 .. toctree::
+   :maxdepth: 4
 
    BackupUtilsApp.app_utils
    BackupUtilsApp.backup

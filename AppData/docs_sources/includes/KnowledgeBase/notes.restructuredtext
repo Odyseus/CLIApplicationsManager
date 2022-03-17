@@ -30,7 +30,7 @@ I use Pandoc to convert HTML articles that I find on the net into Markdown.
 
 - Markdown files are easier to create/maintain/read than HTML files.
 - Some of the articles that I find are in HTML 4.1 or older. Converting them into Markdown is infinitely easier than to convert them into HTML5.
-- I have found some HTML documents without closing HTML tags (for example, they use <p> tags without closing them with the </p> tag) (the people responsible for allowing this atrocity should be castrated!!!).
+- I have found some HTML documents without closing HTML tags (for example, they use ``<p>`` tags without closing them with the ``</p>`` tag) (the people responsible for allowing this atrocity should be castrated!!!).
 
     + These documents cannot be prettified with any HTML prettifier in existence!!!
     + Pandoc cannot convert them into anything!!! At least not the HTML documents with vast amount of content.
@@ -43,13 +43,7 @@ I use Pandoc to convert HTML articles that I find on the net into Markdown.
 Bootstrap JavaScript/CSS framework
 ----------------------------------
 
-- :text-line-through:`Using Bootstrap 4 (beta 2 as of now) built from source to enable the options \`\`$enable-shadows\`\` and \`\`$enable-gradients\`\` (\*scss/\_variables.scss\*) to hopefully get rid of the repugnant flat look of the default theme. Keep looking for a decent theme replacement.`
-
-    + I had to get rid of Bootstrap 3 because I couldn't implement the layout that I wanted. The time that I spent moving my HTML from Bootstrap 3 to 4 was infinitely less than the time I wasted trying to make the desired layout to work on Bootstrap 3.
-    + Forgotten the idea of building Bootstrap from source. Having to download hundreds of megabytes to build this thing is just retarded.
-    + I had to succumb to using a third-party Bootstrap 4 theme because I can't tolerate the disgusting pastel colors used by Bootstrap 4 default theme.
-
-- Download Boostrap 4 `from its website <https://getbootstrap.com/docs/4.1/getting-started/download/>`__.
+- Using Boostrap 5 downloaded `from its website <https://getbootstrap.com/>`__.
 - Files used::
 
     /dist/js/bootstrap.bundle.js
@@ -63,11 +57,7 @@ Bootstrap JavaScript/CSS framework
         - ``\*.css.map`` files are included to |STFU| browser console warnings. ¬¬
         - Non-minified files are included in case I want to see the source.
 
-- Using my own `Boostrap 4 theme <https://gitlab.com/Odyseus/flatly_bootstrap_theme>`__ based on `Bootswatch's <https://bootswatch.com>`__'s `Flatly theme <https://bootswatch.com/flatly>`__.
-- Files used::
-
-    /dist/flatly_bootstrap_theme.css
-    /dist/flatly_bootstrap_theme.min.css
+- Using my own Boostrap 5 theme built with `Bootstrap Themes Generator <https://gitlab.com/PythonCLIApplications/BootstrapThemesGenerator>`__ and based on `Bootswatch's <https://bootswatch.com>`__ `Flatly theme <https://bootswatch.com/flatly>`__. Only because the colors of the default Bootstrap theme are abhorrent.
 
 DataTables JavaScript library
 -----------------------------
@@ -76,7 +66,7 @@ DataTables JavaScript library
 
     + **Styling framework:** Bootstrap
     + **Select package:** DataTables
-    + **Extensions:** FixedHeader
+    + **Extensions:** None
     + **Download method:** Download > Minify > Concatenate
 
 - Files used::
@@ -86,9 +76,9 @@ DataTables JavaScript library
     /DataTables/datatables.min.css
     /DataTables/datatables.min.js
 
-.. note::
+    .. note::
 
-    - Non-minified files are included in case I want to see the source.
+        - Non-minified files are included in case I want to see the source.
 
 jQuery JavaScript library
 -------------------------
@@ -104,12 +94,12 @@ jQuery JavaScript library
 Nerd Fonts glyphs icons
 -----------------------
 
-- This is really frustrating!!! Since Bootstrap removed the font icons from the framework, I had to find a substitute. I found `Nerd Fonts <http://nerdfonts.com/>`__ (it's kind of an all-in-one glyphs font with almost 4000 icons). NOWERE ON THE INTERNET IS A DIRECT DOWNLOAD OF THIS FREAKING THING!!! So:
+- Since Bootstrap removed the font icons from the framework, I had to find a substitute. I found `Nerd Fonts <http://nerdfonts.com/>`__ (it's kind of an all-in-one glyphs font with almost 4000 icons).
 
-    + I went to `Nerd Fonts's site <http://nerdfonts.com/>`__
-    + Looked at the site's source for `its style sheet <http://nerdfonts.com/combo.css>`__.
-    + Extracted the link to the font `and downloaded it <http://nerdfonts.com/fonts/Symbols-2048-em Nerd Font Complete.ttf>`__.
-    + Then went to `their repository <https://github.com/ryanoasis/nerd-fonts/tree/master/css>`__ and downloaded the generated CSS files and renamed them to ``nerdicons.css`` and ``nerdicons.min.css``.
+    + The main `Nerd Fonts's site <http://nerdfonts.com/>`__
+    + Download the font files from `the fonts site repository <https://github.com/ryanoasis/nerd-fonts/tree/gh-pages/assets/fonts>`__ and rename to ``nerdicons.css`` and ``nerdicons.min.css``.
+    + Download the style sheets from `the fonts repository <https://github.com/ryanoasis/nerd-fonts/tree/master/css>`__ and rename to ``nerdicons.css`` and ``nerdicons.min.css``.
+    + Modify both style sheets to so the font-face definition uses the three available fonts.
     + **Moving on...**
 
 
@@ -117,22 +107,25 @@ Highlight.js syntax highlighter JavaScript library
 --------------------------------------------------
 
 - This is the library that I use to highlight the syntax of code blocks. Go to `its website <https://highlightjs.org/download/>`__, uncheck some of the languages selected by default, check some of the one unselected and download the zipped file. This torture is infinitely less painful than using Node.js to build the library from source.
+- Clone `its repository <https://github.com/highlightjs/highlight.js>`__ and build from source.
+
+    .. code-block:: shell
+
+        git clone https://github.com/highlightjs/highlight.js.git
+        cd highlight.js/
+        npm install
+        nodejs tools/build.js -t browser --no-esm asciidoc awk bash c cmake cpp css dart diff d glsl ini javascript json lua makefile markdown ocaml php php-template plaintext properties python python-repl scss shell xml yaml
+
 - Files used::
 
-    /highlight.pack.js
-    /styles/xcode.css
+    /highlight.js/build/demo/styles/xcode.css
+    /highlight.js/build/highlight.js
+    /highlight.js/build/highlight.min.js
 
-.. contextual-admonition::
-    :context: warning
-    :title: Warning
+    .. note::
 
-    Do not select all supported languages or a great amount of them. It greatly slows down page load times when highlighting pages with a lot of ``code`` blocks.
-
-.. note::
-
-    - ``highlight.pack.js`` file is already minified.
-    - Rename ``xcode.css`` to ``highlight.css`` and minify it.
-
+        - Rename ``xcode.css`` to ``highlight.css`` and minify it.
+        - Non-minified files are included in case I want to see the source.
 
 ``mistune`` Python module
 -------------------------

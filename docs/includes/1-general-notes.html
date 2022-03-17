@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>General development notes &mdash; Python CLI Applications Documentations  documentation</title><link rel="stylesheet" href="../_static/css/theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/python-logo.svg"/>
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+  <title>General development notes &mdash; Python CLI Applications Documentations  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/python-logo.svg"/>
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -21,7 +24,7 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: False" >
             <a href="../index.html" class="icon icon-home"> Python CLI Applications Documentations
           </a>
 <div role="search">
@@ -42,16 +45,21 @@
 <li class="toctree-l2"><a class="reference internal" href="#documentation-generation">Documentation generation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#documentation-basic-guidelines">Documentation basic guidelines</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#restructuredtext-section-headers">ReStructuredText section headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#system-executable-generation">System executable generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installing-dependencies">Installing dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#html-pages-a-k-a-web-apps"><abbr title="Hypertext Markup Language">HTML</abbr> pages (<abbr title="Also Known As">a.k.a.</abbr> web apps)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bootstrap-framework">Bootstrap framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cautionary-tales">Cautionary tales</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BackupUtils/index.html">Backup Utils' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HostsManager/index.html">Hosts Manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
@@ -62,18 +70,14 @@
 <li class="toctree-l1"><a class="reference internal" href="UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-thirdparty_docs.d/index.html">Self hosted third-party module's documentations</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: False" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Python CLI Applications Documentations</a>
       </nav>
@@ -96,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="general-development-notes">
+  <section id="general-development-notes">
 <h1>General development notes<a class="headerlink" href="#general-development-notes" title="Permalink to this headline"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#docopt-usage-notes-reference"><span class="std std-ref">docopt module usage notes</span></a></p></li>
@@ -104,16 +108,17 @@
 <li><p><a class="reference internal" href="#docs-generation-reference"><span class="std std-ref">Documentation generation</span></a></p></li>
 <li><p><a class="reference internal" href="#sys-exec-generation-reference"><span class="std std-ref">System executable generation</span></a></p></li>
 <li><p><a class="reference internal" href="#installing-dependencies-reference"><span class="std std-ref">Installing dependencies</span></a></p></li>
+<li><p><a class="reference internal" href="#web-apps-reference"><span class="std std-ref">HTML pages (a.k.a. web apps)</span></a></p></li>
 </ul>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>All commands described in this page should be executed from the root folder of the main application (at the same level as the <strong>AppData</strong> folder).</p>
 </div>
-<div class="section" id="docopt-module-usage-notes">
+<section id="docopt-module-usage-notes">
 <span id="docopt-usage-notes-reference"></span><h2>docopt module usage notes<a class="headerlink" href="#docopt-module-usage-notes" title="Permalink to this headline"></a></h2>
 <p>The <a class="reference external" href="https://github.com/docopt/docopt">docopt Python module</a> is used as command line arguments parser for all <abbr title="Command Line Interface">CLI</abbr> applications.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">docopt_doc</span></code> variable defined in each <strong>cli.py</strong> file for each application is used to store/define the doc string that will be passed to <code class="docutils literal notranslate"><span class="pre">docopt</span></code> as the <strong>doc</strong> argument. This was done because, if I use a doc string that complies with Sphinx/RST, <code class="docutils literal notranslate"><span class="pre">docopt</span></code> will not parse it correctly. If I use a doc string that complies with <code class="docutils literal notranslate"><span class="pre">docopt</span></code>, Sphinx doesn't SHUT UP about incorrect indentations and the likes. So, I store the <em>``docopt`` document</em> in a variable. This will SHUT UP Sphinx because it <em>cannot see</em> the doc string. The variable then is explicitly passed to <code class="docutils literal notranslate"><span class="pre">docopt</span></code> as the <strong>doc</strong> argument. Moving the on!!!</p>
-<div class="section" id="docopt-warnings-workarounds-known-issues">
+<section id="docopt-warnings-workarounds-known-issues">
 <h3>docopt warnings/workarounds/known issues<a class="headerlink" href="#docopt-warnings-workarounds-known-issues" title="Permalink to this headline"></a></h3>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
@@ -150,26 +155,26 @@
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="new-application-generation">
+</section>
+</section>
+<section id="new-application-generation">
 <span id="application-generation-reference"></span><h2>New application generation<a class="headerlink" href="#new-application-generation" title="Permalink to this headline"></a></h2>
 <p>A new <em>skeleton</em> application can be created to facilitate the addition of new applications.</p>
 <ul class="simple">
 <li><p>Command: <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">gen_base_app</span></code></p></li>
 </ul>
-</div>
-<div class="section" id="documentation-generation">
+</section>
+<section id="documentation-generation">
 <span id="docs-generation-reference"></span><h2>Documentation generation<a class="headerlink" href="#documentation-generation" title="Permalink to this headline"></a></h2>
 <p>This documentation is a &quot;unified&quot; documentation for all Python applications. The build documentation process needs Sphinx 1.6.5+ to be installed on the system.</p>
 <ul class="simple">
 <li><p>Command: <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">gen_docs</span></code></p></li>
 </ul>
-<div class="section" id="documentation-basic-guidelines">
+<section id="documentation-basic-guidelines">
 <h3>Documentation basic guidelines<a class="headerlink" href="#documentation-basic-guidelines" title="Permalink to this headline"></a></h3>
 <p>To avoid headaches, follow these basic guidelines.</p>
-</div>
-<div class="section" id="restructuredtext-section-headers">
+</section>
+<section id="restructuredtext-section-headers">
 <h3>ReStructuredText section headers<a class="headerlink" href="#restructuredtext-section-headers" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p><strong>#</strong>: With overline, for parts.</p></li>
@@ -179,9 +184,18 @@
 <li><p><strong>^</strong>: For subsubsections.</p></li>
 <li><p><strong>&quot;</strong>: For paragraphs.</p></li>
 </ul>
+</section>
+<section id="troubleshooting">
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline"></a></h3>
+<p>The following error might arise when building documentations.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Configuration</span> <span class="n">error</span><span class="p">:</span>
+<span class="n">The</span> <span class="n">configuration</span> <span class="n">file</span> <span class="p">(</span><span class="ow">or</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">modules</span> <span class="n">it</span> <span class="n">imports</span><span class="p">)</span> <span class="n">called</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
 </div>
-</div>
-<div class="section" id="system-executable-generation">
+<p>Using my f*cking magic ball I devined that the <code class="docutils literal notranslate"><span class="pre">eval_config_file</span></code> method (found in <code class="docutils literal notranslate"><span class="pre">sphinx.config</span></code> module) eats the exception to display the useless message. Except for <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#SystemExit" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SystemExit</span></code></a>, all other exceptions raised there will display an actually usefull message.</p>
+</section>
+</section>
+<section id="system-executable-generation">
 <span id="sys-exec-generation-reference"></span><h2>System executable generation<a class="headerlink" href="#system-executable-generation" title="Permalink to this headline"></a></h2>
 <p>To avoid being forced to execute all applications from their root folders, a system executable for each application can be generated and &quot;installed&quot;. These system executables will be &quot;installed&quot; into <code class="docutils literal notranslate"><span class="pre">~/.local/bin</span></code>. Additionally, bash completions for these system executables can be created. The function responsible for the creation of these files will also offer to add a mechanism to auto-load these bash completions in case the system isn't configured to do so.</p>
 <ul class="simple">
@@ -192,8 +206,8 @@
 <p class="admonition-title">Note</p>
 <p>I was forced to change from using Bash scripts as executables to Python scripts. Somehow, the arguments passed from a Bash script to a Python application were screwed up. Mainly, docopt parsed the arguments wrongly. Using the <code class="docutils literal notranslate"><span class="pre">os.execv()</span></code> function from a Python script works wonderfully and without any negative side effects (yet).</p>
 </div>
-</div>
-<div class="section" id="installing-dependencies">
+</section>
+<section id="installing-dependencies">
 <span id="installing-dependencies-reference"></span><h2>Installing dependencies<a class="headerlink" href="#installing-dependencies" title="Permalink to this headline"></a></h2>
 <p>All applications use one or more third party Python modules. Some of these third party modules are directly included with the main python application (<strong>AppData/python_modules</strong> folder), but some others need to be installed on the system.</p>
 <ul class="simple">
@@ -201,10 +215,69 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The third party modules that are directly included in the main application are modules that doesn't have dependencies (they only use modules from the Python standard library). The third party modules that need to be installed in the system are modules with one or more dependencies.</p>
+<p>The third party modules that are directly included in the main application are modules that doesn't have dependencies (they only use modules from the Python standard library). The third party modules that need to be installed in the environment are modules with one or more dependencies.</p>
 </div>
-</div>
-</div>
+</section>
+<section id="html-pages-a-k-a-web-apps">
+<span id="web-apps-reference"></span><h2><abbr title="Hypertext Markup Language">HTML</abbr> pages (<abbr title="Also Known As">a.k.a.</abbr> web apps)<a class="headerlink" href="#html-pages-a-k-a-web-apps" title="Permalink to this headline"></a></h2>
+<section id="bootstrap-framework">
+<h3>Bootstrap framework<a class="headerlink" href="#bootstrap-framework" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>Tooltips: I like Bootstrap tooltips because they are semi-permanent; and I hate them for the exact same reason.</p>
+<blockquote>
+<div><ul>
+<li><p>Pros</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>When the mouse cursor is moved over an element with a Bootstrap tooltip, the tooltip will stay visible, while a native tooltip will appear and immediately disappear.</p></li>
+<li><p>Their visibility triggers on <code class="docutils literal notranslate"><span class="pre">hover</span></code> and <code class="docutils literal notranslate"><span class="pre">focus</span></code> by default.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Cons</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>One being accustomed for tooltips to behave somewhat in a <em>fleeting way</em>, Bootstrap tooltips feel kind of invasive. This falls into the category <em>better to have it and not need it than to need it and not have it</em> because otherwise tooltips are useless when not using a mouse.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="cautionary-tales">
+<h3>Cautionary tales<a class="headerlink" href="#cautionary-tales" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p><em>Interesting</em> fact. If the Firefox setting called <code class="docutils literal notranslate"><span class="pre">browser.zoom.full</span></code> is set to <code class="docutils literal notranslate"><span class="pre">false</span></code> the zooming of the page will not trigger breakpoint changes.</p></li>
+<li><p>Another <em>interesting</em> fact. With the Firefox preference <code class="docutils literal notranslate"><span class="pre">privacy.resistFingerprinting</span></code> set to true animations using <code class="docutils literal notranslate"><span class="pre">window.requestAnimationFrame</span></code> are jerky. Retarded, right!?!?!?!</p></li>
+<li><p>And the <em>interesting</em> things won't stop. Having the preference <code class="docutils literal notranslate"><span class="pre">network.http.referer.XOriginPolicy</span></code> set to 1 in Waterfox Classic renders the <code class="docutils literal notranslate"><span class="pre">fetch</span></code> API useless in all my <em>web apps.</em>.</p></li>
+<li><p>When the Firefox developer tools is open, a search input doesn't focus on page load. It took me hours to discover this stupid behavior!!! (&amp;%$$)</p></li>
+<li><p>Input search nightmare!! I wanted something simple. To store search terms when pressing <kbd class="kbd docutils literal notranslate">Enter</kbd> without the input search being cleared and without submitting the form. Simple, right?!? Nothing is ever so with shite <em>designed</em> by f*cking web developers!!! The way that I made it work is as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">action=&quot;javascript:void(0)&quot;</span></code> attribute to the form.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">name=&quot;input-id&quot;</span></code> attribute to the input of type search.</p></li>
+<li><p>On the <code class="docutils literal notranslate"><span class="pre">keypress</span></code> event for the input I prevent default and return false when pressing the <kbd class="kbd docutils literal notranslate">Enter</kbd> key. In the middle of these calls I call the form's <code class="docutils literal notranslate"><span class="pre">submit</span></code> method.</p></li>
+<li><p>Why all of this works (in Firefox based browsers only, because in Shitemium based browsers nothing f*cking works!!!), and which part of these changes actually made it work, I have no idea. Like with everything derived from <em>web technologies</em>, I will keep <em>enjoying</em> it while it last. It's pointless to expect any kind of stability or congruency from any of these <em>technologies</em>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Reasons (other than them being shite) for autocomplete not working on Shitemium based browsers:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The input isn't the first child of the form. Typical Google shite, to tell everybody how things should be designed!!!</p></li>
+<li><p>Autocomplete is disabled when not using SSL in Shitemium based browsers. Typical web developers shite mentality, EVERYTHING in the f*cking cloud! Local HTML files can't be viewed in a f*cking HTML viewer!!! And SSL forced on locally hosted sites without internet access that DO NOT handle ANY data that needs to be securely handled!!!</p></li>
+<li><p>Lastly, Google's design decision that the current behavior is the desired behavior by ALL Chrome users. This is the most likely problem. 90% of Chrome's users are morons that installed the browser without even knowing while blindly clicking Next in a wizard that they didn't even knew WTF they were installing, like every single f*cking Windows user!!!</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Having the web developers tools open will make a <a class="reference external" href="http://www.datatables.net/">DataTables</a> table render very slowly in Firefox based browsers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">document.querySelector</span></code> and <code class="docutils literal notranslate"><span class="pre">document.querySelectorAll</span></code> are quite <strong>SLOW</strong>, thus try to use <code class="docutils literal notranslate"><span class="pre">document.getElementById</span></code>, <code class="docutils literal notranslate"><span class="pre">document.getElementsByClassName</span></code> or <code class="docutils literal notranslate"><span class="pre">document.getElementsByTagName</span></code> for a performance bonus.</p></li>
+</ul>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -217,10 +290,13 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2021, Odyseus.</p>
+    <p>&#169; Copyright 2016-2022, Odyseus.</p>
   </div>
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://gitlab.com/Odyseus/sphinx_rtd_theme_mod">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
 
@@ -238,7 +314,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
+  </script> 
 
 </body>
 </html>

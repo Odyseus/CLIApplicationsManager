@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>polib &mdash; Python CLI Applications Documentations  documentation</title><link rel="stylesheet" href="../_static/css/theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/python-logo.svg"/>
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+  <title>polib &mdash; Python CLI Applications Documentations  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/python-logo.svg"/>
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -19,7 +21,7 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: False" >
             <a href="../index.html" class="icon icon-home"> Python CLI Applications Documentations
           </a>
 <div role="search">
@@ -35,7 +37,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../includes/CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../includes/BackupUtils/index.html">Backup Utils' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../includes/BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../includes/ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../includes/FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../includes/HostsManager/index.html">Hosts Manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../includes/JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
@@ -46,18 +47,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../includes/UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../includes/0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../includes/0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../includes/0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../includes/0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../includes/0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../includes/0-thirdparty_docs.d/index.html">Self hosted third-party module's documentations</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: False" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Python CLI Applications Documentations</a>
       </nav>
@@ -78,10 +75,18 @@
            <div itemprop="articleBody">
              
   <h1>Source code for polib</h1><div class="highlight"><pre>
-<span></span><span class="c1"># -* coding: utf-8 -*-</span>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1">#</span>
 <span class="c1"># License: MIT (see LICENSE file provided)</span>
 <span class="c1"># vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4:</span>
+<span class="c1">#</span>
+<span class="c1"># README:</span>
+<span class="c1"># See &quot;FIXME 1&quot; and &quot;FIXME 2&quot;.</span>
+<span class="c1"># Since I use the polib library in situations where it is not possible to find</span>
+<span class="c1"># plural strings, I really don&#39;t care if that part of this module code is broken.</span>
+<span class="c1"># The original author tried to fix the situation, but I don&#39;t see how what he</span>
+<span class="c1"># did fixes anything.</span>
+<span class="c1"># MOVING ON...</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">**polib** allows you to manipulate, create, modify gettext files (pot, po and</span>
@@ -94,22 +99,12 @@
 
 <span class="kn">import</span> <span class="nn">array</span>
 <span class="kn">import</span> <span class="nn">codecs</span>
+<span class="kn">import</span> <span class="nn">io</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">struct</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">textwrap</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">io</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="c1"># replacement of io.open() for python &lt; 2.6</span>
-    <span class="c1"># we use codecs instead</span>
-    <span class="k">class</span> <span class="nc">io</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-        <span class="nd">@staticmethod</span>
-        <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">encoding</span><span class="p">)</span>
-
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;David Jean Louis &lt;izimobil@gmail.com&gt;&#39;</span>
 <span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.1.0&#39;</span>
@@ -120,30 +115,9 @@
 <span class="c1"># the default encoding to use when encoding cannot be detected</span>
 <span class="n">default_encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span>
 
-<span class="c1"># python 2/3 compatibility helpers {{{</span>
 
-
-<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
-    <span class="n">PY3</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">text_type</span> <span class="o">=</span> <span class="n">unicode</span>
-
-    <span class="k">def</span> <span class="nf">b</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">s</span>
-
-    <span class="k">def</span> <span class="nf">u</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">unicode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;unicode_escape&quot;</span><span class="p">)</span>
-
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">PY3</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="n">text_type</span> <span class="o">=</span> <span class="nb">str</span>
-
-    <span class="k">def</span> <span class="nf">b</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">u</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">s</span>
-<span class="c1"># }}}</span>
-<span class="c1"># _pofile_or_mofile {{{</span>
+<span class="k">def</span> <span class="nf">b</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_pofile_or_mofile</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -167,8 +141,6 @@
     <span class="n">instance</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">()</span>
     <span class="n">instance</span><span class="o">.</span><span class="n">wrapwidth</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;wrapwidth&#39;</span><span class="p">,</span> <span class="mi">78</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">instance</span>
-<span class="c1"># }}}</span>
-<span class="c1"># _is_file {{{</span>
 
 
 <span class="k">def</span> <span class="nf">_is_file</span><span class="p">(</span><span class="n">filename_or_contents</span><span class="p">):</span>
@@ -185,8 +157,6 @@
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename_or_contents</span><span class="p">)</span>
     <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">UnicodeEncodeError</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">False</span>
-<span class="c1"># }}}</span>
-<span class="c1"># function pofile() {{{</span>
 
 
 <div class="viewcode-block" id="pofile"><a class="viewcode-back" href="../includes/0-thirdparty_docs.d/polib/api.html#polib.pofile">[docs]</a><span class="k">def</span> <span class="nf">pofile</span><span class="p">(</span><span class="n">pofile</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -217,8 +187,6 @@
 <span class="sd">        instance).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">_pofile_or_mofile</span><span class="p">(</span><span class="n">pofile</span><span class="p">,</span> <span class="s1">&#39;pofile&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
-<span class="c1"># }}}</span>
-<span class="c1"># function mofile() {{{</span>
 
 
 <div class="viewcode-block" id="mofile"><a class="viewcode-back" href="../includes/0-thirdparty_docs.d/polib/api.html#polib.mofile">[docs]</a><span class="k">def</span> <span class="nf">mofile</span><span class="p">(</span><span class="n">mofile</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -250,8 +218,6 @@
 <span class="sd">        instance).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">_pofile_or_mofile</span><span class="p">(</span><span class="n">mofile</span><span class="p">,</span> <span class="s1">&#39;mofile&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
-<span class="c1"># }}}</span>
-<span class="c1"># function detect_encoding() {{{</span>
 
 
 <div class="viewcode-block" id="detect_encoding"><a class="viewcode-back" href="../includes/0-thirdparty_docs.d/polib/api.html#polib.detect_encoding">[docs]</a><span class="k">def</span> <span class="nf">detect_encoding</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">binary_mode</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -270,7 +236,7 @@
 <span class="sd">        boolean, set this to True if ``file`` is a mo file.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">PATTERN</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&quot;?Content-Type:.+? charset=([\w_\-:\.]+)&#39;</span>
-    <span class="n">rxt</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">u</span><span class="p">(</span><span class="n">PATTERN</span><span class="p">))</span>
+    <span class="n">rxt</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">PATTERN</span><span class="p">)</span>
     <span class="n">rxb</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="n">PATTERN</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">charset_exists</span><span class="p">(</span><span class="n">charset</span><span class="p">):</span>
@@ -288,27 +254,20 @@
             <span class="k">if</span> <span class="n">charset_exists</span><span class="p">(</span><span class="n">enc</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">enc</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># For PY3, always treat as binary</span>
-        <span class="k">if</span> <span class="n">binary_mode</span> <span class="ow">or</span> <span class="n">PY3</span><span class="p">:</span>
-            <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;rb&#39;</span>
-            <span class="n">rx</span> <span class="o">=</span> <span class="n">rxb</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span>
-            <span class="n">rx</span> <span class="o">=</span> <span class="n">rxt</span>
+        <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;rb&#39;</span>
+        <span class="n">rx</span> <span class="o">=</span> <span class="n">rxb</span>
         <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
             <span class="n">match</span> <span class="o">=</span> <span class="n">rx</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
                 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
                 <span class="n">enc</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">text_type</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
                     <span class="n">enc</span> <span class="o">=</span> <span class="n">enc</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">charset_exists</span><span class="p">(</span><span class="n">enc</span><span class="p">):</span>
                     <span class="k">return</span> <span class="n">enc</span>
         <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">default_encoding</span></div>
-<span class="c1"># }}}</span>
-<span class="c1"># function escape() {{{</span>
 
 
 <div class="viewcode-block" id="escape"><a class="viewcode-back" href="../includes/0-thirdparty_docs.d/polib/api.html#polib.escape">[docs]</a><span class="k">def</span> <span class="nf">escape</span><span class="p">(</span><span class="n">st</span><span class="p">):</span>
@@ -321,8 +280,6 @@
              <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\r&#39;</span><span class="p">)</span>\
              <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\n&#39;</span><span class="p">)</span>\
              <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&quot;</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\&quot;&#39;</span><span class="p">)</span></div>
-<span class="c1"># }}}</span>
-<span class="c1"># function unescape() {{{</span>
 
 
 <div class="viewcode-block" id="unescape"><a class="viewcode-back" href="../includes/0-thirdparty_docs.d/polib/api.html#polib.unescape">[docs]</a><span class="k">def</span> <span class="nf">unescape</span><span class="p">(</span><span class="n">st</span><span class="p">):</span>
@@ -342,8 +299,6 @@
             <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span>
         <span class="k">return</span> <span class="n">m</span>  <span class="c1"># handles escaped double quote</span>
     <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">(</span><span class="se">\\</span><span class="s1">|n|t|r|&quot;)&#39;</span><span class="p">,</span> <span class="n">unescape_repl</span><span class="p">,</span> <span class="n">st</span><span class="p">)</span></div>
-<span class="c1"># }}}</span>
-<span class="c1"># function natural_sort() {{{</span>
 
 
 <span class="k">def</span> <span class="nf">natural_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
@@ -358,9 +313,6 @@
         <span class="k">return</span> <span class="p">[</span><span class="n">convert</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;([0-9]+)&#39;</span><span class="p">,</span> <span class="n">key</span><span class="p">)]</span>
 
     <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">alphanum_key</span><span class="p">)</span>
-
-<span class="c1"># }}}</span>
-<span class="c1"># class _BaseFile {{{</span>
 
 
 <span class="k">class</span> <span class="nc">_BaseFile</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
@@ -418,18 +370,11 @@
             <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wrapwidth</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">obsolete_entries</span><span class="p">():</span>
             <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wrapwidth</span><span class="p">))</span>
-        <span class="n">ret</span> <span class="o">=</span> <span class="n">u</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ret</span>
 
-    <span class="k">if</span> <span class="n">PY3</span><span class="p">:</span>
-        <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__unicode__</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            Returns the string representation of the file.</span>
-<span class="sd">            &quot;&quot;&quot;</span>
-            <span class="k">return</span> <span class="n">unicode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__unicode__</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -524,7 +469,7 @@
             <span class="n">fhandle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">fhandle</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">contents</span><span class="p">,</span> <span class="n">text_type</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">contents</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
                 <span class="n">contents</span> <span class="o">=</span> <span class="n">contents</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
         <span class="n">fhandle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
         <span class="n">fhandle</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -687,10 +632,7 @@
             <span class="mi">0</span><span class="p">,</span> <span class="n">keystart</span>
 
         <span class="p">)</span>
-        <span class="k">if</span> <span class="n">PY3</span> <span class="ow">and</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">minor</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># python 3.2 or superior</span>
-            <span class="n">output</span> <span class="o">+=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="n">offsets</span><span class="p">)</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">output</span> <span class="o">+=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="n">offsets</span><span class="p">)</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="n">offsets</span><span class="p">)</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
         <span class="n">output</span> <span class="o">+=</span> <span class="n">ids</span>
         <span class="n">output</span> <span class="o">+=</span> <span class="n">strs</span>
         <span class="k">return</span> <span class="n">output</span>
@@ -700,11 +642,9 @@
 <span class="sd">        Encodes the given ``mixed`` argument with the file encoding if and</span>
 <span class="sd">        only if it&#39;s an unicode string and returns the encoded string.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mixed</span><span class="p">,</span> <span class="n">text_type</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mixed</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">mixed</span> <span class="o">=</span> <span class="n">mixed</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">mixed</span>
-<span class="c1"># }}}</span>
-<span class="c1"># class POFile {{{</span>
 
 
 <div class="viewcode-block" id="POFile"><a class="viewcode-back" href="../includes/0-thirdparty_docs.d/polib/api.html#polib.POFile">[docs]</a><span class="k">class</span> <span class="nc">POFile</span><span class="p">(</span><span class="n">_BaseFile</span><span class="p">):</span>
@@ -727,7 +667,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">ret</span> <span class="o">+=</span> <span class="s1">&#39;# </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">header</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">text_type</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">ret</span> <span class="o">+</span> <span class="n">_BaseFile</span><span class="o">.</span><span class="n">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
@@ -811,8 +751,6 @@
         <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">msgid_with_context</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">refpot_msgids</span><span class="p">:</span>
                 <span class="n">entry</span><span class="o">.</span><span class="n">obsolete</span> <span class="o">=</span> <span class="kc">True</span></div></div>
-<span class="c1"># }}}</span>
-<span class="c1"># class MOFile {{{</span>
 
 
 <div class="viewcode-block" id="MOFile"><a class="viewcode-back" href="../includes/0-thirdparty_docs.d/polib/api.html#polib.MOFile">[docs]</a><span class="k">class</span> <span class="nc">MOFile</span><span class="p">(</span><span class="n">_BaseFile</span><span class="p">):</span>
@@ -884,8 +822,6 @@
 <span class="sd">        Convenience method to keep the same interface with POFile instances.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[]</span></div></div>
-<span class="c1"># }}}</span>
-<span class="c1"># class _BaseEntry {{{</span>
 
 
 <span class="k">class</span> <span class="nc">_BaseEntry</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -950,8 +886,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">msgstr_plural</span><span class="p">:</span>
             <span class="c1"># write the msgstr_plural if any</span>
             <span class="n">msgstrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">msgstr_plural</span>
-            <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">msgstrs</span><span class="p">)</span>
-            <span class="n">keys</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+            <span class="n">keys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">msgstrs</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
                 <span class="n">msgstr</span> <span class="o">=</span> <span class="n">msgstrs</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
                 <span class="n">plural_index</span> <span class="o">=</span> <span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">]&#39;</span> <span class="o">%</span> <span class="n">index</span>
@@ -962,18 +897,11 @@
             <span class="n">ret</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_str_field</span><span class="p">(</span><span class="s2">&quot;msgstr&quot;</span><span class="p">,</span> <span class="n">delflag</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">msgstr</span><span class="p">,</span>
                                    <span class="n">wrapwidth</span><span class="p">)</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="n">ret</span> <span class="o">=</span> <span class="n">u</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ret</span>
 
-    <span class="k">if</span> <span class="n">PY3</span><span class="p">:</span>
-        <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__unicode__</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            Returns the string representation of the entry.</span>
-<span class="sd">            &quot;&quot;&quot;</span>
-            <span class="k">return</span> <span class="n">unicode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__unicode__</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
@@ -1013,8 +941,6 @@
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
             <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">delflag</span><span class="p">,</span> <span class="n">escape</span><span class="p">(</span><span class="n">line</span><span class="p">)))</span>
         <span class="k">return</span> <span class="n">ret</span>
-<span class="c1"># }}}</span>
-<span class="c1"># class POEntry {{{</span>
 
 
 <div class="viewcode-block" id="POEntry"><a class="viewcode-back" href="../includes/0-thirdparty_docs.d/polib/api.html#polib.POEntry">[docs]</a><span class="k">class</span> <span class="nc">POEntry</span><span class="p">(</span><span class="n">_BaseEntry</span><span class="p">):</span>
@@ -1126,7 +1052,7 @@
                 <span class="n">ret</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_str_field</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">wrapwidth</span><span class="p">)</span>
 
         <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_BaseEntry</span><span class="o">.</span><span class="n">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wrapwidth</span><span class="p">))</span>
-        <span class="n">ret</span> <span class="o">=</span> <span class="n">u</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ret</span></div>
 
 <div class="viewcode-block" id="POEntry.__cmp__"><a class="viewcode-back" href="../includes/0-thirdparty_docs.d/polib/api.html#polib.POEntry.__cmp__">[docs]</a>    <span class="k">def</span> <span class="nf">__cmp__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -1142,7 +1068,7 @@
         <span class="c1"># Work on a copy to protect original</span>
         <span class="n">occ1</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[:])</span>
         <span class="n">occ2</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">occurrences</span><span class="p">[:])</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span>
+
         <span class="k">if</span> <span class="n">occ1</span> <span class="o">&gt;</span> <span class="n">occ2</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="n">occ1</span> <span class="o">&lt;</span> <span class="n">occ2</span><span class="p">:</span>
@@ -1154,6 +1080,11 @@
             <span class="k">return</span> <span class="mi">1</span>
         <span class="k">elif</span> <span class="n">msgctxt</span> <span class="o">&lt;</span> <span class="n">othermsgctxt</span><span class="p">:</span>
             <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="c1"># FIXME 1:</span>
+        <span class="c1"># I honestly have no idea what the original author wants to achieve here.</span>
+        <span class="c1"># It tries to compare if a string is greater/less than another</span>
+        <span class="c1"># string. Or that&#39;s what I gather, because msgid_plural is supposed</span>
+        <span class="c1"># to be a string.</span>
         <span class="c1"># Compare msgid_plural</span>
         <span class="n">msgid_plural</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">msgid_plural</span> <span class="ow">or</span> <span class="mi">0</span>
         <span class="n">othermsgid_plural</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">msgid_plural</span> <span class="ow">or</span> <span class="mi">0</span>
@@ -1161,6 +1092,8 @@
             <span class="k">return</span> <span class="mi">1</span>
         <span class="k">elif</span> <span class="n">msgid_plural</span> <span class="o">&lt;</span> <span class="n">othermsgid_plural</span><span class="p">:</span>
             <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="c1"># FIXME 2:</span>
+        <span class="c1"># Same situation as in FIXME 1.</span>
         <span class="c1"># Compare msgstr_plural</span>
         <span class="n">msgstr_plural</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">msgstr_plural</span> <span class="ow">or</span> <span class="mi">0</span>
         <span class="n">othermsgstr_plural</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">msgstr_plural</span> <span class="ow">or</span> <span class="mi">0</span>
@@ -1252,14 +1185,13 @@
 
     <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">msgid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">msgstr</span><span class="p">))</span></div>
-<span class="c1"># }}}</span>
-<span class="c1"># class MOEntry {{{</span>
 
 
 <div class="viewcode-block" id="MOEntry"><a class="viewcode-back" href="../includes/0-thirdparty_docs.d/polib/api.html#polib.MOEntry">[docs]</a><span class="k">class</span> <span class="nc">MOEntry</span><span class="p">(</span><span class="n">_BaseEntry</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Represents a mo file entry.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor, accepts the following keyword arguments,</span>
@@ -1288,9 +1220,6 @@
 
     <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">msgid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">msgstr</span><span class="p">))</span></div>
-
-<span class="c1"># }}}</span>
-<span class="c1"># class _POFileParser {{{</span>
 
 
 <span class="k">class</span> <span class="nc">_POFileParser</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -1362,22 +1291,22 @@
         <span class="nb">all</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;st&#39;</span><span class="p">,</span> <span class="s1">&#39;he&#39;</span><span class="p">,</span> <span class="s1">&#39;gc&#39;</span><span class="p">,</span> <span class="s1">&#39;oc&#39;</span><span class="p">,</span> <span class="s1">&#39;fl&#39;</span><span class="p">,</span> <span class="s1">&#39;ct&#39;</span><span class="p">,</span> <span class="s1">&#39;pc&#39;</span><span class="p">,</span> <span class="s1">&#39;pm&#39;</span><span class="p">,</span> <span class="s1">&#39;pp&#39;</span><span class="p">,</span> <span class="s1">&#39;tc&#39;</span><span class="p">,</span>
                <span class="s1">&#39;ms&#39;</span><span class="p">,</span> <span class="s1">&#39;mp&#39;</span><span class="p">,</span> <span class="s1">&#39;mx&#39;</span><span class="p">,</span> <span class="s1">&#39;mi&#39;</span><span class="p">]</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;tc&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;st&#39;</span><span class="p">,</span> <span class="s1">&#39;he&#39;</span><span class="p">],</span>                                     <span class="s1">&#39;he&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;tc&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;st&#39;</span><span class="p">,</span> <span class="s1">&#39;he&#39;</span><span class="p">],</span> <span class="s1">&#39;he&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;tc&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;gc&#39;</span><span class="p">,</span> <span class="s1">&#39;oc&#39;</span><span class="p">,</span> <span class="s1">&#39;fl&#39;</span><span class="p">,</span> <span class="s1">&#39;tc&#39;</span><span class="p">,</span> <span class="s1">&#39;pc&#39;</span><span class="p">,</span> <span class="s1">&#39;pm&#39;</span><span class="p">,</span> <span class="s1">&#39;pp&#39;</span><span class="p">,</span> <span class="s1">&#39;ms&#39;</span><span class="p">,</span>
-                        <span class="s1">&#39;mp&#39;</span><span class="p">,</span> <span class="s1">&#39;mx&#39;</span><span class="p">,</span> <span class="s1">&#39;mi&#39;</span><span class="p">],</span>                               <span class="s1">&#39;tc&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;gc&#39;</span><span class="p">,</span> <span class="nb">all</span><span class="p">,</span>                                              <span class="s1">&#39;gc&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;oc&#39;</span><span class="p">,</span> <span class="nb">all</span><span class="p">,</span>                                              <span class="s1">&#39;oc&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;fl&#39;</span><span class="p">,</span> <span class="nb">all</span><span class="p">,</span>                                              <span class="s1">&#39;fl&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;pc&#39;</span><span class="p">,</span> <span class="nb">all</span><span class="p">,</span>                                              <span class="s1">&#39;pc&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;pm&#39;</span><span class="p">,</span> <span class="nb">all</span><span class="p">,</span>                                              <span class="s1">&#39;pm&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;pp&#39;</span><span class="p">,</span> <span class="nb">all</span><span class="p">,</span>                                              <span class="s1">&#39;pp&#39;</span><span class="p">)</span>
+                        <span class="s1">&#39;mp&#39;</span><span class="p">,</span> <span class="s1">&#39;mx&#39;</span><span class="p">,</span> <span class="s1">&#39;mi&#39;</span><span class="p">],</span> <span class="s1">&#39;tc&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;gc&#39;</span><span class="p">,</span> <span class="nb">all</span><span class="p">,</span> <span class="s1">&#39;gc&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;oc&#39;</span><span class="p">,</span> <span class="nb">all</span><span class="p">,</span> <span class="s1">&#39;oc&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;fl&#39;</span><span class="p">,</span> <span class="nb">all</span><span class="p">,</span> <span class="s1">&#39;fl&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;pc&#39;</span><span class="p">,</span> <span class="nb">all</span><span class="p">,</span> <span class="s1">&#39;pc&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;pm&#39;</span><span class="p">,</span> <span class="nb">all</span><span class="p">,</span> <span class="s1">&#39;pm&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;pp&#39;</span><span class="p">,</span> <span class="nb">all</span><span class="p">,</span> <span class="s1">&#39;pp&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;ct&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;st&#39;</span><span class="p">,</span> <span class="s1">&#39;he&#39;</span><span class="p">,</span> <span class="s1">&#39;gc&#39;</span><span class="p">,</span> <span class="s1">&#39;oc&#39;</span><span class="p">,</span> <span class="s1">&#39;fl&#39;</span><span class="p">,</span> <span class="s1">&#39;tc&#39;</span><span class="p">,</span> <span class="s1">&#39;pc&#39;</span><span class="p">,</span> <span class="s1">&#39;pm&#39;</span><span class="p">,</span>
-                        <span class="s1">&#39;pp&#39;</span><span class="p">,</span> <span class="s1">&#39;ms&#39;</span><span class="p">,</span> <span class="s1">&#39;mx&#39;</span><span class="p">],</span>                               <span class="s1">&#39;ct&#39;</span><span class="p">)</span>
+                        <span class="s1">&#39;pp&#39;</span><span class="p">,</span> <span class="s1">&#39;ms&#39;</span><span class="p">,</span> <span class="s1">&#39;mx&#39;</span><span class="p">],</span> <span class="s1">&#39;ct&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;mi&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;st&#39;</span><span class="p">,</span> <span class="s1">&#39;he&#39;</span><span class="p">,</span> <span class="s1">&#39;gc&#39;</span><span class="p">,</span> <span class="s1">&#39;oc&#39;</span><span class="p">,</span> <span class="s1">&#39;fl&#39;</span><span class="p">,</span> <span class="s1">&#39;ct&#39;</span><span class="p">,</span> <span class="s1">&#39;tc&#39;</span><span class="p">,</span> <span class="s1">&#39;pc&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;pm&#39;</span><span class="p">,</span> <span class="s1">&#39;pp&#39;</span><span class="p">,</span> <span class="s1">&#39;ms&#39;</span><span class="p">,</span> <span class="s1">&#39;mx&#39;</span><span class="p">],</span>                                <span class="s1">&#39;mi&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;mp&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;tc&#39;</span><span class="p">,</span> <span class="s1">&#39;gc&#39;</span><span class="p">,</span> <span class="s1">&#39;pc&#39;</span><span class="p">,</span> <span class="s1">&#39;pm&#39;</span><span class="p">,</span> <span class="s1">&#39;pp&#39;</span><span class="p">,</span> <span class="s1">&#39;mi&#39;</span><span class="p">],</span>             <span class="s1">&#39;mp&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;ms&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;mi&#39;</span><span class="p">,</span> <span class="s1">&#39;mp&#39;</span><span class="p">,</span> <span class="s1">&#39;tc&#39;</span><span class="p">],</span>                               <span class="s1">&#39;ms&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;mx&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;mi&#39;</span><span class="p">,</span> <span class="s1">&#39;mx&#39;</span><span class="p">,</span> <span class="s1">&#39;mp&#39;</span><span class="p">,</span> <span class="s1">&#39;tc&#39;</span><span class="p">],</span>                         <span class="s1">&#39;mx&#39;</span><span class="p">)</span>
+                        <span class="s1">&#39;pm&#39;</span><span class="p">,</span> <span class="s1">&#39;pp&#39;</span><span class="p">,</span> <span class="s1">&#39;ms&#39;</span><span class="p">,</span> <span class="s1">&#39;mx&#39;</span><span class="p">],</span> <span class="s1">&#39;mi&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;mp&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;tc&#39;</span><span class="p">,</span> <span class="s1">&#39;gc&#39;</span><span class="p">,</span> <span class="s1">&#39;pc&#39;</span><span class="p">,</span> <span class="s1">&#39;pm&#39;</span><span class="p">,</span> <span class="s1">&#39;pp&#39;</span><span class="p">,</span> <span class="s1">&#39;mi&#39;</span><span class="p">],</span> <span class="s1">&#39;mp&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;ms&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;mi&#39;</span><span class="p">,</span> <span class="s1">&#39;mp&#39;</span><span class="p">,</span> <span class="s1">&#39;tc&#39;</span><span class="p">],</span> <span class="s1">&#39;ms&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;mx&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;mi&#39;</span><span class="p">,</span> <span class="s1">&#39;mx&#39;</span><span class="p">,</span> <span class="s1">&#39;mp&#39;</span><span class="p">,</span> <span class="s1">&#39;tc&#39;</span><span class="p">],</span> <span class="s1">&#39;mx&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;mc&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ct&#39;</span><span class="p">,</span> <span class="s1">&#39;mi&#39;</span><span class="p">,</span> <span class="s1">&#39;mp&#39;</span><span class="p">,</span> <span class="s1">&#39;ms&#39;</span><span class="p">,</span> <span class="s1">&#39;mx&#39;</span><span class="p">,</span> <span class="s1">&#39;pm&#39;</span><span class="p">,</span> <span class="s1">&#39;pp&#39;</span><span class="p">,</span> <span class="s1">&#39;pc&#39;</span><span class="p">],</span> <span class="s1">&#39;mc&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1716,8 +1645,6 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">current_entry</span><span class="o">.</span><span class="n">previous_msgctxt</span> <span class="o">+=</span> <span class="n">token</span>
         <span class="c1"># don&#39;t change the current state</span>
         <span class="k">return</span> <span class="kc">False</span>
-<span class="c1"># }}}</span>
-<span class="c1"># class _MOFileParser {{{</span>
 
 
 <span class="k">class</span> <span class="nc">_MOFileParser</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -1812,7 +1739,7 @@
                             <span class="n">v</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
                             <span class="n">metadata</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
                         <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-                            <span class="n">metadata</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+                            <span class="n">metadata</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span>
                 <span class="k">continue</span>
             <span class="c1"># test if we have a plural entry</span>
@@ -1862,8 +1789,6 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tup</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">tup</span>
-<span class="c1"># }}}</span>
-<span class="c1"># class TextWrapper {{{</span>
 
 
 <span class="k">class</span> <span class="nc">TextWrapper</span><span class="p">(</span><span class="n">textwrap</span><span class="o">.</span><span class="n">TextWrapper</span><span class="p">):</span>
@@ -1871,6 +1796,7 @@
 <span class="sd">    Subclass of textwrap.TextWrapper that backport the</span>
 <span class="sd">    drop_whitespace option.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">drop_whitespace</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;drop_whitespace&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
         <span class="n">textwrap</span><span class="o">.</span><span class="n">TextWrapper</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1945,8 +1871,6 @@
                 <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cur_line</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">lines</span>
-<span class="c1"># }}}</span>
-<span class="c1"># function wrap() {{{</span>
 
 
 <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1956,8 +1880,6 @@
     <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">TextWrapper</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="c1"># }}}</span>
 </pre></div>
 
            </div>
@@ -1967,10 +1889,13 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2021, Odyseus.</p>
+    <p>&#169; Copyright 2016-2022, Odyseus.</p>
   </div>
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://gitlab.com/Odyseus/sphinx_rtd_theme_mod">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
 
@@ -1988,7 +1913,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
+  </script> 
 
 </body>
 </html>

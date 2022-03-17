@@ -10,6 +10,7 @@ Subpackages
 -----------
 
 .. toctree::
+   :maxdepth: 4
 
    python_modules.python_utils.case_conversion
    python_modules.python_utils.css_props_case_correction
@@ -19,6 +20,7 @@ Submodules
 ----------
 
 .. toctree::
+   :maxdepth: 4
 
    python_modules.python_utils.ansi_colors
    python_modules.python_utils.bottle_utils

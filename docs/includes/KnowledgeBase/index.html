@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Knowledge Base&#39;s documentation &mdash; Python CLI Applications Documentations  documentation</title><link rel="stylesheet" href="../../_static/css/theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/python-logo.svg"/>
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  <title>Knowledge Base&#39;s documentation &mdash; Python CLI Applications Documentations  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/python-logo.svg"/>
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -21,7 +24,7 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: False" >
             <a href="../../index.html" class="icon icon-home"> Python CLI Applications Documentations
           </a>
 <div role="search">
@@ -37,7 +40,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../CLIApplicationsManager/index.html"><abbr title="Command Line Interface">CLI</abbr> applications manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BackupUtils/index.html">Backup Utils' documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BootstrapThemesGenerator/index.html">Bootstrap Themes Generator' documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ChrootHelper/index.html">Chroot Helpers's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FilesCleaner/index.html">Files Cleaner's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../HostsManager/index.html">Hosts Manager's documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../JSONSchemaValidator/index.html">JSON Schema Validator's documentation</a></li>
@@ -74,18 +76,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../UserApplicationsManager/index.html">User Applications Manager's documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/docopt.html">docopt's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/polib/index.html">polib's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/pyperclip/index.html">pyperclip's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/titlecase.html">titlecase's documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/tqdm.html">tqdm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0-thirdparty_docs.d/index.html">Self hosted third-party module's documentations</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: False" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Python CLI Applications Documentations</a>
       </nav>
@@ -108,77 +106,120 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="knowledge-base-s-documentation">
+  <section id="knowledge-base-s-documentation">
 <h1>Knowledge Base's documentation<a class="headerlink" href="#knowledge-base-s-documentation" title="Permalink to this headline"></a></h1>
 <p>A <abbr title="Command Line Interface">CLI</abbr> utility written in Python 3 to generate and manage a personal and self-hosted <em>Knowledge Base</em> on GNU/Linux.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>This Python application can generate a system executable with Bash completions support. See <code class="docutils literal notranslate"><span class="pre">app.py</span> <span class="pre">generate</span></code>.</p>
 </div>
-<div class="section" id="cli-synopsis">
+<section id="cli-synopsis">
 <h2><abbr title="Command Line Interface">CLI</abbr> Synopsis<a class="headerlink" href="#cli-synopsis" title="Permalink to this headline"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight">
-<pre><span class="text-bold">Knowledge Base 2021-09-27 08:34:09.436 (Unstable)</span>
+<pre><strong>Knowledge Base 2021-09-27 08:34:09.436 (Unstable)</strong>
 
-<span class="text-bold">CLI utility to generate and manage a personal and self-hosted *Knowledge Base* on GNU/Linux.</span>
+<strong>CLI utility to generate and manage a personal and self-hosted *Knowledge Base* on GNU/Linux.</strong>
 
-<span class="text-bold">Usage:</span>
+<strong>Usage:</strong>
     app.py (-h | --help | --manual | --version)
     app.py run &lt;func_name&gt;... [--do-not-pull]
                               [--dry-run]
                               [--force-download]
                               [--input-path-storage=&lt;path&gt;]
+                              [--include-bootstrap-css]
+                              [--include-bootstrap-js]
+                              [--include-highlight-js]
     app.py server (start | stop | restart)
                   [--host=&lt;host&gt;]
                   [--port=&lt;port&gt;]
     app.py generate system_executable
     app.py repo subtrees (init | update) [-y | --dry-run]
 
-<span class="text-bold">Options:</span>
+<strong>Options:</strong>
 
-<span class="text-bold">-h, --help</span>
+<strong>-h, --help</strong>
     Show this screen.
 
-<span class="text-bold">--manual</span>
+<strong>--manual</strong>
     Show this application manual page.
 
-<span class="text-bold">--version</span>
+<strong>--version</strong>
     Show application version.
 
-<span class="text-bold">--host=&lt;host&gt;</span>
+<strong>--host=&lt;host&gt;</strong>
     Host name. [Default: 0.0.0.0]
 
-<span class="text-bold">--port=&lt;port&gt;</span>
+<strong>--port=&lt;port&gt;</strong>
     Port number. [Default: 8888]
 
-<span class="text-bold">--do-not-pull</span>
+<strong>--do-not-pull</strong>
     Do not update repositories (do not pull), just initialize the ones that
-    weren&#x27;t cloned yet. Only used by the &quot;update_all_repositories&quot; sub-command.
+    weren&#x27;t cloned yet. Only used by the *update_all_repositories* sub-command.
 
-<span class="text-bold">--dry-run</span>
+<strong>--dry-run</strong>
     Do not perform file system changes. Only display messages informing of the
     actions that will be performed or commands that will be executed.
     WARNING! Some file system changes will be performed (e.g., temporary files
     creation) and some commands will be executed (e.g., checking if a directory
     belongs to a repository).
 
-<span class="text-bold">--force-download</span>
+<strong>--force-download</strong>
     Force the download of all archives, ignoring the frequency in which they
-    should be downloaded. Only used by the &quot;download_all_archives&quot; sub-command.
+    should be downloaded. Only used by the *download_all_archives* sub-command.
 
-<span class="text-bold">--input-path-storage=&lt;path&gt;</span>
-    Path to a folder containing <span class="text-bold">.epub</span> files. If not specified, the folder at
-    <span class="text-bold">UserData/data_storage/pandoc_convertions/epub_to_html</span> will be used.
-    Only used by the &quot;epub_to_html&quot; sub-command.</pre>
+<strong>--include-bootstrap-css</strong>
+<strong>--include-bootstrap-js</strong>
+<strong>--include-highlight-js</strong>
+    If these extra assets should be included when converting documents to HTML
+    with the *epub_to_html* and *rst_to_html* sub-commands.
+
+<strong>--input-path-storage=&lt;path&gt;</strong>
+    Path to a folder containing <strong>.epub</strong>, <strong>.rst</strong> or <strong>.txt</strong> files.
+    If not specified, the folder at
+    <strong>UserData/data_storage/pandoc_convertions/&lt;epub_to_html|rst_to_html&gt;</strong>
+    will be used. Only used by the *epub_to_html* and *rst_to_html* sub-commands.
+
+<strong>run &lt;func_name&gt;:</strong>
+
+    <strong>update_all_repositories</strong>
+        Update all repositories.
+
+    <strong>handle_all_repositories</strong>
+        Handle all repositories.
+
+    <strong>download_all_archives</strong>
+        Download all archives.
+
+    <strong>create_main_json_file</strong>
+        Generate the <strong>data_tables.json</strong> file.
+
+    <strong>html_to_markdown_files</strong>
+    <strong>html_to_markdown_clip</strong>
+    <strong>epub_to_html</strong>
+    <strong>rst_to_html_pandoc</strong>
+    <strong>rst_to_html_docutils</strong>
+        Convert files found at <strong>UserData/data_storage/convertions</strong>.
+
+    <strong>build_sphinx_docs</strong>
+        Build Sphinx documentation.
+
+    <strong>generate_categories_html</strong>
+        Generate the categories.html file.
+
+    <strong>generate_index_html</strong>
+        Generate the index.html file.
+
+    <strong>open_main_webpage</strong>
+        Open the main web page.</pre>
 </div></div>
-</div>
-<div class="section" id="requirements">
+</section>
+<section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h2>
 <p>No mayor requirements are needed to run this application other than Python 3.5+.</p>
-</div>
-<div class="section" id="detailed-usage">
+</section>
+<section id="detailed-usage">
 <h2>Detailed usage<a class="headerlink" href="#detailed-usage" title="Permalink to this headline"></a></h2>
-<div class="section" id="cli-options">
+<section id="cli-options">
 <h3><abbr title="Command Line Interface">CLI</abbr> options<a class="headerlink" href="#cli-options" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code>: Display this application basic help screen.</p></li>
@@ -186,9 +227,9 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">--version</span></code>: Show this application version.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code> or <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code>: Do not perform file system changes. Only display messages informing of the actions that will be performed or commands that will be executed.</p></li>
 </ul>
-<div class="section" id="app-py-run">
+<section id="app-py-run">
 <h4>app.py run<a class="headerlink" href="#app-py-run" title="Permalink to this headline"></a></h4>
-<div class="section" id="sub-commands">
+<section id="sub-commands">
 <h5>Sub-commands<a class="headerlink" href="#sub-commands" title="Permalink to this headline"></a></h5>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">update_all_repositories</span></code>: Pull from or clone all repositories defined in <strong>UserData/data_sources/repositories.py</strong>. See <a class="reference internal" href="#repositories-py-tempalte-reference"><span class="std std-ref">repositories.py template</span></a>.</p>
@@ -221,30 +262,30 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">generate_index_html</span></code>:</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">open_main_webpage</span></code>:</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="app-py-server">
+</section>
+</section>
+<section id="app-py-server">
 <h4>app.py server<a class="headerlink" href="#app-py-server" title="Permalink to this headline"></a></h4>
 <p>The HTTP server started will host the folder at <strong>UserData/www</strong>.</p>
-<div class="section" id="id1">
+<section id="id1">
 <h5>Sub-commands<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">start</span></code>: Start HTTP server.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stop</span></code>: Stop HTTP server.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">restart</span></code>: Restart HTTP server.</p></li>
 </ul>
-</div>
-<div class="section" id="options">
+</section>
+<section id="options">
 <h5>Options<a class="headerlink" href="#options" title="Permalink to this headline"></a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--host=&lt;host&gt;</span></code> Host name.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--port=&lt;port&gt;</span></code> Port number.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="app-py-generate">
+</section>
+</section>
+<section id="app-py-generate">
 <h4>app.py generate<a class="headerlink" href="#app-py-generate" title="Permalink to this headline"></a></h4>
-<div class="section" id="id2">
+<section id="id2">
 <h5>Sub-commands<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h5>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">system_executable</span></code>: Create an executable for the <code class="docutils literal notranslate"><span class="pre">app.py</span></code> application on the system <code class="docutils literal notranslate"><span class="pre">PATH</span></code> to be able to run it from anywhere.</p>
@@ -256,14 +297,14 @@
 </div></blockquote>
 </li>
 </ul>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="file-templates">
+</section>
+</section>
+</section>
+</section>
+<section id="file-templates">
 <h2>File templates<a class="headerlink" href="#file-templates" title="Permalink to this headline"></a></h2>
 <p>These templates are files used to perform several tasks within the Knowledge Base application.</p>
-<div class="section" id="archives-py-template">
+<section id="archives-py-template">
 <h3><strong>archives.py</strong> template<a class="headerlink" href="#archives-py-template" title="Permalink to this headline"></a></h3>
 <p>In this file is stored all the data to handle on-line archives. Its location should always be <strong>/UserData/KnowledgeBase/UserData/data_sources/archives.py</strong>.</p>
 <div class="admonition-info info admonition">
@@ -275,7 +316,6 @@
 </ul>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># START archives.py</span>
-<span class="c1">#!/usr/bin/python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;Archives data practical example.</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -310,7 +350,7 @@
 <span class="c1"># END archives.py</span>
 </pre></div>
 </div>
-<div class="section" id="data-keys">
+<section id="data-keys">
 <h4>Data keys<a class="headerlink" href="#data-keys" title="Permalink to this headline"></a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -347,9 +387,9 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">unzip_prog</span></code>: The command to use to decompress archives. Possible values are <strong>7z</strong>, <strong>unzip</strong> and <strong>tar</strong>. The tar command can accept a decompression argument (See <code class="docutils literal notranslate"><span class="pre">untar_arg</span></code>).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">untar_arg</span></code> (<strong>Default</strong>: empty (no decompression argument is passed to <code class="docutils literal notranslate"><span class="pre">tar</span></code>)): The decompress argument used by the <code class="docutils literal notranslate"><span class="pre">tar</span></code> program. Possible values are <strong>--xz</strong>, <strong>-J</strong>, <strong>--gzip</strong>, <strong>-z</strong>, <strong>--bzip2</strong> or <strong>-j</strong>.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="repositories-py-template">
+</section>
+</section>
+<section id="repositories-py-template">
 <span id="repositories-py-tempalte-reference"></span><h3><strong>repositories.py</strong> template<a class="headerlink" href="#repositories-py-template" title="Permalink to this headline"></a></h3>
 <p>In this file is stored all the data to handle on-line repositories. Its location should always be <strong>/UserData/KnowledgeBase/UserData/data_sources/repositories.py</strong>.</p>
 <div class="admonition-info info admonition">
@@ -360,7 +400,6 @@
 </ul>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># START repositories.py</span>
-<span class="c1">#!/usr/bin/python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;Repositories data practical example.</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -391,7 +430,7 @@
 <span class="c1"># END repositories.py</span>
 </pre></div>
 </div>
-<div class="section" id="id3">
+<section id="id3">
 <h4>Data keys<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -422,9 +461,9 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">kb_index_filename</span></code> (<code class="docutils literal notranslate"><span class="pre">sphinx_docs</span></code> <code class="docutils literal notranslate"><span class="pre">repo_handler</span></code> only): The file name of the index file of the generated documentation. In the case that someone was malevolent enough to change the default one (LOL).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kb_file_append</span></code> (<strong>List</strong>) (<code class="docutils literal notranslate"><span class="pre">sphinx_docs</span></code> <code class="docutils literal notranslate"><span class="pre">repo_handler</span></code> only): A list of tuples. Each tuple must contain a path to a file inside the generated documentation (relative to <strong>UserData/www/sphinx_generated_pages/&lt;repo_owner&gt;-&lt;repo_name&gt;/html</strong>) at index 0 (zero) and a string at index 1 (one). The string will be appended at the end of the file defined at index zero.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="categories-json-template">
+</section>
+</section>
+<section id="categories-json-template">
 <h3><strong>categories.json</strong> template<a class="headerlink" href="#categories-json-template" title="Permalink to this headline"></a></h3>
 <p>This file is used to assign custom icons to the categories in the sidebar of the web page index.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># START categories.json</span>
@@ -439,9 +478,9 @@
 <span class="c1"># END categories.json</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="general-notes">
+</section>
+</section>
+<section id="general-notes">
 <h2>General notes<a class="headerlink" href="#general-notes" title="Permalink to this headline"></a></h2>
 <ul>
 <li><p>In the future, if the <strong>data_tables.json</strong> file gets to large and the main index page gets to slow when loading, it could be possible to separate the categories into their own index pages and the data.json files into separated files for each category.</p>
@@ -476,13 +515,13 @@
 </li>
 <li><p>To keep it simple, and to avoid to check if I'm dealing with files or folders, the folders <strong>epub</strong>, <strong>html</strong>, <strong>md</strong> and <strong>pdf</strong> should always contain their files in two (2) levels sub-directories (Category Name/Sub-Category Name/File Name.ext). This is to simplify the function <a class="reference internal" href="../../modules/KnowledgeBase/KnowledgeBaseApp.app_utils.html#KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension" title="KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">KnowledgeBaseApp.app_utils.DataTablesObject._get_data_by_file_extension</span></code></a>. The first level directories are always a category name and the second level directories are always sub-categories.</p></li>
 </ul>
-<div class="section" id="html-to-markdown-conversion">
+<section id="html-to-markdown-conversion">
 <h3>HTML to Markdown conversion<a class="headerlink" href="#html-to-markdown-conversion" title="Permalink to this headline"></a></h3>
 <p>I use Pandoc to convert HTML articles that I find on the net into Markdown.</p>
 <ul>
 <li><p>Markdown files are easier to create/maintain/read than HTML files.</p></li>
 <li><p>Some of the articles that I find are in HTML 4.1 or older. Converting them into Markdown is infinitely easier than to convert them into HTML5.</p></li>
-<li><p>I have found some HTML documents without closing HTML tags (for example, they use &lt;p&gt; tags without closing them with the &lt;/p&gt; tag) (the people responsible for allowing this atrocity should be castrated!!!).</p>
+<li><p>I have found some HTML documents without closing HTML tags (for example, they use <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> tags without closing them with the <code class="docutils literal notranslate"><span class="pre">&lt;/p&gt;</span></code> tag) (the people responsible for allowing this atrocity should be castrated!!!).</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>These documents cannot be prettified with any HTML prettifier in existence!!!</p></li>
@@ -499,20 +538,11 @@
 </div></blockquote>
 </li>
 </ul>
-</div>
-<div class="section" id="bootstrap-javascript-css-framework">
+</section>
+<section id="bootstrap-javascript-css-framework">
 <h3>Bootstrap JavaScript/CSS framework<a class="headerlink" href="#bootstrap-javascript-css-framework" title="Permalink to this headline"></a></h3>
 <ul>
-<li><p><span class="text-line-through">Using Bootstrap 4 (beta 2 as of now) built from source to enable the options ``$enable-shadows`` and ``$enable-gradients`` (*scss/_variables.scss*) to hopefully get rid of the repugnant flat look of the default theme. Keep looking for a decent theme replacement.</span></p>
-<blockquote>
-<div><ul class="simple">
-<li><p>I had to get rid of Bootstrap 3 because I couldn't implement the layout that I wanted. The time that I spent moving my HTML from Bootstrap 3 to 4 was infinitely less than the time I wasted trying to make the desired layout to work on Bootstrap 3.</p></li>
-<li><p>Forgotten the idea of building Bootstrap from source. Having to download hundreds of megabytes to build this thing is just retarded.</p></li>
-<li><p>I had to succumb to using a third-party Bootstrap 4 theme because I can't tolerate the disgusting pastel colors used by Bootstrap 4 default theme.</p></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p>Download Boostrap 4 <a class="reference external" href="https://getbootstrap.com/docs/4.1/getting-started/download/">from its website</a>.</p></li>
+<li><p>Using Boostrap 5 downloaded <a class="reference external" href="https://getbootstrap.com/">from its website</a>.</p></li>
 <li><p>Files used:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/dist/js/bootstrap.bundle.js
 /dist/js/bootstrap.bundle.js.map
@@ -527,16 +557,10 @@
 </pre></div>
 </div>
 </li>
-<li><p>Using my own <a class="reference external" href="https://gitlab.com/Odyseus/flatly_bootstrap_theme">Boostrap 4 theme</a> based on <a class="reference external" href="https://bootswatch.com">Bootswatch's</a>'s <a class="reference external" href="https://bootswatch.com/flatly">Flatly theme</a>.</p></li>
-<li><p>Files used:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">flatly_bootstrap_theme</span><span class="o">.</span><span class="n">css</span>
-<span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">flatly_bootstrap_theme</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">css</span>
-</pre></div>
-</div>
-</li>
+<li><p>Using my own Boostrap 5 theme built with <a class="reference external" href="https://gitlab.com/PythonCLIApplications/BootstrapThemesGenerator">Bootstrap Themes Generator</a> and based on <a class="reference external" href="https://bootswatch.com">Bootswatch's</a> <a class="reference external" href="https://bootswatch.com/flatly">Flatly theme</a>. Only because the colors of the default Bootstrap theme are abhorrent.</p></li>
 </ul>
-</div>
-<div class="section" id="datatables-javascript-library">
+</section>
+<section id="datatables-javascript-library">
 <h3>DataTables JavaScript library<a class="headerlink" href="#datatables-javascript-library" title="Permalink to this headline"></a></h3>
 <ul>
 <li><p>Download DataTables from its <a class="reference external" href="https://www.datatables.net/download/">web site</a>.</p>
@@ -544,7 +568,7 @@
 <div><ul class="simple">
 <li><p><strong>Styling framework:</strong> Bootstrap</p></li>
 <li><p><strong>Select package:</strong> DataTables</p></li>
-<li><p><strong>Extensions:</strong> FixedHeader</p></li>
+<li><p><strong>Extensions:</strong> None</p></li>
 <li><p><strong>Download method:</strong> Download &gt; Minify &gt; Concatenate</p></li>
 </ul>
 </div></blockquote>
@@ -554,18 +578,16 @@
 <span class="o">/</span><span class="n">DataTables</span><span class="o">/</span><span class="n">datatables</span><span class="o">.</span><span class="n">js</span>
 <span class="o">/</span><span class="n">DataTables</span><span class="o">/</span><span class="n">datatables</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">css</span>
 <span class="o">/</span><span class="n">DataTables</span><span class="o">/</span><span class="n">datatables</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">js</span>
+
+<span class="o">..</span> <span class="n">note</span><span class="p">::</span>
+
+    <span class="o">-</span> <span class="n">Non</span><span class="o">-</span><span class="n">minified</span> <span class="n">files</span> <span class="n">are</span> <span class="n">included</span> <span class="ow">in</span> <span class="n">case</span> <span class="n">I</span> <span class="n">want</span> <span class="n">to</span> <span class="n">see</span> <span class="n">the</span> <span class="n">source</span><span class="o">.</span>
 </pre></div>
 </div>
 </li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>Non-minified files are included in case I want to see the source.</p></li>
-</ul>
-</div>
-</div>
-<div class="section" id="jquery-javascript-library">
+</section>
+<section id="jquery-javascript-library">
 <h3>jQuery JavaScript library<a class="headerlink" href="#jquery-javascript-library" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Download jQuery from its <a class="reference external" href="https://jquery.com/download/">web site</a> the compressed and uncompressed files.</p></li>
@@ -578,58 +600,63 @@
 <li><p>The files with the version on them are kept so I can know what version I'm using. The <code class="docutils literal notranslate"><span class="pre">jquery.min.js</span></code> is a copy of the <code class="docutils literal notranslate"><span class="pre">jquery.version.min.js</span></code> and is the actually used by the web pages.</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="nerd-fonts-glyphs-icons">
+</section>
+<section id="nerd-fonts-glyphs-icons">
 <h3>Nerd Fonts glyphs icons<a class="headerlink" href="#nerd-fonts-glyphs-icons" title="Permalink to this headline"></a></h3>
 <ul>
-<li><p>This is really frustrating!!! Since Bootstrap removed the font icons from the framework, I had to find a substitute. I found <a class="reference external" href="http://nerdfonts.com/">Nerd Fonts</a> (it's kind of an all-in-one glyphs font with almost 4000 icons). NOWERE ON THE INTERNET IS A DIRECT DOWNLOAD OF THIS FREAKING THING!!! So:</p>
+<li><p>Since Bootstrap removed the font icons from the framework, I had to find a substitute. I found <a class="reference external" href="http://nerdfonts.com/">Nerd Fonts</a> (it's kind of an all-in-one glyphs font with almost 4000 icons).</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>I went to <a class="reference external" href="http://nerdfonts.com/">Nerd Fonts's site</a></p></li>
-<li><p>Looked at the site's source for <a class="reference external" href="http://nerdfonts.com/combo.css">its style sheet</a>.</p></li>
-<li><p>Extracted the link to the font <a class="reference external" href="http://nerdfonts.com/fonts/Symbols-2048-emNerdFontComplete.ttf">and downloaded it</a>.</p></li>
-<li><p>Then went to <a class="reference external" href="https://github.com/ryanoasis/nerd-fonts/tree/master/css">their repository</a> and downloaded the generated CSS files and renamed them to <code class="docutils literal notranslate"><span class="pre">nerdicons.css</span></code> and <code class="docutils literal notranslate"><span class="pre">nerdicons.min.css</span></code>.</p></li>
+<li><p>The main <a class="reference external" href="http://nerdfonts.com/">Nerd Fonts's site</a></p></li>
+<li><p>Download the font files from <a class="reference external" href="https://github.com/ryanoasis/nerd-fonts/tree/gh-pages/assets/fonts">the fonts site repository</a> and rename to <code class="docutils literal notranslate"><span class="pre">nerdicons.css</span></code> and <code class="docutils literal notranslate"><span class="pre">nerdicons.min.css</span></code>.</p></li>
+<li><p>Download the style sheets from <a class="reference external" href="https://github.com/ryanoasis/nerd-fonts/tree/master/css">the fonts repository</a> and rename to <code class="docutils literal notranslate"><span class="pre">nerdicons.css</span></code> and <code class="docutils literal notranslate"><span class="pre">nerdicons.min.css</span></code>.</p></li>
+<li><p>Modify both style sheets to so the font-face definition uses the three available fonts.</p></li>
 <li><p><strong>Moving on...</strong></p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
-</div>
-<div class="section" id="highlight-js-syntax-highlighter-javascript-library">
+</section>
+<section id="highlight-js-syntax-highlighter-javascript-library">
 <h3>Highlight.js syntax highlighter JavaScript library<a class="headerlink" href="#highlight-js-syntax-highlighter-javascript-library" title="Permalink to this headline"></a></h3>
 <ul>
 <li><p>This is the library that I use to highlight the syntax of code blocks. Go to <a class="reference external" href="https://highlightjs.org/download/">its website</a>, uncheck some of the languages selected by default, check some of the one unselected and download the zipped file. This torture is infinitely less painful than using Node.js to build the library from source.</p></li>
+<li><p>Clone <a class="reference external" href="https://github.com/highlightjs/highlight.js">its repository</a> and build from source.</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/highlightjs/highlight.js.git
+<span class="nb">cd</span> highlight.js/
+npm install
+nodejs tools/build.js -t browser --no-esm asciidoc awk bash c cmake cpp css dart diff d glsl ini javascript json lua makefile markdown ocaml php php-template plaintext properties python python-repl scss shell xml yaml
+</pre></div>
+</div>
+</div></blockquote>
+</li>
 <li><p>Files used:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">highlight</span><span class="o">.</span><span class="n">pack</span><span class="o">.</span><span class="n">js</span>
-<span class="o">/</span><span class="n">styles</span><span class="o">/</span><span class="n">xcode</span><span class="o">.</span><span class="n">css</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/highlight.js/build/demo/styles/xcode.css
+/highlight.js/build/highlight.js
+/highlight.js/build/highlight.min.js
+
+.. note::
+
+    - Rename ``xcode.css`` to ``highlight.css`` and minify it.
+    - Non-minified files are included in case I want to see the source.
 </pre></div>
 </div>
 </li>
 </ul>
-<div class="admonition-warning warning admonition">
-<p class="admonition-title">Warning</p>
-<p>Do not select all supported languages or a great amount of them. It greatly slows down page load times when highlighting pages with a lot of <code class="docutils literal notranslate"><span class="pre">code</span></code> blocks.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">highlight.pack.js</span></code> file is already minified.</p></li>
-<li><p>Rename <code class="docutils literal notranslate"><span class="pre">xcode.css</span></code> to <code class="docutils literal notranslate"><span class="pre">highlight.css</span></code> and minify it.</p></li>
-</ul>
-</div>
-</div>
-<div class="section" id="mistune-python-module">
+</section>
+<section id="mistune-python-module">
 <h3><code class="docutils literal notranslate"><span class="pre">mistune</span></code> Python module<a class="headerlink" href="#mistune-python-module" title="Permalink to this headline"></a></h3>
 <p>The <a class="reference external" href="https://github.com/lepture/mistune/tree/v1">mistune</a> Python module is used to parse Markdown files on the server side. I switched to this module from <code class="docutils literal notranslate"><span class="pre">Markdown-it</span></code> JavaScript library because it renders Markdown a lot faster.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>I'm using version <strong>0.8.4</strong> of this module. Version <strong>2</strong> is still in alpha. Consider switching to version <strong>2</strong> when stable because it seems that it is even faster than the previous version.</p>
 </div>
-</div>
-<div class="section" id="todo">
+</section>
+<section id="todo">
 <h3>TODO<a class="headerlink" href="#todo" title="Permalink to this headline"></a></h3>
-</div>
-<div class="section" id="done">
+</section>
+<section id="done">
 <h3>DONE<a class="headerlink" href="#done" title="Permalink to this headline"></a></h3>
 <ul>
 <li><p>Try to create a method to load in-line HTML pages that are too complex and/or too big to convert them to Markdown.</p>
@@ -657,9 +684,9 @@
 <p>Non-minified files are included in case I want to see the source.</p>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -672,10 +699,13 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2021, Odyseus.</p>
+    <p>&#169; Copyright 2016-2022, Odyseus.</p>
   </div>
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a modified version of <a href="https://github.com/rtfd/sphinx_rtd_theme">sphinx-rtd-theme</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://gitlab.com/Odyseus/sphinx_rtd_theme_mod">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
 
@@ -693,7 +723,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
+  </script> 
 
 </body>
 </html>
